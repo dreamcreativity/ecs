@@ -7,10 +7,10 @@ var bodyParser = require('body-parser');
 
 
 var db = require('./db');
-
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var api = require('./routes/api');
+var api_user = require('./routes/api2');
 
 var app = express();
 
@@ -24,32 +24,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'html')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api', api);
+app.use('/api/user', api_user);
+
+//******************
 
 
+//******************
 
-var User = require('./models/users');
-
-app.get('/adduser', function(req,res){
-
-    var newUser = new User();
-    newUser.email = 'abc@gmail.com';
-    newUser.password = 'fdafdsaf';
-    newUser.first_name = 'skylon';
-    newUser.last_name = 'Sun';
-    newUser.save(function (err) {
-      if (err) // ...
-        console.log(err);
-      else
-        res.end('user created');
-    });;
-
-
-    
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
