@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+var db = require('./db');
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -24,6 +28,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+
+
+var User = require('./models/users');
+
+app.get('/adduser', function(req,res){
+
+    var newUser = new User();
+    newUser.email = 'abc@gmail.com';
+    newUser.password = 'fdafdsaf';
+    newUser.first_name = 'skylon';
+    newUser.last_name = 'Sun';
+    newUser.save(function (err) {
+      if (err) // ...
+        console.log(err);
+      else
+        res.end('user created');
+    });;
+
+
+    
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
