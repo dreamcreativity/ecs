@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var staff =require('../controllers/staff');
-
+var student =require('../controllers/student');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -22,9 +22,15 @@ router.put('/staff/:id', staff.edit);
 
 router.post('/staff/login', staff.login);
 
-router.get('/staff/getAllstaffs', staff.getAllStaffs);
+router.get('/staffs', staff.getAllStaffs);
 
 router.delete('/staff/:id',staff.delete);
+
+
+//-----------------------Student-----------------------------------
+
+router.get('/student/:student_id', student.getStudentbyId);
+
 
 
 module.exports = router;

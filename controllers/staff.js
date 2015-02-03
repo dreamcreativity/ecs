@@ -1,7 +1,7 @@
 var Staff = require('../models/staff');
 var SHA256 = require("crypto-js/sha256")
 var mongoose = require('mongoose');
-
+var jwt = require('jsonwebtoken');
 
 //POST : Create a Staff
 exports.create = function(req,res){
@@ -20,7 +20,6 @@ exports.create = function(req,res){
 					data:"User already exists"
 				});
 			}else {
-				var newStaff = new Staff(req.body);
 				newStaff.password = SHA256(newStaff.password); //Encrypt
 				newStaff.save(function(err,result){
 					if(err){
@@ -29,7 +28,6 @@ exports.create = function(req,res){
 							data:"Error occured: " +err
 							});
 					}
-					res.writeHead(200, { 'Content-Type': 'application/json'});
 					res.json({
 						type:true,
 						data:result
@@ -42,7 +40,7 @@ exports.create = function(req,res){
 
 //POST : Login
 exports.login = function (req,res){
-	var pwd = cryptojs.AES.encrypt(req.body.password, "secret");
+	var pwd = SHA256(req.body.password);
 	Staff.findOne({username : req.body.username, password: pwd}, function(err, user){
 		if(err){
 			res.json(
@@ -148,8 +146,8 @@ exports.delete = function(req,res){
 		if(err){
 			res.json({type:false, data:'Error occured: ' + err});
 		}
-		result.isDelete = true;
-		Staff.update({_id:id}, result, function(err,result){
+		result[0]["isDelete"] =true;
+		Staff.update({_id:id}, result[0], function(err,result){
 			if(err){
 			res.json({type:false, data:'Error occured: ' + err});
 			}
