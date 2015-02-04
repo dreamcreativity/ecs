@@ -29,7 +29,16 @@ router.delete('/staff/:id',staff.delete);
 
 //-----------------------Student-----------------------------------
 
+//GET a student by student ID
 router.get('/student/:student_id', student.getStudentbyId);
+
+//POST : create a student record
+router.post('/student', student.create);
+
+//PUT : Edit a student info
+router.put('/student/:id', student.edit)
+
+
 
 
 

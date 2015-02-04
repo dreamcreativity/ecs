@@ -9,7 +9,7 @@ var StudentSchema = mongoose.model('Student', new mongoose.Schema({
 	commissionRate: {type: String, required: true },
 	pomotionRate: {type: String, required: true },
 	note: {type: String},
-	registerDate: {type: Date, Date.now },
+	registerDate: {type: Date,default: Date.now },
 	isQuit : {type : Boolean, default : false },
 }));
 
