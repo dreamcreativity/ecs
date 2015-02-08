@@ -14,17 +14,17 @@ router.get('/', function(req, res) {
 
 //-------------------------Staff----------------------------------
 
-router.get('/staff/:id',staff.getStaffbyId);
+router.get('/staffs/:id',staff.getStaffbyId);
 
-router.post('/staff', staff.create);
+router.post('/staffs', staff.create);
 
-router.put('/staff/:id', staff.edit);
+router.put('/staffs/:id', staff.edit);
 
-router.post('/staff/login', staff.login);
+router.post('/staffs/login', staff.login);
 
 router.get('/staffs', staff.getAllStaffs);
 
-router.delete('/staff/:id',staff.delete);
+router.delete('/staffs/:id',staff.delete);
 
 
 //-----------------------Student-----------------------------------

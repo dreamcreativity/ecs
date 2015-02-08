@@ -22,12 +22,15 @@ exports.create = function(req,res){
 			}else {
 				newStaff.password = SHA256(newStaff.password); //Encrypt
 				newStaff.save(function(err,result){
+
 					if(err){
 						res.json({
 							type:false,
 							data:"Error occured: " +err
 							});
 					}
+
+
 					res.json({
 						type:true,
 						data:result
@@ -111,13 +114,31 @@ exports.getAllStaffs = function (req,res){
 exports.getStaffbyId = function(req,res){
 	var id = req.params.id;
 	Staff.find({_id:id}, function(err, result){
+
+
 		if(err) {
-			res.json('Error occured: ' + err);
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
 		}
-		res.json({
-			type: true,
-			data: result
-		});
+
+
+		if(result.length == 1){
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result[0]
+			});	
+		}else{
+			res.json({
+				status: 'fail',
+				messages: "multipulte result",
+				data: null
+			});
+		}
+		
 	});
 }
 
