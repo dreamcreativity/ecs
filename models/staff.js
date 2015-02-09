@@ -11,6 +11,7 @@ var StaffSchema = mongoose.model('Staff', new mongoose.Schema({
 	workphone: {type: String, required: true },
 	cellphone: {type: String, required: true },
 	extension: {type: String, required: true },
+	role : {type : String, required: true},
 	isDelete : {type : Boolean, default : false },
 	createDate : {type : Date, default : Date.now },
     updateDate : {type : Date, default : Date.now },

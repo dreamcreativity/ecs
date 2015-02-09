@@ -9,32 +9,35 @@ exports.create = function(req,res){
 	Staff.findOne({username : newStaff.username}, function(err, user){
 		if(err){
 			res.json({
-				type:false,
-				data: "Error occured: " +err
+				status: 'fail',
+				messages: err,
+				data: null
 			});
 		}
 		else {
 			if(user){
 				res.json({
-					type:false,
-					data:"User already exists"
+					status: 'fail',
+					messages:"User already exists",
+					data: null
 				});
 			}else {
 				newStaff.password = SHA256(newStaff.password); //Encrypt
 				newStaff.save(function(err,result){
-
 					if(err){
 						res.json({
-							type:false,
-							data:"Error occured: " +err
-							});
+							status: 'fail',
+							messages: err,
+							data:null
+						});
 					}
-
-
-					res.json({
-						type:true,
-						data:result
-					});
+					else {
+						res.json({
+							status: 'ok',
+							messages: 'successed',
+							data: result
+						});	
+					}
 				});
 			}
 		}
@@ -48,32 +51,38 @@ exports.login = function (req,res){
 		if(err){
 			res.json(
 			{
-				type: false,
-				data: 'Error occured: ' + err
+				status: 'fail',
+				messages: err,
+				data: null
 			});
 		}
 		else {
-			if(user.length === 0){
+			if(user == null){
 				res.json(
 				{
-					type: false,
-					data : 'username or password is incorrect'
+					status: 'fail',
+					messages: 'username or password is incorrect',
+					data : null
 				});
 			}
 			else {
-				var token = jwt.sign(user,"secret", { expiresInMinutes:60*5 });
+				var token = jwt.sign(user.username,"secret", { expiresInMinutes:60*5 });
 				user.token = token;
 				user.save(function(err){
 					if(err) {
 						res.json({
-							type:false,
-							data : 'Error occured: ' + err
+							status: 'fail',
+							messages:err,
+							data : null
 						});
 					}
-					res.json({
-						type:true,
-						token: token
-					});
+					else {
+						res.json({
+							status: 'ok',
+							messages: 'successed',
+							data : token
+						});
+					}
 				});
 			}
 		}
@@ -98,15 +107,19 @@ exports.getAllStaffs = function (req,res){
 	Staff.find({},function(err,results){
 		if(err){
 			res.json(
-				{
-					type: true,
-					data: 'Error occured: ' + err
-				});			
-				}
-		res.json({
-			type: true,
-			data: results
-		});
+			{
+				status: 'fail',
+				messages: err,
+				data: null
+			});			
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: results
+			});	
+		}	
 	});
 }
 
@@ -149,14 +162,26 @@ exports.edit = function(req,res){
 	Staff.update({_id:id}, staff, function(err, result){
 		if(err){
 			res.json({
-				type: false,
-				data: 'Error occured: ' + err}
-				);
+				status: 'fail',
+				messages: err,
+				data: null
+			});
 		}
-		res.json({
-			type:true,
-			data: result
-		});
+		else {
+			if(result.length == 1){
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}else{
+				res.json({
+					status: 'fail',
+					messages: "multipulte result",
+					data: null
+				});
+			}
+		}
 	});
 }
 
@@ -165,18 +190,31 @@ exports.delete = function(req,res){
 	var id = req.params.id;
 	Staff.find({_id:id}, function(err,result){
 		if(err){
-			res.json({type:false, data:'Error occured: ' + err});
-		}
-		result[0]["isDelete"] =true;
-		Staff.update({_id:id}, result[0], function(err,result){
-			if(err){
-			res.json({type:false, data:'Error occured: ' + err});
-			}
 			res.json({
-				type:true,
-				data: result
-				});
-		});
+				status:'fail',
+				messages: err, 
+				data:null
+			});
+		}
+		else {
+			result[0]["isDelete"] =true;
+			Staff.update({_id:id}, result[0], function(err,result){
+				if(err){
+					res.json({
+						status:'fail',
+						messages: err, 
+						data:null
+					});
+				}
+				else {
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: null
+					});	
+				}
+			});
+		}
 	});
 }
 
