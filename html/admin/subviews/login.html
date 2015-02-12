@@ -1,0 +1,44 @@
+
+	<div id="wrapper">
+		<!-- BEGIN MAIN PAGE CONTENT -->
+
+		<div class="login-container">
+			<h2>
+				<a href="index.html"><img src="../public/admin/images/logo.png" alt="logo" class="img-responsive"></a><!-- can use your logo-->
+			</h2>
+			<!-- BEGIN LOGIN BOX -->
+			<div id="login-box" class="login-box visible">					
+				<p class="bigger-110">
+					<i class="fa fa-key"></i> Please Enter Your Information
+				</p>
+
+				<div class="hr hr-8 hr-double dotted"></div>
+
+				<form ng-submit="login()">
+					<div class="form-group">
+						<div class="input-icon right">
+							<span class="fa fa-key text-gray"></span>
+							<input type="text" class="form-control" ng-model="staff.username" placeholder="Username" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-icon right">
+							<span class="fa fa-lock text-gray"></span>
+							<input type="password" class="form-control" ng-model="staff.password" placeholder="your password" required>
+						</div>
+					</div>
+					<div class="tcb">
+						<label>
+							<input type="checkbox" class="tc">
+							<span class="labels"> Remember me</span>
+						</label>
+						<input type="submit" class="pull-right btn btn-primary" value="Login" />
+						<div class="clearfix"></div>
+					</div>										
+				</form>
+			</div>
+			<!-- END LOGIN BOX -->
+
+
+		<!-- END MAIN PAGE CONTENT --> 
+	</div> 

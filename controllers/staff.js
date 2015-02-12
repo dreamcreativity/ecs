@@ -92,7 +92,7 @@ exports.login = function (req,res){
 // Authorized 
 exports.ensureAuthorized = function(req,res, next){
 	var bearerToken;
-	var bearerHeader = rea.header["authorization"];
+	var bearerHeader = req.header["authorization"];
 	if(typeof bearerHeader !== 'undefined'){
 		var bearer = bearerHeader.split(" ");
 		bearerToken = bearer[1];

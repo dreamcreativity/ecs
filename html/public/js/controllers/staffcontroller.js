@@ -7,11 +7,11 @@ angular
  StaffController.$inject = ['$scope','$http','$location','Staffs'];
 
 function StaffController($scope,$http,$location,Staffs){
-
 	//Declarate all functions under staff controllers 
 	$scope.staffs = Staffs.query();
 	$scope.login = login;
 	$scope.logout = logout;
+
 
 
 	//Define login function 
@@ -20,7 +20,8 @@ function StaffController($scope,$http,$location,Staffs){
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
 				sessionStorage.setItem('token',data.data);
-				$location.path('/home');
+				$scope.staffInstance = Staffs.get({_id:"54d03229b35b9b2602829de3"});
+				$location.path('/dashboard');
 			}
 			else {
 				console.log('login fail');
@@ -38,8 +39,8 @@ function StaffController($scope,$http,$location,Staffs){
 	}
 
 	//Define 
-	function getStaff(){
-
+	function getStaff(id){
+		return Staffs.get({_id:id});
 	}
 
 
