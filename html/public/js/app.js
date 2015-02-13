@@ -21,7 +21,7 @@ angular.module('EscApp', [
     	controller: 'StaffController'
     });
 
-    $routeProvider.when('/dashboard', {
+    $routeProvider.when('/admin/dashboard', {
         templateUrl: 'subviews/dashboard.html',
         controller: 'StaffController'
     });
