@@ -1,18 +1,15 @@
 'use strict'
 
 angular
-	.module('controllers.staff',[])
-	.controller('StaffController',StaffController);
+	.module('controllers',[])
+	.controller('LoginController',LoginController);
 
- StaffController.$inject = ['$scope','$http','$location','Staffs'];
+ LoginController.$inject = ['$scope','$http','$location'];
 
-function StaffController($scope,$http,$location,Staffs){
+function LoginController($scope,$http,$location){
 	//Declarate all functions under staff controllers 
-	$scope.staffs = Staffs.query();
 	$scope.login = login;
 	$scope.logout = logout;
-
-
 
 	//Define login function 
 	function login() {
@@ -20,7 +17,6 @@ function StaffController($scope,$http,$location,Staffs){
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
 				sessionStorage.setItem('token',data.data);
-				$scope.staffInstance = Staffs.get({_id:"54d03229b35b9b2602829de3"});
 				$location.path('/dashboard');
 			}
 			else {
@@ -34,13 +30,10 @@ function StaffController($scope,$http,$location,Staffs){
 
 	//Log out 
 	function logout(){
+		var token = sessionStorage.token;
+ 	var tokenPayload = jwtHelper.decodeToken(token);
 		delete sessionStorage.token;
 		$location.path('/login');
-	}
-
-	//Define 
-	function getStaff(id){
-		return Staffs.get({_id:id});
 	}
 
 

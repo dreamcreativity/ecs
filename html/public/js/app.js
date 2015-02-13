@@ -2,28 +2,19 @@
 
 angular.module('EscApp', [
     	'ngRoute',
-    	'controllers.staff',
+    	'controllers',
+      'controllers.dashboard',
     	'services.staff'
 	])
 .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/login', {
     	templateUrl: 'subviews/login.html',
-    	controller: 'StaffController'
-    });
-
-    $routeProvider.when('/home', {
-    	templateUrl: 'subviews/home.html',
-    	controller: 'StaffController'
-    });
-
-    $routeProvider.when('/staffs', {
-    	templateUrl: 'subviews/staffs.html',
-    	controller: 'StaffController'
+    	controller: 'LoginController'
     });
 
     $routeProvider.when('/admin/dashboard', {
         templateUrl: 'subviews/dashboard.html',
-        controller: 'StaffController'
+        controller: 'DashboardController'
     });
 
 
@@ -53,6 +44,6 @@ angular.module('EscApp', [
 })
 
 .config(function ($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptor');
+  //$httpProvider.interceptors.push('authInterceptor');
 });
 
