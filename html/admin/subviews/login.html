@@ -1,6 +1,51 @@
-
+<!-- 
 <form ng-submit="login()">
 	<input type="text" class="form-control" ng-model="staff.username" placeholder="Username" required>
 	<input type="password" class="form-control" ng-model="staff.password" placeholder="your password" required>
 	<input type="submit" class="pull-right btn btn-primary" value="Login" />
 </form>
+-->
+
+
+<div id="wrapper">
+	<!-- BEGIN MAIN PAGE CONTENT -->
+
+	<div class="login-container">
+		<h2>
+			<a href="index.html"><img src="" alt="logo" class="img-responsive"></a><!-- can use your logo-->
+		</h2>
+		<!-- BEGIN LOGIN BOX -->
+		<div id="login-box" class="login-box visible">					
+			<p class="bigger-110">
+				<i class="fa fa-key"></i> Staff Account
+			</p>
+
+			<div class="hr hr-8 hr-double dotted"></div>
+
+			<form ng-submit="login()">
+				<div class="form-group">
+					<div class="input-icon right">
+						<span class="fa fa-key text-gray"></span>
+						<input type="text" class="form-control" placeholder="Username" ng-model="staff.username" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-icon right">
+						<span class="fa fa-lock text-gray"></span>
+						<input type="password" class="form-control" placeholder="your password" ng-model="staff.password" required>
+					</div>
+				</div>
+				<div class="tcb">
+					<input type="submit" class="pull-right btn btn-primary" value="Login" />
+					<div class="clearfix"></div>
+				</div>				
+
+				<div class="space-4"></div>					
+			</form>
+		</div>
+		<!-- END LOGIN BOX -->
+	</div>
+
+
+	<!-- END MAIN PAGE CONTENT --> 
+</div> 

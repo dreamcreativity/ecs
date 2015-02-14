@@ -102,6 +102,38 @@ exports.ensureAuthorized = function(req,res, next){
 	else res.send(403);
 }
 
+
+// Decode 
+exports.decode =function(req,res){
+	if(req.params.token !=null){
+		jwt.verify(token,'secret', function(err,decode){
+			if(err){
+				res.json(
+				{
+					status: 'fail',
+					messages: err,
+					data: null
+				});			
+			}
+			else {
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: decode
+				});	
+			}
+		});
+	}
+	else {
+		res.json(
+		{
+			status: 'fail',
+			messages: null,
+			data: null
+		});			
+	}
+}
+
 //GET: all staffs
 exports.getAllStaffs = function (req,res){
 	Staff.find({},function(err,results){

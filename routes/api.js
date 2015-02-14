@@ -16,6 +16,8 @@ router.get('/', function(req, res) {
 
 router.get('/staffs/:id', staff.ensureAuthorized, staff.getStaffbyId);
 
+router.post('/staffs/decode/:token', staff.decode);
+
 router.post('/staffs', staff.create);
 
 router.put('/staffs/:id', staff.edit);

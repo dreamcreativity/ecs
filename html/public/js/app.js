@@ -2,8 +2,7 @@
 
 angular.module('EscApp', [
     	'ngRoute',
-    	'controllers',
-      'controllers.dashboard',
+    	'controllers.staff',
     	'services.staff'
 	])
 .config(['$routeProvider', function ($routeProvider) {
@@ -12,15 +11,30 @@ angular.module('EscApp', [
     	controller: 'LoginController'
     });
 
-    $routeProvider.when('/admin/dashboard', {
+    $routeProvider.when('/dashboard', {
         templateUrl: 'subviews/dashboard.html',
-        controller: 'DashboardController'
+        controller: 'StaffController'
+    });
+
+    $routeProvider.when('/staffs', {
+        templateUrl: 'subviews/staffs.html',
+        controller: 'StaffController'
     });
 
 
 
     $routeProvider.otherwise({redirectTo: '/'});
 }])
+
+
+.controller('pageCtrl', function($rootScope, $location) {
+      if($location.path() === '/login'){
+        $rootScope.show_partial_view =false;
+      }
+      else {
+        $rootScope.show_partial_view = true;
+      }
+})
 
 .factory('authInterceptor', function ($rootScope, $q, $window) {
   return {

@@ -1,0 +1,88 @@
+				<!-- BEGIN SIDE NAVIGATION -->				
+				<nav class="navbar-side" role="navigation" ng-show='{{show_partial_view}}'>							
+					<div class="navbar-collapse sidebar-collapse collapse">
+					
+						<!-- BEGIN SHORTCUT BUTTONS -->
+						<div class="media">							
+							<ul class="sidebar-shortcuts">
+								<li><a class="btn"><i class="fa fa-user icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-envelope icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-th icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-gear icon-only"></i></a></li>
+							</ul>	
+						</div>
+						<!-- END SHORTCUT BUTTONS -->	
+							
+					
+						<ul id="side" class="nav navbar-nav side-nav">
+							<!-- BEGIN SIDE NAV MENU -->							
+							<!-- Navigation category -->
+							<li>
+								<h4>Navigation</h4> 								
+							</li>
+							<!-- END Navigation category -->
+							
+							<li>
+								<a class="active" href="#/dashboard">
+									<i class="fa fa-dashboard"></i> Dashboard
+								</a>
+							</li>
+							<!-- BEGIN COMPONENTS DROPDOWN -->
+							<li class="panel">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#components">
+									<i class="fa fa-cogs"></i> Agents <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse nav" id="components">
+										<li>
+											<a href="#/agents">
+												<i class="fa fa-angle-double-right"></i> Data
+											</a>
+										</li>
+									</ul>
+							</li>
+							<!-- END COMPONENTS DROPDOWN -->							
+							<li>
+								<a href="#/students">
+									<i class="fa fa-list"></i> Students<span class="badge badge-primary"></span> 
+								</a>
+							</li>
+							<li>
+								<a href="typography.html">
+									<i class="fa fa-text-width"></i> My Account 
+								</a>
+							</li>
+							
+							<!-- Navigation category -->
+							<li>
+								<h4>Support</h4> 								
+							</li>
+							<!-- END Navigation category -->
+							
+							<!-- BEGIN PAGES DROPDOWN -->
+							<li class="panel">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#pages">
+									<i class="fa fa-list"></i> Managerment <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse nav" id="pages">
+										<li>
+											<a href="profile.html">
+												<i class="fa fa-angle-double-right"></i> Staffs Profile 
+											</a>
+										</li>
+										<li>
+											<a href="inbox.html">
+												<i class="fa fa-angle-double-right"></i> Blogs 
+											</a>
+										</li>
+										<li>
+											<a href="pricing.html">
+												<i class="fa fa-angle-double-right"></i> Material
+											</a>
+										</li>
+									</ul>
+							</li>
+							<!-- END PAGES DROPDOWN -->
+						</ul><!-- /.side-nav -->																			
+					</div><!-- /.navbar-collapse -->
+				</nav><!-- /.navbar-side -->
+			<!-- END SIDE NAVIGATION -->
