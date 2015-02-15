@@ -13,11 +13,16 @@ angular.module('EscApp', [
 
     $routeProvider.when('/dashboard', {
         templateUrl: 'subviews/dashboard.html',
-        controller: 'StaffController'
+        controller: 'DashboardController'
     });
 
     $routeProvider.when('/staffs', {
-        templateUrl: 'subviews/staffs.html',
+        templateUrl: 'subviews/staff/staffs.html',
+        controller: 'StaffController'
+    });
+
+    $routeProvider.when('/staffs/create', {
+        templateUrl: 'subviews/staff/create.html',
         controller: 'StaffController'
     });
 

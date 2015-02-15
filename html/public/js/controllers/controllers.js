@@ -34,32 +34,25 @@ app.controller('LoginController',function LoginController($rootScope,$scope,$htt
 });
 
 
-app.controller('StaffController',function StaffController($rootScope,$http,$window,jwtHelper,Staffs){
+app.controller('DashboardController',function StaffController($rootScope,$http,$window,jwtHelper,Staffs){
 	if($rootScope.show_partial_view == false){
      	$window.location.reload()
 		 }
+});
 
+app.controller('StaffController',function StaffController($scope,$http,jwtHelper,Staffs){
 	 var token = sessionStorage.token;
- //     //var tokenPayload = jwtHelper.decodeToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEyMzQ1Njc4OTAsIm5hbWUiOiJKb2huIERvZSIsImFkbWluIjp0cnVlfQ.eoaDVGTClRdfxUZXiPs3f8FmJDkDE_VCQFXqKxpLsts');
- //     $http.post('http://localhost:3000/api/staffs/decode/',token)
- //     .success(function(data,status,headers,config){
-	// 		if(data.status === "ok"){
-	// 			console.log('success');
-	// 		}
-	// 		else {
-	// 			console.log('fail');
-	// 		}
-	// 	})
-	// .error(function(data,status,headers,config){
-	// 	console.log('error : ' + data );
-	// });
-
- // 	$scope.staff = Staffs.get({id:'54d03229b35b9b2602829de3'});
- // 	$scope.staffs = getAllStaffs();
+	 $scope.staffs = getAllStaffs();
+	 $scope.create = function(){
+	 	Staffs.save($scope.staff,function(){
+ 			console.log('save success!');
+ 		})
+	 }
 
  	function getAllStaffs(){
  		return Staffs.query();
  	}
+
 
  	function getStaff(){
 
