@@ -54,7 +54,7 @@
   <body>
 	<div id="wrapper">
 		<div id="main-container">		
-			<div ng-include src="'template/navigation.html'"></div> 
+			<div ng-controller='pageCtrl' ng-include src="'template/navigation.html'"></div> 
   			<div ng-controller='pageCtrl' ng-include src="'template/sidebar.html'"></div>
   			<div ng-view></div>
 		</div>  
