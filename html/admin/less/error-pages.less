@@ -1,0 +1,35 @@
+// Error pages
+// -------------------------------
+
+.error-container {
+	margin: 10% auto 50px;
+	.error-box {
+		padding: 15px;
+		text-align: center;
+		background: rgba(255, 255, 255, 0.75);
+		border: 6px solid rgba(0,0,0,0.50);
+		
+		.error-code {
+			font-size: 700%;
+			font-weight: bolder;
+			border-bottom: 1px solid @brand-danger;
+			padding: 10px;
+			color: @brand-danger;
+		}
+		
+		@media (max-width: 768px) {
+			.error-code {
+				font-size: 360%;
+			}
+		}
+		
+		@media (max-width: 480px) {
+			.error-code {
+				font-size: 200%;
+			}
+			 h3 {
+			  font-size: 13px!important;
+			}
+		}
+	}
+}

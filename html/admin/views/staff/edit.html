@@ -1,0 +1,124 @@
+<!-- BEGIN MAIN PAGE CONTENT -->
+				<div id="page-wrapper">
+					<!-- BEGIN PAGE HEADING ROW -->
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- BEGIN BREADCRUMB -->
+								<div class="breadcrumbs">
+									<ul class="breadcrumb">
+										<li>
+											<a href="#">Home</a>
+										</li>
+										<li><a href="#/staffs">Staffs profile</a></li>
+										<li class="active">Edit</li>
+									</ul>
+								</div>
+								<!-- END BREADCRUMB -->
+																
+							</div><!-- /.col-lg-12 -->
+						</div><!-- /.row -->
+					<!-- END PAGE HEADING ROW -->					
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="row">
+									<div class="col-lg-6">									
+										<div class="portlet">
+											<div id="f-3" class="panel-collapse collapse in">
+												<div class="portlet-body">
+													<form name="loginForm" class="form-horizontal" role="form" ng-submit="update(loginForm.$valid)" novalidate>
+													<div class="form-group">
+															<label class="col-sm-3 control-label">Username</label>
+															<label class="col-sm-3 control-label">{{staff.username}}</label>
+
+														</div>
+													<div class="form-group">
+															<label class="col-sm-3 control-label">Role</label>
+															<div class="col-sm-9">
+																<select name="role" ng-model="staff.role" class="form-control" required>
+																	<option value="Administrator">Administrator</option>
+																	<option value="Supervise">Supervise</option>
+																	<option value="Staff" selected>Staff</option>
+																</select>
+																<p ng-show="loginForm.role.$invalid && !loginForm.role.$pristine" class="help-block">role is required</p>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label">First Name</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" value="{{staff.firstname}}"required>
+																<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block">first name is required</p>	
+															</div>
+														</div>
+
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Last Name</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
+																<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block">last name is required</p>	
+															</div>
+														</div>
+
+														<div class="form-group">
+															<label class="col-sm-3 control-label" ng-model="staff.workphone">Work phone</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
+																<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block">work phone is required</p>	
+																<p ng-show="loginForm.workphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+															</div>
+														</div>
+
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Cell phone</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
+																<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block">cellphone is required</p>	
+																<p ng-show="loginForm.cellphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label" ng-model="staff.email">Email</label>
+															<div class="col-sm-9">
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+																	<input type="email" class="form-control" name="email" ng-model="staff.email" required>
+																</div>
+																<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">email is invalid</p>
+															</div>
+														</div>
+
+														<div class="form-actions">
+															<div class="form-group">
+																<div class="col-sm-offset-2 col-sm-10">
+																	<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="loginForm.$invalid">
+																	<a href="#/staffs" type="submit" class="btn">Cancel</a>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>								
+								<!-- END YOUR CONTENT HERE -->
+					
+							</div>
+						</div>					
+					
+					<!-- BEGIN FOOTER CONTENT -->		
+						<div class="footer">
+							<div class="footer-inner">
+								<!-- basics/footer -->
+								<div class="footer-content">
+									&copy; 2014 <a href="#">eKoders</a>, All Rights Reserved.
+								</div>
+								<!-- /basics/footer -->
+							</div>
+						</div>
+						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+						</button>
+					<!-- END FOOTER CONTENT -->
+						
+				</div><!-- /#page-wrapper -->	  
+			<!-- END MAIN PAGE CONTENT -->

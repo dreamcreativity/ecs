@@ -1,0 +1,372 @@
+// Buttons
+// -------------------------
+@btn-twitter-color:@white;
+@btn-twitter-bg:#2b97f0;
+@btn-twitter-border:darken(@btn-twitter-bg, 3%);
+
+@btn-facebook-color:@white;
+@btn-facebook-bg:#3b5a9b;
+@btn-facebook-border:darken(@btn-facebook-bg, 3%);
+
+@btn-googleplus-color:@white;
+@btn-googleplus-bg:#db2814;
+@btn-googleplus-border:darken(@btn-googleplus-bg, 3%);
+
+@btn-linkedin-color:@white;
+@btn-linkedin-bg:#0e76a8;
+@btn-linkedin-border:darken(@btn-linkedin-bg, 3%);
+
+
+.btn {
+	outline:0 none !important;
+	background: @gray-lighter;
+	color: @baseFontcolor;
+	border-color: @default-border-color;
+	
+	> .icon-only[class*="fa-"], .icon-only[class*="glyphicon-"] {
+		margin: 0;
+		padding: 0;
+	}
+	> [class*="fa-"], [class*="glyphicon-"]  {
+		display: inline;
+		margin-right: 4px;
+		&.icon-on-right {
+			margin-right: 0px;
+			margin-left: 4px;
+		}
+	}
+	
+	// Application buttons 
+    &.btn-app {
+        position: relative;
+        padding: 15px 5px;
+        margin: 0 7.5px 15px;
+        min-width: 80px;
+        height: 60px;
+        .box-shadow(none); 
+        .border-radius(0);
+        text-align: center;
+        font-size: @baseFontSize - 1;
+		//icons
+        > .fa, > .glyphicon, > .ion {
+            font-size: 20px;   
+            display: block;
+			margin: 0;
+        }		
+        //badges
+        > .badge {
+            position: absolute;
+            top: -3px;
+            right: -10px;
+            font-size: 10px;
+            font-weight: 400;
+        }
+		
+		// The big apps buttons
+		&.big {
+			min-width: 110px;
+			height: 90px;
+			padding: 25px 15px;
+			font-size: @baseFontSize + 1;
+			
+			> .fa, > .glyphicon, > .ion {
+				font-size: 30px;   
+				display: block;
+			}
+		}
+		
+		&:hover {
+			color: @baseFontcolor;
+			border-color: darken(@default-border-color, 7%);
+			background-color: @white;
+		}
+    }
+	
+	&:active, &.active {
+		.box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+	}
+}
+
+.button-variant(@color; @background; @border) {
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 5%);
+        border-color: @border;
+  }
+}
+
+// Button Colors
+// --------------------------------------------------
+
+.btn-default {
+  .button-variant(@baseFontcolor; @gray-lighter; darken(@default-border-color, 3%));
+}
+
+.btn-primary {
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+
+// Success
+.btn-success {
+  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+
+// Info
+.btn-info {
+  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+}
+
+// Warning
+.btn-warning {
+  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+}
+
+// Danger and error appear as red
+.btn-danger {
+  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+}
+
+// Dark
+.btn-dark, .btn-gray, .btn-inverse {
+  .button-variant(@btn-dark-color; @btn-dark-bg; @btn-dark-border);
+}
+
+// Twitter
+.btn-twitter {
+  .button-variant(@btn-twitter-color; @btn-twitter-bg; @btn-twitter-border);
+}
+
+// Facebook
+.btn-facebook {
+  .button-variant(@btn-facebook-color; @btn-facebook-bg; @btn-facebook-border);
+}
+
+// Google Plus
+.btn-googleplus {
+  .button-variant(@btn-googleplus-color; @btn-googleplus-bg; @btn-googleplus-border);
+}
+
+// LinkDin
+.btn-linkedin {
+  .button-variant(@btn-linkedin-color; @btn-linkedin-bg; @btn-linkedin-border);
+}
+
+// White
+.btn-white {
+  .button-variant(@baseFontcolor; @white; @default-border-color);
+}
+
+.ui-group-buttons .or {
+	position: relative;
+	float: left;
+	width: .3em;
+	height: 1.3em;
+	z-index: 3;
+	font-size: 12px;
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		content: 'or';
+		background-color: @white;
+		margin-top: -.1em;
+		margin-left: -.9em;
+		width: 1.8em;
+		height: 1.8em;
+		line-height: 1.55;
+		color: @baseFontcolor;
+		font-style: normal;
+		font-weight: 400;
+		text-align: center;
+		.border-radius(500px);
+		.box-shadow(0 0 0 1px rgba(0,0,0,0.1));
+		.box-sizing(border-box);
+	}
+	&:after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: ' ';
+		width: .3em;
+		height: 2.84em;
+		border-top: .6em solid @white;
+		border-bottom: .6em solid @white;
+	}
+	&.or-lg {
+		height: 1.3em;
+		font-size: 16px;
+		&:after {
+			height: 2.85em;
+		}
+	}
+	&.or-sm {
+		height: 1em;
+		&:after {
+			height: 2.5em;
+		}
+	}
+	&.or-xs {
+		height: .25em;
+		&:after {
+			height: 1.84em;
+			z-index: -1000;
+		}
+	}
+}
+.ui-group-buttons {
+	display: inline-block;
+	vertical-align: middle;
+	&:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+	.btn {
+		float: left;
+		border-radius: 0;
+		&:first-child {
+			margin-left: 0;
+			border-top-left-radius: .25em;
+			border-bottom-left-radius: .25em;
+			padding-right: 15px;
+		}
+		&:last-child {
+			border-top-right-radius: .25em;
+			border-bottom-right-radius: .25em;
+			padding-left: 15px;
+		}
+	}
+}
+
+.btn-circle {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	padding: 12px 10px;
+	font-size: @baseFontSize + 5;
+	.border-radius(25px);
+	&.btn-xs {
+		width: 30px;
+		height: 30px;
+		padding: 6px 0;
+		font-size: @baseFontSize - 2;
+		.border-radius(15px);
+	}
+	&.btn-sm {
+		width: 40px;
+		height: 40px;
+		padding: 8px 10px;
+		font-size: @baseFontSize + 3;
+		.border-radius(20px);
+	}
+	&.btn-lg {
+		width: 70px;
+		height: 70px;
+		padding: 10px 16px;
+		font-size: @baseFontSize + 21;
+		.border-radius(35px);
+	}
+}
+
+.btn-line {
+  background-color: @white;
+  color: inherit;
+  &.btn-primary {
+    color: @brand-primary;	
+	&:hover, &:active, &:focus  {
+		color:@white;
+	}
+  }
+  &.btn-success {
+    color: @brand-success;	
+	&:hover, &:active, &:focus, &.disabled {
+		color:@white;
+	}
+  }
+  &.btn-info {
+    color: @brand-info;	
+	&:hover, &:active, &:focus, &.disabled {
+		color:@white;
+	}
+  }
+  &.btn-warning {
+    color: @brand-warning;	
+	&:hover, &:active, &:focus, &.disabled {
+		color:@white;
+	}
+  }
+  &.btn-danger {
+    color: @brand-danger;	
+	&:hover, &:active, &:focus, &.disabled {
+		color:@white;
+	}
+  }
+  &.btn-white {
+    color: @themeColor;	
+	&:hover, &:active, &:focus, &.disabled {
+		color:@gray;
+	}
+  }
+  &.btn-gray, &.btn-dark, &.btn-gray, &.btn-inverse {
+    color: @gray;	
+	&:hover, &:active, &:focus, &.disabled {
+		color:@white;
+	}
+  }
+  
+  &:hover, &:focus {
+	.transition(all 300ms ease);
+  }
+}
+
+.btn-group-vertical > .btn:last-child:not(:first-child) {
+    border-bottom-left-radius: 0;
+}
+.btn-group-vertical > .btn:first-child:not(:last-child) {
+    border-top-right-radius: 0;
+}
+
+.btn-xs, .btn-group-xs >.btn {
+	padding: 0 5px;
+}
+
+.btn-group-xs, .btn-group-sm, btn-group-lg {
+	.btn {
+		.border-radius(0);
+	}
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+	
+	input[type=file] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+		text-align: right;
+		.opacity(0);
+		outline: none;
+		cursor: inherit;
+		display: block;
+	}	
+}
+
+
+.btn-colorpicker {
+	display:inline-block;
+	width:20px; height:20px;
+	background-color:@gray-lighter;
+	vertical-align:middle;
+ 
+	border-radius:0;
+}

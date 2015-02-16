@@ -1,0 +1,40 @@
+// Bootstrap Select 
+// --------------------------------------------------
+
+.bootstrap-select, .bootstrap-select.open {
+	.btn-default {
+		background: @white;
+		border-color: @default-border-color;
+		color: #666;
+	}
+	.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .btn-default.disabled, .btn-default.disabled:focus, .open .dropdown-toggle.btn-default {
+		background: @white;
+		border-color: @default-border-color;
+		color: #666;
+	}
+}
+
+.bootstrap-select {	
+	.btn-group.open .dropdown-toggle {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.btn:focus {
+		outline: none !important;
+		outline-offset: 0;
+	}	
+	.caret {
+		border: 0;
+		width: auto;
+		height: auto;
+		margin-top: -10px !important;
+	}	
+	.caret:before {
+		content: "\f107";
+		display: inline-block;
+		border: 0; 
+		font-family: FontAwesome;
+		font-style: normal;
+		font-weight: normal;	
+	}	
+}

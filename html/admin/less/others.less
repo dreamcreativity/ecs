@@ -1,0 +1,713 @@
+/* Some of third party css style here */
+/* EasyPieChart */
+.easy-pie-chart  {
+    position: relative;
+	display: inline-block;
+	text-align: center;	
+	
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.percent{
+		display: inline-block;
+		z-index: 2;
+
+		&:after{
+			content: "%";
+			margin-left: 0.1em;
+		}
+	}
+	
+	.number, .icon {
+		display: inline-block;
+		z-index: 2;
+	}
+	
+	a.title {
+		display: block;
+		text-align: center;
+		font-size: @baseFontSize +1;
+		color: @gray;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		white-space: nowrap;
+		&:hover, &:focus, &:active {
+			text-decoration : none;
+		}
+		
+		&:after {
+			content: "\f101";
+			margin-left: 4px;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			color: @themeColor;
+		}
+	}
+
+}
+
+/* Bootstrap Input Rating */
+.rating-input {
+	.rating-clear {
+		text-decoration: none;
+	}
+}
+
+
+/* sparkline */
+.sparkline-chart {
+	margin-top: 10px;	
+  a.title {
+		display: block;
+		text-align: center;
+		font-size: @baseFontSize + 1;
+		color: @gray;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		white-space: nowrap;
+		&:hover, &:focus, &:active {
+			text-decoration : none;
+		}		
+		&:after {
+			content: "\f101";
+			margin-left: 4px;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			color: @themeColor;
+		}
+	}
+}
+
+//Bootstrap box-sizing tooltip issue fix
+.jqstooltip {
+  .box-sizing(content-box);
+}
+
+//Profile Pics
+.profile-pic {
+	display: block;
+	padding: 3px;
+	border: 1px solid @gray-lighter;
+	background: @white;
+	margin-bottom: 5px;	
+	img {
+		width: 100%;
+		max-width: 100%;
+	}	
+	:after, :before{content:"";height:4px;position:absolute;right:0;top:-5px;}
+	:before{border-left:35px solid @brand-success;border-right:34px solid @brand-info;margin:0 30px 0 0;}
+	:after{border-left:34px solid @brand-primary;border-right:35px solid @gray-dark;margin:0 99px 0 0;}
+}
+
+//wysihtml5 styles
+ul.wysihtml5-toolbar {
+	li {
+		margin: 0 5px 5px 0;
+	}
+	.btn {
+	  background: @white;
+	  color: baseFontcolor;
+	  border-color: @default-border-color;
+	  .box-shadow(none)!important;
+	  
+	 .fa, .glyphicon {
+		 font-size: @baseFontSize + 1;
+		 color: @themeColor;
+		}
+	}
+	
+	a.btn.wysihtml5-command-active {
+		background: @themeColor;
+		color: @white;
+		
+		.fa, .glyphicon {
+			color: @white;
+		}
+	}
+}
+
+/* scrollbar */
+.slimScrollBar  { .border-radius(0) !important; background-color: @themeColor!important; }
+.slimScrollRail { .border-radius(0) !important; }
+
+/* morris-chart */
+.morris-hover.morris-default-style {
+	background: @themeColor;
+	.opacity(0.95);
+}
+.morris-hover-row-label, .morris-hover-point {
+	color: @white!important;
+}
+
+.morris-hover.morris-default-style {
+	padding: 0 10px 5px;
+	border: 0 none;
+	border-radius: 0;
+}
+
+.chart-holder {
+	overflow: hidden;
+	position: relative;
+	width: 100%!important;
+	
+	> svg { width: 100% !important; }
+}
+
+/* Flot Chart style */
+td.legendColorBox {
+	padding-right: 4px;
+	
+	>div {
+		border: 1px solid @default-border-color!important;
+	}
+}
+
+/* For User's Quick List */
+.quick-list {
+	a {
+		color: @baseFontcolor;
+		&:hover, &:focus, &:active {
+			text-decoration: none;
+		}
+	}	
+	.media {
+		position: relative;
+		padding: 7.5px 10px;
+		margin-top: 5px;
+		border-bottom: 1px dotted @default-border-color;
+		
+		.media-body {
+			font-weight: 600;
+			color: @themeColor;
+			
+			small {
+				font-weight: normal;
+				color: @baseFontcolor;
+			}
+		}
+		
+		img {
+			border: 2px solid @themeColor;
+		}
+		
+		>.tools {
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+			display: none;
+		}
+		
+		&:hover {
+			background: #F5F5F5;
+			>.tools {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+
+//Pace progress bar
+.pace .pace-progress {
+  background: @themeColor;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 3px;  
+  .transition(width 1s);
+}
+
+.pace-inactive {
+  display: none;
+}
+
+
+// widget with icon background
+.widget {
+  margin-bottom:15px;
+  position:relative;
+  border: 1px solid @default-border-color;
+  .body {
+    min-height:100px;
+	height: auto;
+    color:inherit;
+    padding: 15px;
+    overflow:hidden;
+    position:relative;
+	font-size: 13px;
+	
+	h1, h2, h3, h4, p:last-child {
+		margin: 0;
+	}
+	
+	a, a:hover, a:focus, a:active {
+		color: inherit;
+		text-decoration: none;
+	}
+		
+	.background-icon-right [class*="fa-"], .background-icon-right [class*="glyphicon-"],
+	.background-icon-left [class*="fa-"], .background-icon-left [class*="glyphicon-"] {
+		font-size:7.5em;
+		position:absolute;
+		.opacity(0.1);
+	}
+    .background-icon-left [class*="fa-"], .background-icon-left [class*="glyphicon-"] {
+      top:-15px;
+      left:-15px;
+    }
+	
+	.background-icon-right [class*="fa-"], .background-icon-right [class*="glyphicon-"] {
+      top:-15px;
+      right:-15px;
+      
+    }
+  }
+}
+
+
+/* colorbox custom style */
+#colorbox:focus , #colorbox:active {
+ outline:none;
+}
+#cboxTopLeft, #cboxTopCenter, #cboxTopRight,
+#cboxMiddleLeft, #cboxMiddleRight,
+#cboxBottomLeft, #cboxBottomCenter, #cboxBottomRight
+{
+  background:none !important;
+  opacity:0;
+}
+#cboxContent {
+  border:12px solid @gray-darker;
+  background-color:@white;
+  padding:7px;
+}
+#cboxOverlay {
+  background:rgba(0,0,0,0.95);
+  background:#000;
+}
+#cboxCurrent {
+  left:64px;
+  margin-bottom:4px;
+  font-size: 14px;
+}
+#cboxTitle {
+  margin-bottom:4px;
+  font-size: 14px;
+  color:@gray;
+}
+
+
+#cboxNext , #cboxPrevious , #cboxClose {
+ background:none;
+ text-indent:0;
+ width:26px; height:26px; line-height:22px;
+ padding:0 4px;
+ text-align:center;
+ 
+ border:2px solid @gray-lighter;
+ border-radius:16px;
+ 
+ color:#666;
+ font-size:12px;
+
+ margin-left:5px;
+ margin-bottom:5px;
+}
+#cboxNext:hover , #cboxPrevious:hover {
+ color:@gray;
+ border-color:@default-border-color;
+}
+#cboxContent {
+ overflow:visible;
+}
+#cboxClose {
+    background-color: @white;
+	    
+	border: 2px solid @white;
+    border-radius: 32px;
+    
+    color: @white;
+	font-size: 21px;
+	
+    height: 28px;
+	width: 28px;
+	
+	padding-bottom: 2px;
+	margin-left: 0;
+	
+	right: -14px;
+    top: -14px;
+}
+
+
+#cboxLoadingOverlay {
+  background:none !important;
+}
+#cboxLoadingGraphic {
+  background:@white none !important;
+  text-align:center;
+  
+  > [class*="fa-"] {
+	 display:inline-block;
+	 background-color:@white;
+	 border-radius:8px;
+
+	 width:32px; height:32px;
+	 position:relative; top:48%;
+
+
+	 text-align:center;
+	 vertical-align:middle;
+	 
+	 
+	 font-size:24px;
+	 color:@brand-warning;
+ }
+
+}
+
+
+/* datepagepicker for bs3 custom style */
+.daterangepicker {
+	.ranges li {
+		color: @gray-light;
+		border-radius: 0;
+		
+		&:hover, &.active {
+			background: @themeColor;
+			border: 1px solid transparent;
+		}
+	}
+	.calendar-date {
+		border-radius: 0;
+	}
+}
+
+
+.paper-clip {
+	display: none;
+}
+
+@media (min-width: 992px) {	
+	.paper-clip {
+		width: 60px;
+		height: 85px;
+		background: url('../../images/paper-clip.png') repeat scroll 0% 0% transparent;
+		position: absolute;
+		top: -14px;
+		right: -13px;
+		display: block;
+	}
+}
+
+/* Select2 custom styles */
+.select2-container-multi {
+	.select2-choices {
+		.select2-search-choice {
+			border: 1px solid @default-border-color;
+			background-color: @white;
+		}
+	}
+}
+
+
+/* Ribbon */
+.ribbon-wrapper {
+	width: 85px;
+	height: 88px;
+	overflow: hidden;
+	position: absolute;
+	top: -3px;
+	right: -3px;
+
+	.ribbon {
+		display: block;
+		font-size: @baseFontSize + 2;
+		color: @white;
+		text-align: center;
+		.transform(rotate(45deg));
+		position: relative;
+		padding: 7px 0;
+		left: -5px;
+		top: 15px;
+		width: 120px;
+		line-height: 20px;
+		background-color: rgba(0, 0, 0, 0.70);
+		.box-shadow(0 0 3px rgba(0,0,0,0.3));
+	}
+	
+	&.small {
+		width: 65px;
+		height: 68px;
+		
+		.ribbon {
+			width: 90px;
+			padding: 0;
+			font-size: @baseFontSize;
+		}
+	}
+}
+
+
+
+// Profile Cars style
+.profile-card {
+  width:100%;
+  position:relative;
+  margin-bottom:15px;
+  overflow:hidden;
+  color: @gray-light;
+  text-align:center;
+  
+  .animate {
+	.transition(all 0.3s ease-in-out);
+	}
+  > img {
+    width:100px;
+	padding: 1px;
+	background: rgba(0, 0, 0, 0.50); 
+  }
+  .profile-card-details {
+    width:100%;
+    height:100%;
+    position:absolute;
+    bottom:-100%;
+    left:0;
+    padding:0 15px;
+    .profile-card-header {
+      width:100%;
+      height:100%;
+      height:auto;
+      position:absolute;
+      bottom:-100%;
+      bottom:100%;
+      left:0;
+      padding:10px 5px;
+	  background: rgba(0, 0, 0, 0.70);
+      h4, span {
+        margin:0;
+        padding:0;
+      }
+    }
+    .profile-card-detail .social {
+      list-style:none;
+      padding:0px;
+      margin-top:25px;
+	  
+	  li {
+		padding: 0px;
+		display: inline-block;
+	  }
+
+    }
+  }
+  .profile-card-details::-webkit-scrollbar {
+    width:8px;
+  }
+  .profile-card-details::-webkit-scrollbar-button {
+    width:8px;
+    height:0px;
+  }
+  .profile-card-details::-webkit-scrollbar-track {
+    background:transparent;
+  }
+  .profile-card-details::-webkit-scrollbar-thumb {
+    background:none;
+  }
+  .profile-card-details::-webkit-scrollbar-thumb:hover {
+    background:none;
+  }
+  
+  &:hover .profile-card-details {
+	bottom:0px;
+	overflow:auto;
+	padding-bottom:15px;
+	background: rgba(0, 0, 0, 0.70);
+	.profile-card-header {
+		position:relative;
+		bottom:0px;
+		padding-top:45px;
+		padding-bottom:25px;
+		background: none;
+	}
+  }
+}
+
+
+
+
+.tc-box {
+	margin-bottom: 15px;
+	a, &:hover, &:active, &:focus {
+		text-decoration: none!important;
+	}
+	.media {
+		padding: 10px 0; 
+		
+		.pull-left {
+			margin-right: 0;
+		}
+	}
+	.border-right {
+		border-right: 1px dotted @default-border-color;
+	}
+	
+	@media (max-width:992px) {
+		.border-right {
+			border-right: 1px dotted transparent;
+			border-bottom: 1px dotted @default-border-color;
+		}
+	}
+	.media-body {
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+	.icon-box {		
+		font-size: @baseFontSize + 13;
+		width: 50px; height: 50px;
+		line-height: 45px;
+		border: 2px solid @default-border-color;
+		.border-radius(100%);
+		margin: 0 auto;
+		text-align: center;
+		color: @gray-light;
+		padding-right: 0;
+	}
+	
+	&:hover, &:focus {
+		.icon-box {
+			color: @white;
+			background: @themeColor;
+			border-color: @themeColor;
+		}
+	}
+	
+	&.no-hover {
+		.icon-box {
+			border: 2px solid transparent;
+		}
+		&:hover, &:focus {
+			.icon-box {
+				background: none;
+				border-color: transparent;
+			
+				.fa, .glyphicon {
+					color: inherit;
+				}
+			}
+		}	
+	}
+	
+	&.s2 {
+		padding: 20px 15px;
+		text-align: center;
+		margin-bottom: 15px;
+		background: @white;
+	
+		.icon-box {
+			font-size: @baseFontSize + 13;
+			width: 50px; height: 50px;
+			line-height: 45px;
+			border: 2px solid @default-border-color;
+			.border-radius(100%);
+			margin: 0 auto;
+			color: @themeColor;
+		}
+	
+		&:hover, &:focus {
+			color: @white;
+			background: @themeColor;
+		
+			.icon-box {
+				border-color: @white;
+				color: @white;
+			}
+
+		}	
+	}
+}
+
+
+//Rollerblade Images
+.rollerblade-img {	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+	
+}
+.rollerblade-drag {
+	cursor:move;
+}
+
+
+
+
+//some searchbox variables
+@search-width: 152px;
+@mini-search-width: 0;
+
+
+// Mini searchbox for additional use /Used in Email layout
+.mini-search {
+	position: absolute;
+	right: 22px;
+	line-height: 24px;
+
+	.form-search {
+		margin-bottom: 0;
+	}
+
+	.nav-search-input {
+		border: 1px solid @default-border-color;
+		width: @mini-search-width;
+		max-width: @mini-search-width; // for safari only
+		height: 28px !important;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		.border-radius(100%) !important;	
+		z-index: 11;
+		.transition(~"width ease .15s");
+
+		//the typeahead dropdown menu
+		& + .dropdown-menu {
+			min-width: 0;
+			left: 0;
+			right: 0;
+		}
+
+		&:focus , &:hover {
+			border-color: @default-border-color;
+		}
+
+	}
+	.nav-search-icon {
+		margin: 7px 5px !important;
+		background-color: transparent;
+	}
+ 
+	.input-icon input {
+		padding-left: 18px!important;
+	}
+	
+	
+	&:focus, &:hover {
+		.nav-search-input {
+			border-color: @default-border-color;
+			.border-radius(4px) !important;
+			width: @search-width;
+			max-width: @search-width; // for safari only
+		}
+		
+		.input-icon input {
+			padding-left: 23px!important;
+		}
+	}
+}

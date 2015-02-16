@@ -1,0 +1,512 @@
+<!-- BEGIN MAIN PAGE CONTENT -->
+				<div id="page-wrapper">
+					<!-- BEGIN PAGE HEADING ROW -->
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- BEGIN BREADCRUMB -->
+								<div class="breadcrumbs">
+									<ul class="breadcrumb">
+										<li>
+											<a href="#">Home</a>
+										</li>
+										<li class="active">Dashboard</li>
+									</ul>
+									
+									<div class="b-right hidden-xs">
+										<ul>
+											<li><a href="#" title=""><i class="fa fa-signal"></i></a></li>
+											<li><a href="#" title=""><i class="fa fa-comments"></i></a></li>
+											<li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="fa fa-plus"></i><span> Tasks</span></a>
+												<ul class="dropdown-menu dropdown-primary dropdown-menu-right">
+													<li><a href="#">Add new task</a></li>
+													<li><a href="#">Statement</a></li>
+													<li><a href="#">Settings</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- END BREADCRUMB -->	
+								
+								<div class="page-header title">
+								<!-- PAGE TITLE ROW -->
+									<h1>Dashboard <span class="sub-title">Content Overview</span></h1>									
+								</div>
+								
+								<!-- /#ek-layout-button -->	
+								<div class="qs-layout-menu">
+									<div class="btn btn-gray qs-setting-btn" id="qs-setting-btn">
+										<i class="fa fa-cog bigger-150 icon-only"></i>
+									</div>
+									<div class="qs-setting-box" id="qs-setting-box">
+									
+										<div class="hidden-xs hidden-sm">
+											<span class="bigger-120">Layout Options</span>
+											
+											<div class="hr hr-dotted hr-8"></div>
+											<label>
+												<input type="checkbox" class="tc" id="fixed-navbar" />
+													<span id="#fixed-navbar" class="labels"> Fixed NavBar</span>
+											</label>
+											<label>
+												<input type="checkbox" class="tc" id="fixed-sidebar" />
+													<span id="#fixed-sidebar" class="labels"> Fixed NavBar+SideBar</span>
+											</label>
+											<label>
+												<input type="checkbox" class="tc" id="sidebar-toggle" />
+													<span id="#sidebar-toggle" class="labels"> Sidebar Toggle</span>
+											</label>
+											<label>
+												<input type="checkbox" class="tc" id="in-container" />
+													<span id="#in-container" class="labels"> Inside<strong>.container</strong></span>
+											</label>
+										
+											<div class="space-4"></div>
+										</div>
+										
+										<span class="bigger-120">Color Options</span>
+										
+										<div class="hr hr-dotted hr-8"></div>
+										
+										<label>
+											<input type="checkbox" class="tc" id="side-bar-color" />
+											<span id="#side-bar-color" class="labels"> SideBar (Light)</span>
+										</label>
+										
+										<ul>									
+											<li><button class="btn" style="background-color:#d15050;" onclick="swapStyle('assets/css/themes/style.css')"></button></li>
+											<li><button class="btn" style="background-color:#86618f;" onclick="swapStyle('assets/css/themes/style-1.css')"></button></li> 
+											<li><button class="btn" style="background-color:#ba5d32;" onclick="swapStyle('assets/css/themes/style-2.css')"></button></li>
+											<li><button class="btn" style="background-color:#488075;" onclick="swapStyle('assets/css/themes/style-3.css')"></button></li>
+											<li><button class="btn" style="background-color:#4e72c2;" onclick="swapStyle('assets/css/themes/style-4.css')"></button></li>
+										</ul>
+										
+									</div>
+								</div>
+								<!-- /#ek-layout-button -->		
+								
+							</div><!-- /.col-lg-12 -->
+						</div><!-- /.row -->
+					<!-- END PAGE HEADING ROW -->					
+						<div class="row">
+							<div class="col-lg-12">
+							
+								<!-- START YOUR CONTENT HERE -->
+								<div class="row">
+									<div class="col-lg-9 col-sm-12">
+
+										<div class="row">
+										
+											<div class="col-lg-4 col-sm-4">
+												<a href="#" class="tile-button btn btn-primary">
+													<div class="tile-content-wrapper">
+														<i class="fa fa-users"></i>
+														<div class="tile-content">
+															30
+														</div>
+														<small>
+															Active students
+														</small>
+													</div>
+												</a>												
+											</div>
+
+											<div class="col-lg-4 col-sm-4">
+												<a href="#" class="tile-button btn btn-inverse">
+													<div class="tile-content-wrapper">
+														<i class="glyphicon glyphicon-gift"></i>
+														<div class="tile-content">
+															20
+														</div>
+														<small>
+															Active agents
+														</small>												
+													</div>
+												</a>												
+											</div>
+
+											
+											<div class="col-lg-4 col-sm-4">
+												<a href="#" class="tile-button btn btn-white">
+													<div class="tile-content-wrapper">
+														<i class="fa fa-warning text-primary"></i>
+														<div class="tile-content text-primary">
+															<span>$</span>10
+														</div>
+														<small>
+															Materials
+														</small>
+													</div>
+												</a>												
+											</div>
+											
+											
+										</div>
+								
+										<!-- Server Info Charts .morris -->
+										<div class="portlet">
+											<div class="portlet-heading inverse">
+												<div class="portlet-title">
+													<h4><i class="fa fa-line-chart"></i> Today Events</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a id="daterange" href="javascript:;" class="tooltip-primary" data-placement="top" data-rel="tooltip" title="DateRangePicker"><i class="fa fa-calendar"></i></a>
+													<span class="divider"></span>
+													<a data-toggle="collapse" data-parent="#accordion" href="#m-charts"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="m-charts" class="panel-collapse collapse in">
+												<div class="portlet-body">
+													<div class="row">
+														<div class="col-sm-9">
+															<h4>Course Schedule</h4>
+															<div class="chart-holder" id="morris-chart-1" style="height: 220px!important; min-height:220px;"></div>
+														</div>
+														<div class="col-sm-3">
+															<h4>Resources</h4>
+															<hr class="separator" />
+															
+															<!-- Progress bars 1-->
+															<div class="clearfix">
+																<span class="pull-left">Memory</span>
+																<small class="pull-right">307.5/1024 GB</small>
+															</div>
+															<div class="progress progress-mini">
+																<div class="progress-bar progress-bar-success" style="width: 30%;"></div>
+															</div>
+																
+															<!-- Progress bars 2-->
+															<div class="clearfix">
+																<span class="pull-left">IP Address</span>
+																<small class="pull-right">900/1000</small>
+															</div>
+															<div class="progress progress-mini">
+																<div class="progress-bar progress-bar-danger" style="width: 90%;"></div>
+															</div>
+																
+															<!-- Progress bars 3-->
+															<div class="clearfix">
+																<span class="pull-left">Storage</span>
+																<small class="pull-right">3.5/5 TB</small>
+															</div>
+															<div class="progress progress-mini">
+																<div class="progress-bar progress-bar-warning" style="width: 70%;"></div>
+															</div>
+															
+															<!-- Progress bars 4-->
+															<div class="clearfix">
+																<span class="pull-left">Bandwidth</span>
+																<small class="pull-right">3/30 TB</small>
+															</div>
+															<div class="progress progress-mini">
+																<div class="progress-bar progress-bar-info" style="width: 10%;"></div>
+															</div>
+															
+															<!-- Buttons -->
+															<button class="btn btn-sm btn-primary"><i class="fa fa-file-pdf-o"></i>Generate PDF</button>
+														</div>
+														
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+										<!-- End Server Info Charts .morris -->
+
+										<div class="portlet">
+											<div class="portlet-heading inverse">
+												<div class="portlet-title">
+													<h4><i class="glyphicon glyphicon-sort-by-attributes"></i> Statics</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#jq-spark"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="jq-spark" class="panel-collapse collapse in">
+												<div class="portlet-body">
+													<div class="row">
+														<div class="col-sm-3 col-xs-6 text-center">
+															<div class="sparkline-chart">
+																<span class="sparkline-bar"></span>
+																<a href="#" class="title">CPU</a>
+															</div>
+														</div>
+														<div class="col-sm-3 col-xs-6 text-center">
+															<div class="sparkline-chart">
+																<span class="sparkline-line"></span>
+																<a href="#" class="title">Bandwith Uses</a>
+															</div>
+														</div>
+														<div class="col-sm-3 col-xs-6 text-center">
+															<div class="easy-pie-chart" id="easyPieChart-visit" data-percent="76">
+																<span class="number">7,397</span>
+																<a href="#" class="title">Visits</a>
+															</div>									
+														</div>
+														<div class="col-sm-3 col-xs-6 text-center">
+															<div class="easy-pie-chart"  id="easyPieChart-bounce" data-percent="80">
+																<span class="percent">80</span>
+																<a href="#" class="title">Bounce</a>																
+															</div>
+														</div>
+													</div>										
+												</div>
+											</div>
+										</div>
+										<!-- End Statics Charts -->
+										
+										
+									</div><!-- //col-lg-9 -->
+									
+									<div class="col-lg-3 col-sm-12">
+
+										<!-- Users List -->
+										<div class="portlet">
+											<div class="portlet-heading inverse">
+												<div class="portlet-title">
+													<h4><i class="fa fa-list-alt"></i> Recent Agents</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#qclients"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="qclients" class="panel-collapse collapse in">
+												<div class="portlet-body">
+													<div class="space-4"></div>
+													
+													<div class="quick-list">														
+														<a href="profile.html">
+														<div class="media items no-margin-top">
+															<span class="pull-left">
+																<img src="assets/images/user-1.jpg" style="width: 37px;height:37px;" alt="#">
+															</span>
+															<div class="media-body">
+																John Smith<br /><small>Software Developer</small>
+															</div>
+															<div class="tools">
+																<i class="fa fa-share icon-only"></i>
+															</div>
+														</div>
+														</a>
+														<a href="#">
+														<div class="media items">
+															<span class="pull-left">
+																<img src="assets/images/user-4.jpg" style="width: 37px;height:37px;" alt="#">
+															</span>
+															<div class="media-body">
+																Elly Martel<br /><small>Software Developer</small>
+															</div>
+															<div class="tools">
+																<i class="fa fa-share icon-only"></i>
+															</div>
+														</div>
+														</a>
+														<a href="#">
+														<div class="media items">
+															<span class="pull-left">
+																<img src="assets/images/user-3.jpg" style="width: 37px;height:37px;" alt="#">
+															</span>
+															<div class="media-body">
+																Jack Sparrow<br /><small>Software Developer</small>
+															</div>
+															<div class="tools">
+																<i class="fa fa-share icon-only"></i>
+															</div>
+														</div>
+														</a>
+														<a href="#">
+														<div class="media items">
+															<span class="pull-left">
+																<img src="assets/images/user-5.jpg" style="width: 37px;height:37px;" alt="#">
+															</span>
+															<div class="media-body">
+																Maris Bradley<br /><small>Software Developer</small>
+															</div>
+															<div class="tools">
+																<i class="fa fa-share icon-only"></i>
+															</div>
+														</div>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- End Users List -->	
+										
+										<!-- Mini Calendar -->
+										<div class="portlet hidden-widgets">
+											<div class="portlet-heading inverse">
+												<div class="portlet-title">
+													<h4><i class="fa fa-calendar"></i> Calendar</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#mini-calendar"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="mini-calendar" class="panel-collapse collapse in">
+												<div class="portlet-body">
+													<div id="minicalendar"></div>
+												
+													<div class="space-8"></div>
+												
+													<div class="notice bg-primary marker-on-top no-margin-bottom">
+														<h4>Today's Event</h4>
+														<ul class="list-unstyled smaller-90">
+															<li>10 Addons Due to Renew</li>
+															<li>2 Products/Services Due to Renew</li>
+															<li>6 Domains Due to Renew</li>
+														</ul>
+													
+														<a href="#"><i class="fa fa-plus"></i> Add New Event</a>
+													</div>
+												</div>
+											</div>
+										</div>										
+										<!-- End Mini Calendar -->
+
+										<!-- World Map -->
+										<div class="portlet hidden-widgets">
+											<div class="portlet-heading dark">
+												<div class="portlet-title">
+													<h4><i class="fa fa-map-marker"></i> Visitors Map</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#v-map"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="v-map" class="panel-collapse collapse in">
+												<div class="portlet-body no-padding">
+													<div id="visitors-map" style="min-height: 150px!important; height: 150px;"></div>
+													<!-- .table - Uses sparkline charts-->
+													<table class="table table-bordered table-striped table-hover tc-table">
+														<thead>
+														<tr>
+															<th>Country</th>
+															<th>Online</th>
+															<th>Page Views</th>
+														</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td><a href="#">USA</a></td>
+																<td>209</td>
+																<td>239</td>
+															</tr>
+															<tr>
+																<td><a href="#">India</a></td>
+																<td>131</td>
+																<td>958</td>
+															</tr>
+														</tbody>
+													</table><!-- /.table -->
+												</div>
+											</div>
+										</div>										
+										<!-- End World Map -->
+
+										
+									</div><!-- //col-lg-3 -->
+								</div>			
+								<!-- END YOUR CONTENT HERE -->
+					
+							</div>
+						</div>
+						
+					<!-- BEGIN FOOTER CONTENT -->		
+						<div class="footer">
+							<div class="footer-inner">
+								<!-- basics/footer -->
+								<div class="footer-content">
+									&copy; 2014 <a href="#">eKoders</a>, All Rights Reserved.
+								</div>
+								<!-- /basics/footer -->
+							</div>
+						</div>
+						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+						</button>
+					<!-- END FOOTER CONTENT -->
+						
+				</div><!-- /#page-wrapper -->	  
+			<!-- END MAIN PAGE CONTENT -->
+
+<!-- core JavaScript -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/js/plugins/pace/pace.min.js"></script>
+	
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="assets/js/plugins/jqueryui/jquery-ui.custom.min.js"></script>
+	<script src="assets/js/plugins/jqueryui/jquery.ui.touch-punch.min.js"></script>	
+    <script src="assets/js/plugins/daterangepicker/moment.js"></script>
+    <script src="assets/js/plugins/daterangepicker/daterangepicker.js"></script>	
+    <script src="assets/js/plugins/morris/raphael-min.js"></script>
+    <script src="assets/js/plugins/morris/morris.min.js"></script>
+	<script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+	<script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+	<script src="assets/js/plugins/easypiechart/jquery.easypiechart.min.js"></script>
+	<script src="assets/js/plugins/easypiechart/excanvas.compiled.js"></script>	
+	<script src="assets/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="assets/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Themes Core Scripts -->	
+	<script src="assets/js/main.js"></script>
+	
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<script src="assets/js/speech-commands.js"></script>
+	<script src="assets/js/plugins/gritter/jquery.gritter.min.js"></script>		
+	
+	<!-- initial page level scripts for examples -->
+	<script src="assets/js/plugins/slimscroll/jquery.slimscroll.init.js"></script>
+	<script src="assets/js/home-page.init.js"></script>
+	<script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.init.js"></script>
+	<script src="assets/js/plugins/easypiechart/jquery.easypiechart.init.js"></script>
+
+
+	
+
+<!-- <div>Success login</div>
+<input ng-click="logout()" type="submit" value="Logout" />
+
+<div>username : {{staff.data.username}}</div>
+<div>name : {{staff.data.firstname}} {{staff.data.lastname}}</div>
+<div>email : {{staff.data.email}}</div>
+<div>workphone : {{staff.data.workphone}} ext: {{staff.data.extension}} </div>
+<div>cellphone : {{staff.data.cellphone}}</div>
+
+<!-- Display all staffs -->
+<!--
+<table>
+	<tr>
+		<th>Role</th>
+		<th>Username</th>
+		<th>Lastname</th> 
+		<th>Firstname</th>
+		<th>Email</th>
+		<th>Workphone</th>
+		<th>CellPhone</th>
+		<th>lastLogin</th>
+		<th>create</th>
+		<th>update</th>
+	</tr>
+	<tr ng-repeat="staff in staffs.data">
+		<td>{{staff.role}}</td>
+		<td>{{staff.username}}</td>
+		<td>{{staff.lastname}}</td>
+		<td>{{staff.firstname}}</td>
+		<td>{{staff.email}}</td>
+		<td>{{staff.workphone}}</td>
+		<td>{{staff.cellphone}}</td>
+		<td>{{staff.lastLoginDateTime}}</td>
+		<td>{{staff.createDate}}</td>
+
+		<td>{{staff.updateDate}}</td>
+	</tr>
+</table> -->

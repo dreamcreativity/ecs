@@ -1,0 +1,531 @@
+// Carousels
+// -------------------------------
+#tcSilder, #tc-slider-2, .owl-carousel {
+	ul.thumbnails { 
+		list-style: none; 
+		margin: 0;
+		padding: 0;
+	}
+	
+	@media (max-width: 640px) {
+		ul.thumbnails li { margin-bottom: 30px; }
+	}
+	
+	.thumbnail, .slide-item {
+		position:relative;
+		overflow:hidden;
+		
+		img {
+			.transition(all 0.5s); 
+		}
+	
+		.tools {
+			position:absolute;
+			top: -100%;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			color:@white !important;
+			z-index:2;
+			.transition(~"all 0.5s ease-in-out");
+			
+			.fa, .glyphicon {
+				background: rgba(0, 0, 0, 0.55);
+				font-size: @baseFontSize + 3;
+				padding: 15px;
+				.border-radius(100%);
+				color: @gray-lighter;
+				.transition(~"all 0.5s linear");
+				
+				&:hover {
+					background: @themeColor;
+				}
+			}
+			
+			.btn {
+				background: rgba(0, 0, 0, 0.55);
+				border: 1px solid rgba(0, 0, 0, 0.10);
+				font-size: @baseFontSize;
+				color: @gray-lighter;
+				.transition(~"all 0.5s linear");
+				
+				&:hover {
+					background: @themeColor;
+				}
+			}
+		}
+		
+		&:hover {
+			img {
+				.transform(scale(1.3));
+			}		
+			.tools {
+				top: 35%;
+			}
+		}
+	
+	}
+}
+
+ 
+
+/*tcSilder*/
+#tcSilder {
+	.carousel {
+		margin-bottom: 0;
+	}
+	.item div.slide-contents {
+		padding: 15px 0; 
+		display: block;
+		border-top: 1px dotted @default-border-color;
+	}
+	.left-btn, .right-btn {
+		top: -30px;
+	}
+
+}
+
+
+/*Testimonials*/
+#testimonials {
+	.carousel {
+		margin-bottom: 0;
+	}
+	.item div.testimonials-slide {
+		padding: 15px; 
+		color: #8a8a8a;
+		display: block;
+		font-size: 14px;
+		line-height: 20px;
+		font-style: italic;
+		background: #f8f8f8;
+	}	
+
+	.carousel-info {
+		overflow: hidden;
+		padding-top: 15px;
+		background: url(../../images/arrow-testimonials.png) no-repeat 83px 0;
+	}
+	.carousel-info img {
+		width: 75px;
+		height: 75px;
+		padding: 3px; 
+		border-radius: 150px !important;
+		border: solid 1px #f5f5f5;
+	}
+
+	.carousel-info {
+		overflow: hidden;
+	}
+	.carousel-info img {
+		margin-right: 15px;
+	}
+	.carousel-info span {
+		display: block;
+	}
+	span.testimonials-name {
+		color: @themeColor;
+		font-size: @baseFontSize + 1;
+		margin: 23px 0 7px;
+	}
+	span.testimonials-post {
+		color: #656565;
+		font-size: 12px;
+	}
+	.left-btn, .right-btn {
+		bottom: 30px;
+	}
+}
+
+
+
+#tcSilder, #testimonials {
+	.left-btn, .right-btn {
+		right: 0;
+		width: 26px;
+		height: 26px;
+		position: absolute;
+		display: inline-block;
+		background:@gray-lighter;
+		color: @gray-light;
+		text-decoration: none;
+		font-size: @baseFontSize + 5;
+		line-height: 25px;
+		text-align: center;
+		
+		&:hover {
+			background:@themeColor;
+			color: @white;
+		}
+	}
+	
+	.left-btn {
+		right: 27px;		
+		&:before {	
+			content: "\f104";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: 400;
+		}
+		
+		&:hover {
+			&:before {	
+				content: "\f105";
+			}
+		}		
+		
+	}
+	
+	.right-btn {
+		background:@gray-lighter;	
+		&:before {	
+			content: "\f105";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: 400;
+		}
+		
+		&:hover {
+			&:before {	
+				content: "\f104";
+			}
+		}
+	}
+}
+
+
+
+// Bootstrap carousel style
+.carousel {
+	margin-bottom: 15px;
+	.carousel-caption {
+		text-shadow: none;
+		background: fade(#000, 50%);
+		left: 0;
+		right: 0;
+		bottom: 0;
+		h4 { color: @white; text-shadow: none; font-weight: 500; }
+	}
+	
+	.carousel-control {
+		text-shadow: none;
+		color: transparent;
+		&.left, &.right {
+			background-image: none!important;
+		}
+		&.right { text-align: center; }
+	}
+
+	.carousel-indicators {
+		bottom: 0;
+		li {.border-radius(0);}
+	}
+	
+	&.tc-carousel {
+		.item { overflow: hidden;}
+		.carousel-indicators {
+			top: auto;
+			bottom: -23px;
+			margin: 0;
+			width: auto;
+			right: 0; left: 0;
+			
+			li {
+				background: @white;
+				border-color: @themeColor;		
+				&.active { background: lighten(@themeColor, 20%);}
+			}
+			
+			&.right {
+				text-align: right;
+			}
+			&.left {
+				text-align: left;
+			}
+		}
+	}
+	
+	&:hover, &.focus {
+		.carousel-control {
+			color: @themeColor;
+			.opacity(0.55);
+		}
+	}
+}
+
+
+
+//Some additional Plugins for Front Templates
+
+//Rv-Slider
+.tp-slider {
+	z-index: 1;
+	position: relative;
+	overflow:hidden;
+	border-bottom: 1px solid @default-border-color;
+	
+	.tp-banner-container {
+		width:100%;
+		position:relative;
+		padding:0;
+	}
+ 
+	.tp-banner {
+		width:100%;
+		position:relative;
+	}
+		
+	.title_white, .title, .subtitle_white {
+		font-weight: 300;
+	}
+	
+	.subtitle, .title_white_bold {
+		font-weight: 400;
+	}
+	
+	.title, .title_white {
+		font-size:47px;
+	}
+	
+	.title {
+		color: @gray-dark;
+	}
+	
+	.title_white {
+		color:@white;
+	}
+
+	.subtitle, .subtitle_white {
+		font-size:18px;
+		color: @white;
+		padding: 5px 10px;
+		text-align:center;
+	}
+	
+	.subtitle_white {
+		border-top:1px solid @white !important;
+		border-bottom:1px solid @white !important;
+	}
+	
+	.subtitle {
+		background-color: @themeColor;
+		
+	}
+	
+	.title, .subtitle, .slide_desc {
+		.box-sizing(content-box);
+	}
+
+	.slide_desc {
+		font-size:@baseFontSize + 1;
+		line-height:24px;
+	}
+	
+	.slidetitle-2 {
+		font-size: 47px;
+		color:@gray;
+		text-decoration:none;
+		padding: 15px 10px 5px;
+		text-shadow:none;
+		text-align:center;
+		border-bottom: 3px solid @themeColor;
+	}
+	
+	.tp-leftarrow.default, .tp-rightarrow.default {
+		text-decoration: none;
+		font-size: @baseFontSize + 19;
+		line-height: 38px;
+		text-align: center;
+		width:40px !important;	
+		height:40px !important;
+		background: rgba(0, 0, 0, 0.70)!important;
+		color: @white;
+		.border-radius(100%);
+		
+		&:hover {
+			background-color: @themeColor!important;
+		}
+	}
+	.tp-leftarrow.default { 
+		&:before {	
+			content: "\f104";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: 400;
+		}
+	}
+	.tp-rightarrow.default {
+		&:before {	
+			content: "\f105";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: 400;
+		}
+	}
+}
+
+
+
+// OWL styles
+
+.owl-carousel {
+	margin-bottom: 15px;
+	.slide-item {
+		padding: 0px 5px;
+		
+		a.contents {
+			padding: 10px;
+			display: block;
+			background: @white;
+			color: @baseFontcolor;
+			text-decoration: none;
+			
+			.title {
+				display: block;
+				font-size: @baseFontSize + 1;
+				font-weight: 300;
+			}
+			small {
+				font-size: @baseFontSize;
+				font-weight: 300;
+			}
+		}
+		
+		&:hover {			
+			a.contents {
+				background: @themeColor;
+				
+				&:after {
+					content: "\e092";
+					font-family: 'Glyphicons Halflings';
+					display: block;
+					position: absolute;
+					right: 15px;
+					top: auto;
+					bottom: 10px;
+					color: @white;
+
+				}
+				
+				.title, small {
+					color: @white;
+				}
+			}
+		
+		}
+	}
+	
+	&.with-contents {
+		.slide-item {
+			img {
+				.transition(none); 
+			}			
+		}
+		
+		&:hover {
+			img {
+				.transform(scale(1.0));
+			}
+		}
+	}
+	
+	&.no-padding-items {
+		.slide-item {
+			padding: 0px;			
+		}
+	}
+}
+.owl-buttons {
+	position: absolute;
+	top: -37px;
+	right: 10px;
+	
+	.owl-prev , .owl-next {
+		background:@gray-lighter;
+		color: @gray-light;
+		text-decoration: none;
+		font-size: @baseFontSize + 5;
+		line-height: 25px;
+		text-align: center;
+		
+		&:hover {
+			background:@themeColor;
+			color: @white;
+		}
+	
+	}
+	.owl-prev {
+		&:before {	
+			content: "\f104";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: 400;
+			text-indent: 0px;
+		}
+		
+		&:hover {
+			&:before {	
+				content: "\f105";
+			}
+		}		
+		
+	}
+	.owl-next {
+		&:before {	
+			content: "\f105";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: 400;
+			text-indent: 0px;
+		}
+		
+		&:hover {
+			&:before {	
+				content: "\f104";
+			}
+		}
+	}
+}
+.owl-buttons div {
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	margin-left: 5px;
+	position: static;
+}
+
+/* Styling Pagination*/
+
+.owl-controls {
+	text-align: center;
+	margin-top: 10px;
+	
+	.owl-page {
+		display: inline-block;
+		zoom: 1;
+		*display: inline;/*IE7 life-saver */
+	}
+
+	.owl-page span {
+		display: block;
+		width: 12px;
+		height: 12px;
+		margin: 5px 7px;
+		border: 1px solid @themeColor;
+		background: @white;
+	}
+		
+	.owl-page.active span, .owl-controls.clickable .owl-page:hover span {
+		background: @themeColor;
+	}
+	
+	.owl-page span.owl-numbers {
+		height: auto;
+		width: auto;
+		color: @white;
+		padding: 2px 10px;
+		font-size: @baseFontSize - 1;
+		.border-radius(30px);
+	}
+}

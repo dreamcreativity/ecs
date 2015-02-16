@@ -1,0 +1,277 @@
+// Portlets 
+// --------------------------------------------------
+
+.portlet {
+    margin-bottom: 15px;
+    border: 1px solid @default-border-color;
+	background: @white;
+    .portlet-heading {
+        padding: 0 15px;
+        border-bottom: 1px solid @default-border-color;
+		background: @white;
+		line-height: 38px;
+		min-height: 39px;
+		.fa, .glyphicon {
+			.opacity(0.55);
+		}
+		
+		&.dark, &.bg-info, &.bg-success, &.bg-primary, &.bg-danger, &.bg-warning, &.inverse {
+			a {
+				color: @white;
+			}
+			
+			small {color: @gray-light;}
+			
+			.nav li.active> a {
+				color: @baseFontcolor;
+			}
+		}
+			
+		.nav {
+			& li > {
+				margin-bottom: auto;
+				> a {
+					padding: 7.5px 15px;
+					font-size: @baseFontSize;
+				}
+			}
+		
+			& li:not(.active) > a {
+				border-color:transparent; 
+				background-color:transparent;
+			}
+			& li.active > a {
+				background-color:@white;
+				border-bottom-color:transparent;
+				box-shadow:none;
+				color: @baseFontcolor;
+			}
+			&.nav-tabs {
+				float: right;
+				border-bottom:none;
+				margin-bottom:0;
+				position:relative;
+				bottom: -5px;
+			}
+		}
+  
+        .portlet-title {
+            float: left;
+        }
+        a {
+            color: @gray-light;
+			
+			&:hover, &:focus, &:active {
+				outline: none;
+			}
+        }
+        h4 {
+            font-size: @baseFontSize + 1;
+			margin: 0;
+			line-height: 37px;
+        }
+        .portlet-widgets {
+			position:relative;
+			text-align: right;
+            float: right;
+			padding-left: 15px;
+			display: inline-block;
+			font-size: @baseFontSize + 2;
+			line-height: 37px;
+			
+			&:before {
+				display: inline-block;
+				content: "";
+				position: absolute;
+				top: 3px;
+				bottom: 3px;
+				left: -1px;
+				border: 1px solid rgba(0,0,0,0.1);
+				border-width: 0 1px 0 0;
+			
+			}
+            .divider {
+                margin: 0 3px;
+            }
+			
+			.fa {
+				&:hover {
+					.transform(~"scale(1.2)");
+					opacity: 1;
+				}
+			}
+			.dropdown-menu {
+				a {
+					color: @gray;
+				}
+			}
+			ul.dropdown-menu {
+				min-width: 0;
+			}
+        }
+		
+		&.no-left-border {
+			.portlet-widgets {
+				&:before {
+					border: 0 none;
+				}
+			}
+		}
+    }
+	
+	form {
+	
+		.form-actions {
+			padding: 15px 10px 0;
+		}
+	}
+	
+	&.no-border {
+		border: 0;
+	}
+	
+	.portlet-body {
+        background: @white;
+        padding: 15px;		
+		.table {
+			margin-bottom: 0;
+			& >thead>tr>th,
+			& >thead>tr>td {
+				border-bottom: 3px double @default-border-color;
+			}
+	
+		}
+		
+		.datepicker {
+			&.datepicker-inline {
+				margin: 0;
+			}
+		}
+		
+		&.no-padding {
+			.table {
+				&.table-bordered {
+					border-width: 1px 0 0;
+					
+					th:first-child, td:first-child {
+						border-left: 0 none;
+					}
+					th:last-child, td:last-child {
+						border-right: 0 none;
+					}
+					
+					tr:last-child {
+						td {
+							border-bottom: 0 none;
+						}
+					}
+				}
+			}
+		}
+    }
+	
+	.portlet-footer {
+		padding: 10px 15px;
+		background: @gray-lighter;
+		border-top: 1px solid @default-border-color;
+	}
+	
+	.portlet-footer ul {
+		margin: 0;
+	}
+	
+	&.hidden-widgets {
+		.portlet-widgets {
+			display: none;
+		}
+		&:hover {
+			.portlet-widgets {
+				display: block;
+			}
+		}	
+	}
+	
+	&.portlet-primary, &.portlet-success, &.portlet-warning, &.portlet-info, &.portlet-danger, &.portlet-dark, &.portlet-gray, &.portlet-inverse {
+		.portlet-heading {
+			color: @white;
+			a {
+				 color: @white;
+			}
+		}
+	}
+
+	&.portlet-basic {
+		.portlet-heading {
+			background: @gray-lighter;
+			a {
+				 color: @gray-light;
+			}
+		}
+	}	
+	
+}
+
+.portlet-gray {
+    > .portlet-heading {
+        background-color: @gray;
+    }
+}
+
+.portlet-dark, .portlet-inverse {
+    > .portlet-heading {
+        background-color: @gray-dark;
+    }
+}
+
+.portlet-success {
+    > .portlet-heading {
+        background-color: @brand-success;
+    }
+}
+
+.portlet-danger {
+    > .portlet-heading {
+        background-color: @brand-danger;
+    }
+}
+
+.portlet-info {
+    > .portlet-heading {
+        background-color: @brand-info;
+    }
+}
+
+.portlet-warning {
+    > .portlet-heading {
+        background-color: @brand-warning;
+    }
+}
+
+.portlet-primary {
+    > .portlet-heading {
+        background-color: @brand-primary;
+    }
+}
+.portlet-primary,.portlet-primary >.portlet-heading {
+    border-color: @brand-primary;
+}
+.portlet-danger,.portlet-danger >.portlet-heading {
+    border-color: @brand-danger;
+}
+.portlet-success,.portlet-success >.portlet-heading {
+    border-color: @brand-success;
+}
+.portlet-warning,.portlet-warning >.portlet-heading {
+    border-color: @brand-warning;
+}
+
+.portlet-info,.portlet-info >.portlet-heading {
+    border-color: @brand-info;
+}
+.portlet-gray,.portlet-gray >.portlet-heading {
+    border-color: @gray;
+}
+
+.portlet-dark,.portlet-dark >.portlet-heading, .portlet-inverse,.portlet-inverse >.portlet-heading {
+    border-color: @gray-dark;
+}

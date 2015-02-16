@@ -1,0 +1,97 @@
+//
+// Timelines
+// ---------------------------
+.timeline {
+  margin:auto;
+  position:relative;
+  margin-bottom: 15px;
+  //max-width:46em;
+  li {
+	list-style:none;
+  }
+ &:before {
+  background-color:@default-border-color;
+  content:'';
+  position:absolute;
+  top:0;
+  left:25px;
+  width:2px;
+  height:100%;
+  }
+  
+  &>.timeline-day {
+	margin-left: -15px;
+	margin-bottom: 15px;
+  }
+  
+.timeline-event {
+  position:relative;
+}
+.timeline-event:hover .timeline-event-point {
+  background-color:@themeColor!important;
+}
+.timeline-event-wrap {
+  padding: 32px 15px 15px;
+  position:relative;
+  top:-30px;
+  left:0;
+  width:100%;
+}
+.timeline-event-point {
+  background-color:@gray-dark;
+  outline:5px solid @default-border-color;
+  display:block;
+  margin:8px 8px 8px -7px;
+  position:absolute;
+  top:0;
+  left:-15px;
+  width:15px;
+  height:15px;
+  .transform(rotate(45deg));
+}
+
+.timeline-event-time {
+  border: 1px solid @default-border-color;
+  position: relative;
+  clear: both;
+  display:inline-block;
+  margin-bottom:7.5px;
+  padding:3px 5px;
+  //font-size: @baseFontSize - 2;
+  background: @white;
+  
+  &:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -16px;
+	width: 16px;
+	height: 2px;
+	background: @default-border-color;
+  }
+	&:after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	width: 2px;
+	height: 15px;
+	background: @default-border-color;
+  }
+}
+
+
+.timeline-event-massage {
+	padding: 10px;
+	margin-top: 7px;
+	border: 1px solid @default-border-color;
+	background: @white;
+	
+	img {
+		padding: 2px;
+		border: 1px solid @default-border-color;
+		background: @white;
+	}
+  }
+  
+}

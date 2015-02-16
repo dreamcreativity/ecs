@@ -1,0 +1,185 @@
+
+<!-- BEGIN MAIN PAGE CONTENT -->
+<div id="page-wrapper">
+	<!-- BEGIN PAGE HEADING ROW -->
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- BEGIN BREADCRUMB -->
+			<div class="breadcrumbs">
+				<ul class="breadcrumb">
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li class="active">Staffs profile</li>
+				</ul>								
+			</div>
+			<!-- END BREADCRUMB -->
+			<span class="help-block">{{returnMessage}}</span>
+			
+		</div><!-- /.col-lg-12 -->
+	</div><!-- /.row -->
+	<!-- END PAGE HEADING ROW -->					
+	<div class="row">
+		<div class="col-lg-12">
+
+			<!-- START YOUR CONTENT HERE -->
+			<div class="portlet"><!-- /Portlet -->
+				<div class="portlet-heading dark">
+					<div class="portlet-title">
+						<h4>Staffs<small class="text-white"></small></h4>
+					</div>
+					<div class="portlet-widgets">
+						<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+						<span class="divider"></span>
+						<a href="#" class="box-close"><i class="fa fa-times"></i></a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div id="basic" class="panel-collapse collapse in">
+					<div class="portlet-body no-padding">
+						<table class="table table-bordered table-hover tc-table">
+							<thead>
+								<tr>
+									<th>Username</th>
+									<th class="hidden-xs">Name</th>
+									<th class="hidden-xs">Work Phone</th>
+									<th class="hidden-xs">Cell Phone</th>
+									<th class="hidden-xs">Email</th>
+									<th class="col-medium center">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="staff in staffs.data">
+									<td>{{staff.username}}</td>
+									<td class="hidden-xs">{{staff.firstname}} {{staff.lastname}}</td>
+									<td class="hidden-xs">{{staff.workphone}}</td>
+									<td class="hidden-xs">{{staff.cellphone}}</td>
+									<td class="hidden-xs">{{staff.email}}</td>
+									<td class="col-medium center">
+										<div class="btn-group btn-group-xs ">
+											<a href="#/staffs/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+										</div>	
+									</td>
+								</tr>
+								
+							</tbody>
+							<tfoot>
+												<tr>
+													<td colspan="9">
+														<div class="btn-group pull-left">
+															<a href="#/staffs/create" class="btn btn-s btn-danger">Create</a>	
+														</div>
+													</td>
+												</tr>
+											</tfoot>
+						</table>												
+					</div>
+				</div>
+			</div><!-- /Portlet -->
+
+
+			<!-- END YOUR CONTENT HERE -->
+
+		</div>
+	</div>					
+
+	<!-- BEGIN FOOTER CONTENT -->		
+	<div class="footer">
+		<div class="footer-inner">
+			<!-- basics/footer -->
+			<div class="footer-content">
+				&copy; 2014 <a href="#">eKoders</a>, All Rights Reserved.
+			</div>
+			<!-- /basics/footer -->
+		</div>
+	</div>
+	<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+		<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+	</button>
+	<!-- END FOOTER CONTENT -->
+
+</div>
+
+<!-- core JavaScript -->
+    <script src="/public/admin/js/jquery.min.js"></script>
+    <script src="/public/admin/js/bootstrap.min.js"></script>
+	<script src="/public/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/public/admin/js/plugins/pace/pace.min.js"></script>
+
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="/public/admin/js/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="/public/admin/js/plugins/datatables/datatables.js"></script>
+	<script src="/public/admin/js/plugins/datatables/datatables.responsive.js"></script>
+	<script src="/public/admin/js/plugins/bootstrap-wysiwyg/jquery.hotkeys.js"></script>
+	<script src="/public/admin/js/plugins/bootstrap-wysiwyg/bootstrap-wysiwyg.js"></script>
+	<script src="/public/admin/js/plugins/bsootstrap-wysiwyg/ek-wysiwyg.js"></script>
+	<script src="/public/admin/js/plugins/fuelux/spinner.min.js"></script>
+
+    <!-- Themes Core Scripts -->	
+	<script src="/public/admin/js/main.js"></script>
+	
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<script src="/public/admin/js/speech-commands.js"></script>
+	<script src="/public/admin/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+	<!-- initial page level scripts for examples -->
+	<script src="/public/admin/js/plugins/slimscroll/jquery.slimscroll.init.js"></script>
+	<script src="/public/admin/js/plugins/datatables/datatables.init.js"></script>
+	<script>
+		$(document).ready(function() {
+			//for table master checkbox demo
+			$('table th input:checkbox').on('click' , function(){
+				var that = this;
+				$(this).closest('table').find('tr > td:first-child input:checkbox')
+				.each(function(){
+					this.checked = that.checked;
+					$(this).closest('tr').toggleClass('selected');
+				});
+						
+			});
+			
+			//Bootstrap Wysiwyg Editor
+			$('#desc').ek_wysiwyg({
+				toolbar:
+					[
+					'bold',
+					'italic',
+					'strikethrough',
+					'underline',
+					null,
+					'justifyleft',
+					'justifycenter',
+					'justifyright',
+					null,
+					'createLink',
+					'unlink',
+					null,
+					'insertImage'
+				]
+			}).prev().addClass('editor-style2 text-center');
+			
+			$('#MySpinner-1').spinner();
+			
+			// Custome File Input
+			$(document).on('change', '.btn-file :file', function() {
+				var input = $(this),
+				numFiles = input.get(0).files ? input.get(0).files.length : 1,
+				label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+				input.trigger('fileselect', [numFiles, label]);
+			});
+
+			$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+				var input = $(this).parents('.input-group').find(':text'),
+				log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+				if( input.length ) {
+					input.val(log);
+				} else {
+					if( log ) alert(log);
+				}
+        
+			});
+		
+		});
+	</script>
