@@ -13,6 +13,7 @@ app.controller('LoginController',function LoginController($rootScope,$scope,$htt
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
 				sessionStorage.setItem('token',data.data);
+				sessionStorage.setItem('oid',data.OID);
 				$location.path('/dashboard');
 			}
 			else {
@@ -29,15 +30,20 @@ app.controller('LoginController',function LoginController($rootScope,$scope,$htt
 		var token = sessionStorage.token;
  		var tokenPayload = jwtHelper.decodeToken(token);
 		delete sessionStorage.token;
+		delete sessionStorage.oid;
 		$location.path('/login');
 	};
 });
 
 
-app.controller('DashboardController',function StaffController($rootScope,$http,$window,Staffs){
+app.controller('DashboardController',function StaffController($rootScope,$scope,$http,$window,Staffs){
 	if($rootScope.show_partial_view == false){
      	$window.location.reload()
 		 }
+    var oid = sessionStorage.oid;
+    Staffs.get({id:oid}, function(result){
+    	$scope.user = result.data
+    })
 });
 
 app.controller('StaffController',function StaffController($rootScope,$scope,$routeParams,$http,Staffs,$location){

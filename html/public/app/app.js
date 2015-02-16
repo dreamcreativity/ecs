@@ -31,6 +31,11 @@ angular.module('EscApp', [
         controller: 'StaffController'
     });
 
+    $routeProvider.when('/profile', {
+        templateUrl: 'views/staff/profile.html',
+        controller: 'StaffController'
+    });
+
 
 
 

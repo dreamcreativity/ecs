@@ -81,7 +81,8 @@ exports.login = function (req,res){
 						res.json({
 							status: 'ok',
 							messages: 'successed',
-							data : token
+							data : token,
+							OID : user._id
 						});
 					}
 				});
