@@ -40,13 +40,32 @@ app.controller('DashboardController',function StaffController($rootScope,$http,$
 		 }
 });
 
-app.controller('StaffController',function StaffController($scope,$http,Staffs){
+app.controller('StaffController',function StaffController($rootScope,$scope,$routeParams,$http,Staffs,$location){
 	 var token = sessionStorage.token;
 	 $scope.staffs = getAllStaffs();
-	 $scope.create = function(){
-	 	Staffs.save($scope.staff,function(){
- 			console.log('save success!');
+	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
+
+	 if($routeParams.id !='undefined'){
+	 	Staffs.get({id:$routeParams.id}, function(result){
+	 		$scope.staff = result.data;
+	 	});
+	 	
+	 }
+
+	 $scope.create = function(isValid){
+	 	Staffs.save($scope.newstaff,function(result){
+	 		    var message = result.messages;	    
+	 		    $rootScope.returnMessage = message;
+	 			$location.path('/staffs');
  		})
+	 }
+
+	 $scope.update = function(isValid) {
+	 	Staffs.update($scope.staff, function(result){
+	 		var message = result.messages;	    
+	 		    $rootScope.returnMessage = message;
+	 			$location.path('/staffs');
+	 	})
 	 }
 
  	function getAllStaffs(){

@@ -17,7 +17,7 @@ angular.module('EscApp', [
     });
 
     $routeProvider.when('/staffs', {
-        templateUrl: 'views/staff/staff1.html',
+        templateUrl: 'views/staff/staffs.html',
         controller: 'StaffController'
     });
 
@@ -25,6 +25,12 @@ angular.module('EscApp', [
         templateUrl: 'views/staff/create.html',
         controller: 'StaffController'
     });
+
+    $routeProvider.when('/staffs/:id', {
+        templateUrl: 'views/staff/edit.html',
+        controller: 'StaffController'
+    });
+
 
 
 

@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 
 //-------------------------Staff----------------------------------
 
-router.get('/staffs/:id', staff.ensureAuthorized, staff.getStaffbyId);
+router.get('/staffs/:id', staff.getStaffbyId);
 
 router.post('/staffs/decode/:token', staff.decode);
 
