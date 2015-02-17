@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('EscApp', [
@@ -5,7 +6,7 @@ angular.module('EscApp', [
     	'controllers.staff',
     	'services.staff'
 	])
-.config(['$routeProvider', function ($routeProvider) {
+.config(['$routeProvider',  '$locationProvider', function ($routeProvider,$locationProvider) {
     $routeProvider.when('/login', {
     	templateUrl: 'views/login.html',
     	controller: 'LoginController'
@@ -36,10 +37,9 @@ angular.module('EscApp', [
         controller: 'StaffController'
     });
 
-
-
-
     $routeProvider.otherwise({redirectTo: '/'});
+
+    $locationProvider.html5Mode(true);
 }])
 
 
