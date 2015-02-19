@@ -6,13 +6,13 @@ var template = require('../modules/templateController');
 
 
 router.get('/', function(req, res) {
-	template(req,res,'home','client/index.html',{ title: 'Express 333' });
+	template(req,res,'admin_main','client/index.html',{ title: 'Express 333' });
 });
-
+/*
 router.get('/login', function(req, res) {
-	template(req,res,'home','client/login.html',{ });
+	template.LoadTemplate(req,res,'admin_main','login.html',{ title: 'Express 333' });
 });
-
+*/
 
 
 
