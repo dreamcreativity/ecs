@@ -6,16 +6,12 @@ var template = require('../modules/templateController');
 
 
 router.get('/', function(req, res) {
-	template(req,res,'admin_main','client/index.html',{ title: 'Express 333' });
+	template(req,res,'admin_main','admin/dashboard.html',{ title: 'Home - English School of Canada' });
 });
-/*
+
 router.get('/login', function(req, res) {
-	template.LoadTemplate(req,res,'admin_main','login.html',{ title: 'Express 333' });
+	template(req,res,'admin_bg_paint','admin/login.html',{ title: 'Login - English School of Canada' });
 });
-*/
-
-
-
 
 
 

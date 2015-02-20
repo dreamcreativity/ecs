@@ -6,12 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
-//var db = require('./db');
-var routes = require('./routes/index');
+var db = require('./db');
+var routes = require('./routes/client');
 var admin = require('./routes/admin');
-var users = require('./routes/users');
 var api = require('./routes/api');
-var api_user = require('./routes/api2');
+
 
 var app = express();
 
@@ -33,9 +32,8 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.use('/', routes);
 app.use('/admin', admin);
-app.use('/users', users);
 app.use('/api', api);
-app.use('/api/user', api_user);
+
 
 //******************
 
