@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var staff =require('../controllers/staff');
 var student =require('../controllers/student');
+var material = require('../controllers/material');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -39,6 +40,17 @@ router.post('/student', student.create);
 
 //PUT : Edit a student info
 router.put('/student/:id', student.edit)
+
+//-----------------------Materials ----------------------------------
+
+//GET a student by student ID
+router.get('/materials/:id', student.getStudentbyId);
+
+//POST : create a student record
+router.post('/materials', student.create);
+
+//PUT : Edit a student info
+router.put('/materials/:id', student.edit)
 
 
 
