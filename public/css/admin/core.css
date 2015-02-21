@@ -1,0 +1,10 @@
+.login-box{
+	top: 200px;
+}
+.login-box.login-box-title{
+	font-size: 24px;
+	background-color: rgba(202, 219, 219, 0.74);
+	color: #9D4F4F;
+	top: 120px;
+	padding: 15px 20px;
+}
