@@ -14,6 +14,10 @@ router.get('/login', function(req, res) {
 });
 
 
+router.get('/slider', function(req, res) {
+	template(req,res,'admin_main','admin/slider_management.html',{ title: 'slider - English School of Canada' });
+});
+
 
 module.exports = router;
 
