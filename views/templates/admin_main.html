@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>eKoders - Responsive Admin Theme</title>
+    <title> <%- parms.title %> - ECS Staff</title>
 	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -336,7 +336,50 @@
 						<!-- END FIND MENU ITEM INPUT -->
 					
 						<ul id="side" class="nav navbar-nav side-nav">
-							<!-- BEGIN SIDE NAV MENU -->							
+							<!-- BEGIN SIDE NAV MENU -->
+							
+
+							<!-- Management category -->
+							<li>
+								<h4>Management</h4> 								
+							</li>
+							<li class="panel <%if(parms.cur_tap=='Slider'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#SliderManagement">
+									<i class="fa fa-pencil-square-o"></i> Slider <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse <%if(parms.cur_tap=='Slider'){ %>in<%}%> nav" id="SliderManagement">
+										<li>
+											<a href="/admin/slider/new" class="<%if(parms.cur_selected=='New Slider'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>
+										<li>
+											<a href="/admin/slider/edit" class="<%if(parms.cur_selected=='Edit Slider'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>										
+									</ul>
+							</li>
+							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StaffManagement">
+									<i class="fa fa-pencil-square-o"></i> Staff <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
+										<li>
+											<a href="/admin/staff/new" class="<%if(parms.cur_selected=='New Staff'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create New Staff
+											</a>
+										</li>
+										<li>
+											<a href="/admin/staff/edit" class="<%if(parms.cur_selected=='Edit Staff'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit Staff
+											</a>
+										</li>										
+									</ul>
+							</li>
+
+
+
 							<!-- Navigation category -->
 							<li>
 								<h4>Navigation</h4> 								
@@ -344,7 +387,7 @@
 							<!-- END Navigation category -->
 							
 							<li>
-								<a class="active" href="/admin">
+								<a href="/admin">
 									<i class="fa fa-dashboard"></i> Dashboard
 								</a>
 							</li>
@@ -604,7 +647,7 @@
 										<li>
 											<a href="/admin">Home</a>
 										</li>
-										<li class="active">Dashboard</li>
+										<li class="active"><%- parms.category %></li>
 									</ul>
 									
 									<div class="b-right hidden-xs">
@@ -625,7 +668,7 @@
 								
 								<div class="page-header title">
 								<!-- PAGE TITLE ROW -->
-									<h1>Dashboard <span class="sub-title">Content Overview</span></h1>									
+									<h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>									
 								</div>
 								
 								<!-- /#ek-layout-button -->	
