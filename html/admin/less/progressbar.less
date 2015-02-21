@@ -1,0 +1,145 @@
+// Progressbar
+// -------------------------
+
+.progress {
+  box-shadow: none;
+  background: @default-border-color;
+  height: 18px;
+
+ .progress-bar {
+	box-shadow: none;
+	line-height:18px;
+ }
+
+ &[data-percent] {
+	position: relative;
+	&:after {
+		 display: inline-block;
+		 content: attr(data-percent);
+		 color: @white;
+		 position: absolute;
+		 left: 0;
+		 right: 0;
+		 top: 0;
+		 bottom: 0;	
+		 
+		 line-height: 16px;		 
+		 text-align: center;
+		 font-size: @baseFontSize - 1;
+		 font-family: Verdana;
+	}
+ }
+ &.progress-yellow[data-percent]:after {
+	color: #996633;
+ }
+
+
+ &.progress-small {
+	height: 12px;
+	.progress-bar {
+		line-height: 11px;
+		font-size: @baseFontSize - 2;
+	}
+	&[data-percent]:after {
+		line-height: 11px;
+		font-size: @baseFontSize - 2;
+	}
+ }
+
+
+ &.progress-mini {
+	height: 9px;
+	.progress-bar {
+		line-height: 8px;
+		font-size: @baseFontSize - 2;
+	}
+	&[data-percent]:after {
+		line-height: 8px;
+		font-size: 11px;
+	}
+ }
+}
+
+.progress-bar {
+	background-color :@progress-color;
+}
+.progress-bar-primary {
+	background-color: @progress-primary;
+}
+.progress-bar-danger {
+	background-color: @progress-danger;
+}
+.progress-bar-success {
+	background-color: @progress-success;
+}
+.progress-bar-warning {
+	background-color: @progress-warning;
+}
+.progress-bar-info {
+	background-color: @progress-info;
+}
+.progress-bar-inverse {
+	background-color: @progress-inverse;
+}
+
+.progress {
+  position: relative;
+}
+.progress:before {
+  display: inline-block;
+  content: "";
+  
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+ 
+  background: rgba(0, 0, 255, 0);
+}
+
+.skills {
+	.progress {
+		&[data-percent] {
+		position: relative;
+			&:after {
+				display: none;
+			}
+	
+		}
+		.progress-type {
+			position: absolute;
+			left: 0px;
+			padding: 1px 7px 0px;
+			line-height: 16px;
+			font-size: @baseFontSize - 2;
+			color: @gray-lighter;
+			background-color: rgba(25, 25, 25, 0.2);
+		}
+		.progress-completed {
+			position: absolute;
+			right: 0px;
+			padding: 0 7px;
+			line-height: 16px;
+		}
+
+		&.progress-mini {
+			height: 9px;
+			.progress-bar {
+				line-height: 8px;				
+			}
+			.progress-type, .progress-completed {
+				display: none;
+			} 
+	 
+		}
+		
+		&.progress-small {
+			.progress-type, .progress-completed {
+				font-size: @baseFontSize - 2;
+				line-height: 11px!important;
+			} 
+		}
+
+	}
+}

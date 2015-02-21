@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Documents - eKoders Responsive Admin Theme</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+	<link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+	
+	<!-- PAGE LEVEL PLUGINS STYLES -->
+	<link href="../assets/css/plugins/prettify/prettify.css" rel="stylesheet">
+	<link href="../assets/css/plugins/select2/select2.css" rel="stylesheet">
+
+    <!-- Tc core CSS -->
+	<link rel="stylesheet" href="../assets/css/themes/style.css">
+	
+	
+    <!-- Add custom CSS here -->
+
+	<!-- End custom CSS here -->
+	
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+     .pluginswrap { display:none; } 
+      .pluginswrapActive { display:block; }
+    </style>		
+  </head>
+
+  <body>
+	<div id="wrapper">
+		<div id="main-container">		
+			<!-- BEGIN TOP NAVIGATION -->
+				<nav class="navbar-top" role="navigation">
+					<!-- BEGIN BRAND HEADING -->
+					<div class="navbar-header">
+						<div class="navbar-brand">
+							<a href="index.html">
+								<img src="../assets/images/logo.png" alt="logo" class="img-responsive">
+							</a>
+						</div>
+					</div>
+					<!-- END BRAND HEADING -->
+					<div class="nav-top">
+						<!-- BEGIN RIGHT SIDE DROPDOWN BUTTONS -->
+							<ul class="nav navbar-right">
+								<li class="dropdown">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+										<i class="fa fa-bars"></i>
+									</button>
+								</li>
+							</ul>
+						<!-- END RIGHT SIDE DROPDOWN BUTTONS -->
+					</div><!-- /.nav-top -->
+				</nav><!-- /.navbar-top -->
+				<!-- END TOP NAVIGATION -->
+
+				
+				<!-- BEGIN SIDE NAVIGATION -->				
+				<nav class="navbar-side" role="navigation">
+					<div class="navbar-collapse sidebar-collapse collapse">
+
+							<!-- BEGIN SHORTCUT BUTTONS -->
+							<div class="media">							
+								<ul class="sidebar-shortcuts">
+									<li><a class="btn btn-green"><i class="fa fa-user icon-only"></i></a></li>
+									<li><a class="btn btn-blue"><i class="fa fa-envelope icon-only"></i></a></li>
+									<li><a class="btn btn-red"><i class="fa fa-th icon-only"></i></a></li>
+									<li><a class="btn btn-purple"><i class="fa fa-gear icon-only"></i></a></li>
+								</ul>	
+							</div>
+							<!-- END SHORTCUT BUTTONS -->	
+							
+							<!-- BEGIN FIND MENU ITEM INPUT -->
+							<div class="media-search">	
+								<input type="text" class="input-menu" id="input-items" placeholder="Find...">
+							</div>						
+							<!-- END FIND MENU ITEM INPUT -->
+							
+						<ul id="side" class="nav navbar-nav side-nav">							
+							<!-- Navigation category -->
+							<li>
+								<h4>Documents</h4> 								
+							</li>
+							<!-- END Navigation category -->
+							
+							<!-- BEGIN SIDE NAV MENU -->			
+							<li>
+								<a href="index.html">
+									<i class="fa fa-dashboard"></i> Dashboard
+								</a>
+							</li>
+							<li>
+								<a href="features.html">
+									<i class="fa fa-star"></i> Features 
+								</a>
+							</li>
+							<li>
+								<a href="start.html">
+									<i class="fa fa-indent"></i> Let's Start
+								</a>
+							</li>
+							<li>
+								<a href="elements-docs.html">
+									<i class="fa fa-coffee"></i>  Elements
+								</a>
+							</li>
+							<li>
+								<a class="active" href="plugins.html">
+									<i class="fa fa-tags"></i> Plugins
+								</a>
+							</li>
+							<li>
+								<a href="settings.html">
+									<i class="fa fa-edit"></i> Settings
+								</a>
+							</li>
+						</ul><!-- /.side-nav -->
+					</div><!-- /.navbar-collapse -->
+				</nav><!-- /.navbar-side -->
+				<!-- END SIDE NAVIGATION -->
+				
+
+				<!-- BEGIN MAIN PAGE CONTENT -->
+				<div id="page-wrapper">
+					<!-- BEGIN PAGE HEADING ROW -->
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- BEGIN BREADCRUMB -->
+								<div class="breadcrumbs">
+									<ul class="breadcrumb">
+										<li>
+											<a href="#">Home</a>
+										</li>
+										<li class="active">Plugins</li>
+									</ul>
+								</div>
+								<!-- END BREADCRUMB -->	
+								
+								<div class="page-header">
+								<!-- BEGIN PAGE TITLE ROW -->
+									<h1>Third party Plugins & Resources  <small></small></h1>
+								<!-- BEGIN PAGE TITLE ROW -->								
+								</div>								
+							</div><!-- /.col-lg-12 -->
+						</div><!-- /.row -->
+					<!-- END PAGE HEADING ROW -->					
+						<div class="row inner-wrapper">
+							<div class="col-lg-12">
+							
+					<!-- START YOUR CONTENT HERE -->
+								<div class="note note-info">
+									<span class="label label-purple lable-sm">Note</span> Most of Third party elements have been modified to match eKoders admin
+								</div>
+								
+								<h4>Select Plugin:</h4>
+								<select id="pluginslist" onchange="ShowElement();" class="form-control input-xlarge input-lg">
+			
+									<option value="jqui">jQuery UI</option>
+									<option value="jqs">jQuery SlimScroll</option>
+									<option value="s2">Select2</option>
+									<option value="bts">Bootstrap Select</option>									
+									<option value="jqdtable">jQuery Datatable</option>
+									<option value="ftable">FooTables</option>									
+									<option value="bml">Bootstrap MaxLength</option>
+									<option value="masked">Masked Input</option>
+									<option value="dtp">Datetime Picker</option>
+									<option value="bdp">Bootstrap DatePicker</option>
+									<option value="drange">Date Range Picker</option>
+									<option value="bwhtml">Bootstrap-wysihtml5</option>
+									<option value="bmdown">Bootstrap Markdown</option>
+									<option value="flxsp">Fuelux Spinners</option>
+									<option value="touchsp">Bootstrap TouchSpin</option>
+									<option value="btagsinp">Bootstrap Tags Input</option>
+									<option value="morrisjs">morris.js</option>
+									<option value="epc">EasyPieChart</option>
+									<option value="jqspk">jQuery Sparklines</option>
+									<option value="bwizard">Bootstrap Wizard</option>
+									<option value="flwizard">Fuelux Wizard</option>
+									<option value="x-edit">X-editable</option>
+									<option value="b-box">Bootbox.js</option>
+									<option value="g-notice">Gritter Notifications</option>
+									<option value="j-knob">jQuery Knob</option>
+									<option value="dl-lbox">Dual Listbox</option>
+									<option value="jq-nlist">Nestable lists</option>
+									<option value="bo-wy">Bootstrap Wysiwyg</option>
+									<option value="c-cp">Color Pickers</option>
+									
+								</select>						
+
+								<script>
+									function ShowElement(){
+										var id = $('#pluginslist').val();
+											$('.pluginswrap').hide();
+											$('#' + id).show();
+										return;
+									}
+								</script>
+								
+								<div id="jqui" class="pluginswrap pluginswrapActive">
+									<div class="page-header">
+										<h2 class="text-info">jQuery UI</h2>
+									</div>
+									
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/css/plugins/jqueryui/jquery-ui.min.css&quot; /&gt;	</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/jqueryui/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/jqueryui/jquery.ui.touch-punch.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/jqueryui/jquery-ui.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<div class="note note-warning">
+										jQuery UI slider also come with some extra classes:  
+									</div>
+									
+									<div class="well well-sm">
+										<code>.slider-success</code><code>.slider-danger</code><code>.slider-warning</code><code>.slider-info</code><code>.slider-primary</code><code>.slider-inverse</code>
+									</div>
+									<p>For example</p>
+									<pre class="prettyprint linenums">&lt;span class=&quot;ui-slider-primary&quot;&gt;&lt;/span&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../jquery-ui.html" target="_blank">jquery-ui.html</a>
+								</div>
+								
+								<div id="jqs" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">jQuery slimScroll</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/slimscroll/jquery.slimscroll.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/slimscroll/jquery.slimscroll.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> Inluded in all pages in top navbar-right and in side menu 
+								</div>
+								
+								<div id="s2" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Select2</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link href=&quot;../assets/css/plugins/select2/select2.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/select2/select2.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="bts" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap Select</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link href=&quot;../assets/css/plugins/bootstrap-select/bootstrap-select.min.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-select/bootstrap-select.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="bml" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap MaxLength</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="masked" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Masked Input</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/masked-input/jquery.maskedinput.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="dtp" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Datetime Picker</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/css/plugins/datetime/bootstrap-datetimepicker.min.css&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/datetime/bootstrap-datetimepicker.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="bdp" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap DatePicker</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/css/plugins/bootstrap-datepicker/datepicker.css&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="bwhtml" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap-wysihtml5</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/css/plugins/bootstrap-wysihtml/bootstrap-wysihtml5.css&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-wysihtml/wysihtml.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/bootstrap-wysihtml/bootstrap-wysihtml.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+
+								
+								<div id="bmdown" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap Markdown</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-markdown/markdown.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/bootstrap-markdown/bootstrap-markdown.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<p>By specifying <code>data-provide="markdown"</code> attribute for the textarea element, markdown editor will automatically be initiated. Optionally if you prefer to use bootstrap modals for default browser dialogs please include bootbox plugin</p>
+									
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootbox/bootbox.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="flxsp" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Fuelux Spinners</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/fuelux/spinner.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="touchsp" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap TouchSpin</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-touchspin/bootstrap.touchspin.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="btagsinp" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap Tags Input</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								
+								<div id="ftable" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">FooTables</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/css/plugins/footable/footable.min.css&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/footable/footable.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/footable/footable.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../tables.html" target="_blank">tables.html</a> 
+								</div>
+								
+								<div id="jqdtable" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">jQuery Datatable</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/datatables/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/datatables/datatables.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/datatables/datatables.responsive.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/datatables/datatables.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../tables.html" target="_blank">tables.html</a> 
+								</div>
+								
+								<div id="drange" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Date Range Picker</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link href=&quot;../assets/css/plugins/daterangepicker/daterangepicker-bs3.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/daterangepicker/daterangepicker.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/home-page.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../index.html" target="_blank">index.html</a> 
+								</div>
+								
+								<div id="morrisjs" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">morris.js</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link href=&quot;../assets/css/plugins/morris/morris.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/morris/raphael-2.0.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/morris/morris.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/home-page.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../index.html" target="_blank">index.html</a> 
+								</div>
+								
+								<div id="epc" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">EasyPieChart</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/easypiechart/jquery.easypiechart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/easypiechart/excanvas.compiled.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/easypiechart/jquery.easypiechart.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../index.html" target="_blank">index.html</a> 
+								</div>
+								
+								<div id="jqspk" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">jQuery Sparklines</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/jquery-sparkline/jquery.sparkline.init.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../index.html" target="_blank">index.html</a> 
+								</div>
+								
+								<div id="bwizard" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap Wizard</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-wizard.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-wizard.html" target="_blank">form-wizard.html</a> 
+								</div>
+								
+								
+								<div id="flwizard" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Fuelux Wizard</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/fuelux/wizard.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-wizard.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-wizard.html" target="_blank">form-wizard.html</a> 
+								</div>
+								
+								
+								<div id="x-edit" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">X-editable <small>Inline Editable</small></h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/css/plugins/bootstrap-editable/bootstrap-editable.css&quot;&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-editable/bootstrap-editable.min.js&quot;&gt;&lt;/script&gt;</pre>
+
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in profile.html</pre>
+									
+									<h4><strong>Inline Editable Addons</strong></h4>
+									Based on Inline editable plugin, few additional editables have been defined which you can use by including the following script along with above:
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-editable/ek-editable.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Wysiwyg</h4>
+									<p>For this addon <b>Bootstrap Wysiwyg</b> plugin is required and should be included first</p>
+									
+									<pre class="prettyprint linenums">$('#element').editable({
+   mode: 'inline',
+   type: 'wysiwyg',
+   name: 'element-name',
+
+  //wysiwyg plugin options, such as buttons, etc
+  wysiwyg : {
+  
+    //optional max-width
+    //css : {'max-width':'300px'}
+  },
+  success: function(response, newValue) {
+  }
+});</pre>
+
+								<h4>Slider</h4>
+								<p>For this addon <b>jQuery UI</b> is required and should be included first</p>
+								<pre class="prettyprint linenums">$('#element').editable({
+   type : 'slider',
+   name : 'element-name',
+
+   //jQuery UI slider options
+   slider : {
+       min: 1,
+       max: 50,
+
+	 //and slider's width (default is 200)
+	 width: 100
+	 
+	 //,nativeUI: true //this will use browser's built-in range control if available
+   },
+   
+   success: function(response, newValue) {
+      alert(parseInt(newValue));
+   }
+});</pre>
+									
+									<h4>Demo Page</h4> <a href="../profile.html" target="_blank">profile.html</a> 
+								</div>
+								
+								<div id="b-box" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootbox.js</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&gt;script src=&quot;../assets/js/plugins/bootbox/bootbox.min.js&quot;&lt;&gt;/script&lt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootbox/demo-modals.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../elements-ui.html" target="_blank">elements-ui.html</a> 
+								</div>
+																
+								<div id="g-notice" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Gritter Notifications</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../assets/css/plugins/gritter/jquery.gritter.css&quot; /&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/gritter/jquery.gritter.min.js&quot;&gt;&lt;/script&gt;</pre>
+
+									<div class="note note-warning">
+										Gritter Notifications also come with some extra classes which can be add in javascript you may check demo initial script codes:  
+									</div>
+									
+									<div class="well well-sm">
+										<code>.bg-primary</code><code>.bg-success</code><code>.bg-info</code><code>.bg-danger</code><code>.bg-warning</code><code>.gritter-light</code>
+										<code>.gritter-center</code>
+									</div>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/gritter/demo-gritter-notice.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>Demo Page</h4> <a href="../elements-ui.html" target="_blank">elements-ui.html</a> 
+								</div>
+
+								<div id="j-knob" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">jQuery Knob</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">Not required</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/jquery-knob/jquery.knob.min.js&quot;&gt;&lt;/script&gt;</pre>
+
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+								
+								<div id="dl-lbox" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap Dual listbox</h2>
+									</div>
+									<h4>.css Files</h4>
+									<pre class="prettyprint linenums">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../assets/css/plugins/duallistbox/bootstrap-duallistbox.min.css&quot; /&gt;</pre>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<h4>.init.js ( for example initial script codes)</h4>
+									<pre class="prettyprint linenums">Included in form-tools.html files.</pre>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+
+								<div id="jq-nlist" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Nestable lists</h2>
+									</div>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/jquery-nestable/jquery.nestable.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<p>.init script to enable</p>
+									<pre class="prettyprint linenums">$('.dd').nestable();
+$('.dd-handle a').on('mousedown', function(e){
+	e.stopPropagation();
+});</pre>
+
+A basic example is like this:
+<pre class="prettyprint linenums">&lt;div class=&quot;dd&quot;&gt;
+&lt;ol class=&quot;dd-list&quot;&gt;
+  &lt;li class=&quot;dd-item&quot; data-id=&quot;7&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 7&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</pre>
+
+<pre class="prettyprint linenums">&lt;div class=&quot;dd dd-draghandle&quot;&gt;
+&lt;ol class=&quot;dd-list&quot;&gt;
+  &lt;li class=&quot;dd-item dd2-item dd-colored&quot; data-id=&quot;5&quot;&gt;
+     &lt;div class=&quot;dd-handle dd2-handle btn-info&quot;&gt;
+        &lt;i class=&quot;normal-icon fa fa-pencil-square-o&quot;&gt;&lt;/i&gt;
+        &lt;i class=&quot;drag-icon fa fa-arrows&quot;&gt;&lt;/i&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;dd2-content btn-info &quot;&gt;Item 5&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</pre>
+
+In the above example, when dragging starts <code>.normal-icon</code> will be hidden and
+<code>.drag-icon</code> is shown
+									
+									<h4>Demo Page</h4> <a href="../nestable-list.html" target="_blank">nestable-list.html</a> 
+								</div>
+								
+								<div id="bo-wy" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Bootstrap Wysiwyg</h2>
+									</div>
+
+									<p>For more info about wysiwyg plugin, please see its page at: <a href="http://mindmup.github.io/bootstrap-wysiwyg/" target="_blank">http://mindmup.github.io/bootstrap-wysiwyg/</a></p>
+									
+									<p>To use it, you should include following .Js Files</p>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-wysiwyg/jquery.hotkeys.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/js/plugins/bootstrap-wysiwyg/bootstrap-wysiwyg.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<div class="note note-success">
+										<p>For easy of use I have made a wrapper for it and some extra options, So you need include following alos:</p>
+									</div>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/bootstrap-wysiwyg/ek-wysiwyg.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									A basic example is as follows:
+									<pre class="prettyprint linenums">&lt;div id=&quot;my-editor&quot;&gt;&lt;!-- custom html data --&gt;&lt;/div&gt;</pre>
+									then enable it
+									<pre class="prettyprint linenums">$('#my-editor').ek_wysiwyg();</pre>
+									
+									<p><a href="#" class="btn btn-info" data-toggle="modal" data-target="#w-ed-p">More Options For Bootstrap Wysiwyg</a></p>
+								
+									<h4>Demo Page</h4> <a href="../inbox.html" target="_blank">inbox.html</a> 
+								</div>
+								
+								<div id="c-cp" class="pluginswrap">
+									<div class="page-header">
+										<h2 class="text-info">Color Pickers</h2>
+									</div>
+									
+									<h5 class="bolder text-primary text-uppercase">Color Picker</h5>
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/colorpickers/bootstrap-colorpicker.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<p>A basic example would be like this:</p>
+									<pre class="prettyprint linenums">&lt;input type=&quot;text&quot; name=&quot;color&quot; id=&quot;colorpicker1&quot; /&gt;</pre>
+									
+									<p>.init script to enable</p>
+									<pre class="prettyprint linenums">$('#colorpicker1').colorpicker();</pre>
+									
+									<p>You can also use browser's built-in color picker which could be a better option on small touch devices:</p>
+									<pre class="prettyprint linenums">&lt;input type=&quot;text&quot; name=&quot;color&quot; id=&quot;colorpicker1&quot; /&gt;</pre>
+									
+									<pre class="prettyprint linenums">var picker = $('#colorpicker1')[0];
+if(picker.type !== 'color') {//if browser doesn't have built-in colorpicker
+  $(picker).colorpicker();
+}</pre>
+									
+									<div class="space-32"></div>
+									
+									<h5 class="bolder text-primary text-uppercase">Custom Color Picker</h5>
+									<p>Custom color picker converts a select element into a dropdown:</p>
+									
+									<h4>.Js Files</h4>
+									<pre class="prettyprint linenums">&lt;script src=&quot;../assets/js/plugins/colorpickers/ek-colorpicker.js&quot;&gt;&lt;/script&gt;</pre>
+									
+									<p>.init script to enable</p>
+									<pre class="prettyprint linenums">$('#ek-colorpicker').ek_colorpicker();</pre>
+
+A basic example is like this:
+<pre class="prettyprint linenums">&lt;select id=&quot;myid&quot;&gt;
+	&lt;option value=&quot;#d15050&quot; selected&gt;#d15050;&lt;/option&gt;
+	&lt;option value=&quot;#86618f&quot;&gt;#86618f&lt;/option&gt;
+	&lt;option value=&quot;#ba5d32&quot;&gt;#ba5d32&lt;/option&gt;
+	&lt;option value=&quot;#488075&quot;&gt;#488075&lt;/option&gt;
+	&lt;option value=&quot;#4e72c2&quot;&gt;#4e72c2&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+<pre class="prettyprint linenums">$('#myid').ek_colorpicker()
+ .on('change', function() {
+    alert(this.value);
+    alert(this.selectedIndex);
+ });</pre>
+
+<p>Color picker has two functions:<p>
+<ol>
+<li><code>pick</code> which selects a color. Argument can be a string(color) or an integer(index)
+<pre class="prettyprint linenums">$('#mycolor').ek_colorpicker('pick', '#FFAA77');//select '#FFAA77' color
+ $('#mycolor').ek_colorpicker('pick', 3);//select 3rd index
+ //or
+ var color_picker = $('#myid').data('ek_colorpicker');
+ color_picker.pick('#EE6699', true);
+ //"true" means select #EE6699 and insert it if it doesn't exist</pre>
+</li>
+ 
+<li>destroy which <code>destroys</code> color picker and shows select element
+<pre class="prettyprint linenums"> $('#mycolor').ek_colorpicker('destroy');</pre>
+</li>
+
+</ol>
+									
+									<h4>Demo Page</h4> <a href="../form-tools.html" target="_blank">form-tools.html</a> 
+								</div>
+					<!-- END YOUR CONTENT HERE -->
+					
+							</div>
+						</div>
+						
+					<!-- BEGIN FOOTER CONTENT -->		
+						<div class="footer">
+							<div class="footer-inner">
+								<!-- basics/footer -->
+								<div class="footer-content">
+									&copy; 2014 eKoders
+								</div>
+								<!-- /basics/footer -->
+							</div>
+						</div>
+						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+						</button>
+					<!-- END FOOTER CONTENT -->
+					
+				</div><!-- /#page-wrapper -->	  
+			<!-- END MAIN PAGE CONTENT -->
+		</div>  
+	</div> 
+
+	
+	
+	
+	
+			<!-- Modal For Bootstrap Wysiwyg Options -->
+			<div class="modal fade" id="w-ed-p" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">Bootstrap Wysiwyg Options</h4>
+						</div>
+						<div class="modal-body padding-2x">
+									Current ek_wysiwyg wrapper options are:
+									<ol>
+										<li><code>wysiwyg</code> options to send to the plugin</li>
+										<li><code>speech_button</code> whether to add speech input button in Chrome</li>
+										<li><code>toolbar</code> an array of toolbar buttons and options</li>
+										<li><code>toolbar_place</code> optional toolbar placement function</li>
+									</ol>
+									For example the following creates a wyswiwyg with 3 toolbar buttons:
+									
+									<pre class="prettyprint linenums">
+$('#my-editor').ek_wysiwyg({
+  toolbar: {
+    'bold',
+    'italic',
+    null,
+
+    {
+        name: 'font',
+        title: 'Custom tooltip',
+        values: ['Some Font!', 'Arial', 'Verdana', 'Comic Sans MS', 'Custom Font!']
+    }
+  }
+});
+</pre>
+
+								As you can see each toolbar button, is a string or an array of options. All buttons have the following properties:
+								<ol>
+									<li><code>title</code> which is button's tooltip text</li>
+									<li><code>icon</code> which is button's icon</li>
+									<li><code>className</code> which is button's class name</li>
+								</ol>
+								
+								<p>A <code>null</code> value puts a separator(space) between buttons.</p>
+								
+								Toolbar buttons and options are as follows:
+								
+												<ol>
+					<li><code>font</code> which takes an array as font names:
+<pre class="prettyprint linenums">
+{
+   name: 'font',
+   title: 'optional custom tooltip',
+   icon: 'fa-leaf', //some custom icon
+   values: ['Some Font!', 'Arial', 'Verdana', 'Comic Sans MS', 'Custom Font!']
+}
+</pre>
+					</li>
+					<li><code>fontSize</code> which takes an array as font sizes:
+<pre class="prettyprint linenums">
+{
+   name: 'fontSize',
+   title: 'optional custom tooltip',
+   values:{1 : 'Size#1' , 2 : 'Size#2' , 3 : 'Size#3' , 4 : 'Size#4' , 5 : 'Size#5'}
+}
+</pre>
+					</li>
+					
+					<li><code>bold</code>:
+<pre class="prettyprint linenums">
+'bold',
+
+//or
+{
+   name: 'bold',
+   title: 'optional custom tooltip',
+   icon: 'fa-leaf' //some custom icon
+}
+</pre>
+					</li>
+					<li><code>italic</code></li>
+					<li><code>strikethrough</code></li>
+					<li><code>underline</code></li>
+					
+					<li><code>insertunorderedlist</code></li>
+					<li><code>insertorderedlist</code></li>
+					<li><code>outdent</code></li>
+					<li><code>indent</code></li>
+					
+					<li><code>justifyleft</code></li>
+					<li><code>justifycenter</code></li>
+					<li><code>justifyright</code></li>
+					<li><code>justifyfull</code></li>
+					
+					<li><code>createLink</code> which inserts a link:
+<pre class="prettyprint linenums">
+{
+   name: 'createLink',
+   title: 'optional custom tooltip',
+   placeholder: 'link input placeholder',
+   button_class: 'btn-success',//insert button's class
+   button_text: 'Add Link'//insert button's text
+}
+</pre>
+					</li>
+					
+					<li><code>unlink</code></li>
+					
+					<li><code>insertImage</code> which inserts an image:
+<pre data-language="javascript">
+{
+   name: 'insertImage',
+   title: 'optional custom tooltip',
+   placeholder: 'image url input placeholder',
+   button_insert_class: 'btn-inverse',//insert button's class
+   button_insert: 'Add Link',//insert button's text
+   
+   choose_file: true,//'Whether there should be a "Choose File" button
+   button_class: 'btn-success',//choose button's class
+   button_text: 'Choose an Image'//choose button's text
+}
+</pre>
+					</li>
+					
+
+					
+					<li><code>undo</code></li>
+					<li><code>redo</code></li>
+					<li><code>viewSource</code></li>
+				</ol>
+				
+									Add <code>.editor-style1</code> and <code>.editor-style2</code>
+				to toolbar for alternative styles:
+<pre class="prettyprint linenums">
+$('#editor2').ek_wysiwyg().prev().addClass('editor-style2');
+</pre>
+									
+									<h4 class="text-warning">Notes</h4>
+									Normally you want to send the contents of wysiwyg editor to server. Most plugins convert a textarea element into a wysiwyg editor, by hiding the textarea and creating an editable DIV or iframe,and updating textarea's content as needed.
+				
+									<div class="space-4"></div>
+				
+									You can use the following method to send html content to server along with form data:
+<pre class="prettyprint linenums">
+$('#myform').on('submit', function() {
+  var hidden_input =
+  $('&lt;input type="hidden" name="my-html-content" /&gt;')
+  .appendTo('#myform');
+
+  var html_content = $('#myeditor').html();
+  hidden_input.val( html_content );
+  //put the editor's HTML into hidden_input and it will be sent to server
+});
+</pre>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+
+			
+    <!-- core JavaScript -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/js/plugins/pace/pace.min.js"></script>
+	
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="../assets/js/plugins/prettify/prettify.js"></script>
+	
+    <!-- Themes Core Scripts -->	
+	<script src="../assets/js/main.js"></script>	
+	
+	<!-- initial page level scripts for examples -->
+	<script src="../assets/js/plugins/select2/select2.min.js"></script>
+		<script>
+			jQuery(function($) {			
+				window.prettyPrint && prettyPrint();
+			});
+			
+			//Select2 examples
+			$("#pluginslist").select2();			
+		</script>	
+  </body>
+</html>

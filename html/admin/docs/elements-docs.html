@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Documents - eKoders Responsive Admin Theme</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+	<link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+	
+	<!-- PAGE LEVEL PLUGINS STYLES -->
+	<link href="../assets/css/plugins/prettify/prettify.css" rel="stylesheet">
+	<link href="../assets/css/plugins/select2/select2.css" rel="stylesheet">
+
+    <!-- Tc core CSS -->
+	<link rel="stylesheet" href="../assets/css/themes/style.css">
+	
+	
+    <!-- Add custom CSS here -->
+
+	<!-- End custom CSS here -->
+	
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+     .elementwrap { display:none; } 
+      .elementwrapActive { display:block; }
+    </style>	
+  </head>
+
+  <body>
+	<div id="wrapper">
+		<div id="main-container">		
+			<!-- BEGIN TOP NAVIGATION -->
+				<nav class="navbar-top" role="navigation">
+					<!-- BEGIN BRAND HEADING -->
+					<div class="navbar-header">
+						<div class="navbar-brand">
+							<a href="index.html">
+								<img src="../assets/images/logo.png" alt="logo" class="img-responsive">
+							</a>
+						</div>
+					</div>
+					<!-- END BRAND HEADING -->
+					<div class="nav-top">
+						<!-- BEGIN RIGHT SIDE DROPDOWN BUTTONS -->
+							<ul class="nav navbar-right">
+								<li class="dropdown">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+										<i class="fa fa-bars"></i>
+									</button>
+								</li>
+							</ul>
+						<!-- END RIGHT SIDE DROPDOWN BUTTONS -->
+					</div><!-- /.nav-top -->
+				</nav><!-- /.navbar-top -->
+				<!-- END TOP NAVIGATION -->
+
+				
+				<!-- BEGIN SIDE NAVIGATION -->				
+				<nav class="navbar-side" role="navigation">
+					<div class="navbar-collapse sidebar-collapse collapse">
+
+							<!-- BEGIN SHORTCUT BUTTONS -->
+							<div class="media">							
+								<ul class="sidebar-shortcuts">
+									<li><a class="btn btn-green"><i class="fa fa-user icon-only"></i></a></li>
+									<li><a class="btn btn-blue"><i class="fa fa-envelope icon-only"></i></a></li>
+									<li><a class="btn btn-red"><i class="fa fa-th icon-only"></i></a></li>
+									<li><a class="btn btn-purple"><i class="fa fa-gear icon-only"></i></a></li>
+								</ul>	
+							</div>
+							<!-- END SHORTCUT BUTTONS -->	
+							
+							<!-- BEGIN FIND MENU ITEM INPUT -->
+							<div class="media-search">	
+								<input type="text" class="input-menu" id="input-items" placeholder="Find...">
+							</div>						
+							<!-- END FIND MENU ITEM INPUT -->
+							
+						<ul id="side" class="nav navbar-nav side-nav">							
+							<!-- Navigation category -->
+							<li>
+								<h4>Documents</h4> 								
+							</li>
+							<!-- END Navigation category -->
+							
+							<!-- BEGIN SIDE NAV MENU -->			
+							<li>
+								<a href="index.html">
+									<i class="fa fa-dashboard"></i> Dashboard
+								</a>
+							</li>
+							<li>
+								<a href="features.html">
+									<i class="fa fa-star"></i> Features 
+								</a>
+							</li>
+							<li>
+								<a href="start.html">
+									<i class="fa fa-indent"></i> Let's Start
+								</a>
+							</li>
+							<li>
+								<a class="active" href="elements-docs.html">
+									<i class="fa fa-coffee"></i>  Elements
+								</a>
+							</li>
+							<li>
+								<a href="plugins.html">
+									<i class="fa fa-tags"></i> Plugins
+								</a>
+							</li>
+							<li>
+								<a href="settings.html">
+									<i class="fa fa-edit"></i> Settings
+								</a>
+							</li>
+						</ul><!-- /.side-nav -->
+					</div><!-- /.navbar-collapse -->
+				</nav><!-- /.navbar-side -->
+				<!-- END SIDE NAVIGATION -->
+				
+
+				<!-- BEGIN MAIN PAGE CONTENT -->
+				<div id="page-wrapper">
+					<!-- BEGIN PAGE HEADING ROW -->
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- BEGIN BREADCRUMB -->
+								<div class="breadcrumbs">
+									<ul class="breadcrumb">
+										<li>
+											<a href="#">Home</a>
+										</li>
+										<li class="active">Elements</li>
+									</ul>
+								</div>
+								<!-- END BREADCRUMB -->	
+								
+								<div class="page-header">
+								<!-- BEGIN PAGE TITLE ROW -->
+									<h1>Elements Styles <small></small></h1>
+								<!-- BEGIN PAGE TITLE ROW -->								
+								</div>								
+							</div><!-- /.col-lg-12 -->
+						</div><!-- /.row -->
+					<!-- END PAGE HEADING ROW -->					
+						<div class="row inner-wrapper">
+							<div class="col-lg-12">
+							
+								<!-- START YOUR CONTENT HERE -->
+					
+								<h4>Select Elements:</h4>
+								<select id="elementslist" onchange="ShowElement();" class="form-control input-xlarge input-lg">
+			
+									<option value="basic">Basic</option>
+									<option value="portlets">Portlets</option>
+									<option value="tiles">Tiles</option>
+									<option value="tabs">Tabs</option>
+									<option value="accordions">Accordions</option>
+									<option value="notes">Notes</option>
+									<option value="landb">labels & Badge</option>
+									<option value="dpd">Dropdown</option>
+									<option value="ttips">Tooltips</option>
+									<option value="btns">Buttons</option>
+									<option value="pbars">Progress Bars</option>
+									<option value="lgi">List Group</option>
+									<option value="tmlines">Timeline</option>
+									<option value="pricing">Pricing Tables</option>
+									<option value="tables">Tables</option>
+									<option value="forms">Form Elements</option>
+									<option value="carousel">Carousels</option>
+									<option value="inbox">Inbox</option>
+								</select>
+
+								<script>
+									function ShowElement(){
+										var id = $('#elementslist').val();
+											$('.elementwrap').hide();
+											$('#' + id).show();
+										return;
+									}
+								</script>
+								
+								<div id="basic" class="elementwrap elementwrapActive">
+									<div class="page-header">
+										<h4 class="text-primary">Basic styles</h4>
+									</div>
+									
+								<p>The following colors are defined for text, icon and background:</p>
+								<div class="well well-sm">
+									For Text
+									<p><code>.text-uppercase</code> <code>.text-primary</code> <code>.text-success</code> <code>.text-danger</code> <code>.text-info</code> <code>.text-warning</code> <code>text-gray</code> <code>.text-white</code> <code>.lighter</code> <code>.bolder</code></p>
+									For Background
+									<p><code>.bg-primary</code> <code>.bg-success</code> <code>.bg-danger</code> <code>.bg-info</code> <code>.bg-warning</code> <code>.inverse</code> <code>.light</code> and <code>.bg-gray</code></p><br /> 
+									
+									<pre class="prettyprint linenums">&lt;span class=&quot;text-danger&quot;&gt;example&lt;/span&gt; 
+&lt;i class=&quot;fa fa-check text-primary&quot;&gt;&lt;/i&gt;</pre>
+									
+									<p>As well as following font size have been defined:</p>
+										<code>.bigger-110 .bigger-120</code> ... <code>.bigger-300</code> and also <code>.bigger-125 .bigger-175 .bigger-225 .bigger-275</code> <br />
+										<code>.smaller-90 .smaller-80</code> ... <code>.smaller-20</code> and also <code>.smaller-25 .smaller-75</code><br /><br /> 
+										
+									<pre class="prettyprint linenums">&lt;i class=&quot;fa fa-check bigger-150&quot;&gt;&lt;/i&gt;
+&lt;span class=&quot;smaller-50&quot;&gt;example&lt;/span&gt;</pre>
+									
+									<p>Can also use following classes that may be useful at times </p>
+										<code>.text-underline</code> <code>.text-uppercase</code> <code>.heading</code>
+								</div>
+								
+								<div class="page-header">
+									<h4>Some more useful classes</h4>
+								</div>
+								<div class="well well-sm">
+									<p><code>.no-padding</code> <code>.padding-25</code>  <code>.padding-2x</code> <code>.no-padding-top</code> <code>.no-padding-bottom</code> <code>.no-padding-left</code> <code>.no-padding-right</code></p>
+									<p><code>.no-margin</code> <code>.no-margin-top</code> <code>.no-margin-bottom</code> <code>.no-margin-left</code> <code>.no-margin-right</code></p>
+									<p><code>.no-border</code></p>
+								</div>								
+								<p>Some spacing classes to add horizontal space:</p>
+								<div class="well well-sm">
+									<code>.space-2 .space-4</code>   ...   <code>.space-30 .space-32</code>
+								</div>
+								<pre class="prettyprint linenums">&lt;div class=&quot;space-12&quot;&gt;&lt;/div&gt;</pre>
+								
+								<p>Similar classes are defined for horizontal lines:</p>
+								<div class="well well-sm">
+									<code>.hr-2 .hr-4</code>   ...   <code>.hr-30 .hr-32</code> and <code>.separator</code>
+								</div>
+
+								</div>
+								
+								 <div id="portlets" class="elementwrap">
+									<div class="page-header">
+										<h4 class="text-primary">Portlets</h4>
+									</div>
+									<p>For portlets some extra classes have been defined. For the <code>.portlet</code> element:</p>
+								 
+									<div class="well well-sm">
+										<code>.portlet-primary</code> <code>.portlet-success</code> <code>.portlet-danger</code> <code>.portlet-info</code>
+										<code>.portlet-warning</code> <code>.portlet-dark</code> <code>.portlet-inverse</code> <code>.portlet-gray</code> <code>.portlet-basic</code> <code>.portlet-default</code>
+									</div>	
+									<pre class="prettyprint linenums">&lt;div class=&quot;portlet portlet-default&quot;&gt;</pre>	
+									<p>you can also use class in same element<code>.no-border</code></p>
+									<p><span class="label label-info label-sm">Note:</span> you can not use <code>.no-border</code> class with the classes given above, It works with <code>.portlet</code> only.</p>
+									<pre class="prettyprint linenums">&lt;div class=&quot;portlet no-border&quot;&gt;</pre>
+ 
+									<p>For <code>portlet-heading</code> some extra classes have been defined:</p>
+									
+									<div class="well well-sm">
+										<code>.bg-primary</code> <code>.bg-success</code> <code>.bg-danger</code> <code>.bg-info</code>
+										<code>.bg-warning</code> <code>.bg-inverse</code>
+									</div>
+									
+									<p>An example portlet with code is given below. Just copy this code to use portlet in your project.</p>
+								
+								<div class="portlet"><!-- /Portlet with Footer -->
+									<div class="portlet-heading">
+										<div class="portlet-title">
+											<h4>No style with Footer</h4>
+										</div>
+										<div class="portlet-widgets">
+											<a href="#"><i class="fa fa-gear"></i></a>
+											<span class="divider"></span>
+											<a href="javascript:;"><i class="fa fa-refresh"></i></a>
+											<span class="divider"></span>
+											<a data-toggle="collapse" data-parent="#accordion" href="#with-footer"><i class="fa fa-chevron-down"></i></a>
+											<span class="divider"></span>
+											<a href="#" class="box-close"><i class="fa fa-times"></i></a>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div id="with-footer" class="panel-collapse collapse in">
+										<div class="portlet-body">
+											This is an example portlet		
+										</div>
+										<div class="portlet-footer">
+											<div class="pull-left">
+												<button href="#" class="btn btn-sm btn-danger"><i class="fa fa-times icon-on-left"></i> I don't accept</button>
+											</div>
+											<div class="pull-right">
+												<button href="#" class="btn btn-sm btn-success">I accept <i class="fa fa-arrow-right icon-on-right"></i></button>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div><!-- /Portlet with Footer -->
+								
+
+<pre class="prettyprint linenums">&lt;div class=&quot;portlet&quot;&gt;&lt;!-- /Portlet with Footer --&gt;
+	&lt;div class=&quot;portlet-heading&quot;&gt;
+		&lt;div class=&quot;portlet-title&quot;&gt;
+			&lt;h4&gt;No style with Footer&lt;/h4&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;portlet-widgets&quot;&gt;
+			&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-gear&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+				&lt;span class=&quot;divider&quot;&gt;&lt;/span&gt;
+			&lt;a href=&quot;javascript:;&quot;&gt;&lt;i class=&quot;fa fa-refresh&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+				&lt;span class=&quot;divider&quot;&gt;&lt;/span&gt;
+			&lt;a data-toggle=&quot;collapse&quot; data-parent=&quot;#accordion&quot; href=&quot;#with-footer&quot;&gt;&lt;i class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+				&lt;span class=&quot;divider&quot;&gt;&lt;/span&gt;
+			&lt;a href=&quot;#&quot; class=&quot;box-close&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div id=&quot;with-footer&quot; class=&quot;panel-collapse collapse in&quot;&gt;
+		&lt;div class=&quot;portlet-body&quot;&gt;
+													
+		&lt;/div&gt;
+		&lt;div class=&quot;portlet-footer&quot;&gt;
+			&lt;div class=&quot;pull-left&quot;&gt;
+				&lt;button href=&quot;#&quot; class=&quot;btn btn-sm btn-danger&quot;&gt;&lt;i class=&quot;fa fa-times icon-on-left&quot;&gt;&lt;/i&gt; I don't accept&lt;/button&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;pull-right&quot;&gt;
+				&lt;button href=&quot;#&quot; class=&quot;btn btn-sm btn-success&quot;&gt;I accept &lt;i class=&quot;fa fa-arrow-right icon-on-right&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;&lt;!-- /Portlet with Footer --&gt;</pre>
+
+								<h4 class="text-success">For Demo Page </h4>
+								<a href="../portlet.html" target="_blank">portlet.html</a> 
+
+						</div>
+						
+						<div id="tabs" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Tabs</h4>
+							</div>
+							<p>eKoders admin template uses the same tabs element and classes of <a href="http://getbootstrap.com/javascript/#tabs" target="_blank">Bootstrap</a>. For eKoders style tabs your tab codes should be between an additional DIV with class <code>.tc-tabs</code>. For example please see the code given bellow:</p>
+							
+							<pre class="prettyprint linenums">&lt;div class=&quot;tc-tabs&quot;&gt;
+
+	&lt;!-- Nav tabs --&gt;
+	&lt;ul class=&quot;nav nav-tabs&quot;&gt;
+		&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#home&quot; data-toggle=&quot;tab&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#profile&quot; data-toggle=&quot;tab&quot;&gt;Profile&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#messages&quot; data-toggle=&quot;tab&quot;&gt;Messages&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#settings&quot; data-toggle=&quot;tab&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;!-- Tab panes --&gt;
+	&lt;div class=&quot;tab-content&quot;&gt;
+		&lt;div class=&quot;tab-pane active&quot; id=&quot;home&quot;&gt;...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;profile&quot;&gt;...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;messages&quot;&gt;...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;settings&quot;&gt;...&lt;/div&gt;
+	&lt;/div&gt;
+	
+&lt;/div&gt;</pre>
+							<p>For eKoders tabs some extra classes have been defined. For the <code>.nav-tabs</code> element:</p>
+								<div class="well well-sm">
+									<code>.tab-color-dark</code><code>.background-dark</code><code>.tab-lg-button</code><code>.tab-small-button</code><code>.nav-justified</code><code>.nav-justified lg</code>and<code>.padding-2</code> <code>.padding-4</code> ... <code>.padding-32</code>
+								</div>
+								<p>For example</p>
+								<pre class="prettyprint linenums">&lt;ul class=&quot;nav nav-tabs tab-color-dark background-dark&quot;&gt;</pre>
+							<p>For the <code>.tc-tabs</code> element:</p>
+								<div class="well well-sm">
+									<code>.tabs-left</code><code>.tabs-right</code><code>.tabs-bottom</code>
+								</div>
+								
+								<p>For example</p>
+								<pre class="prettyprint linenums">&lt;div class=&quot;tc-tabs tabs-left&quot;&gt;</pre>
+								
+								<h4 class="text-success">For Demo Page </h4>
+								<a href="../tabs_accordions-ui.html" target="_blank">tabs_accordions-ui.html</a> 
+						</div>
+				
+						<div id="notes" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Notes</h4>
+							</div>
+							<p>
+							<div class="note">
+								This is an example of deafult note.
+							</div>							
+							<p>For eKoders notes some extra classes have been defined. For the <code>.note</code> element:</p>
+							<div class="well well-sm">
+								<code>.note-success</code><code>.note-danger</code><code>.note-warning</code><code>.note-info</code>
+							</div>
+							<pre class="prettyprint linenums">&lt;div class=&quot;note note-success&quot;&gt;
+	This is an example code of success note.
+&lt;/div&gt;</pre>
+							
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../elements-ui.html" target="_blank">elements-ui.html</a> 
+						</div>
+						
+						<div id="landb" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Labels and Badge</h4>
+							</div>
+							
+							<p>Labels and Badge come with some extra classes:</p>
+							<div class="well well-sm">
+								<code>.label-default</code><code>.label-success</code><code>.label-primary</code><code>.label-info</code>
+								<code>.label-warning</code><code>.label-danger</code><code>.label-light</code><code>.label-inverse</code><br /><br />
+								
+								<p>Similar extra classes are available for badges</p>
+								<code>.bage-default</code><code>.bage-success</code><code>.bage-primary</code><code>.bage-info</code>
+								<code>.bage-warning</code><code>.bage-danger</code><code>.bage-light</code><code>.bage-inverse</code>
+							</div>
+
+							<p>The following options are defined for labels:</p>
+							<div class="well well-sm">
+								<code>.arrowed</code><code>.arrowed-in</code><code>.arrowed-right</code><code>.arrowed-in-right</code><code>.label-lg</code><code>.label-xlg</code><code>.label-sm</code>
+							</div>
+							
+							<p>For Example <span href="#" class="label label-lg label-success arrowed-in arrowed-right">Label Text</span></p>
+							<pre class="prettyprint linenums">&lt;span href=&quot;#&quot; class=&quot;label label-lg label-success arrowed-in arrowed-right&quot;&gt;
+  Label Text
+&lt;/span&gt;</pre>
+							
+						
+						<h4 class="text-success">For Demo Page </h4>
+						<a href="../elements-ui.html" target="_blank">elements-ui.html</a> 	
+						</div>
+							
+						<div id="dpd" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Dropdown Menu</h4>
+							</div>
+							<p>For<code>.dropdown-menu</code> element extra options:</p>
+								<div class="well well-sm">
+									<code>.dropdown-success</code><code>.dropdown-primary</code><code>.dropdown-info</code>
+									<code>.dropdown-warning</code><code>.dropdown-danger</code><br /></br />
+								
+									<p>also some extra class for width:</p>
+								
+									<code>.dropdown-only-icon</code><code>.dropdown-100</code><code>.dropdown-125</code><code>.dropdown-150</code><code>.dropdown-175</code>
+									<code>.dropdown-200</code><code>.dropdown-225</code>
+								</div>
+								<p>For example</p>
+								<pre class="prettyprint linenums">&lt;ul class=&quot;dropdown-menu dropdown-danger dropdown-125&quot; role=&quot;menu&quot;&gt;</pre>
+								
+								<div class="note note-info">
+									If you are using checkbox or radios in dropdown, By adding <code>.hold-on-click</code> class you can avoid closing the dropdown on click. 
+								</div>
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../button-ui.html" target="_blank">button-ui.html</a> 								
+						</div>
+						
+						<div id="ttips" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Tooltips</h4>
+							</div>
+							<p>For Tooltip extra options:</p>
+								<div class="well well-sm">
+									<code>.tooltip-success</code><code>.tooltip-primary</code><code>.tooltip-info</code><code>.tooltip-warning</code><code>.tooltip-danger</code>
+								</div>
+								<p>For example <a href="#" data-placement="top" class="tooltip-success" data-rel="tooltip" title="Default">Tooltip</a></p> 
+								<pre class="prettyprint linenums">&lt;a href=&quot;#&quot; data-placement=&quot;top&quot; class=&quot;tooltip-success&quot; data-rel=&quot;tooltip&quot; title=&quot;Default&quot;&gt;Tooltip&lt;/a&gt;</pre>
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../elements-ui.html" target="_blank">elements-ui.html</a> 								
+						</div>
+						
+						<div id="btns" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Buttons</h4>
+							</div>
+							<p>Buttons come with some extra classes inluding default bootstrap reguler button classes:</p>
+								<div class="well well-sm">
+									<code>.btn-inverse</code><code>.btn-white</code> <code>.btn-facebook</code> <code>.btn-twitter</code> <code>.btn-linkedin</code> <code>.btn-googleplus</code><br />
+									
+									<code>.btn-line</code><code>.btn-circle</code>
+								</div>
+								
+								<div class="note note-info">
+									<strong>Note:</strong> If you are using only icon in button then you should add <code>.icon-only</code> class in icon and for icon in right side between button add <code>.icon-on-right</code> like examples given below.					
+								</div>
+								
+								<p><a class="btn btn-xs btn-danger btn-circle"><i class="fa fa-trash-o icon-only"></i></a>  <a class="btn btn-sm btn-success btn-line">Button<i class="fa fa-check icon-on-right"></i></a></p>
+								
+								<pre class="prettyprint linenums">&lt;a class=&quot;btn btn-danger btn-xs btn-circle btn-line&quot;&gt;&lt;i class=&quot;fa fa-trash-o icon-only&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a class=&quot;btn btn-sm btn-success btn-line&quot;&gt;Button&lt;i class=&quot;fa fa-check icon-on-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;</pre>
+								
+							
+							<p>An additional button group style <code>.ui-group-buttons</code> also added in eKoders</p>
+							
+							<div class="ui-group-buttons">
+								<button type="button" class="btn btn-primary btn-sm"><span class="fa fa-thumbs-up icon-only"></span></button>
+									<div class="or or-sm"></div>
+								<button type="button" class="btn btn-inverse btn-sm"><span class="fa fa-thumbs-down icon-only"></span></button>
+							</div>
+							
+							<div class="space-12"></div>
+							
+							<pre class="prettyprint linenums">&lt;div class=&quot;ui-group-buttons&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;&lt;span class=&quot;fa fa-thumbs-up icon-only&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+		&lt;div class=&quot;or or-sm&quot;&gt;&lt;/div&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-inverse btn-sm&quot;&gt;&lt;span class=&quot;fa fa-thumbs-down icon-only&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</pre>
+							
+								<h4 class="text-success">For Demo Page </h4>
+								<a href="../button-ui.html" target="_blank">button-ui.html</a> 								
+						</div>
+						
+						<div id="pbars" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Progress Bars</h4>
+							</div>
+							<p>Progress bars come with some extra colors and sizes:</p>
+							<div class=" well well-sm"> 
+								<code>.progress-bar-success</code><code>.progress-bar-warning</code><code>.progress-bar-danger</code><code>.progress-bar-primary</code><code>.progress-bar-info</code> <code>.progress-bar-inverse</code><br /></br />
+
+								<p>and for Size</p>
+								<code>.progress-small</code><code>.progress-mini</code>
+							</div>
+							
+							<p>For example</p>
+							
+							<div class="progress progress-small progress-striped active" data-percent="65%">
+								<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 65%">
+									<span class="sr-only">25% Complete (success)</span>
+								</div>
+							</div>
+							
+							<pre class="prettyprint linenums">&lt;div class=&quot;progress progress-small progress-striped active&quot; data-percent=&quot;65%&quot;&gt;
+	&lt;div class=&quot;progress-bar progress-bar-primary&quot; role=&quot;progressbar&quot; style=&quot;width: 65%&quot;&gt;
+		&lt;span class=&quot;sr-only&quot;&gt;25% Complete (success)&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../elements-ui.html" target="_blank">elements-ui.html</a> 
+						
+								<div class="space-12"></div>
+							
+							<p>An additional style also inluded for progress bar, For example</p>
+							<div class="skills">
+								<div class="progress" data-percent="75%">
+									<div class="progress-bar progress-bar-success" role="progressbar" style="width: 75%">
+										<span class="sr-only">75% Complete</span>
+									</div>
+									<span class="progress-type">HTML / HTML5</span>
+									<span class="progress-completed">75%</span>
+								</div>
+							</div>
+						
+						<pre class="prettyprint linenums">&lt;div class=&quot;skills&quot;&gt;
+	&lt;div class=&quot;progress&quot; data-percent=&quot;75%&quot;&gt;
+		&lt;div class=&quot;progress-bar progress-bar-success&quot; role=&quot;progressbar&quot; style=&quot;width: 75%&quot;&gt;
+			&lt;span class=&quot;sr-only&quot;&gt;75% Complete&lt;/span&gt;
+		&lt;/div&gt;
+		&lt;span class=&quot;progress-type&quot;&gt;HTML / HTML5&lt;/span&gt;
+		&lt;span class=&quot;progress-completed&quot;&gt;75%&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../profile.html" target="_blank">profile.html</a> 
+						
+						</div>
+						
+						
+						<div id="lgi" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">List Group</h4>
+							</div>
+						
+						
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../index.html" target="_blank">index.html</a> Recent Activities 
+							<a href="../elements-ui.html" target="_blank">elements-ui.html</a>
+						
+						</div>
+						
+						<div id="tmlines" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary"></h4>
+							</div>							
+							<p>Please find an example with code is below</p>
+							
+<ul class="timeline">
+	<div class="timeline-day">
+		<span class="label label-primary arrowed-in-right label-xlg">
+			Yesterday
+		</span>
+	</div>
+	<li class="timeline-event">
+		<div class="timeline-event-point"></div>
+		<div class="timeline-event-wrap">
+			<div class="timeline-event-time">
+				<i class="fa fa-comments bigger-130 text-blue"></i> 7:30 PM
+			</div>
+			<div class="timeline-event-massage">
+				Lots of fun at my birhday party. Take a look at some pics:
+			</div>
+		</div>
+	</li>
+</ul>
+							<pre class="prettyprint linenums">&lt;ul class=&quot;timeline&quot;&gt;
+	&lt;div class=&quot;timeline-day&quot;&gt;
+		&lt;span class=&quot;label label-primary arrowed-in-right label-xlg&quot;&gt;
+			Yesterday
+		&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;li class=&quot;timeline-event&quot;&gt;
+		&lt;div class=&quot;timeline-event-point&quot;&gt;&lt;/div&gt;
+		&lt;div class=&quot;timeline-event-wrap&quot;&gt;
+			&lt;div class=&quot;timeline-event-time&quot;&gt;
+				&lt;i class=&quot;fa fa-comments bigger-130 text-blue&quot;&gt;&lt;/i&gt; 7:30 PM
+			&lt;/div&gt;
+			&lt;div class=&quot;timeline-event-massage&quot;&gt;
+				Lots of fun at my birhday party. Take a look at some pics
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</pre>
+
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../timeline.html" target="_blank">timeline.html</a>
+						</div>
+						
+						<div id="pricing" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Pricing Tables</h4>
+							</div>
+								
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../pricing.html" target="_blank">pricing.html</a>
+							
+						</div>
+						
+						<div id="accordions" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Accordions</h4>
+							</div>
+							<p>For eKoders accordions some extra classes have been defined. For <code>.panel-group</code> element.</p>
+							<div class="well well-sm">
+								<code>.tc-accordion</code> <code>.tc-accordion-simple</code> and for without border <code>.no-border</code>
+							</div>
+							
+							<p>For example</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;panel-group tc-accordion no-border&quot;&gt;</pre>
+
+							<div class="note note-info">
+								If you are using sub accordians with class <code>.tc-accordion-simple</code> under accordians we would recommend not to use <code>.no-border</code> anywhere. The same you can see in our FAQ demo page.
+								If you really want to use <code>.no-border</code> style you just need to add <code>.no-border</code> in main accordians element.
+							</div>
+							
+							
+							<p>For <code>.panel</code> element.</p>
+							<div class="well well-sm">
+								<code>.panel-success</code><code>.panel-danger</code><code>.panel-info</code><code>.panel-primary</code><code>.panel-warning</code>
+							</div>							
+							<p>For example</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;panel panel-success&quot;&gt;</pre>							
+							
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../faqs.html" target="_blank">faqs.html</a>
+						</div>
+						
+						
+						<div id="tables" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Tables</h4>
+							</div>
+							<div class="note note-info">
+								eKoders admin template uses the same table element and classes of <a href="http://getbootstrap.com/css/#tables" target="_blank">Bootstrap</a>.
+							</div>
+							<p>For eKoders style table, just add <code>.tc-table</code> in <code>.tables</code> and <code>.table-primary</code> for theme color table header element.</p>
+							
+							<p>For example</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;table tc-table&quot;&gt;</pre>
+							
+							<p>Few more classes also defined for <code>&lt;th&gt;</code> and  <code>&lt;td&gt;</code> that may be useful at times. For example if you are using chekcbox in first column and want fixed with with alligh center</p>
+							
+							<div class="well well-sm">
+								<code>.col-small</code><code>.col-medium</code><code>.center</code>
+							</div>
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../tables.html" target="_blank">tables.html</a>
+						</div>
+						
+						<div id="tiles" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Tiles</h4>
+							</div>
+							
+							<p>eKoders admin template uses the color classes in tiles same as button with <code>.tile-button .btn</code>element.</p>
+								<div class="well well-sm">
+									<code>.btn-green</code><code>.btn-blue</code><code>.btn-red</code><code>.btn-orange</code><code>.btn-yellow</code><code>.btn-purple</code><code>.btn-gray</code>
+									<code>.btn-success</code><code>.btn-danger</code><code>.btn-primary</code><code>.btn-info</code><code>.btn-warning</code><code>.btn-default</code>
+								</div>
+								
+							<p>For example</p>
+							<pre class="prettyprint linenums">&lt;a href=&quot;#&quot; class=&quot;tile-button btn btn-primary&quot;&gt;</pre>
+							
+							<p>An example code of the Tile is given below.</a></p>
+<div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<a href="javascript:;" class="tile-button btn btn-primary">
+		<div class="tile-content-wrapper">
+			<i class="glyphicon glyphicon-send"></i>
+			<div class="tile-content">
+				<span>$</span>275
+			</div>
+			<small>
+					+70% New Users
+			</small>
+		</div>
+		</a>												
+	</div>
+</div>							
+							<pre class="prettyprint linenums">&lt;div class=&quot;row&quot;&gt;
+	&lt;div class=&quot;col-lg-3 col-md-3 col-sm-6 col-xs-12&quot;&gt;
+		&lt;a href=&quot;javascript:;&quot; class=&quot;tile-button btn btn-primary&quot;&gt;
+		&lt;div class=&quot;tile-content-wrapper&quot;&gt;
+			&lt;i class=&quot;glyphicon glyphicon-send&quot;&gt;&lt;/i&gt;
+			&lt;div class=&quot;tile-content&quot;&gt;
+				&lt;span&gt;$&lt;/span&gt;275
+			&lt;/div&gt;
+			&lt;small&gt;
+					+70% New Users
+			&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;/a&gt;												
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../index.html" target="_blank">index.html</a>
+							
+						</div>
+						
+						<div id="forms" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">CSS3 Checkbox, Radio and On/Off Switches</h4>
+							</div>
+							<div class="note note-info">
+								eKoders comes with pure CSS3 styled checkbox without any javascript. Switches are also animated on supported browsers such as Firefox and Chrome. It also falls back to default browser style on IE8.
+							</div>
+							
+							<p>The following exta options are defined for checkbox and radios for <code>.tc</code> element:</p>
+							
+							<div class="well well-sm">
+								<code>.tc-success</code><code>.tc-danger</code><code>.tc-info</code><code>.tc-primary</code><code>.tc-warning</code>
+							</div>
+							<p>For Examples</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;tcb&quot;&gt;&lt;!--Its replaced by defualt bootstrap checkbox DIV class, must require in form--&gt;
+  &lt;label&gt;
+	&lt;input type=&quot;checkbox&quot; class=&quot;tc&quot;&gt;
+	&lt;span class=&quot;labels&quot; for=&quot;checkbox&quot;&gt; Check me&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;label&gt;
+  &lt;input type=&quot;checkbox&quot; class=&quot;tc&quot;&gt;
+  &lt;span class=&quot;labels&quot; for=&quot;checkbox&quot;&gt; Check me&lt;/span&gt;
+&lt;/label&gt;</pre>
+							<label>
+								<input type="checkbox" class="tc">
+								<span class="labels" for="checkbox"> Check me</span>
+							</label>
+							
+							<div class="space-2"></div>
+							
+							<label>
+								<input type="radio" class="tc tc-success">
+								<span class="labels" for="radio"> Radio</span>
+							</label>
+							
+							<div class="space-4"></div>
+							
+							<p>Switch Samles</p>
+							<pre class="prettyprint linenums">&lt;label&gt;
+  &lt;input name=&quot;switch-field-1&quot; class=&quot;tc tc-switch&quot; type=&quot;checkbox&quot; /&gt;
+  &lt;span class=&quot;labels&quot;&gt;&lt;/span&gt;
+ &lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input name=&quot;switch-field-1&quot; class=&quot;tc tc-switch tc-switch-3&quot; type=&quot;checkbox&quot; /&gt;
+  &lt;span class=&quot;labels&quot;&gt;&lt;/span&gt;
+&lt;/label&gt;</pre>
+							
+							<label>
+								<input name="switch-field-1" class="tc tc-switch tc-switch-5" type="checkbox" />
+								<span class="labels"><code>.tc.tc-switch.tc-switch-5</code></span>
+							</label>
+							<p>Currently switches come in 7 styles: <code>.tc-switch</code> , <code>.tc-switch.tc-switch-2</code>, ... <code>.tc-switch-.tc-switch-7</code></p>
+							
+							<div class="note note-danger">
+								<p><span class="label label-warning label-sm">Note</span> You must include an element with <code>.labels</code> class right after the checkbox ,radio or swicth. It may or may not contain text.</p>
+							</div>
+							
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../forms.html" target="_blank">forms.html</a>
+						</div>
+						
+						<div id="carousel" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Carousel</h4>
+							</div>
+							
+							<p>The eKoders admin template included tow type of carousel:</p>
+							
+				<div class="row">
+					<!--tcSlider-->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="tcSilder">
+						<h4>Simple Slider</h4>	
+						<div id="myCarousel-2" class="carousel slide">
+							<!-- Carousel items -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<span class="slide-contents">							
+										<div class="well light">
+											<h4 class="text-blue">Design</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
+										</div>
+									</span>
+								</div>
+								<div class="item">
+									<span class="slide-contents">
+										<div class="well light">
+											<h4>Customization</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
+										</div>
+									</span>
+								</div>
+								<div class="item">
+									<span class="slide-contents">
+										<div class="well light">
+											<h4>Optimization</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
+										</div>
+									</span>
+								</div>
+							</div>
+
+							<!-- Carousel nav -->
+							<a class="left-btn" href="#myCarousel-2" data-slide="prev"></a>
+							<a class="right-btn" href="#myCarousel-2" data-slide="next"></a>
+						</div>						
+					</div>
+					<!--tcSlider-->
+					
+					<!--Testimonials-->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="testimonials">
+						<h4>Testimonials</h4>	
+						<div id="myCarousel-1" class="carousel slide">
+							<!-- Carousel items -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<div class="testimonials-slide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</div>
+									<div class="carousel-info">
+										<img class="pull-left" src="../assets/images/user-2.jpg" alt="">
+										<div class="pull-left">
+											<span class="testimonials-name">Elly Martel</span>
+											<span class="testimonials-post">Red Publicity, LLC</span>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="testimonials-slide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</div>
+									<div class="carousel-info">
+										<img class="pull-left" src="../assets/images/user-3.jpg" alt="">
+										<div class="pull-left">
+											<span class="testimonials-name">Jack Sparrow</span>
+											<span class="testimonials-post">Ztek Publicity, LLC</span>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="testimonials-slide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</div>
+									<div class="carousel-info">
+										<img class="pull-left" src="../assets/images/user-4.jpg" alt="">
+										<div class="pull-left">
+											<span class="testimonials-name">Maris Bradley</span>
+											<span class="testimonials-post">New Publicity, LLC</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Carousel nav -->
+							<a class="left-btn" href="#myCarousel-1" data-slide="prev"></a>
+							<a class="right-btn" href="#myCarousel-1" data-slide="next"></a>
+						</div>						
+					</div>
+					<!--Testimonials-->
+				</div>
+				
+				<div class="page-header">
+					<h4>Content Carousel</h4>
+				</div>
+										<!--Carousel-->
+										<div class="well white">											
+											<div id="myCarousel-3" class="carousel tc-carousel slide">						
+												<!-- Carousel items -->
+												<div class="carousel-inner">
+													<div class="item active">
+														<strong>carousel item1, </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+													</div>
+													<div class="item">
+														<strong>carousel item2, </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+													</div>
+													<div class="item">
+														<strong>carousel item3, </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+													</div>
+												</div>
+												
+												<!-- Indicators -->
+												<ol class="carousel-indicators">
+													<li data-target="#myCarousel-3" data-slide-to="0" class="active"></li>
+													<li data-target="#myCarousel-3" data-slide-to="1"></li>
+													<li data-target="#myCarousel-3" data-slide-to="2"></li>
+												</ol>
+												
+												<!-- Controls -->
+												<a class="left carousel-control" href="#myCarousel-3" role="button" data-slide="prev">
+													<span class="glyphicon glyphicon-chevron-left"></span>
+												</a>
+												<a class="right carousel-control" href="#myCarousel-3" role="button" data-slide="next">
+													<span class="glyphicon glyphicon-chevron-right"></span>
+												</a>
+											</div>						
+										</div>
+										<!--Carousel-->
+						<p>An example code of Simple Slider</p>
+							<pre class="prettyprint linenums">&lt;!--tcSlider--&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12&quot; id=&quot;tcSilder&quot;&gt;
+			&lt;h4&gt;Simple Slider&lt;/h4&gt;	
+			&lt;div id=&quot;myCarousel-2&quot; class=&quot;carousel slide&quot;&gt;
+				&lt;!-- Carousel items --&gt;
+				&lt;div class=&quot;carousel-inner&quot;&gt;
+					&lt;div class=&quot;item active&quot;&gt;
+						&lt;span class=&quot;slide-contents&quot;&gt;							
+							&lt;div class=&quot;well light&quot;&gt;
+								&lt;h4 class=&quot;text-blue&quot;&gt;Design&lt;/h4&gt;
+								&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.&lt;/p&gt;
+							&lt;/div&gt;
+						&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+						&lt;span class=&quot;slide-contents&quot;&gt;
+							&lt;div class=&quot;well light&quot;&gt;
+								&lt;h4&gt;Customization&lt;/h4&gt;
+								&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.&lt;/p&gt;
+							&lt;/div&gt;
+						&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+						&lt;span class=&quot;slide-contents&quot;&gt;
+							&lt;div class=&quot;well light&quot;&gt;
+								&lt;h4&gt;Optimization&lt;/h4&gt;
+								&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.&lt;/p&gt;
+							&lt;/div&gt;
+						&lt;/span&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;!-- Carousel nav --&gt;
+				&lt;a class=&quot;left-btn&quot; href=&quot;#myCarousel-2&quot; data-slide=&quot;prev&quot;&gt;&lt;/a&gt;
+				&lt;a class=&quot;right-btn&quot; href=&quot;#myCarousel-2&quot; data-slide=&quot;next&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;!--//tcSlider--&gt;</pre>
+							<p>An example code of Testimonials Slider </p>
+								<pre class="prettyprint linenums">&lt;!--Testimonials--&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12&quot; id=&quot;testimonials&quot;&gt;
+			&lt;h4&gt;Testimonials&lt;/h4&gt;	
+			&lt;div id=&quot;myCarousel-1&quot; class=&quot;carousel slide&quot;&gt;
+				&lt;!-- Carousel items --&gt;
+				&lt;div class=&quot;carousel-inner&quot;&gt;
+					&lt;div class=&quot;item active&quot;&gt;
+						&lt;div class=&quot;testimonials-slide&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.&lt;/div&gt;
+						&lt;div class=&quot;carousel-info&quot;&gt;
+							&lt;img class=&quot;pull-left&quot; src=&quot;../assets/images/user-2.jpg&quot; alt=&quot;&quot;&gt;
+							&lt;div class=&quot;pull-left&quot;&gt;
+								&lt;span class=&quot;testimonials-name&quot;&gt;Elly Martel&lt;/span&gt;
+								&lt;span class=&quot;testimonials-post&quot;&gt;Red Publicity, LLC&lt;/span&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+						&lt;div class=&quot;testimonials-slide&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.&lt;/div&gt;
+						&lt;div class=&quot;carousel-info&quot;&gt;
+							&lt;img class=&quot;pull-left&quot; src=&quot;../assets/images/user-3.jpg&quot; alt=&quot;&quot;&gt;
+							&lt;div class=&quot;pull-left&quot;&gt;
+								&lt;span class=&quot;testimonials-name&quot;&gt;Jack Sparrow&lt;/span&gt;
+								&lt;span class=&quot;testimonials-post&quot;&gt;Ztek Publicity, LLC&lt;/span&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+						&lt;div class=&quot;testimonials-slide&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.&lt;/div&gt;
+						&lt;div class=&quot;carousel-info&quot;&gt;
+							&lt;img class=&quot;pull-left&quot; src=&quot;../assets/images/user-4.jpg&quot; alt=&quot;&quot;&gt;
+							&lt;div class=&quot;pull-left&quot;&gt;
+								&lt;span class=&quot;testimonials-name&quot;&gt;Maris Bradley&lt;/span&gt;
+								&lt;span class=&quot;testimonials-post&quot;&gt;New Publicity, LLC&lt;/span&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;!-- Carousel nav --&gt;
+				&lt;a class=&quot;left-btn&quot; href=&quot;#myCarousel-1&quot; data-slide=&quot;prev&quot;&gt;&lt;/a&gt;
+				&lt;a class=&quot;right-btn&quot; href=&quot;#myCarousel-1&quot; data-slide=&quot;next&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;						
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;!--//Testimonials--&gt;</pre>
+							
+<p>An example code for Content Slider </p>
+								<pre class="prettyprint linenums">&lt;div class=&quot;well white&quot;&gt;											
+	&lt;div id=&quot;myCarousel-3&quot; class=&quot;carousel tc-carousel slide&quot;&gt;						
+		&lt;!-- Carousel items --&gt;
+		&lt;div class=&quot;carousel-inner&quot;&gt;
+			&lt;div class=&quot;item active&quot;&gt;
+				&lt;strong&gt;carousel item1, &lt;/strong&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+			&lt;/div&gt;
+			&lt;div class=&quot;item&quot;&gt;
+				&lt;strong&gt;carousel item2, &lt;/strong&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+			&lt;/div&gt;
+			&lt;div class=&quot;item&quot;&gt;
+				&lt;strong&gt;carousel item3, &lt;/strong&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+			&lt;/div&gt;
+		&lt;/div&gt;
+												
+		&lt;!-- Indicators --&gt;
+		&lt;ol class=&quot;carousel-indicators&quot;&gt;
+			&lt;li data-target=&quot;#myCarousel-3&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+			&lt;li data-target=&quot;#myCarousel-3&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+			&lt;li data-target=&quot;#myCarousel-3&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+		&lt;/ol&gt;
+												
+		&lt;!-- Controls --&gt;
+			&lt;a class=&quot;left carousel-control&quot; href=&quot;#myCarousel-3&quot; role=&quot;button&quot; data-slide=&quot;prev&quot;&gt;
+				&lt;span class=&quot;glyphicon glyphicon-chevron-left&quot;&gt;&lt;/span&gt;
+			&lt;/a&gt;
+			&lt;a class=&quot;right carousel-control&quot; href=&quot;#myCarousel-3&quot; role=&quot;button&quot; data-slide=&quot;next&quot;&gt;
+				&lt;span class=&quot;glyphicon glyphicon-chevron-right&quot;&gt;&lt;/span&gt;
+			&lt;/a&gt;
+	&lt;/div&gt;						
+&lt;/div&gt;</pre>
+						</div>
+						
+						<div id="inbox" class="elementwrap">
+							<div class="page-header">
+								<h4 class="text-primary">Inbox Layout</h4>
+							</div>
+							
+							<p>Inbox page consists of several parts and elements wrapped inside a tab:</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;tc-tabs&quot;&gt;
+  &lt;ul class=&quot;inbox-tabs nav nav-tabs tab-lg-button&quot; id=&quot;inbox-tabs&quot;&gt;
+     &lt;!-- tab buttons --&gt;
+  &lt;/ul&gt;
+
+  &lt;div class=&quot;tab-content&quot;&gt;
+     &lt;!-- tab/inbox content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+							
+							<p><b>New Mail</b> button with .btn-new-mail class is (optionally) inside tab list:</a></p>
+							<pre class="prettyprint linenums">&lt;ul class=&quot; ... &quot;&gt;
+
+  &lt;li class=&quot;li-new-mail pull-right&quot;&gt;
+    &lt;a data-toggle=&quot;tab&quot; href=&quot;#write&quot; data-target=&quot;write&quot; class=&quot;btn-new-mail&quot;&gt;
+      &lt;span class=&quot;btn btn-primary btn-line&quot;&gt;
+         &lt;i class=&quot;fa fa-envelope bigger-130&quot;&gt;&lt;/i&gt;&lt;span class=&quot;bigger-110&quot;&gt;Compose&lt;/span&gt;
+         Write Mail
+      &lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;/ul&gt;</pre>
+
+							<h5 class="bolder text-primary text-uppercase">Massage List</h5>
+							<p><code>.message-list-container</code> contains a list of messages wrapped inside <code>.message-list</code>:</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;message-container&quot;&gt;
+  &lt;!-- message navbar here --&gt;
+
+
+  &lt;div class=&quot;message-list-container&quot;&gt;
+    &lt;div class=&quot;message-list&quot;&gt;
+       &lt;div class=&quot;message-item message-unread&quot;&gt;
+         ....
+       &lt;/div&gt;
+	   
+	   .
+	   .
+	   .
+	   
+    &lt;/div&gt;&lt;!-- /.message-list --&gt;
+ &lt;/div&gt;&lt;!-- /.message-list-container --&gt;
+&lt;/div&gt;</pre>
+
+							<p>A message item in the list consists of different elements:</p>
+							<ol>
+								<li>A checkbox to select the message</li>
+								<li><code>.message-star</code> A star icon to mark messages as starred/unstarred, Must be use Fontawsoe icon <code>fa fa-star-o</code> like</li>
+								<pre class="prettyprint linenums">&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;message-star fa fa-star-o&quot;&gt;&lt;/i&gt;&lt;/a&gt;</pre>
+								<li><code>.sender</code> Which is the sender's name</li>
+								<li><code>.time</code> Which is the time the message was sent/received</li>
+								<li><code>.attachment</code> Which indicates there's an attachment</li>
+								<li><code>.summary</code> Which contains message summary wrapped inside a .text and an optional <code>.mail-tag</code> or <code>.message-flags</code>
+								<pre class="prettyprint linenums">&lt;div class=&quot;message-item message-unread&quot;&gt;
+   &lt;label class=&quot;inline&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; class=&quot;tc&quot; /&gt;
+      &lt;span class=&quot;labels&quot;&gt;&lt;/span&gt;
+   &lt;/label&gt;
+		  
+   &lt;i class=&quot;message-star fa fa-star-o&quot;&gt;&lt;/i&gt;
+   &lt;span class=&quot;sender&quot; title=&quot;Alex John&quot;&gt;Alex John &lt;/span&gt;
+   &lt;span class=&quot;time&quot;&gt;1:33 pm&lt;/span&gt;
+   &lt;span class=&quot;attachment&quot;&gt;&lt;i class=&quot;fa fa-paperclip&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+		  
+   &lt;span class=&quot;summary&quot;&gt;
+      &lt;span class=&quot;badge badge-primary mail-tag&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;message-flags&quot;&gt; &lt;i class=&quot;fa fa-reply text-success&quot;&gt;&lt;/i&gt; &lt;/span&gt;
+      &lt;span class=&quot;text&quot;&gt;Click to open this message&lt;/span&gt;
+   &lt;/span&gt;
+&lt;/div&gt;</pre>
+								
+								</li>
+							</ol>
+							
+							
+							<h5 class="bolder text-primary text-uppercase">Message Content</h5>
+							<p>Message details is inside <code>.message-content</code> and consists of <code>.message-header</code>, <code>.message-body</code> and <code>.message-attachment</code>:</p>
+							<pre class="prettyprint linenums">&lt;div class=&quot;message-list-container&quot;&gt;
+ &lt;div class=&quot;message-content&quot; id=&quot;id-message-content&quot;&gt;
+   &lt;div class=&quot;message-header clearfix&quot;&gt;
+    ...
+   &lt;/div&gt;
+  
+   &lt;div class=&quot;message-body&quot;&gt;
+    ...
+   &lt;/div&gt;
+  
+   &lt;div class=&quot;message-attachment clearfix&quot;&gt;
+    ...
+   &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</pre>
+						<p><code>.message-header</code> consists of optional elements, for example <code>.sender</code>, <code>.time</code> and action buttons:</p>
+						<pre class="prettyprint linenums">&lt;div class=&quot;message-header clearfix&quot;&gt;
+  &lt;div class=&quot;pull-left&quot;&gt;
+    &lt;span class=&quot;blue bigger-125&quot;&gt;
+       Message title
+    &lt;/span&gt;
+    &lt;div class=&quot;space-4&quot;&gt;&lt;/div&gt;
+
+    &lt;i class=&quot;fa fa-star-o&quot;&gt;&lt;/i&gt;&lt;!-- star --&gt;
+     
+    &lt;img class=&quot;middle&quot; alt=&quot;&quot; src=&quot;assets/images/user.jpg&quot; width=&quot;32&quot; /&gt;&lt;!-- sender photo --&gt;
+     
+    &lt;a href=&quot;#&quot; class=&quot;sender&quot;&gt;John Doe&lt;/a&gt;&lt;!-- sender name --&gt;
+     
+    &lt;i class=&quot;fa fa-clock-o bigger-110 middle&quot;&gt;&lt;/i&gt;
+    &lt;span class=&quot;time&quot;&gt;Today, 7:15 pm&lt;/span&gt;&lt;!-- time sent --&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;pull-right action-buttons&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn-reply tooltip-success&quot; data-rel=&quot;tooltip&quot; title=&quot;Reply&quot;&gt;&lt;!--added tooltip (optional) --&gt;
+		&lt;i class=&quot;fa fa-reply text-success icon-only bigger-130&quot;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+	
+	&lt;a href=&quot;#&quot; class=&quot;tooltip-info&quot; data-rel=&quot;tooltip&quot; title=&quot;Forward&quot;&gt;&lt;!--added tooltip (optional) --&gt;
+		&lt;i class=&quot;fa fa-mail-forward text-info icon-only bigger-130&quot;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+	
+	&lt;a href=&quot;#&quot; class=&quot;tooltip-danger&quot; data-rel=&quot;tooltip&quot; title=&quot;Delete&quot;&gt;&lt;!--added tooltip (optional) --&gt;
+		&lt;i class=&quot;fa fa-trash-o text-danger icon-only bigger-130&quot;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+						<p>Message body is inside <code>.message-body</code> element</p>
+						
+						<p>Message attachment consists of optional <code>.attachment-title</code>, <code>.attachment-list</code> and <code>.attachment-images</code></p>
+						<pre class="prettyprint linenums">&lt;div class=&quot;attachment-title&quot;&gt;
+	&lt;span class=&quot;bolder bigger-110&quot;&gt;Attachments&lt;/span&gt;
+&lt;/div&gt;
+ 
+&lt;ul class=&quot;attachment-list pull-left list-unstyled&quot;&gt;
+
+&lt;/ul&gt;
+ 
+&lt;div class=&quot;attachment-images pull-right&quot;&gt;
+	&lt;span class=&quot;space-4 visible-xs&quot;&gt;&lt;/span&gt;
+		&lt;img alt=&quot;&quot; src=&quot;assets/images/gallery/img1.jpg&quot; /&gt;
+		...
+&lt;/div&gt;</pre>
+
+							<p>Attachment list consists of <code>.action-buttons</code> and <code>.attached-file</code> which has attached-name:</p>
+							<pre class="prettyprint linenums">&lt;li&gt;
+	&lt;a href=&quot;#&quot; class=&quot;attached-file&quot;&gt;
+		&lt;i class=&quot;fa fa-film bigger-110&quot;&gt;&lt;/i&gt;
+		&lt;span class=&quot;attached-name&quot;&gt;Samplefile.docs&lt;/span&gt;
+	&lt;/a&gt;
+
+	&lt;span class=&quot;action-buttons&quot;&gt;
+		&lt;a href=&quot;#&quot;&gt;
+			&lt;i class=&quot;fa fa-download bigger-125 text-gray&quot;&gt;&lt;/i&gt;
+		&lt;/a&gt;
+
+		&lt;a href=&quot;#&quot;&gt;
+			&lt;i class=&quot;fa fa-trash-o bigger-125 text-danger&quot;&gt;&lt;/i&gt;
+		&lt;/a&gt;
+	&lt;/span&gt;
+&lt;/li&gt;</pre>
+
+							<h5 class="bolder text-primary text-uppercase">Message Compose</h5>
+							<p>Message compose area consists of a form with optional elements and a navbar with optional buttons.</p>
+							<pre class="prettyprint linenums">&lt;div id=&quot;id-message-new-navbar&quot; class=&quot;hide message-navbar clearfix&quot;&gt;
+	&lt;div class=&quot;message-bar&quot;&gt;
+		&lt;div class=&quot;message-toolbar&quot;&gt;
+			&lt;button type=&quot;button&quot; class=&quot;btn btn-xs btn-white btn-primary&quot;&gt;
+				&lt;i class=&quot;fa fa-floppy-o&quot;&gt;&lt;/i&gt;Save Draft
+			&lt;/button&gt;
+
+			&lt;button type=&quot;button&quot; class=&quot;btn btn-xs btn-white btn-primary&quot;&gt;
+				&lt;i class=&quot;fa fa-times text-danger&quot;&gt;&lt;/i&gt;Discard
+			&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div&gt;
+		&lt;div class=&quot;messagebar-item-left&quot;&gt;
+			&lt;a href=&quot;#&quot; class=&quot;btn-back-message-list&quot;&gt;
+				&lt;i class=&quot;fa fa-arrow-left bigger-110 text-primary middle&quot;&gt;&lt;/i&gt;
+				&lt;b class=&quot;middle bigger-110&quot;&gt;Back&lt;/b&gt;
+			&lt;/a&gt;
+		&lt;/div&gt;
+
+		&lt;div class=&quot;messagebar-item-right&quot;&gt;
+			&lt;span class=&quot;inline btn-send-message&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;btn btn-sm btn-success&quot;&gt;Send&lt;i class=&quot;fa fa-arrow-right icon-on-right&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+			&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+
+						<div class="well well-sm white">
+							Please note that inbox layout and scripts are for demo only and may not be suitable for your application. For example when clicking to open a message, the message content is already inside the page but	there's some fake waiting to simulate remote content loading.
+						</div>
+							
+							<h4 class="text-success">For Demo Page </h4>
+							<a href="../inbox.html" target="_blank">inbox.html</a>
+							
+						</div>
+					<!-- END YOUR CONTENT HERE -->
+					
+							</div>
+						</div>
+						
+					<!-- BEGIN FOOTER CONTENT -->		
+						<div class="footer">
+							<div class="footer-inner">
+								<!-- basics/footer -->
+								<div class="footer-content">
+									&copy; 2014 eKoders
+								</div>
+								<!-- /basics/footer -->
+							</div>
+						</div>
+						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+						</button>
+					<!-- END FOOTER CONTENT -->
+					
+				</div><!-- /#page-wrapper -->	  
+			<!-- END MAIN PAGE CONTENT -->
+		</div>  
+	</div> 
+	 
+    <!-- core JavaScript -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/js/plugins/pace/pace.min.js"></script>
+	
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="../assets/js/plugins/prettify/prettify.js"></script>
+	
+    <!-- Themes Core Scripts -->	
+	<script src="../assets/js/main.js"></script>	
+	
+	<!-- initial page level scripts for examples -->
+	<script src="../assets/js/plugins/select2/select2.min.js"></script>
+		<script>
+			jQuery(function($) {			
+				window.prettyPrint && prettyPrint();
+			});
+			
+			//Select2 examples
+			$("#elementslist").select2();			
+		</script>
+  </body>
+</html>

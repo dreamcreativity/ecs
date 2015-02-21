@@ -1,0 +1,312 @@
+// Spacing classes, Can use like <div class="space-24"></div>
+// --------------------------------------------------
+.space() {
+	max-height:1px;
+	min-height:1px;
+	overflow:hidden;
+}
+.space { .space(); margin:12px 0; }
+
+.spaceX (@index) when (@index > 0) {
+	.space-@{index} { .space(); margin:unit(@index,px) 0 unit(@index - 1,px); }
+	.spaceX(@index - 2);
+}
+.spaceX(32);//produce spaces
+
+// <hr /> classes like spacing by using div, e.g <div class="hr hr-32"></div>
+// --------------------------------------------------
+
+.hr {
+ display:block;
+ height:0px; overflow:hidden; font-size:0;
+ border-top:1px solid @default-border-color;
+ margin:12px 0;
+}
+.hr-double {
+ height:3px;
+ border-top:1px solid @default-border-color;
+ border-bottom:1px solid @default-border-color;
+}
+.hr.dotted , .hr-dotted{ border-top-style:dotted;}
+.hr-double.dotted { border-bottom-style:dotted;}
+
+
+.hrX (@index) when (@index > 0) {
+	.hr-@{index}, .hr@{index} { margin:unit(@index,px) 0; }
+	.hrX(@index - 2);
+}
+.hrX(32);
+
+hr {
+    &.separator {
+        clear: both;
+        margin-top: 10px;
+        margin-bottom: 13px;
+        border: 0;
+        height: 1px;
+        background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+        background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+        background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+        background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    }
+}
+
+.biggerX (@index) when (@index < 310) {
+	.bigger-@{index} { font-size: unit(@index,~"%"); }
+	.biggerX(@index + 10);
+}
+.biggerX(110);
+.bigger-125 { font-size:125%;}
+.bigger-175 { font-size:175%; }
+.bigger-225 { font-size:225%; }
+.bigger-275 { font-size:275%; }
+
+.bigger-500 { font-size:50px; line-height: 50px; }
+
+.smallerX (@index) when (@index > 10) {
+	.smaller-@{index} { font-size: unit(@index,~"%"); }
+	.smallerX(@index - 10);
+}
+.smallerX(90);
+.smaller-75 { font-size:75%;}
+
+
+
+.action-buttons a {
+  margin:0 3px;
+  display:inline-block;
+  opacity:0.85;
+   .transition(~"all 0.1s");
+  
+  &:hover {
+	text-decoration:none;
+	.transform(~"scale(1.2)");
+	.opacity(1);
+  }
+}
+
+.lighter { font-weight: 300!important; }
+.bolder { font-weight: bolder!important; }
+.text-underline { text-decoration: underline; }
+.heading { padding: 0; margin: 0; height: 25px; line-height: 25px; }
+
+.well, .portlet .portlet-body {
+	p:last-child {
+		margin: 0;
+	}
+}
+
+// borders
+.no-padding { padding: 0 !important; }
+.no-padding-bottom { padding-bottom: 0 !important; }
+.no-padding-top { padding-top: 0 !important; }
+.no-padding-left { padding-left: 0 !important; }
+.no-padding-right { padding-right: 0 !important; }
+.no-margin { margin: 0 !important; }
+.no-margin-bottom { margin-bottom: 0 !important; }
+.no-margin-top { margin-top: 0 !important; }
+.no-margin-left { margin-left: 0 !important; }
+.no-margin-right { margin-right: 0 !important; }
+.no-border { border:none!important; }
+.no-border-bottom { border-bottom:none!important; }
+.no-border-top { border-top:none!important; }
+.no-border-left { border-left:none!important; }
+.no-border-right { border-right:none!important; }
+
+.border-top { border-top : 1px solid @default-border-color;}
+.border-right { border-right: 1px solid @default-border-color;}
+.border-bottom { border-bottom: 1px solid @default-border-color;}
+.border-left { border-left: 1px solid @default-border-color;}
+
+.position-relative { position:relative; }
+.position-absolute { position:absolute; }
+
+.inline { display: inline-block !important; }
+.block { display: block !important; }
+
+.middle { vertical-align: middle; }
+.align-middle { vertical-align: middle !important; }
+.align-top { vertical-align: top !important; }
+.align-bottom { vertical-align: bottom !important; }
+
+.space-2x {
+	.tile-button, .portlet, .well, .panel, .note, .notice, .progress, .alert, .pricing-table-1, .pricing-table-2, .pricing-table-3, .pricing-table-4, .tc-tabsbar, .tc-tabs, dl {
+		margin-bottom: 20px;
+	}
+	.well, .portlet .portlet-body {
+		padding: 25px;
+		
+		.well {
+			padding: 15px;
+		}
+	}
+}
+
+.padding-25 {
+	padding: 25px!important;	
+}
+
+.padding-2x {
+	padding: 30px!important;	
+}
+
+.padding-all {
+	padding: 15px;	
+}
+
+// for toggle 
+.toggle {
+	cursor : pointer;
+}
+
+//Color Classes
+// -------------------------
+
+.bg-primary, .bg-success, .bg-danger, .bg-info, .bg-warning, .gray, .dark, .inverse, .bg-gray {
+	color: @white!important;
+	&.note, &.alert {
+		.close {
+			.opacity(1); color: @white;
+		}
+	}
+}
+
+.bg-primary {
+	background-color: @brand-primary!important;
+	border-color: @brand-primary!important;	
+}
+.text-primary {
+	color: @brand-primary!important;
+}
+
+.bg-success {
+	background-color: @brand-success!important;
+	border-color: @brand-success!important;	
+}
+.text-success {
+	color: @brand-success!important;
+}
+
+.bg-warning {
+	background-color: @brand-warning!important;
+	border-color: @brand-warning!important;	
+}
+.text-warning {
+	color: @brand-warning!important;
+}
+
+.bg-danger {
+	background-color: @brand-danger!important;
+	border-color: @brand-danger!important;	
+}
+.text-danger {
+	color: @brand-danger!important;
+}
+
+.bg-info {
+	background-color: @brand-info!important;
+	border-color: @brand-info!important;	
+}
+.text-info {
+	color: @brand-info!important;
+}
+
+.dark, .inverse {
+	background-color: @gray-dark!important;
+	border-color: @gray-dark!important;
+}
+.text-gray {
+	color: @gray-light!important;
+}
+.bg-gray {
+	background-color: @gray!important;
+}
+
+
+.white {
+	background-color: @white!important;
+}
+.text-white {
+	color: @white!important;
+}
+
+.light {
+	background-color: @gray-lighter!important;
+	border-color: @gray-lighter!important;
+	color: @gray!important;
+}
+
+
+// Layout Settings Button
+// --------------------------------------------------
+.qs-layout-menu {
+	position: fixed;
+	right: 0; 
+	top: auto;
+	z-index: 1023;
+	margin-top: -75px;
+ 
+	.btn.qs-setting-btn {
+		float: left;
+		display: inline-block; 
+		width: 42px !important;
+		background: rgba(0, 0, 0, 0.30)!important;
+		border-right: 0 none;
+
+		vertical-align: top;
+		margin: 0;
+		
+		&:hover, &:focus {
+			background: rgba(0, 0, 0, 0.50)!important;
+		}
+
+	}
+
+	.qs-setting-box {
+		display: none;
+		float: left;
+		width: @navSideWidth;
+		padding: 10px 14px;
+		background:@white;
+
+		border: 1px solid @gray;
+		border-right: 0;
+ 
+		&.open {
+			display: inline-block;
+		}
+ 
+		> &div {
+			margin: 6px 0;
+			color: @gray-dark;
+			max-height: 24px;
+			> label {
+				font-size: @baseFontSize;
+			}
+		}
+ 
+		.btn {
+			height: 15px; width: 15px;
+			padding: 4px;
+			border: 0 none;
+	
+			&:hover, &:focus {
+				.transform(scale(1.1));
+				.opacity(0.5);
+			}
+		}
+ 
+		ul {
+			padding-left: 0;
+			li {
+				display: inline-block;
+				list-style: none;
+			}
+		}
+	}
+	
+	&.front {
+		top: 125px;
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="EscApp">
+  <head>
+    <meta charset="utf-8">
+    <title>eKoders - Responsive Admin Theme</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		
+	<!-- PAGE LEVEL PLUGINS STYLES -->	
+	<link href="assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+	<link href="assets/css/plugins/morris/morris.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/plugins/bootstrap-datepicker/datepicker.css">
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/plugins/gritter/jquery.gritter.css" />
+
+    <!-- Tc core CSS -->
+	<link id="qstyle" rel="stylesheet" href="assets/css/themes/style.css">
+	
+	
+    <!-- Add custom CSS here -->
+	<link rel="stylesheet" href="assets/css/only-for-demos.css">
+
+	<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/plugins/datatables/datatables.responsive.js"></script>
+	<!-- End custom CSS here -->
+	
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+	
+	<!--[if lte IE 8]>
+	<script src="assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
+	<![endif]-->
+
+	<!-- Angular JS -->
+	<script src="/public/js/angular.min.js"></script>
+    <script src="/public/js/angular-resource.js"></script>
+    <script src="/public/js/angular-route.js"></script>
+
+    <script src="/public/app/app.js"></script>
+    <script src="/public/app/controllers/controllers.js"></script>
+    <script src="/public/app/services/service.js"></script>
+	
+  </head>
+
+  <body>
+	<div id="wrapper">
+		<div id="main-container">		
+			<div ng-controller='pageCtrl' ng-include src="'template/navigation.html'"></div> 
+  			<div ng-controller='pageCtrl' ng-include src="'template/sidebar.html'"></div>
+  			<div ng-view></div>
+		</div>  
+	</div>
+
+	 
+    <!-- core JavaScript -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/js/plugins/pace/pace.min.js"></script>
+	
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="assets/js/plugins/jqueryui/jquery-ui.custom.min.js"></script>
+	<script src="assets/js/plugins/jqueryui/jquery.ui.touch-punch.min.js"></script>	
+    <script src="assets/js/plugins/daterangepicker/moment.js"></script>
+    <script src="assets/js/plugins/daterangepicker/daterangepicker.js"></script>	
+    <script src="assets/js/plugins/morris/raphael-min.js"></script>
+    <script src="assets/js/plugins/morris/morris.min.js"></script>
+	<script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+	<script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+	<script src="assets/js/plugins/easypiechart/jquery.easypiechart.min.js"></script>
+	<script src="assets/js/plugins/easypiechart/excanvas.compiled.js"></script>	
+	<script src="assets/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="assets/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Themes Core Scripts -->	
+	<script src="assets/js/main.js"></script>
+	
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<script src="assets/js/speech-commands.js"></script>
+	<script src="assets/js/plugins/gritter/jquery.gritter.min.js"></script>		
+	
+	<!-- initial page level scripts for examples -->
+	<script src="assets/js/plugins/slimscroll/jquery.slimscroll.init.js"></script>
+	<script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.init.js"></script>
+	<script src="assets/js/plugins/easypiechart/jquery.easypiechart.init.js"></script>
+	</script>
+  </body>
+</html>

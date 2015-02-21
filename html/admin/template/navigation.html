@@ -1,0 +1,51 @@
+<nav class="navbar-top" role="navigation" ng-show='{{show_partial_view}}' ng-controller="DashboardController as dashboard">
+					<!-- BEGIN BRAND HEADING -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".top-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+						<div class="navbar-brand">
+							<a href="index.html">
+								<img src="assets/images/logo.png" alt="logo" class="img-responsive">
+							</a>
+						</div>
+					</div>
+					<!-- END BRAND HEADING -->
+					<div class="nav-top">
+						<!-- BEGIN RIGHT SIDE DROPDOWN BUTTONS -->
+							<ul class="nav navbar-right">
+								<li class="dropdown">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+										<i class="fa fa-bars"></i>
+									</button>
+								</li>
+
+								<!--Speech Icon-->
+								<li class="dropdown user-box">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<img class="img-circle" src="assets/images/user.jpg" alt=""> <span class="user-info">{{user.firstname}} {{user.lastname}}</span> <b class="caret"></b>
+									</a>
+										<ul class="dropdown-menu dropdown-user">
+											<li>
+												<a href="#/profile">
+													<i class="fa fa-user"></i> My Profile
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<i class="fa fa-gear"></i> Settings
+												</a>
+											</li>											
+											<li>
+												<a href="login.html">
+													<i class="fa fa-power-off"></i> Logout
+												</a>
+											</li>
+										</ul>
+								</li>
+							</ul>
+						<!-- END RIGHT SIDE DROPDOWN BUTTONS -->
+						
+						
+					</div><!-- /.nav-top -->
+				</nav>
