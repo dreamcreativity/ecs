@@ -51,7 +51,9 @@ router.get('/slider/edit', function(req, res) {
 		);
 });
 
-router.get('/staff', function(req, res) {
+
+router.get('/staff/all', function(req, res) {
+
 	template(req,res,'admin_main','admin/staff/staffs.html',
 			{ 
 				title: 'Staffs',
@@ -73,12 +75,15 @@ router.get('/staff/new', function(req, res) {
 		);
 });
 router.get('/staff/edit/:id', function(req, res) {
+
 	template(req,res,'admin_main','admin/staff/staff_edit.html',
 			{ 
 				title: 'Edit Staff',
 				category: 'Management',
 				cur_tap: 'Staff',
-				cur_selected : 'Edit Staff'
+				cur_selected : 'Edit Staff',
+				url_params : req.params
+
 			}
 		);
 });
