@@ -1,0 +1,65 @@
+<!-- BEGIN PAGE HEADING ROW -->
+<!-- END PAGE HEADING ROW -->					
+<div class="row" ng-app='staffApp', ng-controller='StaffController'>
+	<div class="col-lg-12">
+
+		<!-- START YOUR CONTENT HERE -->
+		<div class="portlet"><!-- /Portlet -->
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Staffs<small class="text-white"></small></h4>
+				</div>
+				<div class="portlet-widgets">
+					<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+					<span class="divider"></span>
+					<a href="#" class="box-close"><i class="fa fa-times"></i></a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table class="table table-bordered table-hover tc-table">
+						<thead>
+							<tr>
+								<th>Username</th>
+								<th class="hidden-xs">Name</th>
+								<th class="hidden-xs">Work Phone</th>
+								<th class="hidden-xs">Cell Phone</th>
+								<th class="hidden-xs">Email</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="staff in staffs.data">
+								<td>{{staff.username}}</td>
+								<td class="hidden-xs">{{staff.firstname}} {{staff.lastname}}</td>
+								<td class="hidden-xs">{{staff.workphone}}</td>
+								<td class="hidden-xs">{{staff.cellphone}}</td>
+								<td class="hidden-xs">{{staff.email}}</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="#/staffs/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="9">
+									<div class="btn-group pull-left">
+										<a href="#/staffs/create" class="btn btn-s btn-danger">Create</a>	
+									</div>
+								</td>
+							</tr>
+						</tfoot>
+					</table>												
+				</div>
+			</div>
+		</div><!-- /Portlet -->
+
+
+		<!-- END YOUR CONTENT HERE -->
+
+	</div>
+</div>					

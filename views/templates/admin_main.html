@@ -37,10 +37,18 @@
 	<!--[if lte IE 8]>
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
+
+	 <!-- Angular JS -->
+ 	<script src="/js/client/angular.min.js"></script>
+    <script src="/js/client/angular-resource.js"></script>
+    <script src="/js/client/angular-route.js"></script>
+
+    <script src="/ng/apps/loginApp.js"></script>
+    <script src="/ng/apps/staffApp.js"></script>
 	
   </head>
 
-  <body>
+  <body ng-app='loginApp'>
 	<div id="wrapper">
 		<div id="main-container">		
 			<!-- BEGIN TOP NAVIGATION -->
@@ -365,6 +373,11 @@
 									<i class="fa fa-pencil-square-o"></i> Staff <span class="fa arrow"></span>
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
+										<li>
+											<a href="/admin/staffs" class="<%if(parms.cur_selected=='Staffs'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Staffs
+											</a>
+										</li>			
 										<li>
 											<a href="/admin/staff/new" class="<%if(parms.cur_selected=='New Staff'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create New Staff

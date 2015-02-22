@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../modules/templateController');
+var staff =require('../controllers/staff');
 
 /* GET home page. */
 
@@ -14,6 +15,10 @@ router.get('/', function(req, res) {
 				cur_selected : ''
 			}
 		);
+});
+
+router.get('/staffs', function(req, res) {
+	template(req,res,'admin_main','admin/staff/staffs.html',{ title: 'Home - English School of Canada' });
 });
 
 router.get('/login', function(req, res) {
@@ -49,9 +54,19 @@ router.get('/slider/edit', function(req, res) {
 		);
 });
 
+router.get('/staffs', function(req, res) {
+	template(req,res,'admin_main','admin/staff/staffs.html',
+			{ 
+				title: 'Staffs',
+				category: 'Management',
+				cur_tap: 'Staff',
+				cur_selected : 'Staffs'
+			}
+		);
+});
 
 router.get('/staff/new', function(req, res) {
-	template(req,res,'admin_main','admin/staff_new.html',
+	template(req,res,'admin_main','admin/staff/staff_new.html',
 			{ 
 				title: 'New Staff',
 				category: 'Management',
@@ -61,7 +76,7 @@ router.get('/staff/new', function(req, res) {
 		);
 });
 router.get('/staff/edit', function(req, res) {
-	template(req,res,'admin_main','admin/staff_edit.html',
+	template(req,res,'admin_main','admin/staff/staff_edit.html',
 			{ 
 				title: 'Edit Staff',
 				category: 'Management',
