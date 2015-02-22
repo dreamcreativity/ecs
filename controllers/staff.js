@@ -2,6 +2,7 @@ var Staff = require('../models/staff');
 var SHA256 = require("crypto-js/sha256")
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
+var session = require('express-session')
 
 //POST : Create a Staff
 exports.create = function(req,res){
@@ -92,7 +93,7 @@ exports.login = function (req,res){
 }
 
 // Authorized 
-exports.ensureAuthorized = function(req,res, next){
+exports.ensureAuthorized = function(req,res, next){   
 	var bearerToken;
 	var bearerHeader = req.header["authorization"];
 	if(typeof bearerHeader !== 'undefined'){

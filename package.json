@@ -16,7 +16,7 @@
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
     "debug": "~2.1.1",
-    "express-session": "^1.7.6",
+    "express-session": "^1.10.3",
     "validator": "3.x.x",
     "mongoose": "^3.8.18",
     "jsdom": "^1.2.0",

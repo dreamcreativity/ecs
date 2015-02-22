@@ -1,5 +1,5 @@
 			<link rel="stylesheet" href="../css/admin/core.css">
-			<div class="login-container">
+			<div class="login-container" ng-app='loginApp' ng-controller='LoginController'>
 
 				<!--
 				<h2>
@@ -17,17 +17,17 @@
 					
 					<div class="hr hr-8 hr-double dotted"></div>
 					
-					<form method="post" action="index.html">
+					<form ng-submit="login()">
 						<div class="form-group">
 							<div class="input-icon right">
 								<span class="fa fa-key text-gray"></span>
-								<input type="text" class="form-control" placeholder="Username">
+								<input type="text" class="form-control" placeholder="Username" ng-model="staff.username" required>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-icon right">
 								<span class="fa fa-lock text-gray"></span>
-								<input type="password" class="form-control" placeholder="your password">
+								<input type="password" class="form-control" placeholder="your password" ng-model="staff.password" required>
 							</div>
 						</div>
 						<div class="tcb">
@@ -35,7 +35,7 @@
 								<input type="checkbox" class="tc">
 								<span class="labels"> Remember me</span>
 							</label>
-							<a href="#" class="pull-right btn btn-primary">Login<i class="fa fa-key icon-on-right"></i></a>
+							<input type="submit" class="pull-right btn btn-primary" value="Login" />
 							<div class="clearfix"></div>
 						</div>				
 						
