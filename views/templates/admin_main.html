@@ -48,7 +48,7 @@
 	
   </head>
 
-  <body ng-app='loginApp'>
+  <body>
 	<div id="wrapper">
 		<div id="main-container">		
 			<!-- BEGIN TOP NAVIGATION -->
@@ -374,7 +374,7 @@
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
 										<li>
-											<a href="/admin/staffs" class="<%if(parms.cur_selected=='Staffs'){ %>active<%}%>">
+											<a href="/admin/staff" class="<%if(parms.cur_selected=='Staffs'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Staffs
 											</a>
 										</li>			
@@ -382,12 +382,7 @@
 											<a href="/admin/staff/new" class="<%if(parms.cur_selected=='New Staff'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create New Staff
 											</a>
-										</li>
-										<li>
-											<a href="/admin/staff/edit" class="<%if(parms.cur_selected=='Edit Staff'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Edit Staff
-											</a>
-										</li>										
+										</li>									
 									</ul>
 							</li>
 

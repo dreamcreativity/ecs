@@ -17,9 +17,6 @@ router.get('/', function(req, res) {
 		);
 });
 
-router.get('/staffs', function(req, res) {
-	template(req,res,'admin_main','admin/staff/staffs.html',{ title: 'Home - English School of Canada' });
-});
 
 router.get('/login', function(req, res) {
 	template(req,res,'admin_bg_paint','admin/login.html',
@@ -54,7 +51,7 @@ router.get('/slider/edit', function(req, res) {
 		);
 });
 
-router.get('/staffs', function(req, res) {
+router.get('/staff', function(req, res) {
 	template(req,res,'admin_main','admin/staff/staffs.html',
 			{ 
 				title: 'Staffs',
@@ -75,7 +72,7 @@ router.get('/staff/new', function(req, res) {
 			}
 		);
 });
-router.get('/staff/edit', function(req, res) {
+router.get('/staff/edit/:id', function(req, res) {
 	template(req,res,'admin_main','admin/staff/staff_edit.html',
 			{ 
 				title: 'Edit Staff',

@@ -3,12 +3,12 @@
 angular.module('staffApp', ['ngRoute','ngResource'])
 
 
-.controller('StaffController',function StaffController($rootScope,$scope,$routeParams,$http,Staffs,$location){
+.controller('StaffController',function StaffController($rootScope,$scope,$routeParams,$location,$http,Staffs,$window){
 	 var token = sessionStorage.token;
 	 $scope.staffs = getAllStaffs();
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
-	 if($routeParams.id !='undefined'){
+	 if($routeParams.id !=null){
 	 	Staffs.get({id:$routeParams.id}, function(result){
 	 		$scope.staff = result.data;
 	 	});
@@ -19,15 +19,15 @@ angular.module('staffApp', ['ngRoute','ngResource'])
 	 	Staffs.save($scope.staff,function(result){
 	 		    var message = result.messages;	    
 	 		    $rootScope.returnMessage = message;
-	 			$location.path('/staffs');
+	 			$window.location='/admin/staff';
  		})
 	 }
 
 	 $scope.update = function(isValid) {
-	 	Staffs.update($scope.staff, function(result){
+	 	Staffs.update($scope.newstaff, function(result){
 	 		var message = result.messages;	    
 	 		    $rootScope.returnMessage = message;
-	 			$location.path('/staffs');
+	 			$window.location='/admin/staff';
 	 	})
 	 }
 
@@ -40,7 +40,6 @@ angular.module('staffApp', ['ngRoute','ngResource'])
 
  	}
 })
-
 
 .factory('Staffs',['$resource',
 	function($resource){
