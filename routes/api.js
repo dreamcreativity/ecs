@@ -3,6 +3,8 @@ var router = express.Router();
 var staff =require('../controllers/staff');
 var student =require('../controllers/student');
 var material = require('../controllers/material');
+var slider =require('../controllers/slider');
+
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -11,6 +13,13 @@ router.get('/', function(req, res) {
     		b: 'sss'
     	 });
 });
+
+
+
+//-------------------------Slider----------------------------------
+router.post('/slider', slider.create);
+//router.get('/slider/:id', staff.getStaffbyId);
+
 
 
 //-------------------------Staff----------------------------------
