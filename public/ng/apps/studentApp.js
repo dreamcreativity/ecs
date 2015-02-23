@@ -5,7 +5,7 @@ angular.module('studentApp', ['ngRoute','ngResource'])
 
 .controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,$window){
 	 var token = sessionStorage.token;
-	 $scope.students = getAllStaffs();
+	 $scope.students = getAllStudents();
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
 	 $scope.create = function(isValid){
@@ -16,14 +16,10 @@ angular.module('studentApp', ['ngRoute','ngResource'])
  		})
 	 }
 
- 	function getAllStaffs(){
- 		return Staffs.query();
+ 	function getAllStudents(){
+ 		return Students.query();
  	}
 
-
- 	function getStaff(){
-
- 	}
 })
 
 .factory('Students',['$resource',

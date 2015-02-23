@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var staff =require('../controllers/staff');
 var student =require('../controllers/student');
+var agent =require('../controllers/agent');
 var material = require('../controllers/material');
 var slider =require('../controllers/slider');
 
@@ -45,13 +46,20 @@ router.delete('/staffs/:id',staff.delete);
 router.get('/student',student.getStudents);
 
 //GET a student by student ID
-router.get('/student/:student_id', student.getStudentbyId);
+router.get('/student/studentID/:student_id', student.getStudentbyStudentId);
+
+//GET a student by ID
+router.get('/student/:id', student.getStudentbyId);
 
 //POST : create a student record
 router.post('/student', student.create);
 
 //PUT : Edit a student info
 router.put('/student/:id', student.edit)
+
+
+//----------------------Agent----------------------------------------
+
 
 //-----------------------Materials ----------------------------------
 

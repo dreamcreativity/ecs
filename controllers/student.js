@@ -1,5 +1,7 @@
 var Student = require('../models/student');
+var Agent = require('../models/Agent');
 
+async = require("async");
 
 // Insert a new student record
 exports.create = function(req,res){
@@ -37,7 +39,37 @@ exports.create = function(req,res){
 
 //GET All Students
 exports.getStudents = function(req,res){
-	Student.find({}, function(err, result){
+	var studentList = [];
+	Student.find({}, function(err, results){
+		if(err) {
+			res.json('Error occured: ' + err);
+		}
+
+		async.eachSeries(results, function(item,callback){
+			Agent.find({_id: item.agent_id}).lean().exec(function (err, results){
+				if(err){
+
+				}
+				item.agent = results[0];
+				studentList.push(item);
+				callback();
+			});
+		}, function(err, results){
+			if(err){
+
+			}
+			res.json({
+				type: true,
+				data: studentList
+			});
+		});
+	})};
+
+
+//GET: Student rows by student ID
+exports.getStudentbyStudentId = function(req,res){
+	var id = req.params.id;
+	Student.find({student_id:id}, function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
@@ -48,18 +80,34 @@ exports.getStudents = function(req,res){
 	});
 }
 
-
-//GET: Student rows by student ID
+//GET: Student by Id
 exports.getStudentbyId = function(req,res){
 	var id = req.params.id;
-	Student.find({student_id:id}, function(err, result){
+	Student.find({_id:id}, function(err, result){
+
 		if(err) {
-			res.json('Error occured: ' + err);
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
 		}
-		res.json({
-			type: true,
-			data: result
-		});
+
+
+		if(result.length == 1){
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result[0]
+			});	
+		}else{
+			res.json({
+				status: 'fail',
+				messages: "multipulte result",
+				data: null
+			});
+		}
+		
 	});
 }
 
