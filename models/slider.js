@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var SliderSchema = mongoose.model('Slider', new mongoose.Schema({
-	title: {type: String, required: true },
-	sub_title: {type: String, required: true },
+	heading: {type: String, required: true },
+	sub_heading: {type: String, required: true },
 	color: {type:String, required: true, default: '#bbb'},
 	direction: { type: String, required: true, default: 'bottom' },
 	position_v:{type: Number, required: true },

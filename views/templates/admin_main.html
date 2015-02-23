@@ -26,7 +26,7 @@
 	
     <!-- Add custom CSS here -->
 	<link rel="stylesheet" href="/assets/css/only-for-demos.css">
-
+	<link rel="stylesheet" href="/css/admin/core.css">
 	<!-- End custom CSS here -->
 	
     <!--[if lt IE 9]>
@@ -45,6 +45,7 @@
 
     <script src="/ng/apps/loginApp.js"></script>
     <script src="/ng/apps/staffApp.js"></script>
+    <script src="/ng/apps/adminApp.js"></script>
 	
   </head>
 
@@ -374,7 +375,7 @@
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
 										<li>
-											<a href="/admin/staff" class="<%if(parms.cur_selected=='Staffs'){ %>active<%}%>">
+											<a href="/admin/staff/all" class="<%if(parms.cur_selected=='Staffs'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Staffs
 											</a>
 										</li>			
@@ -828,8 +829,9 @@
 	<script src="/assets/js/plugins/jqueryui/jquery.ui.touch-punch.min.js"></script>	
     <script src="/assets/js/plugins/daterangepicker/moment.js"></script>
     <script src="/assets/js/plugins/daterangepicker/daterangepicker.js"></script>	
-    <script src="/assets/js/plugins/morris/raphael-min.js"></script>
-    <script src="/assets/js/plugins/morris/morris.min.js"></script>
+
+    <!--script src="/assets/js/plugins/morris/raphael-min.js"></script>
+    <script src="/assets/js/plugins/morris/morris.min.js"></script-->
 	<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 	<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 	<script src="/assets/js/plugins/easypiechart/jquery.easypiechart.min.js"></script>
@@ -850,6 +852,8 @@
 	<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.init.js"></script>
 	<script src="/assets/js/plugins/easypiechart/jquery.easypiechart.init.js"></script>
 	<script type="text/javascript">
+
+		/*
 		//Live Chat
 		jQuery(function($) {
 			$('#live-chat-ui header').on('click', function() {
@@ -864,7 +868,7 @@
 			});
 
 		})
-
+		*/
 		$('#minicalendar').datepicker();
 	</script>
   </body>
