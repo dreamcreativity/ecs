@@ -386,6 +386,34 @@
 										</li>									
 									</ul>
 							</li>
+							<li class="panel <%if(parms.cur_tap=='Students'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StudentManagement">
+									<i class="fa fa-pencil-square-o"></i> Students <span class="fa arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="StudentManagement">
+										<li>
+											<a href="/admin/student/all" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Students
+											</a>
+										</li>			
+																		
+									</ul>
+							</li>
+							
+							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
+									<i class="fa fa-pencil-square-o"></i> Materials <span class="fa arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
+										<li>
+											<a href="/admin/material/all" class="<%if(parms.cur_selected=='Material'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Materials
+											</a>
+										</li>			
+																		
+									</ul>
+							</li>
+					
 
 
 

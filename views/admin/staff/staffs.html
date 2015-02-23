@@ -1,10 +1,8 @@
-<!-- BEGIN PAGE HEADING ROW -->
-<!-- END PAGE HEADING ROW -->					
-<div class="row" ng-app='staffApp' ng-controller='StaffController'>
-	<div class="col-lg-12">
 
-		<!-- START YOUR CONTENT HERE -->
-		<div class="portlet"><!-- /Portlet -->
+<div class="row" ng-app='staffApp' ng-controller='StaffCtrl'>
+	<div class="col-lg-12">
+		<div class="portlet">
+		 <div class="right"><input type="text" name="search" placeholder="Search" ng-model="query"></div>
 			<div class="portlet-heading dark">
 				<div class="portlet-title">
 					<h4>Staffs<small class="text-white"></small></h4>
@@ -26,16 +24,20 @@
 								<th class="hidden-xs">Work Phone</th>
 								<th class="hidden-xs">Cell Phone</th>
 								<th class="hidden-xs">Email</th>
+								<th class="hidden-xs">Status</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="staff in staffs.data">
+							<tr ng-repeat="staff in staffs.data | filter:query">
 								<td>{{staff.username}}</td>
 								<td class="hidden-xs">{{staff.firstname}} {{staff.lastname}}</td>
 								<td class="hidden-xs">{{staff.workphone}}</td>
 								<td class="hidden-xs">{{staff.cellphone}}</td>
 								<td class="hidden-xs">{{staff.email}}</td>
+								<td><span ng-if="staff.isDelete == 1" class="label label-danger">Deleted</span>
+								<span ng-if="staff.isDelete == 0" class="label label-active">Active</span>
+								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
 										<a href="/admin/staff/edit/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
@@ -56,10 +58,9 @@
 					</table>												
 				</div>
 			</div>
-		</div><!-- /Portlet -->
-
-
-		<!-- END YOUR CONTENT HERE -->
+		</div>
 
 	</div>
-</div>					
+</div>	 			
+
+

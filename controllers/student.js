@@ -35,6 +35,19 @@ exports.create = function(req,res){
 	});
 }
 
+//GET All Students
+exports.getStudents = function(req,res){
+	Student.find({}, function(err, result){
+		if(err) {
+			res.json('Error occured: ' + err);
+		}
+		res.json({
+			type: true,
+			data: result
+		});
+	});
+}
+
 
 //GET: Student rows by student ID
 exports.getStudentbyId = function(req,res){

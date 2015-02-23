@@ -41,6 +41,9 @@ router.delete('/staffs/:id',staff.delete);
 
 //-----------------------Student-----------------------------------
 
+//GET students 
+router.get('/student',student.getStudents);
+
 //GET a student by student ID
 router.get('/student/:student_id', student.getStudentbyId);
 

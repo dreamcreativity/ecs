@@ -28,15 +28,14 @@ angular.module('adminApp', ['ngResource'])
 
 .directive('colorPickerClick', function() {
   return {
-  	scope: { textColor: '='},
     link: function (scope, element, attrs) {
-    		
             element.on('click', function () {
                 console.log( scope.rgb2hex(element.css('background-color')));
                 //scope.textColor = scope.rgb2hex(element.css('background-color'));
                 console.log(scope.textColor);
+                
                 scope.$apply(function(){
-		           scope.textColor = '#444444';
+                	scope.$parent.textColor = "#444444";
 		      	});
        
             });

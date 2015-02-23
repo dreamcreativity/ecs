@@ -203,7 +203,7 @@ exports.edit = function(req,res){
 			});
 		}
 		else {
-			if(result.length == 1){
+			if(result == 1){
 				res.json({
 					status: 'ok',
 					messages: 'successed',

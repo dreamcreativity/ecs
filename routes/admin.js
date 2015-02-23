@@ -88,6 +88,42 @@ router.get('/staff/edit/:id', function(req, res) {
 		);
 });
 
+router.get('/material/all', function(req, res) {
+
+	template(req,res,'admin_main','admin/others/materials.html',
+			{ 
+				title: 'Materials',
+				category: 'Management',
+				cur_tap: 'Material',
+				cur_selected : 'Material'
+			}
+		);
+});
+
+router.get('/blog/all', function(req, res) {
+
+	template(req,res,'admin_main','admin/others/blogs.html',
+			{ 
+				title: 'Blogs',
+				category: 'Management',
+				cur_tap: 'Others',
+				cur_selected : 'Blog'
+			}
+		);
+});
+
+router.get('/student/all', function(req, res) {
+
+	template(req,res,'admin_main','admin/student/student.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Student'
+			}
+		);
+});
+
 
 
 module.exports = router;
