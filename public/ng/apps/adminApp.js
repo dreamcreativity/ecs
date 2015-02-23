@@ -16,6 +16,11 @@ angular.module('adminApp', ['ngResource'])
 	 	{ name: 'red', code: '#f00'}
 	 ];
 
+	 $scope.newSlider ={
+	 	heading: ''
+
+	 };
+
 	 $scope.rgb2hex = function (rgb) {
 	    rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
 	    function hex(x) {
@@ -25,12 +30,13 @@ angular.module('adminApp', ['ngResource'])
 	}
 })
 
-
 .directive('colorPickerClick', function() {
+
   return {
-  	scope: { textColor: '='},
+
+
+  	
     link: function (scope, element, attrs) {
-    		
             element.on('click', function () {
                 console.log( scope.rgb2hex(element.css('background-color')));
                 //scope.textColor = scope.rgb2hex(element.css('background-color'));
