@@ -61,6 +61,6 @@
 	text-align: center;
 	cursor: pointer;
 }
-.slider-position .tap p.select{
+.slider-position .tap.select p{
 	background-color: #ADADAD;
 }

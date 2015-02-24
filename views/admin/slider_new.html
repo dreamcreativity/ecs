@@ -14,7 +14,7 @@
 											<label class="col-sm-3 control-label">Main Heading:</label>
 											<div class="col-sm-7">
 												<div class="clearfix">
-													<input type="text" name="heading" class="form-control">
+													<input type="text" name="heading" ng-model="newSlider.heading" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -22,7 +22,7 @@
 											<label class="col-sm-3 control-label" for="password">Sub Heading:</label>
 											<div class="col-sm-7">
 												<div class="clearfix">
-													<input type="text" name="sub_heading"  class="form-control">
+													<input type="text" name="sub_heading"  ng-model="newSlider.sub_heading"  class="form-control">
 												</div>
 											</div>
 										</div>
@@ -30,9 +30,9 @@
 											<label class="col-sm-3 control-label" for="password2">Text Color:</label>
 											<div class="col-sm-4">
 												<div class="clearfix">
-													<input type="text" name="color" ng-model="textColor" class="form-control">
+													<input type="text" name="color"  id="textColor" ng-model="newSlider.color" class="form-control">
 													<div class="color-picker" ng-repeat="c in colors">
-														<div class="col-xs-4 picker"><p color-Picker-Click style="background-color:{{ c.code }}">{{ c.name }}</p></div>	
+														<div class="col-xs-4 picker"><p color-Picker style="background-color:{{ c.code }}">{{ c.name }}</p></div>	
 													</div>
 												</div>
 											</div>
@@ -44,43 +44,42 @@
 											<label class="col-sm-3 control-label">Text Postion:</label>
 											<div class="col-sm-4">
 												<div class="clearfix">
+													<div>{{ newSlider.position}}</div>
 													<div class="slider-position">
-														<div class="col-xs-4 tap"><p>LT</p></div>
-														<div class="col-xs-4 tap"><p>MT</p></div>
-														<div class="col-xs-4 tap"><p>RT</p></div>
-														<div class="col-xs-4 tap"><p>LM</p></div>
-														<div class="col-xs-4 tap"><p>CENTER</p></div>
-														<div class="col-xs-4 tap"><p>RM</p></div>
-														<div class="col-xs-4 tap"><p>LB</p></div>
-														<div class="col-xs-4 tap"><p>MB</p></div>
-														<div class="col-xs-4 tap"><p>RB</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>LT</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>MT</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>RT</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>LM</p></div>
+														<div class="col-xs-4 tap select"><p position-Picker>CENTER</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>RM</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>LB</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>MB</p></div>
+														<div class="col-xs-4 tap"><p position-Picker>RB</p></div>
 														
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label" for="phone">Pnone:</label>
+											<label class="col-sm-3 control-label" for="phone">Direction:</label>
 											<div class="col-sm-3">
-												<div class="input-group">
-													<span class="input-group-addon"><i class="fa fa-phone"></i></span>
-													<input type="text" id="phone" name="phone" class="form-control">
-												</div>													
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="url">Company URL:</label>
-											<div class="col-sm-6">
-												<div class="clearfix">
-													<input type="url" id="url" name="url" class="form-control">
+												<div>
+													<button type="button" ng-click="create">create</button>
 												</div>
+												<div class="input-group">
+													<div>{{ newSlider.direction}}</div>
+													<select ng-options="direction.name  for direction in directionOption " ng-model="newSlider.direction">
+												</div>	
+
+
 											</div>
 										</div>
+								
 									</div>
 								</div>
 							</form>
 							</div>
 						</div>
-
+				
 
 
