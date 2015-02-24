@@ -29,7 +29,10 @@ router.get('/login', function(req, res) {
 		);
 });
 
-
+/*---------------------------------------
+	Silder 
+/----------------------------------------
+*/
 router.get('/slider/new', function(req, res) {
 	template(req,res,'admin_main','admin/slider/slider_new.html',
 			{ 
@@ -59,6 +62,33 @@ router.get('/slider/all', function(req, res) {
 				category: 'Management',
 				cur_tap: 'Slider',
 				cur_selected : 'Edit Slider'
+			}
+		);
+});
+
+/*---------------------------------------
+	Media
+/----------------------------------------
+*/
+
+router.get('/media/uploader', function(req, res) {
+	template(req,res,'admin_main','admin/media/uploader.html',
+			{ 
+				title: 'Media Uploader',
+				category: 'Media',
+				cur_tap: 'Media Uploader',
+				cur_selected : 'Upload'
+			}
+		);
+});
+
+router.get('/media/editor', function(req, res) {
+	template(req,res,'admin_main','admin/media/editor.html',
+			{ 
+				title: 'Media Uploader',
+				category: 'Media',
+				cur_tap: 'Media Uploader',
+				cur_selected : 'Editor'
 			}
 		);
 });
