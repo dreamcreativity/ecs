@@ -22,6 +22,25 @@ angular.module('studentApp', ['ngRoute','ngResource'])
 
 })
 
+.controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,Students,$window) {
+	var student_id = url_params.id;
+
+	 if(student_id !=null){
+	 	Students.get({id:student_id}, function(result){
+	 		$scope.student = result.data;
+	 	});
+	 	
+	 }
+
+	$scope.update = function(isValid) {
+	 	Students.update($scope.student, function(result){
+	 			var message = result.messages;	    
+	 		    $rootScope.returnMessage = message;
+	 			$window.location='/admin/student/all';
+	 	})
+	 }
+})
+
 .factory('Students',['$resource',
 	function($resource){
 		return $resource('http://localhost:3000/api/student/:id', {}, {

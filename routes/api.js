@@ -59,7 +59,11 @@ router.put('/student/:id', student.edit)
 
 
 //----------------------Agent----------------------------------------
+//GET agents 
+router.get('/agent',agent.getAgents);
 
+//GET a agent by ID
+router.get('/agent/:id', agent.getAgentbyId);
 
 //-----------------------Materials ----------------------------------
 

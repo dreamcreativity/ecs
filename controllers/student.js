@@ -1,5 +1,5 @@
 var Student = require('../models/student');
-var Agent = require('../models/Agent');
+var Agent = require('../models/agent');
 
 async = require("async");
 

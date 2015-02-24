@@ -166,6 +166,33 @@ router.get('/student/all', function(req, res) {
 		);
 });
 
+router.get('/student/edit/:id', function(req, res) {
+
+	template(req,res,'admin_main','admin/student/student_edit.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Edit Student',
+				url_params : req.params
+			}
+		);
+});
+
+router.get('/agent/:id', function(req, res) {
+	template(req,res,'admin_main','admin/agent/agent_detail.html',
+			{ 
+				title: 'Agent',
+				category: 'Management',
+				cur_tap: 'Agent',
+				cur_selected : 'Agent',
+				url_params : req.params
+			}
+		);
+});
+
+
+
 
 
 module.exports = router;
