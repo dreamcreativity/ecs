@@ -154,6 +154,8 @@ router.get('/blog/all', function(req, res) {
 		);
 });
 
+//--------------------------Students-----------------------------------
+
 router.get('/student/all', function(req, res) {
 
 	template(req,res,'admin_main','admin/student/student.html',
@@ -179,6 +181,19 @@ router.get('/student/edit/:id', function(req, res) {
 		);
 });
 
+//-----------------------Agent--------------------------------------
+
+router.get('/agent/all', function(req, res) {
+	template(req,res,'admin_main','admin/agent/agent.html',
+			{ 
+				title: 'Agent',
+				category: 'Management',
+				cur_tap: 'Agent',
+				cur_selected : 'Agent',
+			}
+		);
+});
+
 router.get('/agent/:id', function(req, res) {
 	template(req,res,'admin_main','admin/agent/agent_detail.html',
 			{ 
@@ -190,6 +205,18 @@ router.get('/agent/:id', function(req, res) {
 			}
 		);
 });
+
+// router.get('/agent/new', function(req, res) {
+// 	template(req,res,'admin_main','admin/agent/agent_create.html',
+// 			{ 
+// 				title: 'New Agent',
+// 				category: 'Management',
+// 				cur_tap: 'Agent',
+// 				cur_selected : 'New Agent',
+// 				url_params : req.params
+// 			}
+// 		);
+// });
 
 
 
