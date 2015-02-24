@@ -7,7 +7,7 @@ var SliderSchema = mongoose.model('Slider', new mongoose.Schema({
 	direction: { type: String, required: true, default: 'bottom' },
 	position:{type: String, required: true },
 	createDate : {type : Date, default : Date.now },
-	isActive : {type : Boolean, default : false }
+	is_active : {type : Boolean, default : false }
 }));
 
 var Slider = mongoose.model('Slider', SliderSchema);

@@ -31,7 +31,7 @@ router.get('/login', function(req, res) {
 
 
 router.get('/slider/new', function(req, res) {
-	template(req,res,'admin_main','admin/slider_new.html',
+	template(req,res,'admin_main','admin/slider/slider_new.html',
 			{ 
 				title: 'New Slider',
 				category: 'Management',
@@ -40,8 +40,20 @@ router.get('/slider/new', function(req, res) {
 			}
 		);
 });
-router.get('/slider/edit', function(req, res) {
-	template(req,res,'admin_main','admin/slider_edit.html',
+router.get('/slider/edit/:id', function(req, res) {
+	template(req,res,'admin_main','admin/slider/slider_edit.html',
+			{ 
+				title: 'Slider Tile',
+				category: 'Management',
+				cur_tap: 'Slider',
+				cur_selected : 'Edit Slider',
+				url_params : req.params
+			}
+		);
+});
+
+router.get('/slider/all', function(req, res) {
+	template(req,res,'admin_main','admin/slider/slider_list.html',
 			{ 
 				title: 'Edit Slider',
 				category: 'Management',

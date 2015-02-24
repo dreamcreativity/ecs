@@ -1,0 +1,107 @@
+						<div class="portlet" ng-app="adminApp" ng-controller='SliderController'>
+							<div class="portlet-heading dark">
+								<div class="portlet-title">
+									<h4>Create New Slide</h4>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="portlet-body">
+							<form class="form-horizontal" id="validate-form" method="get">
+								<div id="bwizard">
+									
+									<div class="tab-content">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Main Heading:</label>
+											<div class="col-sm-7">
+												<div class="clearfix">
+													<input type="text" name="heading" ng-model="slider.heading" class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="password">Sub Heading:</label>
+											<div class="col-sm-7">
+												<div class="clearfix">
+													<input type="text" name="sub_heading"  ng-model="slider.sub_heading"  class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="password2">Text Color:</label>
+											<div class="col-sm-4">
+												<div class="clearfix">
+													<input type="text" name="color"  id="textColor" ng-model="slider.color" class="form-control">
+													<div class="color-picker" ng-repeat="c in colors">
+														<div class="col-xs-4 picker"><p color-Picker style="background-color:{{ c.code }}">{{ c.name }}</p></div>	
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<hr class="separator" />
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Text Postion:</label>
+											<div class="col-sm-4">
+												<div class="clearfix">
+							
+													<div class="slider-position">
+														<div ng-class="{select:  slider.position=='LT'}" class="col-xs-4 tap"><p position-Picker>LT</p></div>
+														<div ng-class="{select:  slider.position=='MT'}" class="col-xs-4 tap"><p position-Picker>MT</p></div>
+														<div ng-class="{select:  slider.position=='RT'}" class="col-xs-4 tap"><p position-Picker>RT</p></div>
+														<div ng-class="{select:  slider.position=='LM'}" class="col-xs-4 tap"><p position-Picker>LM</p></div>
+														<div ng-class="{select:  slider.position=='CENTER'}" class="col-xs-4 tap"><p position-Picker>CENTER</p></div>
+														<div ng-class="{select:  slider.position=='RM'}" class="col-xs-4 tap"><p position-Picker>RM</p></div>
+														<div ng-class="{select:  slider.position=='LB'}" class="col-xs-4 tap"><p position-Picker>LB</p></div>
+														<div ng-class="{select:  slider.position=='MB'}" class="col-xs-4 tap"><p position-Picker>MB</p></div>
+														<div ng-class="{select:  slider.position=='RB'}" class="col-xs-4 tap"><p position-Picker>RB</p></div>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Direction:</label>
+											<div class="col-sm-2">
+								
+												<select class="form-control " ng-model="slider.direction"  >
+													<option value="{{d.name}}" ng-repeat="d in directionOption">{{d.label}}</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Is Active:</label>
+											<div class="col-sm-2">
+
+												<label>
+													<input name="is_active" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="slider.is_active" />
+													<span class="labels"></span>
+												</label>
+
+												
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="col-sm-3"></div>	
+											<div class="col-sm-3">
+												<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
+												<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
+											</div>
+										</div>
+								
+									</div>
+								</div>
+							</form>
+							</div>
+						</div>
+						<script type="text/javascript">
+							var url_params = <%- JSON.stringify(url_params) %>
+
+
+								
+						</script>
+				
+
+

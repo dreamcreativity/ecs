@@ -364,7 +364,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="/admin/slider/edit" class="<%if(parms.cur_selected=='Edit Slider'){ %>active<%}%>">
+											<a href="/admin/slider/all" class="<%if(parms.cur_selected=='Edit Slider'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -880,6 +880,9 @@
 	<script src="/assets/js/home-page.init.js"></script>
 	<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.init.js"></script>
 	<script src="/assets/js/plugins/easypiechart/jquery.easypiechart.init.js"></script>
+
+	<!-- initial Custom Functions -->
+	<script src="/js/admin/plugin-init.js"></script>
 	<script type="text/javascript">
 
 		/*
@@ -899,6 +902,39 @@
 		})
 		*/
 		$('#minicalendar').datepicker();
+
+		jQuery('#gritter-centered').click(function(){
+			jQuery.gritter.add({
+				// (string | mandatory) the heading of the notification
+				title: 'System Notification!',
+				// (string | mandatory) the text inside the notification
+				text: 'Record has been updated',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: false,
+				// use style classes 
+				class_name: 'bg-warning gritter-center',
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500'				
+			});
+			return false;
+		});
+
+		var show_update = function(){
+			jQuery.gritter.add({
+				// (string | mandatory) the heading of the notification
+				title: 'System Notification!',
+				// (string | mandatory) the text inside the notification
+				text: 'Record has been updated',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: false,
+				// use style classes 
+				class_name: 'bg-warning gritter-center',
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500'				
+			});
+			return false;
+		}
+
 	</script>
   </body>
 </html>

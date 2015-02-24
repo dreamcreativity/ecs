@@ -19,9 +19,9 @@ router.get('/', function(req, res) {
 
 //-------------------------Slider----------------------------------
 router.post('/slider', slider.create);
-router.get('/slider/get/:id', slider.get);
-router.get('/slider/all', slider.all);
-router.post('/slider/edit/:id', slider.edit);
+router.get('/slider/:id', slider.get);
+router.get('/slider', slider.all);
+router.put('/slider/:id', slider.edit);
 
 //-------------------------Staff----------------------------------
 
