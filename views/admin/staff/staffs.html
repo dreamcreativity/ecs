@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="row" ng-app='staffApp' ng-controller='StaffCtrl'>
 	<div class="col-lg-12">
 		<div class="portlet">
@@ -16,7 +16,7 @@
 			</div>
 			<div id="basic" class="panel-collapse collapse in">
 				<div class="portlet-body no-padding">
-					<table class="table table-bordered table-hover tc-table">
+					 <table class="table table-bordered table-hover tc-table">
 						<thead>
 							<tr>
 								<th>Username</th>
@@ -55,12 +55,75 @@
 								</td>
 							</tr>
 						</tfoot>
-					</table>												
-				</div>
-			</div>
-		</div>
+					</table>	 			
+				-->
 
-	</div>
-</div>	 			
+				<!-- END PAGE HEADING ROW -->					
+				<div class="row" ng-app='staffApp' ng-controller='StaffCtrl'>
+					<div class="col-lg-12">
+						<!-- Start jQuery Datatable -->
+						<div class="page-header no-padding-bottom">
+							<h4>Responsive jQuery datatable<small></small></h4>
+						</div>
+						
+						<div class="well white">
+							<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+								<thead>
+									<tr>
+										<th class="hidden-xs">Username</th>
+										<th class="hidden-xs">Name</th>
+										<th class="hidden-xs">Work Phone</th>
+										<th class="hidden-xs">Cell Phone</th>
+										<th class="hidden-xs">Email</th>
+										<th class="hidden-xs">Status</th>
+										<th class="col-medium center">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="staff in staffs.data | filter:query">
+										<td>{{staff.username}}</td>
+										<td class="hidden-xs"><a href="/admin/staff/detail/{{staff._id}}">{{staff.firstname}} {{staff.lastname}}</a></td>
+										<td class="hidden-xs">{{staff.workphone}}</td>
+										<td class="hidden-xs">{{staff.cellphone}}</td>
+										<td class="hidden-xs">{{staff.email}}</td>
+										<td><span ng-if="staff.isDelete == 1" class="label label-danger">Deleted</span>
+											<span ng-if="staff.isDelete == 0" class="label label-active">Active</span>
+										</td>
+										<td class="col-medium center">
+											<div class="btn-group btn-group-xs ">
+												<a href="/admin/staff/edit/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+											</div>	
+										</td>
+									</tr>
 
+								</tbody>
+							</table>
+						</div>
+						<!-- End jQuery Datatable -->
+						
+						<!-- END YOUR CONTENT HERE -->
+						
+					</div>
+				</div>					
+				
 
+				
+				<!-- core JavaScript -->
+				<script src="/assets/js/jquery.min.js"></script>
+				<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+				<script>
+	//for tables checkbox demo
+	jQuery(function($) {
+		$('table th input:checkbox').on('click' , function(){
+			var that = this;
+			$(this).closest('table').find('tr > td:first-child input:checkbox')
+			.each(function(){
+				this.checked = that.checked;
+				$(this).closest('tr').toggleClass('selected');
+			});
+			
+		});
+	});
+</script>
+</body>
+</html>

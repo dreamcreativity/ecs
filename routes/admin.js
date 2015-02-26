@@ -95,7 +95,6 @@ router.get('/media/editor', function(req, res) {
 
 
 router.get('/staff/all', function(req, res) {
-
 	template(req,res,'admin_main','admin/staff/staffs.html',
 			{ 
 				title: 'Staffs',
@@ -105,6 +104,19 @@ router.get('/staff/all', function(req, res) {
 			}
 		);
 });
+
+router.get('/staff/detail/:id', function(req, res) {
+	template(req,res,'admin_main','admin/staff/detail.html',
+			{ 
+				title: 'Staffs',
+				category: 'Management',
+				cur_tap: 'Profile',
+				cur_selected : 'Profile',
+				url_params : req.params
+			}
+		);
+});
+
 
 router.get('/staff/new', function(req, res) {
 	template(req,res,'admin_main','admin/staff/staff_new.html',
