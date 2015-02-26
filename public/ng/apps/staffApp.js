@@ -45,6 +45,18 @@ angular.module('staffApp', ['ngRoute','ngResource'])
 	 }
 })
 
+.controller('DetailCtrl', function DetailCtrl($scope,Staffs,$window){
+	var staff_id = url_params.id;
+
+	 if(staff_id !=null){
+	 	Staffs.get({id:staff_id}, function(result){
+	 		$scope.staff = result.data;
+	 	});
+	 	
+	 }
+})
+
+
 .factory('Staffs',['$resource',
 	function($resource){
 		return $resource('http://localhost:3000/api/staffs/:id', {}, {

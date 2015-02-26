@@ -5,6 +5,7 @@ var student =require('../controllers/student');
 var agent =require('../controllers/agent');
 var material = require('../controllers/material');
 var slider =require('../controllers/slider');
+var region = require('../controllers/region');
 
 
 /* GET users listing. */
@@ -76,6 +77,10 @@ router.post('/materials', student.create);
 //PUT : Edit a student info
 router.put('/materials/:id', student.edit)
 
+//----------------------Regions---------------------------------------
+
+//GET all regions
+router.get('/regions',region.getAllRegions);
 
 
 
