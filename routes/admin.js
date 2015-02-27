@@ -43,6 +43,8 @@ router.get('/slider/new', function(req, res) {
 			}
 		);
 });
+
+
 router.get('/slider/edit/:id', function(req, res) {
 	template(req,res,'admin_main','admin/slider/slider_edit.html',
 			{ 
@@ -128,6 +130,11 @@ router.get('/staff/new', function(req, res) {
 			}
 		);
 });
+
+router.get('/staff/create', function(req, res) {
+	res.render('admin/staff/staff_new.html');
+});
+
 router.get('/staff/edit/:id', function(req, res) {
 
 	template(req,res,'admin_main','admin/staff/staff_edit.html',

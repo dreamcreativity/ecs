@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('staffApp', ['ngRoute','ngResource'])
+angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
 
 
 .controller('StaffCtrl',function StaffCtrl($rootScope,$scope,$http,Staffs,$window){
