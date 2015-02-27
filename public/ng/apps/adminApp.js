@@ -25,9 +25,6 @@ angular.module('adminApp', ['ngResource'])
 	console.log($scope.list);	
 
 
-
-
-
 	$scope.colors = [
 		{ name: 'Grey', code: '#cccccc'},
 		{ name: 'White', code: '#ffffff'},

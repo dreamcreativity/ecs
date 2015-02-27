@@ -5,11 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//---------------------------------------------
-//  create multer for file upload
-//---------------------------------------------
-var multer  = require('multer');
-var done=false;
+
+
 
 
 //---------------------------------------------
@@ -38,6 +35,22 @@ app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+
+
+//---------------------------------------------
+//  create multer for file upload
+//---------------------------------------------
+var multer  = require('multer');
+var done=false;
+
+app.use(multer({
+  dest: './uploads/',
+  rename: function (fieldname, filename) {
+    return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
+  }
+}));
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));

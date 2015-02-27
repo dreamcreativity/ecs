@@ -1,0 +1,243 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/ng/apps/mediaApp.js"></script>
+
+
+<style type="text/css">
+
+
+
+
+#dragandrophandler
+{
+    border: 2px dotted #fff!important;
+    height: 140px;
+    color:#92AAB0;
+    text-align:center;
+    vertical-align:middle;
+    padding:10px 10px 10 10px;
+    margin-bottom:10px;
+    font-size:45px;
+    line-height: 90px;
+}
+
+
+.progress-session{
+    margin: 15px 0!important;
+    border: 1px dotted #BEB6BB;
+    padding: 20px;
+    background-color: rgb(244, 250, 255);
+}
+
+.progress-session .title{
+    font-size: 18px;
+    font-weight: bold;
+    height: 80px;
+    line-height: 80px;
+    overflow:hidden;
+}
+
+.progress-session .contorl{
+    
+    text-align: center;
+    vertical-align: middle;
+    height: 120px;
+    line-height: 120px;
+}
+
+.progress-session .preview{
+    margin: 0 auto;
+    background-color: #ccc;
+    width : 160px!important;
+    height: 120px;
+}
+
+</style>
+
+<div ng-app="mediaApp" ng-controller='uploadController'>
+
+	<div class="well inverse" id="dragandrophandler" upload-Area>
+		Drop Files Here .....
+	</div>
+
+    <div class="jumbotron position-relative bordered white padding-2x">
+        
+        <div class="row progress-session" ng-repeat="file in uploadList">
+
+            <div class="col-md-3">
+                <div class="preview"></div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="title">{{file.file_name}}</div>
+                <div class="progress" data-percent="{{file.complated}}%">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" style="width: {{file.complated}}%">
+                        <span class="sr-only">75% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-3 contorl">
+                <button type="button" class="btn btn-info btn-sm btn-circle" style="text-align: center;" ng-click="sendFileToServer(file)"><i class="fa fa-play icon-only"></i></button>
+                <button type="button" class="btn btn-danger btn-sm btn-circle" ><i class="fa fa-ban icon-only"></i></button>
+            </div>
+
+        </div>        
+    </div>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+/*
+function sendFileToServer(formData,status)
+{
+    var uploadURL ="http://localhost:3000/upload"; //Upload URL
+    var extraData ={var: 'andy'}; //Extra Data.
+    var jqXHR=$.ajax({
+            xhr: function() {
+            var xhrobj = $.ajaxSettings.xhr();
+            if (xhrobj.upload) {
+                    xhrobj.upload.addEventListener('progress', function(event) {
+                        var percent = 0;
+                        var position = event.loaded || event.position;
+                        var total = event.total;
+                        if (event.lengthComputable) {
+                            percent = Math.ceil(position / total * 100);
+                        }
+                        //Set progress
+                        status.setProgress(percent);
+                    }, false);
+                }
+            return xhrobj;
+        },
+    url: uploadURL,
+    type: "POST",
+    contentType:false,
+    processData: false,
+        cache: false,
+        data: formData,
+        success: function(data){
+            status.setProgress(100);
+ 
+            $("#status1").append("File upload Done<br>");         
+        }
+    }); 
+ 
+    status.setAbort(jqXHR);
+}
+ 
+var rowCount=0;
+function createStatusbar(obj)
+{
+     rowCount++;
+     var row="odd";
+     if(rowCount %2 ==0) row ="even";
+     this.statusbar = $("<div class='statusbar "+row+"'></div>");
+     this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
+     this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
+     this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
+     this.abort = $("<div class='abort'>Abort</div>").appendTo(this.statusbar);
+     obj.after(this.statusbar);
+ 
+    this.setFileNameSize = function(name,size)
+    {
+        var sizeStr="";
+        var sizeKB = size/1024;
+        if(parseInt(sizeKB) > 1024)
+        {
+            var sizeMB = sizeKB/1024;
+            sizeStr = sizeMB.toFixed(2)+" MB";
+        }
+        else
+        {
+            sizeStr = sizeKB.toFixed(2)+" KB";
+        }
+ 
+        this.filename.html(name);
+        this.size.html(sizeStr);
+    }
+    this.setProgress = function(progress)
+    {       
+        var progressBarWidth =progress*this.progressBar.width()/ 100;  
+        this.progressBar.find('div').animate({ width: progressBarWidth }, 10).html(progress + "% ");
+        if(parseInt(progress) >= 100)
+        {
+            this.abort.hide();
+        }
+    }
+    this.setAbort = function(jqxhr)
+    {
+        var sb = this.statusbar;
+        this.abort.click(function()
+        {
+            jqxhr.abort();
+            sb.hide();
+        });
+    }
+}
+function handleFileUpload(files,obj)
+{
+   for (var i = 0; i < files.length; i++) 
+   {
+        var fd = new FormData();
+
+        fd.append('file', files[i]);
+        fd.append('var','andy');
+ 
+        var status = new createStatusbar(obj); //Using this we can set progress.
+        status.setFileNameSize(files[i].name,files[i].size);
+        sendFileToServer(fd,status);
+
+        console.log(fd);
+ 
+   }
+}
+
+$(document).ready(function()
+{
+	var obj = $("#dragandrophandler");
+	obj.on('dragenter', function (e) 
+	{
+	    e.stopPropagation();
+	    e.preventDefault();
+	    $(this).css('border', '2px solid #0B85A1');
+	});
+	obj.on('dragover', function (e) 
+	{
+	     e.stopPropagation();
+	     e.preventDefault();
+	});
+	obj.on('drop', function (e) 
+	{
+	 
+	     $(this).css('border', '2px dotted #0B85A1');
+	     e.preventDefault();
+	     var files = e.originalEvent.dataTransfer.files;
+	 
+	     //We need to send dropped files to Server
+	     handleFileUpload(files,obj);
+	});
+	$(document).on('dragenter', function (e) 
+	{
+	    e.stopPropagation();
+	    e.preventDefault();
+	});
+	$(document).on('dragover', function (e) 
+	{
+	  e.stopPropagation();
+	  e.preventDefault();
+	  obj.css('border', '2px dotted #0B85A1');
+	});
+	$(document).on('drop', function (e) 
+	{
+	    e.stopPropagation();
+	    e.preventDefault();
+	});
+	 
+});
+
+*/
+</script>
