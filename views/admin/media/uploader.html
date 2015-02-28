@@ -7,53 +7,11 @@
 
 
 
-#dragandrophandler
-{
-    border: 2px dotted #fff!important;
-    height: 140px;
-    color:#92AAB0;
-    text-align:center;
-    vertical-align:middle;
-    padding:10px 10px 10 10px;
-    margin-bottom:10px;
-    font-size:45px;
-    line-height: 90px;
-}
 
-
-.progress-session{
-    margin: 15px 0!important;
-    border: 1px dotted #BEB6BB;
-    padding: 20px;
-    background-color: rgb(244, 250, 255);
-}
-
-.progress-session .title{
-    font-size: 18px;
-    font-weight: bold;
-    height: 80px;
-    line-height: 80px;
-    overflow:hidden;
-}
-
-.progress-session .contorl{
-    
-    text-align: center;
-    vertical-align: middle;
-    height: 120px;
-    line-height: 120px;
-}
-
-.progress-session .preview{
-    margin: 0 auto;
-    background-color: #ccc;
-    width : 160px!important;
-    height: 120px;
-}
 
 </style>
 
-<div ng-app="mediaApp" ng-controller='uploadController'>
+<div ng-app="mediaApp" ng-controller='uploadController' id="media-uploader">
 
 	<div class="well inverse" id="dragandrophandler" upload-Area>
 		Drop Files Here .....
@@ -61,13 +19,13 @@
 
     <div class="jumbotron position-relative bordered white padding-2x">
         
-        <div class="row progress-session" ng-repeat="file in uploadList">
+        <div class="row progress-session" ng-repeat="file in uploadList | orderBy: '-order' ">
 
             <div class="col-md-3">
                 <div class="preview"></div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="title">{{file.file_name}}</div>
                 <div class="progress" data-percent="{{file.complated}}%">
                     <div class="progress-bar progress-bar-primary" role="progressbar" style="width: {{file.complated}}%">
@@ -75,11 +33,27 @@
                     </div>
                 </div>
             </div>
-
-            
-            <div class="col-md-3 contorl">
-                <button type="button" class="btn btn-info btn-sm btn-circle" style="text-align: center;" ng-click="sendFileToServer(file)"><i class="fa fa-play icon-only"></i></button>
-                <button type="button" class="btn btn-danger btn-sm btn-circle" ><i class="fa fa-ban icon-only"></i></button>
+            <div class="col-md-4 contorl">
+                <div class="col-xs-4 col-md-12  media-action-row">
+                    <div class="col-xs-3"><label class="control-label">Title</label></div>
+                    <div class="col-xs-9"><input type="text" class="form-control" placeholder="Title name for this media" ng-model="file.title" ></div>
+                </div>
+                <div class="col-xs-4 col-md-12  media-action-row">
+                    <div class="col-xs-3"><label class="control-label">Target</label></div>
+                    <div class="col-xs-9">
+                        <select class="form-control" ng-model="file.target" >
+                            <option value="Slider">Slider</option>
+                            <option value="Gallery">Gallery</option>
+                            <option value="Page">Page</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md-12  media-action-row">
+                    <button run-Button file-Data="file" add="sendFileToServer(file)" type="button" class="btn btn-info btn-circle btn-line tooltip-success" data-placement="top" data-rel="tooltip" title="" data-original-title="Start Upload" ng-class="{ 'disalbed' : true " ><i class="fa fa-play icon-only"></i></button>
+                    <button delete-Button file-Data="file" type="button" class="btn btn-danger btn-circle btn-line" ><i class="fa fa-times icon-only" title="" data-original-title="Remove From List" ></i></button>       
+                </div>
+                
+              
             </div>
 
         </div>        

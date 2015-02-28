@@ -5,13 +5,7 @@ angular.module('mediaApp', [])
 .controller('uploadController',function uploadController($rootScope,$scope,$location,$http,$window){
 
 	$scope.uploadList = [];
-
-
-
-
-	 
-
-
+	$scope.order = 0;
 	
 	$scope.createStatusbar =  function (obj)
 	{
@@ -91,11 +85,13 @@ angular.module('mediaApp', [])
 	$scope.sendFileToServer = function (fileObj)
 	{
 
+		console.log(fileObj);
 		fileObj.formData = new FormData();
 		
 	    fileObj.formData.append('file', fileObj.obj);
 	    fileObj.formData.append('target', fileObj.target );
-	 
+	 	fileObj.formData.append('title', fileObj.title );
+	 	fileObj.formData.append('type', fileObj.type );
 		
 
 	    var uploadURL ="http://localhost:3000/upload"; //Upload URL
@@ -141,21 +137,25 @@ angular.module('mediaApp', [])
 
 	$scope.addFileToList = function(file){
 
-		console.log('---- add file ------');
-		console.log(file);
+		// console.log('---- add file ------');
+		// console.log(file);
+		$scope.order++; 
 
 		var newUploadItem = {
+			order: $scope.order,
 			obj: file,
 			file_name: file.name,
 			size: file.size,
 			complated: 0,
+			title: 'Untitled',
 			target: 'Slider',
 			type: '',
+			status: 'pending',
 			jqXHR: null,
 			formData: null
 
 		};
-
+		console.log(newUploadItem);
 
 		$scope.uploadList.push(newUploadItem);
 	}
@@ -164,10 +164,59 @@ angular.module('mediaApp', [])
 
 })
 
+.directive('runButton', function() {
+  return {
+  	restrict: 'A',
+  	scope: {
+	    fileData: '=',
+	    add: '&'
+	},
+  	link: function (scope, element, attrs) {
 
+  			element.on('click', function (e) 
+			{
+				if(scope.fileData.status == 'pending'){
+					$(this).find('i').removeClass('fa-play').addClass('fa-ban');
+					scope.fileData.status = 'uploading';
+	
+					scope.add();
+				}else if (scope.fileData.status == 'uploading'){
+					console.log('abort');
+					scope.fileData.jqXHR.abort();
+					element.addClass('disabled');
+				}
+			    
+			    //$(this).prop('disabled', true);		
+			});
+			
+        }
+  };
+})
+
+.directive('deleteButton', function() {
+  return {
+  	restrict: 'AEC',
+  	scope: {
+	    fileData: '=',
+	    uploadList: '='
+	},
+  	link: function (scope, element, attrs) {
+
+  			element.on('click', function (e) 
+			{
+				console.log(scope.$parent.uploadList);
+				scope.$parent.uploadList.splice(0, true);
+				console.log(scope.$parent.uploadList);
+				scope.$parent.$apply();
+			});
+			
+        }
+  };
+})
 
 .directive('uploadArea', function() {
   return {
+
   	link: function (scope, element, attrs) {
 
 			//var obj = $("#dragandrophandler");

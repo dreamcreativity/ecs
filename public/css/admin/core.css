@@ -64,3 +64,99 @@
 .slider-position .tap.select p{
 	background-color: #ADADAD;
 }
+
+/*-----------------------------------	
+	css for mediauploader
+-------------------------------------
+*/
+
+#media-uploader #dragandrophandler
+{
+    border: 2px dotted #fff!important;
+    height: 140px;
+    color:#92AAB0;
+    text-align:center;
+    vertical-align:middle;
+    padding:10px 10px 10 10px;
+    margin-bottom:10px;
+    font-size:45px;
+    line-height: 90px;
+}
+
+
+#media-uploader .progress-session{
+    margin: 15px 0!important;
+    border: 1px dotted #BEB6BB;
+    padding: 20px;
+    background-color: rgb(244, 250, 255);
+}
+
+#media-uploader .progress-session .title{
+    font-size: 18px;
+    font-weight: bold;
+    height: 80px;
+    line-height: 80px;
+    overflow:hidden;
+}
+
+#media-uploader .progress-session .contorl{
+    
+    text-align: center;
+    
+/*    vertical-align: middle;
+    height: 120px;
+    line-height: 120px;*/
+}
+
+#media-uploader .progress-session .preview{
+    margin: 0 auto;
+    background-color: #ccc;
+    width : 160px!important;
+    height: 120px;
+}
+
+
+#media-uploader .fa{
+	margin-left: 2px; 
+}
+
+
+
+#media-uploader .media-action-row{
+	height: 50px;
+}
+
+
+#media-uploader .inline{
+	display: inline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
