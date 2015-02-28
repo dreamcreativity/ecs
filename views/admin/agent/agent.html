@@ -1,5 +1,5 @@
 <div class="row" ng-app='agentApp' ng-controller='AgentCtrl'>
-	<div class="col-lg-12">
+	<!-- <div class="col-lg-12">
 		<div class="portlet">
 		 <div class="right"><input type="text" name="search" placeholder="Search" ng-model="query"></div>
 			<div class="portlet-heading dark">
@@ -11,7 +11,7 @@
 					<span class="divider"></span>
 					<a href="#" class="box-close"><i class="fa fa-times"></i></a>
 				</div>
-				<div class="clearfix"></div>
+				<div class="clearfix"></div>+
 			</div>
 			<div id="basic" class="panel-collapse collapse in">
 				<div class="portlet-body no-padding">
@@ -28,7 +28,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="agent in agents.data | filter:query">
-								<td class="hidden-xs">{{agent.firstname}} {{agent.lastname}}</td>
+								<td class="hidden-xs"><a href="/admin/agent/{{agent._id}}">{{agent.firstname}} {{agent.lastname}}</td>
 								<td class="hidden-xs">{{agent.email}}</td>
 								<td class="hidden-xs">{{agent.workphone}}</td>
 								<td class="hidden-xs">{{agent.cellphone}}</td>
@@ -37,7 +37,7 @@
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
-										<a href="/admin/agent/edit/{{agent._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+										<a href="/admin/agent/{{agent._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
 									</div>	
 								</td>
 							</tr>
@@ -57,7 +57,77 @@
 			</div>
 		</div>
 
+	</div> -->
+<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Staffs<small class="text-white"></small></h4>
+				</div>
+				<div class="portlet-widgets">
+					<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+					<span class="divider"></span>
+					<a href="#" class="box-close"><i class="fa fa-times"></i></a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<tr>
+								<th class="hidden-xs">Name</th>
+								<th class="hidden-xs">Email</th>
+								<th class="hidden-xs">Work Phone</th>
+								<th class="hidden-xs">Cell Phone</th>
+								<th class="hidden-xs">Status</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="agent in agents.data | filter:query">
+								<td class="hidden-xs"><a href="/admin/agent/detail/{{agent._id}}">{{agent.firstname}} {{agent.lastname}}</td>
+								<td class="hidden-xs">{{agent.email}}</td>
+								<td class="hidden-xs">{{agent.workphone}}</td>
+								<td class="hidden-xs">{{agent.cellphone}}</td>
+								<td><span ng-if="agent.isQuit == 1" class="label label-danger">Deleted</span>
+								<span ng-if="agent.isQuit == 0" class="label label-active">Active</span>
+								</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/agent/detail/{{agent._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>					 
+		</div>
+		<button class="col-md-1 btn btn-sm btn-primary"
+					ng-bootbox-title="A new staff"
+					ng-bootbox-custom-dialog
+					ng-bootbox-custom-dialog-template="create">
+					Create
+				</button>
 	</div>
+
 </div>	 			
+
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
+
+
+
+
+
+
 
 

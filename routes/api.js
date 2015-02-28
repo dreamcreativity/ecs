@@ -52,6 +52,9 @@ router.get('/student/studentID/:student_id', student.getStudentbyStudentId);
 //GET a student by ID
 router.get('/student/:id', student.getStudentbyId);
 
+//GET students by Agent ID
+router.get('/student/agent/:id',student.getStudentbyAgentId);
+
 //POST : create a student record
 router.post('/student', student.create);
 
@@ -65,6 +68,14 @@ router.get('/agent',agent.getAgents);
 
 //GET a agent by ID
 router.get('/agent/:id', agent.getAgentbyId);
+
+//GET a agent by ID
+router.put('/agent/:id', agent.edit);
+
+router.post('/agent', agent.create);
+
+//GET agents by region
+router.get('/agent/region/:name', agent.getAgentsbyRegion)
 
 //-----------------------Materials ----------------------------------
 

@@ -18,6 +18,7 @@
 					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
 						<thead>
 							<tr>
+								<th class="hidden-xs">Username</th>
 								<th class="hidden-xs">First Name</th>
 								<th class="hidden-xs">Last Name</th>
 								<th class="hidden-xs">Work Phone</th>
@@ -29,6 +30,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="staff in staffs.data | filter:query">
+							<td class="hidden-xs">{{staff.username}}</td>
 								<td><a href="/admin/staff/detail/{{staff._id}}">{{staff.firstname}}</a></td>
 								<td class="hidden-xs"><a href="/admin/staff/detail/{{staff._id}}">{{staff.lastname}}</a></td>
 								<td class="hidden-xs">{{staff.workphone}}</td>
@@ -39,7 +41,7 @@
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
-										<a href="/admin/staff/edit/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+										<a href="/admin/staff/detail/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
 									</div>	
 								</td>
 							</tr>
@@ -47,18 +49,17 @@
 						</tbody>
 
 					</table>
-
-					<button class="btn btn-s btn-danger"
+				</div>
+			</div>					 
+		</div>
+		<button class="col-md-1 btn btn-sm btn-primary"
 					ng-bootbox-title="A new staff"
 					ng-bootbox-custom-dialog
-					ng-bootbox-custom-dialog-template="create">
+					ng-bootbox-custom-dialog-template="create">  <!-- Note : /admin/staff/create -->
 					Create
 				</button>
 
-				</div>
-			</div>					 
 
-		</div>
 	</div>
 </div>
 
@@ -76,28 +77,28 @@ $.get( "/admin/staff/create", function( data ) {
   form = data
 });
 
-		$("#create_staff").click(function(){
-			var div = bootbox.dialog({
-				message: form,
+		// $("#create_staff").click(function(){
+		// 	var div = bootbox.dialog({
+		// 		message: form,
 			
-				buttons: {
-					"delete" : {
-						"label" : "<i class='fa fa-trash-o'></i>Delete Event",
-						"className" : "btn-sm btn-danger",
-						"callback": function() {
-							console.log("callback");
-						}
-					} ,
-					"close" : {
-						"label" : "<i class='fa fa-times'></i>Close",
-						"className" : "btn-sm btn-inverse"
-					} 
-				}
+		// 		buttons: {
+		// 			"delete" : {
+		// 				"label" : "<i class='fa fa-trash-o'></i>Delete Event",
+		// 				"className" : "btn-sm btn-danger",
+		// 				"callback": function() {
+		// 					console.log("callback");
+		// 				}
+		// 			} ,
+		// 			"close" : {
+		// 				"label" : "<i class='fa fa-times'></i>Close",
+		// 				"className" : "btn-sm btn-inverse"
+		// 			} 
+		// 		}
 				
 
-			});
+		// 	});
 			
-		});
+		// });
 
 });
 

@@ -71,6 +71,30 @@ exports.getAgentbyId = function(req,res){
 	});
 }
 
+//GET: agents by region name
+
+exports.getAgentsbyRegion = function(req,res){
+	var regionName = req.params.name;
+	Agent.find({region:regionName}, function(err, result){
+		if(err){
+			res.json(
+			{
+				status: 'fail',
+				messages: err,
+				data: null
+			});			
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});	
+		}	
+		
+	});
+}
+
 
 //PUT: 
 exports.edit = function(req,res){

@@ -119,18 +119,6 @@ router.get('/staff/detail/:id', function(req, res) {
 		);
 });
 
-
-router.get('/staff/new', function(req, res) {
-	template(req,res,'admin_main','admin/staff/staff_new.html',
-			{ 
-				title: 'New Staff',
-				category: 'Management',
-				cur_tap: 'Staff',
-				cur_selected : 'New Staff'
-			}
-		);
-});
-
 router.get('/staff/create', function(req, res) {
 	res.render('admin/staff/staff_new.html');
 });
@@ -213,8 +201,8 @@ router.get('/agent/all', function(req, res) {
 		);
 });
 
-router.get('/agent/:id', function(req, res) {
-	template(req,res,'admin_main','admin/agent/agent_detail.html',
+router.get('/agent/detail/:id', function(req, res) {
+	template(req,res,'admin_main','admin/agent/detail.html',
 			{ 
 				title: 'Agent',
 				category: 'Management',
@@ -225,17 +213,10 @@ router.get('/agent/:id', function(req, res) {
 		);
 });
 
-// router.get('/agent/new', function(req, res) {
-// 	template(req,res,'admin_main','admin/agent/agent_create.html',
-// 			{ 
-// 				title: 'New Agent',
-// 				category: 'Management',
-// 				cur_tap: 'Agent',
-// 				cur_selected : 'New Agent',
-// 				url_params : req.params
-// 			}
-// 		);
-// });
+
+router.get('/agent/create', function(req, res) {
+	res.render('admin/agent/agent_new.html');
+});
 
 
 

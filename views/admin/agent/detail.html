@@ -2,55 +2,52 @@
 	var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
-<div class="row" ng-app='staffApp' ng-controller='DetailCtrl'>
+<div class="row" ng-app='agentApp' ng-controller='AgentDetailCtrl'>
 	<div class="col-lg-12 col-md-12">
 		<div class="tc-tabs"><!-- Nav tabs style 1 -->
 			<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
 				<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Overview</a></li>
 				<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Edit Account</a></li>
 			</ul>
+
 			<!-- Tab panes -->
 			<div class="tab-content">
-				<div class="tab-pane fade in active" id="p1">
+			<div class="tab-pane fade in active" id="p1">
 					<div class="row">													
 						<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
 							<div class="portlet no-border">
 								<div class="portlet-heading">
 									<div class="portlet-title">
-										<h2>{{staff.firstname}} {{staff.lastname}}</h2>
+										<h2>{{agent.firstname}} {{agent.lastname}}</h2>
 									</div>
 									<div class="clearfix"></div>
 								</div>
 								<div class="portlet-body">
-									<div class="editable" id="profile"><strong>Work</strong> : {{staff.workphone}}</div>
+								<div class="editable" id="profile"><strong>Company</strong> : {{agent.company}}</div>
 									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Cell</strong> : {{staff.cellphone}}</div>
+									<div class="editable" id="profile"><strong>Work</strong> : {{agent.workphone}}</div>
 									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Email</strong> :{{staff.email}}</div>
+									<div class="editable" id="profile"><strong>Cell</strong> : {{agent.cellphone}}</div>
 									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Last Login</strong> : {{staff.lastLoginDateTime  | date:'MMM dd yyyy h:mma'}}</div>
+									<div class="editable" id="profile"><strong>Email</strong> :{{agent.email}}</div>
 
 									<div class="space-4"></div>
 
 									<ul class="list-inline well well-sm">
-										<li><i class="fa fa-flag bigger-110"></i> <a href="#" id="country" data-value="US" class="editable">{{staff.region}}</a></li>
-										<li><i class="fa fa-calendar bigger-110"></i> <a href="#" id="dob" class="editable">28th March, 2014</a></li>
+										<li><i class="fa fa-flag bigger-110"></i> <a href="#" id="country" data-value="US" class="editable">{{agent.region}}</a></li>
 										
 									</ul>
 								</div>
 							</div>
 						</div>
-
-
 				
 					</div>
-
 					<div class="row">
 						<div class="col-md-12">
 							<div class="portlet no-border-bottom">
 								<div class="portlet-heading dark">
 									<div class="portlet-title">
-										<h4><i class="fa fa-rss"></i> Recent Agents</h4>
+										<h4><i class="fa fa-rss"></i> Students under the Agent</h4>
 									</div>
 									<div class="portlet-widgets">
 										<a href="javascript:;"><i class="fa fa-refresh"></i></a>
@@ -61,12 +58,9 @@
 								</div>
 								<div class="portlet-body no-padding">
 									<ul class="lists">
-										<li ng-repeat="agent in agents">
-											<span class="col-sm-1">{{agent.company}}</span>
-											<span class="col-sm-2 icons glyphicon glyphicon-user"> {{agent.firstname}} {{agent.lastname}}</span>
-											<span class="col-sm-2 icons glyphicon glyphicon-phone-alt"> {{agent.workphone}}</span>
-											<span class="col-sm-2 icons glyphicon glyphicon-phone"> {{agent.workphone}}</span>
-											<span class="col-sm-2 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
+										<li ng-repeat="student in students">
+											<span class="col-sm-1">{{student.student_id}}</span>
+											<span class="col-sm-2 icons glyphicon glyphicon-user"> {{student.firstname}} {{student.lastname}}</span>
 									</ul>
 								</div>
 							</div>
@@ -75,36 +69,26 @@
 							<div class="action-buttons">
 								<a href="#"><i class="fa fa-search-plus"></i> View all</a>
 							</div>
+
 						</div>
-					</div>		
-					
+					</div>			
 				</div>
-				<div class="tab-pane fade" id="p2" ng-controller='StaffEditCtrl'>
-					<h2>Account details</h2>
+
+			<div class="tab-pane fade" id="p2">
+					<h2>Agent details</h2>
 					<div class="hr hr-12 hr-double"></div>
 					<form name="loginForm" class="form-horizontal" role="form" ng-submit="update(loginForm.$valid)" novalidate>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Username</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="username" ng-model="staff.username" value="{{staff.username}}"required disabled="disabled">
+								<input type="text" class="form-control" name="username" ng-model="agent.username" value="{{agent.username}}"required disabled="disabled">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-sm-3 control-label">Role</label>
-							<div class="col-sm-3">
-								<select name="role" ng-model="staff.role" class="form-control" required>
-									<option value="Administrator">Administrator</option>
-									<option value="Supervise">Supervise</option>
-									<option value="Staff" selected>Staff</option>
-								</select>
-								<p ng-show="loginForm.role.$invalid && !loginForm.role.$pristine" class="help-block">role is required</p>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-sm-3 control-label">Region</label>
 							<div class="col-sm-3">
-								<select name="region" ng-model="staff.region" class="form-control" required>
+								<select name="region" ng-model="agent.region" class="form-control" required>
 									<option value="Korea">Korea</option>
 									<option value="China">China</option>
 								</select>
@@ -114,21 +98,21 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">First Name:</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" value="{{staff.firstname}}"required>
+								<input type="text" class="form-control" name="firstname" ng-model="agent.firstname" value="{{agent.firstname}}"required>
 								<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block">first name is required</p>	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Last Name:</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
+								<input type="text" class="form-control" name="lastname" ng-model="agent.lastname" required>
 								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block">last name is required</p>	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Work phone:</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
+								<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="agent.workphone" required>
 								<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block">work phone is required</p>	
 								<p ng-show="loginForm.workphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
 							</div>
@@ -136,7 +120,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Cell phone:</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
+								<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="agent.cellphone" required>
 								<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block">cellphone is required</p>	
 								<p ng-show="loginForm.cellphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
 							</div>
@@ -146,7 +130,7 @@
 							<div class="col-sm-4">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="email" class="form-control" name="email" ng-model="staff.email" required>
+									<input type="email" class="form-control" name="email" ng-model="agent.email" required>
 								</div>
 								<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">email is invalid</p>
 							</div>
@@ -158,7 +142,7 @@
 							<div class="col-sm-3">
 								<div class="tcb">
 									<label>
-										<input type="checkbox" ng-model="staff.isDelete" class="tc">
+										<input type="checkbox" ng-model="agent.isDelete" class="tc">
 										<span class="labels"> Delete</span>
 									</label>
 								</div>
@@ -176,11 +160,8 @@
 					</form>
 				</div>
 
-				<div class="tab-pane fade" id="p3">
-					Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
-				</div>
 			</div>
-			<a href="/admin/staff/all"class="col-md-1 btn btn-sm btn-primary">Back</a>
+			<a href="/admin/agent/all"class="col-md-1 btn btn-sm btn-primary">Back</a>
 		</div><!--nav-tabs style 1-->
 	</div>
 </div>		

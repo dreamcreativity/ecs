@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('agentApp', ['ngRoute','ngResource'])
+angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
 
 
 .controller('AgentCtrl',function AgentCtrl($rootScope,$scope,$http,Agents,$window){
-
 	 $scope.agents = getAllAgents();
+	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
  	function getAllAgents(){
  		return Agents.query();
@@ -23,22 +23,27 @@ angular.module('agentApp', ['ngRoute','ngResource'])
 
 
 
-.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,$window){
+.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,$window){
 	 var agent_id = url_params.id;
 
 	 if(agent_id !=null){
 	 	Agents.get({id:agent_id}, function(result){
 	 		$scope.agent = result.data;
+
+	 		Students.get({agent_id : $scope.agent._id}, function(result){
+	 			$scope.students = result.data;
+	 		});
 	 	});
 	 	
 	 }
-	 // $scope.create = function(isValid){
-	 // 	Agents.save($scope.student,function(result){
-	 // 		    var message = result.messages;	    
-	 // 		    $rootScope.returnMessage = message;
-	 // 			$window.location='/admin/student/all';
- 	// 	})
-	 // }
+
+	 $scope.update = function(isValid) {
+	 	Agents.update($scope.agent, function(result){
+	 			var message = result.messages;	    
+	 		    $rootScope.returnMessage = message;
+	 			$window.location='/admin/agent/'+ agent_id;
+	 	})
+	 }
 
 
 })
@@ -49,4 +54,14 @@ angular.module('agentApp', ['ngRoute','ngResource'])
 		query:{ method: 'GET'},
 		update : { method : 'PUT', params: {id:'@_id'}}
 	});
-}]);
+}])
+
+.factory('Students',['$resource',
+	function($resource){
+		return $resource('http://localhost:3000/api/student/agent/:agent_id', {}, {
+		query:{ method: 'GET'},
+	});
+}])
+
+
+;
