@@ -132,8 +132,16 @@
 }
 
 
+#media-list .media-filters div{
+	margin-bottom: 20px;
+}
+#media-list .media-filters label{
+	width: 25%
+}
 
-
+#media-list .media-filters select,input{
+	width: 70%
+}
 
 
 

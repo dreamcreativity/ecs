@@ -17,6 +17,11 @@
 		Drop Files Here .....
 	</div>
 
+    <div class="jumbotron position-relative bordered white padding-2x" ng-show="uploadList.length != 0">
+        <a class="btn btn-app" ng-click="startAll()"><i class="fa fa-play"></i>Start All</a>
+        <a class="btn btn-app"><i class="fa fa-ban"></i>Pause</a>
+        <a class="btn btn-app"><i class="fa fa-times"></i>Clear List</a>
+    </div>
     <div class="jumbotron position-relative bordered white padding-2x">
         
         <div class="row progress-session" ng-repeat="file in uploadList | orderBy: '-order' ">

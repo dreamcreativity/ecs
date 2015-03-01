@@ -8,6 +8,21 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	$scope.uploadList = [];
 	$scope.order = 0;
 	
+
+	$scope.startAll = function(){
+
+		for (var x in $scope.uploadList) {
+
+			var file = $scope.uploadList[x];
+			
+			if(file.status == 'pending'){
+				file.status = 'uploading';
+				scope.sendFileToServer(file);
+			}			
+		};
+			    
+	}
+
 	$scope.createStatusbar =  function (obj)
 	{
 	     rowCount++;

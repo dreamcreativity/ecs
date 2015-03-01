@@ -19,18 +19,26 @@ exports.upload = function(req,res){
 
     	newMedia.title = req.body.title;
     	newMedia.size = req.files.file.size;
-    	var newPath = 'public/uploads/' +  req.files.file.originalname;
-    	console.log(req.files.file.path);
-    	console.log(newPath);
+ 
+    	newMedia.target = req.body.target;
+    	newMedia.type = req.files.file.extension.toLowerCase();
+
+    	var subPath = '';
+    	if(newMedia.target == 'Slider'){
+
+    	}else if (newMedia.target == 'Gallery'){
+
+    	}else if (newMedia.target == 'Material'){
+
+    	}else{
+
+    	}
+   		var newPath = 'public/uploads/' +  req.files.file.originalname;
+
     	mv(req.files.file.path, newPath,function(err){
     		console.log(err);
     	});
     	newMedia.path = '/uploads/' +  req.files.file.originalname;
-    	newMedia.target = req.body.target;
-    	newMedia.type = req.files.file.extension.toLowerCase();
-
-    	
-
 
 	    newMedia.save(function(err,result){
 			if(err){
