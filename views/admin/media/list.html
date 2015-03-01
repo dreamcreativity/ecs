@@ -1,0 +1,122 @@
+<script src="/ng/apps/mediaApp.js"></script>
+<div class="row" ng-app='mediaApp' ng-controller='ListController'>
+	<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Staffs<small class="text-white"></small></h4>
+				</div>
+				<div class="portlet-widgets">
+					<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+					<span class="divider"></span>
+					<a href="#" class="box-close"><i class="fa fa-times"></i></a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<th class="hidden-xs">Preview</th>
+								<th class="hidden-xs">Title</th>
+								<th class="hidden-xs">Target</th>
+								<th class="hidden-xs">Type</th>
+								<th class="hidden-xs">Size</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="m in medias.data">
+								<td class="hidden-xs">
+
+									<video width="300" src="{{m.path}}" controls ng-show="m.type=='mp4'">
+									  Your browser does not support the <code>video</code> element.
+									</video>
+									<!-- <img width=300 src="https://www.google.ca/images/srpr/logo11w.png" ng-show="m.type=='jpg'" > -->
+									<img height=150 src="{{m.path}}" ng-show="m.type=='jpg'">
+							
+								</td>
+								<td class="hidden-xs">{{m.title}}</td>
+								
+								<td class="hidden-xs">{{m.target}}</td>
+								<td class="hidden-xs">{{m.type}}</td>
+								<td class="hidden-xs">{{m.size}}</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/staff/detail/{{m._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+				</div>
+			</div>					 
+		</div>
+		<button class="col-md-1 btn btn-sm btn-primary"
+			ng-bootbox-title="A new staff"
+			ng-bootbox-custom-dialog
+			ng-bootbox-custom-dialog-template="create">  <!-- Note : /admin/staff/create -->
+			Create
+		</button>
+
+		<A HREF="#" ng-click="showList()">show list</A>
+
+
+	</div>
+</div>
+
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
+<script>
+
+// $(document).ready(function() {
+// 		var form = null;
+// $.get( "/admin/staff/create", function( data ) {
+//   form = data
+// });
+
+// 		// $("#create_staff").click(function(){
+// 		// 	var div = bootbox.dialog({
+// 		// 		message: form,
+			
+// 		// 		buttons: {
+// 		// 			"delete" : {
+// 		// 				"label" : "<i class='fa fa-trash-o'></i>Delete Event",
+// 		// 				"className" : "btn-sm btn-danger",
+// 		// 				"callback": function() {
+// 		// 					console.log("callback");
+// 		// 				}
+// 		// 			} ,
+// 		// 			"close" : {
+// 		// 				"label" : "<i class='fa fa-times'></i>Close",
+// 		// 				"className" : "btn-sm btn-inverse"
+// 		// 			} 
+// 		// 		}
+				
+
+// 		// 	});
+			
+// 		// });
+
+// });
+
+	//for tables checkbox demo
+	jQuery(function($) {
+		$('table th input:checkbox').on('click' , function(){
+			var that = this;
+			$(this).closest('table').find('tr > td:first-child input:checkbox')
+			.each(function(){
+				this.checked = that.checked;
+				$(this).closest('tr').toggleClass('selected');
+			});
+			
+		});
+	});
+	</script>

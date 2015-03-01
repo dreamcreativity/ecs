@@ -434,9 +434,16 @@
 							<li>
 								<h4>Media</h4> 								
 							</li>
+							<li class="panel">
+								<a href="/admin/media/uploader"  >
+									<i class="fa fa-film"></i> Media Uploader 
+								</a>
+						
+							</li>
+
 							<li class="panel <%if(parms.cur_tap=='Media Uploader'){ %>open<% } %>">
-								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#Media">
-									<i class="fa fa-film"></i> Media Uploader <span class="fa arrow"></span>
+								<a href="/admin/media/" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#Media">
+									<i class="fa fa-film"></i> Medias <span class="fa arrow"></span>
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Media Uploader'){ %>in<%}%> nav" id="Media">
 										<li>
@@ -445,8 +452,8 @@
 											</a>
 										</li>
 										<li>
-											<a href="/admin/media/editor" class="<%if(parms.cur_selected=='Editor'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Edit Media
+											<a href="/admin/media/" class="<%if(parms.cur_selected=='Editor'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Medias
 											</a>
 										</li>										
 									</ul>

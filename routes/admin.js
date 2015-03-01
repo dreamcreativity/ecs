@@ -84,6 +84,17 @@ router.get('/media/uploader', function(req, res) {
 		);
 });
 
+router.get('/media/', function(req, res) {
+	template(req,res,'admin_main','admin/media/list.html',
+			{ 
+				title: 'Medias',
+				category: 'Medias',
+				cur_tap: 'Media',
+				cur_selected : 'List'
+			}
+		);
+});
+
 router.get('/media/editor', function(req, res) {
 	template(req,res,'admin_main','admin/media/editor.html',
 			{ 
@@ -95,6 +106,11 @@ router.get('/media/editor', function(req, res) {
 		);
 });
 
+
+/*---------------------------------------
+	Staff
+/----------------------------------------
+*/
 
 router.get('/staff/all', function(req, res) {
 	template(req,res,'admin_main','admin/staff/staffs.html',

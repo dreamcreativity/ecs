@@ -72,46 +72,47 @@
 <script>
 
 $(document).ready(function() {
-		var form = null;
-$.get( "/admin/staff/create", function( data ) {
-  form = data
-});
-
-		// $("#create_staff").click(function(){
-		// 	var div = bootbox.dialog({
-		// 		message: form,
-			
-		// 		buttons: {
-		// 			"delete" : {
-		// 				"label" : "<i class='fa fa-trash-o'></i>Delete Event",
-		// 				"className" : "btn-sm btn-danger",
-		// 				"callback": function() {
-		// 					console.log("callback");
-		// 				}
-		// 			} ,
-		// 			"close" : {
-		// 				"label" : "<i class='fa fa-times'></i>Close",
-		// 				"className" : "btn-sm btn-inverse"
-		// 			} 
-		// 		}
-				
-
-		// 	});
-			
-		// });
-
-});
-
-	//for tables checkbox demo
-	jQuery(function($) {
-		$('table th input:checkbox').on('click' , function(){
-			var that = this;
-			$(this).closest('table').find('tr > td:first-child input:checkbox')
-			.each(function(){
-				this.checked = that.checked;
-				$(this).closest('tr').toggleClass('selected');
-			});
-			
-		});
+	
+	var form = null;
+	$.get( "/admin/staff/create", function( data ) {
+	  form = data
 	});
-	</script>
+
+	// $("#create_staff").click(function(){
+	// 	var div = bootbox.dialog({
+	// 		message: form,
+		
+	// 		buttons: {
+	// 			"delete" : {
+	// 				"label" : "<i class='fa fa-trash-o'></i>Delete Event",
+	// 				"className" : "btn-sm btn-danger",
+	// 				"callback": function() {
+	// 					console.log("callback");
+	// 				}
+	// 			} ,
+	// 			"close" : {
+	// 				"label" : "<i class='fa fa-times'></i>Close",
+	// 				"className" : "btn-sm btn-inverse"
+	// 			} 
+	// 		}
+			
+
+	// 	});
+		
+	// });
+
+});
+
+//for tables checkbox demo
+jQuery(function($) {
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox')
+		.each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+		
+	});
+});
+</script>

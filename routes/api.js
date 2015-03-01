@@ -6,7 +6,7 @@ var agent =require('../controllers/agent');
 var material = require('../controllers/material');
 var slider =require('../controllers/slider');
 var region = require('../controllers/region');
-
+var media = require('../controllers/media');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -17,6 +17,13 @@ router.get('/', function(req, res) {
 });
 
 
+
+//------------------------- Media Center ----------------------------------
+
+router.post('/media/upload', media.upload);
+router.get('/media/', media.all);
+router.get('/media/:id', media.get);
+//router.put('/media/:id', media.edit);
 
 //-------------------------Slider----------------------------------
 router.post('/slider', slider.create);

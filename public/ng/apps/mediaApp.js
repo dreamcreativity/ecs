@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('mediaApp', [])
+angular.module('mediaApp', ['ngResource', 'ngBootbox'])
+
 
 .controller('uploadController',function uploadController($rootScope,$scope,$location,$http,$window){
 
@@ -94,7 +95,7 @@ angular.module('mediaApp', [])
 	 	fileObj.formData.append('type', fileObj.type );
 		
 
-	    var uploadURL ="http://localhost:3000/upload"; //Upload URL
+	    var uploadURL ="/api/media/upload"; //Upload URL
 	    var extraData ={}; //Extra Data.
 	    var jqXHR=$.ajax({
 	            xhr: function() {
@@ -279,5 +280,40 @@ angular.module('mediaApp', [])
             });
         }
   };
-});
+})
+
+
+
+.controller('ListController',function ListController($scope,$location,$http,Medias,$window){
+
+	//var token = sessionStorage.token;
+	$scope.medias = Medias.query();
+
+	// $scope.medias = [
+	// 	{ title: 'test 1' },
+	// 	{ title: 'test 2' },
+	// 	{ title: 'test 3' },
+	// 	{ title: 'test 4' }
+	// ];
+
+	$scope.showList = function (){
+		//console.log($scope.medias);
+		console.log('hello');
+	}
+
+	
+})
+
+.factory('Medias',['$resource',
+	function($resource){
+		return $resource('http://localhost:3000/api/media/:id', {}, {
+		query:{ method: 'GET'},
+		get : { method : 'GET', params: {id:'@_id'}}
+		//update : { method : 'PUT', params: {id:'@_id'}}
+	});
+}]);
+
+
+
+
 
