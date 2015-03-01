@@ -30,6 +30,9 @@ angular.module('loginApp', ['ngRoute'])
 	};
 })
 
+
+
+
 .factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {

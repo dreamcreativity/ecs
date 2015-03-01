@@ -191,6 +191,14 @@ router.get('/student/all', function(req, res) {
 		);
 });
 
+router.get('/student/create', function(req, res) {
+	res.render('admin/student/student_new.html');
+});
+
+router.get('/student/agent/create', function(req,res){
+	res.render('admin/student/studentbyAgent_new.html');
+})
+
 router.get('/student/edit/:id', function(req, res) {
 
 	template(req,res,'admin_main','admin/student/student_edit.html',

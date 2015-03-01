@@ -23,7 +23,7 @@ angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
 
 
 
-.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,$window){
+.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,$window){
 	 var agent_id = url_params.id;
 
 	 if(agent_id !=null){
@@ -41,8 +41,17 @@ angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
 	 	Agents.update($scope.agent, function(result){
 	 			var message = result.messages;	    
 	 		    $rootScope.returnMessage = message;
-	 			$window.location='/admin/agent/'+ agent_id;
+	 			$window.location='/admin/agent/detail/'+ agent_id;
 	 	})
+	 }
+
+	 $scope.createStudent = function(isValid){
+	 	$scope.student.agent_id = agent_id;
+	 	StudentByAgent.save($scope.student,function(result){
+	 		    var message = result.messages;	    
+	 		    $rootScope.returnMessage = message;
+	 			$window.location='/admin/agent/detail/'+ agent_id;
+ 		})
 	 }
 
 
@@ -63,5 +72,10 @@ angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
 	});
 }])
 
-
-;
+.factory('StudentByAgent',['$resource',
+	function($resource){
+		return $resource('http://localhost:3000/api/student/:id', {}, {
+		query:{ method: 'GET'},
+		update : { method : 'PUT', params: {id:'@_id'}}
+	});
+}]);

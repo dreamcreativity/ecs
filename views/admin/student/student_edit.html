@@ -13,7 +13,11 @@
 							<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Student ID</label>
-									<label class="col-sm-3 control-label">{{student.username}}</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+											<input type="text" class="form-control" name="studentId" ng-model="student.student_id">
+										</div>
+									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">First Name</label>
@@ -35,7 +39,7 @@
 									<label class="col-sm-3 control-label" ng-model="student.email">Commission Rate</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate" required>
+											<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
 										</div>
 									</div>
 								</div>
@@ -44,7 +48,7 @@
 									<label class="col-sm-3 control-label" ng-model="student.email">Pomotion Rate</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate" required>
+											<input type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
 										</div>
 									</div>
 								</div>

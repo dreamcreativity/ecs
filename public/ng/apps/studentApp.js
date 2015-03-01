@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studentApp', ['ngRoute','ngResource'])
+angular.module('studentApp', ['ngRoute','ngResource','ngBootbox'])
 
 
 .controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,$window){

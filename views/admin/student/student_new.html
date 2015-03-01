@@ -1,53 +1,39 @@
-<div class="row" ng-app='studentApp' ng-controller='StudentCtrl'>
-							<div class="col-lg-12">
-								<div class="row">
-									<div class="col-lg-6">									
-										<div class="portlet">
-											<div id="f-3" class="panel-collapse collapse in">
-												<div class="portlet-body">
-													<form name="createForm" class="form-horizontal" role="form" ng-submit="create(createForm.$valid)" novalidate>
-													<div class="form-group">
-															<label class="col-sm-3 control-label">Agent</label>
-															<div class="col-sm-9">
-																<select name="role" ng-model="staff.role" class="form-control" required>
-																	<option value="Administrator">Administrator</option>
-																	<option value="Supervise">Supervise</option>
-																	<option value="Staff" selected>Staff</option>
-																</select>
-																<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
-															</div>
-														</div>
-														
-														<div class="form-group">
-															<label class="col-sm-3 control-label">Username</label>
-															<div class="col-sm-9">
-																<input type="text" class="form-control" name="username" ng-model="staff.username" ng-minlength="4" ng-maxlength="10" required>						
-																<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block">username is required</p>	
-																<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block">username is should be 4-10 characters</p>										
-															</div>
+<form name="createForm" class="form-horizontal" role="form" ng-app='studentApp' ng-controller='StudentCtrl' ng-submit="create(createForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Agent</label>
+		<div class="col-sm-5">
+			<select name="role" ng-model="student.role" class="form-control" required>
+				<option value="Administrator">Administrator</option>
+				<option value="Supervise">Supervise</option>
+				<option value="student" selected>student</option>
+			</select>
+			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
+		</div>
+	</div>
 
-														</div>
-														
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Username</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" name="username" ng-model="student.username" ng-minlength="4" ng-maxlength="10" required>						
+			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block">username is required</p>	
+			<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block">username is should be 4-10 characters</p>										
+		</div>
 
-														<div class="form-actions">
-															<div class="form-group">
-																<div class="col-sm-offset-2 col-sm-10">
-																	<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
-																	<a href="/admin/staff/all" type="submit" class="btn">Cancel</a>
-																</div>
-															</div>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>								
-								<!-- END YOUR CONTENT HERE -->
-					
-							</div>
-						</div>					
-					
-						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
-							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
-						</button>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Commission Rate</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
+			</div>				
+	</div>
+
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+				<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
+			</div>
+		</div>
+	</div>
+</form>
