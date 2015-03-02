@@ -14,7 +14,7 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 		for (var x in $scope.uploadList) {
 
 			var file = $scope.uploadList[x];
-			
+			console.log(file.status);
 			if(file.status == 'pending'){
 				file.status = 'uploading';
 				scope.sendFileToServer(file);
@@ -304,13 +304,6 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	//var token = sessionStorage.token;
 	$scope.medias = Medias.query();
 
-	// $scope.medias = [
-	// 	{ title: 'test 1' },
-	// 	{ title: 'test 2' },
-	// 	{ title: 'test 3' },
-	// 	{ title: 'test 4' }
-	// ];
-
 	$scope.showList = function (){
 		//console.log($scope.medias);
 		console.log('hello');
@@ -319,12 +312,73 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	
 })
 
+
+
+
+.controller('DetailController',function DetailController($scope,$location,$http,Medias,$window){
+	var id = url_params.id;
+
+
+	$scope.m = Medias.get(url_params, function(){
+		$scope.m = $scope.m.data;	
+	});
+
+	$scope.update = function(){
+
+		Medias.update($scope.m,function(result){
+				if(result.status = 'ok'){
+					ShowGritterCenter('System Notification','Media document has been updated');
+				}
+		});
+	}
+	$scope.delete = function(){
+
+		Medias.delete(url_params,function(result){
+				if(result.status = 'ok'){
+					ShowGritterCenter('System Notification','Media document has been updated');
+				}
+		});
+	}
+
+	$scope.showList = function (){
+		//console.log($scope.medias);
+		console.log(id);
+		console.log($scope.m);
+	}
+
+	
+})
+.filter('filesize', function() {
+  return function(input) {
+    //return input ? '\u2713' : '\u2718';
+    var outputVal = 0;
+    var outputString = "KV";
+
+    if(input / (1024*1024) >= 1.0){
+    	outputVal = Math.round(input / (1024*1024), -1);
+    	outputString =  outputVal + ' mb';
+    }else{
+    	if(input / 1024 >= 1.0){
+    		outputVal = Math.round(input / 1024);
+    		outputString  =	outputVal + ' kb'; 
+    	}else{
+    		outputVal = Math.round(input / 1024, -2);
+    		outputString  =	outputVal + ' kb'; 
+    	}
+    }
+
+
+    return outputString;
+  };
+})
+
 .factory('Medias',['$resource',
 	function($resource){
-		return $resource('http://localhost:3000/api/media/:id', {}, {
+		return $resource('/api/media/:id', {}, {
 		query:{ method: 'GET'},
-		get : { method : 'GET', params: {id:'@_id'}}
-		//update : { method : 'PUT', params: {id:'@_id'}}
+		get : { method : 'GET', params: {id:'@_id'}},
+		update : { method : 'PUT', params: {id:'@_id'}},
+		delete : { method : 'DELETE', params: {id:'@_id'}},
 	});
 }]);
 

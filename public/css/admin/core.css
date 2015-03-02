@@ -24,7 +24,12 @@
 }
 
 
-
+.vcenter {
+/*    display: inline-block;
+    vertical-align: middle;
+*/
+    line-height: 30px;
+}
 
 
 .color-picker{
@@ -142,14 +147,35 @@
 #media-list .media-filters select,input{
 	width: 70%
 }
+.document-icon {
+	background-image: url("../../../images/file-type/icons.png");
+    background-color: #cccccc;
+	width: 153px;
+	height: 150px;    	
+}
+.document-icon.doc{
+	background-position: -153px 326px;
+}
+.document-icon.docx{
+	background-position: -153px 326px;
+}
+.document-icon.xls{
+	background-position: -306px 326px;
+}
+.document-icon.xlsx{
+	background-position: -306px 326px;
+}
+
+.document-icon.pdf{
+	background-position: 437px 326px;
+}
 
 
 
 
-
-
-
-
+#media-detail .row{
+	margin-bottom: 20px!important;
+}
 
 
 

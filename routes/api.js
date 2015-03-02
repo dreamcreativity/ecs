@@ -17,13 +17,13 @@ router.get('/', function(req, res) {
 });
 
 
-
 //------------------------- Media Center ----------------------------------
 
 router.post('/media/upload', media.upload);
 router.get('/media/', media.all);
 router.get('/media/:id', media.get);
-//router.put('/media/:id', media.edit);
+router.put('/media/:id', media.edit);
+router.delete('/media/:id', media.delete);
 
 //-------------------------Slider----------------------------------
 router.post('/slider', slider.create);

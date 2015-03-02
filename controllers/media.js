@@ -1,6 +1,7 @@
 var Media = require('../models/media');
 var mv = require('mv');
-
+var uuid = require('node-uuid');
+var fs = require('fs');
 
 // Insert a new Slider record
 exports.upload = function(req,res){
@@ -21,25 +22,52 @@ exports.upload = function(req,res){
     	newMedia.size = req.files.file.size;
  
     	newMedia.target = req.body.target;
-    	newMedia.type = req.files.file.extension.toLowerCase();
 
-    	var subPath = '';
-    	if(newMedia.target == 'Slider'){
+    	// determine the file type by file extension name
+    	var ext = req.files.file.extension.toLowerCase();
+    	newMedia.ext = ext;
 
-    	}else if (newMedia.target == 'Gallery'){
-
-    	}else if (newMedia.target == 'Material'){
-
+    	if( ext == 'jpg' || ext == 'png' || ext == 'gif'){
+    		newMedia.type = 'Image';
+    	}else if( 	ext == 'doc' || ext == 'docx' 
+    				|| ext == 'xls' ||  ext=='xlsx' 
+    				|| ext == 'ppt' || ext == 'pptx'
+    				|| ext == 'pdf' 
+    			)
+    	{
+    		newMedia.type = 'Document';
+    	}else if( ext == 'mp4' ){
+    		newMedia.type = 'Video';
     	}else{
-
+    		newMedia.type = 'Other';
     	}
-   		var newPath = 'public/uploads/' +  req.files.file.originalname;
+    	
 
-    	mv(req.files.file.path, newPath,function(err){
+    	var subPath = '/docs/';
+    	subPath += newMedia.type + '/';
+    	subPath += newMedia.target + '/';
+
+
+
+
+		// new filename
+		var newFileName = uuid.v4() + '.' +req.files.file.extension;
+    	// new file location in server
+   		var newPath =  'public/' + subPath + newFileName;
+
+   		console.log(newPath);
+
+   		// move file the new folder
+    	mv(req.files.file.path, newPath,{mkdirp: true},function(err){
+    		console.log('error form moving file');
     		console.log(err);
     	});
-    	newMedia.path = '/uploads/' +  req.files.file.originalname;
 
+    	// doucment record path for http access
+    	newMedia.path = subPath +  newFileName;
+
+
+    	// save db record
 	    newMedia.save(function(err,result){
 			if(err){
 				res.json({
@@ -107,6 +135,82 @@ exports.get = function(req,res){
 	});
 
 }
+
+
+exports.edit = function(req,res){
+
+	var id = req.params.id;
+	var media = new Media(req.body);
+	media._id = id;
+
+	Media.update({_id:id}, media, { multi: false }, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else {
+
+			console.log(result);
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result + ' record(s) effected.'
+			});	
+		}
+	});
+}
+
+exports.delete = function(req,res){
+
+	var remove_id = req.params.id;
+	console.log('test id : ' +  remove_id);
+
+	Media.find({ _id:remove_id }).remove(function(err,result){
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else {
+
+			console.log(result);
+
+			// remove file
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result + ' record(s) effected.'
+			});	
+		}
+	});
+
+
+	// Media.update({_id:id}, media, { multi: false }, function(err, result){
+	// 	if(err){
+	// 		res.json({
+	// 			status: 'fail',
+	// 			messages: err,
+	// 			data: null
+	// 		});
+	// 	}
+	// 	else {
+
+	// 		console.log(result);
+	// 		res.json({
+	// 			status: 'ok',
+	// 			messages: 'successed',
+	// 			data: result + ' record(s) effected.'
+	// 		});	
+	// 	}
+	// });
+}
+
 
 /*
 // Insert a new Slider record

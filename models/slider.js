@@ -5,6 +5,7 @@ var SliderSchema = mongoose.model('Slider', new mongoose.Schema({
 	sub_heading: {type: String, required: true },
 	color: {type:String, required: true, default: '#bbb'},
 	direction: { type: String, required: true, default: 'bottom' },
+	resource: {type: String},
 	position:{type: String, required: true },
 	createDate : {type : Date, default : Date.now },
 	is_active : {type : Boolean, default : false }

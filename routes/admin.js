@@ -95,17 +95,17 @@ router.get('/media/', function(req, res) {
 		);
 });
 
-router.get('/media/editor', function(req, res) {
-	template(req,res,'admin_main','admin/media/editor.html',
+router.get('/media/edit/:id', function(req, res) {
+	template(req,res,'admin_main','admin/media/edit.html',
 			{ 
 				title: 'Media Uploader',
 				category: 'Media',
-				cur_tap: 'Media Uploader',
-				cur_selected : 'Editor'
+				cur_tap: 'Media',
+				cur_selected : 'Edit',
+				url_params : req.params
 			}
 		);
 });
-
 
 /*---------------------------------------
 	Staff
