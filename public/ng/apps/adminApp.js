@@ -61,8 +61,10 @@ angular.module('adminApp', ['ngResource'])
 
 	$scope.update = function(){
 		Sliders.update($scope.slider,function(result){
-				if(result.status = 'ok'){
+				if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Slider has been updated');
+				}else{
+					ShowGritterCenter('System Notification','Slider updated fail');
 				}
 		});
 	}

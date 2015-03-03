@@ -71,11 +71,25 @@ exports.all = function(req,res){
 
 exports.edit = function(req,res){
 
-	var id = req.params.id;
+	var update_id = req.params.id;
 	var slider = new Slider(req.body);
-	slider._id = id;
 
-	Slider.update({_id:id}, slider, { multi: false }, function(err, result){
+	delete slider._id;
+	delete slider.__v;
+	console.log(slider);
+
+	// var obj = {
+	// 	heading: slider.heading,
+	// 	sub_heading: slider.sub_heading,
+	// 	position: slider.position,
+	// 	is_active: slider.is_active,
+	// 	createDate: slider.createDate,
+	// 	direction: slider.direction,
+	// 	color: slider.color
+	// }
+
+
+	Slider.update({_id:update_id}, req.body, {}, function(err, result){
 		if(err){
 			res.json({
 				status: 'fail',
