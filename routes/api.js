@@ -24,6 +24,7 @@ router.get('/media/', media.all);
 router.get('/media/:id', media.get);
 router.put('/media/:id', media.edit);
 router.delete('/media/:id', media.delete);
+router.get('/media/target/:target', media.getByTarget);
 
 //-------------------------Slider----------------------------------
 router.post('/slider', slider.create);

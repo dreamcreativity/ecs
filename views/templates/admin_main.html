@@ -183,7 +183,7 @@
 							</li>
 							<li class="panel <%if(parms.cur_tap=='Slider'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#SliderManagement">
-									<i class="fa fa-pencil-square-o"></i> Slider <span class="fa arrow"></span>
+									<i class="fa fa-sliders"></i> Slider <span class="fa arrow"></span>
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Slider'){ %>in<%}%> nav" id="SliderManagement">
 										<li>
@@ -226,7 +226,7 @@
 
 							<li class="panel <%if(parms.cur_tap=='Agents'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentManagement">
-									<i class="fa fa-pencil-square-o"></i> Agents <span class="fa arrow"></span>
+									<i class="fa fa-shield"></i> Agents <span class="fa arrow"></span>
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Agent'){ %>in<%}%> nav" id="AgentManagement">
 										<li>
@@ -259,27 +259,15 @@
 							</li>
 							<li class="panel">
 								<a href="/admin/media/uploader"  >
-									<i class="fa fa-film"></i> Media Uploader 
+									<i class="fa fa-upload"></i> Media Uploader 
 								</a>
 						
 							</li>
 
-							<li class="panel <%if(parms.cur_tap=='Media Uploader'){ %>open<% } %>">
-								<a href="/admin/media/" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#Media">
-									<i class="fa fa-film"></i> Medias <span class="fa arrow"></span>
+							<li class="panel">
+								<a href="/admin/media/" >
+									<i class="fa fa-film"></i> Medias 
 								</a>
-									<ul class="collapse <%if(parms.cur_tap=='Media Uploader'){ %>in<%}%> nav" id="Media">
-										<li>
-											<a href="/admin/media/uploader" class="<%if(parms.cur_selected=='Upload'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Upload Media
-											</a>
-										</li>
-										<li>
-											<a href="/admin/media/" class="<%if(parms.cur_selected=='Editor'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Medias
-											</a>
-										</li>										
-									</ul>
 							</li>
 							
 							<!-- Navigation category -->

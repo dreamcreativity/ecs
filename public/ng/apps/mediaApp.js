@@ -326,7 +326,7 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	$scope.update = function(){
 
 		Medias.update($scope.m,function(result){
-				if(result.status = 'ok'){
+				if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Media document has been updated');
 				}
 		});
@@ -334,8 +334,9 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	$scope.delete = function(){
 
 		Medias.delete(url_params,function(result){
-				if(result.status = 'ok'){
-					ShowGritterCenter('System Notification','Media document has been updated');
+				if(result.status == 'ok'){
+					ShowGritterCenter('System Notification','Media document has been removed');
+					$window.location= '/admin/media';
 				}
 		});
 	}

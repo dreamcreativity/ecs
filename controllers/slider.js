@@ -1,5 +1,5 @@
 var Slider = require('../models/slider');
-
+var fs = require('fs');
 
 // Insert a new Slider record
 exports.create = function(req,res){

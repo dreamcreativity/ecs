@@ -84,8 +84,11 @@
 											<label class="col-sm-3 control-label">Resource:</label>
 											<div class="col-sm-7">
 												<h3>Slider Media List</h3>
-												<div style="background-color:red">
-													did
+												<div class="slider-resource">
+													<ul>
+														<li ng-repeat="media in media_list.data"><img width="120" src="{{media.path}}"></li>
+													</ul>
+										
 												</div>												
 											</div>
 										</div>

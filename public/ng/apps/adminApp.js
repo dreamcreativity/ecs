@@ -2,7 +2,7 @@
 
 angular.module('adminApp', ['ngResource'])
 
-.controller('SliderController',function SliderController($rootScope,$scope,$location,$http,$window,Sliders){
+.controller('SliderController',function SliderController($rootScope,$scope,$location,$http,$window,Sliders,Medias){
 
 	//var token = sessionStorage.token;
 
@@ -21,7 +21,8 @@ angular.module('adminApp', ['ngResource'])
 	}
 
 	$scope.list = getAllSliders();
-
+	$scope.media_list = getAllSliderMedia();
+	
 	console.log($scope.list);	
 
 
@@ -53,6 +54,12 @@ angular.module('adminApp', ['ngResource'])
 		//console.log(result);
 		return result;
 	}
+
+
+	function getAllSliderMedia(){
+		return Medias.query();
+	}
+
 	$scope.create = function(){
 		Sliders.create($scope.slider,function(result){
 				location = '/admin/slider/edit/'+ result.data._id;
@@ -96,6 +103,7 @@ angular.module('adminApp', ['ngResource'])
   };
 })
 
+
 .factory('Sliders',['$resource',
 	function($resource){
 		return $resource('/api/slider/:id', {}, {
@@ -103,5 +111,12 @@ angular.module('adminApp', ['ngResource'])
 			get:{method: 'GET', params: {id:'@_id'}},
 			create:{ method: 'POST'},
 			update : { method : 'PUT', params: {id:'@_id'}}
+	});
+}])
+
+.factory('Medias',['$resource',
+	function($resource){
+		return $resource('/api/media/target/Slider', {}, {
+		query:{ method: 'GET'}
 	});
 }]);

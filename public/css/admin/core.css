@@ -180,13 +180,37 @@
 
 
 
+/*-----------------------------------	
+	css for slider
+-------------------------------------
+*/
 
 
+.slider-resource{
+	height:330px;
+	overflow: auto;
+	background-color: #eee;
+	padding: 5px
+}
 
+.slider-resource ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
 
-
-
-
+.slider-resource li {
+	border: 2px solid #eee;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
 
 
 
