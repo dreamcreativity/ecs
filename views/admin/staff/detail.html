@@ -63,11 +63,11 @@
 									<ul class="lists">
 										<li ng-repeat="agent in agents">
 											<a href="/admin/agent/detail/{{agent._id}}">
-												<span class="col-sm-1">{{agent.company}}</span>
+												<span class="col-sm-2 icons">{{agent.company}}</span>
 												<span class="col-sm-2 icons glyphicon glyphicon-user"> {{agent.firstname}} {{agent.lastname}}</span>
 												<span class="col-sm-2 icons glyphicon glyphicon-phone-alt"> {{agent.workphone}}</span>
 												<span class="col-sm-2 icons glyphicon glyphicon-phone"> {{agent.workphone}}</span>
-												<span class="col-sm-2 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
+												<span class="col-sm-3 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
 											</a>
 										</li>
 										
@@ -172,7 +172,7 @@
 
 						<div class="form-actions">
 							<div class="form-group">
-								<div class="col-sm-offset-3 col-sm-9">
+								<div class="col-sm-offset-3 col-sm-2">
 									<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="loginForm.$invalid">
 								</div>
 							</div>
