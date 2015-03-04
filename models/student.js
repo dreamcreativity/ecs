@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var StudentSchema = mongoose.model('Student', new mongoose.Schema({
 	student_id: {type: String},
-	agent_id: {type: String, required: true },
+	agent_id: {type: String},
 	agent : "",
 	firstname: {type: String, required: true },
 	lastname: {type: String, required: true },

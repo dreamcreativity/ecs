@@ -26,7 +26,7 @@
 							<tr ng-repeat="student in students.data | filter:query">
 								<td>{{student.student_id}}</td>
 								<td class="hidden-xs">{{student.firstname}} {{student.lastname}}</td>
-								<td><a href="/admin/agent/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
+								<td><a href="/admin/agent/detail/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
 								<td class="hidden-xs">{{student.commissionRate}}</td>
 								<td class="hidden-xs">{{student.pomotionRate}}</td>
 								<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>
@@ -46,7 +46,7 @@
 			</div>					 
 		</div>
 		<button class="btn btn-sm btn-primary"
-					ng-bootbox-title="A new staff"
+					ng-bootbox-title="A new student"
 					ng-bootbox-custom-dialog
 					ng-bootbox-custom-dialog-template="create">
 					Create

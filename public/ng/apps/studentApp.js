@@ -3,9 +3,10 @@
 angular.module('studentApp', ['ngRoute','ngResource','ngBootbox'])
 
 
-.controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,$window){
+.controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,Agents,$window){
 	 var token = sessionStorage.token;
 	 $scope.students = getAllStudents();
+	 $scope.agents = Agents.query();
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
 	 $scope.create = function(isValid){
@@ -44,6 +45,14 @@ angular.module('studentApp', ['ngRoute','ngResource','ngBootbox'])
 .factory('Students',['$resource',
 	function($resource){
 		return $resource('http://localhost:3000/api/student/:id', {}, {
+		query:{ method: 'GET'},
+		update : { method : 'PUT', params: {id:'@_id'}}
+	});
+}])
+
+.factory('Agents',['$resource',
+	function($resource){
+		return $resource('http://localhost:3000/api/agent/:id', {}, {
 		query:{ method: 'GET'},
 		update : { method : 'PUT', params: {id:'@_id'}}
 	});

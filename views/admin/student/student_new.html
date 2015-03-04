@@ -1,28 +1,48 @@
 <form name="createForm" class="form-horizontal" role="form" ng-app='studentApp' ng-controller='StudentCtrl' ng-submit="create(createForm.$valid)" novalidate>
-	
-
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Username</label>
-		<div class="col-sm-5">
-			<input type="text" class="form-control" name="username" ng-model="student.username" ng-minlength="4" ng-maxlength="10" required>						
-			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block">username is required</p>	
-			<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block">username is should be 4-10 characters</p>										
+		<label class="col-sm-3 control-label">Agent</label>
+		<div class="col-sm-9">
+			<select name="agent_id" ng-model="student.agent_id" class="form-control"  ng-options="value._id as value.firstname for value in agents.data">
+				<!-- <option value="{{item._id}}">Select Agent</option> -->
+				<option>Select Agent</option>
+			</select>
 		</div>
-
 	</div>
+
 	<div class="form-group">
+		<label class="col-sm-3 control-label">Student ID</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="student_id" ng-model="student.student_id">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">First Name</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Last Name</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
+			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
+		</div>
+	</div>
+<!-- 	<div class="form-group">
 		<label class="col-sm-3 control-label">Commission Rate</label>
 		<div class="col-sm-5">
 			<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
 			</div>				
-	</div>
+	</div> -->
 
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-offset-4 col-sm-4">
 				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
-				<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
 			</div>
 		</div>
 	</div>
