@@ -111,7 +111,7 @@ h2 > span,
 h3 > span,
 h4 > span,
 h5 > span,
-h6 > span { color: #10a7f5; }
+h6 > span { color: #086B18; }
 
 p,
 pre,
@@ -6464,7 +6464,7 @@ body:not(.device-xs):not(.device-xxs) .countdown.countdown-large.coming-soon .co
 	font-size: 14px;
 	height: 40px;
 	line-height: 40px;
-	background-color: #10a7f5;
+	background-color: #21353F;
 	color: #FFF;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -7156,7 +7156,7 @@ body:not(.device-touch) .button.button-full strong {
 .feature-box .fbox-icon i,
 .feature-box .fbox-icon img {
 	border-radius: 50%;
-	background-color: #10a7f5;
+	background-color: #315466;
 }
 
 .feature-box .fbox-icon i {
@@ -7319,7 +7319,7 @@ body:not(.device-touch) .button.button-full strong {
 .feature-box.fbox-plain .fbox-icon img {
 	border: none !important;
 	background-color: transparent !important;
-	color: #10a7f5;
+	color: #4D6571;
 	border-radius: 0;
 }
 

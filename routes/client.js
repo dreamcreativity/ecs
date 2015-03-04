@@ -6,7 +6,7 @@ var template = require('../modules/templateController');
 
 
 router.get('/', function(req, res) {
-	template(req,res,'client_main','client/main.html',{ title: 'Express 333' });
+	template(req,res,'client_main','client/main.html',{ title: 'ESC - Englist School of Canada' });
 });
 
 router.get('/login', function(req, res) {
