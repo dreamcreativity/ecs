@@ -23,7 +23,7 @@
 									<label class="col-sm-3 control-label">First Name</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required>
-										<p ng-show="studentForm.firstname.$invalid && !studentForm.firstname.$pristine" class="help-block">first name is required</p>	
+										<p ng-show="studentForm.firstname.$invalid && !studentForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
 									</div>
 								</div>
 
@@ -31,7 +31,7 @@
 									<label class="col-sm-3 control-label">Last Name</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-										<p ng-show="studentForm.lastname.$invalid && !studentForm.lastname.$pristine" class="help-block">last name is required</p>	
+										<p ng-show="studentForm.lastname.$invalid && !studentForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
 									</div>
 								</div>
 
@@ -48,7 +48,7 @@
 									<label class="col-sm-3 control-label" ng-model="student.email">Pomotion Rate</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
+											<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
 										</div>
 									</div>
 								</div>
@@ -67,10 +67,10 @@
 
 								<div class="form-actions">
 									<div class="form-group">
-										<div class="col-sm-offset-2 col-sm-10">
+										<div class="col-sm-offset-3 col-sm-3">
 											<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="studentForm.$invalid">
-											<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
 										</div>
+										<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
 									</div>
 								</div>
 							</form>

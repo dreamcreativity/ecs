@@ -1,15 +1,5 @@
 <form name="createForm" class="form-horizontal" role="form" ng-app='studentApp' ng-controller='StudentCtrl' ng-submit="create(createForm.$valid)" novalidate>
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Agent</label>
-		<div class="col-sm-5">
-			<select name="role" ng-model="student.role" class="form-control" required>
-				<option value="Administrator">Administrator</option>
-				<option value="Supervise">Supervise</option>
-				<option value="student" selected>student</option>
-			</select>
-			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
-		</div>
-	</div>
+	
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Username</label>

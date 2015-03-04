@@ -13,6 +13,7 @@
 						<thead>
 							<tr>
 								<tr>
+								<th class="hidden-xs">Company</th>
 								<th class="hidden-xs">Name</th>
 								<th class="hidden-xs">Email</th>
 								<th class="hidden-xs">Work Phone</th>
@@ -24,6 +25,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="agent in agents.data | filter:query">
+							<td class="hidden-xs">{{agent.company}}</td>
 								<td class="hidden-xs"><a href="/admin/agent/detail/{{agent._id}}">{{agent.firstname}} {{agent.lastname}}</a></td>
 								<td class="hidden-xs">{{agent.email}}</td>
 								<td class="hidden-xs">{{agent.workphone}}</td>
