@@ -85,22 +85,12 @@
 								<!--Speech Icon-->
 								<li class="dropdown user-box">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">John Smith</span> <b class="caret"></b>
+										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">Administrator</span> <b class="caret"></b>
 									</a>
 										<ul class="dropdown-menu dropdown-user">
 											<li>
 												<a href="profile.html">
 													<i class="fa fa-user"></i> My Profile
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fa fa-envelope"></i> My Messages
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fa fa-tasks"></i> My Tasks
 												</a>
 											</li>
 											<li>
@@ -210,19 +200,7 @@
 										</li>											
 									</ul>
 							</li>
-							<li class="panel <%if(parms.cur_tap=='Students'){ %>open<% } %>">
-								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StudentManagement">
-									<i class="fa fa-users"></i> Students <span class="fa arrow"></span>
-								</a>
-								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="StudentManagement">
-										<li>
-											<a href="/admin/student/all" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Students
-											</a>
-										</li>			
-																		
-									</ul>
-							</li>
+
 
 							<li class="panel <%if(parms.cur_tap=='Agents'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentManagement">
@@ -232,6 +210,20 @@
 										<li>
 											<a href="/admin/agent/all" class="<%if(parms.cur_selected=='Agent'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Agents
+											</a>
+										</li>			
+																		
+									</ul>
+							</li>
+
+							<li class="panel <%if(parms.cur_tap=='Students'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StudentManagement">
+									<i class="fa fa-users"></i> Students <span class="fa arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="StudentManagement">
+										<li>
+											<a href="/admin/student/all" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Students
 											</a>
 										</li>			
 																		
@@ -305,7 +297,7 @@
 								</div>
 								
 								<!-- /#ek-layout-button -->	
-								<div class="qs-layout-menu">
+<!-- 								<div class="qs-layout-menu">
 									<div class="btn btn-gray qs-setting-btn" id="qs-setting-btn">
 										<i class="fa fa-cog bigger-150 icon-only"></i>
 									</div>
@@ -353,7 +345,7 @@
 										</ul>
 										
 									</div>
-								</div>
+								</div> -->
 								<!-- /#ek-layout-button -->		
 								
 							</div><!-- /.col-lg-12 -->

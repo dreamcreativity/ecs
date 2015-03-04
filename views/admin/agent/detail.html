@@ -23,20 +23,31 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="portlet-body">
-								<div class="editable" id="profile"><strong>Company</strong> : {{agent.company}}</div>
-									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Work</strong> : {{agent.workphone}}</div>
-									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Cell</strong> : {{agent.cellphone}}</div>
-									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Email</strong> :{{agent.email}}</div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Company :</strong></div>
+									<div class="col-lg-2" >{{agent.company}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Work :</strong></div>
+									<div class="col-lg-2" >{{agent.workphone}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Cell :</strong></div>
+									<div class="col-lg-2" >{{agent.cellphone}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Email :</strong></div>
+									<div class="col-lg-2" >{{agent.email}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Region :</strong></div>
+									<div class="col-lg-2" >{{agent.region}}</div>
+								</div>
 
-									<div class="space-4"></div>
-
-									<ul class="list-inline well well-sm">
-										<li><i class="fa fa-flag bigger-110"></i> <a href="#" id="country" data-value="US" class="editable">{{agent.region}}</a></li>
-										
-									</ul>
 								</div>
 							</div>
 						</div>
@@ -97,37 +108,37 @@
 									<option value="Korea">Korea</option>
 									<option value="China">China</option>
 								</select>
-								<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
+								<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">First Name:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="firstname" ng-model="agent.firstname" value="{{agent.firstname}}"required>
-								<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block">first name is required</p>	
+								<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Last Name:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="lastname" ng-model="agent.lastname" required>
-								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block">last name is required</p>	
+								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Work phone:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="agent.workphone" required>
-								<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block">work phone is required</p>	
-								<p ng-show="loginForm.workphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+								<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
+								<p ng-show="loginForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 							</div>
 						</div>		
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Cell phone:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="agent.cellphone" required>
-								<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block">cellphone is required</p>	
-								<p ng-show="loginForm.cellphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+								<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
+								<p ng-show="loginForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 							</div>
 						</div>											
 						<div class="form-group">
@@ -137,7 +148,7 @@
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 									<input type="email" class="form-control" name="email" ng-model="agent.email" required>
 								</div>
-								<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">email is invalid</p>
+								<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 							</div>
 						</div>
 
@@ -159,6 +170,11 @@
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-2">
 									<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="loginForm.$invalid">
+								</div>
+							</div>
+							<div class="form-group">
+								<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+								{{returnMessage}}
 								</div>
 							</div>
 						</div>

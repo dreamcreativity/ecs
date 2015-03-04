@@ -22,21 +22,30 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="portlet-body">
-									<div class="editable" id="profile"><strong>Work</strong> : {{staff.workphone}}</div>
-									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Cell</strong> : {{staff.cellphone}}</div>
-									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Email</strong> :{{staff.email}}</div>
-									<div class="space-4"></div>
-									<div class="editable" id="profile"><strong>Last Login</strong> : {{staff.lastLoginDateTime  | date:'MMM dd yyyy h:mma'}}</div>
-
-									<div class="space-4"></div>
-
-									<ul class="list-inline well well-sm">
-										<li><i class="fa fa-flag bigger-110"></i> <a href="#" id="country" data-value="US" class="editable">{{staff.region}}</a></li>
-										<li><i class="fa fa-calendar bigger-110"></i> <a href="#" id="dob" class="editable">28th March, 2014</a></li>
-										
-									</ul>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Work :</strong></div>
+									<div class="col-lg-2" >{{staff.workphone}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Cell :</strong></div>
+									<div class="col-lg-2" >{{staff.cellphone}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Email :</strong></div>
+									<div class="col-lg-2" >{{staff.email}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row"> 
+									<div class="col-lg-2 right"><strong>Last Login :</strong></div>
+									<div class="col-lg-3" >{{staff.lastLoginDateTime  | date:'MMM dd yyyy h:mma'}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Region :</strong></div>
+									<div class="col-lg-2">{{staff.region}}</div>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -50,12 +59,12 @@
 							<div class="portlet no-border-bottom">
 								<div class="portlet-heading dark">
 									<div class="portlet-title">
-										<h4><i class="fa fa-rss"></i> Recent Agents</h4>
+										<h4>Recent Agents</h4>
 									</div>
 									<div class="portlet-widgets">
 										<a href="javascript:;"><i class="fa fa-refresh"></i></a>
-										<span class="divider"></span>
-										<a href="#" class="tooltip-danger" data-placement="left" data-rel="tooltip" title="Clear"><i class="fa fa-trash-o bigger-110"></i></a>
+										
+										
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -67,7 +76,7 @@
 												<span class="col-sm-2 icons glyphicon glyphicon-user"> {{agent.firstname}} {{agent.lastname}}</span>
 												<span class="col-sm-2 icons glyphicon glyphicon-phone-alt"> {{agent.workphone}}</span>
 												<span class="col-sm-2 icons glyphicon glyphicon-phone"> {{agent.workphone}}</span>
-												<span class="col-sm-3 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
+												<span class="col-sm-4 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
 											</a>
 										</li>
 										
@@ -84,7 +93,7 @@
 					
 				</div>
 				<div class="tab-pane fade" id="p2" ng-controller='StaffEditCtrl'>
-					<h2>Account details</h2>
+					<h2>Account Detail</h2>
 					<div class="hr hr-12 hr-double"></div>
 					<form name="loginForm" class="form-horizontal" role="form" ng-submit="update(loginForm.$valid)" novalidate>
 						<div class="form-group">
@@ -102,7 +111,7 @@
 									<option value="Supervise">Supervise</option>
 									<option value="Staff" selected>Staff</option>
 								</select>
-								<p ng-show="loginForm.role.$invalid && !loginForm.role.$pristine" class="help-block">role is required</p>
+								<p ng-show="loginForm.role.$invalid && !loginForm.role.$pristine" class="help-block text-danger">role is required</p>
 							</div>
 						</div>
 						<div class="form-group">
@@ -112,37 +121,37 @@
 									<option value="Korea">Korea</option>
 									<option value="China">China</option>
 								</select>
-								<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
+								<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">First Name:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" value="{{staff.firstname}}"required>
-								<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block">first name is required</p>	
+								<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Last Name:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
-								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block">last name is required</p>	
+								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Work phone:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
-								<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block">work phone is required</p>	
-								<p ng-show="loginForm.workphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+								<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
+								<p ng-show="loginForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 							</div>
 						</div>		
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Cell phone:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
-								<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block">cellphone is required</p>	
-								<p ng-show="loginForm.cellphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+								<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
+								<p ng-show="loginForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 							</div>
 						</div>											
 						<div class="form-group">
@@ -152,7 +161,7 @@
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 									<input type="email" class="form-control" name="email" ng-model="staff.email" required>
 								</div>
-								<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">email is invalid</p>
+								<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 							</div>
 						</div>
 
@@ -174,6 +183,11 @@
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-2">
 									<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="loginForm.$invalid">
+								</div>
+							</div>
+							<div class="form-group">
+								<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+								{{returnMessage}}
 								</div>
 							</div>
 						</div>

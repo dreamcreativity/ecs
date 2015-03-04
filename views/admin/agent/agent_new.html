@@ -4,7 +4,7 @@
 		<label class="col-sm-3 control-label">Username</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="username" ng-model="agent.username" value="{{agent.username}}"required>
-			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block">username is required</p>	
+			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block text-danger">username is required</p>	
 		</div>
 	</div>
 
@@ -16,7 +16,7 @@
 				<option value="Japan">Japan</option>
 				<option value="China" selected>China</option>
 			</select>
-			<p ng-show="createForm.region.$invalid && !createForm.region.$pristine" class="help-block">region is required</p>
+			<p ng-show="createForm.region.$invalid && !createForm.region.$pristine" class="help-block text-danger">region is required</p>
 		</div>
 	</div>
 
@@ -24,7 +24,7 @@
 		<label class="col-sm-3 control-label">Company</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="company" ng-model="agent.company" value="{{agent.company}}"required>
-			<p ng-show="createForm.company.$invalid && !createForm.company.$pristine" class="help-block">company name is required</p>	
+			<p ng-show="createForm.company.$invalid && !createForm.company.$pristine" class="help-block text-danger">company name is required</p>	
 		</div>
 	</div>
 
@@ -32,7 +32,7 @@
 		<label class="col-sm-3 control-label">First Name</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="firstname" ng-model="agent.firstname" value="{{agent.firstname}}"required>
-			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block">first name is required</p>	
+			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
 		</div>
 	</div>
 
@@ -40,7 +40,7 @@
 		<label class="col-sm-3 control-label">Last Name</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="lastname" ng-model="agent.lastname" required>
-			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block">last name is required</p>	
+			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
 		</div>
 	</div>
 
@@ -48,8 +48,8 @@
 		<label class="col-sm-3 control-label" ng-model="agent.workphone">Work phone</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="agent.workphone" required>
-			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block">work phone is required</p>	
-			<p ng-show="createForm.workphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
+			<p ng-show="createForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 		</div>
 	</div>
 
@@ -57,8 +57,8 @@
 		<label class="col-sm-3 control-label">Cell phone</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="agent.cellphone" required>
-			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block">cellphone is required</p>	
-			<p ng-show="createForm.cellphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
+			<p ng-show="createForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 		</div>
 	</div>
 	<div class="form-group">
@@ -68,7 +68,7 @@
 				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 				<input type="email" class="form-control" name="email" ng-model="agent.email" required>
 			</div>
-			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block">email is invalid</p>
+			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 		</div>
 	</div>
 
@@ -96,9 +96,14 @@
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-offset-4 col-sm-4">
 				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
-				<a href="/admin/agent/all" type="submit" class="btn">Cancel</a>
+		<!-- 		<a href="/admin/agent/all" type="submit" class="btn">Cancel</a> -->
+			</div>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
 			</div>
 		</div>
 	</div>

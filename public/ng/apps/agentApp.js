@@ -14,8 +14,10 @@ angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
  	$scope.create = function(isValid){
 	 	Agents.save($scope.agent,function(result){
 	 		    var message = result.messages;	    
-	 		    $rootScope.returnMessage = message;
-	 			$window.location='/admin/agent/all';
+	 		     $scope.returnMessage = "successfully";
+	 			setInterval(function(){
+  					 $window.location='/admin/agent/all';
+				}, 2000); 
  		})
 	 }
 
@@ -23,7 +25,8 @@ angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
 
 
 
-.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,$window){
+.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,$window,$document){
+	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 	 var agent_id = url_params.id;
 
 	 if(agent_id !=null){
@@ -38,10 +41,13 @@ angular.module('agentApp', ['ngRoute','ngResource','ngBootbox'])
 	 }
 
 	 $scope.update = function(isValid) {
+	 	$scope.returnMessage="";
+	 	$("#messageReturn").fadeIn('slow');
 	 	Agents.update($scope.agent, function(result){
 	 			var message = result.messages;	    
-	 		    $rootScope.returnMessage = message;
-	 			$window.location='/admin/agent/detail/'+ agent_id;
+	 		    $scope.returnMessage = "profile is save successfully";
+	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 			// $window.location='/admin/agent/detail/'+ agent_id;
 	 	})
 	 }
 

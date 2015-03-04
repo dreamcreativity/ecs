@@ -9,7 +9,7 @@
 				<option value="Supervise">Supervise</option>
 				<option value="Staff" selected>Staff</option>
 			</select>
-			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
+			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
 		</div>
 	</div>
 
@@ -20,7 +20,7 @@
 				<option value="Korea">Korea</option>
 				<option value="China">China</option>
 			</select>
-			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block">role is required</p>
+			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
 		</div>
 	</div>
 
@@ -28,8 +28,8 @@
 		<label class="col-sm-3 control-label">Username</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="username" ng-model="staff.username" ng-minlength="4" ng-maxlength="10" required>						
-			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block">username is required</p>	
-			<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block">username is should be 4-10 characters</p>										
+			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block text-danger">username is required</p>	
+			<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block text-danger">username is should be 4-10 characters</p>										
 		</div>
 
 	</div>
@@ -37,7 +37,7 @@
 		<label class="col-sm-3 control-label">First Name</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" required>
-			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block">first name is required</p>	
+			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
 		</div>
 	</div>
 
@@ -45,7 +45,7 @@
 		<label class="col-sm-3 control-label">Last Name</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
-			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block">last name is required</p>	
+			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
 		</div>
 	</div>
 
@@ -53,8 +53,8 @@
 		<label class="col-sm-3 control-label" ng-model="staff.workphone">Work phone</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
-			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block">work phone is required</p>	
-			<p ng-show="createForm.workphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
+			<p ng-show="createForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 		</div>
 	</div>
 
@@ -62,8 +62,8 @@
 		<label class="col-sm-3 control-label">Cell phone</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
-			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block">cellphone is required</p>	
-			<p ng-show="createForm.cellphone.$error.pattern" class="help-block" >eg. 647-921-1234</p>
+			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
+			<p ng-show="createForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 		</div>
 	</div>
 	<div class="form-group">
@@ -73,15 +73,20 @@
 				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 				<input type="email" class="form-control" name="email" ng-model="staff.email" required>
 			</div>
-			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block">email is invalid</p>
+			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 		</div>
 	</div>
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-offset-4 col-sm-4">
 				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
-				<a href="/admin/staff/all" type="submit" class="btn">Cancel</a>
+				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
+			</div>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
 			</div>
 		</div>
 	</div>

@@ -9,10 +9,12 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
 	 $scope.create = function(isValid){
+	 	$scope.returnMessage ="";
 	 	Staffs.save($scope.staff,function(result){
-	 		    var message = result.messages;	    
-	 		    $rootScope.returnMessage = message;
-	 			$window.location='/admin/staff/all';
+	 		     $scope.returnMessage = "successfully";
+	 			setInterval(function(){
+  					 $window.location='/admin/staff/all';
+				}, 2000); 
  		})
 	 }
 
@@ -37,16 +39,20 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
 	 }
 
 	$scope.update = function(isValid) {
+		$scope.returnMessage="";
+	 	$("#messageReturn").fadeIn('slow');
 	 	Staffs.update($scope.staff, function(result){
 	 			var message = result.messages;	    
-	 		    $rootScope.returnMessage = message;
-	 			$window.location='/admin/staff/detail/'+ staff_id;
+	 		    $scope.returnMessage = "profile is save successfully";
+	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 			// $window.location='/admin/staff/detail/'+ staff_id;
 	 	})
 	 }
 })
 
 .controller('DetailCtrl', function DetailCtrl($scope,Staffs,Agents,$window){
 	var staff_id = url_params.id;
+	$scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
 	 if(staff_id !=null){
 	 	Staffs.get({id:staff_id}, function(result){

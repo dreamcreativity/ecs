@@ -145,13 +145,13 @@ $(document).ready(function() {
 	
 	//gritter only for demo
     $(window).load(function () {
-		$.gritter.add({
-            title: "Welcome back, John!",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            image: "assets/images/user-profile-1.jpg",
-			class_name: "bg-success",
-            sticky: false
-		})
+		// $.gritter.add({
+  //           title: "Welcome back, John!",
+  //           text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  //           image: "assets/images/user-profile-1.jpg",
+		// 	class_name: "bg-success",
+  //           sticky: false
+		// })
 	})
 	//jvectormap data
     var visitorsData = {
