@@ -29,7 +29,7 @@
 								<td><a href="/admin/agent/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
 								<td class="hidden-xs">{{student.commissionRate}}</td>
 								<td class="hidden-xs">{{student.pomotionRate}}</td>
-								<td class="hidden-xs">{{student.registerDate}}</td>
+								<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>
 								<td><span ng-if="student.isQuit == 1" class="label label-danger">Deleted</span>
 								<span ng-if="student.isQuit == 0" class="label label-active">Active</span>
 								</td>
