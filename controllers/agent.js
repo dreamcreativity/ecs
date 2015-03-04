@@ -99,8 +99,8 @@ exports.getAgentsbyRegion = function(req,res){
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	var agent = new Agent(req.body);
-	Agent.update({_id:id}, agent, function(err, result){
+	//var agent = new Agent(req.body);
+	Agent.update({_id:id}, req.body, function(err, result){
 		if(err){
 			res.json({
 				status: 'fail',

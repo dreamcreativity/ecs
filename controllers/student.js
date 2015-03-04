@@ -130,8 +130,8 @@ exports.getStudentbyAgentId = function(req,res){
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	var Student = new Student(req.body);
-	Student.update({_id:id}, staff, function(err, result){
+	//var Student = new Student(req.body);
+	Student.update({_id:id}, req.body, function(err, result){
 		if(err){
 			res.json({
 				type: false,

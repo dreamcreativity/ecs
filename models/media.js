@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 
 var MediaSchema = mongoose.model('Media', new mongoose.Schema({
 	title: {type: String, required: true, default: 'Untitled' },

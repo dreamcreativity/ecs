@@ -12,7 +12,8 @@ angular.module('adminApp', ['ngResource'])
 			sub_heading : '',
 			color: '#cccccc',
 			direction : 'bottom',
-			position : 'CENTER'
+			position : 'CENTER',
+			resource : null
 		};
 	}else{
 		$scope.slider = Sliders.get(url_params, function(){
@@ -22,7 +23,7 @@ angular.module('adminApp', ['ngResource'])
 
 	$scope.list = getAllSliders();
 	$scope.media_list = getAllSliderMedia();
-	
+
 	console.log($scope.list);	
 
 
