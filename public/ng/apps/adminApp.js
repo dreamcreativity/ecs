@@ -77,6 +77,12 @@ angular.module('adminApp', ['ngResource'])
 		});
 	}
 
+
+	$scope.selectResource = function(mediaResource){
+		console.log('click');
+		$scope.slider.resource = mediaResource;
+		console.log($scope.slider);
+	}
 })
 
 
@@ -104,6 +110,29 @@ angular.module('adminApp', ['ngResource'])
   };
 })
 
+.directive('resourcePicker', function() {
+  return {
+  	link: function (scope, element, attrs) {
+            element.on('click', function () {
+
+
+
+//$$hashKey: "object:33"__v: 0_id: "54f720858cfc5e275dec5d83"archive: falsecreateDate: "2015-03-04T15:11:01.667Z"ext: "jpg"path: "/docs/Image/Slider/f1cd6272-5f8c-48d1-8913-b561ab253e39.jpg"size: 23325target: "Slider"title: "staff"type: "Image"
+
+
+
+            	console.log(scope.$parent);
+            	var newMedia = scope.media;
+            	delete newMedia.$$hashKey;
+            	console.log(newMedia);
+            	//scope.$parent.slider.resource = scope.media;
+            	scope.$parent.slider.resource = newMedia._id;
+            	scope.$parent.$apply();
+
+            });
+        }
+  };
+})
 
 .factory('Sliders',['$resource',
 	function($resource){

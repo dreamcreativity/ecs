@@ -1,4 +1,5 @@
 var Slider = require('../models/slider');
+var Media = require('../models/media');
 var fs = require('fs');
 
 // Insert a new Slider record

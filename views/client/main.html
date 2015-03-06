@@ -8,13 +8,26 @@
 
             <div class="swiper-container swiper-parent">
                 <div class="swiper-wrapper">
+                    <% for(var i=0; i<sliders.length; i++) {%>
+                    <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].media.path %>')">
+                        <div class="curtain">
+                        <div class="container clearfix">
+                            <div class="slider-caption slider-caption-center">
+                                <h2 data-caption-animate="fadeInUp"><%= sliders[i].heading %></h2>
+                                <p data-caption-animate="fadeInUp" data-caption-delay="200"><%= sliders[i].sub_heading %></p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>  
+                    <% } %>
+                    
 
                     <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/2000x1200_home_slide_001.jpg')">
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
-                                <h2 data-caption-animate="fadeInUp">Teaching English</h2>
-                                <p data-caption-animate="fadeInUp" data-caption-delay="200">You'll be surprised to see the Final Results of your Creation &amp; would crave for more.</p>
+                                <h2 data-caption-animate="fadeInUp">English Education</h2>
+                                <p data-caption-animate="fadeInUp" data-caption-delay="200">It is the supreme art of the teacher to awaken joy in creative expression and knowledge.</p>
                             </div>
                         </div>
                         </div>
@@ -37,8 +50,8 @@
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
-                                <h2 data-caption-animate="fadeInLeft">Beautifully Flexible</h2>
-                                <p data-caption-animate="fadeInUp" data-caption-delay="200">Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Powerful Layout with Responsive functionality that can be adapted to any screen size.</p>
+                                <h2 data-caption-animate="fadeInLeft">School Video Demo</h2>
+                                <p data-caption-animate="fadeInUp" data-caption-delay="200">Layout with Responsive functionality that can be adapted to any screen size.</p>
                             </div>
                         </div>
                         <div class="video-wrap">
@@ -53,9 +66,9 @@
                     <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/students.jpg')">
                     	<div class="curtain">
                         <div class="container clearfix">
-                            <div class="slider-caption">
-                                <h2 data-caption-animate="fadeInUp">Great Performance</h2>
-                                <p data-caption-animate="fadeInUp" data-caption-delay="200">You'll be surprised to see the Final Results of your Creation &amp; would crave for more.</p>
+                            <div class="slider-caption slider-caption-center">
+                                <h2 data-caption-animate="fadeInUp">Meet our Students</h2>
+                                <p data-caption-animate="fadeInUp" data-caption-delay="200">Become one of us.</p>
                             </div>
                         </div>
                         </div>
@@ -782,7 +795,7 @@
 
                     <div class="heading-block center bottommargin-lg">
                         <h2>ECS Programs</h2>
-                        <span>List of some features included in Canvas.</span>
+                        <span>List of our main programs.</span>
                     </div>
 
                     <div class="container clearfix">
@@ -793,7 +806,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>iBT-TOEFL Preparation</h3>
-                                <p>Powerful Layout with Responsive functionality that can be adapted to any screen size.</p>
+                                <p>Duis quis rutrum urna. Nam dolor lorem, pulvinar non convallis nec, posuere vel ligula. </p>
                             </div>
                         </div>
 
@@ -803,7 +816,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>Focus on Writing</h3>
-                                <p>Looks beautiful &amp; ultra-sharp on Retina Displays with Retina Icons, Fonts &amp; Images.</p>
+                                <p>Pellentesque scelerisque massa vitae tincidunt ultricies. Aliquam id mi vel leo consectetur molestie et sit amet diam.</p>
                             </div>
                         </div>
 
@@ -813,7 +826,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>English for Academic Purposes (UCTP)</h3>
-                                <p>Optimized code that are completely customizable and deliver unmatched fast performance.</p>
+                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit.</p>
                             </div>
                         </div>
 
@@ -825,7 +838,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>Intensive General English Program</h3>
-                                <p>Canvas provides support for Native HTML5 Videos that can be added to a Full Width Background.</p>
+                                <p>Ut in tempor leo, ut sollicitudin orci. Integer dignissim cursus auctor.</p>
                             </div>
                         </div>
 
@@ -835,7 +848,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>ESL for Health Care</h3>
-                                <p>Display your Content attractively using Parallax Sections that have unlimited customizable areas.</p>
+                                <p>Sed vitae magna et mi porttitor ornare. Donec sit amet metus quis ante laoreet interdum. </p>
                             </div>
                         </div>
 
@@ -857,7 +870,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>Focus on Speaking Program (FOS)</h3>
-                                <p>Change your Website's Primary Scheme instantly by simply adding the dark class to the body.</p>
+                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
                             </div>
                         </div>
 
@@ -867,7 +880,7 @@
                                     <a href="#"><i class="icon-star2"></i></a>
                                 </div>
                                 <h3>Summer Teen Program</h3>
-                                <p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
                             </div>
                         </div>
 
@@ -877,7 +890,7 @@
                                     <a href="#"><i class="icon-star"></i></a>
                                 </div>
                                 <h3>Winter Teen Program</h3>
-                                <p>We have covered each &amp; everything in our Documentation including Videos &amp; Screenshots.</p>
+                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
                             </div>
                         </div>
 
@@ -1176,7 +1189,7 @@
 
                                     address: '79 St. Clair Ave. East,Toronto, Ontario,M4T 1M6',
                                     maptype: 'ROADMAP',
-                                    zoom: 14,
+                                    zoom: 16,
                                     markers: [
                                         {
                                             address: "79 St. Clair Ave. East, Suite 202,Toronto, Ontario,M4T 1M6",
@@ -1318,7 +1331,7 @@
                                 </address>
                                 <abbr title="Phone Number"><strong>Phone:</strong></abbr> +1 (416) 686- 1596<br>
                                 <abbr title="Fax"><strong>Fax:</strong></abbr> +1 (416) 686-7960<br>
-                                <abbr title="Email Address"><strong>Email:</strong></abbr> nfo@esc-toronto.com 
+                                <abbr title="Email Address"><strong>Email:</strong></abbr>info@esc-toronto.com 
                             </div>
 
                         </div>
