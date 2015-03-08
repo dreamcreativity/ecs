@@ -13,8 +13,8 @@
                         <div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
-                                <h2 data-caption-animate="fadeInUp"><%= sliders[i].heading %></h2>
-                                <p data-caption-animate="fadeInUp" data-caption-delay="200"><%= sliders[i].sub_heading %></p>
+                                <h2 style="color:<%=  sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>"><%= sliders[i].heading %></h2>
+                                <p style="color:<%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>" data-caption-delay="200"><%= sliders[i].sub_heading %></p>
                             </div>
                         </div>
                         </div>
@@ -37,7 +37,7 @@
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
-                            	<h3 data-caption-animate="fadeInUp">Welcome to</h3>
+                            	<h3 data-caption-animate="fadeInLeft">Welcome to</h3>
                                 <h2 data-caption-animate="fadeInUp">English School of Canada</h2>
                                 <p data-caption-animate="fadeInUp" data-caption-delay="200">Our English programs assist our students in achieving communicative and linguistic competence in English. We ensure our students' English skills improve in a number of .</p>
                                 <a data-caption-animate="fadeInUp" data-caption-delay="1000" href="#">More</a>

@@ -10,14 +10,15 @@ angular.module('adminApp', ['ngResource'])
 		$scope.slider = {
 			heading: '',
 			sub_heading : '',
-			color: '#cccccc',
+			color: '#ffffff',
 			direction : 'bottom',
 			position : 'CENTER',
 			resource : null
 		};
 	}else{
 		$scope.slider = Sliders.get(url_params, function(){
-		$scope.slider = $scope.slider.data;	
+			$scope.slider = $scope.slider.data;	
+			console.log($scope.slider);
 		});
 	}
 
@@ -35,10 +36,10 @@ angular.module('adminApp', ['ngResource'])
 	];
 
 	$scope.directionOption = [ 
-		{ name: 'left', label :'From Left to Right' },
-		{ name: 'right', label : 'From Right to Left' },
-		{ name: 'top', label : 'From Top to Buttom' },
-		{ name: 'bottom', label :'From bottom to top' }
+		{ class: 'fadeInLeft', label :'Left to Right' },
+		{ class: 'fadeInRight', label : 'Right to Left' },
+		{ class: 'fadeInDown', label : 'Top to Bottom' },
+		{ class: 'fadeInUp', label :'Bottom to Top' }
 	];
 
 
@@ -63,7 +64,14 @@ angular.module('adminApp', ['ngResource'])
 
 	$scope.create = function(){
 		Sliders.create($scope.slider,function(result){
+
+			if(result.status == 'ok'){
 				location = '/admin/slider/edit/'+ result.data._id;
+			}else{
+				ShowGritterCenter('System Notification','Slider can not be created..' +  result.messages);
+				console.log(result.messages);
+			}
+				
 		});
 	}
 
@@ -115,18 +123,14 @@ angular.module('adminApp', ['ngResource'])
   	link: function (scope, element, attrs) {
             element.on('click', function () {
 
-
-
-//$$hashKey: "object:33"__v: 0_id: "54f720858cfc5e275dec5d83"archive: falsecreateDate: "2015-03-04T15:11:01.667Z"ext: "jpg"path: "/docs/Image/Slider/f1cd6272-5f8c-48d1-8913-b561ab253e39.jpg"size: 23325target: "Slider"title: "staff"type: "Image"
-
-
-
-            	console.log(scope.$parent);
+            	
             	var newMedia = scope.media;
             	delete newMedia.$$hashKey;
             	console.log(newMedia);
             	//scope.$parent.slider.resource = scope.media;
             	scope.$parent.slider.resource = newMedia._id;
+            	scope.$parent.slider.media = scope.media;
+
             	scope.$parent.$apply();
 
             });

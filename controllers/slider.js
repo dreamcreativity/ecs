@@ -4,17 +4,23 @@ var fs = require('fs');
 
 // Insert a new Slider record
 exports.create = function(req,res){
+
+	console.log(req.body);
 	var newSlider = new Slider(req.body);
+	console.log(newSlider);
+
 	newSlider.save(function(err,result){
 		if(err){
 			res.json({
-				type:false,
-				data:"Error occured: " +err
-				});
+				status: 'fail',
+				messages: err,
+				data: null
+			});
 		}
 		res.json({
-			type:true,
-			data:result
+			status: 'ok',
+			messages: 'successed',
+			data: result
 		});
 	});
 }
@@ -32,11 +38,47 @@ exports.get = function(req,res){
 			});
 		}
 		if(result.length == 1){
-			res.json({
-				status: 'ok',
-				messages: 'successed',
-				data: result[0]
-			});	
+
+			var s = result[0].toObject();
+
+			if(s.resource != null){
+
+				Media.find({_id:s.resource}, function(err1, result1){
+					
+
+					if(err1){
+						res.json({
+							status: 'fail',
+							messages: "can not get result media ",
+							data: null
+						});
+					}else{
+
+						s.media = result1[0].toObject();
+						console.log('what the fuck');
+						console.log(result1);
+						console.log(s);
+						res.json({
+							status: 'ok',
+							messages: 'successed',
+							data: s
+						});	
+
+					}
+				});
+
+			}else{
+				
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: silder
+				});	
+			}
+
+
+
+
 		}else{
 			res.json({
 				status: 'fail',
