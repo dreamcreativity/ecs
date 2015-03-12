@@ -1,0 +1,35 @@
+<form name="createForm" class="form-horizontal" ng-app='promotionApp' ng-controller='PromotionCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Region</label>
+		<div class="col-sm-9">
+			<select name="region" ng-model="promotion.region" class="form-control" required>
+				<option value="Korea">Korea</option>
+				<option value="China">China</option>
+			</select>
+			<p ng-show="createForm.region.$invalid && !createForm.region.$pristine" class="help-block text-danger">role is required</p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Rate</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="rate" ng-model="promotion.rate" required>
+			<p ng-show="createForm.rate.$invalid && !createForm.rate.$pristine" class="help-block text-danger">Rate is required</p>	
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-4">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+			</div>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
+			</div>
+		</div>
+	</div>
+
+</form>

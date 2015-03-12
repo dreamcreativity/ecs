@@ -11,7 +11,7 @@ angular.module('promotionApp', ['ngRoute','ngResource','ngBootbox'])
  	}
 
  	$scope.create = function(isValid){
-	 	Agents.save($scope.agent,function(result){
+	 	Promotions.save($scope.promotion,function(result){
 	 		    var message = result.messages;	    
 	 		     $scope.returnMessage = "successfully";
 	 			setInterval(function(){
@@ -46,7 +46,7 @@ angular.module('promotionApp', ['ngRoute','ngResource','ngBootbox'])
 
 .factory('Promotions',['$resource',
 	function($resource){
-		return $resource('http://localhost:3000/api/promotion/:id', {}, {
+		return $resource('http://localhost:3000/api/promotions/:id', {}, {
 		query:{ method: 'GET'},
 		update : { method : 'PUT', params: {id:'@_id'}}
 	});
