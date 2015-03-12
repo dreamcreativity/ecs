@@ -52,7 +52,8 @@
     <script src="/ng/apps/studentApp.js"></script>
     <script src="/ng/apps/adminApp.js"></script>
     <script src="/ng/apps/agentApp.js"></script>
-	
+	<script src="/ng/apps/promotionApp.js"></script>
+
   </head>
 
   <body>
@@ -228,6 +229,12 @@
 										</li>			
 																		
 									</ul>
+							</li>
+
+							<li class="panel <%if(parms.cur_tap=='Promotions'){ %>open<% } %>">
+								<a href="/admin/promotion/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#PromotiontManagement">
+									<i class="fa fa-users"></i> Promotions <span class="fa arrow"></span>
+								</a>
 							</li>
 							
 							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">

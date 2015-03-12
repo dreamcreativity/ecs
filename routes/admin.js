@@ -242,7 +242,20 @@ router.get('/agent/create', function(req, res) {
 	res.render('admin/agent/agent_new.html');
 });
 
+//-----------------------Pormotion---------------------------------
+router.get('/promotion/all', function(req, res){
+	template(req,res,'admin_main','admin/promotion/promotions.html',
+	{
+		title : 'Promotion',
+		category : 'Management',
+		cur_tap : 'Promotion',
+		cur_selected : 'Promotion'
+	});
+});
 
+router.get('/promotion/create', function(req,res){
+	res.render('admin/promotion/promotion_new.html');
+})
 
 
 

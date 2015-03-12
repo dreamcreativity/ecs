@@ -7,6 +7,7 @@ var material = require('../controllers/material');
 var slider =require('../controllers/slider');
 var region = require('../controllers/region');
 var media = require('../controllers/media');
+var promotion = require('../controllers/promotion');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -100,6 +101,17 @@ router.put('/materials/:id', student.edit)
 
 //GET all regions
 router.get('/regions',region.getAllRegions);
+
+//----------------------Promotion-------------------------------------
+
+//GET all promotions
+router.get('/promotions', promotion.getAllPormotions);
+
+//GET a promotion by promotion ID
+router.get('/promotions/:id', promotion.getPromotionbyId);
+
+//POST : create a promotion record
+router.post('/promotion', promotion.create);
 
 
 
