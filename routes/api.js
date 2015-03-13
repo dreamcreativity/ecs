@@ -8,6 +8,7 @@ var slider =require('../controllers/slider');
 var region = require('../controllers/region');
 var media = require('../controllers/media');
 var promotion = require('../controllers/promotion');
+var course = require('../controllers/course');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -112,6 +113,11 @@ router.get('/promotions/:id', promotion.getPromotionbyId);
 
 //POST : create a promotion record
 router.post('/promotion', promotion.create);
+
+//------------------------Course----------------------------------------
+
+//GET all courses
+router.get('/courses', course.getAllCourses);
 
 
 

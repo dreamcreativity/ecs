@@ -22,6 +22,28 @@ exports.create = function(req,res){
 	});
 }
 
+
+//GET: all courses
+exports.getAllCourses = function (req,res){
+	Course.find({},function(err,results){
+		if(err){
+			res.json(
+			{
+				status: 'fail',
+				messages: err,
+				data: null
+			});			
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: results
+			});	
+		}	
+	});
+}
+
 //GET: course by Id
 exports.getCoursebyId = function(req,res){
 	var id = req.params.id;
