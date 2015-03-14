@@ -119,6 +119,15 @@ router.post('/promotion', promotion.create);
 //GET all courses
 router.get('/courses', course.getAllCourses);
 
+//POST create a new course
+router.post('/courses', course.create);
+
+//GET a course
+router.get('/courses/:id', course.getCoursebyId);
+
+//PUT edit a course
+router.put('/courses/:id', course.edit);
+
 
 
 

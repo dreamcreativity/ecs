@@ -257,6 +257,33 @@ router.get('/promotion/create', function(req,res){
 	res.render('admin/promotion/promotion_new.html');
 })
 
+//---------------------Courses----------------------------------------
+router.get('/course/all', function(req,res){
+	template(req,res,'admin_main', 'admin/course/course.html', 
+	{
+		title : 'Course',
+		category : 'Management',
+		cur_tap : 'Course',
+		cur_selected : 'Course'
+	});
+});
+
+router.get('/course/create', function(req, res) {
+	res.render('admin/course/course_new.html');
+});
+
+router.get('/course/edit/:id', function(req, res) {
+	template(req,res,'admin_main','admin/course/course_edit.html',
+			{ 
+				title: 'Course',
+				category: 'Management',
+				cur_tap: 'Course',
+				cur_selected : 'Edit Course',
+				url_params : req.params
+			}
+		);
+});
+
 
 
 module.exports = router;

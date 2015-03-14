@@ -75,8 +75,7 @@ exports.getCoursebyId = function(req,res){
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	var course = new Course(req.body);
-	Course.update({_id:id}, course, function(err, result){
+	Course.update({_id:id}, req.body, function(err, result){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -85,7 +84,7 @@ exports.edit = function(req,res){
 			});
 		}
 		else {
-			if(result.length == 1){
+			if(result == 1){
 				res.json({
 					status: 'ok',
 					messages: 'successed',
