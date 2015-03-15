@@ -85,6 +85,17 @@ angular.module('adminApp', ['ngResource'])
 		});
 	}
 
+	$scope.delete = function(){
+		console.log('delete slider');
+		Sliders.delete(url_params,function(result){
+				if(result.status == 'ok'){
+					window.location = '/admin/slider/all';
+				}else{
+					ShowGritterCenter('System Notification','Slider can not being delete.');
+				}
+		});
+	}
+
 
 	$scope.selectResource = function(mediaResource){
 		console.log('click');
@@ -144,6 +155,7 @@ angular.module('adminApp', ['ngResource'])
 			query:{method: 'GET' },
 			get:{method: 'GET', params: {id:'@_id'}},
 			create:{ method: 'POST'},
+			delete:{ method: 'DELETE',params: {id:'@_id'}},
 			update : { method : 'PUT', params: {id:'@_id'}}
 	});
 }])

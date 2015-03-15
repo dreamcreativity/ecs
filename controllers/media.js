@@ -58,6 +58,7 @@ exports.upload = function(req,res){
 
 
    		// move file the new folder
+
     	mv(req.files.file.path, newPath,{mkdirp: true},function(err){
     		console.log('error form moving file');
     		console.log(err);
@@ -139,7 +140,7 @@ exports.get = function(req,res){
 exports.getByTarget = function(req,res){
 
 	var target = req.params.target;
-	console.log(target);
+	//console.log(target);
 	Media.find({target:target}, function(err, result){
 		if(err) {
 			res.json({

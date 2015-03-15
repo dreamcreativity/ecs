@@ -32,7 +32,7 @@ router.post('/slider', slider.create);
 router.get('/slider/:id', slider.get);
 router.get('/slider', slider.all);
 router.put('/slider/:id', slider.edit);
-
+router.delete('/slider/:id', slider.delete);
 //-------------------------Staff----------------------------------
 
 router.get('/staffs/:id', staff.getStaffbyId);

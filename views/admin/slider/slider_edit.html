@@ -83,28 +83,32 @@
 						</div>
 					</div>
 
-					<div class="form-group" ng-show="d.resource == null">
+					<div class="form-group" ng-show="slider.resource != null">
 						<label class="col-sm-3 control-label">Preview:</label>
 						<div class="col-sm-4">
-							<img style="width: 100%" src="{{slider.media.path}}">
+							<div>
+								some media info
+							</div>
+							<img style="width: 100%" src="{{slider.media.path}}" ng-show="slider.media.type=='Image'">
+							<video width="300" src="{{slider.media.path}}" controls ng-show="slider.media.type=='Video'">
+							  Your browser does not support the <code>video</code> element.
+							</video>
 						</div>
 					</div>
-					<div class="form-group" ng-show="d.resource == null">
-						<label class="col-sm-3 control-label">no Preview:</label>
-						<div class="col-sm-2">
-							this is has no preview
+					<div class="form-group" ng-show="slider.resource == null">
+						<label class="col-sm-3 control-label"></label>
+						<div class="col-sm-4">
+							<h3>Please select a media from the list below</h3>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Resource:</label>
-						<div class="col-sm-7">
-							
+						<div class="col-sm-7">							
 							<div class="slider-resource">
 								<ul>
 									<li ng-repeat="media in media_list.data" ><img width="120" src="{{media.path}}" resource-Picker></li>
-								</ul>
-					
+								</ul>					
 							</div>												
 						</div>
 					</div>
@@ -115,6 +119,7 @@
 						<div class="col-sm-3">
 							<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
 							<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
+							<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
 						</div>
 					</div>
 			

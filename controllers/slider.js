@@ -26,8 +26,6 @@ exports.create = function(req,res){
 }
 
 exports.get = function(req,res){
-	console.log('get slider');
-
 	var id = req.params.id;
 	Slider.find({_id:id}, function(err, result){
 		if(err) {
@@ -38,14 +36,10 @@ exports.get = function(req,res){
 			});
 		}
 		if(result.length == 1){
-
 			var s = result[0].toObject();
-
 			if(s.resource != null){
-
 				Media.find({_id:s.resource}, function(err1, result1){
 					
-
 					if(err1){
 						res.json({
 							status: 'fail',
@@ -55,9 +49,7 @@ exports.get = function(req,res){
 					}else{
 
 						s.media = result1[0].toObject();
-						console.log('what the fuck');
-						console.log(result1);
-						console.log(s);
+			
 						res.json({
 							status: 'ok',
 							messages: 'successed',
@@ -72,12 +64,9 @@ exports.get = function(req,res){
 				res.json({
 					status: 'ok',
 					messages: 'successed',
-					data: silder
+					data: s
 				});	
 			}
-
-
-
 
 		}else{
 			res.json({
@@ -119,18 +108,6 @@ exports.edit = function(req,res){
 
 	delete slider._id;
 	delete slider.__v;
-	console.log(slider);
-
-	// var obj = {
-	// 	heading: slider.heading,
-	// 	sub_heading: slider.sub_heading,
-	// 	position: slider.position,
-	// 	is_active: slider.is_active,
-	// 	createDate: slider.createDate,
-	// 	direction: slider.direction,
-	// 	color: slider.color
-	// }
-
 
 	Slider.update({_id:update_id}, req.body, {}, function(err, result){
 		if(err){
@@ -151,6 +128,35 @@ exports.edit = function(req,res){
 		}
 	});
 }
+
+
+exports.delete = function(req,res){
+
+	var remove_id = req.params.id;
+	Slider.find({ _id:remove_id }).remove(function(err,result){
+
+			if(err){
+				res.json({
+					status: 'fail',
+					messages: err,
+					data: null
+				});
+			}
+			else {
+
+
+				// remove file
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result + ' record(s) effected.'
+				});	
+			}
+		});
+}
+
+
+
 
 
 
