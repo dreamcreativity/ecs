@@ -70,7 +70,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-								<label class="col-sm-3 control-label"></label>
+									<label class="col-sm-3 control-label"></label>
 									<div class="col-sm-9">
 										<div class="tcb">
 											<label>
@@ -87,6 +87,11 @@
 										<div class="col-sm-offset-2 col-sm-10">
 											<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="loginForm.$invalid">
 											<a href="/admin/staff/all" type="submit" class="btn">Cancel</a>
+										</div>
+									</div>
+									<div class="form-group">
+										<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+											{{returnMessage}}
 										</div>
 									</div>
 								</div>
