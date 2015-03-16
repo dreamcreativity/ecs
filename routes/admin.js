@@ -284,6 +284,21 @@ router.get('/course/edit/:id', function(req, res) {
 		);
 });
 
+//-----------------------Activity-----------------------------------------
+router.get('/activity/all', function(req,res) {
+	template(req,res,'admin_main', 'admin/activity/activity.html', 
+		{
+			title : 'Activity',
+			category : 'Management',
+			cur_tap : 'Activity',
+			cur_selected : 'Activity'
+		});
+});
+
+
+
+
+
 
 
 module.exports = router;
