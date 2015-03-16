@@ -1,0 +1,61 @@
+<form name="createForm" class="form-horizontal" ng-app='ActivityApp' ng-controller='ActivityCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="title" ng-model="activity.title" ng-minlength="4" ng-maxlength="10" required>
+			<p ng-show="createForm.title.$invalid && !createForm.title.$pristine" class="help-block text-danger">title is required</p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Description</label>
+		<div class="col-sm-9">
+			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="course.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Images</label>
+		<div class="col-sm-9">
+			<!-- <img height=150 ng-repeat="m in medias.data" src="{{m.path}}" ng-show="m.type=='Image'"> -->
+			 <select multiple="multiple" class="image-picker show-html">
+			   <!-- <option ng-repeat="item in medias.data" data-img-src="{{item.path}}" value="{{item._id}}"></option> -->
+			   <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
+  			   <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+               <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+               <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+               <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+               <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+               <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
+  			   <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+               <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+               <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+               <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+			</select> 
+		</div>
+	</div>
+
+	<!-- <div class="form-group">
+		<label class="col-sm-3 control-label">Images</label>
+		<div class="col-sm-9">
+			<select multiple="multiple" class="image-picker show-html">
+				<option data-img-src="/docs/Image/Activity/b9c4d19d-918f-4a8a-a3f5-72f73d28d849.jpg" value="1"></option>
+			</select>
+		</div>
+	</div> -->
+
+</form>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/js/admin/image-picker.min.js"></script>
+
+<script type="text/javascript">
+$("select").imagepicker()
+</script>

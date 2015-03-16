@@ -295,6 +295,16 @@ router.get('/activity/all', function(req,res) {
 		});
 });
 
+router.get('/activity/create', function(req, res) {
+	template(req,res,'admin_main', 'admin/activity/activity_new.html', 
+		{
+			title : 'Create Activity',
+			category : 'Management',
+			cur_tap : 'Activity',
+			cur_selected : 'Create Activity'
+		});
+	//res.render('admin/activity/activity_new.html');
+});
 
 
 
