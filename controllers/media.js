@@ -47,10 +47,6 @@ exports.upload = function(req,res){
     	var subPath = '/docs/';
     	subPath += newMedia.type + '/';
     	subPath += newMedia.target + '/';
-
-
-
-
 		// new filename
 		var newFileName = uuid.v4() + '.' +req.files.file.extension;
     	// new file location in server
@@ -58,7 +54,6 @@ exports.upload = function(req,res){
 
 
    		// move file the new folder
-
     	mv(req.files.file.path, newPath,{mkdirp: true},function(err){
     		console.log('error form moving file');
     		console.log(err);
@@ -67,6 +62,24 @@ exports.upload = function(req,res){
     	// doucment record path for http access
     	newMedia.path = subPath +  newFileName;
 
+
+
+    	// create video of image thumbnail
+    	if(newMedia.type == 'Video'){
+    		var ffmpeg = require('fluent-ffmpeg');
+				var proc = new ffmpeg('/path/to/your_movie.avi')
+				.takeScreenshots({
+				  count: 1,
+				  timemarks: [ '600' ] // number of seconds
+				}, '/path/to/thumbnail/folder', function(err) {
+				console.log('screenshots were saved')
+			});
+
+    	}else if (newMedia.type == 'Image'){
+
+    	}else{
+
+    	}
 
     	// save db record
 	    newMedia.save(function(err,result){

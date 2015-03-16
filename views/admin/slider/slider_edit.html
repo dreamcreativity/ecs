@@ -86,18 +86,20 @@
 					<div class="form-group" ng-show="slider.resource != null">
 						<label class="col-sm-3 control-label">Preview:</label>
 						<div class="col-sm-4">
-							<div>
-								some media info
+							<div class="resource-info">
+								<div>Title : {{ slider.media.title}}</div>
+								<div>Size : {{ slider.media.size}}</div>
+								<div>Date : {{ slider.media.createDate}}</div>								
 							</div>
 							<img style="width: 100%" src="{{slider.media.path}}" ng-show="slider.media.type=='Image'">
-							<video width="300" src="{{slider.media.path}}" controls ng-show="slider.media.type=='Video'">
+							<video width="100%" src="{{slider.media.path}}" controls ng-show="slider.media.type=='Video'">
 							  Your browser does not support the <code>video</code> element.
 							</video>
 						</div>
 					</div>
 					<div class="form-group" ng-show="slider.resource == null">
 						<label class="col-sm-3 control-label"></label>
-						<div class="col-sm-4">
+						<div class="col-sm-5">
 							<h3>Please select a media from the list below</h3>
 						</div>
 					</div>
