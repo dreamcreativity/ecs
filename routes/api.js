@@ -134,8 +134,11 @@ router.put('/courses/:id', course.edit);
 //GET all activites
 router.get('/activities', activity.getActivities);
 
-//POST create a new course
+//POST create a new activity
 router.post('/activities', activity.create);
+
+//PUT edit a activity
+router.put('/activities/:id',activity.edit);
 
 //GET a course
 router.get('/activities/:id', activity.getActivitybyId);

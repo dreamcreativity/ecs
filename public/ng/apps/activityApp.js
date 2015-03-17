@@ -35,15 +35,20 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 	if(activity_id !=null){
 	 	Activity.get({id:activity_id}, function(result){
 	 		$scope.activity = result.data;
+	 		$scope.array = result.data.mediaIds;
 	 	});	
 	 }
+
+	 Medias.get({target : 'Activity'},function(result){
+			$scope.medias=result;
+		})
 
 	 $scope.update = function(isValid) {
 		$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
 	 	Activity.update($scope.activity, function(result){
 	 			var message = result.messages;	    
-	 		    $scope.returnMessage = "profile is save successfully";
+	 		    $scope.returnMessage = "activity is save successfully";
 	 		    $("#messageReturn").delay(2000).fadeOut('slow');
 	 	})
 	 }
@@ -72,9 +77,9 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
         restrict: "A",
         link: function (scope, elem, attrs) {
             // Determine initial checked boxes
-            // if (scope.array.indexOf(scope.item.id) !== -1) {
-            //     elem[0].checked = true;
-            // }
+            if (scope.array.indexOf(scope.item._id) !== -1) {
+                elem[0].checked = true;
+            }
             // Update array on click
             elem.bind('click', function () {
             	var i = scope.item._id;

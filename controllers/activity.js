@@ -62,26 +62,62 @@ exports.getActivitybyId = function(req,res){
 				data: null
 			});
 		}
-		activity = results;
-		async.eachSeries(results[0].mediaIds, function(item,callback){
-			Media.find({_id:item}).exec(function(err,result_media){
-				if(err){
-
-				}
-				mediaList.push(result_media);
-				callback();
-			});
-		}, function(err,results){
-			// activity["medias"] = mediaList;
-			res.json({
+		res.json({
 				status: 'ok',
 				messages: 'successed',
-		 		data: activity
+		 		data: results[0]
 			})
-		});
+		// activity = results;
+		// async.eachSeries(results[0].mediaIds, function(item,callback){
+		// 	Media.find({_id:item}).exec(function(err,result_media){
+		// 		if(err){
+
+		// 		}
+		// 		mediaList.push(result_media);
+		// 		callback();
+		// 	});
+		// }, function(err,result2){
+		// 	//activity[0].medias = mediaList;
+		// 	results["medias111"] ="123123";
+		// 	// activity["medias"] = mediaList;
+		// 	res.json({
+		// 		status: 'ok',
+		// 		messages: 'successed',
+		//  		data: results
+		// 	})
+		// });
 	});
 }
 
+//PUT : Activity 
+exports.edit = function(req,res){
+	var id = req.params.id;
+	//var staff = new Staff(req.body);
+	Activity.update({_id:id}, req.body, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else {
+			if(result == 1){
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}else{
+				res.json({
+					status: 'fail',
+					messages: "multipulte result",
+					data: null
+				});
+			}
+		}
+	});
+}
 
 
 

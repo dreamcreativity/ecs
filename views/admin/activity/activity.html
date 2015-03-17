@@ -24,8 +24,8 @@
 								<td class="hidden-xs">{{activity.title}}</td>
 								<td class="hidden-xs">{{activity.description}}</td>
 								<td class="hidden-xs"> </td>
-								<td><span ng-if="staff.isDelete == 1" class="label label-danger">Deleted</span>
-									<span ng-if="staff.isDelete == 0" class="label label-active">Active</span>
+								<td><span ng-if="activity.isActive == 0" class="label label-danger">Deleted</span>
+									<span ng-if="activity.isActive == 1" class="label label-active">Active</span>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">

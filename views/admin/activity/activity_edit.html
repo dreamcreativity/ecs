@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	var url_params = <%- JSON.stringify(url_params) %>
+var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
 <form name="editForm" class="form-horizontal" ng-app='ActivityApp' ng-controller='ActivityEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
@@ -27,14 +27,14 @@
 							<div class="thumb-image">
 								<img src="{{item.path}}" alt="" style="width:160px; height: 120px;">
 							</div>
-							<div class="gl-thumb-options">
-								<div class="gl-toolbar">
-									<div class="gl-option checkbox-inline">
+							<!-- <div class="gl-thumb-options">
+							<div class="gl-toolbar"> -->
+								<div class="gl-option checkbox-inline">
 									<input class="tc" type="checkbox" id="{{item._id}}" checkbox-group>
-										<label class="labels" for="{{item._id}}">Select</label>
-									</div>
+									<label class="labels" for="{{item._id}}">Select</label>
 								</div>
-							</div>
+								<!-- </div>
+							</div> -->
 						</div>
 						<h5 class="gl-title">{{item.title}}<small>.{{item.ext}}</small></h5>
 						<div class="gl-description">
@@ -46,12 +46,25 @@
 		</div>
 	</div>
 
+	<hr class="separator">
+	<div class="form-group">
+		<label class="col-sm-3 control-label"></label>
+		<div class="col-sm-3">
+			<div class="tcb">
+				<label>
+					<input type="checkbox" ng-model="activity.isActive" class="tc">
+					<span class="labels"> Active</span>
+				</label>
+			</div>
+		</div>
+	</div>
+
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-2">
+			<div class="col-sm-offset-3 col-sm-3">
 				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editForm.$invalid">
-				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
 			</div>
+			<a href="/admin/activity/all" type="submit" class="btn btn-primary">Cancel</a>
 		</div>
 		<div class="form-group">
 			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">

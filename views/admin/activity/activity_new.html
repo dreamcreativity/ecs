@@ -23,14 +23,14 @@
 							<div class="thumb-image">
 								<img src="{{item.path}}" alt="" style="width:160px; height: 120px;">
 							</div>
-							<div class="gl-thumb-options">
-								<div class="gl-toolbar">
+							<!-- <div class="gl-thumb-options">
+								<div class="gl-toolbar"> -->
 									<div class="gl-option checkbox-inline">
 									<input class="tc" type="checkbox" id="{{item._id}}" checkbox-group>
 										<label class="labels" for="{{item._id}}">Select</label>
 									</div>
-								</div>
-							</div>
+								<!-- </div>
+							</div> -->
 						</div>
 						<h5 class="gl-title">{{item.title}}<small>.{{item.ext}}</small></h5>
 						<div class="gl-description">
@@ -78,9 +78,3 @@
 
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-<script src="/js/admin/image-picker.min.js"></script>
-
-<script type="text/javascript">
-	$("select").imagepicker()
-
-</script>
