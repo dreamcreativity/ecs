@@ -303,7 +303,17 @@ router.get('/activity/create', function(req, res) {
 			cur_tap : 'Activity',
 			cur_selected : 'Create Activity'
 		});
-	//res.render('admin/activity/activity_new.html');
+});
+
+router.get('/activity/edit/:id', function(req, res) {
+	template(req,res,'admin_main', 'admin/activity/activity_edit.html', 
+		{
+			title : 'Edit Activity',
+			category : 'Management',
+			cur_tap : 'Activity',
+			cur_selected : 'Edit Activity',
+			url_params : req.params
+		});
 });
 
 

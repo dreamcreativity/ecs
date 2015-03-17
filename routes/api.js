@@ -138,7 +138,7 @@ router.get('/activities', activity.getActivities);
 router.post('/activities', activity.create);
 
 //GET a course
-router.get('/activity/:id', activity.getActivitybyId);
+router.get('/activities/:id', activity.getActivitybyId);
 
 
 

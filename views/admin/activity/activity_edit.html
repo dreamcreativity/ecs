@@ -1,9 +1,13 @@
-<form name="createForm" class="form-horizontal" ng-app='ActivityApp' ng-controller='ActivityCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<form name="editForm" class="form-horizontal" ng-app='ActivityApp' ng-controller='ActivityEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Title</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" name="title" ng-model="activity.title" ng-minlength="4" ng-maxlength="100" required>
-			<p ng-show="createForm.title.$invalid && !createForm.title.$pristine" class="help-block text-danger">title is required</p>
+			<p ng-show="editForm.title.$invalid && !editForm.title.$pristine" class="help-block text-danger">title is required</p>
 		</div>
 	</div>
 
@@ -45,7 +49,7 @@
 	<div class="form-actions">
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-2">
-				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editForm.$invalid">
 				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
 			</div>
 		</div>
@@ -56,31 +60,7 @@
 		</div>
 	</div>
 
-	<!-- <div class="form-group">
-		<label class="col-sm-3 control-label">Images</label>
-		<div class="col-sm-9">
-			 <select multiple="multiple" class="image-picker show-html">
-			  <option ng-repeat="item in medias.data" data-img-src="{{item.path}}" value="{{item._id}}"></option> 
-			</select> 
-		</div>
-	</div> -->
-
-	<!-- <div class="form-group">
-		<label class="col-sm-3 control-label">Images</label>
-		<div class="col-sm-9">
-			<select multiple="multiple" class="image-picker show-html">
-				<option data-img-src="/docs/Image/Activity/b9c4d19d-918f-4a8a-a3f5-72f73d28d849.jpg" value="1"></option>
-			</select>
-		</div>
-	</div> -->
-
 </form>
 
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-<script src="/js/admin/image-picker.min.js"></script>
-
-<script type="text/javascript">
-	$("select").imagepicker()
-
-</script>

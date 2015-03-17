@@ -1,5 +1,8 @@
 var Activity = require('../models/activity');
+var Media = require('../models/media');
 var mongoose = require('mongoose');
+
+async = require("async");
 
 
 //POST: create new Activity
@@ -49,7 +52,9 @@ exports.getActivities = function (req,res){
 //GET: Activity by Id
 exports.getActivitybyId = function(req,res){
 	var id = req.params.id;
-	Activity.find({_id:id}, function(err, result){
+	var activity =null;
+	var mediaList = [];
+	Activity.find({_id:id}, function(err, results){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -57,20 +62,23 @@ exports.getActivitybyId = function(req,res){
 				data: null
 			});
 		}
-		if(result.length == 1){
+		activity = results;
+		async.eachSeries(results[0].mediaIds, function(item,callback){
+			Media.find({_id:item}).exec(function(err,result_media){
+				if(err){
+
+				}
+				mediaList.push(result_media);
+				callback();
+			});
+		}, function(err,results){
+			// activity["medias"] = mediaList;
 			res.json({
 				status: 'ok',
 				messages: 'successed',
-				data: result[0]
-			});	
-		}else{
-			res.json({
-				status: 'fail',
-				messages: "multipulte result",
-				data: null
-			});
-		}
-		
+		 		data: activity
+			})
+		});
 	});
 }
 
