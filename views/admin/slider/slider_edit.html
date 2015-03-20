@@ -109,7 +109,12 @@
 						<div class="col-sm-7">							
 							<div class="slider-resource">
 								<ul>
-									<li ng-repeat="media in media_list.data" ><img width="120" src="{{media.path}}" resource-Picker></li>
+									<li ng-repeat="media in media_list.data" >
+										<img width="120" src="{{media.thumbnail}}" ng-show="media.type=='Image'"  resource-Picker>
+										<video width="120" src="{{media.path}}" controls ng-show="media.type=='Video'" style="margin-top:27px"  resource-Picker>
+										  Your browser does not support the <code>video</code> element.
+										</video>
+									</li>
 								</ul>					
 							</div>												
 						</div>

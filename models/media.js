@@ -7,6 +7,7 @@ var MediaSchema = mongoose.model('Media', new mongoose.Schema({
 	size: {type: Number, required: true },
 	ext: {type: String, required: true },
 	path: {type: String, required: true },
+	thumbnail: {type: String, required: true, default: null },
 	type: {type:String, required: true, default: 'Image'},
 	target: { type: String, required: true, default: 'Gallery' },
 	createDate : {type : Date, default : Date.now },

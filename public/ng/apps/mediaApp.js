@@ -10,14 +10,14 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	
 
 	$scope.startAll = function(){
-
+		console.log('hello');
 		for (var x in $scope.uploadList) {
 
 			var file = $scope.uploadList[x];
 			console.log(file.status);
 			if(file.status == 'pending'){
 				file.status = 'uploading';
-				scope.sendFileToServer(file);
+				$scope.sendFileToServer(file);
 			}			
 		};
 			    
