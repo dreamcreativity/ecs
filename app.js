@@ -20,6 +20,7 @@ var db = require('./db');
 //---------------------------------------------
 var routes = require('./routes/client');
 var admin = require('./routes/admin');
+var agent = require('./routes/agent');
 var api = require('./routes/api');
 
 //---------------------------------------------
@@ -67,6 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/admin', admin);
+app.use('/agent', agent);
 app.use('/api', api);
 
 
