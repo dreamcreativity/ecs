@@ -17,10 +17,31 @@
 		Drop Files Here .....
 	</div>
 
-    <div class="jumbotron position-relative bordered white padding-2x" ng-show="uploadList.length != 0">
-        <a class="btn btn-app" ng-click="startAll()"><i class="fa fa-play"></i>Start All</a>
-        <a class="btn btn-app"><i class="fa fa-ban"></i>Pause</a>
-        <a class="btn btn-app"><i class="fa fa-times"></i>Clear List</a>
+    <div class="jumbotron position-relative bordered white padding-2x " ng-show="uploadList.length != 0">
+
+        <div class="row">
+            <div class="col-md-7">
+                <a class="btn btn-app" ng-click="startAll()"><i class="fa fa-play"></i>Start All</a>
+                <a class="btn btn-app"><i class="fa fa-ban"></i>Pause</a>
+                <a class="btn btn-app"><i class="fa fa-times"></i>Clear List</a>
+
+            </div>
+
+            <div class="col-md-5">
+                <select class="form-control" ng-model="allTarget"  style="width:200px; display:inline">
+  
+                    <option value="Slider" >Slider</option>
+                    <option value="Gallery">Gallery</option>
+                    <option value="Material">Material</option>
+                    <option value="Student">Student</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Activity">Activity</option>
+                    <option value="Other">Other</option>
+                </select>
+                <a class="btn" ng-click="targetApplyAll()"><i class="fa fa-plus"></i>Apply All</a>
+            </div>
+        </div>
+
     </div>
     <div class="jumbotron position-relative bordered white padding-2x">
         

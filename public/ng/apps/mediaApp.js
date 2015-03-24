@@ -7,7 +7,7 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 
 	$scope.uploadList = [];
 	$scope.order = 0;
-	
+	$scope.allTarget = 'Slider';
 
 	$scope.startAll = function(){
 		console.log('hello');
@@ -22,6 +22,21 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 		};
 			    
 	}
+
+	$scope.targetApplyAll = function (){
+
+		console.log($scope.allTarget);
+
+
+		for (var x in $scope.uploadList) {
+
+			var file = $scope.uploadList[x];
+			//console.log(file);
+			file.target = 	$scope.allTarget;	
+		};
+	}
+
+
 
 	$scope.createStatusbar =  function (obj)
 	{
