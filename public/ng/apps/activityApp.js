@@ -8,7 +8,11 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 
 	$scope.create = function(isValid){
 		$scope.returnMessage ="";
-		$scope.activity.mediaIds = $scope.array;
+		$scope.activity.mediaIds=[]
+		// $scope.activity.mediaIds = $scope.array;
+		for(var i=0; i<$scope.array.length; i++){
+			$scope.activity.mediaIds.push($scope.array[i]._id);
+		}
 	 	Activity.save($scope.activity,function(result){
 	 		     $scope.returnMessage = "successfully";
 	 			setInterval(function(){
@@ -35,7 +39,7 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 	if(activity_id !=null){
 	 	Activity.get({id:activity_id}, function(result){
 	 		$scope.activity = result.data;
-	 		$scope.array = result.data.mediaIds;
+	 		$scope.array = result.data["medias"];
 	 	});	
 	 }
 
@@ -77,20 +81,36 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
         restrict: "A",
         link: function (scope, elem, attrs) {
             // Determine initial checked boxes
-            if (scope.array.indexOf(scope.item._id) !== -1) {
-                elem[0].checked = true;
-            }
+            // if (scope.array.indexOf(scope.item) !== -1) {
+            //     elem[0].checked = true;
+            // }
+    //         if(scope.array){
+    //         for(var i=0; i<scope.array.length; i++){
+    //         	if(scope.medias.indexOf(scope.array[i]) !== -1) {
+				//     elem[0].checked = true;
+				// }
+    //         }
+    //     }
+
             // Update array on click
             elem.bind('click', function () {
-            	var i = scope.item._id;
-                 var index = scope.array.indexOf(scope.item._id);
+            	var i = scope.item;
+                 var index = scope.array.indexOf(scope.item);
                  // Add if checked
                 if (elem[0].checked) {
-                    if (index === -1) scope.array.push(scope.item._id);
+                    if (index === -1) {
+                    	scope.array.push(scope.item);
+                    	//scope.medias.data.splice(scope.item,1);
+                    	 elem[0].checked = true;
+                    }
                 }
                 // Remove if unchecked
                 else {
-                    if (index !== -1) scope.array.splice(index, 1);
+                    if (index !== -1) {
+                    	scope.array.splice(index, 1);
+                    	//scope.medias.data.push(scope.item);
+                    	 elem[0].checked = false;
+                    }
                 }
                 // Sort and update DOM display
                 scope.$apply(scope.array.sort(function (a, b) {

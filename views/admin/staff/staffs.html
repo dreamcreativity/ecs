@@ -24,7 +24,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="staff in staffs.data | filter:query">
+							<tr ng-repeat="staff in staffs.data">
 							<td class="hidden-xs">{{staff.username}}</td>
 								<td><a href="/admin/staff/detail/{{staff._id}}">{{staff.firstname}}</a></td>
 								<td class="hidden-xs"><a href="/admin/staff/detail/{{staff._id}}">{{staff.lastname}}</a></td>

@@ -1,4 +1,4 @@
-var Activity = require('../models/activity');
+ var Activity = require('../models/activity');
 var Media = require('../models/media');
 var mongoose = require('mongoose');
 
@@ -62,30 +62,28 @@ exports.getActivitybyId = function(req,res){
 				data: null
 			});
 		}
-		res.json({
-				status: 'ok',
-				messages: 'successed',
-		 		data: results[0]
-			})
-		// activity = results;
-		// async.eachSeries(results[0].mediaIds, function(item,callback){
-		// 	Media.find({_id:item}).exec(function(err,result_media){
-		// 		if(err){
-
-		// 		}
-		// 		mediaList.push(result_media);
-		// 		callback();
-		// 	});
-		// }, function(err,result2){
-		// 	//activity[0].medias = mediaList;
-		// 	results["medias111"] ="123123";
-		// 	// activity["medias"] = mediaList;
-		// 	res.json({
+		// res.json({
 		// 		status: 'ok',
 		// 		messages: 'successed',
-		//  		data: results
+		//  		data: results[0]
 		// 	})
-		// });
+		activity = results;
+		async.eachSeries(results[0].mediaIds, function(item,callback){
+			Media.find({_id:item}).exec(function(err,result_media){
+				if(err){
+
+				}
+				mediaList.push(result_media[0]);
+				callback();
+			});
+		}, function(err,result2){
+		    activity[0].medias = mediaList;
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+		 		data: activity[0]
+			})
+		});
 	});
 }
 

@@ -4,6 +4,7 @@ var ActivitySchema = mongoose.model('Activity', new mongoose.Schema({
 	title : {type : String},
 	description : {type: String},
 	mediaIds : [String],
+	medias : "",
 	isActive : {type : Boolean, default : true }
 }));
 
