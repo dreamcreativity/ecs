@@ -3353,7 +3353,7 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs) .portfolio-notitle .por
 .portfolio-desc span {
 	display: block;
 	margin-top: 3px;
-	color: #888;
+	color: #888;height:2em;overflow:hidden;margin-bottom:30px
 }
 
 .portfolio-desc span a { color: #888; }
@@ -3418,15 +3418,15 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-desc { display: none 
 #portfolio.portfolio-full { margin: 0 !important; }
 
 .portfolio-nomargin .portfolio-item {
-	width: 284px;
-	margin: 0 !important;
+	width: 264px;
+	margin: 0 4px!important;overflow:hidden
 }
 
 .portfolio-nomargin .portfolio-item .portfolio-image,
 .portfolio-nomargin .portfolio-item .portfolio-image a,
 .portfolio-nomargin .portfolio-item .portfolio-image img {
-	width: 284px;
-	height: 213px;
+	width: 274px;
+	height: 213px
 }
 
 .portfolio-nomargin .portfolio-desc { padding: 15px 10px 15px; }
@@ -7386,6 +7386,9 @@ body:not(.device-touch) .button.button-full strong {
 
 .feature-box.fbox-center.fbox-outline .fbox-icon i { line-height: 88px; }
 
+.feature-box.fbox-center .fbox-photo{position:relative;width:100%;height:110px;overflow:hidden;margin:0 auto 20px}
+.feature-box.fbox-center .fbox-photo img{width:90%;padding:0 4.8%;margin-top:-5%}
+
 .feature-box.fbox-center p {
 	font-size: 14px;
 	margin-top: 15px;
@@ -9011,7 +9014,7 @@ body:not(.device-touch) .clients-grid li a {
 .testi-content p {
 	margin-bottom: 0;
 	font-family: 'Crete Round', serif;
-	font-style: italic;
+	font-style: italic;color:#fff;color:rgba(255,255,255,0.7)
 }
 
 .testi-content p:before,
@@ -9021,7 +9024,7 @@ body:not(.device-touch) .clients-grid li a {
 	margin-top: 10px;
 	font-size: 13px;
 	font-weight: bold;
-	text-transform: uppercase;
+	text-transform: uppercase;color:#fff;color:rgba(255,255,255,0.6)
 }
 
 .testi-meta:before { content: '\2013'; }
@@ -9029,7 +9032,7 @@ body:not(.device-touch) .clients-grid li a {
 .testi-meta span {
 	display: block;
 	font-weight: normal;
-	color: #999;
+	color:#fff;color:rgba(255,255,255,0.45)
 	font-size: 12px;
 	text-transform: none;
 	padding-left: 10px;
@@ -9084,6 +9087,9 @@ body:not(.device-touch) .clients-grid li a {
 
 .testimonial-full .testi-meta span { padding-left: 0; }
 
+#section-testimonials .heading-block h4{color:#fff}
+#section-testimonials .heading-block.center>span,#section-testimonials .heading-block.title-center>span,#section-testimonials .center .heading-block>span{color:#eee;color:rgba(255,255,255,0.8)}
+#section-testimonials .heading-block:after{border-top:2px solid #fff;border-top:2px solid rgba(255,255,255,0.5)}
 
 /* Testimonial - Section Scroller
 -----------------------------------------------------------------*/
