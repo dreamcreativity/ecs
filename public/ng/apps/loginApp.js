@@ -6,6 +6,8 @@ angular.module('loginApp', ['ngRoute'])
 .controller('LoginController',function LoginController($scope,$http,$window,$location){
 	//Define login function 
 	$scope.login = function() {
+		$scope.returnMessage="";
+	 	$("#messageReturn").fadeIn('slow');
 		$http.post('http://localhost:3000/api/staffs/login',$scope.staff)
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
@@ -13,7 +15,8 @@ angular.module('loginApp', ['ngRoute'])
 				$window.location='/admin';
 			}
 			else {
-				console.log('login fail');
+				 $scope.returnMessage = "username or password is incorrect";
+	 		    $("#messageReturn").delay(2000).fadeOut('slow');
 			}
 		})
 		.error(function(data,status,headers,config){
@@ -39,6 +42,7 @@ angular.module('loginApp', ['ngRoute'])
       config.headers = config.headers || {};
       if ($window.sessionStorage.token) {
         config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+        config.headers.token = $window.sessionStorage.token;
       }
       return config;
     },

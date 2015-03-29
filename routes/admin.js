@@ -5,7 +5,7 @@ var staff =require('../controllers/staff');
 
 /* GET home page. */
 
-
+//staff.ensureAuthorized
 router.get('/', function(req, res) {
 	template(req,res,'admin_main','admin/dashboard.html',
 			{ 
