@@ -73,10 +73,6 @@ angular.module('materialApp', ['ngResource','esc.filters','esc.resources'])
             element.on('click', function () {
             	var newMedia = scope.media;
             	delete newMedia.$$hashKey;
-            	console.log(newMedia);
-            	//scope.$parent.slider.resource = scope.media;
-
-            	//$scope.previewUrl = newMedia.thumbnail;
 
             	scope.$parent.material.media = newMedia._id;
             	scope.$parent.material.mediaObject = scope.media;

@@ -58,15 +58,6 @@ exports.get = function(req,res){
 		}
 		if(result.length == 1){
 
-
-
-			// res.json({
-			// 	status: 'ok',
-			// 	messages: 'successed',
-			// 	data: result[0]
-			// });	
-
-
 			var s = result[0].toObject();
 			if(s.media != null){
 				Media.find({_id:s.media}, function(err1, result1){

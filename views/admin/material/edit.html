@@ -70,9 +70,9 @@
 							<div class="resource-info">
 								<div>Title : {{ material.mediaObject.title}}</div>
 								<div>Size : {{ material.mediaObject.size | filesize}}</div>
-								<div>Created Date : {{ slider.mediaObject.createDate | date:'MMMM d, yyyy' : 'UTC'}}</div>						
+								<div>Created Date : {{ material.mediaObject.createDate | date:'MMMM d, yyyy' : 'UTC'}}</div>						
 							</div>
-							<img style="width: 100%" src="{{material.mediaObject.path}}" ng-show="material.mediaObject.type=='Image'">
+							<img style="width: 100%" src="{{material.mediaObject.thumbnail}}" ng-show="material.mediaObject.type=='Image'">
 							<video width="100%" src="{{material.mediaObject.path}}" controls ng-show="material.mediaObject.type=='Video'">
 							  Your browser does not support the <code>video</code> element.
 							</video>

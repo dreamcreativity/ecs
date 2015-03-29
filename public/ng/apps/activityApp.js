@@ -94,25 +94,29 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 
             // Update array on click
             elem.bind('click', function () {
+
+
             	var i = scope.item;
-                 var index = scope.array.indexOf(scope.item);
-                 // Add if checked
-                if (elem[0].checked) {
-                    if (index === -1) {
-                    	scope.array.push(scope.item);
-                    	//scope.medias.data.splice(scope.item,1);
-                    	 elem[0].checked = true;
-                    }
+
+            	console.log(elem);
+                var index = scope.array.indexOf(scope.item);
+
+
+                if (index === -1) {
+                	scope.array.push(scope.item);
+                	//scope.medias.data.splice(scope.item,1);
+                	$(elem).find('.cover').addClass('selected');
+
                 }
-                // Remove if unchecked
+
+  
                 else {
-                    if (index !== -1) {
-                    	scope.array.splice(index, 1);
-                    	//scope.medias.data.push(scope.item);
-                    	 elem[0].checked = false;
-                    }
+          
+                	scope.array.splice(index, 1);
+                	$(elem).find('.cover').removeClass('selected');
+                    
                 }
-                // Sort and update DOM display
+             
                 scope.$apply(scope.array.sort(function (a, b) {
                     return a - b
                 }));

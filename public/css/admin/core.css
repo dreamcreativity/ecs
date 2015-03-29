@@ -234,5 +234,79 @@
 }
 
 
+/*-----------------------------------	
+	css for activity
+-------------------------------------
+*/
+
+.image-arear{
+	height: 480px;
+	overflow: auto;
+}
+
+.image-arear li{
+	transform: translate3d(0,0,0);
+  	background: #f2f2f2;
+  	padding: 10px;
+  	border: 1px solid #ddd;
+  	cursor: pointer;
+  	position: relative;
+  	width: 170px;
+  	height: 120px;
+}
+
+
+.image-arear li .cover{
+	position: absolute;
+	background-color: rgba(0,0,0,0.45);
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	top: 0;
+	display: none;
+}
+
+.image-arear li .cover.selected{
+	display: block;
+}
+
+
+.image-arear li.selected{
+	
+}
+
+.image-arear li:hover{
+
+/*	transform: translate3d(0,0,0);
+  	background: #121121;
+  	padding: 10px;*/
+ 
+}
+.image-arear li .thumb-image {
+	overflow: hidden;
+}
+.image-arear li .thumb-image img{
+	
+  	height: 100px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

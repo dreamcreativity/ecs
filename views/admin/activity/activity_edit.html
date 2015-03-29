@@ -36,57 +36,53 @@ var url_params = <%- JSON.stringify(url_params) %>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Unselected</label>
-		<div class="col-sm-5">
-			<div class="well white padding-25">
-				<ul class="tc-gallery-2 clearfix">
-					<li class="thumbnail" ng-repeat="item in medias.data | filter: activity_filter | orderBy : activity_sort">
-						<div class="thumb-preview">
-							<div class="thumb-image">
-								<img src="{{item.thumbnail}}" alt="" style="width:160px; height: 120px;">
-							</div>
-							<!-- <div class="gl-thumb-options">
-								<div class="gl-toolbar"> -->
-									<div class="gl-option checkbox-inline">
-									<input class="tc" type="checkbox" id="{{item._id}}" checkbox-group>
-										<label class="labels" for="{{item._id}}">Select</label>
-									</div>
-								<!-- </div>
-							</div> -->
-						</div>
-						<h5 class="gl-title">{{item.title}}<small>.{{item.ext}}</small></h5>
-						<div class="gl-description">
-							<small class="pull-left">{{item.createDate | date:'MMM dd yyyy'}}</small>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<label class="col-sm-1 control-label">Selected</label>
+
+
 		<div class="col-sm-3">
-			<div class="well white padding-25">
+			<div class="well white padding-25 image-arear">
 				<ul class="tc-gallery-2 clearfix">
 					<li class="thumbnail" ng-repeat="item in array">
 						<div class="thumb-preview">
 							<div class="thumb-image">
-								<img src="{{item.thumbnail}}" alt="" style="width:160px; height: 120px;">
+								<img src="{{item.thumbnail}}" alt="" >
 							</div>
-							<!-- <div class="gl-thumb-options">
-								<div class="gl-toolbar"> -->
-									<!-- <div class="gl-option checkbox-inline">
-									<input class="tc" type="checkbox" id="{{item._id}}" checkbox-group>
-										<label class="labels" for="{{item._id}}">Select</label>
-									</div> -->
-								<!-- </div>
-							</div> -->
+
 						</div>
-						<h5 class="gl-title">{{item.title}}<small>.{{item.ext}}</small></h5>
-						<div class="gl-description">
-							<small class="pull-left">{{item.createDate | date:'MMM dd yyyy'}}</small>
-						</div>
+				
 					</li>
 				</ul>
 			</div>
 		</div>
+
+		<div class="col-sm-6">
+			<div class="well white padding-25 image-arear">
+				<ul class="tc-gallery-2 clearfix">
+					<li  ng-repeat="item in medias.data | filter: activity_filter | orderBy : activity_sort" checkbox-group>
+						<div class="thumb-preview">
+							<div class="thumb-image">
+								<img src="{{item.thumbnail}}" alt="" >
+							</div>
+							<div class='cover'><i style="color:#fff; font-size: 16px; margin:0 auto" class="fa fa-check-circle"></i></div>
+
+
+							<!-- <div class="gl-option checkbox-inline">
+								<input class="tc" type="checkbox" id="{{item._id}}" checkbox-group>
+								<label class="labels" for="{{item._id}}">Select</label>
+							</div> -->
+				
+						</div>
+						<!-- <h5 class="gl-title">{{item.title}}<small>.{{item.ext}}</small></h5>
+						<div class="gl-description">
+							<small class="pull-left">{{item.createDate | date:'MMM dd yyyy'}}</small>
+						</div> -->
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		
+
+
 	</div>
 
 	<hr class="separator">
