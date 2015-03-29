@@ -153,17 +153,56 @@ router.get('/staff/edit/:id', function(req, res) {
 		);
 });
 
-router.get('/material/all', function(req, res) {
 
-	template(req,res,'admin_main','admin/others/materials.html',
+/*---------------------------------------
+	Material
+/----------------------------------------
+*/
+
+
+
+router.get('/material', function(req, res) {
+
+	template(req,res,'admin_main','admin/material/list.html',
 			{ 
 				title: 'Materials',
 				category: 'Management',
 				cur_tap: 'Material',
-				cur_selected : 'Material'
+				cur_selected : 'Material List'
 			}
 		);
 });
+
+router.get('/material/edit/:id', function(req, res) {
+
+	template(req,res,'admin_main','admin/material/edit.html',
+			{ 
+				title: 'Edit Material',
+				category: 'Management',
+				cur_tap: 'Material',
+				cur_selected : 'Edit Material',
+				url_params : req.params
+			}
+		);
+});
+
+router.get('/material/new', function(req, res) {
+
+	template(req,res,'admin_main','admin/material/add.html',
+			{ 
+				title: 'New Material',
+				category: 'Management',
+				cur_tap: 'Material',
+				cur_selected : 'Create New Material'
+			}
+		);
+});
+
+
+/*---------------------------------------
+	Blog
+/----------------------------------------
+*/
 
 router.get('/blog/all', function(req, res) {
 

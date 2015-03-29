@@ -23,6 +23,10 @@
 	text-align: right;
 }
 
+.center{
+	text-align: center;
+}
+
 
 .vcenter {
 /*    display: inline-block;

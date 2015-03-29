@@ -1,15 +1,112 @@
 'use strict';
 
-angular.module('materialApp', ['ngRoute','ngResource'])
+angular.module('materialApp', ['ngResource','esc.filters','esc.resources'])
 
-.controller('MaterialCtrl',function StaffController($rootScope,$scope,$http,Staffs,$window){
+.controller('NewMeterialController',function NewMeterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials){
+
+	//var token = sessionStorage.token;
 	
+	$scope.material = {
+		'name' : '',
+		'description':'',
+		'region' : ''
+	};
+	$scope.regions = Regions.query();
+	console.log($scope.regions);
+
+	$scope.create = function(){
+		Meterials.create($scope.material,function(result){
+
+			if(result.status == 'ok'){
+				location = '/admin/material/edit/'+ result.data._id;
+			}else{
+				ShowGritterCenter('System Notification','material document can not be created..' +  result.messages);
+				console.log(result.messages);
+			}
+				
+		});
+	}
 })
 
-.factory('Materials', ['$resource',
-	function($resource){
-		return $resource('http://localhost:3000/api/materials/id', {}, {
-			query:{ method: 'GET'},
-		update : { method : 'PUT', params: {id:'@_id'}}
+.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Meterials){
+	
+	$scope.materials = Meterials.query();
+	$scope.regions = Regions.query();
+})
+
+.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials){
+	var id = url_params.id;
+
+	$scope.material = Meterials.get(url_params, function(){
+		$scope.material = $scope.material.data;	
 	});
-	}]);
+
+
+	$scope.regions = Regions.query();
+	$scope.regionNames = [];
+	$scope.previewUrl = '';
+
+
+	//$scope.medias = Medias.query({'targer':'Material'});
+
+	$scope.medias = getMedias();
+
+	$scope.update = function(){
+		Meterials.update($scope.material,function(result){
+				if(result.status == 'ok'){
+					ShowGritterCenter('System Notification','Material document has been updated');
+				}else{
+					ShowGritterCenter('System Notification','Material document update fail : ' + result.messages.err);
+				}
+		});
+	}
+
+	function getMedias(){
+		return Medias.query({'target': 'Material'});
+	}
+
+})
+
+.directive('resourcePicker', function() {
+  return {
+  	link: function (scope, element, attrs) {
+            element.on('click', function () {
+            	var newMedia = scope.media;
+            	delete newMedia.$$hashKey;
+            	console.log(newMedia);
+            	//scope.$parent.slider.resource = scope.media;
+
+            	//$scope.previewUrl = newMedia.thumbnail;
+
+            	scope.$parent.material.media = newMedia._id;
+            	scope.$parent.material.mediaObject = scope.media;
+            	scope.$parent.$apply();
+            });
+        }
+  };
+})
+
+.factory('Regions',['$resource',
+	function($resource){
+		return $resource('/api/region/:id', {}, {
+		query:{ method: 'GET'}
+	});
+}])
+	
+.factory('Meterials',['$resource',
+	function($resource){
+		return $resource('/api/materials/:id', {}, {
+		query:{method: 'GET'},
+		create:{ method: 'POST'},
+		get:{ method: 'GET', params: {id:'@_id'} },
+		update:{ method: 'PUT', params: {id:'@_id'} }
+	});
+}]);
+
+
+// .factory('Medias',['$resource',
+// 	function($resource){
+// 		return $resource('/api/region/', {}, {
+// 		query:{ method: 'GET'}
+// 	});
+// }]);

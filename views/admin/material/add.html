@@ -1,0 +1,58 @@
+<div class="portlet" ng-app="materialApp" ng-controller='NewMeterialController'>
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Create New Material</h4>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+	<form class="form-horizontal" id="validate-form" method="get">
+		<div id="bwizard">
+			
+			<div class="tab-content">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Name:</label>
+					<div class="col-sm-7">
+						<div class="clearfix">
+							<input type="text" name="heading" ng-model="material.name" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password">Description:</label>
+					<div class="col-sm-7">
+						<div class="clearfix">
+							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password2">Region:</label>
+					<div class="col-sm-3">
+						<div class="clearfix">
+							<select class="form-control" ng-model='material.region' >
+								<option value="{{region._id}}" ng-repeat="region in regions.data">{{region.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<hr class="separator" />
+
+				
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3">											
+						<button type="button" class="btn btn-primary" ng-click="create()">Create</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/material"'>Cancel</button>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+
+

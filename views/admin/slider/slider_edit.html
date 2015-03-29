@@ -88,8 +88,8 @@
 						<div class="col-sm-4">
 							<div class="resource-info">
 								<div>Title : {{ slider.media.title}}</div>
-								<div>Size : {{ slider.media.size}}</div>
-								<div>Date : {{ slider.media.createDate}}</div>								
+								<div>Size : {{ slider.media.size | filesize}}</div>
+								<div>Created Date : {{ slider.media.createDate | date:'MMMM d, yyyy' : 'UTC'}}</div>								
 							</div>
 							<img style="width: 100%" src="{{slider.media.path}}" ng-show="slider.media.type=='Image'">
 							<video width="100%" src="{{slider.media.path}}" controls ng-show="slider.media.type=='Video'">

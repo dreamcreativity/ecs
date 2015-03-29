@@ -11,13 +11,6 @@ var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
 var activity = require('../controllers/activity');
 
-/* GET users listing. */
-router.get('/', function(req, res) {
-  res.json({ 
-    		a: 1,
-    		b: 'sss'
-    	 });
-});
 
 
 //------------------------- Media Center ----------------------------------
@@ -28,6 +21,7 @@ router.get('/media/:id', media.get);
 router.put('/media/:id', media.edit);
 router.delete('/media/:id', media.delete);
 router.get('/media/target/:target', media.getByTarget);
+
 
 //-------------------------Slider----------------------------------
 router.post('/slider', slider.create);
@@ -90,19 +84,23 @@ router.get('/agent/region/:name', agent.getAgentsbyRegion)
 
 //-----------------------Materials ----------------------------------
 
-//GET a student by student ID
-router.get('/materials/:id', student.getStudentbyId);
+//GET a material by material ID
+router.get('/materials/:id', material.get);
 
-//POST : create a student record
-router.post('/materials', student.create);
+//POST : create a material record
+router.post('/materials', material.create);
 
-//PUT : Edit a student info
-router.put('/materials/:id', student.edit)
+//  get all material records
+router.get('/materials', material.all);
+
+//PUT : Edit a material info
+router.put('/materials/:id', material.edit)
 
 //----------------------Regions---------------------------------------
 
 //GET all regions
-router.get('/regions',region.getAllRegions);
+router.get('/region/', region.all);
+router.post('/region/', region.create);
 
 //----------------------Promotion-------------------------------------
 

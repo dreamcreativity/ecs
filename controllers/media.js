@@ -30,7 +30,7 @@ exports.upload = function(req,res){
 
     	if( ext == 'jpg' || ext == 'png' || ext == 'gif'){
     		newMedia.type = 'Image';
-    	}else if( 	ext == 'doc' || ext == 'docx' 
+    	}else if( 	   ext == 'doc' || ext == 'docx' 
     				|| ext == 'xls' ||  ext=='xlsx' 
     				|| ext == 'ppt' || ext == 'pptx'
     				|| ext == 'pdf' 

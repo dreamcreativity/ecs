@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adminApp', ['ngResource'])
+angular.module('adminApp', ['ngResource','esc.filters','esc.resources'])
 
 .controller('SliderController',function SliderController($rootScope,$scope,$location,$http,$window,Sliders,Medias){
 
@@ -18,14 +18,12 @@ angular.module('adminApp', ['ngResource'])
 	}else{
 		$scope.slider = Sliders.get(url_params, function(){
 			$scope.slider = $scope.slider.data;	
-			console.log($scope.slider);
 		});
 	}
 
 	$scope.list = getAllSliders();
 	$scope.media_list = getAllSliderMedia();
 
-	console.log($scope.list);	
 
 
 	$scope.colors = [
@@ -59,7 +57,7 @@ angular.module('adminApp', ['ngResource'])
 
 
 	function getAllSliderMedia(){
-		return Medias.query();
+		return Medias.query({'target': 'Slider'});
 	}
 
 	$scope.create = function(){
@@ -100,7 +98,7 @@ angular.module('adminApp', ['ngResource'])
 	$scope.selectResource = function(mediaResource){
 		console.log('click');
 		$scope.slider.resource = mediaResource;
-		console.log($scope.slider);
+
 	}
 })
 
@@ -158,11 +156,11 @@ angular.module('adminApp', ['ngResource'])
 			delete:{ method: 'DELETE',params: {id:'@_id'}},
 			update : { method : 'PUT', params: {id:'@_id'}}
 	});
-}])
-
-.factory('Medias',['$resource',
-	function($resource){
-		return $resource('/api/media/target/Slider', {}, {
-		query:{ method: 'GET'}
-	});
 }]);
+
+// .factory('Medias',['$resource',
+// 	function($resource){
+// 		return $resource('/api/media/target/:target', {}, {
+// 		getSliderMedia:{ method: 'GET',params: {target:'@target'}}
+// 	});
+// }]);

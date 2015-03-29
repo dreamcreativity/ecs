@@ -1,8 +1,10 @@
 var Material = require('../models/material');
 var mongoose = require('mongoose');
-
+var Media = require('../models/media');
 //POST: create new Material
 exports.create = function(req,res){
+
+	
 	var newMaterial = new Material(req.body);
 	newMaterial.save(function(err ,result){
 		if(err){
@@ -22,8 +24,29 @@ exports.create = function(req,res){
 	});
 }
 
+exports.all = function(req,res){
+
+	
+	Material.find({}, function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		
+	});
+}
+
+
 //GET: material by Id
-exports.getMaterialbyId = function(req,res){
+exports.get = function(req,res){
 	var id = req.params.id;
 	Material.find({_id:id}, function(err, result){
 		if(err) {
@@ -34,11 +57,50 @@ exports.getMaterialbyId = function(req,res){
 			});
 		}
 		if(result.length == 1){
-			res.json({
-				status: 'ok',
-				messages: 'successed',
-				data: result[0]
-			});	
+
+
+
+			// res.json({
+			// 	status: 'ok',
+			// 	messages: 'successed',
+			// 	data: result[0]
+			// });	
+
+
+			var s = result[0].toObject();
+			if(s.media != null){
+				Media.find({_id:s.media}, function(err1, result1){
+					
+					if(err1){
+						res.json({
+							status: 'fail',
+							messages: "can not get result media ",
+							data: null
+						});
+					}else{
+
+						s.mediaObject = result1[0].toObject();
+			
+						res.json({
+							status: 'ok',
+							messages: 'successed',
+							data: s
+						});	
+
+					}
+				});
+
+			}else{
+				
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: s
+				});	
+			}
+
+
+
 		}else{
 			res.json({
 				status: 'fail',
@@ -53,9 +115,8 @@ exports.getMaterialbyId = function(req,res){
 
 //PUT: 
 exports.edit = function(req,res){
-	var id = req.params.id;
-	var material = new Material(req.body);
-	Material.update({_id:id}, material, function(err, result){
+	var update_id = req.params.id;
+	Material.update({_id:update_id}, req.body, {}, function(err, result){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -64,19 +125,13 @@ exports.edit = function(req,res){
 			});
 		}
 		else {
-			if(result.length == 1){
-				res.json({
-					status: 'ok',
-					messages: 'successed',
-					data: result[0]
-				});	
-			}else{
-				res.json({
-					status: 'fail',
-					messages: "multipulte result",
-					data: null
-				});
-			}
+
+			console.log(result);
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result + ' record(s) effected.'
+			});	
 		}
 	});
 }
