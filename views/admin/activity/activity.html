@@ -24,8 +24,9 @@
 								<td class="hidden-xs">{{activity.title}}</td>
 								<td class="hidden-xs">{{activity.description}}</td>
 								<td class="hidden-xs"> </td>
-								<td><span ng-if="activity.isActive == 0" class="label label-danger">Deleted</span>
-									<span ng-if="activity.isActive == 1" class="label label-active">Active</span>
+								<td>
+									<label class="label label-active label-lg arrowed arrowed-right" ng-show="activity.isActive")>Active</label>
+									<label class="label label-terminated label-lg arrowed arrowed-right" ng-show="!activity.isActive">No Active</label>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
@@ -46,8 +47,3 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/plugins/datatables/datatables.init.js"></script>
 <script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
-<!-- <script src="/js/admin/image-picker.min.js"></script>
-
-<script type="text/javascript">
-$("select").imagepicker()
-</script> -->

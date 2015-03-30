@@ -11,7 +11,7 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 		$scope.activity.mediaIds=[]
 		// $scope.activity.mediaIds = $scope.array;
 		for(var i=0; i<$scope.array.length; i++){
-			$scope.activity.mediaIds.push($scope.array[i]._id);
+			$scope.activity.mediaIds.push($scope.array[i]);
 		}
 	 	Activity.save($scope.activity,function(result){
 	 		     $scope.returnMessage = "successfully";
@@ -20,6 +20,7 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 				}, 2000); 
  		})
 	}
+
 
 	function getActivityMedias() {
 		Medias.get({target : 'Activity'},function(result){
@@ -30,16 +31,18 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 	function getActivities() {
 		$scope.activities = Activity.query();
 		$scope.array = [];
-	}
+	}	
 })
 
-.controller('ActivityEditCtrl', function ActivityEditCtrl($scope,$http,Activity,Medias,$window){
+.controller('ActivityEditCtrl', function ActivityEditCtrl($scope,$http,Activity,Medias,$window,DateRanges){
 	var activity_id = url_params.id;
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 
 	if(activity_id !=null){
 	 	Activity.get({id:activity_id}, function(result){
 	 		$scope.activity = result.data;
-	 		$scope.array = result.data["medias"];
+	 		$scope.array = result.data["mediaIds"];
 	 	});	
 	 }
 
@@ -56,7 +59,41 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 	 		    $("#messageReturn").delay(2000).fadeOut('slow');
 	 	})
 	 }
+
+	 $scope.changed = function(){
+	 	var temp_array = [];
+	 	var medias = $scope.medias
+	 	var range = new Date();
+		for(var i=0; i<medias.data.length;i++){
+			switch($scope.latest_filter) {
+			case "1" : 			
+				range = this.setDate(range.getDate()-1);
+				if(medias[i].createDate > range) {
+					temp_array.push(medias[i])
+				}
+				break;
+			default :
+				break;
+			}
+		}
+	}
 })
+
+.filter('isAfter', function() {
+  return function(medias, dateAfter) {
+    // Using ES6 filter method
+    return medias.filter(function(item){
+      return moment(item.createDate).isAfter(dateAfter);
+    })
+  }
+})
+
+.value('DateRanges', [
+  {name:'All items', date:moment().subtract(10, 'year')},
+  {name:'Newer than 3 months', date:moment().subtract(3, 'month')},
+  {name:'Newer than 6 months', date:moment().subtract(6, 'month')},
+  {name:'Newer than 12 months', date:moment().subtract(1, 'year')}
+])
 
 .factory('Activity',['$resource',
 	function($resource){
@@ -76,47 +113,35 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 }])
 
 
-.directive("checkboxGroup", function () {
+.directive("checkboxSelect", function () {
     return {
         restrict: "A",
         link: function (scope, elem, attrs) {
-            // Determine initial checked boxes
-            // if (scope.array.indexOf(scope.item) !== -1) {
-            //     elem[0].checked = true;
-            // }
-    //         if(scope.array){
-    //         for(var i=0; i<scope.array.length; i++){
-    //         	if(scope.medias.indexOf(scope.array[i]) !== -1) {
-				//     elem[0].checked = true;
-				// }
-    //         }
-    //     }
-
             // Update array on click
             elem.bind('click', function () {
-
-
-            	var i = scope.item;
-
-            	console.log(elem);
-                var index = scope.array.indexOf(scope.item);
-
-
+                var index = scope.array.indexOf(scope.item._id);
                 if (index === -1) {
-                	scope.array.push(scope.item);
-                	//scope.medias.data.splice(scope.item,1);
-                	$(elem).find('.cover').addClass('selected');
+                	scope.array.push(scope.item._id);
+                }  
+                else {          
+                	scope.array.splice(index, 1);             
+                }            
+                scope.$apply(scope.array.sort(function (a, b) {
+                    return a - b
+                }));
+            });
+        }
+    }
+    })
 
-                }
-
-  
-                else {
-          
-                	scope.array.splice(index, 1);
-                	$(elem).find('.cover').removeClass('selected');
-                    
-                }
-             
+.directive("checkboxUnselect", function () {
+    return {
+        restrict: "A",
+        link: function (scope, elem, attrs) {
+            // Update array on click
+            elem.bind('click', function () {
+            	var index = scope.array.indexOf(scope.item._id);
+				scope.array.splice(index, 1);     
                 scope.$apply(scope.array.sort(function (a, b) {
                     return a - b
                 }));
@@ -124,3 +149,5 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
         }
     }
     });
+
+
