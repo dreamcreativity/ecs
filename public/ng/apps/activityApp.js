@@ -1,17 +1,23 @@
 'use strict';
 
+<<<<<<< HEAD
 angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters','esc.resources'])
+=======
+angular.module('ActivityApp', ['esc.resources','ngRoute','ngResource', 'ngBootbox'])
+>>>>>>> origin/dev-new
 
-.controller('ActivityCtrl',function ActivityCtrl($rootScope,$scope,$http,Activity,Medias,$window){
+.controller('ActivityCtrl',function ActivityCtrl($rootScope,$scope,$http,Activity,Medias,$window,DateRanges){
 	getActivityMedias();
 	getActivities();
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 
 	$scope.create = function(isValid){
 		$scope.returnMessage ="";
 		$scope.activity.mediaIds=[]
 		// $scope.activity.mediaIds = $scope.array;
 		for(var i=0; i<$scope.array.length; i++){
-			$scope.activity.mediaIds.push($scope.array[i]._id);
+			$scope.activity.mediaIds.push($scope.array[i]);
 		}
 	 	Activity.save($scope.activity,function(result){
 	 		     $scope.returnMessage = "successfully";
@@ -20,6 +26,7 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
 				}, 2000); 
  		})
 	}
+
 
 	function getActivityMedias() {
 		Medias.get({target : 'Activity'},function(result){
@@ -30,16 +37,18 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
 	function getActivities() {
 		$scope.activities = Activity.query();
 		$scope.array = [];
-	}
+	}	
 })
 
-.controller('ActivityEditCtrl', function ActivityEditCtrl($scope,$http,Activity,Medias,$window){
+.controller('ActivityEditCtrl', function ActivityEditCtrl($scope,$http,Activity,Medias,$window,DateRanges){
 	var activity_id = url_params.id;
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 
 	if(activity_id !=null){
 	 	Activity.get({id:activity_id}, function(result){
 	 		$scope.activity = result.data;
-	 		$scope.array = result.data["medias"];
+	 		$scope.array = result.data["mediaIds"];
 	 	});	
 	 }
 
@@ -56,7 +65,41 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
 	 		    $("#messageReturn").delay(2000).fadeOut('slow');
 	 	})
 	 }
+
+	 $scope.changed = function(){
+	 	var temp_array = [];
+	 	var medias = $scope.medias
+	 	var range = new Date();
+		for(var i=0; i<medias.data.length;i++){
+			switch($scope.latest_filter) {
+			case "1" : 			
+				range = this.setDate(range.getDate()-1);
+				if(medias[i].createDate > range) {
+					temp_array.push(medias[i])
+				}
+				break;
+			default :
+				break;
+			}
+		}
+	}
 })
+
+.filter('isAfter', function() {
+  return function(medias, dateAfter) {
+     if(!medias || !medias.length){return;}
+     return medias.filter(function(item){
+      return moment(item.createDate).isAfter(dateAfter);
+    })
+  }
+})
+
+.value('DateRanges', [
+  {name:'All', date:moment().subtract(10, 'year')},
+  {name:'Last one day', date:moment().subtract(1, 'day')},
+  {name:'Last one month', date:moment().subtract(1, 'month')},
+  {name:'Last three months', date:moment().subtract(3, 'month')}
+])
 
 .factory('Activity',['$resource',
 	function($resource){
@@ -67,19 +110,11 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
 }])
 
 
-.factory('Medias',['$resource',
-	function($resource){
-		return $resource('/api/media/target/:target', {}, {
-		query:{ method: 'GET'},
-		get : { method : 'GET', params: {target:'@target'}}
-	});
-}])
-
-
-.directive("checkboxGroup", function () {
+.directive("checkboxSelect", function () {
     return {
         restrict: "A",
         link: function (scope, elem, attrs) {
+<<<<<<< HEAD
    
 
             // Update array on click
@@ -91,21 +126,33 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
                 var index = scope.array.indexOf(scope.item);
 
 
+=======
+            // Update array on click
+            elem.bind('click', function () {
+                var index = scope.array.indexOf(scope.item._id);
+>>>>>>> origin/dev-new
                 if (index === -1) {
-                	scope.array.push(scope.item);
-                	//scope.medias.data.splice(scope.item,1);
-                	$(elem).find('.cover').addClass('selected');
+                	scope.array.push(scope.item._id);
+                }  
+                else {          
+                	scope.array.splice(index, 1);             
+                }            
+                scope.$apply(scope.array.sort(function (a, b) {
+                    return a - b
+                }));
+            });
+        }
+    }
+    })
 
-                }
-
-  
-                else {
-          
-                	scope.array.splice(index, 1);
-                	$(elem).find('.cover').removeClass('selected');
-                    
-                }
-             
+.directive("checkboxUnselect", function () {
+    return {
+        restrict: "A",
+        link: function (scope, elem, attrs) {
+            // Update array on click
+            elem.bind('click', function () {
+            	var index = scope.array.indexOf(scope.item._id);
+				scope.array.splice(index, 1);     
                 scope.$apply(scope.array.sort(function (a, b) {
                     return a - b
                 }));
@@ -113,3 +160,5 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
         }
     }
     });
+
+
