@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
+angular.module('ActivityApp', ['esc.resources','ngRoute','ngResource', 'ngBootbox'])
 
-.controller('ActivityCtrl',function ActivityCtrl($rootScope,$scope,$http,Activity,Medias,$window){
+.controller('ActivityCtrl',function ActivityCtrl($rootScope,$scope,$http,Activity,Medias,$window,DateRanges){
 	getActivityMedias();
 	getActivities();
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 
 	$scope.create = function(isValid){
 		$scope.returnMessage ="";
@@ -81,18 +83,18 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 
 .filter('isAfter', function() {
   return function(medias, dateAfter) {
-    // Using ES6 filter method
-    return medias.filter(function(item){
+     if(!medias || !medias.length){return;}
+     return medias.filter(function(item){
       return moment(item.createDate).isAfter(dateAfter);
     })
   }
 })
 
 .value('DateRanges', [
-  {name:'All items', date:moment().subtract(10, 'year')},
-  {name:'Newer than 3 months', date:moment().subtract(3, 'month')},
-  {name:'Newer than 6 months', date:moment().subtract(6, 'month')},
-  {name:'Newer than 12 months', date:moment().subtract(1, 'year')}
+  {name:'All', date:moment().subtract(10, 'year')},
+  {name:'Last one day', date:moment().subtract(1, 'day')},
+  {name:'Last one month', date:moment().subtract(1, 'month')},
+  {name:'Last three months', date:moment().subtract(3, 'month')}
 ])
 
 .factory('Activity',['$resource',
@@ -100,15 +102,6 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
 		return $resource('http://localhost:3000/api/activities/:id', {}, {
 		query:{ method: 'GET'},
 		update : { method : 'PUT', params: {id:'@_id'}}
-	});
-}])
-
-
-.factory('Medias',['$resource',
-	function($resource){
-		return $resource('/api/media/target/:target', {}, {
-		query:{ method: 'GET'},
-		get : { method : 'GET', params: {target:'@target'}}
 	});
 }])
 
