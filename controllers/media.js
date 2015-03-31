@@ -144,7 +144,7 @@ exports.upload = function(req,res){
 
 
 		    	}else{
-
+		    		next();	
 		    	}
         
 
@@ -245,22 +245,43 @@ exports.getByTarget = function(req,res){
 
 	var target = req.params.target;
 	//console.log(target);
-	Media.find({target:target}, function(err, result){
-		if(err) {
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
 
-		res.json({
-			status: 'ok',
-			messages: 'successed',
-			data: result
+	if(target == 'All'){
+		Media.find({}, function(err, result){
+			if(err) {
+				res.json({
+					status: 'fail',
+					messages: err,
+					data: null
+				});
+			}
+
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});	
+			
+		});
+	}else{
+		Media.find({target:target}, function(err, result){
+			if(err) {
+				res.json({
+					status: 'fail',
+					messages: err,
+					data: null
+				});
+			}
+
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});	
+			
 		});	
-		
-	});
+	}
+
 
 }
 

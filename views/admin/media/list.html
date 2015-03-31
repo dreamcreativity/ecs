@@ -20,6 +20,7 @@
 					<div class="col-md-4 col-lg-3">
 						<label>Target: </label>
 						<select>
+							<option value="" >All</option>
 							<option value="Slider" >Slider</option>
 							<option value="Gallery">Gallery</option>
 							<option value="Material">Material</option>
@@ -33,6 +34,7 @@
 					<div class="col-md-4 col-lg-3">
 						<label>Type: </label>
 						<select>
+							<option value="" >All</option>
 							<option value="Image" >Image</option>
 							<option value="Document">Document</option>
 							<option value="Video">Video</option>
@@ -43,13 +45,9 @@
 					<div class="col-md-4 col-lg-3">
 						<label>Status: </label>
 						<select>
-							<option value="Unitiled" >Unitiled /  Inactived</option>
+							<option value="Unitiled" >Unitiled</option>
+							<option value="Deleted" >Deleted</option>
 							<option value="Gallery">Gallery</option>
-							<option value="Material">Material</option>
-							<option value="Student">Student</option>
-							<option value="Staff">Staff</option>
-							<option value="Activity">Activity</option>
-							<option value="Other">Other</option>
 						</select>
 					</div>
 				</div>
@@ -92,9 +90,17 @@
 									  Your browser does not support the <code>video</code> element.
 									</video>
 									<!-- <img width=300 src="https://www.google.ca/images/srpr/logo11w.png" ng-show="m.type=='jpg'" > -->
-									<img height=150 src="{{m.thumbnail}}" ng-show="m.type=='Image'">
+									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Image' "><img height=150 src="{{m.thumbnail}}"></a>
 
-									<a href="{{m.path}}" target="_blank"><div class="document-icon {{m.ext}}"  ng-show="m.type=='Document'"></div></a>
+									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Document' && m.ext=='pdf' ">
+										<i class="fa fa-file-pdf-o preview-file-type-list"></i>
+									</a>
+									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') ">
+										<i class="fa fa-file-word-o preview-file-type-list"></i>
+									</a>
+					
+
+						
 									
 							
 								</td>
@@ -104,7 +110,7 @@
 								<td class="hidden-xs">{{m.type}}</td>
 								<td class="hidden-xs">{{m.ext}}</td>
 								<td class="hidden-xs">{{m.size|filesize}}</td>
-								<td class="hidden-xs">{{m.createDate}}</td>
+								<td class="hidden-xs">{{m.createDate | date:'MMMM d, yyyy / HH:mm ' }}</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
 										<a href="/admin/media/edit/{{m._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>

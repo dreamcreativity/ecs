@@ -44,7 +44,11 @@ angular.module('materialApp', ['ngResource','esc.filters','esc.resources'])
 
 	$scope.regions = Regions.query();
 	$scope.regionNames = [];
-	$scope.previewUrl = '';
+
+
+	$scope.resourceSearch = '';
+	$scope.resourceType = '';
+	$scope.resourceDate = '';
 
 
 	//$scope.medias = Medias.query({'targer':'Material'});

@@ -52,7 +52,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-3 control-label" for="password2">Activate:</label>
+					<label class="col-sm-3 control-label" for="password2">Is Delete:</label>
 					<div class="col-sm-3">
 						<label>
 							<input name="isDelete" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="material.isDelete" />
@@ -67,11 +67,21 @@
 					<label class="col-sm-3 control-label" for="password2">Media:</label>
 					<div class="col-sm-4">
 
-							<div class="resource-info">
+							<div class="media-info">
 								<div>Title : {{ material.mediaObject.title}}</div>
 								<div>Size : {{ material.mediaObject.size | filesize}}</div>
 								<div>Created Date : {{ material.mediaObject.createDate | date:'MMMM d, yyyy' : 'UTC'}}</div>						
 							</div>
+
+							<div ng-show="material.mediaObject.type=='Document' && material.mediaObject.ext=='pdf'"  resource-Picker>	
+								<i class="fa fa-file-pdf-o preview-file-type" ></i>
+							</div>
+
+							<div ng-show="material.mediaObject.type=='Document' && (material.mediaObject.ext=='doc'  || material.mediaObject.ext=='docx') "  resource-Picker>	
+								<i class="fa fa-file-word-o preview-file-type" ></i>
+							</div>
+
+
 							<img style="width: 100%" src="{{material.mediaObject.thumbnail}}" ng-show="material.mediaObject.type=='Image'">
 							<video width="100%" src="{{material.mediaObject.path}}" controls ng-show="material.mediaObject.type=='Video'">
 							  Your browser does not support the <code>video</code> element.
@@ -80,7 +90,7 @@
 				</div>
 
 
-				<div class="form-group" ng-show="slider.media == null">
+				<div class="form-group" ng-show="material.mediaObject == null">
 					<label class="col-sm-3 control-label"></label>
 					<div class="col-sm-5">
 						<h3>Please select a media from the list below</h3>
@@ -89,10 +99,69 @@
 
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Resource:</label>
-					<div class="col-sm-7">							
-						<div class="slider-resource">
+					<div class="col-sm-7">		
+
+						<div class="resource-filters">
+							
+							<div class="title">Filter By:</div>
+
+							<div class="row form-group">
+									<!-- <div class="col-md-4">
+										<label>Target: </label>
+										<select>
+											<option value="" >All</option>
+											<option value="Slider" >Slider</option>
+											<option value="Gallery">Gallery</option>
+											<option value="Material">Material</option>
+											<option value="Student">Student</option>
+											<option value="Staff">Staff</option>
+											<option value="Activity">Activity</option>
+											<option value="Other">Other</option>
+										</select>
+									</div> -->
+
+									<div class="col-md-4">
+										<label>Search: </label>
+										<input class="form-control" type="text" ng-model="resourceSearch">
+									</div>
+
+									<div class="col-md-4">
+										<label>Type: </label>
+										<select ng-model="resourceType">
+											<option value="" >All</option>
+											<option value="Image" >Image</option>
+											<option value="Document">Document</option>
+											<option value="Video">Video</option>
+											<option value="Other">Other</option>
+										</select>
+									</div>
+
+									<div class="col-md-4">
+										<label>Date: </label>
+										<select>
+											<option value="" >All</option>
+											<option value="Unitiled" >Today</option>
+											<option value="Deleted" >Last Day</option>
+											<option value="Gallery">Last 10 Days</option>
+											<option value="Gallery">Last Month</option>
+										</select>
+									</div>
+							</div>
+							
+
+
+						</div>						
+						<div class="media-resource">
 							<ul>
-								<li ng-repeat="media in medias.data" >
+								<li ng-repeat="media in medias.data | filter: {  'title': resourceSearch, type: resourceType }" >
+
+									<div ng-show="media.type=='Document' &&  media.ext=='pdf'"  resource-Picker>	
+										<i class="fa fa-file-pdf-o xlg"></i>
+									</div>
+
+									<div ng-show="media.type=='Document' && ( media.ext=='doc' || media.ext=='docx' )"  resource-Picker>	
+										<i class="fa fa-file-word-o xlg"></i>
+									</div>
 									<img width="120" src="{{media.thumbnail}}" ng-show="media.type=='Image'"  resource-Picker>
 									<video width="120" src="{{media.path}}" controls ng-show="media.type=='Video'" style="margin-top:27px"  resource-Picker>
 									  Your browser does not support the <code>video</code> element.

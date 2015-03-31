@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
+angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters','esc.resources'])
 
 .controller('ActivityCtrl',function ActivityCtrl($rootScope,$scope,$http,Activity,Medias,$window){
 	getActivityMedias();
@@ -80,21 +80,10 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox'])
     return {
         restrict: "A",
         link: function (scope, elem, attrs) {
-            // Determine initial checked boxes
-            // if (scope.array.indexOf(scope.item) !== -1) {
-            //     elem[0].checked = true;
-            // }
-    //         if(scope.array){
-    //         for(var i=0; i<scope.array.length; i++){
-    //         	if(scope.medias.indexOf(scope.array[i]) !== -1) {
-				//     elem[0].checked = true;
-				// }
-    //         }
-    //     }
+   
 
             // Update array on click
             elem.bind('click', function () {
-
 
             	var i = scope.item;
 

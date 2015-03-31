@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -53,6 +54,11 @@ app.use(multer({
 
 
 
+
+app.use(session({secret: 'whatthefuckyoutalkingabout'}));
+
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -70,6 +76,7 @@ app.use('/', routes);
 app.use('/admin', admin);
 app.use('/agent', agent);
 app.use('/api', api);
+
 
 
 //---------------------------------------------

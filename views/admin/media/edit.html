@@ -64,13 +64,13 @@
 							<div class="row">
 								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label>Preview</label></div>
 								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>Preview</label></div>
-								<div class=" col-xs-12 col-md-6" >
+								<div class=" col-xs-12 col-md-6 col-lg-4" >
 
 									<video style="width:100%" src="{{m.path}}" controls ng-show="m.type=='Video'">
 									  Your browser does not support the <code>video</code> element.
 									</video>
 									<!-- <img width=300 src="https://www.google.ca/images/srpr/logo11w.png" ng-show="m.type=='jpg'" > -->
-									<img style="width:100%" src="{{m.thumbnail}}" ng-show="m.type=='Image'">
+									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Image'"><img style="width:100%" src="{{m.thumbnail}}" ></a>
 
 									<a href="{{m.path}}" target="_blank"><div class="document-icon {{m.ext}}"  ng-show="m.type=='Document'"></div></a>
 																

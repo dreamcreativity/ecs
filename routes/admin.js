@@ -12,7 +12,11 @@ router.get('/', function(req, res) {
 				title: 'Home',
 				category: 'Dashboard',
 				cur_tap: 'Dashboard',
-				cur_selected : ''
+				cur_selected : '',
+				staff_signin_require: true
+			},
+			function(){
+
 			}
 		);
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mediaApp', ['ngResource', 'ngBootbox'])
+angular.module('mediaApp', ['ngResource', 'ngBootbox','ngResource', 'ngBootbox','esc.filters','esc.resources'])
 
 
 .controller('uploadController',function uploadController($rootScope,$scope,$location,$http,$window){
@@ -317,11 +317,15 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 .controller('ListController',function ListController($scope,$location,$http,Medias,$window){
 
 	//var token = sessionStorage.token;
-	$scope.medias = Medias.query();
+	$scope.medias = getAllMedias();
 
 	$scope.showList = function (){
 		//console.log($scope.medias);
 		console.log('hello');
+	}
+
+	function getAllMedias(){
+		 return Medias.query();
 	}
 
 	
@@ -363,40 +367,33 @@ angular.module('mediaApp', ['ngResource', 'ngBootbox'])
 	}
 
 	
-})
-.filter('filesize', function() {
-  return function(input) {
-    //return input ? '\u2713' : '\u2718';
-    var outputVal = 0;
-    var outputString = "KV";
-
-    if(input / (1024*1024) >= 1.0){
-    	outputVal = Math.round(input / (1024*1024), -1);
-    	outputString =  outputVal + ' mb';
-    }else{
-    	if(input / 1024 >= 1.0){
-    		outputVal = Math.round(input / 1024);
-    		outputString  =	outputVal + ' kb'; 
-    	}else{
-    		outputVal = Math.round(input / 1024, -2);
-    		outputString  =	outputVal + ' kb'; 
-    	}
-    }
+});
 
 
-    return outputString;
-  };
-})
+// .filter('filesize', function() {
+//   return function(input) {
+//     //return input ? '\u2713' : '\u2718';
+//     var outputVal = 0;
+//     var outputString = "KV";
 
-.factory('Medias',['$resource',
-	function($resource){
-		return $resource('/api/media/:id', {}, {
-		query:{ method: 'GET'},
-		get : { method : 'GET', params: {id:'@_id'}},
-		update : { method : 'PUT', params: {id:'@_id'}},
-		delete : { method : 'DELETE', params: {id:'@_id'}},
-	});
-}]);
+//     if(input / (1024*1024) >= 1.0){
+//     	outputVal = Math.round(input / (1024*1024), -1);
+//     	outputString =  outputVal + ' mb';
+//     }else{
+//     	if(input / 1024 >= 1.0){
+//     		outputVal = Math.round(input / 1024);
+//     		outputString  =	outputVal + ' kb'; 
+//     	}else{
+//     		outputVal = Math.round(input / 1024, -2);
+//     		outputString  =	outputVal + ' kb'; 
+//     	}
+//     }
+
+
+//     return outputString;
+//   };
+// })
+
 
 
 
