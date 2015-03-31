@@ -98,9 +98,17 @@ router.put('/materials/:id', material.edit)
 
 //----------------------Regions---------------------------------------
 
-//GET all regions
+//GET : all regions
 router.get('/region/', region.all);
-router.post('/region/', region.create);
+
+//POST : create a region
+router.post('/region', region.create);
+
+//GET : Get a region by Id
+router.get('/region/:id', region.get);
+
+//PUT : Edit a region 
+router.put('/region/:id', region.edit);
 
 //----------------------Promotion-------------------------------------
 

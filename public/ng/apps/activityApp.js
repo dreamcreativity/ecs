@@ -61,24 +61,6 @@ angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters'
 	 		    $("#messageReturn").delay(2000).fadeOut('slow');
 	 	})
 	 }
-
-	 $scope.changed = function(){
-	 	var temp_array = [];
-	 	var medias = $scope.medias
-	 	var range = new Date();
-		for(var i=0; i<medias.data.length;i++){
-			switch($scope.latest_filter) {
-			case "1" : 			
-				range = this.setDate(range.getDate()-1);
-				if(medias[i].createDate > range) {
-					temp_array.push(medias[i])
-				}
-				break;
-			default :
-				break;
-			}
-		}
-	}
 })
 
 .filter('isAfter', function() {

@@ -22,3 +22,12 @@ resources.factory('Medias',['$resource',
         delete : { method : 'DELETE', params: {id:'@_id'}},
     });
 }]);
+
+
+resources.factory('Regions',['$resource',
+    function($resource){
+        return $resource('/api/region/:id', {}, {
+        query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}]);

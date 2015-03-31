@@ -57,6 +57,7 @@
 	<script src="/ng/apps/courseApp.js"></script>
 	<script src="/ng/apps/activityApp.js"></script>
 	<script src="/ng/apps/materialApp.js"></script>
+	<script src="/ng/apps/regionApp.js"></script>
 
 
 	<script src="/ng/lib/resources.js"></script>
@@ -272,6 +273,12 @@
 							<li class="panel <%if(parms.cur_tap=='Activity'){ %>open<% } %>">
 								<a href="/admin/activity/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#ActivityManagement">
 									<i class="fa fa-shield"></i> Activity <span class="arrow"></span>
+								</a>							
+							</li>
+
+							<li class="panel <%if(parms.cur_tap=='Region'){ %>open<% } %>">
+								<a href="/admin/region/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#RegionManagement">
+									<i class="fa fa-shield"></i> Region <span class="arrow"></span>
 								</a>							
 							</li>
 

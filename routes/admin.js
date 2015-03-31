@@ -359,8 +359,31 @@ router.get('/activity/edit/:id', function(req, res) {
 		});
 });
 
+//-------------------------Region-------------------------------------------
+router.get('/region/all', function(req,res){
+	template(req,res,'admin_main','admin/region/region.html',
+	{
+		title: 'Region',
+		category : 'Management',
+		cur_tap : 'Region',
+		cur_selected : 'Region'
+	});
+});
 
+router.get('/region/create', function(req, res) {
+	res.render('admin/region/region_new.html');
+});
 
+router.get('/region/edit/:id', function(req, res) {
+	template(req,res,'admin_main', 'admin/region/region_edit.html', 
+		{
+			title : 'Edit Region',
+			category : 'Management',
+			cur_tap : 'Region',
+			cur_selected : 'Edit Region',
+			url_params : req.params
+		});
+});
 
 
 
