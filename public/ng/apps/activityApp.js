@@ -1,10 +1,6 @@
 'use strict';
 
-<<<<<<< HEAD
 angular.module('ActivityApp', ['ngRoute','ngResource', 'ngBootbox','esc.filters','esc.resources'])
-=======
-angular.module('ActivityApp', ['esc.resources','ngRoute','ngResource', 'ngBootbox'])
->>>>>>> origin/dev-new
 
 .controller('ActivityCtrl',function ActivityCtrl($rootScope,$scope,$http,Activity,Medias,$window,DateRanges){
 	getActivityMedias();
@@ -114,23 +110,9 @@ angular.module('ActivityApp', ['esc.resources','ngRoute','ngResource', 'ngBootbo
     return {
         restrict: "A",
         link: function (scope, elem, attrs) {
-<<<<<<< HEAD
-   
-
-            // Update array on click
-            elem.bind('click', function () {
-
-            	var i = scope.item;
-
-            	console.log(elem);
-                var index = scope.array.indexOf(scope.item);
-
-
-=======
             // Update array on click
             elem.bind('click', function () {
                 var index = scope.array.indexOf(scope.item._id);
->>>>>>> origin/dev-new
                 if (index === -1) {
                 	scope.array.push(scope.item._id);
                 }  

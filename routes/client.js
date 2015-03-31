@@ -28,13 +28,7 @@ router.get('/', function(req, res) {
 				sliders : sliders 
 			});		
 		});
-
-
-		
-
 	});
-
-	
 });
 
 router.get('/login', function(req, res) {
