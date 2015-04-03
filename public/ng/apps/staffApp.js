@@ -11,7 +11,7 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
 	 $scope.create = function(isValid){
 	 	$scope.returnMessage ="";
 	 	Staffs.save($scope.staff,function(result){
-	 		     $scope.returnMessage = "successfully";
+	 		     ShowGritterCenter('System Notification','Staff has been created');
 	 			setInterval(function(){
   					 $window.location='/admin/staff/all';
 				}, 2000); 
@@ -43,9 +43,7 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
 	 	$("#messageReturn").fadeIn('slow');
 	 	Staffs.update($scope.staff, function(result){
 	 			var message = result.messages;	    
-	 		    $scope.returnMessage = "profile is save successfully";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
-	 			// $window.location='/admin/staff/detail/'+ staff_id;
+	 		    ShowGritterCenter('System Notification','Staff has been updated');
 	 	})
 	 }
 })

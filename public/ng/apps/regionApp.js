@@ -7,7 +7,7 @@ angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','esc.resources'
 
 		$scope.create = function(isValid){
 			Regions.save($scope.region, function(result){
-				 $scope.returnMessage = "successfully";
+				 ShowGritterCenter('System Notification','Region has been created');
 	 			setInterval(function(){
   					 $window.location='/admin/region/all';
 				}, 2000); 
@@ -34,8 +34,8 @@ angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','esc.resources'
 	 	$("#messageReturn").fadeIn('slow');
 	 	Regions.update($scope.region, function(result){
 	 			var message = result.messages;	    
-	 		    $scope.returnMessage = "region is save successfully";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 		    ShowGritterCenter('System Notification','Region has been updated');
+	 		    // $("#messageReturn").delay(2000).fadeOut('slow');
 	 	})
 	 }
 

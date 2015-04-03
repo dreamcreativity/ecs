@@ -31,6 +31,12 @@ router.get('/', function(req, res) {
 	});
 });
 
+
+router.get('/activity', function(req, res){
+	template(req,res,'client_normal','client/activity.html',{});
+});
+
+
 router.get('/login', function(req, res) {
 	template(req,res,'client_main','client/login.html',{ });
 });
