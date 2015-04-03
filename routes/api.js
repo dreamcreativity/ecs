@@ -13,6 +13,37 @@ var activity = require('../controllers/activity');
 
 
 
+
+
+function IsAuthException(path){
+	var list = [
+		'/slider'
+	];
+
+	if($.inArray(path, list)){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+
+//-------------------------  Auth Middleware ----------------------------------
+// router.use(function(req,res,next){
+
+// 	console.log('---------------------------');
+// 	console.log(req._parsedOriginalUrl.path);
+	
+// 	var path = req._parsedOriginalUrl.path;
+
+// 	if(IsAuthException(path))
+// 		next();
+// 	else
+// 		res.status(403);
+
+// });
+
 //------------------------- Media Center ----------------------------------
 
 router.post('/media/upload', media.upload);
