@@ -24,10 +24,28 @@ var admin = require('./routes/admin');
 var agent = require('./routes/agent');
 var api = require('./routes/api');
 
+
+routes.use(function(next){
+
+    console.log('run 1');
+    next();
+
+});
+
+routes.use(function(next){
+
+    console.log('run 2');
+    next();
+});
+
+
+
 //---------------------------------------------
 // create express object
 //---------------------------------------------
 var app = express();
+
+
 
 
 //---------------------------------------------
