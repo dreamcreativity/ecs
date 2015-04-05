@@ -44,4 +44,33 @@ angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','
 	 	})
 	 }
 
+})
+
+
+.factory('authInterceptor', function ($rootScope, $q, $window) {
+  return {
+    request: function (config) {
+      config.headers = config.headers || {};
+      if ($window.sessionStorage.token) {
+        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+        config.headers.token = $window.sessionStorage.token;
+      }
+      return config;
+    },
+    responseError: function (response) {
+      console.log(response.status);
+      if (response.status === 401) {
+        // handle the case where the user is not authenticated
+      }
+      if (response.status === 403) {
+        console.log('please log in ');
+        //window.location = '/admin/login';
+      }
+      return response || $q.when(response);
+    }
+  };
+})
+
+.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
 });

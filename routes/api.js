@@ -10,39 +10,66 @@ var media = require('../controllers/media');
 var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
 var activity = require('../controllers/activity');
+var auth = require('../controllers/auth');
+var SHA256 = require("crypto-js/sha256");
 
 
-
-
-
-function IsAuthException(path){
+function IsAuthException(path, method){
+	//--------------------------------------------------
+	// auth exception list , put urls into this array
+	//--------------------------------------------------
 	var list = [
-		'/slider'
+		{	path : '/api/slider', method: 'GET' },
+		{	path : '/api/activities', method: 'GET' },
+		{	path : '/api/staffs/login', method: 'POST' },
+		{	path : '/api/staffs', method: 'POST' },
+
 	];
 
-	if($.inArray(path, list)){
-		return true;
-	}else{
-		return false;
+	for(i in list){
+		//console.log(list[i]);
+		if(list[i].path == path &&  list[i].method == method ){
+			return true;
+		}
 	}
+	return false;
 }
 
 
 
 //-------------------------  Auth Middleware ----------------------------------
-// router.use(function(req,res,next){
+router.use(function(req,res,next){
 
-// 	console.log('---------------------------');
-// 	console.log(req._parsedOriginalUrl.path);
+	//console.log('---------------------------');
+	//console.log(req.method);
+
 	
-// 	var path = req._parsedOriginalUrl.path;
+	var path = req._parsedOriginalUrl.path;
+	var method = req.method;
+	//console.log(path);
 
-// 	if(IsAuthException(path))
-// 		next();
-// 	else
-// 		res.status(403);
+	if(IsAuthException(path, method)){
+		next();
+	}else{
 
-// });
+		// check token from header
+		if( typeof req.headers.api_token === 'undefined')
+			res.send(403,'403 auth error');
+		else{
+			console.log(req.headers.api_token);
+
+			var accessToken = req.headers.api_token;
+
+			if( auth.IsTokenValid(accessToken) ){
+				console.log('pass token validation');
+			}
+			next();
+		}
+		
+	}
+		
+
+});
 
 //------------------------- Media Center ----------------------------------
 

@@ -10,12 +10,14 @@ var resources = angular.module('esc.resources', [])
     });
 }])
 
+
 .factory('Agents',['$resource',
     function($resource){
-        return $resource('http://localhost:3000/api/agent/region/:name', {}, {
+        return $resource('/api/agent/region/:name', {}, {
         query:{ method: 'GET'}
     });
 }])
+
 
 resources.factory('MediaTarget',['$resource',
     function($resource){

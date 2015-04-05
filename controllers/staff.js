@@ -1,8 +1,11 @@
-var Staff = require('../models/staff');
-var SHA256 = require("crypto-js/sha256")
+
+var SHA256 = require("crypto-js/sha256");
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var session = require('express-session')
+var Staff = require('../models/staff');
+var Token = require('../models/token');
+var crypto = require('crypto');
 
 //POST : Create a Staff
 exports.create = function(req,res){
@@ -48,9 +51,11 @@ exports.create = function(req,res){
 
 //POST : Login
 exports.login = function (req,res){
-	var pwd = SHA256(req.body.password);
+	var pwd = crypto.createHash('sha256').update(req.body.password).digest("hex"); 
+
 	Staff.findOne({username : req.body.username, password: pwd}, function(err, user){
 		if(err){
+
 			res.json(
 			{
 				status: 'fail',
@@ -59,6 +64,7 @@ exports.login = function (req,res){
 			});
 		}
 		else {
+
 			if(user == null){
 				res.json(
 				{
@@ -68,29 +74,56 @@ exports.login = function (req,res){
 				});
 			}
 			else {
-				var token = jwt.sign(user.username,"secret", { expiresInMinutes:60*5 });
-				user.token = token;
-				user.save(function(err){
-					if(err) {
+
+				//---------------------------------
+				// found user in the database
+				//---------------------------------
+
+				// remove old token data for the current found user
+				Token.find({user:user._id}, function(err, result){
+					
+					 if(err)
+						console.log(err);
+
+				}).remove(function(err, result){
+					
+					if(err){
 						res.json({
 							status: 'fail',
-							messages:err,
+							messages: 'can not remove old session data',
 							data : null
 						});
 					}
-					else {
-						res.json({
-							status: 'ok',
-							messages: 'successed',
-							data : token,
-							OID : user._id
-						});
-					}
+
+
+
+					//so now can create access token
+					var newToken = new Token();
+					newToken.user = user._id;
+					newToken.type = 'Staff';
+					newToken.save();
+
+
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data : {
+							id: user._id,
+							username : user.username,
+							email: user.email,
+							token: newToken._id
+						}
+					});
+
 				});
+
 			}
+
 		}
 	});
 }
+
+
 
 // Authorized 
 exports.ensureAuthorized = function(req,res, next){   
