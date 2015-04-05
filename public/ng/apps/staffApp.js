@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
+angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','esc.resources'])
 
 
 .controller('StaffCtrl',function StaffCtrl($rootScope,$scope,$http,Staffs,$window){
@@ -28,23 +28,42 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
  	}
 })
 
-.controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$scope,$http,Staffs,$window) {
+.controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$scope,$http,Regions,Staffs,$window) {
 	var staff_id = url_params.id;
-
-	 if(staff_id !=null){
-	 	Staffs.get({id:staff_id}, function(result){
-	 		$scope.staff = result.data;
-	 	});
-	 	
-	 }
+	loading();
 
 	$scope.update = function(isValid) {
 		$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
+	 	$scope.staff.regions =[];
+	 	for(var i=0; i<$scope.region_tags.length; i++){
+	 		$scope.staff.regions.push($scope.region_tags[i].text);
+	 	}
 	 	Staffs.update($scope.staff, function(result){
 	 			var message = result.messages;	    
 	 		    ShowGritterCenter('System Notification','Staff has been updated');
 	 	})
+	 }
+
+	 function loading() {
+	 	var list = [];
+	 	var regions = null;
+	 	Regions.query(function(result){
+	 		regions = result;
+	 		for(var i=0; i<regions.data.length; i++){
+	 			list.push({"text" : regions.data[i].name});
+	 		}
+	 		if(staff_id !=null){
+	 			Staffs.get({id:staff_id}, function(result){
+	 				$scope.staff = result.data;
+	 				$scope.region_tags = result.data.regions;
+	 				$scope.loadTags = function(query) {
+	 					return list;
+	 				};
+	 			});
+
+	 		}
+	 	});
 	 }
 })
 
@@ -63,21 +82,7 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox'])
 	 	});
 	 	
 	 }
-})
+});
 
 
-.factory('Staffs',['$resource',
-	function($resource){
-		return $resource('http://localhost:3000/api/staffs/:id', {}, {
-		query:{ method: 'GET'},
-		update : { method : 'PUT', params: {id:'@_id'}}
-	});
-}])
-
-.factory('Agents',['$resource',
-	function($resource){
-		return $resource('http://localhost:3000/api/agent/region/:name', {}, {
-		query:{ method: 'GET'}
-	});
-}]);
 

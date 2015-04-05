@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','esc.resources'])
+angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','esc.resources'])
 
 .controller('RegionCtrl',function RegionCtrl($scope,$http,$window,Regions){
 		getRegions();
@@ -26,12 +26,17 @@ angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','esc.resources'
 	if(region_id !=null){
 	 	Regions.get({id:region_id}, function(result){
 	 		$scope.region = result.data;
+	 	    $scope.email_tags = result.data.emails;
 	 	});	
 	 }
 
 	  $scope.update = function(isValid) {
 		$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
+	 	$scope.region.emails =[];
+	 	for(var i=0; i<$scope.email_tags.length; i++){
+	 		$scope.region.emails.push($scope.email_tags[i].text);
+	 	}
 	 	Regions.update($scope.region, function(result){
 	 			var message = result.messages;	    
 	 		    ShowGritterCenter('System Notification','Region has been updated');

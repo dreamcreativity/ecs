@@ -24,8 +24,6 @@ var admin = require('./routes/admin');
 var agent = require('./routes/agent');
 var api = require('./routes/api');
 
-
-
 //---------------------------------------------
 // create express object
 //---------------------------------------------

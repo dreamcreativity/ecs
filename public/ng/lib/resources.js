@@ -1,8 +1,21 @@
 'use strict';
 
-var resources = angular.module('esc.resources', []);
+var resources = angular.module('esc.resources', [])
 
+.factory('Staffs',['$resource',
+    function($resource){
+        return $resource('http://localhost:3000/api/staffs/:id', {}, {
+        query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}])
 
+.factory('Agents',['$resource',
+    function($resource){
+        return $resource('http://localhost:3000/api/agent/region/:name', {}, {
+        query:{ method: 'GET'}
+    });
+}])
 
 resources.factory('MediaTarget',['$resource',
     function($resource){

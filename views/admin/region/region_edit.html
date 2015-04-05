@@ -13,6 +13,16 @@ var url_params = <%- JSON.stringify(url_params) %>
 	</div>
 
 	<div class="form-group">
+		<label class="col-sm-3 control-label">Emails</label>
+		<div class="col-sm-9">
+			<tags-input ng-model="email_tags" 
+					placeholder="Add a email" 
+					allowed-tags-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+			</tags-input>
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="col-sm-3 control-label">Delete</label>
 		<div class="col-sm-3">
 			<div class="tcb">
