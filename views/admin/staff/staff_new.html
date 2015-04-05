@@ -14,13 +14,11 @@
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Region</label>
+		<label class="col-sm-3 control-label">Regions</label>
 		<div class="col-sm-9">
-			<select name="region" ng-model="staff.region" class="form-control" required>
-				<option value="Korea">Korea</option>
-				<option value="China">China</option>
-			</select>
-			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
+			<tags-input ng-model="region_tags" placeholder="Add a Region">
+				<auto-complete source="loadTags($query)"></auto-complete>
+			</tags-input>
 		</div>
 	</div>
 

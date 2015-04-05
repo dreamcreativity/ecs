@@ -3,13 +3,18 @@
 angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','esc.resources'])
 
 
-.controller('StaffCtrl',function StaffCtrl($rootScope,$scope,$http,Staffs,$window){
+.controller('StaffCtrl',function StaffCtrl($rootScope,$scope,$http,Regions,Staffs,$window){
 	 var token = sessionStorage.token;
-	 $scope.staffs = getAllStaffs();
+	 loading();
+	 //$scope.staffs = loading();
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
 	 $scope.create = function(isValid){
 	 	$scope.returnMessage ="";
+	 	$scope.staff.regions =[];
+	 	for(var i=0; i<$scope.region_tags.length; i++){
+	 		$scope.staff.regions.push($scope.region_tags[i].text);
+	 	}
 	 	Staffs.save($scope.staff,function(result){
 	 		     ShowGritterCenter('System Notification','Staff has been created');
 	 			setInterval(function(){
@@ -18,14 +23,23 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
  		})
 	 }
 
- 	function getAllStaffs(){
- 		return Staffs.query();
- 	}
-
-
- 	function getStaff(){
-
- 	}
+	 function loading() {
+	 	var list = [];
+	 	var regions = null;
+	 	Regions.query(function(result){
+	 		regions = result;
+	 		for(var i=0; i<regions.data.length; i++){
+	 			list.push({"text" : regions.data[i].name});
+	 		}
+	 		Staffs.query(function(result){
+	 			$scope.staffs = result;
+	 			$scope.region_tags = result.data.regions;
+	 			$scope.loadTags = function(query) {
+	 				return list;
+	 			};
+	 		});
+	 	});
+	 }
 })
 
 .controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$scope,$http,Regions,Staffs,$window) {
