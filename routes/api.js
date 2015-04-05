@@ -38,38 +38,37 @@ function IsAuthException(path, method){
 
 
 //-------------------------  Auth Middleware ----------------------------------
-router.use(function(req,res,next){
+// router.use(function(req,res,next){
 
-	//console.log('---------------------------');
-	//console.log(req.method);
+// 	//console.log('---------------------------');
+// 	//console.log(req.method);
 
 	
-	var path = req._parsedOriginalUrl.path;
-	var method = req.method;
-	//console.log(path);
+// 	var path = req._parsedOriginalUrl.path;
+// 	var method = req.method;
+// 	//console.log(path);
 
-	if(IsAuthException(path, method)){
-		next();
-	}else{
+// 	if(IsAuthException(path, method)){
+// 		next();
+// 	}else{
 
-		// check token from header
-		if( typeof req.headers.api_token === 'undefined')
-			res.send(403,'403 auth error');
-		else{
-			console.log(req.headers.api_token);
+// 		// check token from header
+// 		if( typeof req.headers.api_token === 'undefined')
+// 			res.send(403,'403 auth error');
+// 		else{
+// 			console.log(req.headers.api_token);
 
-			var accessToken = req.headers.api_token;
+// 			var accessToken = req.headers.api_token;
 
-			if( auth.IsTokenValid(accessToken) ){
-				console.log('pass token validation');
-			}
-			next();
-		}
+// 			if( auth.IsTokenValid(accessToken) ){
+// 				console.log('pass token validation');
+// 			}
+// 			next();
+// 		}
 		
-	}
-		
+// 	}
 
-});
+// });
 
 //------------------------- Media Center ----------------------------------
 
