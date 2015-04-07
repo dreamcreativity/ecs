@@ -94,9 +94,27 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 		});
 
 	 	});
-	 	
 	 }
+
+	 function sendEmail() {
+	 	var email_list = $scope.email_list;
+	 	var data = {"From" : "stiron88@gmail.com"};
+	 	SendEmail.postEmail(data, function(err,result){
+	 		console.log("send email success");
+	 	})
+	 }
+
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
