@@ -46,3 +46,12 @@ resources.factory('Regions',['$resource',
         update : { method : 'PUT', params: {id:'@_id'}}
     });
 }]);
+
+
+// resource.factory('SendEmail', ['$http',function($http){
+//     return {
+//         postEmail : function (emailData, callback){
+//             $http.post("/postEmail/", emailData).success(callback);
+//         }
+//     }
+// }]);

@@ -94,8 +94,8 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 		});
 
 	 	});
-	 	
 	 }
+
 })
 
 .factory('authInterceptor', function ($rootScope, $q, $window) {
@@ -124,8 +124,18 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 
 .config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
-});
 
+
+	 function sendEmail() {
+	 	var email_list = $scope.email_list;
+	 	var data = {"From" : "stiron88@gmail.com"};
+	 	SendEmail.postEmail(data, function(err,result){
+	 		console.log("send email success");
+	 	})
+	 }
+
+
+});
 
 
 

@@ -46,6 +46,20 @@
 									<div class="col-lg-2 right"><strong>Region :</strong></div>
 									<div class="col-lg-2">{{staff.region}}</div>
 								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right">
+										
+									</div>
+									<div class="col-lg-8">
+										<tags-input ng-model="email_list" 
+												placeholder="Add a email" 
+												allowed-tags-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+										</tags-input>
+									   <button class="col-md-3 btn btn-sm btn-primary" ng-click="sendEmail()">Send</button>
+									</div>
+								</div>
+
 								</div>
 							</div>
 						</div>
@@ -62,9 +76,7 @@
 										<h4>Recent Agents</h4>
 									</div>
 									<div class="portlet-widgets">
-										<a href="javascript:;"><i class="fa fa-refresh"></i></a>
-										
-										
+										<a href="javascript:;"><i class="fa fa-refresh"></i></a>													
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -78,8 +90,7 @@
 												<span class="col-sm-2 icons glyphicon glyphicon-phone"> {{agent.workphone}}</span>
 												<span class="col-sm-4 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
 											</a>
-										</li>
-										
+										</li>									
 									</ul>
 								</div>
 							</div>
