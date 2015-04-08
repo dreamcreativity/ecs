@@ -8,20 +8,22 @@ var moment = require('moment');
 
 
 // Insert a new Slider record
-exports.IsTokenValid = function(AccessToken, Type){
+exports.IsTokenValid = function(AccessToken, callBack){
 
-	
 	Token.find({_id:AccessToken}, function(err,result){
 		if(err){
 			console.log('-------- Error ---------');
+			console.log(AccessToken);
 			console.log(err);
-			return false;
+			//return false;
+			callBack(false);
 		}else{
 			console.log('-------- Result ---------');
 			console.log(result);
 
 			if(result.length != 1)
-				return true;
+				//return false;
+				callBack(false);
 
 			var tokenObj = result[0];
 
@@ -29,7 +31,9 @@ exports.IsTokenValid = function(AccessToken, Type){
 
 			console.log(tokenObj.created);
 
-			return true;
+			//return true;
+			callBack(true);
+		
 		}
 	});
 }

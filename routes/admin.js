@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../modules/templateController');
-var staff =require('../controllers/staff');
+var Staff =require('../controllers/staff');
 
 /* GET home page. */
 
@@ -32,6 +32,24 @@ router.get('/login', function(req, res) {
 			}
 		);
 });
+
+
+router.get('/logout', function(req, res) {
+
+
+	// template(req,res,'admin_bg_paint','admin/login.html',
+	// 		{ 
+	// 			title: 'Login',
+	// 			category: '',
+	// 			cur_tap: 'Login',
+	// 			cur_selected : ''
+	// 		}
+	// 	);
+
+	Staff.logout(req,res);
+
+});
+
 
 /*---------------------------------------
 	Silder 
