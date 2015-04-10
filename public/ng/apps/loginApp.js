@@ -8,10 +8,19 @@ angular.module('loginApp', ['ngRoute'])
 	$scope.login = function() {
 		$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
+
+
 		$http.post('http://localhost:3000/api/staffs/login',$scope.staff)
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
-				sessionStorage.setItem('token',data.data);
+				console.log(data.data);
+
+				//$cookies.put('token', data.data.token);
+				//sessionStorage.setItem('token',data.data.token);
+				sessionStorage.token = data.data.token;
+				console.log(sessionStorage.token);
+
+
 				$window.location='/admin';
 			}
 			else {

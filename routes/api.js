@@ -37,39 +37,44 @@ function IsAuthException(path, method){
 }
 
 
+function IsTokenValid(token){
+	return auth.IsTokenValid(token);
+}
 
 //-------------------------  Auth Middleware ----------------------------------
-// router.use(function(req,res,next){
-
-// 	//console.log('---------------------------');
-// 	//console.log(req.method);
-
+router.use(function(req,res,next){
+	//console.log('---------------------------');
+	//console.log(req.method);
 	
-// 	var path = req._parsedOriginalUrl.path;
-// 	var method = req.method;
-// 	//console.log(path);
+	var path = req._parsedOriginalUrl.path;
+	var method = req.method;
+	//console.log(path);
 
-// 	if(IsAuthException(path, method)){
-// 		next();
-// 	}else{
+	if(IsAuthException(path, method)){
+		next();
+	}else{
+		// check token from header
 
-// 		// check token from header
-// 		if( typeof req.headers.api_token === 'undefined')
-// 			res.send(403,'403 auth error');
-// 		else{
-// 			console.log(req.headers.api_token);
+		if( typeof req.headers.api_token === 'undefined')
+			res.send(403,'403 auth error token');
+		else{
+			console.log(req.headers.api_token);
+			var accessToken = req.headers.api_token;
 
-// 			var accessToken = req.headers.api_token;
+			auth.IsTokenValid(accessToken, function(isValid){
 
-// 			if( auth.IsTokenValid(accessToken) ){
-// 				console.log('pass token validation');
-// 			}
-// 			next();
-// 		}
+				if(isValid){
+					console.log('pass token validation');
+					next();
+				}else{
+					res.send(403,'403 auth error');
+				}		
+			});
+		}
 		
-// 	}
+	}
 
-// });
+});
 
 //------------------------- Media Center ----------------------------------
 

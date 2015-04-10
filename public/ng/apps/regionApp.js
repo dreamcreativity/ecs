@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','esc.resources'])
+angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','esc.resources','esc.directives'])
 
 .controller('RegionCtrl',function RegionCtrl($scope,$http,$window,Regions){
 		getRegions();
@@ -50,12 +50,12 @@ angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','
 .factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {
-      config.headers = config.headers || {};
-      if ($window.sessionStorage.token) {
-        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-        config.headers.token = $window.sessionStorage.token;
-      }
-      return config;
+	    config.headers = config.headers || {};
+		if ($window.sessionStorage.token) {
+			config.headers.api_token = sessionStorage.token ;
+	    	console.log($window.sessionStorage.token );
+		}
+		return config;
     },
     responseError: function (response) {
       console.log(response.status);
@@ -63,8 +63,8 @@ angular.module('RegionApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','
         // handle the case where the user is not authenticated
       }
       if (response.status === 403) {
-        console.log('please log in ');
-        //window.location = '/admin/login';
+        //console.log('please log in ');
+        window.location = '/admin/login';
       }
       return response || $q.when(response);
     }

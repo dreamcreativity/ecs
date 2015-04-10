@@ -1,4 +1,3 @@
-
 var SHA256 = require("crypto-js/sha256");
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
@@ -48,6 +47,36 @@ exports.create = function(req,res){
 		}
 	});
 }
+
+//POST : Login
+exports.logout = function (req,res){
+
+	if(sessionStorage.token){
+		console.log(sessionStorage.token);
+	}else{
+
+		res.redirect('/admin/login');
+	}
+
+	// remove old token data for the current found user
+	Token.find({user:sessionStorage.token}, function(err, result){
+		
+		 if(err)
+			console.log(err);
+
+	}).remove(function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: 'can not remove old session data',
+				data : null
+			});
+		}
+		res.redirect('/admin');
+	});
+	
+}
+
 
 //POST : Login
 exports.login = function (req,res){
@@ -108,10 +137,10 @@ exports.login = function (req,res){
 						status: 'ok',
 						messages: 'successed',
 						data : {
-							id: user._id,
+							id: user.id,
 							username : user.username,
 							email: user.email,
-							token: newToken._id
+							token: newToken.id
 						}
 					});
 
