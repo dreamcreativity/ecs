@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../modules/templateController');
-var emailSender = require('../modules/emailSenderController');
 var staff =require('../controllers/staff');
 
 /* GET home page. */
@@ -385,12 +384,6 @@ router.get('/region/edit/:id', function(req, res) {
 			url_params : req.params
 		});
 });
-
-//-------------------------Email Sender--------------------------------------------
-router.post('/postEmail', function(req,res){
-	emailSender.sendMail(req.from, req.to, req.subject, req.text);
-})
-
 
 
 module.exports = router;

@@ -81,7 +81,7 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 }
 })
 
-.controller('DetailCtrl', function DetailCtrl($scope,Staffs,Agents,$window){
+.controller('DetailCtrl', function DetailCtrl($scope,Staffs,Agents,SendEmail,$window){
 	var staff_id = url_params.id;
 	$scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
@@ -96,9 +96,13 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 	});
 	 }
 
-	 function sendEmail() {
+	 $scope.sendEmail = function() {
 	 	var email_list = $scope.email_list;
-	 	var data = {"From" : "stiron88@gmail.com"};
+	 	var data = {"from" : "stiron88@gmail.com", 
+	 	"to": "stiron88@gmail.com", 
+	 	"subject" : "Hello world", 
+	 	"text": "Testing"
+		 };
 	 	SendEmail.postEmail(data, function(err,result){
 	 		console.log("send email success");
 	 	})

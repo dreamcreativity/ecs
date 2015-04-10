@@ -48,10 +48,18 @@ resources.factory('Regions',['$resource',
 }]);
 
 
-// resource.factory('SendEmail', ['$http',function($http){
-//     return {
-//         postEmail : function (emailData, callback){
-//             $http.post("/postEmail/", emailData).success(callback);
+resources.factory('SendEmail', ['$http',function($http){
+    return {
+        postEmail : function (emailData, callback){
+            $http.post("/api/postEmail/", emailData).success(callback);
+        }
+    }
+}]);
+
+// resources.factory('SendEmail', ['$resource',function($resource){
+//     return $resource("/postEmail/", {},{
+//         post : {
+//             method : 'POST'
 //         }
-//     }
+//     });
 // }]);
