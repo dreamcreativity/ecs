@@ -85,7 +85,7 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	var staff_id = url_params.id;
 	$scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
-	 if(staff_id !=null){
+	if(staff_id !=null){
 	 	Staffs.get({id:staff_id}, function(result){
 	 		$scope.staff = result.data;
 
@@ -94,7 +94,8 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 		});
 
 	 	});
-	 }
+	}
+})
 
 .factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
@@ -121,21 +122,24 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 })
 
 .config(function ($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptor');
+	$httpProvider.interceptors.push('authInterceptor');
 
 
-	 function sendEmail() {
->>>>>>> origin/dev-new
-	 	var email_list = $scope.email_list;
-	 	var data = {"from" : "stiron88@gmail.com", 
-	 	"to": "stiron88@gmail.com", 
-	 	"subject" : "Hello world", 
-	 	"text": "Testing"
+	function sendEmail() {
+
+		var email_list = $scope.email_list;
+		var data = {
+			"from" : "stiron88@gmail.com", 
+			"to": "stiron88@gmail.com", 
+			"subject" : "Hello world", 
+			"text": "Testing"
 		 };
-	 	SendEmail.postEmail(data, function(err,result){
-	 		console.log("send email success");
-	 	})
-	 }
+
+
+		SendEmail.postEmail(data, function(err,result){
+			console.log("send email success");
+		})
+	}
 
 
 });
