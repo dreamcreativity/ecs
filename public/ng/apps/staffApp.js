@@ -94,7 +94,7 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 		});
 
 	 	});
-	 }
+	 }})
 
 .factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
@@ -125,7 +125,6 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 
 
 	 function sendEmail() {
->>>>>>> origin/dev-new
 	 	var email_list = $scope.email_list;
 	 	var data = {"from" : "stiron88@gmail.com", 
 	 	"to": "stiron88@gmail.com", 
