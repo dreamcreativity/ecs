@@ -76,9 +76,6 @@ router.use(function(req,res,next){
 
 });
 
-
-
-
 //------------------------- Media Center ----------------------------------
 
 router.post('/media/upload', media.upload);

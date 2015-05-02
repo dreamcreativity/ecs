@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('AdminApp',['ngResource','esc.resources','esc.filters','esc.directives','esc.auth'])
+
+angular.module('AdminApp')
 
 .controller('SliderController', function($rootScope,$scope,$location,$http,$window,Sliders,Medias){
 

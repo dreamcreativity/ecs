@@ -47,13 +47,6 @@ resources.factory('Regions',['$resource',
     });
 }]);
 
-// resources.factory('StaffAccoount',['$resource',
-//     function($resource){
-//         return $resource('/api/staff-account/:id', {}, {
-//         info:{ method: 'GET'},
-//         update : { method : 'PUT', params: {id:'@_id'}}
-//     });
-// }]);
 
 resources.factory('SendEmail', ['$http',function($http){
     return {

@@ -319,43 +319,6 @@ exports.delete = function(req,res){
 
 
 
-//GET: staff by Id
-// exports.getStaffAccountInfo = function(req,res){
-
-
-// 	var id = req.params.id;
-
-	
-// 	Staff.find({_id:id}, function(err, result){
-
-
-// 		if(err) {
-// 			res.json({
-// 				status: 'fail',
-// 				messages: err,
-// 				data: null
-// 			});
-// 		}
-
-
-// 		if(result.length == 1){
-// 			res.json({
-// 				status: 'ok',
-// 				messages: 'successed',
-// 				data: result[0]
-// 			});	
-// 		}else{
-// 			res.json({
-// 				status: 'fail',
-// 				messages: "multipulte result",
-// 				data: null
-// 			});
-// 		}
-		
-// 	});
-// }
-
-
 
 
 
