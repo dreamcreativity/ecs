@@ -68,15 +68,15 @@
 	<script src="/ng/apps/regionApp.js"></script>
 
 	 -->
-	 <script src="/ng/lib/filters.js"></script>
+	<script src="/ng/lib/auth.js"></script>
+	<script src="/ng/lib/filters.js"></script>
 	<script src="/ng/lib/resources.js"></script>
-	
 	<script src="/ng/lib/directives.js"></script>
 
 	<script src="/ng/apps/adminApp.js"></script>
 
 	<script src="/ng/controllers/sliderController.js"></script>
-
+	<script src="/ng/controllers/navBarController.js"></script>
 
 
 
@@ -86,7 +86,7 @@
 	<div id="wrapper">
 		<div id="main-container">		
 			<!-- BEGIN TOP NAVIGATION -->
-				<nav class="navbar-top" role="navigation"  >
+				<nav class="navbar-top" role="navigation"  ng-controller='NavBarController' >
 					<!-- BEGIN BRAND HEADING -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".top-collapse">
@@ -127,7 +127,7 @@
 											</li>											
 											<li>
 
-												<a href="javascript:void(0);" onclick="sessionStorage.removeItem('token')" >
+												<a href="javascript:void(0);" ng-click='logout()'>
 													<i class="fa fa-power-off"></i> Logout
 												</a>
 												<!-- <a href="/admin/logout">
