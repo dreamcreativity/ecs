@@ -2,7 +2,7 @@
 
 var app = angular.module('AdminApp');
 
-app.controller('NavBarController', [  '$scope','$http','$window','$location', function($scope,$http,$window,$location){
+app.controller('NavBarController', [ '$scope','$http','$window','$location', function($scope,$http,$window,$location){
 	$scope.ssss = 'test';
 
 	$scope.logout = function(){
