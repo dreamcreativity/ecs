@@ -1,6 +1,6 @@
 'use strict';
 
-var resources = angular.module('esc.resources', [])
+var resources = angular.module('esc.resources', ['ngResource'])
 
 .factory('Staffs',['$resource',
     function($resource){
