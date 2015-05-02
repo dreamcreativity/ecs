@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module('AdminApp');
+angular.module('AdminApp')
 
-app.controller('NavBarController', [ '$scope','$http','$window','$location', function($scope,$http,$window,$location){
+.controller('NavBarController',  function($scope,$http,$window,$location,StaffAccount){
 	$scope.ssss = 'test';
 
 	$scope.logout = function(){
@@ -10,4 +10,16 @@ app.controller('NavBarController', [ '$scope','$http','$window','$location', fun
 		location = '/admin/login';
 	}
 
-}]);
+	function getAccountInfo(){
+		
+		return StaffAccount.query({});
+	}
+
+	$scope.info = getAccountInfo();
+
+	console.log($scope.info);
+
+
+
+
+});

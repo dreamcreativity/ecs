@@ -109,6 +109,13 @@ router.get('/staffs', staff.getAllStaffs);
 router.delete('/staffs/:id',staff.delete);
 
 
+
+//-------------------------Staff Account-------------------------
+
+router.get('/staff-account/', staff.getStaffAccount);
+
+
+
 //-----------------------Student-----------------------------------
 
 //GET students 
