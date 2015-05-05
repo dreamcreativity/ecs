@@ -4,6 +4,7 @@ var template = require('../modules/templateController');
 var emailSender = require('../modules/emailSenderController');
 var staff =require('../controllers/staff');
 
+
 /* GET home page. */
 
 //staff.ensureAuthorized

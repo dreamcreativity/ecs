@@ -1,22 +1,30 @@
 'use strict';
 
-var resources = angular.module('esc.resources', [])
+var resources = angular.module('esc.resources', ['ngResource']);
 
-.factory('Staffs',['$resource',
+
+resources.factory('StaffAccount',['$resource',
     function($resource){
-        return $resource('http://localhost:3000/api/staffs/:id', {}, {
+        return $resource('/api/staff-account/:id', {}, {
+        query:{ method: 'GET'}
+    });
+}]);
+
+resources.factory('Staffs',['$resource',
+    function($resource){
+        return $resource('/api/staffs/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}}
     });
-}])
+}]);
 
 
-.factory('Agents',['$resource',
+resources.factory('Agents',['$resource',
     function($resource){
         return $resource('/api/agent/region/:name', {}, {
         query:{ method: 'GET'}
     });
-}])
+}]);
 
 
 resources.factory('MediaTarget',['$resource',
@@ -46,6 +54,31 @@ resources.factory('Regions',['$resource',
         update : { method : 'PUT', params: {id:'@_id'}}
     });
 }]);
+
+
+resources.factory('Agents',['$resource',
+    function($resource){
+        return $resource('http://localhost:3000/api/agent/:id', {}, {
+        query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}])
+
+resources.factory('Students',['$resource',
+    function($resource){
+        return $resource('http://localhost:3000/api/student/agent/:agent_id', {}, {
+        query:{ method: 'GET'},
+    });
+}])
+
+resources.factory('StudentByAgent',['$resource',
+    function($resource){
+        return $resource('http://localhost:3000/api/student/:id', {}, {
+        query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}])
+
 
 
 resources.factory('SendEmail', ['$http',function($http){

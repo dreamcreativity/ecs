@@ -1,8 +1,5 @@
 'use strict';
-
-angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','esc.resources'])
-
-
+angular.module('AdminApp')
 .controller('StaffCtrl',function StaffCtrl($rootScope,$scope,$http,Regions,Staffs,$window){
 	 var token = sessionStorage.token;
 	 loading();
@@ -94,68 +91,17 @@ angular.module('staffApp', ['ngRoute','ngResource', 'ngBootbox','ngTagsInput','e
 	 		});
 
 	 	});
-<<<<<<< HEAD
-	 }})
-=======
-	}
-})
->>>>>>> andy-branch
 
-.factory('authInterceptor', function ($rootScope, $q, $window) {
-  return {
-    request: function (config) {
-	    config.headers = config.headers || {};
-		if ($window.sessionStorage.token) {
-			config.headers.api_token = sessionStorage.token ;
-	    	console.log($window.sessionStorage.token );
-		}
-		return config;
-    },
-    responseError: function (response) {
-      console.log(response.status);
-      if (response.status === 401) {
-        // handle the case where the user is not authenticated
-      }
-      if (response.status === 403) {
-        //console.log('please log in ');
-        window.location = '/admin/login';
-      }
-      return response || $q.when(response);
-    }
-  };
-})
+	 }
 
-.config(function ($httpProvider) {
-	$httpProvider.interceptors.push('authInterceptor');
-
-
-<<<<<<< HEAD
-	 function sendEmail() {
-	 	var email_list = $scope.email_list;
-	 	var data = {"from" : "stiron88@gmail.com", 
-	 	"to": "stiron88@gmail.com", 
-	 	"subject" : "Hello world", 
-	 	"text": "Testing"
-=======
-	function sendEmail() {
-
-		var email_list = $scope.email_list;
-		var data = {
-			"from" : "stiron88@gmail.com", 
-			"to": "stiron88@gmail.com", 
-			"subject" : "Hello world", 
-			"text": "Testing"
->>>>>>> andy-branch
-		 };
-
-
-		SendEmail.postEmail(data, function(err,result){
-			console.log("send email success");
-		})
-	}
-
-
+	
 });
+
+
+
+
+
+
 
 
 

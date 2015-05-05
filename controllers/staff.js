@@ -315,14 +315,78 @@ exports.delete = function(req,res){
 
 
 
+//GET: staff  by session
+exports.getStaffAccount = function(req,res){
+	
+	
+
+	Token.find({type:'Staff', _id: req.headers.api_token } ,function(err, result){
+
+		// res.json({
+
+		// 	result: result
+		// });
+
+
+		if(result.length > 1){
+			res.json({
+				status: 'fail',
+				messages: 'multipulte result',
+				data: null
+			});
+		}else if(result.length == 0){
+			res.json({
+				status: 'fail',
+				messages: 'no record found',
+				data: null
+			});
+		}else{
+			tokenRecord = result[0];
+			console.log(tokenRecord);
+
+
+			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}, function(err, users){
+
+
+					if(err) {
+						res.json({
+							status: 'fail',
+							messages: err,
+							data: null
+						});
+					}
+
+					if(result.length == 1){
 
 
 
+						res.json({
+							status: 'ok',
+							messages: 'successed',
+							data: {
+								username: users[0].username,
+								workphone: users[0].workphone,
+								cellphone: users[0].cellphone,
+								firstname: users[0].firstname,
+								lastname: users[0].lastname
 
+							}
+						});	
+					}else{
+						res.json({
+							status: 'fail',
+							messages: "multipulte result",
+							data: null
+						});
+					}
+					
+				});
 
+		}
 
-
-
+	});
+	
+}
 
 
 

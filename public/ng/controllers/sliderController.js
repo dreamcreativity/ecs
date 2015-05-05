@@ -1,10 +1,6 @@
 'use strict';
-
-angular.module('adminApp', ['ngResource','esc.filters','esc.resources'])
-
-.controller('SliderController',function SliderController($rootScope,$scope,$location,$http,$window,Sliders,Medias){
-
-	//var token = sessionStorage.token;
+angular.module('AdminApp')
+.controller('SliderController', function($rootScope,$scope,$location,$http,$window,Sliders,Medias){
 
 	if ( typeof url_params === "undefined" || typeof url_params.id === "undefined"){
 		$scope.slider = {
@@ -100,9 +96,18 @@ angular.module('adminApp', ['ngResource','esc.filters','esc.resources'])
 		$scope.slider.resource = mediaResource;
 
 	}
+
 })
-
-
+.factory('Sliders',['$resource',
+	function($resource){
+		return $resource('/api/slider/:id', {}, {
+			query:{method: 'GET' },
+			get:{method: 'GET', params: {id:'@_id'}},
+			create:{ method: 'POST'},
+			delete:{ method: 'DELETE',params: {id:'@_id'}},
+			update : { method : 'PUT', params: {id:'@_id'}}
+	});
+}])
 .directive('positionPicker', function() {
   return {
   	link: function (scope, element, attrs) {
@@ -145,51 +150,23 @@ angular.module('adminApp', ['ngResource','esc.filters','esc.resources'])
             });
         }
   };
-})
-
-.factory('Sliders',['$resource',
-	function($resource){
-		return $resource('/api/slider/:id', {}, {
-			query:{method: 'GET' },
-			get:{method: 'GET', params: {id:'@_id'}},
-			create:{ method: 'POST'},
-			delete:{ method: 'DELETE',params: {id:'@_id'}},
-			update : { method : 'PUT', params: {id:'@_id'}}
-	});
-}])
-
-.factory('authInterceptor', function ($rootScope, $q, $window) {
-  return {
-    request: function (config) {
-	    config.headers = config.headers || {};
-		if ($window.sessionStorage.token) {
-			config.headers.api_token = sessionStorage.token ;
-	    	console.log($window.sessionStorage.token );
-		}
-		return config;
-    },
-    responseError: function (response) {
-      console.log(response.status);
-      if (response.status === 401) {
-        // handle the case where the user is not authenticated
-      }
-      if (response.status === 403) {
-        //console.log('please log in ');
-        window.location = '/admin/login';
-      }
-      return response || $q.when(response);
-    }
-  };
-})
-
-.config(function ($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptor');
 });
 
 
-// .factory('Medias',['$resource',
+
+
+
+
+
+
+
+// .factory('Sliders',['$resource',
 // 	function($resource){
-// 		return $resource('/api/media/target/:target', {}, {
-// 		getSliderMedia:{ method: 'GET',params: {target:'@target'}}
+// 		return $resource('/api/slider/:id', {}, {
+// 			query:{method: 'GET' },
+// 			get:{method: 'GET', params: {id:'@_id'}},
+// 			create:{ method: 'POST'},
+// 			delete:{ method: 'DELETE',params: {id:'@_id'}},
+// 			update : { method : 'PUT', params: {id:'@_id'}}
 // 	});
 // }]);
