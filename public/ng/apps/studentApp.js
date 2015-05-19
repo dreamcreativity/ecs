@@ -57,6 +57,7 @@ angular.module('studentApp', ['ngRoute','ngResource','ngBootbox'])
 		update : { method : 'PUT', params: {id:'@_id'}}
 	});
 }])
+
 .factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {

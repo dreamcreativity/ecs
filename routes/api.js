@@ -48,16 +48,20 @@ router.use(function(req,res,next){
 	
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
-	//console.log(path);
+	console.log(path);
 
 	if(IsAuthException(path, method)){
 		next();
 	}else{
 		// check token from header
 
-		if( typeof req.headers.api_token === 'undefined')
+		if( typeof req.headers.api_token === 'undefined'){
+			
+			console.log('1');
+			console.log(req.headers.api_token);
 			res.send(403,'403 auth error token');
-		else{
+		}else{
+
 			console.log(req.headers.api_token);
 			var accessToken = req.headers.api_token;
 
@@ -67,6 +71,7 @@ router.use(function(req,res,next){
 					console.log('pass token validation');
 					next();
 				}else{
+					console.log('2');
 					res.send(403,'403 auth error');
 				}		
 			});

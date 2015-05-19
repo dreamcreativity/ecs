@@ -58,22 +58,31 @@ resources.factory('Regions',['$resource',
 
 resources.factory('Agents',['$resource',
     function($resource){
-        return $resource('http://localhost:3000/api/agent/:id', {}, {
+        return $resource('/api/agent/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}}
     });
 }])
 
-resources.factory('Students',['$resource',
+// resources.factory('Students',['$resource',
+//     function($resource){
+//         return $resource('/api/student/agent/:agent_id', {}, {
+//         query:{ method: 'GET'},
+//     });
+// }])
+
+.factory('Students',['$resource',
     function($resource){
-        return $resource('http://localhost:3000/api/student/agent/:agent_id', {}, {
+        return $resource('/api/student/:id', {}, {
         query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
     });
 }])
 
+
 resources.factory('StudentByAgent',['$resource',
     function($resource){
-        return $resource('http://localhost:3000/api/student/:id', {}, {
+        return $resource('/api/student/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}}
     });

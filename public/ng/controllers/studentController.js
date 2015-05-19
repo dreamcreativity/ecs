@@ -4,6 +4,9 @@ angular.module('AdminApp')
 .controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,Agents,$window){
 	 var token = sessionStorage.token;
 	 $scope.students = getAllStudents();
+
+
+	 console.log($scope.students);
 	 $scope.agents = Agents.query();
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 

@@ -10,7 +10,7 @@ var async = require("async");
 // Insert a new Slider record
 exports.upload = function(req,res){
 
-
+	console.log('fuck');
 	console.log(req.body) // form fields
     console.log(req.files) // form files
 
