@@ -19,7 +19,5 @@ angular.module('AdminApp')
 
 	console.log($scope.info);
 
-
-
-
 });
+
