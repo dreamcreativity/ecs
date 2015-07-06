@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../modules/templateController');
-var emailSender = require('../modules/emailSenderController');
+// var emailSender = require('../modules/emailSenderController');
 var staff =require('../controllers/staff');
 
 
