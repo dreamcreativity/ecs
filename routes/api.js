@@ -12,7 +12,7 @@ var course = require('../controllers/course');
 var activity = require('../controllers/activity');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
-var emailSender = require('../modules/emailsenderController');
+// var emailSender = require('../modules/emailsenderController');
 
 
 function IsAuthException(path, method){
@@ -227,7 +227,7 @@ router.get('/activities/:id', activity.getActivitybyId);
 
 //-------------------------Email Sender--------------------------------------------
 
-router.post('/postEmail', emailSender.sendEmail);
+// router.post('/postEmail', emailSender.sendEmail);
 
 
 
