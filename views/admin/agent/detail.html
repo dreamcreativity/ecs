@@ -12,7 +12,7 @@
 
 			<!-- Tab panes -->
 			<div class="tab-content">
-			<div class="tab-pane fade in active" id="p1">
+				<div class="tab-pane fade in active" id="p1">
 					<div class="row">													
 						<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
 							<div class="portlet no-border">
@@ -23,35 +23,35 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="portlet-body">
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Company :</strong></div>
-									<div class="col-lg-2" >{{agent.company}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Work :</strong></div>
-									<div class="col-lg-2" >{{agent.workphone}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Cell :</strong></div>
-									<div class="col-lg-2" >{{agent.cellphone}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Email :</strong></div>
-									<div class="col-lg-2" >{{agent.email}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Region :</strong></div>
-									<div class="col-lg-2" >{{agent.region}}</div>
-								</div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Company :</strong></div>
+										<div class="col-lg-2" >{{agent.company}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Work :</strong></div>
+										<div class="col-lg-2" >{{agent.workphone}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Cell :</strong></div>
+										<div class="col-lg-2" >{{agent.cellphone}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Email :</strong></div>
+										<div class="col-lg-2" >{{agent.email}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Region :</strong></div>
+										<div class="col-lg-2" >{{agent.region}}</div>
+									</div>
 
 								</div>
 							</div>
 						</div>
-				
+
 					</div>
 					<div class="row">
 						<div class="col-md-12">
@@ -59,24 +59,24 @@
 							ng-bootbox-custom-dialog
 							ng-bootbox-custom-dialog-template="/admin/student/agent/create">
 							Create
-							</button>
-							<div class="portlet no-border-bottom">
-								<div class="portlet-heading dark">
-									<div class="portlet-title">
-										<h4><i class="fa fa-rss"></i> Students under the Agent</h4>
-									</div>
-									<div class="portlet-widgets">
-										<a href="javascript:;"><i class="fa fa-refresh"></i></a>
-										<span class="divider"></span>
-										<a href="#" class="tooltip-danger" data-placement="left" data-rel="tooltip" title="Clear"><i class="fa fa-trash-o bigger-110"></i></a>
-									</div>
-									<div class="clearfix"></div>
+						</button>
+						<div class="portlet no-border-bottom">
+							<div class="portlet-heading dark">
+								<div class="portlet-title">
+									<h4><i class="fa fa-rss"></i> Students under the Agent</h4>
 								</div>
-								<div class="portlet-body no-padding">
-									<ul class="lists">
-										<li ng-repeat="student in students">
-											<span class="col-sm-1">{{student.student_id}}</span>
-											<span class="col-sm-2 icons glyphicon glyphicon-user"> {{student.firstname}} {{student.lastname}}</span>
+								<div class="portlet-widgets">
+									<a href="javascript:;"><i class="fa fa-refresh"></i></a>
+									<span class="divider"></span>
+									<a href="#" class="tooltip-danger" data-placement="left" data-rel="tooltip" title="Clear"><i class="fa fa-trash-o bigger-110"></i></a>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="portlet-body no-padding">
+								<ul class="lists">
+									<li ng-repeat="student in students">
+										<span class="col-sm-1">{{student.student_id}}</span>
+										<span class="col-sm-2 icons glyphicon glyphicon-user"> {{student.firstname}} {{student.lastname}}</span>
 									</ul>
 								</div>
 							</div>
@@ -90,7 +90,7 @@
 					</div>			
 				</div>
 
-			<div class="tab-pane fade" id="p2">
+				<div class="tab-pane fade" id="p2">
 					<h2>Agent details</h2>
 					<div class="hr hr-12 hr-double"></div>
 					<form name="loginForm" class="form-horizontal" role="form" ng-submit="update(loginForm.$valid)" novalidate>
@@ -104,9 +104,8 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Region</label>
 							<div class="col-sm-3">
-								<select name="region" ng-model="agent.region" class="form-control" required>
-									<option value="Korea">Korea</option>
-									<option value="China">China</option>
+								<select ng-model="agent.region" >
+									<option ng-selected="value.name==agent.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
 								</select>
 								<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
 							</div>
@@ -174,7 +173,7 @@
 							</div>
 							<div class="form-group">
 								<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
-								{{returnMessage}}
+									{{returnMessage}}
 								</div>
 							</div>
 						</div>

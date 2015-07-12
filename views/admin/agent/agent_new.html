@@ -11,10 +11,8 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Region</label>
 		<div class="col-sm-9">
-			<select name="role" ng-model="agent.region" class="form-control" required>
-				<option value="Korea">Korea</option>
-				<option value="Japan">Japan</option>
-				<option value="China" selected>China</option>
+			<select ng-model="agent.region" >
+				<option ng-selected="value.name==agent.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
 			</select>
 			<p ng-show="createForm.region.$invalid && !createForm.region.$pristine" class="help-block text-danger">region is required</p>
 		</div>

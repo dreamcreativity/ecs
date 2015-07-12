@@ -1,12 +1,25 @@
 'use strict';
 angular.module('AdminApp')
 
-.controller('AgentCtrl',function AgentCtrl($rootScope,$scope,$http,Agents,$window){
-	 $scope.agents = getAllAgents();
+.controller('AgentCtrl',function AgentCtrl($rootScope,$scope,$http,Regions,Agents,$window){
+	 loading();
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
  	function getAllAgents(){
  		return Agents.query();
+ 	}
+
+ 	function loading() {
+ 		var list =[];
+ 		Regions.query(function(regions){
+ 			for(var i=0; i<regions.data.length; i++){
+	 			list.push({"text" : regions.data[i].name});
+	 		}
+	 		Agents.query(function(result){
+	 			$scope.agents = result;
+	 			$scope.region_tags = regions.data;
+	 		});
+ 		});
  	}
 
  	$scope.create = function(isValid){
@@ -23,19 +36,37 @@ angular.module('AdminApp')
 
 
 
-.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,$window,$document){
+.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,Regions,$window,$document){
+	 loading(); 
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 	 var agent_id = url_params.id;
 
-	 if(agent_id !=null){
-	 	Agents.get({id:agent_id}, function(result){
-	 		$scope.agent = result.data;
-
-	 		Students.get({agent_id : $scope.agent._id}, function(result){
-	 			$scope.students = result.data;
-	 		});
-	 	});
+	 // if(agent_id !=null){
+	 // 	Agents.get({id:agent_id}, function(result){
+	 // 		$scope.agent = result.data;
+	 // 		Students.get({agent_id : $scope.agent._id}, function(result){
+	 // 			$scope.students = result.data;
+	 // 		});
+	 // 	});
 	 	
+	 // }
+
+	 function loading() {
+	 	var list = [];
+	 	Regions.query(function(regions){
+	 		for(var i=0; i<regions.data.length; i++){
+	 			list.push({"text" : regions.data[i].name});
+	 		}
+	 		if(agent_id !=null){
+	 			Agents.get({id:agent_id}, function(result){
+	 				$scope.agent = result.data;
+	 				$scope.region_tags = regions.data;
+	 				Students.get({agent_id : $scope.agent._id}, function(result){
+	 					$scope.students = result.data;
+	 				});
+	 			});
+	 		}
+	 	});
 	 }
 
 	 $scope.update = function(isValid) {
