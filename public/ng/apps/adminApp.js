@@ -4,6 +4,7 @@ angular.module(
 	[
 		'ngResource',
 		'ngBootbox',
+		'ngTagsInput',
 		'esc.resources',
 		'esc.filters',
 		'esc.directives',
