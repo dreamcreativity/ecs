@@ -29,7 +29,7 @@ exports.IsTokenValid = function(AccessToken, callBack){
 
 			// check exprie time
 
-			console.log(tokenObj.created);
+			//console.log(tokenObj.created);
 
 			//return true;
 			callBack(true);
