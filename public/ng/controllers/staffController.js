@@ -30,7 +30,7 @@ angular.module('AdminApp')
 	 		}
 	 		Staffs.query(function(result){
 	 			$scope.staffs = result;
-	 			$scope.region_tags = result.data.regions;
+	 			$scope.region_tags = regions.data;
 	 			$scope.loadTags = function(query) {
 	 				return list;
 	 			};
@@ -58,16 +58,14 @@ angular.module('AdminApp')
 
 	 function loading() {
 	 	var list = [];
-	 	var regions = null;
-	 	Regions.query(function(result){
-	 		regions = result;
+	 	Regions.query(function(regions){
 	 		for(var i=0; i<regions.data.length; i++){
 	 			list.push({"text" : regions.data[i].name});
 	 		}
 	 		if(staff_id !=null){
 	 			Staffs.get({id:staff_id}, function(result){
 	 				$scope.staff = result.data;
-	 				$scope.region_tags = result.data.regions;
+	 				$scope.region_tags = regions.data;
 	 				$scope.loadTags = function(query) {
 	 					return list;
 	 				};

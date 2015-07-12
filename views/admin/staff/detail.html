@@ -128,9 +128,9 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Regions</label>
 							<div class="col-sm-3">
-							<tags-input ng-model="region_tags" placeholder="Add a Region">
-      							<auto-complete source="loadTags($query)"></auto-complete>
-    						</tags-input>
+							<select ng-model="staff.region" >
+								<option ng-selected="value.name==staff.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
+							</select>
     						</div>
 						</div>
 
