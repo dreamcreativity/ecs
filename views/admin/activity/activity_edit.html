@@ -2,7 +2,7 @@
 var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
-<form name="editForm" class="form-horizontal" ng-app='ActivityApp' ng-controller='ActivityEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
+<form name="editForm" class="form-horizontal" ng-controller='ActivityEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Title</label>
 		<div class="col-sm-9">
