@@ -24,6 +24,7 @@ function IsAuthException(path, method){
 		{	path : '/api/activities', method: 'GET' },
 		{	path : '/api/staffs/login', method: 'POST' },
 		{	path : '/api/staffs', method: 'POST' },
+		{	path : '/api/activity', method: 'GET' },
 
 	];
 

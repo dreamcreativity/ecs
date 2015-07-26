@@ -1,7 +1,6 @@
  var Activity = require('../models/activity');
 var Media = require('../models/media');
 var mongoose = require('mongoose');
-
 async = require("async");
 
 

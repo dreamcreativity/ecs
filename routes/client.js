@@ -6,6 +6,7 @@ var Media = require('../models/media');
 var async = require("async");
 
 
+
 /* GET home page. */
 
 
@@ -33,7 +34,24 @@ router.get('/', function(req, res) {
 
 
 router.get('/activity', function(req, res){
-	template(req,res,'client_normal','client/activity.html',{});
+
+
+	var Activity = require('../models/activity');
+
+	Activity.find(function(err,result){
+
+
+		console.log(result[0]);
+
+		// find media
+		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
+			console.log(imgs);
+			template(req,res,'client_normal','client/activity.html',{ a : result[0], images:imgs});
+		});
+		
+	});
+
+	//template(req,res,'client_normal','client/activity.html',{});
 });
 
 
