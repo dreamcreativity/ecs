@@ -2,19 +2,12 @@
 angular.module('AdminApp')
 
 
-.controller('NewMeterialController',function NewMeterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials){
-
-	//var token = sessionStorage.token;
+.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Meterials){
 	
-	$scope.material = {
-		'name' : '',
-		'description':'',
-		'region' : ''
-	};
+	$scope.materials = Meterials.query();
 	$scope.regions = Regions.query();
-	console.log($scope.regions);
 
-	$scope.create = function(){
+	$scope.create = function(isValid){
 		Meterials.create($scope.material,function(result){
 
 			if(result.status == 'ok'){
@@ -26,12 +19,6 @@ angular.module('AdminApp')
 				
 		});
 	}
-})
-
-.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Meterials){
-	
-	$scope.materials = Meterials.query();
-	$scope.regions = Regions.query();
 })
 
 .controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials){

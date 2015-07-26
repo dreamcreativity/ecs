@@ -1,4 +1,4 @@
-<div class="portlet" ng-controller='NewMeterialController'>
+<div class="portlet">
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
 			<h4>Create New Material</h4>
@@ -6,7 +6,7 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="portlet-body">
-	<form class="form-horizontal" id="validate-form" method="get">
+	<form name="createForm" ng-controller='MaterialController' class="form-horizontal" id="validate-form" ng-submit="create(createForm.$valid)" novalidate>
 		<div id="bwizard">
 			
 			<div class="tab-content">
@@ -14,24 +14,25 @@
 					<label class="col-sm-3 control-label">Name:</label>
 					<div class="col-sm-7">
 						<div class="clearfix">
-							<input type="text" name="heading" ng-model="material.name" class="form-control">
+							<input type="text" class="form-control" name="materialname" ng-model="material.name" value="{{material.name}}"required>
+						<p ng-show="createForm.name.$invalid && !createForm.name.$pristine" class="help-block text-danger">name is required</p>	
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label" for="password">Description:</label>
+					<label class="col-sm-3 control-label" for="description">Description:</label>
 					<div class="col-sm-7">
 						<div class="clearfix">
-							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control">
+							<input type="text" name="description"  ng-model="material.description"  class="form-control">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label" for="password2">Region:</label>
+					<label class="col-sm-3 control-label" for="description">Region:</label>
 					<div class="col-sm-3">
 						<div class="clearfix">
 							<select class="form-control" ng-model='material.region' >
-								<option value="{{region._id}}" ng-repeat="region in regions.data">{{region.name}}</option>
+								<option value="{{region.name}}" ng-repeat="region in regions.data">{{region.name}}</option>
 							</select>
 						</div>
 					</div>
@@ -41,13 +42,19 @@
 
 				
 
-				<div class="form-group">
-					<div class="col-sm-3"></div>	
-					<div class="col-sm-3">											
-						<button type="button" class="btn btn-primary" ng-click="create()">Create</button>
-						<button type="button" class="btn btn-default" onclick='location="/admin/material"'>Cancel</button>
-					</div>
-				</div>
+				<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-4">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+		<!-- 		<a href="/admin/agent/all" type="submit" class="btn">Cancel</a> -->
+			</div>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
+			</div>
+		</div>
+	</div>
 		
 			</div>
 		</div>

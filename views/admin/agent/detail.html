@@ -47,6 +47,11 @@
 										<div class="col-lg-2 right"><strong>Region :</strong></div>
 										<div class="col-lg-2" >{{agent.region}}</div>
 									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Commission :</strong></div>
+										<div class="col-lg-2" >{{agent.commission}}%</div>
+									</div>
 
 								</div>
 							</div>
@@ -108,6 +113,12 @@
 									<option ng-selected="value.name==agent.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
 								</select>
 								<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Commission Rate(%):</label>
+							<div class="col-sm-3">
+								<input type="number" class="form-control" name="commission" ng-model="agent.commission" value="{{agent.commission}}">
 							</div>
 						</div>
 						<div class="form-group">
@@ -185,6 +196,8 @@
 		</div><!--nav-tabs style 1-->
 	</div>
 </div>	
+
+
 
 <!-- core JavaScript -->
 <script src="/assets/js/jquery.min.js"></script>
