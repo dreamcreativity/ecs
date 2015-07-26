@@ -4,7 +4,8 @@ module.exports = {
 		'Image',
 		'Document',
 		'Video',
-		'Other'
+		'Other',
+		'Other 2'
 	],
 
 	MediaTarget : [

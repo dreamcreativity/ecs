@@ -208,6 +208,7 @@ router.get('/material/edit/:id', function(req, res) {
 				category: 'Management',
 				cur_tap: 'Material',
 				cur_selected : 'Edit Material',
+				constants : constants,
 				url_params : req.params
 			}
 		);
@@ -220,7 +221,8 @@ router.get('/material/new', function(req, res) {
 				title: 'New Material',
 				category: 'Management',
 				cur_tap: 'Material',
-				cur_selected : 'Create New Material'
+				cur_selected : 'Create New Material',
+				constants : constants
 			}
 		);
 });

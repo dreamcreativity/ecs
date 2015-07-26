@@ -129,10 +129,9 @@
 										<label>Type: </label>
 										<select ng-model="resourceType">
 											<option value="" >All</option>
-											<option value="Image" >Image</option>
-											<option value="Document">Document</option>
-											<option value="Video">Video</option>
-											<option value="Other">Other</option>
+											<% for(var i=0; i<constants.MediaTypes.length; i++) {%>
+											<option value="<%- constants.MediaTypes[i] %>" ><%- constants.MediaTypes[i] %></option>
+											<% } %>
 										</select>
 									</div>
 

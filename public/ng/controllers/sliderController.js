@@ -140,10 +140,12 @@ angular.module('AdminApp')
             	
             	var newMedia = scope.media;
             	delete newMedia.$$hashKey;
-            	console.log(newMedia);
-            	//scope.$parent.slider.resource = scope.media;
-            	scope.$parent.slider.resource = newMedia._id;
-            	scope.$parent.slider.media = scope.media;
+            	// console.log(scope.$parent);
+            	// console.log(newMedia);
+            	
+            	
+            	scope.$parent.resource = newMedia._id;
+            	scope.$parent.media = scope.media;
 
             	scope.$parent.$apply();
 
