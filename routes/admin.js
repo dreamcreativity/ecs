@@ -103,7 +103,8 @@ router.get('/media/uploader', function(req, res) {
 				title: 'Media Uploader',
 				category: 'Media',
 				cur_tap: 'Media Uploader',
-				cur_selected : 'Upload'
+				cur_selected : 'Upload',
+				constants : constants,
 			}
 		);
 });
@@ -127,6 +128,7 @@ router.get('/media/edit/:id', function(req, res) {
 				category: 'Media',
 				cur_tap: 'Media',
 				cur_selected : 'Edit',
+				constants : constants,
 				url_params : req.params
 			}
 		);

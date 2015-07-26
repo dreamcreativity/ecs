@@ -2,7 +2,7 @@ module.exports = {
 
 	MediaTypes : [
 		'Image',
-		'Image',
+		'Document',
 		'Video',
 		'Other'
 	],
@@ -14,6 +14,7 @@ module.exports = {
 		'Student',
 		'Staff',
 		'Activity',
+		'Event',
 		'Other'
 	]
 }

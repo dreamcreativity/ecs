@@ -41,13 +41,9 @@
 								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>Target</label></div>
 								<div class=" col-xs-12 col-md-6">
 									<select ng-model="m.target">
-										<option value="Slider" >Slider</option>
-										<option value="Gallery">Gallery</option>
-										<option value="Material">Material</option>
-										<option value="Student">Student</option>
-										<option value="Staff">Staff</option>
-										<option value="Activity">Activity</option>
-										<option value="Other">Other</option>
+										<% for(var i=0; i<constants.MediaTarget.length; i++) {%>
+										<option value="<%- constants.MediaTarget[i] %>" ><%- constants.MediaTarget[i] %></option>
+										<% } %>
 									</select>
 								</div>
 							</div>
