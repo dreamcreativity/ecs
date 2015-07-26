@@ -73,10 +73,15 @@ angular.module('AdminApp')
 	 	$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
 	 	Agents.update($scope.agent, function(result){
-	 			var message = result.messages;	    
-	 		    $scope.returnMessage = "profile is save successfully";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 			// var message = result.messages;	    
+	 		 //    $scope.returnMessage = "profile is save successfully";
+	 		 //    $("#messageReturn").delay(2000).fadeOut('slow');
 	 			// $window.location='/admin/agent/detail/'+ agent_id;
+	 			if(result.status == 'ok'){
+					ShowGritterCenter('System Notification','Material document has been updated');
+				}else{
+					ShowGritterCenter('System Notification','Material document update fail : ' + result.messages.err);
+				}
 	 	})
 	 }
 

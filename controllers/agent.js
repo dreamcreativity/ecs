@@ -108,22 +108,13 @@ exports.edit = function(req,res){
 				data: null
 			});
 		}
-		else {
-			if(result.length == 1){
-				res.json({
-					status: 'ok',
-					messages: 'successed',
-					data: result[0]
-				});	
-			}else{
-				res.json({
-					status: 'fail',
-					messages: "multipulte result",
-					data: null
-				});
-			}
-		}
-	});
+		else {		
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result[0]
+			});				
+		}});
 }
 
 //DELETE : Set Agent isDelete be true

@@ -10,7 +10,7 @@ var AgentSchema = mongoose.model('Agent', new mongoose.Schema({
 	workphone: {type: String, required: true },
 	cellphone: {type: String, required: true },
 	region : {type: String, required:true },
-	commission : {type: Number},
+	commission : {type: Number, default : 0},
 	isDelete : {type : Boolean, default : false },
 	createDate : {type : Date, default : Date.now },
 }));
