@@ -20,13 +20,9 @@
 						<label>Target: </label>
 						<select>
 							<option value="" >All</option>
-							<option value="Slider" >Slider</option>
-							<option value="Gallery">Gallery</option>
-							<option value="Material">Material</option>
-							<option value="Student">Student</option>
-							<option value="Staff">Staff</option>
-							<option value="Activity">Activity</option>
-							<option value="Other">Other</option>
+							<% for(var i=0; i<constants.MediaTarget.length; i++) {%>
+							<option value="<%- constants.MediaTarget[i] %>" ><%- constants.MediaTarget[i] %></option>
+							<% } %>
 						</select>
 					</div>
 
@@ -34,10 +30,9 @@
 						<label>Type: </label>
 						<select>
 							<option value="" >All</option>
-							<option value="Image" >Image</option>
-							<option value="Document">Document</option>
-							<option value="Video">Video</option>
-							<option value="other">Other</option>
+							<% for(var i=0; i<constants.MediaTypes.length; i++) {%>
+							<option value="<%- constants.MediaTypes[i] %>" ><%- constants.MediaTypes[i] %></option>
+							<% } %>
 						</select>
 					</div>
 

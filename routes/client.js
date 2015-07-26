@@ -4,6 +4,7 @@ var template = require('../modules/templateController');
 var Slider = require('../models/slider');
 var Media = require('../models/media');
 var async = require("async");
+var constants = require("../constants");
 
 
 

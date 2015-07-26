@@ -3,7 +3,7 @@ var router = express.Router();
 var template = require('../modules/templateController');
 // var emailSender = require('../modules/emailSenderController');
 var staff =require('../controllers/staff');
-
+var constants = require("../constants");
 
 /* GET home page. */
 
@@ -114,7 +114,8 @@ router.get('/media/', function(req, res) {
 				title: 'Medias',
 				category: 'Medias',
 				cur_tap: 'Media',
-				cur_selected : 'List'
+				cur_selected : 'List',
+				constants : constants
 			}
 		);
 });
