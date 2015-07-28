@@ -410,6 +410,41 @@ router.get('/region/edit/:id', function(req, res) {
 		});
 });
 
+//--------------------------Event--------------------------------------------
+
+router.get('/event/all', function(req,res){
+	template(req,res,'admin_main','admin/event/event.html',
+	{
+		title: 'Event',
+		category : 'Management',
+		cur_tap : 'Event',
+		cur_selected : 'Event'
+	});
+});
+
+router.get('/event/create', function(req, res) {
+	res.render('admin/event/event_new.html');
+});
+
+router.get('/event/edit/:id', function(req, res) {
+	template(req,res,'admin_main', 'admin/event/event_edit.html', 
+		{
+			title : 'Edit Event',
+			category : 'Management',
+			cur_tap : 'Event',
+			cur_selected : 'Edit Event',
+			url_params : req.params
+		});
+});
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
 

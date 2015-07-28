@@ -10,6 +10,7 @@ var media = require('../controllers/media');
 var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
 var activity = require('../controllers/activity');
+var events = require('../controllers/event');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 // var emailSender = require('../modules/emailsenderController');
@@ -224,6 +225,21 @@ router.put('/activities/:id',activity.edit);
 
 //GET a course
 router.get('/activities/:id', activity.getActivitybyId);
+
+
+//--------------------------Event-------------------------------------------
+
+//GET all activites
+router.get('/events', events.get);
+
+//POST create a new activity
+router.post('/events', events.create);
+
+//PUT edit a activity
+router.put('/events/:id',events.edit);
+
+//GET a course
+router.get('/events/:id', events.getEventbyId);
 
 
 //-------------------------Email Sender--------------------------------------------

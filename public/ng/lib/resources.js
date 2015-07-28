@@ -89,6 +89,15 @@ resources.factory('StudentByAgent',['$resource',
 }])
 
 
+.factory('Events',['$resource',
+    function($resource){
+        return $resource('/api/events/:id', {}, {
+        query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}])
+
+
 
 resources.factory('SendEmail', ['$http',function($http){
     return {

@@ -75,7 +75,7 @@
 	<script src="/ng/controllers/courseController.js"></script>
 	<script src="/ng/controllers/materialController.js"></script>
 	<script src="/ng/controllers/activityController.js"></script>
-
+	<script src="/ng/controllers/eventController.js"></script>
   </head>
 
   <body ng-cloak>
@@ -295,6 +295,12 @@
 							<li class="panel <%if(parms.cur_tap=='Region'){ %>open<% } %>">
 								<a href="/admin/region/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#RegionManagement">
 									<i class="fa fa-shield"></i> Region <span class="arrow"></span>
+								</a>							
+							</li>
+
+							<li class="panel <%if(parms.cur_tap=='Events'){ %>open<% } %>">
+								<a href="/admin/event/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#EventManagement">
+									<i class="fa fa-shield"></i> Events <span class="arrow"></span>
 								</a>							
 							</li>
 
