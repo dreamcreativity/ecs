@@ -1,0 +1,104 @@
+<script type="text/javascript">
+var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<form name="editForm" class="form-horizontal" ng-controller='EventEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="title" ng-model="event.title" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="editForm.title.$invalid && !editForm.title.$pristine" class="help-block text-danger">title is required</p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Description</label>
+		<div class="col-sm-9">
+			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="event.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Time</label>
+		<div class="col-sm-9">
+			<input type="text" data-provide="datepicker" data-date-format="mm-dd-yyyy" class="form-control" name="date" ng-model="event.date" required>
+		</div>
+	</div>
+	
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Images</label>
+		<div class="col-sm-3">
+			<div class="well white padding-25 image-arear">
+				<ul class="tc-gallery-2 clearfix">
+					<li class="thumbnail" ng-repeat="item in medias.data" ng-if="(array.indexOf(item._id) > -1)" checkbox-unselect-Event>
+						<div class="thumb-preview">
+							<div class="thumb-image">
+								<img src="{{item.thumbnail}}" alt="" >
+							</div>
+
+						</div>
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="well white padding-25 image-arear">
+				<ul class="tc-gallery-2 clearfix">
+					<li  ng-repeat="item in medias.data" checkbox-select-Event>
+						<div class="thumb-preview">
+							<div class="thumb-image">
+								<img src="{{item.thumbnail}}" alt="" >
+							</div>
+							<div class='cover' ng-class="{'selected':(array.indexOf(item._id) > -1)}"><i style="color:#fff; font-size: 16px; margin:0 auto" class="fa fa-check-circle"></i></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<hr class="separator">
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Active</label>
+		<div class="col-sm-3">
+			<div class="tcb">
+				<label>
+					<input name="isActive" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="event.isActive" />
+					<span class="labels"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-3">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editForm.$invalid">
+			</div>
+			<a href="/admin/event/all" type="submit" class="btn btn-primary">Cancel</a>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
+			</div>
+		</div>
+	</div>
+
+</form>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/masked-input/jquery.maskedinput.min.js"></script>
+<script src="/assets/js/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="/assets/js/plugins/datetime/bootstrap-datetimepicker.min.js"></script>
+<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script data-require="moment.js@2.8.3" data-semver="2.8.3" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+<script>
+$(document).ready(function() { 	
+        	//Bootstrap Datepicker
+        	$('.datepicker').datepicker();		
+        });
+</script>

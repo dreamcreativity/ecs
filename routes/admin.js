@@ -423,10 +423,16 @@ router.get('/event/all', function(req,res){
 });
 
 router.get('/event/create', function(req, res) {
-	res.render('admin/event/event_new.html');
+	template(req,res,'admin_main', 'admin/event/event_new.html', 
+		{
+			title : 'Create Event',
+			category : 'Management',
+			cur_tap : 'Event',
+			cur_selected : 'Create Event'
+		});
 });
 
-router.get('/event/edit/:id', function(req, res) {
+router.get('/event/detail/:id', function(req, res) {
 	template(req,res,'admin_main', 'admin/event/event_edit.html', 
 		{
 			title : 'Edit Event',

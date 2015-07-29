@@ -5,7 +5,7 @@ var EventSchema = mongoose.model('Event', new mongoose.Schema({
 	title : {type : String, required: true},
 	date : {type : Date, default : Date.now },
 	description : {type: String},
-	image: { type: Schema.Types.ObjectId, ref: 'Media', default: null },
+	mediaIds : [String],
 	isActive : {type : Boolean, default : true }
 }));
 
