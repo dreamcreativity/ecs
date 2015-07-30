@@ -137,13 +137,15 @@
 
 									<div class="col-md-4">
 										<label>Date: </label>
-										<select>
+									<!-- 	<select>
 											<option value="" >All</option>
 											<option value="Unitiled" >Today</option>
 											<option value="Deleted" >Last Day</option>
 											<option value="Gallery">Last 10 Days</option>
 											<option value="Gallery">Last Month</option>
-										</select>
+										</select> -->
+										<select ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
+									</select>
 									</div>
 							</div>
 							
@@ -152,7 +154,7 @@
 						</div>						
 						<div class="media-resource">
 							<ul>
-								<li ng-repeat="media in medias.data | filter: {  'title': resourceSearch, type: resourceType }" >
+								<li ng-repeat="media in medias.data | isAfter:dateAfter.date | filter: {  'title': resourceSearch, type: resourceType }" >
 
 									<div ng-show="media.type=='Document' &&  media.ext=='pdf'"  resource-Picker>	
 										<i class="fa fa-file-pdf-o xlg"></i>

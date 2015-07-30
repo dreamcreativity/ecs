@@ -11,7 +11,7 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Description</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" name="description" ng-model="event.description" value="{{event.description}}"required>	
+			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="event.description" placeholder="This textarea has a limit of 225 chars."></textarea>
 		</div>
 	</div>
 
@@ -19,7 +19,21 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Time</label>
 		<div class="col-sm-9">
-			<input data-provide="datepicker" ng-model="event.date" value="{{event.date}}" required>
+			<input type="date" ng-model="event.date" value="{{event.date}}" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label"></label>
+		<div class="col-sm-2">
+			<select name="region" ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Search</label>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" name="event_filter" ng-model="event_filter">
 		</div>
 	</div>
 
@@ -44,7 +58,7 @@
 		<div class="col-sm-6">
 			<div class="well white padding-25 image-arear">
 				<ul class="tc-gallery-2 clearfix">
-					<li  ng-repeat="item in medias.data" checkbox-select-event>
+					<li  ng-repeat="item in medias.data | isAfter:dateAfter.date | filter: event_filter" checkbox-select-event>
 						<div class="thumb-preview">
 							<div class="thumb-image">
 								<img src="{{item.thumbnail}}" alt="" >

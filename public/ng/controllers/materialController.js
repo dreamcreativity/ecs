@@ -2,10 +2,12 @@
 angular.module('AdminApp')
 
 
-.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Meterials){
+.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Meterials,DateRanges){
 	
 	$scope.materials = Meterials.query();
 	$scope.regions = Regions.query();
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 
 	$scope.create = function(isValid){
 		Meterials.create($scope.material,function(result){
@@ -21,14 +23,15 @@ angular.module('AdminApp')
 	}
 })
 
-.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials){
+.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials,DateRanges){
 	var id = url_params.id;
 
 	$scope.material = Meterials.get(url_params, function(){
 		$scope.material = $scope.material.data;	
 	});
 
-
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 	$scope.regions = Regions.query();
 	$scope.regionNames = [];
 
@@ -72,6 +75,22 @@ angular.module('AdminApp')
         }
   };
 })
+
+.filter('isAfter', function() {
+  return function(medias, dateAfter) {
+     if(!medias || !medias.length){return;}
+     return medias.filter(function(item){
+      return moment(item.createDate).isAfter(dateAfter);
+    })
+  }
+})
+
+.value('DateRanges', [
+  {name:'All', date:moment().subtract(10, 'year')},
+  {name:'Last one day', date:moment().subtract(1, 'day')},
+  {name:'Last one month', date:moment().subtract(1, 'month')},
+  {name:'Last three months', date:moment().subtract(3, 'month')}
+])
 
 .factory('Regions',['$resource',
 	function($resource){

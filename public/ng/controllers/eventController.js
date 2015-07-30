@@ -1,7 +1,9 @@
 'use strict';
 angular.module('AdminApp')
 
-.controller('EventCtrl',function EventCtrl($rootScope,$scope,$http,Events,Medias,$window){
+.controller('EventCtrl',function EventCtrl($rootScope,$scope,$http,Events,Medias,$window,DateRanges){
+	$scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 	loading();
 	getActivityMedias();
 
@@ -24,10 +26,11 @@ angular.module('AdminApp')
 			$scope.event.mediaIds.push($scope.array[i]);
 		}
 	 	Events.save($scope.event,function(result){
-	 		     $scope.returnMessage = "successfully";
-	 			setInterval(function(){
-  					 $window.location='/admin/event/all';
-				}, 2000); 
+	 		    if(result.type == true){
+  					 ShowGritterCenter('System Notification','Event document has been updated');
+				}else{
+					ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
+				}
  		})
 	}
 
@@ -35,10 +38,13 @@ angular.module('AdminApp')
 
 .controller('EventEditCtrl', function ActivityEditCtrl($scope,$http,Events,Medias,$window,DateRanges){
 	var event_id = url_params.id;
+    $scope.dateRanges = DateRanges;
+	$scope.dateAfter = $scope.dateRanges[0];
 
 	if(event_id !=null){
 	 	Events.get({id:event_id}, function(result){
 	 		$scope.event = result.data;
+	 		$scope.event.date = new Date($scope.event.date);
 	 		$scope.array = result.data["mediaIds"];
 	 	});	
 	 }
@@ -51,9 +57,14 @@ angular.module('AdminApp')
 		$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
 	 	Events.update($scope.event, function(result){
-	 			var message = result.messages;	    
-	 		    $scope.returnMessage = "activity is save successfully";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 			// var message = result.messages;	    
+	 		 //    $scope.returnMessage = "activity is save successfully";
+	 		 //    $("#messageReturn").delay(2000).fadeOut('slow');
+	 		 if(result.type == true){
+					ShowGritterCenter('System Notification','Event document has been updated');
+				}else{
+					ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
+				}
 	 	})
 	 }
 })
@@ -67,6 +78,13 @@ angular.module('AdminApp')
     })
   }
 })
+
+.value('DateRangesEvent', [
+  {name:'All', date:moment().subtract(10, 'year')},
+  {name:'Last one day', date:moment().subtract(1, 'day')},
+  {name:'Last one month', date:moment().subtract(1, 'month')},
+  {name:'Last three months', date:moment().subtract(3, 'month')}
+])
 
 .directive("checkboxSelectEvent", function () {
     return {
