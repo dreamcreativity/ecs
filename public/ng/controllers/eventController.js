@@ -20,11 +20,7 @@ angular.module('AdminApp')
 
 	$scope.create = function(isValid){
 		$scope.returnMessage ="";
-		$scope.event.mediaIds=[]
-		// $scope.activity.mediaIds = $scope.array;
-		for(var i=0; i<$scope.array.length; i++){
-			$scope.event.mediaIds.push($scope.array[i]);
-		}
+
 	 	Events.save($scope.event,function(result){
 	 		    if(result.type == true){
   					 ShowGritterCenter('System Notification','Event document has been updated');
@@ -45,7 +41,6 @@ angular.module('AdminApp')
 	 	Events.get({id:event_id}, function(result){
 	 		$scope.event = result.data;
 	 		$scope.event.date = new Date($scope.event.date);
-	 		$scope.array = result.data["mediaIds"];
 	 	});	
 	 }
 
@@ -92,16 +87,9 @@ angular.module('AdminApp')
         link: function (scope, elem, attrs) {
             // Update array on click
             elem.bind('click', function () {
-                var index = scope.array.indexOf(scope.item._id);
-                if (index === -1) {
-                	scope.array.push(scope.item._id);
-                }  
-                else {          
-                	scope.array.splice(index, 1);             
-                }            
-                scope.$apply(scope.array.sort(function (a, b) {
-                    return a - b
-                }));
+                if(scope.array == null) {
+                	scope.event.mediaId = scope.item._id;
+            	}
             });
         }
     }
@@ -113,11 +101,9 @@ angular.module('AdminApp')
         link: function (scope, elem, attrs) {
             // Update array on click
             elem.bind('click', function () {
-            	var index = scope.array.indexOf(scope.item._id);
-				scope.array.splice(index, 1);     
-                scope.$apply(scope.array.sort(function (a, b) {
-                    return a - b
-                }));
+            	if(scope.array != null) {
+                	scope.event.mediaId = null;
+            	}
             });
         }
     }

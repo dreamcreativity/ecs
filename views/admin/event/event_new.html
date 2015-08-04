@@ -19,7 +19,8 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Time</label>
 		<div class="col-sm-9">
-			<input type="date" ng-model="event.date" value="{{event.date}}" required>
+			 <input id="datetimepicker" type="text" ng-model="event.date" value="{{event.date}}" required>
+
 		</div>
 	</div>
 
@@ -103,7 +104,14 @@
 </form>
 
 
+<script type="text/javascript">
+	
+	$(document).ready(function(){
 
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
+		jQuery('#datetimepicker').datetimepicker();
+
+		});
+
+</script>
+
 
