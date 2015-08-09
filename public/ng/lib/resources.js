@@ -99,6 +99,17 @@ resources.factory('StudentByAgent',['$resource',
 
 
 
+resources.factory('Meterials',['$resource',
+    function($resource){
+        return $resource('/api/materials/:id', {}, {
+        query:{method: 'GET'},
+        create:{ method: 'POST'},
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{ method: 'PUT', params: {id:'@_id'} }
+    });
+}]);
+
+
 resources.factory('SendEmail', ['$http',function($http){
     return {
         postEmail : function (emailData, callback){

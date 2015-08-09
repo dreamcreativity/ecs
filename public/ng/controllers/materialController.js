@@ -9,9 +9,13 @@ angular.module('AdminApp')
 	$scope.dateRanges = DateRanges;
 	$scope.dateAfter = $scope.dateRanges[0];
 
+
+
+
 	$scope.create = function(isValid){
 		Meterials.create($scope.material,function(result){
 
+			console.log(result);
 			if(result.status == 'ok'){
 				location = '/admin/material/edit/'+ result.data._id;
 			}else{
@@ -23,12 +27,22 @@ angular.module('AdminApp')
 	}
 })
 
-.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials,DateRanges){
+.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials,Agents,DateRanges){
 	var id = url_params.id;
 
 	$scope.material = Meterials.get(url_params, function(){
 		$scope.material = $scope.material.data;	
 	});
+
+	$scope.selectedAgents = [];
+	$scope.unselectedAgents = [];
+
+	Agents.query(function(result){
+		$scope.allAgents =result.data;
+		$scope.RefreshAgentList();
+
+	});
+	
 
 	$scope.dateRanges = DateRanges;
 	$scope.dateAfter = $scope.dateRanges[0];
@@ -41,6 +55,33 @@ angular.module('AdminApp')
 	$scope.resourceDate = '';
 
 
+	$scope.addAgentPremission =  function(agent){
+
+		$scope.material.agentIds.push(agent._id);
+		$scope.RefreshAgentList();
+	}
+
+	$scope.removeAgentPremission =  function(agent){
+
+		$scope.material.agentIds = jQuery.grep($scope.material.agentIds , function(value) {
+							  return value != agent._id;
+							});
+
+		$scope.RefreshAgentList();
+	}
+
+	$scope.RefreshAgentList = function(){
+		$scope.selectedAgents = jQuery.grep($scope.allAgents , function(value) {
+							  return jQuery.inArray(value._id, $scope.material.agentIds)  > -1;
+							  
+							});
+
+		$scope.unselectedAgents = jQuery.grep($scope.allAgents , function(value) {
+							  return jQuery.inArray(value._id, $scope.material.agentIds)  <= -1;
+							});
+	}
+
+	
 	//$scope.medias = Medias.query({'targer':'Material'});
 
 	$scope.medias = getMedias();
@@ -97,38 +138,31 @@ angular.module('AdminApp')
 		return $resource('/api/region/:id', {}, {
 		query:{ method: 'GET'}
 	});
-}])
-	
-.factory('Meterials',['$resource',
-	function($resource){
-		return $resource('/api/materials/:id', {}, {
-		query:{method: 'GET'},
-		create:{ method: 'POST'},
-		get:{ method: 'GET', params: {id:'@_id'} },
-		update:{ method: 'PUT', params: {id:'@_id'} }
-	});
-}])
+}]);
 
-.factory('authInterceptor', function ($rootScope, $q, $window) {
-  return {
-    request: function (config) {
-	    config.headers = config.headers || {};
-		if ($window.sessionStorage.token) {
-			config.headers.api_token = sessionStorage.token ;
-	    	console.log($window.sessionStorage.token );
-		}
-		return config;
-    },
-    responseError: function (response) {
-      console.log(response.status);
-      if (response.status === 401) {
-        // handle the case where the user is not authenticated
-      }
-      if (response.status === 403) {
-        //console.log('please log in ');
-        window.location = '/admin/login';
-      }
-      return response || $q.when(response);
-    }
-  };
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

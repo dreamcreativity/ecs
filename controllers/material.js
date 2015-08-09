@@ -1,6 +1,7 @@
 var Material = require('../models/material');
 var mongoose = require('mongoose');
 var Media = require('../models/media');
+var Agent = require('../models/agent')
 //POST: create new Material
 exports.create = function(req,res){
 
@@ -59,6 +60,8 @@ exports.get = function(req,res){
 		if(result.length == 1){
 
 			var s = result[0].toObject();
+
+
 			if(s.media != null){
 				Media.find({_id:s.media}, function(err1, result1){
 					
@@ -72,25 +75,44 @@ exports.get = function(req,res){
 
 						s.mediaObject = result1[0].toObject();
 			
-						res.json({
-							status: 'ok',
-							messages: 'successed',
-							data: s
-						});	
+						// res.json({
+						// 	status: 'ok',
+						// 	messages: 'successed',
+						// 	data: s
+						// });	
 
 					}
 				});
 
-			}else{
-				
-				res.json({
+			}
+
+			if(s.agentIds.length != 0){
+				Agent.find({} , function(agentQueryErr, agentQueryResult){
+
+					if(agentQueryErr){
+
+						res.json({
+							status: 'fail',
+							messages: "can not get result agents ",
+							data: null
+						});
+
+					}else{
+
+						console.log(agentQueryResult);
+
+						//s.agentObject = 
+
+					}
+				});
+			}
+
+
+			res.json({
 					status: 'ok',
 					messages: 'successed',
 					data: s
 				});	
-			}
-
-
 
 		}else{
 			res.json({

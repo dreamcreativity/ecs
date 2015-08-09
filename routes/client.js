@@ -56,6 +56,27 @@ router.get('/activity', function(req, res){
 });
 
 
+router.get('/events', function(req, res){
+
+
+	var Activity = require('../models/activity');
+
+	Activity.find(function(err,result){
+
+
+		console.log(result[0]);
+
+		// find media
+		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
+			console.log(imgs);
+			template(req,res,'client_normal','client/event.html',{ a : result[0], images:imgs});
+		});
+		
+	});
+
+	//template(req,res,'client_normal','client/activity.html',{});
+});
+
 router.get('/login', function(req, res) {
 	template(req,res,'client_main','client/login.html',{ });
 });

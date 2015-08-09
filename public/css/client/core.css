@@ -1,0 +1,145 @@
+.calendar{
+	margin: 20px auto;
+}
+
+.calendar .calendar-header .header-cell{
+	display: inline-block;
+	text-align: center;
+	width: 14.3%;
+	background-color: black;
+	color: white;
+	padding: 15px 15px;
+	margin-right: -3px;
+	font-size: 20px;
+}
+
+.calendar .calendar-row {
+
+	text-align: left;
+
+}
+
+
+.calendar .calendar-row .calendar-item{
+	display: inline-block;
+	text-align: center;
+	width: 14.3%;
+	padding: 15px 10px;
+	margin: 20px 0 0 -3px;
+	font-size: 20px;
+	font-size: 11px;
+}
+
+.calendar .calendar-row .calendar-item .wraper{
+	border: 1px solid #ccc;
+}
+
+
+.calendar .calendar-row  .calendar-item  .wraper .date{
+	width: 100%;
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.calendar .calendar-row  .calendar-item  .wraper .title{
+	width: 100%;
+	text-align: left;
+}
+
+.calendar .calendar-row  .calendar-item  .wraper .desc{
+	width: 100%;
+	text-align: left;
+
+}
+
+
+.calendar .calendar-row  .calendar-item  .wraper img{
+	width: 100%;
+}
+/*
+.calendar {
+	
+}
+
+.calendar .filter{
+	width: 100%;
+	height: 20px;
+}
+
+.calendar .events{
+	width: 100%;
+}
+
+
+.calendar .events .event{
+	text-align: left;
+	margin: 25px 0;
+}
+
+
+
+.calendar .event .date{
+	font-weight: bold;
+	font-size: 25px;
+    color: #524242;
+}
+
+.calendar .event .title{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+
+.calendar .event .desc{
+	font-weight: bold;
+	font-size: 16x;
+}
+
+
+.calendar .event img{
+	width: 100%;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

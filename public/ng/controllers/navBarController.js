@@ -17,7 +17,7 @@ angular.module('AdminApp')
 
 	$scope.info = getAccountInfo();
 
-	console.log($scope.info);
+	//console.log($scope.info);
 
 });
 
