@@ -21,7 +21,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Time</label>
 		<div class="col-sm-9">
-			<input type="date" class="form-control" name="date" ng-model="event.date" required>
+			 <input id="datetimepicker" type="text" ng-model="event.date" value="{{event.date}}" required>
 		</div>
 	</div>
 
@@ -44,7 +44,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 		<label class="col-sm-3 control-label">Images</label>
 		<div class="col-sm-3">
 			<div class="well white padding-25 image-arear">
-				<!-- <ul class="tc-gallery-2 clearfix">
+				<ul class="tc-gallery-2 clearfix">
 					<li class="thumbnail" ng-repeat="item in medias.data" ng-if="(array.indexOf(item._id) > -1)" checkbox-unselect-Event>
 						<div class="thumb-preview">
 							<div class="thumb-image">
@@ -54,7 +54,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 						</div>
 						
 					</li>
-				</ul> -->
+				</ul>
 			</div>
 		</div>
 
@@ -103,16 +103,12 @@ var url_params = <%- JSON.stringify(url_params) %>
 
 </form>
 
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/plugins/masked-input/jquery.maskedinput.min.js"></script>
-<script src="/assets/js/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<script src="/assets/js/plugins/datetime/bootstrap-datetimepicker.min.js"></script>
-<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-<script data-require="moment.js@2.8.3" data-semver="2.8.3" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-<script>
-$(document).ready(function() { 	
-        	//Bootstrap Datepicker
-        	$('.datepicker').datepicker();		
-        });
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+		jQuery('#datetimepicker').datetimepicker();
+
+});
+
 </script>
