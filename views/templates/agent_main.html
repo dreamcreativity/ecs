@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='AdminApp'>
   <head>
     <meta charset="utf-8">
     <title> <%- parms.title %> - ECS Staff</title>
@@ -39,20 +39,30 @@
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
 
+
 	 <!-- Angular JS -->
+	<script src="/assets/js/jquery.min.js"></script>
  	<script src="/js/client/angular.min.js"></script>
     <script src="/js/client/angular-resource.js"></script>
+    <script src="/js/client/angular-cookies.js"></script>
     <script src="/js/client/angular-route.js"></script>
     <script src="/js/client/ngBootbox.min.js"></script>
+    <script src="/js/admin/moment.js"></script>
+    <script src="/js/admin/ng-tags-input.min.js"></script>
 
-    <script src="/ng/apps/loginApp.js"></script>
-    <script src="/ng/apps/staffApp.js"></script>
-    <script src="/ng/apps/studentApp.js"></script>
-    <script src="/ng/apps/adminApp.js"></script>
-    <script src="/ng/apps/agentApp.js"></script>
-	<script src="/ng/apps/promotionApp.js"></script>
-	<script src="/ng/apps/courseApp.js"></script>
-	<script src="/ng/apps/activityApp.js"></script>
+    	<!-- include ng common use modual -->
+	<script src="/ng/lib/auth.js"></script>
+	<script src="/ng/lib/filters.js"></script>
+	<script src="/ng/lib/resources.js"></script>
+	<script src="/ng/lib/directives.js"></script>
+
+	<!-- include ng App here -->
+	<script src="/ng/apps/adminApp.js"></script>
+
+
+	<!-- include ag controller -->
+    <script src="/ng/controllers/studentController.js"></script>
+    <script src="/ng/controllers/navBarController.js"></script>
 
   </head>
 
@@ -179,7 +189,7 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">
 									<li>
-										<a href="/agent/course/all" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
+										<a href="/agent/register" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
 											<i class="fa fa-angle-double-right"></i>New Student
 										</a>
 									</li>			
@@ -416,7 +426,7 @@
 
 	<!-- initial Custom Functions -->
 	<script src="/js/admin/plugin-init.js"></script>
-	<script src="/js/admin/image-picker.min.js"></script>
+	<!-- <script src="/js/admin/image-picker.min.js"></script> -->
 	<script type="text/javascript">
 
 		/*

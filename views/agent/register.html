@@ -1,0 +1,283 @@
+<!-- 
+<form name="registerForm" class="form-horizontal"  ng-controller='StudentRegister' role="form" ng-submit="register(registerForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">First Name</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+			<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-2">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="registerForm.$invalid">
+			</div>
+		</div>
+	</div>
+
+</form> -->
+
+<form name="registerForm" class="form-horizontal" ng-controller='StudentRegister' role="form" ng-submit="register(registerForm.$valid)" novalidate>
+	<div class="wizard">
+		<ul class="wizard-steps">
+			<li data-target="#step1" class="active">
+				<span class="step">1</span>
+				<span class="title">Student Information</span>
+			</li>
+			<li data-target="#step2">
+				<span class="step">2</span>
+				<span class="title">Program Registration</span>
+			</li>
+			<li data-target="#step3">
+				<span class="step">3</span>
+				<span class="title">Step 3</span>
+			</li>
+			<li data-target="#step4">
+				<span class="step">4</span>
+				<span class="title">Step 4</span>
+			</li>
+		</ul>
+
+		<hr class="separator" />
+
+		<div class="step-content">
+			<div class="step-pane active" id="step1">											
+				<div class="form-group">
+					<label class="col-sm-1 control-label">First Name</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Family Name</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
+						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
+					</div>
+				</div>
+				<!-- Seconde Line-->
+				<div class="form-group">
+				<label class="col-sm-1 control-label">Gender</label>
+					<div class="col-sm-2">
+						<select name="gender" ng-model="student.gender" required>
+     						 <option value="">--</option>
+     						 <option value="male">Male</option> 
+      						 <option value="female">Female</option>
+   					    </select>
+   					    <p ng-show="registerForm.gender.$invalid && !registerForm.gender.$pristine" class="help-block text-danger">required</p>
+					</div>
+					<label class="col-sm-1 control-label">Birth Date</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="birthday" ng-model="student.birthday" required>
+						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Age</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
+						<p ng-show="registerForm.age.$invalid && !registerForm.age.$pristine" class="help-block text-danger">age is invalid</p>
+					</div>
+					<label class="col-sm-1 control-label">Citizenship</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
+						<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">citizenship is required</p>
+					</div>
+				</div>
+				<!-- Third line -->
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Address</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="address" ng-model="student.address" required>
+   					    <p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Postal Code</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="postcal" ng-model="student.postcal" required>
+   					    <p ng-show="registerForm.postcal.$invalid && !registerForm.postcal.$pristine" class="help-block text-danger">postcal code is required</p>
+					</div>
+					<label class="col-sm-1 control-label">City</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="city" ng-model="student.city" required>
+   					    <p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Province</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="province" ng-model="student.province" required>
+   					    <p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Country</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="country" ng-model="student.country" required>
+   					    <p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Telephone</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="phone" ng-model="student.phone" required>
+   					    <p ng-show="registerForm.phone.$invalid && !registerForm.phone.$pristine" class="help-block text-danger">phone is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Fax</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="fax" ng-model="student.fax" required>
+   					    <p ng-show="registerForm.fax.$invalid && !registerForm.fax.$pristine" class="help-block text-danger">fax is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Email</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="email" ng-model="student.email" required>
+   					    <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is required</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Emergency Contact & Telephone</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="emergency" ng-model="student.emergency" required>
+						<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is required</p>
+					</div>
+					<label class="col-sm-1 control-label">Home Country</label>
+					<div class="col-sm-2">
+						<input type="checkbox" class="form-control" name="isHomeCountry" ng-model="student.isHomeCountry">
+					</div>
+					<label class="col-sm-1 control-label">Canada</label>
+					<div class="col-sm-2">
+						<input type="checkbox" class="form-control" name="isCanada" ng-model="student.isCanada">
+					</div>
+				</div>
+
+			</div>
+
+
+<!-- Step 2 Program registration -->
+			<div class="step-pane" id="step2">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">English Level : </label>
+					<div class="col-sm-3">
+						<select name="gender" ng-model="student.englishLevel" required>
+     						 <option value="">--</option>
+     						 <option value="male">Beginner</option> 
+      						 <option value="female">Low Intermediate</option>
+      						 <option value="female">High Intermediate</option>
+      						 <option value="female">Advanced</option>
+   					    </select>
+   					    <p ng-show="registerForm.englishLevel.$invalid && !registerForm.englishLevel.$pristine" class="help-block text-danger">required</p>
+					</div>
+					<label class="col-sm-3 control-label">For Direct Entry(UCTP or Focus Program)</label>
+					<label class="col-sm-1 control-label">TOEFL : </label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="toefl" ng-model="student.toefl" >
+					</div>
+					<label class="col-sm-1 control-label">IELTS : </label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="ielts" ng-model="student.ielts">
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">General English Programs : </label>
+					<div class="col-sm-3">
+						<select name="generalProgram" ng-model="student.generalProgram" required>
+     						 <option value="">--</option>
+     						 <option value="intensive">Intensive(30 hours/week)</option> 
+      						 <option value="standard">Standard(22.5 hours week)</option>
+      						 <option value="parttime">Part-time(15 hours/week)</option>
+   					    </select>
+					</div>
+					<label class="col-sm-1 control-label">Starting Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="ielts_startingDate" ng-model="student.ielts_startingDate" required>
+					</div>
+					<label class="col-sm-1 control-label"># of week</label>
+					<div class="col-sm-1">
+					<input type="number" class="form-control" name="ieltsOfWeek" ng-model="student.numOfWeek" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Exam Preparation Programs : </label>
+					<div class="col-sm-3">
+						<select name="preparationProgram" ng-model="student.preparationProgram" required>
+     						 <option value="">--</option>
+     						 <option value="ielts_standard">IELTS(standard)</option> 
+      						 <option value="ielts_intensive">IELTS(intensive)(IELTS + One ESL class)</option>
+      						 <option value="ibt_standard">iBT TOEFL(standard)</option>
+      						 <option value="ibt_intensive">iBT TOEFL(intensive)(iBT TOEFL + One ESL class)</option>
+   					    </select>
+					</div>
+					<label class="col-sm-1 control-label">Starting Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="ibt_startingDate" ng-model="student.ibt_startingDate" required>
+					</div>
+					<label class="col-sm-1 control-label"># of week</label>
+					<div class="col-sm-1">
+					<select name="gender" ng-model="student.ibtOfWeek" required>
+     						 <option value="">--</option>
+     						 <option value="4">4</option> 
+      						 <option value="8">8</option>
+      						 <option value="12">12</option>
+   					    </select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Focus Programs : </label>
+					<div class="col-sm-3">
+						<select name="focusProgram" ng-model="student.focusProgram" required>
+     						 <option value="">--</option>
+     						 <option value="ielts_standard">Focus on Speaking(F.O.S)(standard)</option> 
+      						 <option value="ielts_intensive">F.O.S(itensive)</option>
+      						 <option value="ibt_standard">iBT TOEFL(standard)</option>
+      						 <option value="ibt_intensive">iBT TOEFL(intensive)(iBT TOEFL + One ESL class)</option>
+   					    </select>
+					</div>
+					<label class="col-sm-1 control-label">Starting Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="ibt_startingDate" ng-model="student.ibt_startingDate" required>
+					</div>
+					<label class="col-sm-1 control-label"># of week</label>
+					<div class="col-sm-1">
+					<select name="gender" ng-model="student.ibtOfWeek" required>
+     						 <option value="">--</option>
+     						 <option value="4">4</option> 
+      						 <option value="8">8</option>
+      						 <option value="12">12</option>
+   					    </select>
+					</div>
+				</div>
+
+
+
+			</div>
+			<div class="step-pane" id="step3">
+				<div class="text-center">
+					<h4 class="text-success">This is step 3</h4>
+				</div>
+			</div>
+			<div class="step-pane" id="step4">
+				<div class="text-center">
+					<h4 class="text-success">Congrats! <small>Your product is ready to ship!!</small></h4>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-actions">
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-9">
+					<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
+					<!--<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button> -->
+					<button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+
+<!-- PAGE LEVEL PLUGINS JS -->
+<script src="/assets/js/plugins/fuelux/wizard.min.js"></script>
+
+

@@ -17,6 +17,17 @@ router.get('/', function(req, res) {
 		);
 });
 
+router.get('/register', function(req, res) {
+	template(req,res,'agent_main','agent/register.html',
+			{ 
+				title: 'Home',
+				category: 'Student',
+				cur_tap: 'Registeration',
+				cur_selected : ''
+			}
+		);
+});
+
 
 router.get('/login', function(req, res) {
 	template(req,res,'admin_bg_paint','admin/login.html',

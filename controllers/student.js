@@ -6,6 +6,7 @@ async = require("async");
 // Insert a new student record
 exports.create = function(req,res){
 	var newStudent = new Student(req.body);
+
 	Student.findOne({student_id : newStudent.student_id}, function(err, student){
 		if(err){
 			res.json({
@@ -20,6 +21,7 @@ exports.create = function(req,res){
 					data:"Student ID  is already exists"
 				});
 			}else {
+
 				newStudent.save(function(err,result){
 					if(err){
 						res.json({
