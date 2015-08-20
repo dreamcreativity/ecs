@@ -184,18 +184,18 @@
 					</div>
 					<label class="col-sm-1 control-label">Starting Date : </label>
 					<div class="col-sm-2">
-					<input type="date" class="form-control" name="ielts_startingDate" ng-model="student.ielts_startingDate" required>
+					<input type="date" class="form-control" name="generalProgram_startingDate" ng-model="student.generalProgram_startingDate" required>
 					</div>
 					<label class="col-sm-1 control-label"># of week</label>
 					<div class="col-sm-1">
-					<input type="number" class="form-control" name="ieltsOfWeek" ng-model="student.numOfWeek" required>
+					<input type="number" class="form-control" name="generalProgramOfWeek" ng-model="student.generalProgramOfWeek" required>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Exam Preparation Programs : </label>
 					<div class="col-sm-3">
-						<select name="preparationProgram" ng-model="student.preparationProgram" required>
+						<select name="examPpreparationProgram" ng-model="student.examPpreparationProgram" required>
      						 <option value="">--</option>
      						 <option value="ielts_standard">IELTS(standard)</option> 
       						 <option value="ielts_intensive">IELTS(intensive)(IELTS + One ESL class)</option>
@@ -205,11 +205,11 @@
 					</div>
 					<label class="col-sm-1 control-label">Starting Date : </label>
 					<div class="col-sm-2">
-					<input type="date" class="form-control" name="ibt_startingDate" ng-model="student.ibt_startingDate" required>
+					<input type="date" class="form-control" name="examPpreparationProgram_startingDate" ng-model="student.examPpreparationProgram_startingDate" required>
 					</div>
 					<label class="col-sm-1 control-label"># of week</label>
 					<div class="col-sm-1">
-					<select name="gender" ng-model="student.ibtOfWeek" required>
+					<select name="gender" ng-model="student.examPreparationOfWeek" required>
      						 <option value="">--</option>
      						 <option value="4">4</option> 
       						 <option value="8">8</option>
@@ -223,19 +223,46 @@
 					<div class="col-sm-3">
 						<select name="focusProgram" ng-model="student.focusProgram" required>
      						 <option value="">--</option>
-     						 <option value="ielts_standard">Focus on Speaking(F.O.S)(standard)</option> 
-      						 <option value="ielts_intensive">F.O.S(itensive)</option>
-      						 <option value="ibt_standard">iBT TOEFL(standard)</option>
-      						 <option value="ibt_intensive">iBT TOEFL(intensive)(iBT TOEFL + One ESL class)</option>
+     						 <option value="speaking_fos">Focus on Speaking(F.O.S)(standard)</option> 
+      						 <option value="writing_fow">Focus on Writing(F.O.W)(standard)3 FOW classes</option>
+      						 <option value="intensive_fow">F.O.W.(Intensive)(F.O.W + One ESL Class)</option>
+      						 <option value="health_care">English for Health Care(EHC)(standard) 3 EHC Classes</option>
+      						 <option value="intensive_ehc">E.H.C (intensive)(E.H.C. + One ESL class)</option>
+      						 <option value="volunteer_ehc">E.H.C Volunteer Placement Minimum 12 weeks</option>
    					    </select>
 					</div>
 					<label class="col-sm-1 control-label">Starting Date : </label>
 					<div class="col-sm-2">
-					<input type="date" class="form-control" name="ibt_startingDate" ng-model="student.ibt_startingDate" required>
+					<input type="date" class="form-control" name="focusProgram_startingDate" ng-model="student.focusProgram_startingDate" required>
 					</div>
 					<label class="col-sm-1 control-label"># of week</label>
 					<div class="col-sm-1">
-					<select name="gender" ng-model="student.ibtOfWeek" required>
+					<select name="gender" ng-model="student.focusProgramOfWeek" required>
+     						 <option value="">--</option>
+     						 <option value="4">4</option> 
+      						 <option value="8">8</option>
+      						 <option value="12">12</option>
+      						 <option value="12">16</option>
+   					    </select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">University College Transfer Program (UCTP)</label>
+					<div class="col-sm-3">
+						<select name="UCTPProgram" ng-model="student.focusProgram" required>
+     						 <option value="">--</option>
+     						 <option value="uctp_prep">UCTP Prep.(standard only)</option> 
+      						 <option value="uctp">UCTP (standard only)</option>
+   					    </select>
+					</div>
+					<label class="col-sm-1 control-label">Starting Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="UCTP_startingDate" ng-model="student.UCTP_startingDate" required>
+					</div>
+					<label class="col-sm-1 control-label"># of week</label>
+					<div class="col-sm-1">
+					<select name="gender" ng-model="student.uctpOfweek" required>
      						 <option value="">--</option>
      						 <option value="4">4</option> 
       						 <option value="8">8</option>
@@ -244,14 +271,70 @@
 					</div>
 				</div>
 
-
-
-			</div>
-			<div class="step-pane" id="step3">
-				<div class="text-center">
-					<h4 class="text-success">This is step 3</h4>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Health Insurance</label>
+					<label class="col-sm-1 control-label">From Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="healthInsurance_startingDate" ng-model="student.healthInsurance_startingDate" required>
+					</div>
+					<label class="col-sm-1 control-label">To Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="healthInsurance_endDate" ng-model="student.healthInsurance_endDate" required>
+					</div>
 				</div>
 			</div>
+
+<!-- Step 3 Program registration accommodation -->
+		
+			<div class="step-pane" id="step3">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Accommodation Information</label>
+					<div class="col-sm-1">
+					<select name="accommodation" ng-model="student.accommodation" required>
+     						 <option value="">--</option>
+     						 <option value="Homestay">Homestay</option> 
+      						 <option value="Residence">Residence(May - Aug only)</option>
+   					    </select>
+					</div>
+
+					<label class="col-sm-2 control-label">Homestay Option</label>
+					<div class="col-sm-1">
+					<select name="homestay_option" ng-model="student.homestay_option" required>
+     						 <option value="">--</option>
+     						 <option value="fullboard">Full Board(3 meals per day)</option> 
+      						 <option value="halfboard">Half Board(2 meals per day)</option>
+      						 <option value="roomonly">Romm Only</option>
+   					    </select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Accommodation Date : </label>
+					<label class="col-sm-1 control-label">Starting Date : (DD/MM/YYYY)</label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="accommodation_startingDate" ng-model="student.accommodation_startingTime" required>
+					</div>
+					<label class="col-sm-1 control-label">Finishing Date : </label>
+					<div class="col-sm-2">
+					<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_finishingDate" required>
+					</div>
+					<label class="col-sm-1 control-label"># of week</label>
+					<div class="col-sm-1">
+					<input type="number" class="form-control" name="accommodationOfWeeks" ng-model="student.accommodationOfWeeks" required>
+					</div>
+					<label class="col-sm-2 control-label">Departure date from Toronto: </label>
+					<div class="col-sm-1">
+					<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_departureDate" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Flight Information : </label>
+				</div>
+			</div>
+
+
+
 			<div class="step-pane" id="step4">
 				<div class="text-center">
 					<h4 class="text-success">Congrats! <small>Your product is ready to ship!!</small></h4>
