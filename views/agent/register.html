@@ -331,6 +331,57 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Flight Information : </label>
 				</div>
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Arrival in Toronto</label>
+					<label class="col-sm-1 control-label">Date & Time</label>
+					<div class="col-sm-1">
+					<input type="date" class="form-control" name="flight_arrivalDateTime" ng-model="student.flight_arrivalDateTime" required>
+					</div>
+					<label class="col-sm-1 control-label">Airline</label>
+					<div class="col-sm-1">
+					<input type="text" class="form-control" name="flight_airline_arr" ng-model="student.flight_airline_arr" required>
+					</div>
+					<label class="col-sm-1 control-label">Flight#</label>
+					<div class="col-sm-1">
+					<input type="text" class="form-control" name="flight_No_arr" ng-model="student.flight_No_arr" required>
+					</div>
+					<label class="col-sm-2 control-label">Airport Pick up Request</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="isPickup" ng-model="student.isPickup">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Departure from Toronto</label>
+					<label class="col-sm-1 control-label">Date & Time</label>
+					<div class="col-sm-1">
+					<input type="date" class="form-control" name="flight_departureDateTime" ng-model="student.flight_departureDateTime" required>
+					</div>
+					<label class="col-sm-1 control-label">Airline</label>
+					<div class="col-sm-1">
+					<input type="text" class="form-control" name="flight_airline_dep" ng-model="student.flight_airline_dep" required>
+					</div>
+					<label class="col-sm-1 control-label">Flight#</label>
+					<div class="col-sm-1">
+					<input type="text" class="form-control" name="flight_No_dep" ng-model="student.flight_No_dep" required>
+					</div>
+					<label class="col-sm-2 control-label">Airport Drop off Request</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="isdropOff" ng-model="student.isdropOff">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-12 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you smoke?</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="IsSmoke" ng-model="student.IsSmoke">
+					</div>
+				</div>
 			</div>
 
 
