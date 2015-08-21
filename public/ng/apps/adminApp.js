@@ -5,6 +5,7 @@ angular.module(
 		'ngResource',
 		'ngBootbox',
 		'ngTagsInput',
+		'ui.bootstrap',
 		'esc.resources',
 		'esc.filters',
 		'esc.directives',

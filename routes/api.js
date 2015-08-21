@@ -9,6 +9,7 @@ var region = require('../controllers/region');
 var media = require('../controllers/media');
 var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
+var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
 var auth = require('../controllers/auth');
@@ -211,6 +212,22 @@ router.get('/courses/:id', course.getCoursebyId);
 
 //PUT edit a course
 router.put('/courses/:id', course.edit);
+
+//------------------------Duration----------------------------------------
+
+// //GET all courses
+// router.get('/duration', course.getAllCourses);
+
+//POST create a new course
+router.post('/duration', duration.create);
+
+// //GET a course
+// router.get('/duration/:id', course.getCoursebyId);
+
+//PUT edit a course
+router.put('/duration/:id', duration.edit);
+
+
 
 //------------------------Activity-----------------------------------------
 

@@ -331,8 +331,20 @@
 
 }
 
+/*-----------------------------------	
+	css for course
+-------------------------------------
+*/
 
-
+.duration-list .duration-list-operate-icon{
+	float: right;
+	margin: -6px 7px;
+}
+.duration-list .badge{
+    font-size: 17px;
+    margin-right: 7px;
+    margin-top: -2px;
+}
 
 
 

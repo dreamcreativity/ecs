@@ -118,6 +118,28 @@ resources.factory('SendEmail', ['$http',function($http){
     }
 }]);
 
+
+resources.factory('Courses',['$resource',
+    function($resource){
+        return $resource('/api/courses/:id', {}, {
+        query:{ method: 'GET'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}]);
+
+
+resources.factory('Duration',['$resource',
+    function($resource){
+        return $resource('/api/duration/:id', {}, {
+        //query:{ method: 'GET'},
+        create:{method: 'POST'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}]);
+
+
+
+
 // resources.factory('SendEmail', ['$resource',function($resource){
 //     return $resource("/postEmail/", {},{
 //         post : {
