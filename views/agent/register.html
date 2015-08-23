@@ -142,7 +142,7 @@
 
 
 <!-- Step 2 Program registration -->
-			<div class="step-pane" id="step2">
+			<!-- <div class="step-pane" id="step2">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">English Level : </label>
 					<div class="col-sm-3">
@@ -277,10 +277,10 @@
 					<input type="date" class="form-control" name="healthInsurance_endDate" ng-model="student.healthInsurance_endDate">
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 <!-- Step 3 Program registration accommodation -->
-<div class="step-pane" id="step1">
+<!-- <div class="step-pane" id="step1">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Are you in home stay</label>
 		<div class="col-sm-1">
@@ -454,7 +454,7 @@
 		</div>
 	</div>
 
-</div>
+</div> -->
 
 		</div>
 
@@ -465,7 +465,7 @@
 					<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
 					<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button> 
 					<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button> -->
-
+					<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="registerForm.$invalid">
 				</div>
 			</div>
 		</div>

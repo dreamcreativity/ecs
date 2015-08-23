@@ -41,13 +41,7 @@ angular.module('AdminApp')
 	 			$window.location='/admin/student/all';
 	 	})
 	 }
-})
-
-.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students, $window){
-	$scope.register = function(isValid){
-	}
 });
-
 
 
 

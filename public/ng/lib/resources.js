@@ -118,6 +118,16 @@ resources.factory('SendEmail', ['$http',function($http){
     }
 }]);
 
+resources.factory('Registrations',['$resource',
+    function($resource){
+        return $resource('/api/registration/:id', {}, {
+        create:{ method: 'POST'},
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{ method: 'PUT', params: {id:'@_id'} }
+    });
+}]);
+
+
 // resources.factory('SendEmail', ['$resource',function($resource){
 //     return $resource("/postEmail/", {},{
 //         post : {
