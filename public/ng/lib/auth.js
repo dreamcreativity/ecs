@@ -8,11 +8,11 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {
 	    config.headers = config.headers || {};
-		if ($window.sessionStorage.token) {
-			config.headers.api_token = sessionStorage.token ;
-	    	console.log($window.sessionStorage.token );
-		}
-		return config;
+  		if ($window.sessionStorage.token) {
+  			config.headers.api_token = sessionStorage.token ;
+  	    //console.log($window.sessionStorage.token );
+  		}
+  		return config;
     },
     responseError: function (response) {
       console.log(response.status);
@@ -27,6 +27,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
     }
   };
 })
+
 
 .config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');

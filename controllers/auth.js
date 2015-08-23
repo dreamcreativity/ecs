@@ -24,15 +24,11 @@ exports.IsTokenValid = function(AccessToken, callBack){
 			if(result.length != 1)
 				//return false;
 				callBack(false);
-
-			var tokenObj = result[0];
-
-			// check exprie time
-
-			//console.log(tokenObj.created);
-
-			//return true;
-			callBack(true);
+			else{
+				var tokenObj = result[0];
+				callBack(true);
+			}
+			
 		
 		}
 	});
