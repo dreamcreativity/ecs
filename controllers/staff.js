@@ -317,19 +317,13 @@ exports.delete = function(req,res){
 
 //GET: staff  by session
 exports.getStaffAccount = function(req,res){
-	
-	console.log('I am still here');
-	console.log(req.headers.api_token);
+
 	Token.find({type:'Staff', _id: req.headers.api_token } ,function(err, result){
 
 		// res.json({
 
 		// 	result: result
 		// });
-
-
-		console.log('in found token function');
-		console.log(result);
 
 		if(result.length > 1){
 			res.json({
@@ -345,7 +339,7 @@ exports.getStaffAccount = function(req,res){
 			});
 		}else{
 			tokenRecord = result[0];
-			console.log(tokenRecord);
+
 
 
 			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}, function(err, users){

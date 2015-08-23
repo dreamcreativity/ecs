@@ -8,6 +8,7 @@ angular.module(
 		'esc.resources',
 		'esc.filters',
 		'esc.directives',
-		'esc.auth'
+		'esc.auth',
+		'ui.bootstrap'
 	]
 );

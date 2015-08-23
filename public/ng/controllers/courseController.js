@@ -24,12 +24,11 @@ angular.module('AdminApp')
 
 .controller('CourseEditCtrl', function CourseEditCtrl($rootScope,$scope,$http,$modal,Courses,Duration,$window) {
 	var course_id = url_params.id;
-	console.log('---------');
+
 	 if(course_id !=null){
 	 	Courses.get({id:course_id}, function(result){
-
 	 		$scope.course = result.data;
-	 		console.log($scope.course)
+
 	 		$scope.newDuration = {
 			 	'title': '',
 			 	'price': 0.0,

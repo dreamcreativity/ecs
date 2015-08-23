@@ -12,15 +12,12 @@ exports.IsTokenValid = function(AccessToken, callBack){
 
 	Token.find({_id:AccessToken}, function(err,result){
 		if(err){
-			console.log('-------- Error ---------');
+			console.log('--------  IsTokenValid()  Error ---------');
 			console.log(AccessToken);
 			console.log(err);
-			//return false;
+
 			callBack(false);
 		}else{
-			console.log('-------- Result ---------');
-			console.log(result);
-
 			if(result.length != 1)
 				//return false;
 				callBack(false);
@@ -28,35 +25,7 @@ exports.IsTokenValid = function(AccessToken, callBack){
 				var tokenObj = result[0];
 				callBack(true);
 			}
-			
-		
 		}
 	});
 }
 
-
-// exports.Login = function(username, password, accountType){
-
-// 	if( accountType == 'Staff' ){
-
-// 		Staff.findOne({username : username, password: SHA256(password) }, function(err, user){
-// 			if(err){
-// 				return '';
-// 			}
-// 			else {
-// 				if(user == null){
-// 					return '';
-// 				}else {
-// 					console.log('---------- user record found ----------');
-// 					console.log(user);
-
-					
-// 				}
-// 			}
-// 		});
-
-// 	}else{
-
-// 	}
-
-// }

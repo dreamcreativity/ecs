@@ -1,10 +1,11 @@
 <script type="text/javascript">
 	var url_params = <%- JSON.stringify(url_params) %>
 </script>
+
 <div class="row" ng-controller='CourseEditCtrl'>
 	<div class="col-lg-12">
 		<div class="row">
-			<div class="col-lg-6">									
+			<div class="col-lg-12">									
 				<div class="portlet">
 					<div id="f-3" class="panel-collapse collapse in">
 						<div class="portlet-body">
@@ -18,12 +19,46 @@
 									</div>
 								</div>
 
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Last Modified</label>
+									<div class="col-sm-9">
+										
+										<label class="label label-success">{{ course.lastModify  | date:'MMMM d, yyyy / HH:mm '}}</label>
+									</div>
+								</div>
+
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Description</label>
 									<div class="col-sm-9">
-										<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="course.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+										<textarea class="form-control" id="maxL-3" rows="5x" name="description" ng-model="course.description" placeholder="This textarea has a limit of 225 chars."></textarea>
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Durations</label>
+									<div class="col-sm-9">
+										<div style="margin-bottom:15px;">
+											<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">New Duration</button>
+											<!-- <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="New Duration" /> -->
+										</div>
+										
+									
+
+										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-6">
+											<li data-toggle="modal" ng-repeat="duration in course.durations" class="list-group-item">
+												{{ duration.title}}
+											
+												<button type="button" ng-click="removeDuration(duration)" class="btn btn-danger btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-trash-o icon-only"></i></button>
+												<button type="button" ng-click="editDuration(duration)"  class="btn btn-primary btn-xs btn-circle duration-list-operate-icon"><i class="glyphicon glyphicon-cog icon-only"></i></button>
+												<span class="badge badge-success">$ {{ duration.price | number:2 }}</span>
+												
+											</li>
+										</ul>
+									</div>
+								</div>
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label"></label>
 									<div class="col-sm-9">
@@ -40,7 +75,9 @@
 								<div class="form-actions">
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-6">
-									<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editingForm.$invalid">
+									<button type="submit" ng-disabled="editingForm.$invalid" class="btn btn-primary">Update</button>
+
+									<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editingForm.$invalid"> -->
 									<a href="/admin/course/all" type="submit" class="btn">Cancel</a>
 								</div>
 							</div>
@@ -59,8 +96,92 @@
 		<!-- END YOUR CONTENT HERE -->
 
 	</div>
-</div>					
 
-<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
-	<i class="fa fa-angle-double-up icon-only bigger-110"></i>
-</button>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Create new duration</h4>
+	      </div>
+	      <div class="modal-body">
+
+	      	<div class="form-horizontal">
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">Title</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-large" ng-model="newDuration.title" >
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">Price</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.price">
+		      		</div>
+		      	</div>
+
+	      	</div>
+
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-disabled="newDuration.title.$invalid ||  newDuration.price.$invalid" ng-click="createDuration()">Create Duration</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Edit duration</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">Title</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-large" ng-model="duration.title" >
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">Price</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-small" ng-model="duration.price">
+		      		</div>
+		      	</div>
+
+	      	</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+</div>			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

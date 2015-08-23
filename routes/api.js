@@ -9,9 +9,10 @@ var region = require('../controllers/region');
 var media = require('../controllers/media');
 var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
+var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
-var events = require('../controllers/event');
 var registration = require('../controllers/registration');
+var events = require('../controllers/event');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 // var emailSender = require('../modules/emailsenderController');
@@ -43,13 +44,8 @@ function IsAuthException(path, method){
 
 //-------------------------  Auth Middleware ----------------------------------
 router.use(function(req,res,next){
-	//console.log('---------------------------');
-	//console.log(req.method);
-	
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
-	console.log('---------ssss---------');
-	console.log(path);
 
 	if(IsAuthException(path, method)){
 		next();
@@ -57,9 +53,6 @@ router.use(function(req,res,next){
 		// check token from header
 
 		if( typeof req.headers.api_token === 'undefined'){
-			
-			console.log('1');
-			console.log(req.headers.api_token);
 			res.send(403,'403 auth error token');
 		}else{
 
@@ -73,8 +66,6 @@ router.use(function(req,res,next){
 					console.log('pass token validation');
 					next();
 				}else{
-				
-					console.log('22');
 					res.send(403,'403 auth error');
 
 				}		
@@ -214,6 +205,22 @@ router.get('/courses/:id', course.getCoursebyId);
 //PUT edit a course
 router.put('/courses/:id', course.edit);
 
+//------------------------Duration----------------------------------------
+
+// //GET all courses
+// router.get('/duration', course.getAllCourses);
+
+//POST create a new course
+router.post('/duration', duration.create);
+
+// //GET a course
+// router.get('/duration/:id', course.getCoursebyId);
+
+//PUT edit a course
+router.put('/duration/:id', duration.edit);
+
+
+
 //------------------------Activity-----------------------------------------
 
 //GET all activites
@@ -243,9 +250,10 @@ router.put('/events/:id',events.edit);
 //GET a course
 router.get('/events/:id', events.getEventbyId);
 
-//--------------------------Registration------------------------------------
 
+//-------------------------Registration--------------------------------------
 router.post('/registration', registration.create);
+
 
 
 //-------------------------Email Sender--------------------------------------------
