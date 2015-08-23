@@ -22,9 +22,9 @@ angular.module('AdminApp')
 })
 
 
-.controller('CourseEditCtrl', function CourseEditCtrl($rootScope,$scope,$http,$modal,Courses,Duration,$window) {
+.controller('CourseEditCtrl', function CourseEditCtrl($rootScope,$scope,$http,$modal,Courses,Duration,Medias,$window) {
 	var course_id = url_params.id;
-	console.log('---------');
+
 	 if(course_id !=null){
 	 	Courses.get({id:course_id}, function(result){
 
@@ -37,6 +37,14 @@ angular.module('AdminApp')
 			};
 	 	});	 	
 	 }
+
+	 // load meida image
+	 Medias.query(function(result){
+	 	$scope.meidas = result.data;
+	 	console.log($scope.meidas);
+	 })
+
+
 
 	 $scope.selectedDuration = null;
 
@@ -99,6 +107,50 @@ angular.module('AdminApp')
 	 			// $window.location='/admin/staff/detail/'+ staff_id;
 	 	})
 	 }
+
+	 $scope.changeBanner = function(){
+	
+
+
+	
+		var modalInstance = $modal.open({
+		  templateUrl: 'courseMedias.html',
+		  controller: 'ModalMediaInstanceCtrl',
+		  windowClass: 'app-modal-lg',
+		  resolve: {
+		  	meidas: function(){
+		  		return $scope.meidas 
+		  	}
+		  }
+		});
+
+		modalInstance.result.then(function (selectedMedia) {
+		  //$scope.user.name = user.name;
+		  $scope.course.banner = selectedMedia;
+		  
+		  //$scope.selectedDuration = duration;
+		}, function () {
+		  	// done
+		});
+	 }
+})
+
+.controller('ModalMediaInstanceCtrl', function ($scope, $modalInstance, meidas) {
+
+  $scope.Medias = meidas;
+  $scope.selectedMedia = null;
+  $scope.ok = function () {
+    //$modalInstance.close($scope.duration );
+    $modalInstance.close($scope.selectedMedia);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+
+  $scope.selectMedia = function(selectedMedia){
+  	$modalInstance.close(selectedMedia);
+  }
 })
 
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, editDuration) {
@@ -113,43 +165,6 @@ angular.module('AdminApp')
     $modalInstance.dismiss('cancel');
   };
 });
-
-// .factory('Courses',['$resource',
-// 	function($resource){
-// 		return $resource('http://localhost:3000/api/courses/:id', {}, {
-// 		query:{ method: 'GET'},
-// 		update : { method : 'PUT', params: {id:'@_id'}}
-// 	});
-// }])
-
-// .factory('authInterceptor', function ($rootScope, $q, $window) {
-//   return {
-//     request: function (config) {
-// 	    config.headers = config.headers || {};
-// 		if ($window.sessionStorage.token) {
-// 			config.headers.api_token = sessionStorage.token ;
-// 	    	console.log($window.sessionStorage.token );
-// 		}
-// 		return config;
-//     },
-//     responseError: function (response) {
-//       console.log(response.status);
-//       if (response.status === 401) {
-//         // handle the case where the user is not authenticated
-//       }
-//       if (response.status === 403) {
-//         //console.log('please log in ');
-//         window.location = '/admin/login';
-//       }
-//       return response || $q.when(response);
-//     }
-//   };
-// })
-
-
-
-
-
 
 
 

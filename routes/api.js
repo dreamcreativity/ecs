@@ -26,6 +26,7 @@ function IsAuthException(path, method){
 		{	path : '/api/slider', method: 'GET' },
 		{	path : '/api/activities', method: 'GET' },
 		{	path : '/api/staffs/login', method: 'POST' },
+		{	path : '/api/agent/login', method: 'POST' },
 		{	path : '/api/staffs', method: 'POST' },
 		{	path : '/api/activity', method: 'GET' },
 
@@ -40,6 +41,22 @@ function IsAuthException(path, method){
 	return false;
 }
 
+function IsInActivedUserAuthException(path, method){
+	//--------------------------------------------------
+	// auth exception list , put urls into this array
+	//--------------------------------------------------
+	var list = [
+		{	path : '/api/agent/resetpassword', method: 'POST' },
+	];
+
+	for(i in list){
+		//console.log(list[i]);
+		if(list[i].path == path &&  list[i].method == method ){
+			return true;
+		}
+	}
+	return false;
+}
 
 
 //-------------------------  Auth Middleware ----------------------------------
@@ -60,14 +77,26 @@ router.use(function(req,res,next){
 			var accessToken = req.headers.api_token;
 
 			auth.IsTokenValid(accessToken, function(isValid){
-				console.log(isValid);
+
 
 				if(isValid){
 					console.log('pass token validation');
 					next();
 				}else{
-					res.send(403,'403 auth error');
 
+					if(IsInActivedUserAuthException(path,method)){
+						auth.IsTokenValidForInActivedUser(accessToken,function(isInAcvitedTokenValid){
+							if (isInAcvitedTokenValid)
+								next();
+							else{
+								res.send(403,'403 auth error');
+							}
+						});
+					}else{
+						res.send(403,'403 auth error');
+
+					}
+					
 				}		
 			});
 		}

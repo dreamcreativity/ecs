@@ -325,10 +325,7 @@
 	overflow: hidden;
 }
 .image-arear li .thumb-image img{
-	
   	height: 100px;
-
-
 }
 
 
@@ -341,6 +338,7 @@
 .duration-list .duration-list-operate-icon{
 	float: right;
 	margin: -6px 7px;
+	cursor: pointer;
 }
 .duration-list .badge{
     font-size: 17px;
@@ -348,10 +346,25 @@
     margin-top: -2px;
 }
 
+.banner-empty{
+    width: 100%;
+    height: 130px;
+    background-color: #E3E0E0;
+    border: 1px solid #DCD2D2;
+}
+.banner-empty label{
+    width: 100%;
+    height: 130px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 130px;
+    cursor: pointer;
+    color: #FFF0F0;
+}
 
-
-
-
+.app-modal-lg .modal-dialog {
+  width: 900px;
+}
 
 
 

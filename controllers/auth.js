@@ -10,9 +10,30 @@ var moment = require('moment');
 // Insert a new Slider record
 exports.IsTokenValid = function(AccessToken, callBack){
 
-	Token.find({_id:AccessToken}, function(err,result){
+	Token.find({_id:AccessToken, isActived:true}, function(err,result){
 		if(err){
 			console.log('--------  IsTokenValid()  Error ---------');
+			console.log(AccessToken);
+			console.log(err);
+
+			callBack(false);
+		}else{
+			if(result.length != 1)
+				//return false;
+				callBack(false);
+			else{
+				var tokenObj = result[0];
+				callBack(true);
+			}
+		}
+	});
+}
+
+exports.IsTokenValidForInActivedUser = function(AccessToken, callBack){
+
+	Token.find({_id:AccessToken, isActived:false}, function(err,result){
+		if(err){
+			console.log('--------  IsTokenValidForInActivedUser()  Error ---------');
 			console.log(AccessToken);
 			console.log(err);
 

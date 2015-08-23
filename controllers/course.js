@@ -52,7 +52,7 @@ exports.getAllCourses = function (req,res){
 exports.getCoursebyId = function(req,res){
 	console.log('getCoursebyId');
 	var id = req.params.id;
-	Course.find({_id:id}).populate('durations').exec(function(err, result){
+	Course.find({_id:id}).populate('durations').populate('banner').exec(function(err, result){
 
 		
 		if(err) {
@@ -98,13 +98,37 @@ exports.edit = function(req,res){
 		 },
 		// convert duration object list to object_id list
 	    function(next){
-	    	async.each(req.body.durations, function( val, callback) {
-				durationIds.push(val._id);
-				callback();
-			}, function(err){
-				req.body.durations = durationIds;
-				next();
-			});
+	    	console.log(req.body.banner );
+	    	async.series([
+
+	    			//convert banner object to id
+	    			function(converIdNext){
+	    				if (req.body.banner == null) {
+	    					converIdNext();
+	    				}else{
+	    					req.body.banner = req.body.banner._id;
+	    					converIdNext();
+	    				}
+	    			},
+
+	    			//convert duration object list to object_id list
+	    			function(converIdNext){
+				    	async.each(req.body.durations, function( val, callback) {
+							durationIds.push(val._id);
+							callback();
+						}, function(err){
+							req.body.durations = durationIds;
+							converIdNext();
+						});
+	    			},
+	    		],
+	    		function(){
+	    			next();
+	    		}
+
+	    	);
+
+
 	    },
 	    // clear non-used duration objects
 	    function(next){
@@ -120,7 +144,6 @@ exports.edit = function(req,res){
 			if(err){
 				res.json({
 					status: 'fail',
-				
 					messages: err,
 					data: null
 				});

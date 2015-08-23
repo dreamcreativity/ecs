@@ -109,7 +109,7 @@ exports.login = function (req,res){
 				//---------------------------------
 
 				// remove old token data for the current found user
-				Token.find({user:user._id}, function(err, result){
+				Token.find({user:user._id, isActived: true}, function(err, result){
 					
 					 if(err)
 						console.log(err);
@@ -128,6 +128,7 @@ exports.login = function (req,res){
 					var newToken = new Token();
 					newToken.user = user._id;
 					newToken.type = 'Staff';
+					newToken.isActived = true;
 					newToken.save();
 
 
