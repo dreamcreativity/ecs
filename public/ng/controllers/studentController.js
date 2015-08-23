@@ -43,15 +43,10 @@ angular.module('AdminApp')
 	 }
 })
 
-.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Registration, $window){
+.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students, $window){
 	$scope.register = function(isValid){
-		Registration.save($scope.registration, function(result){
-			var message = result.messages;
-			console.log(message);
-		})
 	}
-})
-
+});
 
 
 

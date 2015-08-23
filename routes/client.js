@@ -8,97 +8,6 @@ var constants = require("../constants");
 
 
 
-
-router.get('/test', function(req, res) {
-	var Duration = require('../models/duration');
-	var Course = require('../models/course');
-
-	var dList  = [];
-
-	async.series([
-	    function(next){
-	    	Duration.find({}, function(err, users) {
-	    		dList = users;
-	    		next();
-
-	    	});
-
-	    },
-	    function(next){
-
-	    	Course.find().populate('durations').exec(function(err, c) {
-			    if (err) { console.log(err); }
-
-			    c[0].durations[0].price = Math.random();
-
-
-			    c[0].save(function(e,r){
-
-			    	 console.log(c);
-			    		next();
-			    });
-			   
-			});
-
-	    	
-	    }
-	], function(){
-		template(req,res,'client_main','client/test.html',{ 
-							title: 'ESC - Englist School of Canada',
-							dList : dList
-						});	
-
-
-	});
-	
-	
-
-});
-
-
-router.post('/addDuration', function(req, res) {
-
-
-	var Duration = require('../models/duration');
-	var newDuration = new Duration(req.body);
-
-	newDuration.save(function(err, result){
-
-		if(err)
-			console.log(err);
-		
-		res.writeHead(301,
-		  {Location: '/test'}
-		);
-		res.end();
-	});
-
-
-});
-
-
-router.post('/addCourse', function(req, res) {
-
-	var Duration = require('../models/duration');
-	var Course = require('../models/course');
-
-	console.log(req.body)
-	var newCourse = new Course(req.body);
-	
-	newCourse.save(function(err, result){
-		if(err)
-			console.log(err);
-		
-		res.writeHead(301,
-		  {Location: '/test'}
-		);
-		res.end();
-	});
-
-});
-
-
-
 /* GET home page. */
 
 
@@ -124,14 +33,6 @@ router.get('/', function(req, res) {
 	});
 });
 
-
-router.get('/program', function(req, res){
-
-
-	template(req,res,'client_normal','client/program.html',{ });
-
-	//template(req,res,'client_normal','client/activity.html',{});
-});
 
 router.get('/activity', function(req, res){
 

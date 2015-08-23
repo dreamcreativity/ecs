@@ -1,13 +1,9 @@
 var Course = require('../models/course');
-var Duration = require('../models/duration');
 var mongoose = require('mongoose');
-var async = require("async");
+
 //POST: create new Course
 exports.create = function(req,res){
 	var newCourse = new Course(req.body);
-
-	newCourse.lastModify = Date.now();
-
 	newCourse.save(function(err ,result){
 		if(err){
 			res.json({
@@ -51,7 +47,7 @@ exports.getAllCourses = function (req,res){
 //GET: course by Id
 exports.getCoursebyId = function(req,res){
 	var id = req.params.id;
-	Course.find({_id:id}).populate('durations').exec(function(err, result){
+	Course.find({_id:id}, function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -60,10 +56,6 @@ exports.getCoursebyId = function(req,res){
 			});
 		}
 		if(result.length == 1){
-
-			console.log("--------------------");
-			console.log(result[0]);
-
 			res.json({
 				status: 'ok',
 				messages: 'successed',
@@ -78,107 +70,35 @@ exports.getCoursebyId = function(req,res){
 		}
 		
 	});
-	// Course.find({_id:id}, function(err, result){
-	// 	if(err) {
-	// 		res.json({
-	// 			status: 'fail',
-	// 			messages: err,
-	// 			data: null
-	// 		});
-	// 	}
-	// 	if(result.length == 1){
-	// 		res.json({
-	// 			status: 'ok',
-	// 			messages: 'successed',
-	// 			data: result[0]
-	// 		});	
-	// 	}else{
-	// 		res.json({
-	// 			status: 'fail',
-	// 			messages: "multipulte result",
-	// 			data: null
-	// 		});
-	// 	}
-		
-	// });
 }
 
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	req.body.lastModify = Date.now();
-	//console.log(req.body);
-
-	var durationIds = [];
-	async.series([
-		// save each duration object in the list
-		function(next){
-
-			async.each(req.body.durations, function( val, callback) {
-				Duration.update({_id:val._id}, val, function(err,result){
-					callback();
-				});
-			}, function(err){
-				next();
+	Course.update({_id:id}, req.body, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
 			});
-	    },
-		// convert duration object list to object_id list
-	    function(next){
-	    	async.each(req.body.durations, function( val, callback) {
-				durationIds.push(val._id);
-				callback();
-			}, function(err){
-				req.body.durations = durationIds;
-				next();
-			});
-	    },
-	    // clear non-used duration objects
-	    function(next){
-	    	//Duration.where('course', req.body._id).nor(durationIds)
-	    	Duration.remove({course:id, _id: { $nin: durationIds }}, function(err){
-	    		next();
-	    	})
-	    	
-	    },
-	], function(){
-
-		// update
-		Course.update({_id:id}, req.body, function(err, result){
-			if(err){
+		}
+		else {
+			if(result == 1){
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}else{
 				res.json({
 					status: 'fail',
-					messages: err,
+					messages: "multipulte result",
 					data: null
 				});
 			}
-			else {
-
-				console.log('---------- update course reuslt -----------');
-				console.log(result[0]);
-				if(result == 1){
-					res.json({
-						status: 'ok',
-						messages: 'successed',
-						data: result[0]
-					});	
-				}else{
-					res.json({
-						status: 'fail',
-						messages: "multipulte result",
-						data: null
-					});
-				}
-			}
-		});
-
+		}
 	});
-
-
-
-
-	
-	
-
 }
 
 //DELETE : Set Course isDelete be true
