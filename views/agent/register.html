@@ -45,18 +45,22 @@
 <!-- Step 1 Student registration -->
 		<div class="step-content">
 			<div class="step-pane active" id="step1">											
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 					<label class="col-sm-1 control-label">First Name</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
 						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Family Name</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
 						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
 					</div>
 				</div>
+
 				<div class="form-group">
 				<label class="col-sm-1 control-label">Gender</label>
 					<div class="col-sm-2">
@@ -67,73 +71,106 @@
    					    </select>
    					    <p ng-show="registerForm.gender.$invalid && !registerForm.gender.$pristine" class="help-block text-danger">gender is required</p>
 					</div>
-					<label class="col-sm-1 control-label">Birth Date</label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-1 control-label">Birth Date</label>
 					<div class="col-sm-2">
 						<input type="date" class="form-control" name="birthday" ng-model="student.birthday" required>
 						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
 					</div>
-					<label class="col-sm-1 control-label">Age</label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-1 control-label">Age</label>
 					<div class="col-sm-2">
 						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
 						<p ng-show="registerForm.age.$invalid && !registerForm.age.$pristine" class="help-block text-danger">age is invalid</p>
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Citizenship</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
 						<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">citizenship is required</p>
 					</div>
 				</div>
+
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Address</label>
+				<label class="col-sm-1 control-label">Address</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
    					    <p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Postal Code</label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="postcal" ng-model="student.postcal" required>
    					    <p ng-show="registerForm.postcal.$invalid && !registerForm.postcal.$pristine" class="help-block text-danger">postcal code is required</p>
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">City</label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="city" ng-model="student.city" required>
    					    <p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
 					</div>
-					<label class="col-sm-1 control-label">Province</label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-1 control-label">Province</label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
    					    <p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Country</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="country" ng-model="student.country" required>
    					    <p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Telephone</label>
 					<div class="col-sm-2">
 						<input type="number" class="form-control" name="phone" ng-model="student.phone" required>
    					    <p ng-show="registerForm.phone.$invalid && !registerForm.phone.$pristine" class="help-block text-danger">phone is invalid</p>
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Fax</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="fax" ng-model="student.fax">
 					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Email</label>
 					<div class="col-sm-2">
 						<input type="email" class="form-control" name="email" ng-model="student.email" required>
    					    <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 					</div>
 				</div>
- 				<div class="form-group">
+
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Emergency Contact & Telephone</label>
 					<div class="col-sm-2">
 						<input type="number" class="form-control" name="emergency" ng-model="student.emergency" required>
 						<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is invalid</p>
 					</div>
-					<label class="col-sm-3 control-label">Is this a home country address</label>
-					<div class="col-sm-2">
+				</div>
+
+ 				<div class="form-group">
+ 					<div class="col-sm-4">
+					<label class="control-label">Is this a home country address</label>
 						<input type="checkbox" class="form-control" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
 					</div>
 				</div>
