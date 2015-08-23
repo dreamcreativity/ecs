@@ -137,6 +137,14 @@ resources.factory('Duration',['$resource',
     });
 }]);
 
+// resources.factory('Registration', ['$resource',
+//     function($resource){
+//         return $resource('/api/registration/:id', {},{
+//             create: {method: 'POST'},
+//             update : {method : 'PUT', params: {id:'@_id'}}
+//         });
+//     }]);
+
 
 
 

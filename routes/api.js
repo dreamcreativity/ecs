@@ -11,6 +11,7 @@ var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
+var registration = require('../controllers/registration');
 var events = require('../controllers/event');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
@@ -257,6 +258,11 @@ router.put('/events/:id',events.edit);
 
 //GET a course
 router.get('/events/:id', events.getEventbyId);
+
+
+//-------------------------Registration--------------------------------------
+router.post('/registration', registration.create);
+
 
 
 //-------------------------Email Sender--------------------------------------------
