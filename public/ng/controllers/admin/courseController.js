@@ -82,18 +82,12 @@ angular.module('AdminApp')
 	 }
 
 	 $scope.createDuration = function() {
-
 	 	Duration.create($scope.newDuration, function(result){
-	 		console.log(result);
 	 		$scope.course.durations.push(result.data);
-
 	 		$scope.newDuration.title = '';
 	 		$scope.newDuration.price = 0.0;
-
 	 		$('#myModal').modal('hide');
 	 	});
-
-	 	
 	 }
 
 	 $scope.update = function(isValid) {
@@ -109,10 +103,6 @@ angular.module('AdminApp')
 	 }
 
 	 $scope.changeBanner = function(){
-	
-
-
-	
 		var modalInstance = $modal.open({
 		  templateUrl: 'courseMedias.html',
 		  controller: 'ModalMediaInstanceCtrl',
@@ -127,6 +117,28 @@ angular.module('AdminApp')
 		modalInstance.result.then(function (selectedMedia) {
 		  //$scope.user.name = user.name;
 		  $scope.course.banner = selectedMedia;
+		  
+		  //$scope.selectedDuration = duration;
+		}, function () {
+		  	// done
+		});
+	 }
+
+	 $scope.changeCover = function(){
+		var modalInstance = $modal.open({
+		  templateUrl: 'courseMedias.html',
+		  controller: 'ModalMediaInstanceCtrl',
+		  windowClass: 'app-modal-lg',
+		  resolve: {
+		  	meidas: function(){
+		  		return $scope.meidas 
+		  	}
+		  }
+		});
+
+		modalInstance.result.then(function (selectedMedia) {
+		  //$scope.user.name = user.name;
+		  $scope.course.cover = selectedMedia;
 		  
 		  //$scope.selectedDuration = duration;
 		}, function () {

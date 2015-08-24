@@ -362,6 +362,23 @@
     color: #FFF0F0;
 }
 
+.cover-empty{
+    width: 350px;
+    height: 200px;
+    background-color: #E3E0E0;
+    border: 1px solid #DCD2D2;
+}
+
+.cover-empty label{
+    width: 100%;
+    height: 200px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 200px;
+    cursor: pointer;
+    color: #FFF0F0;
+}
+
 .app-modal-lg .modal-dialog {
   width: 900px;
 }
