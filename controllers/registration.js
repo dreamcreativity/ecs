@@ -19,3 +19,12 @@ exports.create = function (req,res){
 		});
 	});
 }
+
+exports.getById = function (id) {
+	Registration.find({_id:id}, function(err, result){
+		if(err) {
+			return null;
+		}
+	    else return result[0];
+	});
+}

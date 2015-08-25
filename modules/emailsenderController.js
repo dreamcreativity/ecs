@@ -4,8 +4,8 @@ var Email = require('../models/email');
 var transporter = nodemailer.createTransport({
 	service : 'gmail',
 	auth : {
-		user: 'stiron88@gmail.com',
-		pass: 'nibuzhidao123'
+		user: '',
+		pass: ''
 	}
 });
 

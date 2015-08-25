@@ -16,6 +16,7 @@ var events = require('../controllers/event');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 // var emailSender = require('../modules/emailsenderController');
+var PDF = require('../modules/pdfController.js')
 
 
 function IsAuthException(path, method){
@@ -28,8 +29,8 @@ function IsAuthException(path, method){
 		{	path : '/api/staffs/login', method: 'POST' },
 		{	path : '/api/agent/login', method: 'POST' },
 		{	path : '/api/staffs', method: 'POST' },
-		{	path : '/api/activity', method: 'GET' }
-
+		{	path : '/api/activity', method: 'GET' },
+		{	path : '/api/pdf', method: 'GET' }
 	];
 
 	for(i in list){
@@ -295,6 +296,9 @@ router.post('/registration', registration.create);
 //-------------------------Email Sender--------------------------------------------
 
 // router.post('/postEmail', emailSender.sendEmail);
+
+//-------------------------Generate PDF------------------------------------------
+router.get('/pdf/:id',PDF.createPDF);
 
 
 
