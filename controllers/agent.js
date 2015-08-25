@@ -1,9 +1,91 @@
  var Agent = require('../models/agent');
  var mongoose = require('mongoose');
+ var Token = require('../models/token');
+
+ exports.login = function(req,res){
+ 	Agent.findOne({username : req.body.username, password: req.body.password}, function(err, user){
+ 		if(err){
+ 			res.json(
+ 			{
+ 				status: 'fail',
+ 				messages: err,
+ 				data: null
+ 			});
+ 		}
+ 		else {
+ 			if(user.isActive == false) {
+ 				var newToken = new Token();
+ 				newToken.user = user._id;
+ 				newToken
+ 				newToken.type = 'Agent';
+ 				newToken.save();
+
+ 				res.json({
+ 					status: 'resetpassword',
+ 					messages : 'reset your password when you first login',
+ 					data : user,
+ 					token: newToken.id
+ 				});
+ 			}
+ 			else {
+ 				var newToken = new Token();
+ 				newToken.user = user._id;
+ 				newToken.type = 'Agent';
+ 				newToken.save();
+
+ 				res.json({
+ 					status: 'ok',
+ 					messages: 'successed',
+ 					data : {
+ 						id: user.id,
+ 						username : user.username,
+ 						email: user.email,
+ 						token: newToken.id
+ 					}
+ 				});
+ 			}
+
+ 		}
+ 	});
+ }
+
+ exports.resetpassword = function(req,res) {
+ 	var pwd = req.body.password;
+ 	Token.findOne({_id : req.body.token}, function(err, result){
+ 		if(err){
+ 			res.json({
+ 				status: 'fail',
+ 				messages: err,
+ 				data: null
+ 			})
+ 		}
+ 		else {
+ 			result.password =  pwd;
+ 			Agent.update({_id:result._id}, result, function(err, result2){
+ 				if(err){
+ 					res.json({
+ 						status: 'fail',
+ 						messages: err,
+ 						data: null
+ 					})
+ 				}
+ 				else {
+ 					res.json({
+ 						status: 'ok',
+ 						messages: 'reset successed',			
+ 					});
+ 				}
+ 			});
+ 		}
+ 	});
+ }
+
+
 
 //POST: create new Agent
 exports.create = function(req,res){
 	var newAgent = new Agent(req.body);
+	newAgent.password = "temp";
 	newAgent.save(function(err ,result){
 		if(err){
 			res.json({

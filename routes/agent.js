@@ -3,6 +3,10 @@ var router = express.Router();
 var template = require('../modules/templateController');
 var staff =require('../controllers/staff');
 
+var auth = require('../controllers/auth');
+
+
+
 /* GET home page. */
 
 
@@ -30,9 +34,20 @@ router.get('/register', function(req, res) {
 
 
 router.get('/login', function(req, res) {
-	template(req,res,'admin_bg_paint','admin/login.html',
+	template(req,res,'agent_bg_paint','agent/login.html',
 			{ 
 				title: 'Login',
+				category: '',
+				cur_tap: 'Login',
+				cur_selected : ''
+			}
+		);
+});
+
+router.get('/resetpassword', function(req, res) {
+	template(req,res,'agent_bg_paint','agent/resetpassword.html',
+			{ 
+				title: 'Reset password',
 				category: '',
 				cur_tap: 'Login',
 				cur_selected : ''

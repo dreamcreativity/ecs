@@ -28,7 +28,7 @@ function IsAuthException(path, method){
 		{	path : '/api/staffs/login', method: 'POST' },
 		{	path : '/api/agent/login', method: 'POST' },
 		{	path : '/api/staffs', method: 'POST' },
-		{	path : '/api/activity', method: 'GET' },
+		{	path : '/api/activity', method: 'GET' }
 
 	];
 
@@ -61,6 +61,7 @@ function IsInActivedUserAuthException(path, method){
 
 //-------------------------  Auth Middleware ----------------------------------
 router.use(function(req,res,next){
+	debugger
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
 
@@ -179,7 +180,13 @@ router.put('/agent/:id', agent.edit);
 router.post('/agent', agent.create);
 
 //GET agents by region
-router.get('/agent/region/:name', agent.getAgentsbyRegion)
+router.get('/agent/region/:name', agent.getAgentsbyRegion);
+
+//POST agent login
+router.post('/agent/login', agent.login);
+
+//POST agent reset password
+router.post('/agent/resetpassword', agent.resetpassword);
 
 //-----------------------Materials ----------------------------------
 
