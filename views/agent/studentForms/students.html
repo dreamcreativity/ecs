@@ -1,0 +1,47 @@
+<div class="row" ng-controller='StudentRegister'>
+
+<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Student Registration Forms<small class="text-white"></small></h4>
+				</div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<tr>
+								<th class="hidden-xs">Firstname</th>
+								<th class="hidden-xs">Lastname</th>
+								<th class="hidden-xs">Gender</th>
+							</tr>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in register.data | filter:query">
+							<td class="hidden-xs">{{item.firstname}}</td>
+								<td class="hidden-xs"><a href="/admin/studentForms/detail/{{item._id}}">{{item.lastname}}</a></td>
+								<td class="hidden-xs">{{item.gender}}</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>					 
+		</div>
+		
+	</div>
+
+</div>	 			
+
+
+
+
+
+
+
+
+
+

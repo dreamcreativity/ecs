@@ -67,6 +67,17 @@ router.get('/material', function(req, res) {
 		);
 });
 
+router.get('/students', function(req, res) {
+	template(req,res,'agent_main','agent/studentForms/students.html',
+			{ 
+				title: 'Student',
+				category: 'Student',
+				cur_tap: 'Registeration',
+				cur_selected : ''
+			}
+		);
+});
+
 
 
 
