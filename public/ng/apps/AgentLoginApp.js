@@ -1,4 +1,6 @@
-angular.module('AgentLoginApp', ['ngRoute'])
+'use strict';
+
+angular.module('AgentLoginApp', ['ngRoute','esc.auth'])
 
 .controller('LoginController',function LoginController($scope,$http,$window,$location){
 	//Define login function 
@@ -7,7 +9,7 @@ angular.module('AgentLoginApp', ['ngRoute'])
 	 	$("#messageReturn").fadeIn('slow');
 
 
-		$http.post('http://localhost:3000/api/agent/login',$scope.agent)
+		$http.post('/api/agent/login',$scope.agent)
 		.success(function(data,status,headers,config){
 			if(data.status === "resetpassword") {
 				sessionStorage.token = data.token;
@@ -44,11 +46,14 @@ angular.module('AgentLoginApp', ['ngRoute'])
 	$scope.resetpassword =function(){
 		var token = sessionStorage.token;
 		$scope.agent.token = token;
-		$http.post('http://localhost:3000/api/agent/resetpassword', $scope.agent)
+		$http.post('/api/agent/resetpassword', $scope.agent)
 		.success(function(data){
 			if(data.status === "ok"){
 				$scope.returnMessage = "success to reset password";
 	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 		    setInterval(function(){
+  					 $window.location='/agent/login';
+				}, 2000);
 			}
 		})
 

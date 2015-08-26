@@ -12,11 +12,10 @@
  				data: null
  			});
  		}
- 		else {
+ 		if(user !=null) {
  			if(user.isActive == false) {
  				var newToken = new Token();
  				newToken.user = user._id;
- 				newToken
  				newToken.type = 'Agent';
  				newToken.save();
 
@@ -31,6 +30,7 @@
  				var newToken = new Token();
  				newToken.user = user._id;
  				newToken.type = 'Agent';
+ 				newToken.isActived = true;
  				newToken.save();
 
  				res.json({
@@ -44,7 +44,14 @@
  					}
  				});
  			}
+ 		}
 
+ 		else {
+ 			res.json({
+				status: 'fail',
+				messages: "user is not existing or password is incorrect",
+				data: null
+			});
  		}
  	});
  }
@@ -60,8 +67,7 @@
  			})
  		}
  		else {
- 			result.password =  pwd;
- 			Agent.update({_id:result._id}, result, function(err, result2){
+ 			Agent.findOne({_id:result.user}, function(err, result2){
  				if(err){
  					res.json({
  						status: 'fail',
@@ -70,9 +76,22 @@
  					})
  				}
  				else {
- 					res.json({
- 						status: 'ok',
- 						messages: 'reset successed',			
+ 					result2.password = pwd;
+ 					result2.isActive = true;
+ 					Agent.update({_id: result2._id}, result2, function(err, result3){
+ 						if(err) {
+ 							res.json({
+ 								status: 'fail',
+ 								messages: err,
+ 								data: null
+ 							});
+ 						}
+ 						else {
+ 							res.json({
+ 								status: 'ok',
+ 								messages: 'reset successed',			
+ 							});
+ 						}
  					});
  				}
  			});

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('loginApp', ['ngRoute'])
+angular.module('loginApp', ['ngRoute','esc.auth'])
 
 
 .controller('LoginController',function LoginController($scope,$http,$window,$location){
@@ -45,29 +45,29 @@ angular.module('loginApp', ['ngRoute'])
 
 
 
-.factory('authInterceptor', function ($rootScope, $q, $window) {
-  return {
-    request: function (config) {
-      config.headers = config.headers || {};
-      if ($window.sessionStorage.token) {
-        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-        config.headers.token = $window.sessionStorage.token;
-      }
-      return config;
-    },
-    response: function (response) {
-      if (response.status === 401) {
-        // handle the case where the user is not authenticated
-      }
-      if (response.status === 403) {
-        console.log('please log in ');
-      }
-      return response || $q.when(response);
-    }
-  };
-})
+// .factory('authInterceptor', function ($rootScope, $q, $window) {
+//   return {
+//     request: function (config) {
+//       config.headers = config.headers || {};
+//       if ($window.sessionStorage.token) {
+//         config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+//         config.headers.token = $window.sessionStorage.token;
+//       }
+//       return config;
+//     },
+//     response: function (response) {
+//       if (response.status === 401) {
+//         // handle the case where the user is not authenticated
+//       }
+//       if (response.status === 403) {
+//         console.log('please log in ');
+//       }
+//       return response || $q.when(response);
+//     }
+//   };
+// })
 
-.config(function ($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptor');
-});
+// .config(function ($httpProvider) {
+//   $httpProvider.interceptors.push('authInterceptor');
+// });
 

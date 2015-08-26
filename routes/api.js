@@ -62,7 +62,6 @@ function IsInActivedUserAuthException(path, method){
 
 //-------------------------  Auth Middleware ----------------------------------
 router.use(function(req,res,next){
-	debugger
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
 
