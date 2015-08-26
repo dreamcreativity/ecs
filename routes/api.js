@@ -297,7 +297,7 @@ router.post('/registration', registration.create);
 // router.post('/postEmail', emailSender.sendEmail);
 
 //-------------------------Generate PDF------------------------------------------
-router.get('/pdf/:id',PDF.createPDF);
+router.get('/pdf',PDF.createPDF);
 
 
 
