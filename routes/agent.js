@@ -78,6 +78,18 @@ router.get('/students', function(req, res) {
 		);
 });
 
+router.get('/students/detail/:id', function(req, res) {
+	template(req,res,'agent_main','agent/studentForms/detail.html',
+			{ 
+				title: 'Student',
+				category: 'Student',
+				cur_tap: 'Registeration',
+				cur_selected : '',
+				url_params : req.params
+			}
+		);
+});
+
 
 
 

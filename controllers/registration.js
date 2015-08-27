@@ -20,11 +20,42 @@ exports.create = function (req,res){
 	});
 }
 
-exports.getById = function (id) {
+exports.getById = function (req,res) {
+	var id = req.params.id;
 	Registration.find({_id:id}, function(err, result){
 		if(err) {
-			return null;
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
 		}
-	    else return result[0];
+	    else {
+	    	res.json({
+			status: 'ok',
+			messages: 'successed',
+			data: result[0]
+			});
+	    }
+	});
+}
+
+exports.getAllRegistrations = function (req,res){
+	Registration.find({},function(err,results){
+		if(err){
+			res.json(
+			{
+				status: 'fail',
+				messages: err,
+				data: null
+			});			
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: results
+			});	
+		}	
 	});
 }
