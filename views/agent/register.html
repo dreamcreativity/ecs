@@ -147,11 +147,11 @@
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.phone.$invalid && !registerForm.phone.$pristine}"}>
+				<div class="form-group" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
 					<label class="col-sm-1 control-label">Telephone</label>
 					<div class="col-sm-2">
-						<input type="number" class="form-control" name="phone" ng-model="student.phone" required>
-   					    <p ng-show="registerForm.phone.$invalid && !registerForm.phone.$pristine" class="help-block text-danger">phone is invalid</p>
+						<input type="text" class="form-control" name="telephone" ng-model="student.telephone" required>
+   					    <p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is invalid</p>
 					</div>
 				</div>
 
@@ -184,34 +184,40 @@
 						<input type="checkbox" class="form-control" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
 					</div>
 				</div>
-
 			</div>
 
 
 <!-- Step 2 Program registration -->
-			<!-- <div class="step-pane" id="step2">
+		 <div class="step-pane" id="step2">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">English Level : </label>
 					<div class="col-sm-3">
-						<select name="gender" ng-model="student.englishLevel" required>
+						<select name="englishlevel" ng-model="student.englishLevel">
      						 <option value="">--</option>
-     						 <option value="male">Beginner</option> 
-      						 <option value="female">Low Intermediate</option>
-      						 <option value="female">High Intermediate</option>
-      						 <option value="female">Advanced</option>
+     						 <option value="beginner">Beginner</option> 
+      						 <option value="low_Intermediate">Low Intermediate</option>
+      						 <option value="high_Intermediate">High Intermediate</option>
+      						 <option value="advance">Advanced</option>
    					    </select>
-   					    <p ng-show="registerForm.englishLevel.$invalid && !registerForm.englishLevel.$pristine" class="help-block text-danger">required</p>
 					</div>
-					<label class="col-sm-3 control-label">For Direct Entry(UCTP or Focus Program)</label>
-					<label class="col-sm-1 control-label">TOEFL : </label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-2 control-label">For Direct Entry(UCTP or Focus Program)</label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-2 control-label">TOEFL : </label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="toefl" ng-model="student.toefl" >
 					</div>
-					<label class="col-sm-1 control-label">IELTS : </label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">IELTS : </label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="ielts" ng-model="student.ielts">
 					</div>
-
 				</div>
 
 				<div class="form-group">
@@ -251,7 +257,7 @@
 					</div>
 					<label class="col-sm-1 control-label"># of week</label>
 					<div class="col-sm-1">
-					<select name="gender" ng-model="student.examPreparationOfWeek">
+					<select name="examPreparationOfWeek" ng-model="student.examPreparationOfWeek">
      						 <option value="">--</option>
      						 <option value="4">4</option> 
       						 <option value="8">8</option>
@@ -279,7 +285,7 @@
 					</div>
 					<label class="col-sm-1 control-label"># of week</label>
 					<div class="col-sm-1">
-					<select name="gender" ng-model="student.focusProgramOfWeek">
+					<select name="focusProgramOfWeek" ng-model="student.focusProgramOfWeek">
      						 <option value="">--</option>
      						 <option value="4">4</option> 
       						 <option value="8">8</option>
@@ -304,7 +310,7 @@
 					</div>
 					<label class="col-sm-1 control-label"># of week</label>
 					<div class="col-sm-1">
-					<select name="gender" ng-model="student.uctpOfweek">
+					<select name="UCTPOfweek" ng-model="student.UCTPOfweek">
      						 <option value="">--</option>
      						 <option value="4">4</option> 
       						 <option value="8">8</option>
@@ -315,41 +321,47 @@
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Health Insurance</label>
-					<label class="col-sm-1 control-label">From Date : </label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-2 control-label">From Date : </label>
 					<div class="col-sm-2">
 					<input type="date" class="form-control" name="healthInsurance_startingDate" ng-model="student.healthInsurance_startingDate">
 					</div>
-					<label class="col-sm-1 control-label">To Date : </label>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-2 control-label">To Date : </label>
 					<div class="col-sm-2">
 					<input type="date" class="form-control" name="healthInsurance_endDate" ng-model="student.healthInsurance_endDate">
 					</div>
-				</div>
-			</div> -->
+				</div> 
+			</div> 
 
 <!-- Step 3 Program registration accommodation -->
-<!-- <div class="step-pane" id="step1">
+ <div class="step-pane" id="step3">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Are you in home stay</label>
 		<div class="col-sm-1">
-			<input type="checkbox" class="form-control" name="ishomestay" ng-model="student.ishomestay">
+			<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{student.ishomestay}} ng-model="student.ishomestay">
 		</div>
 	</div>
-
 	<div ng-show=student.ishomestay>
 
-		<div class="form-group">
+	 	<div class="form-group">
 			<label class="col-sm-2 control-label">Accommodation :</label>
 			<div class="col-sm-1">
-				<select name="accommodation_way" ng-model="student.accommodation_way" required>
+				<select name="accommodation_way" ng-model="student.accommodation_way">
 					<option value="">--</option>
 					<option value="Homestay">Homestay</option> 
 					<option value="Residence">Residence(May - Aug only)</option>
 				</select>
 			</div>
-
+		</div>
+        <div class="form-group">
 			<label class="col-sm-2 control-label">Homestay Option</label>
 			<div class="col-sm-1">
-				<select name="homestay_option" ng-model="student.homestay_option" required>
+				<select name="homestay_option" ng-model="student.homestay_option">
 					<option value="">--</option>
 					<option value="fullboard">Full Board(3 meals per day)</option> 
 					<option value="halfboard">Half Board(2 meals per day)</option>
@@ -358,29 +370,29 @@
 			</div>
 		</div>
 
-		<div class="form-group">
+	    <div class="form-group">
 			<label class="col-sm-2 control-label">Accommodation Date : </label>
 		</div>
 
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Starting Date : (DD/MM/YYYY)</label>
 			<div class="col-sm-2">
-				<input type="date" class="form-control" name="accommodation_startingDate" ng-model="student.accommodation_startingTime" required>
+				<input type="date" class="form-control" name="accommodation_startingDate" ng-model="student.accommodation_startingTime" >
 			</div>
 			<label class="col-sm-2 control-label">Finishing Date : </label>
 			<div class="col-sm-2">
-				<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_finishingDate" required>
+				<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_finishingDate" >
 			</div>
 			<label class="col-sm-1 control-label"># of week</label>
 			<div class="col-sm-1">
-				<input type="number" class="form-control" name="accommodationOfWeeks" ng-model="student.accommodationOfWeeks" required>
+				<input type="number" class="form-control" name="accommodationOfWeeks" ng-model="student.accommodationOfWeeks" >
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Departure date from Toronto: </label>
 			<div class="col-sm-2">
-				<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_departureDate" required>
+				<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_departureDate" >
 			</div>
 		</div>
 
@@ -388,19 +400,19 @@
 			<label class="col-sm-2 control-label">Flight Information : </label>
 		</div>
 
-		<div class="form-group">
+	 	<div class="form-group">
 			<label class="col-sm-2 control-label">Arrival in Toronto</label>
 			<label class="col-sm-1 control-label">Date&Time</label>
 			<div class="col-sm-2">
-				<input type="date" class="form-control" name="flight_arrivalDateTime" ng-model="student.flight_arrivalDateTime" required>
+				<input type="date" class="form-control" name="flight_arrivalDateTime" ng-model="student.flight_arrivalDateTime">
 			</div>
 			<label class="col-sm-1 control-label">Airline</label>
 			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_airline_arr" ng-model="student.flight_airline_arr" required>
+				<input type="text" class="form-control" name="flight_airline_arr" ng-model="student.flight_airline_arr">
 			</div>
 			<label class="col-sm-1 control-label">Flight#</label>
 			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_No_arr" ng-model="student.flight_No_arr" required>
+				<input type="text" class="form-control" name="flight_No_arr" ng-model="student.flight_No_arr">
 			</div>
 			<label class="col-sm-2 control-label">Airport Pick up Request</label>
 			<div class="col-sm-1">
@@ -412,15 +424,15 @@
 			<label class="col-sm-2 control-label">Departure from Toronto</label>
 			<label class="col-sm-1 control-label">Date&Time</label>
 			<div class="col-sm-2">
-				<input type="date" class="form-control" name="flight_departureDateTime" ng-model="student.flight_departureDateTime" required>
+				<input type="date" class="form-control" name="flight_departureDateTime" ng-model="student.flight_departureDateTime" >
 			</div>
 			<label class="col-sm-1 control-label">Airline</label>
 			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_airline_dep" ng-model="student.flight_airline_dep" required>
+				<input type="text" class="form-control" name="flight_airline_dep" ng-model="student.flight_airline_dep" >
 			</div>
 			<label class="col-sm-1 control-label">Flight#</label>
 			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_No_dep" ng-model="student.flight_No_dep" required>
+				<input type="text" class="form-control" name="flight_No_dep" ng-model="student.flight_No_dep" >
 			</div>
 			<label class="col-sm-2 control-label">Airport Drop off Request</label>
 			<div class="col-sm-1">
@@ -499,10 +511,8 @@
 				<input type="checkbox" class="form-control" name="IsPrivate" ng-model="student.IsPrivate">
 			</div>
 		</div>
-	</div>
-
-</div> -->
-
+	</div> 
+ </div>
 		</div>
 
 
@@ -511,19 +521,33 @@
 				<div class="col-sm-offset-3 col-sm-9">
 					<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
 					<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button> 
-					<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button> -->
-					<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="registerForm.$invalid">
+					<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
+					<!-- add $("#last_submit").trigger('click') in wizard.js-->
+					<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
 
+<script type="text/javascript">
+// 	$( document ).ready(function() {
+//     	$('#ishomestay').change(function() {
+//         if($(this).is(":checked")) {
+//         	debugger
+//            // $('[name ="flight_No_arr"]').prop('required',true)
+//         }
+//     });
+// });
+</script>
+
+
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 
 
 <!-- PAGE LEVEL PLUGINS JS -->
-<script src="/assets/js/plugins/fuelux/wizard.min.js"></script>
+<!-- <script src="/assets/js/plugins/fuelux/wizard.min.js"></script> -->
+<script src="/assets/js/plugins/fuelux/wizard.js"></script>
 
 

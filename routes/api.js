@@ -34,6 +34,7 @@ function IsAuthException(path, method){
 		{	path : '/api/registration', method: 'GET' },
 		{	path : '/api/registration/55df22da770432c82b15f213', method: 'GET' }, // Delete late
 		{	path : '/api/registration', method: 'POST' }
+
 	];
 
 	for(i in list){
