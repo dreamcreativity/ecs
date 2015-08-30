@@ -12,16 +12,13 @@ angular.module('AgentLoginApp', ['ngRoute','esc.auth'])
 		$http.post('/api/agent/login',$scope.agent)
 		.success(function(data,status,headers,config){
 			if(data.status === "resetpassword") {
-				sessionStorage.token = data.token;
+				sessionStorage.token = data.data.token;
 				$window.location = '/agent/resetpassword';
 			}
 
 			else if(data.status === "ok"){
-				console.log(data.data);
-				sessionStorage.token = data.token;
+				sessionStorage.token = data.data.token;
 				console.log(sessionStorage.token);
-
-
 				$window.location='/agent';
 			}
 			else {
