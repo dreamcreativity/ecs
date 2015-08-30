@@ -1,11 +1,13 @@
 var Course = require('../models/course');
 var Duration = require('../models/duration');
+var CourseLink = require('../models/courseLink');
 var mongoose = require('mongoose');
 var async = require("async");
 
 
 //POST: create new Course
 exports.create = function(req,res){
+	req.body.lastModify = Date.now();
 	var newCourse = new Course(req.body);
 	newCourse.save(function(err ,result){
 		if(err){
@@ -28,7 +30,6 @@ exports.create = function(req,res){
 
 //GET: all courses
 exports.getAllCourses = function (req,res){
-	console.log('fdsafdsa fdsafdsa fdsaf');
 	Course.find({},function(err,results){
 		if(err){
 			res.json(
@@ -50,11 +51,8 @@ exports.getAllCourses = function (req,res){
 
 //GET: course by Id
 exports.getCoursebyId = function(req,res){
-	console.log('getCoursebyId');
 	var id = req.params.id;
-	Course.find({_id:id}).populate('durations').populate('banner').populate('cover').exec(function(err, result){
-
-		
+	Course.find({_id:id}).populate('durations').populate('links').populate('banner').populate('cover').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -63,10 +61,6 @@ exports.getCoursebyId = function(req,res){
 			});
 		}
 		else if(result.length == 1){
-
-			console.log("--------------------");
-			console.log(result[0]);
-
 			res.json({
 				status: 'ok',
 				messages: 'successed',
@@ -83,10 +77,10 @@ exports.edit = function(req,res){
 	//console.log(req.body);
 
 	var durationIds = [];
+	var linkIds = [];
 	async.series([
 		// save each duration object in the list
 		function(next){
-
 			async.each(req.body.durations, function( val, callback) {
 				Duration.update({_id:val._id}, val, function(err,result){
 					callback();
@@ -96,7 +90,18 @@ exports.edit = function(req,res){
 
 				});
 		 },
-		// convert duration object list to object_id list
+		 // save each course link object in the list
+		function(next){
+			async.each(req.body.links, function( val, callback) {
+				CourseLink.update({_id:val._id}, val, function(err,result){
+					callback();
+					});
+				}, function(err){
+					next();
+
+				});
+		 },
+		// convert ref ids
 	    function(next){
 	    	console.log(req.body.banner );
 	    	async.series([
@@ -129,11 +134,22 @@ exports.edit = function(req,res){
 							converIdNext();
 						});
 	    			},
+	    			//convert course link object list to object_id list
+	    			function(converIdNext){
+				    	async.each(req.body.links, function( val, callback) {
+							linkIds.push(val._id);
+							callback();
+						}, function(err){
+							req.body.links = linkIds;
+							console.log('----- check body ----');
+							console.log(req.body.links);
+							converIdNext();
+						});
+	    			},
 	    		],
 	    		function(){
 	    			next();
 	    		}
-
 	    	);
 
 
@@ -142,6 +158,14 @@ exports.edit = function(req,res){
 	    function(next){
 	    	//Duration.where('course', req.body._id).nor(durationIds)
 	    	Duration.remove({course:id, _id: { $nin: durationIds }}, function(err){
+	    		next();
+	    	})
+	    	
+	    },
+	    // clear non-used course link objects
+	    function(next){
+	    	//Duration.where('course', req.body._id).nor(durationIds)
+	    	CourseLink.remove({course:id, _id: { $nin: linkIds }}, function(err){
 	    		next();
 	    	})
 	    	
@@ -155,9 +179,7 @@ exports.edit = function(req,res){
 					messages: err,
 					data: null
 				});
-			}
-
-		else {
+			}else{
 
 				console.log('---------- update course reuslt -----------');
 				console.log(result[0]);
@@ -212,4 +234,60 @@ exports.delete = function(req,res){
 		}
 	});
 }
+
+
+//POST: create new Course link
+exports.createCourseLink = function(req,res){
+	var newCourseLink = new CourseLink(req.body);
+	newCourseLink.save(function(err ,result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data:null
+			});
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});	
+		}
+	});
+}
+
+
+//PUT: 
+exports.editCourseLink = function(req,res){
+	var id = req.params.id;
+	req.body.lastModify = Date.now();
+	//console.log(req.body);
+
+	res.json({
+		status: 'fail',
+		messages: "multipulte result",
+		data: null
+	});
+	
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

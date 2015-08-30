@@ -15,11 +15,9 @@ exports.IsTokenValid = function(AccessToken, callBack){
 			console.log('--------  IsTokenValid()  Error ---------');
 			console.log(AccessToken);
 			console.log(err);
-
 			callBack(false);
 		}else{
 			if(result.length != 1)
-				//return false;
 				callBack(false);
 			else{
 				var tokenObj = result[0];
@@ -36,7 +34,6 @@ exports.IsTokenValidForInActivedUser = function(AccessToken, callBack){
 			console.log('--------  IsTokenValidForInActivedUser()  Error ---------');
 			console.log(AccessToken);
 			console.log(err);
-
 			callBack(false);
 		}else{
 			if(result.length != 1)

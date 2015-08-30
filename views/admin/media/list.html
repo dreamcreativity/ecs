@@ -18,7 +18,7 @@
 				<div class="portlet-body row media-filters">
 					<div class="col-md-4 col-lg-3">
 						<label>Target: </label>
-						<select>
+						<select ng-model="target">
 							<option value="" >All</option>
 							<% for(var i=0; i<constants.MediaTarget.length; i++) {%>
 							<option value="<%- constants.MediaTarget[i] %>" ><%- constants.MediaTarget[i] %></option>
@@ -28,7 +28,7 @@
 
 					<div class="col-md-4 col-lg-3">
 						<label>Type: </label>
-						<select>
+						<select ng-model="type">
 							<option value="" >All</option>
 							<% for(var i=0; i<constants.MediaTypes.length; i++) {%>
 							<option value="<%- constants.MediaTypes[i] %>" ><%- constants.MediaTypes[i] %></option>
@@ -41,7 +41,7 @@
 						<select>
 							<option value="Unitiled" >Unitiled</option>
 							<option value="Deleted" >Deleted</option>
-							<option value="Gallery">Gallery</option>
+					
 						</select>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="m in medias.data | orderBy:createDate:reverse">
+							<tr ng-repeat="m in medias.data | filter: { target: target, type: type } | orderBy:createDate:reverse">
 								<td class="hidden-xs">
 
 									<video width="300" src="{{m.path}}" controls ng-show="m.type=='Video'">

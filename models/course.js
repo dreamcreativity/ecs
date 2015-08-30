@@ -6,6 +6,7 @@ var CourseSchema = mongoose.model('Course', new mongoose.Schema({
 	cover: {type:  mongoose.Schema.ObjectId, ref:'Media', default:null},
 	banner: {type:  mongoose.Schema.ObjectId, ref:'Media', default: null},
 	durations : [{type : mongoose.Schema.ObjectId, ref:'Duration'}],
+	links : [{type : mongoose.Schema.ObjectId, ref:'CourseLink'}],
 	lastModify : {type : Date},
 	isActive : {type : Boolean, default : true }
 }));

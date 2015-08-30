@@ -364,3 +364,34 @@ exports.delete = function(req,res){
 
 }
 
+
+
+exports.getCategoryTargetMedia = function(req,res){
+	var target = req.params.target;
+	var type = req.params.type;
+
+	console.log(req.params);
+	
+	Media.find({target:target, type:type},function(err, result){
+		if(err){
+			if(err) {
+				res.json({
+					status: 'fail',
+					messages: err,
+					data: null
+				});
+			}
+		}else{
+			console.log(result);
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});	
+		}
+	});
+
+}
+
+
+

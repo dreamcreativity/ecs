@@ -12,6 +12,7 @@ module.exports = {
 		'Slider',
 		'Gallery',
 		'Material',
+		'Course',
 		'Student',
 		'Staff',
 		'Activity',

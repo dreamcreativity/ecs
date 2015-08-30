@@ -33,10 +33,10 @@ exports.edit = function(req,res){
 	//console.log(req.body);
 
 	res.json({
-						status: 'fail',
-						messages: "multipulte result",
-						data: null
-					});
+		status: 'fail',
+		messages: "multipulte result",
+		data: null
+	});
 	
 
 } 

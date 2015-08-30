@@ -43,6 +43,12 @@ resources.factory('Medias',['$resource',
         get : { method : 'GET', params: {id:'@_id'}},
         update : { method : 'PUT', params: {id:'@_id'}},
         delete : { method : 'DELETE', params: {id:'@_id'}},
+        getCategoryTargetMedia : 
+        {
+            url: '/api/media/target/:target/type/:type',
+            method : 'GET', 
+            params: {target:'@_target', type:'@_type'}
+        },
     });
 }]);
 
@@ -137,6 +143,16 @@ resources.factory('Duration',['$resource',
         update : { method : 'PUT', params: {id:'@_id'}}
     });
 }]);
+
+resources.factory('CourseLink',['$resource',
+    function($resource){
+        return $resource('/api/courselink/:id', {}, {
+        //query:{ method: 'GET'},
+        create:{method: 'POST'},
+        //update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}]);
+
 
 resources.factory('Registrations',['$resource',
     function($resource){

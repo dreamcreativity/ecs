@@ -8,7 +8,7 @@ angular.module('AdminApp')
 	$scope.allTarget = 'Slider';
 
 	$scope.startAll = function(){
-		console.log('hello');
+
 		for (var x in $scope.uploadList) {
 
 			var file = $scope.uploadList[x];
@@ -253,11 +253,14 @@ angular.module('AdminApp')
 
 			//var obj = $("#dragandrophandler");
 
+			console.log(element);
 			element.on('dragenter', function (e) 
 			{
 			    e.stopPropagation();
 			    e.preventDefault();
+			    console.log('enter');
 			    $(this).css('border', '2px solid #0B85A1');
+			    $(this).css('background-color', '#ccc');
 			});
 			element.on('dragover', function (e) 
 			{
@@ -267,12 +270,13 @@ angular.module('AdminApp')
 
 			element.on('drop', function (e) 
 			{
-			 
-				$(this).css('border', '2px dotted #0B85A1');
-				e.preventDefault();
+			 console.log(e);
+				// $(this).css('border', '2px dotted #0B85A1');
+				// e.preventDefault();
 			
-				//var files = e.originalEvent.dataTransfer.files;
-				var files = e.dataTransfer.files;
+				var files = e.originalEvent.dataTransfer.files;
+	
+				//var files = e.dataTransfer.files;
 
 				//We need to send dropped files to Server
 				//handleFileUpload(files,obj);
@@ -319,7 +323,8 @@ angular.module('AdminApp')
 
 	//var token = sessionStorage.token;
 	$scope.medias = getAllMedias();
-
+	$scope.target = ""; 
+	$scope.type = ""; 
 	$scope.showList = function (){
 		//console.log($scope.medias);
 		console.log('hello');

@@ -13,7 +13,7 @@
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Course Name</label>
-									<div class="col-sm-9">
+									<div class="col-sm-6">
 										<input type="text" class="form-control" name="title" ng-model="course.title" required>
 										<p ng-show="createForm.rate.$invalid && !createForm.rate.$pristine" class="help-block text-danger">Title is required</p>	
 									</div>
@@ -22,7 +22,7 @@
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Last Modified</label>
-									<div class="col-sm-9">
+									<div class="col-sm-6">
 										
 										<label class="label label-success">{{ course.lastModify  | date:'MMMM d, yyyy / HH:mm '}}</label>
 									</div>
@@ -30,43 +30,42 @@
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Cover Image</label>
-									<div class="col-sm-9">
+									<div class="col-sm-6">
 										<div ng-click="changeCover()" ng-if="course.cover == null" class="cover-empty"><label>200 X 100</label></div>
 
-										<img  ng-click="changeCover()"  ng-if="course.cover != null" src="{{course.cover.thumbnail}}">
+										<img class="preview-media"  ng-click="changeCover()"  ng-if="course.cover != null" src="{{course.cover.thumbnail}}">
 									</div>
 								</div>
-								
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Description</label>
-									<div class="col-sm-9">
+									<div class="col-sm-6">
 										<textarea class="form-control" id="maxL-3" rows="5x" name="description" ng-model="course.description" placeholder="This textarea has a limit of 225 chars."></textarea>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Banner</label>
-									<div class="col-sm-9">
+									<div class="col-sm-6" >
 										<div ng-click="changeBanner()" ng-if="course.banner == null" class="banner-empty"><label>200 X 100</label></div>
 
-										<img  ng-click="changeBanner()"  ng-if="course.banner != null" src="{{course.banner.thumbnail}}">
+										<img class="preview-media"   ng-click="changeBanner()"  ng-if="course.banner != null" src="{{course.banner.thumbnail}}">
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Durations</label>
-									<div class="col-sm-9">
+									<div class="col-sm-6">
 										<div style="margin-bottom:15px;">
-											<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">New Duration</button>
-											<!-- <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="New Duration" /> -->
+											<button type="button" data-toggle="modal" data-target="#addNewDuration" class="btn btn-primary">New Duration</button>
 										</div>
-										
-									
-
-										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-6">
-											<li data-toggle="modal" ng-repeat="duration in course.durations" class="list-group-item">
+										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
+											<li data-toggle="modal" ng-repeat="duration in course.durations | orderBy:'order' " class="list-group-item">
 												{{ duration.title}}
-											
+
+												<button type="button" ng-click="moveListItemDown(course.durations, $index)" class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-down"></i></button>
+												<button type="button" ng-click="moveListItemUp(course.durations, $index)"  class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-up"></i></button>
+
 												<button type="button" ng-click="removeDuration(duration)" class="btn btn-danger btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-trash-o icon-only"></i></button>
 												<button type="button" ng-click="editDuration(duration)"  class="btn btn-primary btn-xs btn-circle duration-list-operate-icon"><i class="glyphicon glyphicon-cog icon-only"></i></button>
 												<span class="badge badge-success">$ {{ duration.price | number:2 }}</span>
@@ -77,12 +76,36 @@
 								</div>
 
 								<div class="form-group">
+									<label class="col-sm-3 control-label">Links</label>
+									<div class="col-sm-6" >
+										
+										<div style="margin-bottom:15px;">
+											<button type="button" data-toggle="modal" data-target="#addNewLink" class="btn btn-primary">Add New Link</button>
+										</div>
+										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
+											<li data-toggle="modal" ng-repeat="link in course.links | orderBy:'order' " class="list-group-item">
+												<a href="{{link.href}}" target="_blank">{{ link.title}}</a>
+
+
+												<button type="button" ng-click="moveListItemDown(course.links, $index)" class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-down"></i></button>
+												<button type="button" ng-click="moveListItemUp(course.links, $index)"  class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-up"></i></button>
+
+
+												<button type="button" ng-click="removeLink(link)" class="btn btn-danger btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-trash-o icon-only"></i></button>
+												<button type="button" ng-click="editLink(link)"  class="btn btn-primary btn-xs btn-circle duration-list-operate-icon"><i class="glyphicon glyphicon-cog icon-only"></i></button>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+
+								<div class="form-group">
 									<label class="col-sm-3 control-label"></label>
-									<div class="col-sm-9">
+									<div class="col-sm-6">
 										<div class="tcb">
 											<label>
 												<input type="checkbox" ng-model="course.isActive" class="tc">
-												<span class="labels"> Active</span>
+												<span class="labels">Active</span>
 											</label>
 										</div>
 									</div>
@@ -115,7 +138,45 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+	<div class="modal fade" id="addNewLink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Create new link</h4>
+	      </div>
+	      <div class="modal-body">
+
+	      	<div class="form-horizontal">
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">Title</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control" ng-model="newCourseLink.title" >
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">href</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control" ng-model="newCourseLink.href">
+		      		</div>
+		      	</div>
+
+	      	</div>
+
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-disabled="" ng-click="createLink()">Create Link</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<div class="modal fade" id="addNewDuration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -179,6 +240,36 @@
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </script>
+
+    <script type="text/ng-template" id="EditLinkModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Edit Link Inof</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">title</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-large" ng-model="link.title" >
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">href</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-small" ng-model="link.href">
+		      		</div>
+		      	</div>
+
+	      	</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
 
     <script type="text/ng-template" id="courseMedias.html">
         <div class="modal-header">

@@ -115,6 +115,7 @@ router.post('/media/upload', media.upload);
 router.get('/media/', media.all);
 router.get('/media/:id', media.get);
 router.put('/media/:id', media.edit);
+router.get('/media/target/:target/type/:type', media.getCategoryTargetMedia);
 router.delete('/media/:id', media.delete);
 router.get('/media/target/:target', media.getByTarget);
 
@@ -258,6 +259,20 @@ router.post('/duration', duration.create);
 //PUT edit a course
 router.put('/duration/:id', duration.edit);
 
+
+//------------------------Course Link----------------------------------------
+
+// //GET all courses
+// router.get('/duration', course.getAllCourses);
+
+//POST create a new course
+router.post('/courseLink', course.createCourseLink);
+
+// //GET a course
+// router.get('/duration/:id', course.getCoursebyId);
+
+//PUT edit a course
+router.put('/courseLink/:id', duration.edit);
 
 
 //------------------------Activity-----------------------------------------

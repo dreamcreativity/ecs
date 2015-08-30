@@ -346,6 +346,12 @@
     margin-top: -2px;
 }
 
+.preview-media{
+	cursor: pointer;
+	-webkit-box-shadow: 7px 6px 6px 0px rgba(224,224,224,1);
+	-moz-box-shadow: 7px 6px 6px 0px rgba(224,224,224,1);
+	box-shadow: 7px 6px 6px 0px rgba(224,224,224,1);
+}
 .banner-empty{
     width: 100%;
     height: 130px;
@@ -383,6 +389,12 @@
   width: 900px;
 }
 
+
+.btn-circle.btn-xs {
+
+    padding: 6px 9px;
+
+}
 
 
 
