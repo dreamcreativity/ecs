@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var DurationSchema = mongoose.model('Duration', new mongoose.Schema({
 	title : {type: String},
 	price : {type : Number},
