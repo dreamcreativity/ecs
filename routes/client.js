@@ -59,8 +59,11 @@ router.get('/calculator', function(req, res){
 	var CourseModule = require('../modules/courseAvailabilitymodule');
 
 
-	var holidayList = CourseModule.getPublicHolidayList(); 
+	var holidayList = CourseModule.getPublicHolidayList(2015); 
+	var holidayList2 = CourseModule.getPublicHolidayList(2016); 
 	console.log(holidayList);
+	console.log('---------------------------');
+	console.log(holidayList2);
 
 	template(req,res,'client_normal','client/calculator.html',{});
 });
