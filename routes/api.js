@@ -33,7 +33,8 @@ function IsAuthException(path, method){
 		{	path : '/api/pdf', method: 'GET' },
 		{	path : '/api/registration', method: 'GET' },
 		{	path : '/api/registration/55df22da770432c82b15f213', method: 'GET' }, // Delete late
-		{	path : '/api/registration', method: 'POST' }
+		{	path : '/api/registration', method: 'POST' },
+		{   path : '/api/infocourses', method: 'GET' }
 
 	];
 
@@ -245,6 +246,8 @@ router.get('/courses/:id', course.getCoursebyId);
 
 //PUT edit a course
 router.put('/courses/:id', course.edit);
+
+router.get('/infocourses', course.getAllSimpleCourses);
 
 //------------------------Duration----------------------------------------
 

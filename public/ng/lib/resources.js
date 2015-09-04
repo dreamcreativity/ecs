@@ -130,7 +130,12 @@ resources.factory('Courses',['$resource',
         return $resource('/api/courses/:id', {}, {
         query:{ method: 'GET'},
         get:{ method: 'GET', params: {id:'@_id'}},
-        update : { method : 'PUT', params: {id:'@_id'}}
+        update : { method : 'PUT', params: {id:'@_id'}},
+        getSimpleList: {
+            url: '/api/infocourses/',
+            method : 'GET', 
+            params: {}
+        },
     });
 }]);
 

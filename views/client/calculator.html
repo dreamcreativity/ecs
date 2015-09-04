@@ -1,11 +1,32 @@
-<section>
+<section ng-controller="CalculatorCtrl">
 	<div class="content-wrap">
 		 <section id="section-about" class="page-section">
 		 	<div class="container clearfix">
 		 		<h2>Program Course Calculator</h2>
 
 		 		<div class="col-md-9 nopadding">
-		 			add course
+		 			
+		 			<!-- add course -->
+		 			<h2>Add Course</h2>
+
+
+		 			<div  ng-repeat="course in courseList">
+		 				<div> <label>Courses</label> </div>
+		 				<div>
+		 					<select ng-model="course.duration">
+		 						<option ng-repeat="courseObj in courses" >{{courseObj.title}}</option>
+		 					</select>
+		 				</div>
+		 			</div>
+
+
+		 			<div>
+		 				<!-- <select>
+		 					<option ng-repeat="course in courses" ng-click="addCourse(course)">{{course.title}}</option>
+		 				</select> -->
+
+		 				<div ng-repeat="course in courses" ng-click="addCourse(course)">{{course.title}}</div>
+		 			</div>
 		 		</div>
 
 		 		<div class="col-md-3 nopadding">

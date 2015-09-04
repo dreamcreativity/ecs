@@ -207,7 +207,12 @@
 		      			<input type="text"  class="form-control  input-large" ng-model="newDuration.title" >
 		      		</div>
 		      	</div>
-
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label">Week(s)</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.week">
+		      		</div>
+		      	</div>
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">Price</label>
 		      		<div class="col-sm-10">
@@ -227,7 +232,7 @@
 	  </div>
 	</div>
 
-	<script type="text/ng-template" id="newDurationModalContent.html">
+	<script type="text/ng-template" id="editDurationModalContent.html">
         <div class="modal-header">
             <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="myModalLabel">Edit duration</h4>
@@ -240,7 +245,12 @@
 		      			<input type="text"  class="form-control  input-large" ng-model="duration.title" >
 		      		</div>
 		      	</div>
-
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label"> Week(s)</label>
+		      		<div class="col-sm-10">
+		      			<input type="text"  class="form-control  input-small" ng-model="duration.week">
+		      		</div>
+		      	</div>
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">Price</label>
 		      		<div class="col-sm-10">
@@ -266,14 +276,14 @@
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">title</label>
 		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control  input-large" ng-model="link.title" >
+		      			<input type="text"  class="form-control" ng-model="link.title" >
 		      		</div>
 		      	</div>
 
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">href</label>
 		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control  input-small" ng-model="link.href">
+		      			<input type="text"  class="form-control" ng-model="link.href">
 		      		</div>
 		      	</div>
 

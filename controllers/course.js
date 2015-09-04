@@ -49,6 +49,47 @@ exports.getAllCourses = function (req,res){
 	});
 }
 
+
+exports.getAllSimpleCourses = function (req,res){
+// res.json({
+// 	status: 'ok',
+// 	messages: 'successed',
+// 	data: null
+// });
+
+	Course.find({ isActive:true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else{
+
+
+			async.each(result, function(val, callback) {
+				if(val.type == 'Fixed Period' ){
+					val.durations = [ val.durations[0] ];
+				}
+				
+				callback();
+			}, function(err){
+
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result
+				});
+			});
+
+
+		}
+	});
+
+}
+
+
 //GET: course by Id
 exports.getCoursebyId = function(req,res){
 	var id = req.params.id;
@@ -168,6 +209,15 @@ exports.edit = function(req,res){
 	    	CourseLink.remove({course:id, _id: { $nin: linkIds }}, function(err){
 	    		next();
 	    	})
+	    	
+	    },
+	    // verify couse status, and reset value if nessucces
+	    function(next){
+	    	
+	    	if(req.body.durations.length == 0)
+	    		req.body.isActive = false;
+
+	    	next();
 	    	
 	    },
 	], function(){

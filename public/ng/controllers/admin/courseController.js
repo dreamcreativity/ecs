@@ -34,6 +34,7 @@ angular.module('AdminApp')
 	 		$scope.newDuration = {
 			 	'title': '',
 			 	'price': 0.0,
+			 	'week': 1,
 			 	'course': $scope.course._id
 			};
 
@@ -73,7 +74,7 @@ angular.module('AdminApp')
 
 	 	var newObject = jQuery.extend(true, {}, object);
 		var modalInstance = $modal.open({
-		  templateUrl: 'newDurationModalContent.html',
+		  templateUrl: 'editDurationModalContent.html',
 		  controller: 'ModalInstanceCtrl',
 		  resolve: {
 		    editDuration: function () {
@@ -104,6 +105,7 @@ angular.module('AdminApp')
 	 		$scope.course.durations.push(newDuration);
 	 		$scope.newDuration.title = '';
 	 		$scope.newDuration.price = 0.0;
+	 		$scope.newDuration.week = 1;
 	 		$scope.newDuration.order = $scope.newDuration.length + 1;
 	 		$('#addNewDuration').modal('hide');
 	 	});
