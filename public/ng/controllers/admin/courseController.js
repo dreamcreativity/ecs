@@ -73,7 +73,7 @@ angular.module('AdminApp')
 
 	 	var newObject = jQuery.extend(true, {}, object);
 		var modalInstance = $modal.open({
-		  templateUrl: 'myModalContent.html',
+		  templateUrl: 'newDurationModalContent.html',
 		  controller: 'ModalInstanceCtrl',
 		  resolve: {
 		    editDuration: function () {
@@ -104,6 +104,7 @@ angular.module('AdminApp')
 	 		$scope.course.durations.push(newDuration);
 	 		$scope.newDuration.title = '';
 	 		$scope.newDuration.price = 0.0;
+	 		$scope.newDuration.order = $scope.newDuration.length + 1;
 	 		$('#addNewDuration').modal('hide');
 	 	});
 	 }
@@ -159,7 +160,7 @@ angular.module('AdminApp')
 			$scope.course.links.push(result.data);
 			$scope.newCourseLink.title = '';
 			$scope.newCourseLink.href = '';
-			$scope.newCourseLink.order = $scope.course.links.length;
+			$scope.newCourseLink.order = $scope.course.links.length+1;
 			$('#addNewLink').modal('hide');
 		});
 	}
@@ -223,8 +224,10 @@ angular.module('AdminApp')
 		Courses.update($scope.course, function(result){
 				var message = result.messages;	   
 				console.log(message); 
-			    $scope.returnMessage = message;
-			    $("#messageReturn").delay(2000).fadeOut('slow');
+
+				ShowGritterCenter('System Notification','Couse info has been updated');
+			    // $scope.returnMessage = message;
+			    // $("#messageReturn").delay(2000).fadeOut('slow');
 				// $window.location='/admin/staff/detail/'+ staff_id;
 		})
 	}

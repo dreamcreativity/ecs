@@ -4,8 +4,7 @@ module.exports = {
 		'Image',
 		'Document',
 		'Video',
-		'Other',
-		'Other 2'
+		'Other'
 	],
 
 	MediaTarget : [
@@ -18,5 +17,10 @@ module.exports = {
 		'Activity',
 		'Event',
 		'Other'
+	],
+
+	CourseType: [
+		'Weekly',
+		'Fixed Period'
 	]
 }
