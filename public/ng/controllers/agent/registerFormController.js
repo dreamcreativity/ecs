@@ -34,7 +34,7 @@ angular.module('AgentApp')
 	$scope.toggle = function() {
 		console.log("here");
 		var htmlContext = angular.element('#formPrint');
-		$http.post('/api/pdf')
+		$http.get('/api/pdf')
 		.success(function(data,status,headers,config){
 			console.log("success to pdf")
 		})

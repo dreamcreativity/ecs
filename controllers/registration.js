@@ -59,3 +59,39 @@ exports.getAllRegistrations = function (req,res){
 		}	
 	});
 }
+
+exports.generatePDF = function (req,res){
+	var id = req.body.registerId;
+	var variables_list = [];
+	Registration.find({_id : id}, function(err, result){
+		if(err){
+			res.json(
+			{
+				status: 'fail',
+				messages: err,
+				data: null
+			});			
+		}
+		else {
+			var registration = new Registration(result);
+			var html = "<p><% Firstname %></p><p><% Lastname %></p><p><% Gender %></p><p><% From %></p>";
+			variables_list.push({});
+		}
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
