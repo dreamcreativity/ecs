@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Registration = require('../models/registration');
+var EmailSender = require('../modules/emailModule');
 
 
 exports.create = function (req,res){
@@ -78,6 +79,21 @@ exports.generatePDF = function (req,res){
 			variables_list.push({});
 		}
 	})
+}
+
+exports.sendEmail = function(req,res){
+	var message = "";
+	var from = req.body.from;
+	var to = req.body.to;
+	var subject = req.body.subject;
+	var context = req.body.context;
+	var attachment = req.body.attachment;
+	EmailSender.sendEmail(from,to,subject,context,attachment, function(message){
+		res.json(
+			{
+				returnmessage : message
+			});		
+	});
 }
 
 
