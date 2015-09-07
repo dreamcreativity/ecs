@@ -1,6 +1,10 @@
  var Agent = require('../models/agent');
+ var AgentInvitation = require('../models/agentInvitation');
  var mongoose = require('mongoose');
  var Token = require('../models/token');
+ var async = require("async");
+ var emailModule = require('../modules/emailModule');
+ var uuid = require('node-uuid');
 
  exports.login = function(req,res){
  	Agent.findOne({username : req.body.username, password: req.body.password}, function(err, user){
@@ -249,5 +253,66 @@ exports.delete = function(req,res){
 			});
 		}
 	});
+}
+
+//Send Agent Invitation to student
+exports.sendInvitation = function(req,res) {
+	var emailEnter = req.body.email;
+	var url = null;
+	AgentInvitation.findOne({email:emailEnter}, function(err,result){
+		if(err){
+			res.json({
+				status:'fail',
+				messages: err, 
+				data:null
+			});
+		}
+		if(result !=null){
+			if(result.isActive) {
+				res.json({
+					status: 'fail',
+					messages: 'this student has already in record',
+					data: null
+				});
+			}
+			else {
+				url = req.url + "/" + result.code;
+				url = '<a href="' + url +'">Invitation Link</a>';   //Need to change to register form link
+				console.log(url);
+				emailModule.sendEmail(emailEnter,"Invitation",url,null,function(messages){
+					res.json({
+						status:'ok',
+						messages: messages
+					});
+				});
+			}
+		}
+		else{
+			var agentInvitationObj = new AgentInvitation();
+			agentInvitationObj.agentId = req.body.agentId;
+			agentInvitationObj.code = uuid.v4();
+			agentInvitationObj.email = emailEnter;
+			
+			agentInvitationObj.save(function(err, result){
+				if(err){
+					res.json({
+						status:'fail',
+						messages: err, 
+						data:null
+					});
+				}
+				else {
+					url = req.url+result.code;
+					emailModule.sendEmail(email,"Invitation",url,null,function(messages){
+						res.json({
+							status:'ok',
+							messages: messages
+						});
+					});
+				}
+			});
+		}
+	});
+
 }
 

@@ -37,7 +37,8 @@ function IsAuthException(path, method){
 		{	path : '/api/courses/startdate/55dbf2948a3eae548962c28f/2015', method: 'GET' }, // Delete late
 		{	path : '/api/registration', method: 'POST' },
 		{   path : '/api/infocourses', method: 'GET' },
-		{	path : '/api/registration', method: 'POST' }
+		{	path : '/api/registration', method: 'POST' },
+		{	path : '/api/invitation/sendEmail', method: 'POST' }
 
 	];
 
@@ -327,8 +328,11 @@ router.get('/registration/:id', registration.getById);
 
  router.post('/registration/sendEmail', registration.sendEmail);
 
-//-------------------------Generate PDF------------------------------------------
+//-------------------------Generate PDF--------------------------------------------
 router.post('/pdf',registration.generatePDF);
+
+//-------------------------Invitation Send Email-----------------------------------
+router.post('/invitation/sendEmail',agent.sendInvitation);
 
 
 

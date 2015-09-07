@@ -183,17 +183,22 @@
 							</li>
 							
 							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>">
-								<a href="/agent/students" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentStudent">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentStudent">
 									<i class="fa fa-user"></i> Student <span class="fa arrow"></span>
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">
+									<li>
+										<a href="/agent/students" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Students
+										</a>
+									</li>		
 									<li>
 										<a href="/agent/register" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
 											<i class="fa fa-angle-double-right"></i>New Student
 										</a>
 									</li>			
 									<li>
-										<a href="/agent/promotion/all" class="<%if(parms.cur_selected=='Promotion'){ %>active<%}%>">
+										<a href="/agent/students/invitation" class="<%if(parms.cur_selected=='IN'){ %>active<%}%>">
 											<i class="fa fa-angle-double-right"></i>Send Inventaion
 										</a>
 									</li>										

@@ -90,6 +90,18 @@ router.get('/students/detail/:id', function(req, res) {
 		);
 });
 
+router.get('/students/invitation', function(req, res) {
+	template(req,res,'agent_main','agent/studentForms/invitation.html',
+			{ 
+				title: 'Student',
+				category: 'Student',
+				cur_tap: 'Invitation',
+				cur_selected : '',
+				url_params : req.params
+			}
+		);
+});
+
 
 
 

@@ -42,4 +42,16 @@ angular.module('AgentApp')
 			console.log("fail to pdf")
 		});
 	}
+})
+
+.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
+	$scope.create = function() {
+		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId:"55da132f8c7e89c5060c77cb"})
+		.success(function(data,status,headers,config){
+			console.log("success to send invitation")
+		})
+		.error(function(data,status,headers,config){
+			console.log("fail to send invitation")
+		});
+	}
 });

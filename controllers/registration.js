@@ -88,7 +88,7 @@ exports.sendEmail = function(req,res){
 	var subject = req.body.subject;
 	var context = req.body.context;
 	var attachment = req.body.attachment;
-	EmailSender.sendEmail(from,to,subject,context,attachment, function(message){
+	EmailSender.sendEmail(to,subject,context,attachment, function(message){
 		res.json(
 			{
 				returnmessage : message

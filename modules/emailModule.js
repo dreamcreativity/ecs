@@ -11,12 +11,12 @@ var transporter = nodemailer.createTransport({
 });
 
 
-exports.sendEmail = function(from,to,subject,context,attachments, callback){
+exports.sendEmail = function(to,subject,context,attachments, callback){
 	var message = {
-		from : from,
+		from : "cheng.sun@omittech.com",
 		to : to,
 		subject : subject,
-		body : context,
+		html : context,
 		attachments : []
 		};
 	if(attachments !=null){
