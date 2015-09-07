@@ -103,18 +103,69 @@
 
 
 
+/*--------  page: calculator  --------*/
+.course-seaction{
+	background-color: #F8F2F4;
+	border: 1px solid #FFEAEA;
+    margin: 15px 0;
+    padding: 15px;
+}
 
+.course-seaction .row{
+	margin-bottom: 15px;
+}
 
+.styling-dropdown{
+	border: 1px solid #EEDADA;
+	border-radius: 5px;
+	width: 100%;
+	padding: 5px 10px;
+	background-color: white;
+	position: relative;
+	cursor: pointer;
+}
+.styling-dropdown:hover{
+	border: 1px solid #D29595;
+}
 
+.styling-dropdown .right-arrow{
+	width: 25px;
+    background-color: #EEDADA;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    border-radius: 0 5px 5px 0;
+    padding: 5px;
+    border-right: 1px;
+    text-align: center;
+    color: #92A59A;
 
+}
 
+.styling-dropdown .select-list{
+	border: 1px solid #EEDADA;
+	/*border-top: 0;*/
+	padding: 5px 10px;
+	position: absolute;
+    width: 100%;
+    top: 35px;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+}
 
+.styling-dropdown .select-list.hidden{
+	display: none;
+}
+.styling-dropdown .select-list .list-item{
+	cursor: pointer;
+	padding: 8px 20px;
+}
 
-
-
-
-
-
+.styling-dropdown .select-list .list-item:hover{
+	background-color: red;
+	color: white;
+}
 
 
 

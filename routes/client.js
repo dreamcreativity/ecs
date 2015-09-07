@@ -56,7 +56,7 @@ router.get('/activity', function(req, res){
 
 router.get('/calculator', function(req, res){
 	var constants = require("../constants")
-	var CourseModule = require('../modules/courseAvailabilitymodule');
+	var CourseModule = require('../modules/publicHolidayModule');
 
 
 	var holidayList = CourseModule.getPublicHolidayList(2015); 

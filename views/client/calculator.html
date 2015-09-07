@@ -4,36 +4,153 @@
 		 	<div class="container clearfix">
 		 		<h2>Program Course Calculator</h2>
 
-		 		<div class="col-md-9 nopadding">
+		 		<div class="col-md-8 nopadding">
 		 			
 		 			<!-- add course -->
 		 			<h2>Add Course</h2>
 
 
-		 			<div  ng-repeat="course in courseList">
-		 				<div> <label>Courses</label> </div>
-		 				<div>
-		 					<select ng-model="course.duration">
-		 						<option ng-repeat="courseObj in courses" >{{courseObj.title}}</option>
-		 					</select>
+		 			<div class="course-seaction"  ng-repeat="c in courseList">
+
+		 				<div class="row">
+		 					<div class="col-md-12">
+				 				<div> <label>Courses</label> </div>
+			 					<div class="styling-dropdown">
+			 						{{c.title}}
+			 						<div class="right-arrow"><i class="icon-download2"></i></div>
+
+			 						<div class="select-list hidden">
+						 				<div class="list-item" ng-repeat="course in courses" ng-click="changeCourse(c,course)">{{course.title}}</div>
+						 			</div>	
+			 					</div>
+		 					</div>
+
 		 				</div>
+
+		 				<div class="row">
+
+			 				<div class="col-md-8">
+				 				<div class=""><label>Start Date</label></div>
+
+				 				<div class="col-md-8 nopadding">
+				 					<div class="styling-dropdown col-md-8">
+				 						Spet 4
+				 						<div class="right-arrow"><i class="icon-download2"></i></div>
+
+				 						<div class="select-list hidden">
+							 				<div class="list-item" >Spet 4</div>
+							 			</div>	
+				 					</div>
+				 				</div>
+
+				 				<div class="col-md-4">
+		
+				 					<div class="styling-dropdown  col-md-4">
+				 						2015
+				 						<div class="right-arrow"><i class="icon-download2"></i></div>
+				 						<div class="select-list hidden">
+							 				<div class="list-item" >2015</div>
+							 				<div class="list-item" >2016</div>
+							 				<div class="list-item" >2017</div>
+							 			</div>	
+				 					</div>
+				 				</div>
+
+			 				</div>
+
+
+			 				<div class="col-md-4">
+				 				<div class=""><label>Duration</label></div>
+			 					<div class="styling-dropdown">
+			 						{{c.selectDuration.title}}
+			 						<div class="right-arrow"><i class="icon-download2"></i></div>
+
+			 						<div class="select-list hidden">
+						 				<div ng-click="changeDuration(c.selectDuration, duration)" class="list-item" ng-repeat="duration in c.durations" >{{duration.title}}</div>
+						 			</div>	
+			 					</div>
+			 				</div>
+
+		 				</div>
+
+
+
+
+		 			</div>
+
+		 			<div class="col-md-6 nopadding">
+			 			<div class="styling-dropdown">
+	 						Add Course
+	 						<div class="right-arrow"><i class="icon-download2"></i></div>
+
+				 			<div class="select-list hidden">
+				 				<div class="list-item" ng-repeat="course in courses" ng-click="addCourse(course)">
+				 					{{course.title}}
+				 				</div>
+				 			</div>	
+	 					</div>
 		 			</div>
 
 
-		 			<div>
-		 				<!-- <select>
-		 					<option ng-repeat="course in courses" ng-click="addCourse(course)">{{course.title}}</option>
-		 				</select> -->
 
-		 				<div ng-repeat="course in courses" ng-click="addCourse(course)">{{course.title}}</div>
-		 			</div>
+
+		 			<!-- <div class="col-md-12 nopadding">
+		 				<button ng-click="show()">show</button>
+		 			</div> -->
 		 		</div>
 
-		 		<div class="col-md-3 nopadding">
+		 		<div class="col-md-4 nopadding">
 		 			calculation
 		 		</div>
 		 	</div>
 		 </div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+function closeAllSelectList(){
+	$('.select-list').each(function(){
+		if(!$(this).hasClass('hidden')){
+			$(this).addClass('hidden');
+		}
+	});
+}
+function initTitleBox(){
+
+
+	$(document).on('click', function(e){
+		closeAllSelectList();
+	});
+
+	$('.styling-dropdown').on('click', function(e){
+		e.stopPropagation();
+		closeAllSelectList();
+		$(this).find('.select-list').removeClass('hidden');
+	});
+
+	$('.select-list ').on('click', function(e){
+		e.stopPropagation();
+		// setTimeout(function(){
+		// 	$(this).addClass('hidden');
+		// }, 100);
+	});
+}
+$(document).ready(function(){
+	initTitleBox();
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
 

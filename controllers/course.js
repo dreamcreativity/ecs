@@ -1,6 +1,7 @@
 var Course = require('../models/course');
 var Duration = require('../models/duration');
 var CourseLink = require('../models/courseLink');
+var publicHolidayModule = require('../modules/publicHolidayModule');
 var mongoose = require('mongoose');
 var async = require("async");
 
@@ -51,11 +52,6 @@ exports.getAllCourses = function (req,res){
 
 
 exports.getAllSimpleCourses = function (req,res){
-// res.json({
-// 	status: 'ok',
-// 	messages: 'successed',
-// 	data: null
-// });
 
 	Course.find({ isActive:true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
 		if(err) {
@@ -82,6 +78,64 @@ exports.getAllSimpleCourses = function (req,res){
 					data: result
 				});
 			});
+
+
+		}
+	});
+
+}
+
+exports.getCourseStartDate = function (req,res){
+
+	var course_id = req.params.id;
+	var year = req.params.year;
+
+	console.log(course_id);
+	Course.find({_id:course_id, isActive:true }).exec(function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else{
+
+			if(result.length != 1){
+				res.json({
+					status: 'fail',
+					messages: 'duplicated record',
+					data: null
+				});
+			}else{
+
+				course = result[0];
+
+				if( course.type == 'Fixed Period' ){
+
+
+				}else{
+
+					
+				}
+
+				async.each(result, function(val, callback) {
+					if(val.type == 'Fixed Period' ){
+						val.durations = [ val.durations[0] ];
+					}
+					
+					callback();
+				}, function(err){
+
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result
+					});
+				});
+			}
+
+
 
 
 		}

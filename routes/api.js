@@ -32,7 +32,12 @@ function IsAuthException(path, method){
 		{	path : '/api/pdf', method: 'POST' },
 		{	path : '/api/registration', method: 'GET' },
 		{	path : '/api/registration', method: 'POST' },
-		{   path : '/api/registration/sendEmail', method: 'POST' }
+		{   path : '/api/registration/sendEmail', method: 'POST' },
+		{	path : '/api/registration/55df22da770432c82b15f213', method: 'GET' }, // Delete late
+		{	path : '/api/courses/startdate/55dbf2948a3eae548962c28f/2015', method: 'GET' }, // Delete late
+		{	path : '/api/registration', method: 'POST' },
+		{   path : '/api/infocourses', method: 'GET' },
+		{	path : '/api/registration', method: 'POST' }
 
 	];
 
@@ -246,6 +251,8 @@ router.get('/courses/:id', course.getCoursebyId);
 router.put('/courses/:id', course.edit);
 
 router.get('/infocourses', course.getAllSimpleCourses);
+
+router.get('/courses/startdate/:id/:year', course.getCourseStartDate);
 
 //------------------------Duration----------------------------------------
 
