@@ -88,10 +88,11 @@ exports.getAllSimpleCourses = function (req,res){
 exports.getCourseStartDate = function (req,res){
 
 	var course_id = req.params.id;
-	var year = req.params.year;
+	var targetYear = parseInt(req.params.year);
 
 	console.log(course_id);
-	Course.find({_id:course_id, isActive:true }).exec(function(err, result){
+	console.log(targetYear);
+	Course.find({_id:course_id, isActive:true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -110,29 +111,120 @@ exports.getCourseStartDate = function (req,res){
 			}else{
 
 				course = result[0];
+				var startDateList = [];
+				var today = new Date();
+				var year = today.getFullYear();
+				var month = today.getMonth();
+				var day = today.getDate();
+				console.log(year+'-'+month+'-'+day);
 
-				if( course.type == 'Fixed Period' ){
-
-
-				}else{
-
+				if(course.durations.length > 0 || targetYear < year || targetYear > year+5 ){
 					
+					// get public holiday list for the target year
+					var publicHolidayList = publicHolidayModule.getPublicHolidayList(targetYear);
+					var nextYear = new Date(targetYear+1,0,1);
+
+					if( course.type == 'Fixed Period' ){
+						var duration = course.durations[0];
+						var durationWeek = duration.week;
+						var startPoint = course.startPoint;
+						
+						var startCalculateDate = null;
+						
+
+						if( targetYear == year ){
+							startCalculateDate = new Date(today.valueOf());
+						}else{
+							startCalculateDate = new Date(2016,0,1);
+						}
+
+						// loop from start point to today
+						while(true){
+							// add week for start date
+							startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
+							if( startPoint > startCalculateDate)
+								break;
+						}	
+						// add date into date list
+						while(true){
+							if(startPoint > nextYear)
+								break;
+							var newStartDateItem = new Date(startPoint.valueOf());
+							
+							if( !publicHolidayModule.isPublicHoliday(publicHolidayList, newStartDateItem))
+								newStartDateItem.setDate(newStartDateItem.getDate()-1);
+							startDateList.push(new Date(newStartDateItem));
+							startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
+						}
+
+						console.log('sss');
+					}else{
+
+						var newStartDate = new Date(today.valueOf());
+						console.log(today);
+						console.log(newStartDate);
+
+						var startCalculateDate = null;
+						if( targetYear == year ){
+							startCalculateDate = new Date(today.valueOf());
+						}else{
+							startCalculateDate = new Date(2016,0,1);
+						}
+
+						// loop from start point to today
+						while(true){
+							console.log(newStartDate.getDay());
+							if( newStartDate.getDay() == 1 && newStartDate > startCalculateDate)
+								break;
+
+							// add week for start date
+							newStartDate.setDate(newStartDate.getDate()+ 1 );
+							
+						}	
+
+						// add date into date list
+						while(true){
+
+							if(newStartDate > nextYear)
+								break;
+							var newStartDateItem = new Date(newStartDate.valueOf());
+
+							while( publicHolidayModule.isPublicHoliday(publicHolidayList, newStartDateItem))
+								newStartDateItem.setDate(newStartDateItem.getDate()+1);
+
+							startDateList.push(newStartDateItem);
+							newStartDate.setDate(newStartDate.getDate()+ 7);
+							console.log(newStartDate);
+
+							
+						}
+						
+					}
+
 				}
 
-				async.each(result, function(val, callback) {
-					if(val.type == 'Fixed Period' ){
-						val.durations = [ val.durations[0] ];
-					}
-					
-					callback();
-				}, function(err){
-
-					res.json({
-						status: 'ok',
-						messages: 'successed',
-						data: result
-					});
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: startDateList
 				});
+
+
+
+				// async.each(result, function(val, callback) {
+				// 	if(val.type == 'Fixed Period' ){
+				// 		val.durations = [ val.durations[0] ];
+				// 	}
+					
+				// 	callback();
+				// }, function(err){
+
+				// 	res.json({
+				// 		status: 'ok',
+				// 		messages: 'successed',
+				// 		data: startDateList
+				// 	});
+				// });
 			}
 
 

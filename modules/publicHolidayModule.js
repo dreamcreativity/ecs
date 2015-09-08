@@ -120,17 +120,6 @@ var GetGoodFirday= function(Year){
 		day : day -2
 	};
 
-
-
-	// for(var i=31 ; i > 24 ; i--){
-	// 	if(lastDateMarch.getDay() == 5){
-	// 		result.day = lastDateMarch.getDate();
-	// 		break;
-	// 	}else{
-	// 		// minus one day
-	// 		lastDateMarch.setDate(lastDateMarch.getDate()-1);
-	// 	}
-	// }
 	return result;
 }
 
@@ -196,3 +185,41 @@ exports.getPublicHolidayList = function(Year) {
 
  	return holidayList;
 }
+
+
+exports.isPublicHoliday = function(holidayList,targetDate) {
+
+
+	var year = targetDate.getFullYear();
+	var month = targetDate.getMonth()+1;
+	var day = targetDate.getDate();
+	var result = false;
+
+	for (var i = 0; i < holidayList.length; i++) {
+		if( holidayList[i].Date.year == year && 
+			holidayList[i].Date.month == month && 
+			holidayList[i].Date.day == day )
+		{
+			result = true;
+			break;
+		}
+
+	};
+
+
+	return result;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

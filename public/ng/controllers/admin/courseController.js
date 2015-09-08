@@ -22,7 +22,7 @@ angular.module('AdminApp')
 })
 
 
-.controller('CourseEditCtrl', function CourseEditCtrl($rootScope,$scope,$http,$modal,Courses,Duration,CourseLink,Medias,$window) {
+.controller('CourseEditCtrl', function CourseEditCtrl($rootScope,$scope,$http,$modal,Courses,Duration,CourseLink,Medias,$window,dateFilter) {
 	var course_id = url_params.id;
 
 	 if(course_id !=null){
@@ -30,6 +30,7 @@ angular.module('AdminApp')
 
 	 		$scope.course = result.data;
 	 		$scope.course.durations.sort(SortByOrder);
+	 		$scope.course.startPoint =  new Date($scope.course.startPoint);
 	 		console.log($scope.course)
 	 		$scope.newDuration = {
 			 	'title': '',
@@ -46,6 +47,18 @@ angular.module('AdminApp')
 	 	});	 	
 	 }
 
+
+
+	// $scope.$watch('course.startPoint', function (startPoint)
+ //    {
+ //        $scope.startDateString = dateFilter(startPoint, 'yyyy-MM-dd');
+ //    });
+
+	// $scope.$watch('startDateString', function (startDateString)
+ //    {
+ //        $scope.course.startPoint = new Date(startDateString);
+        
+ //    });
 
 	function SortByOrder(a, b){
 		var aOrder= a.order;
@@ -90,6 +103,7 @@ angular.module('AdminApp')
 		  console.log(result[0]);
 		  result[0].title = duration.title;
 		  result[0].price = duration.price;
+		  result[0].week = duration.week;
 		  //$scope.selectedDuration = duration;
 		}, function () {
 		  	// done

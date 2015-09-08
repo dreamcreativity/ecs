@@ -38,6 +38,14 @@
 									</div>
 								</div>
 
+								<div class="form-group" ng-if="course.type=='Fixed Period'">
+									<label class="col-sm-3 control-label">Start Point</label>
+									<div class="col-xs-3">
+										<input type="date" class="form-control" name="start_point" ng-model="course.startPoint"  required>
+									</div>
+
+								</div>
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Durations</label>
 									<div class="col-sm-6">

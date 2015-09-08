@@ -23,28 +23,32 @@ function IsAuthException(path, method){
 	// auth exception list , put urls into this array
 	//--------------------------------------------------
 	var list = [
-		{	path : '/api/slider', method: 'GET' },
-		{	path : '/api/activities', method: 'GET' },
-		{	path : '/api/staffs/login', method: 'POST' },
-		{	path : '/api/agent/login', method: 'POST' },
-		{	path : '/api/staffs', method: 'POST' },
-		{	path : '/api/activity', method: 'GET' },
-		{	path : '/api/pdf', method: 'POST' },
-		{	path : '/api/registration', method: 'GET' },
-		{	path : '/api/registration', method: 'POST' },
-		{   path : '/api/registration/sendEmail', method: 'POST' },
-		{	path : '/api/registration/55df22da770432c82b15f213', method: 'GET' }, // Delete late
-		{	path : '/api/courses/startdate/55dbf2948a3eae548962c28f/2015', method: 'GET' }, // Delete late
-		{	path : '/api/registration', method: 'POST' },
-		{   path : '/api/infocourses', method: 'GET' },
-		{	path : '/api/registration', method: 'POST' },
-		{	path : '/api/invitation/sendEmail', method: 'POST' }
+		{	path : '/api/slider', method: 'GET', type: 'direct'},
+		{	path : '/api/activities', method: 'GET', type: 'direct' },
+		{	path : '/api/staffs/login', method: 'POST', type: 'direct' },
+		{	path : '/api/agent/login', method: 'POST', type: 'direct' },
+		{	path : '/api/staffs', method: 'POST',type: 'direct' },
+		{	path : '/api/activity', method: 'GET', type: 'direct' },
+		{	path : '/api/pdf', method: 'POST', type: 'direct'},
+		{	path : '/api/registration', method: 'GET', type: 'direct' },
+		{	path : '/api/registration', method: 'POST', type: 'direct'},
+		{   path : '/api/registration/sendEmail', method: 'POST', type: 'direct' },
+		{	path : '/api/registration/', method: 'GET', type: 'contain'}, // Delete late
+		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, // Delete late
+		{	path : '/api/registration', method: 'POST', type: 'direct'},
+		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
+		{	path : '/api/registration', method: 'POST', type: 'direct' },
+		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'}
 
 	];
 
 	for(i in list){
 		//console.log(list[i]);
-		if(list[i].path == path &&  list[i].method == method ){
+		if(list[i].type == 'direct' && list[i].path == path &&  list[i].method == method ){
+			return true;
+		}
+
+		if(list[i].type == 'contain' && path.indexOf(list[i].path) > -1  &&  list[i].method == method ){
 			return true;
 		}
 	}
