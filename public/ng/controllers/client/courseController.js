@@ -3,31 +3,62 @@ angular.module('ClientApp')
 .controller('CalculatorCtrl',function CalculatorCtrl($rootScope,$scope,$http,Courses){
 	
 	$scope.courseList = [];
-	$scope.cid = '55e91280359487e339e074c2';
+	
 
 
 	Courses.getSimpleList(function(data){
 		$scope.courses = data.data;
 		console.log($scope.courses);
+
 	})
 
+	var today = new Date();
+	$scope.availableYears = [
+		today.getFullYear(),
+		today.getFullYear()+1,
+		today.getFullYear()+2
+	];
+
+
+	$scope.changeStartYear =  function(course, year){
+
+		Courses.getCourstStartDateList({id:course.id, year:year}, function(data){
+			course.startDate = data.data[0];
+			course.startDates = data.data;
+			closeAllSelectList();
+		});
+	}
+
+	$scope.changeStartDate = function(course, startDate){
+		course.startDate =  startDate;
+		closeAllSelectList();
+	}
 
 
 	$scope.addCourse = function(course){
-		$scope.courseList.push({
-			id : course._id,
-			title: course.title,
-			selectDuration: { _id: '', title:'Select a Duration'},
-			durations: course.durations,
-		});
+
+		Courses.getCourstStartDateList({id:course._id, year:$scope.availableYears[0]}, function(data){
 
 
-		closeAllSelectList();
+			console.log(data);
+			$scope.courseList.push({
+				id : course._id,
+				title: course.title,
+				selectDuration: { _id: '', title:'Select a Duration'},
+				startDate: data.data[0],
+				durations: course.durations,
+				startDates: data.data,
+			});
 
 
-		setTimeout(function(){
-			initTitleBox();	
-		},50);
+			closeAllSelectList();
+
+
+			setTimeout(function(){
+				initTitleBox();	
+			},50);
+		})
+
 		
 		//console.log($scope.courseList);
 	}

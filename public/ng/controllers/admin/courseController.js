@@ -44,6 +44,9 @@ angular.module('AdminApp')
 			 	'href': '',
 			 	'course': $scope.course._id
 			};
+
+			
+			
 	 	});	 	
 	 }
 

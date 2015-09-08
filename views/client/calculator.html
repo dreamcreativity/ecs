@@ -34,11 +34,11 @@
 
 				 				<div class="col-md-8 nopadding">
 				 					<div class="styling-dropdown col-md-8">
-				 						Spet 4
+				 						{{ c.startDate | date:'MMMM d' }}
 				 						<div class="right-arrow"><i class="icon-download2"></i></div>
 
 				 						<div class="select-list hidden">
-							 				<div class="list-item" >Spet 4</div>
+							 				<div ng-click="changeStartDate(c,sd)" class="list-item" ng-repeat="sd in c.startDates" >{{ sd | date:'MMMM d' }}</div>
 							 			</div>	
 				 					</div>
 				 				</div>
@@ -49,9 +49,7 @@
 				 						2015
 				 						<div class="right-arrow"><i class="icon-download2"></i></div>
 				 						<div class="select-list hidden">
-							 				<div class="list-item" >2015</div>
-							 				<div class="list-item" >2016</div>
-							 				<div class="list-item" >2017</div>
+							 				<div class="list-item" ng-repeat="y in availableYears" ng-click="changeStartYear(c,y)" >{{ y }}</div>
 							 			</div>	
 				 					</div>
 				 				</div>

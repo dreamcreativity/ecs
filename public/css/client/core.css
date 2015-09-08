@@ -152,6 +152,8 @@
     left: 0;
     background-color: white;
     z-index: 10;
+    max-height: 420px;
+    overflow: scroll;
 }
 
 .styling-dropdown .select-list.hidden{

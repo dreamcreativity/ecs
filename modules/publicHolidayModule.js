@@ -62,8 +62,6 @@ var DateByConditions = function(
 
 var GetVictoriaDay= function(Year){
 	var d = new Date(Year, 4, 25);
-
-	console.log(d);
 	var result = {
 		year : Year,
 		month : 5,

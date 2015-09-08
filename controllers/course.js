@@ -90,8 +90,7 @@ exports.getCourseStartDate = function (req,res){
 	var course_id = req.params.id;
 	var targetYear = parseInt(req.params.year);
 
-	console.log(course_id);
-	console.log(targetYear);
+
 	Course.find({_id:course_id, isActive:true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
 		if(err) {
 			res.json({
@@ -116,7 +115,7 @@ exports.getCourseStartDate = function (req,res){
 				var year = today.getFullYear();
 				var month = today.getMonth();
 				var day = today.getDate();
-				console.log(year+'-'+month+'-'+day);
+
 
 				if(course.durations.length > 0 || targetYear < year || targetYear > year+5 ){
 					
@@ -135,7 +134,7 @@ exports.getCourseStartDate = function (req,res){
 						if( targetYear == year ){
 							startCalculateDate = new Date(today.valueOf());
 						}else{
-							startCalculateDate = new Date(2016,0,1);
+							startCalculateDate = new Date(targetYear,0,1);
 						}
 
 						// loop from start point to today
@@ -150,19 +149,17 @@ exports.getCourseStartDate = function (req,res){
 							if(startPoint > nextYear)
 								break;
 							var newStartDateItem = new Date(startPoint.valueOf());
-							
+
 							if( !publicHolidayModule.isPublicHoliday(publicHolidayList, newStartDateItem))
 								newStartDateItem.setDate(newStartDateItem.getDate()-1);
 							startDateList.push(new Date(newStartDateItem));
 							startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
 						}
 
-						console.log('sss');
 					}else{
 
 						var newStartDate = new Date(today.valueOf());
-						console.log(today);
-						console.log(newStartDate);
+
 
 						var startCalculateDate = null;
 						if( targetYear == year ){
@@ -173,7 +170,7 @@ exports.getCourseStartDate = function (req,res){
 
 						// loop from start point to today
 						while(true){
-							console.log(newStartDate.getDay());
+				
 							if( newStartDate.getDay() == 1 && newStartDate > startCalculateDate)
 								break;
 
@@ -194,7 +191,7 @@ exports.getCourseStartDate = function (req,res){
 
 							startDateList.push(newStartDateItem);
 							newStartDate.setDate(newStartDate.getDate()+ 7);
-							console.log(newStartDate);
+					
 
 							
 						}

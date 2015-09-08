@@ -136,6 +136,11 @@ resources.factory('Courses',['$resource',
             method : 'GET', 
             params: {}
         },
+        getCourstStartDateList: {
+            url: '/api/courses/startdate/:id/:year',
+            method : 'GET', 
+            params: {id:'@_id',year:'@year'}
+        },
     });
 }]);
 
