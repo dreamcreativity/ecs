@@ -78,7 +78,7 @@ angular.module('ClientApp')
 
 		currentCourse.id = targetCourse._id;
 		currentCourse.title = targetCourse.title;
-		currentCourse.selectDuration =  { _id: '', title:'Select a Duration'};
+		currentCourse.selectDuration =  { _id: '', title:'Select a Duration', price: 0, week : 1},
 		currentCourse.durations = targetCourse.durations;
 		closeAllSelectList();
 
