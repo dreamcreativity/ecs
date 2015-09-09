@@ -165,7 +165,7 @@ exports.getCourseStartDate = function (req,res){
 						if( targetYear == year ){
 							startCalculateDate = new Date(today.valueOf());
 						}else{
-							startCalculateDate = new Date(2016,0,1);
+							startCalculateDate = new Date(targetYear,0,1);
 						}
 
 						// loop from start point to today

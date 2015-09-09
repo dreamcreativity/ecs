@@ -46,22 +46,11 @@ angular.module('AdminApp')
 			};
 
 			
-			
+
 	 	});	 	
 	 }
 
 
-
-	// $scope.$watch('course.startPoint', function (startPoint)
- //    {
- //        $scope.startDateString = dateFilter(startPoint, 'yyyy-MM-dd');
- //    });
-
-	// $scope.$watch('startDateString', function (startDateString)
- //    {
- //        $scope.course.startPoint = new Date(startDateString);
-        
- //    });
 
 	function SortByOrder(a, b){
 		var aOrder= a.order;
