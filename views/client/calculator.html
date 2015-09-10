@@ -4,7 +4,7 @@
 		 	<div class="container clearfix">
 		 		<h2>Program Course Calculator</h2>
 
-		 		<div class="col-md-8 nopadding">
+		 		<div class="col-md-7 nopadding calculator-edit-seacsion" >
 		 			
 		 			<!-- add course -->
 		 			<h2>Add Course</h2>
@@ -97,13 +97,35 @@
 		 			</div> -->
 		 		</div>
 
-		 		<div class="col-md-4 nopadding">
-		 			calculation {{calculatedTotal}}
+		 		<div class="col-md-5  nopadding">
+		 			<div class=""><label>Currency</label></div>
+		 			<div class="styling-dropdown">
+ 						{{currency}}
+ 						<div class="right-arrow"><i class="icon-download2"></i></div>
+
+ 						<div class="select-list hidden">
+			 				<div  class="list-item">Canadian Dollors</div>
+			 				<div  class="list-item">US Dollors</div>
+			 			</div>	
+ 					</div>
+
+
+ 					<div class="selected-course-display-seaction" ng-repeat="course in displayCourses">
+ 						<div class="title" >{{course.title}}</div>
+ 					</div>
+
+
+ 					<div class=""><label>{{calculatedTotal}}</label></div>
+		 			 
 		 		</div>
+
+
+
 		 	</div>
 		 </div>
 	</div>
 </div>
+<div style="margin-bottom:100px">d</div>
 
 <script type="text/javascript">
 

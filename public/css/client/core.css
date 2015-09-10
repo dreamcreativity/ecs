@@ -170,6 +170,18 @@
 }
 
 
+/*----------------------------------*/
+
+.calculator-edit-seacsion{	    
+	padding-right: 20px!important;
+}
+.selected-course-display-seaction{
+	background-color: #F8F2F3;
+	border: 1px solid gray;
+    padding: 15px;
+    margin: 10px 0;
+}
+
 
 
 

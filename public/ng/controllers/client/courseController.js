@@ -3,9 +3,9 @@ angular.module('ClientApp')
 .controller('CalculatorCtrl',function CalculatorCtrl($rootScope,$scope,$http,Courses){
 	
 	$scope.courseList = [];
-	$scope.calculatedCourses = [];
+	$scope.displayCourses = [];
 	$scope.calculatedTotal = 0;
-
+	$scope.currency = 'Canadian Dollors';
 
 	Courses.getSimpleList(function(data){
 		$scope.courses = data.data;
@@ -23,11 +23,26 @@ angular.module('ClientApp')
 	$scope.$watch(
 	  'courseList',
 	  function(newValue,oldValue) {
-	   	
+	   		$scope.displayCourses = [];
 	      	var total = 0;
 
 			angular.forEach($scope.courseList, function(course, key) {
-				total += course.selectDuration.price;
+				
+				if(course.selectDuration.week > 0){
+					total += course.selectDuration.price;
+					var courseStartDate = new Date(course.startDate);
+					var courseEndDate = new Date(courseStartDate.valueOf());
+					courseEndDate.setDate( courseEndDate.getDate() + 7 * course.selectDuration.week);
+				
+					$scope.displayCourses.push({
+						title: course.title,
+						startDate: course.startDate,
+						endDate: courseEndDate.toJSON(),
+						duration: course.selectDuration.week
+					});			
+				}
+
+
 			}, function(){
 
 			});
@@ -60,7 +75,7 @@ angular.module('ClientApp')
 			$scope.courseList.push({
 				id : course._id,
 				title: course.title,
-				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 1},
+				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
 				startDate: data.data[0],
 				durations: course.durations,
 				startDates: data.data,
@@ -78,7 +93,7 @@ angular.module('ClientApp')
 
 		currentCourse.id = targetCourse._id;
 		currentCourse.title = targetCourse.title;
-		currentCourse.selectDuration =  { _id: '', title:'Select a Duration', price: 0, week : 1},
+		currentCourse.selectDuration =  { _id: '', title:'Select a Duration', price: 0, week : 0},
 		currentCourse.durations = targetCourse.durations;
 		closeAllSelectList();
 
