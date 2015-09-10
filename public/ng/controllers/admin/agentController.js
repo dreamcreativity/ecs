@@ -41,16 +41,6 @@ angular.module('AdminApp')
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 	 var agent_id = url_params.id;
 
-	 // if(agent_id !=null){
-	 // 	Agents.get({id:agent_id}, function(result){
-	 // 		$scope.agent = result.data;
-	 // 		Students.get({agent_id : $scope.agent._id}, function(result){
-	 // 			$scope.students = result.data;
-	 // 		});
-	 // 	});
-	 	
-	 // }
-
 	 function loading() {
 	 	var list = [];
 	 	Regions.query(function(regions){
@@ -73,10 +63,6 @@ angular.module('AdminApp')
 	 	$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
 	 	Agents.update($scope.agent, function(result){
-	 			// var message = result.messages;	    
-	 		 //    $scope.returnMessage = "profile is save successfully";
-	 		 //    $("#messageReturn").delay(2000).fadeOut('slow');
-	 			// $window.location='/admin/agent/detail/'+ agent_id;
 	 			if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Material document has been updated');
 				}else{
