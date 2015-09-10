@@ -55,6 +55,11 @@ function IsAuthException(path, method){
 	return false;
 }
 
+
+
+
+
+
 function IsInActivedUserAuthException(path, method){
 	//--------------------------------------------------
 	// auth exception list , put urls into this array
