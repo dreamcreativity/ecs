@@ -102,6 +102,18 @@ router.get('/students/invitation', function(req, res) {
 		);
 });
 
+router.get('/setting', function(req,res){
+	template(req,res,'agent_main', 'agent/setting.html',
+	{
+		title: 'Setting',
+		category : 'Setting',
+		cur_tap : 'Setting',
+		cur_selected : '',
+		url_params : req.params
+
+	});
+});
+
 
 
 
