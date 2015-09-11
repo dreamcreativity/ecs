@@ -58,18 +58,16 @@ router.get('/calculator', function(req, res){
 	var constants = require("../constants")
 	var CourseModule = require('../modules/publicHolidayModule');
 
-
-	var holidayList = CourseModule.getPublicHolidayList(2015); 
-	var holidayList2 = CourseModule.getPublicHolidayList(2016); 
-	var holidayList3 = CourseModule.getPublicHolidayList(2014); 
-	console.log(holidayList);
-	console.log('---------------------------');
-	console.log(holidayList2);
-	console.log('---------------------------');
-	console.log(holidayList3);
-
 	template(req,res,'client_normal','client/calculator.html',{});
 });
+
+
+
+router.get('/course', function(req, res){
+
+	template(req,res,'client_normal','client/course.html',{});
+});
+
 
 
 router.get('/events', function(req, res){
