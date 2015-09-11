@@ -177,15 +177,32 @@
 }
 .selected-course-display-seaction{
 	background-color: #F8F2F3;
-	border: 1px solid gray;
+	border: 1px solid #F2E8E8;
     padding: 15px;
     margin: 10px 0;
 }
 
+.selected-course-display-seaction .title{
+	font-size: 18px;
+    font-weight: bold;
+    color: #515150;
+}
 
+.selected-course-display-seaction .date{
+	font-size: 12px;
+}
 
+.selected-course-display-seaction .price{
+	font-size: 12px;
+	color: #A29999;
+}
 
-
+.selected-course-total-seaction{
+	background-color: #2A1F15;
+    color: #F4EDED;
+    padding: 10px 15px 10px 17px;
+    font-size: 15px;
+}
 
 
 

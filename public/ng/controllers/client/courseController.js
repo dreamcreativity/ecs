@@ -5,7 +5,15 @@ angular.module('ClientApp')
 	$scope.courseList = [];
 	$scope.displayCourses = [];
 	$scope.calculatedTotal = 0;
-	$scope.currency = 'Canadian Dollors';
+	$scope.selectedCurrency = 'Canadian Dollors';
+
+	$scope.currencyList = [
+		{ code: 'CAD', description: 'Canadian Dollors', rate: 1.0 },
+		{ code: 'USD', description: 'USA Dollors', rate: 1.34 }
+	];
+
+	$scope.selectedCurrency = $scope.currencyList[0];
+
 
 	Courses.getSimpleList(function(data){
 		$scope.courses = data.data;
@@ -20,39 +28,61 @@ angular.module('ClientApp')
 		today.getFullYear()+2
 	];
 
+	var doCalculation =  function(){
+   		$scope.displayCourses = [];
+      	var total = 0;
+
+		angular.forEach($scope.courseList, function(course, key) {
+			
+			if(course.selectDuration.week > 0){
+
+				// deep copy dreation course object
+				var tempCourse= jQuery.extend(true, {}, course);
+				tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
+
+				total += tempCourse.selectDuration.price;
+				var courseStartDate = new Date(tempCourse.startDate);
+				var courseEndDate = new Date(courseStartDate.valueOf());
+				courseEndDate.setDate( courseEndDate.getDate() + 7 * tempCourse.selectDuration.week);
+			
+				$scope.displayCourses.push({
+					title: tempCourse.title,
+					startDate: tempCourse.startDate,
+					endDate: courseEndDate.toJSON(),
+					duration: tempCourse.selectDuration
+				});			
+			}
+
+
+		}, function(){
+
+		});
+      	$scope.calculatedTotal = total;
+
+	}
+
+
+
 	$scope.$watch(
 	  'courseList',
 	  function(newValue,oldValue) {
-	   		$scope.displayCourses = [];
-	      	var total = 0;
-
-			angular.forEach($scope.courseList, function(course, key) {
-				
-				if(course.selectDuration.week > 0){
-					total += course.selectDuration.price;
-					var courseStartDate = new Date(course.startDate);
-					var courseEndDate = new Date(courseStartDate.valueOf());
-					courseEndDate.setDate( courseEndDate.getDate() + 7 * course.selectDuration.week);
-				
-					$scope.displayCourses.push({
-						title: course.title,
-						startDate: course.startDate,
-						endDate: courseEndDate.toJSON(),
-						duration: course.selectDuration.week
-					});			
-				}
-
-
-			}, function(){
-
-			});
-	      	$scope.calculatedTotal = total;
-	      	console.log(total);
-		  	    
+	  		doCalculation();
 	  }, 
 	  true
 	);
 
+	$scope.$watch(
+	  'selectedCurrency',
+	  function(newValue,oldValue) {
+	  		doCalculation();
+	  }, 
+	  true
+	);
+
+	$scope.changeCurrency =  function(inputCurrency){
+		$scope.selectedCurrency = inputCurrency;
+		closeAllSelectList();
+	}
 
 	$scope.changeStartYear =  function(course, year){
 
