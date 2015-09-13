@@ -10,7 +10,7 @@ angular.module('AgentApp')
 	today.getFullYear()+1,
 	today.getFullYear()+2
 	];
-	$scope.addDisplay = "Add new Course"
+	$scope.isDisabled = false;
 
 
 	var doCalculation =  function(){
@@ -63,15 +63,16 @@ angular.module('AgentApp')
 	});
 
 	$scope.register = function(isValid){
+		$scope.student.coursesList = $scope.courseList;
 		Registrations.save($scope.student, function(result){
 			var message = result.messages;	  
 		});
 	}
 
 	$scope.addNewRow = function() {
-		$scope.newrowShow = !$scope.newrowShow;
+		$scope.newrowShow = true;
 
-		$scope.addDisplay = $scope.newrowShow ? "Cancel" : "Add new Course"
+		$("#addrow_button").attr("disabled", true)
 		//$scope.$apply();
 	}
 
@@ -91,6 +92,8 @@ angular.module('AgentApp')
 				duration: course.duration,
 				year:course.year
 			});
+			$scope.newrowShow = false
+			$("#addrow_button").attr("disabled", false)
 		}
 	}
 	else {
@@ -98,11 +101,14 @@ angular.module('AgentApp')
 	}
 }
 
-	$scope.removeCourse = function(){
-		var len = $scope.courseList.length;
-		if(len > 0) {
-			$scope.courseList.splice(len-1, 1);
+$scope.removeRow = function(){
+	  $scope.newrowShow = false
+			$("#addrow_button").attr("disabled", false)
 		}
+
+	$scope.removeCourse = function(course){
+		var index = $scope.courseList.indexOf(course);
+  		$scope.courseList.splice(index, 1);     
 	}
 
 
