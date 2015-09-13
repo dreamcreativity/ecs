@@ -22,8 +22,8 @@
 		<hr class="separator" />
 
 
-<!-- Step 1 Student registration -->
-		<div class="step-content">
+		<!-- Step 1 Student registration -->
+		<!-- <div class="step-content">
 			<div class="step-pane active" id="step1">											
 				<div class="form-group" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 					<label class="col-sm-1 control-label">First Name</label>
@@ -159,21 +159,21 @@
 						<input type="checkbox" class="form-control" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 
-<!-- Step 2 Program registration -->
-		 <div class="step-pane" id="step2">
+			<!-- Step 2 Program registration -->
+			<div class="step-pane" id="step1">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">English Level : </label>
 					<div class="col-sm-3">
 						<select name="englishlevel" ng-model="student.englishLevel">
-     						 <option value="">--</option>
-     						 <option value="beginner">Beginner</option> 
-      						 <option value="low_Intermediate">Low Intermediate</option>
-      						 <option value="high_Intermediate">High Intermediate</option>
-      						 <option value="advance">Advanced</option>
-   					    </select>
+							<option value="">--</option>
+							<option value="beginner">Beginner</option> 
+							<option value="low_Intermediate">Low Intermediate</option>
+							<option value="high_Intermediate">High Intermediate</option>
+							<option value="advance">Advanced</option>
+						</select>
 					</div>
 				</div>
 
@@ -182,231 +182,299 @@
 				</div>
 
 				<div class="form-group">
-				<label class="col-sm-2 control-label">Add Course</label>
+					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-3">
-						<select  data-role="listview" ng-options="course as course.description for course in courses " ng-model="course" ng-change="addCourse(course)">
-						</select>
+						<button type="button" ng-click="addNewRow()">{{addDisplay}}</button>
 					</div>
 				</div>
 
-				<div class="form-group" ng-repeat="c in courseList">
+				<table class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<tr>
+								<th class="hidden-xs">Course</th>
+								<th class="hidden-xs">Year</th>
+								<th class="hidden-xs">Start Date</th>
+								<th class="hidden-xs">Duration</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="newrow" ng-show="newrowShow">
+								<td class="hidden-xs">
+									<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
+								</td>
+								<td class="hidden-xs">
+									<select ng-model="course.year" ng-change="changeStartYear(course,year)">
+									<option value="" selected>--Select--</option>
+									<option ng-repeat="year in course.availableYears">{{year}}</option>
+									</select>
+								</td>
+								<td class="hidden-xs">
+									 <select ng-model="course.startDate" required>
+										<option value="" selected>--Select--</option>
+										<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
+									</select>
+								</td>
+								<td class="hidden-xs">
+									<select ng-model="course.duration">		
+									<option value="" selected>--Select--</option>								
+										<option ng-repeat="duration in course.durations">{{duration.title}}</option>
+									</select>
+								</td>
+								<td class="col-medium center">
+									<button type="button" ng-click="addCourse(course)">Confirm</button>
+								</td>
+							</tr>
+							<tr ng-repeat="c in courseList">
+								<td class="hidden-xs">{{c.title}}</td>
+								<td class="hidden-xs">{{c.year}}</td>
+								<td class="hidden-xs">{{c.startDate | date:'MMMM d'}}</td>
+								<td class="hidden-xs">{{c.duration}}</td>
+							</tr>
+						</tbody>
+
+					</table>
+
+				<!-- <div class="form-group" ng-repeat="c in courseList">
 					<label class="col-sm-2 control-label">Course</label>
-					<div class="col-sm-3">
-						<select  data-role="listview" ng-options="course as course.description for course in courses " ng-model="c" ng-change="changeCourse(c,course)">
-						</select>
+					<div class="col-sm-2">
+						<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(c, course)">
+					</select>
 					</div>
+
+				<label class="col-sm-2 control-label">Start Date</label>
+				<div class="col-sm-1">
+					<select>
+						<option ng-repeat="sd in c.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
+					</select>
 				</div>
+				<label class="col-sm-1 control-label">Year</label>
+				<div class="col-sm-1">
+					<select ng-model="year" ng-init="year = availableYears[0]" ng-change="changeStartYear(c,year)">
+						<option ng-repeat="year in availableYears">{{year}}</option>
+					</select>
+				</div>
+
+				<label class="col-sm-1 control-label">Duration</label>
+				<div class="col-sm-1">
+					<select ng-model="duration">
+						<option ng-repeat="duration in c.durations">{{duration.title}}</option>
+					</select>
+				</div> -->
+			</div>
 
 			
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Health Insurance</label>
-				</div>
-
-				<div class="form-group">
-				<label class="col-sm-2 control-label">From Date : </label>
-					<div class="col-sm-2">
-					<input type="date" class="form-control" name="healthInsurance_startingDate" ng-model="student.healthInsurance_startingDate">
-					</div>
-				</div>
-
-				<div class="form-group">
-				<label class="col-sm-2 control-label">To Date : </label>
-					<div class="col-sm-2">
-					<input type="date" class="form-control" name="healthInsurance_endDate" ng-model="student.healthInsurance_endDate">
-					</div>
-				</div> 
-			</div> 
-
-<!-- Step 3 Program registration accommodation -->
- <div class="step-pane" id="step3">
-	<div class="form-group">
-		<label class="col-sm-2 control-label">Are you in home stay</label>
-		<div class="col-sm-1">
-			<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{student.ishomestay}} ng-model="student.ishomestay">
-		</div>
-	</div>
-	<div ng-show=student.ishomestay>
-
-	 	<div class="form-group">
-			<label class="col-sm-2 control-label">Accommodation :</label>
-			<div class="col-sm-1">
-				<select name="accommodation_way" ng-model="student.accommodation_way">
-					<option value="">--</option>
-					<option value="Homestay">Homestay</option> 
-					<option value="Residence">Residence(May - Aug only)</option>
-				</select>
-			</div>
-		</div>
-        <div class="form-group">
-			<label class="col-sm-2 control-label">Homestay Option</label>
-			<div class="col-sm-1">
-				<select name="homestay_option" ng-model="student.homestay_option">
-					<option value="">--</option>
-					<option value="fullboard">Full Board(3 meals per day)</option> 
-					<option value="halfboard">Half Board(2 meals per day)</option>
-					<option value="roomonly">Romm Only</option>
-				</select>
-			</div>
-		</div>
-
-	    <div class="form-group">
-			<label class="col-sm-2 control-label">Accommodation Date : </label>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Starting Date : (DD/MM/YYYY)</label>
-			<div class="col-sm-2">
-				<input type="date" class="form-control" name="accommodation_startingDate" ng-model="student.accommodation_startingTime" >
-			</div>
-			<label class="col-sm-2 control-label">Finishing Date : </label>
-			<div class="col-sm-2">
-				<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_finishingDate" >
-			</div>
-			<label class="col-sm-1 control-label"># of week</label>
-			<div class="col-sm-1">
-				<input type="number" class="form-control" name="accommodationOfWeeks" ng-model="student.accommodationOfWeeks" >
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Departure date from Toronto: </label>
-			<div class="col-sm-2">
-				<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_departureDate" >
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Flight Information : </label>
-		</div>
-
-	 	<div class="form-group">
-			<label class="col-sm-2 control-label">Arrival in Toronto</label>
-			<label class="col-sm-1 control-label">Date&Time</label>
-			<div class="col-sm-2">
-				<input type="date" class="form-control" name="flight_arrivalDateTime" ng-model="student.flight_arrivalDateTime">
-			</div>
-			<label class="col-sm-1 control-label">Airline</label>
-			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_airline_arr" ng-model="student.flight_airline_arr">
-			</div>
-			<label class="col-sm-1 control-label">Flight#</label>
-			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_No_arr" ng-model="student.flight_No_arr">
-			</div>
-			<label class="col-sm-2 control-label">Airport Pick up Request</label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="isPickup" ng-model="student.isPickup">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Departure from Toronto</label>
-			<label class="col-sm-1 control-label">Date&Time</label>
-			<div class="col-sm-2">
-				<input type="date" class="form-control" name="flight_departureDateTime" ng-model="student.flight_departureDateTime" >
-			</div>
-			<label class="col-sm-1 control-label">Airline</label>
-			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_airline_dep" ng-model="student.flight_airline_dep" >
-			</div>
-			<label class="col-sm-1 control-label">Flight#</label>
-			<div class="col-sm-1">
-				<input type="text" class="form-control" name="flight_No_dep" ng-model="student.flight_No_dep" >
-			</div>
-			<label class="col-sm-2 control-label">Airport Drop off Request</label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="isdropOff" ng-model="student.isdropOff">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Do you smoke ?</label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="IsSmoke" ng-model="student.IsSmoke">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="IswithSmoker" ng-model="student.IswithSmoker">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Do you live with pet ? </label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="IswithPet" ng-model="student.IswithPet">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Do you live with small children ? </label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="Iswithchildren" ng-model="student.Iswithchildren">
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">What is your hobbies ? </label>
-			<div class="col-sm-7">
-				<textarea class="form-control" name="hobbies" ng-model="student.hobbies"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
-			<div class="col-sm-7">
-				<textarea class="form-control" name="occupation" ng-model="student.occupation"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Additional Comments : </label>
-			<div class="col-sm-7">
-				<textarea class="form-control" name="comments" ng-model="student.comments"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
-			<div class="col-sm-7">
-				<textarea class="form-control" name="special_food" ng-model="student.special_food"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
-			<div class="col-sm-7">
-				<textarea class="form-control" name="allergies_medical" ng-model="student.allergies_medical"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
-			<div class="col-sm-1">
-				<input type="checkbox" class="form-control" name="IsPrivate" ng-model="student.IsPrivate">
-			</div>
-		</div>
-	</div> 
- </div>
-		</div>
-
-
-		<div class="form-actions">
 			<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9">
-					<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
-					<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
-					<button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
-					<!-- add $("#last_submit").trigger('click') in wizard.js-->
-					<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
+				<label class="col-sm-2 control-label">Health Insurance</label>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">From Date : </label>
+				<div class="col-sm-2">
+					<input type="date" class="form-control" name="healthInsurance_startingDate" ng-model="student.healthInsurance_startingDate">
 				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">To Date : </label>
+				<div class="col-sm-2">
+					<input type="date" class="form-control" name="healthInsurance_endDate" ng-model="student.healthInsurance_endDate">
+				</div>
+			</div> 
+		</div> 
+
+		<!-- Step 3 Program registration accommodation -->
+		<div class="step-pane" id="step3">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Are you in home stay</label>
+				<div class="col-sm-1">
+					<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{student.ishomestay}} ng-model="student.ishomestay">
+				</div>
+			</div>
+			<div ng-show=student.ishomestay>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Accommodation :</label>
+					<div class="col-sm-1">
+						<select name="accommodation_way" ng-model="student.accommodation_way">
+							<option value="">--</option>
+							<option value="Homestay">Homestay</option> 
+							<option value="Residence">Residence(May - Aug only)</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Homestay Option</label>
+					<div class="col-sm-1">
+						<select name="homestay_option" ng-model="student.homestay_option">
+							<option value="">--</option>
+							<option value="fullboard">Full Board(3 meals per day)</option> 
+							<option value="halfboard">Half Board(2 meals per day)</option>
+							<option value="roomonly">Romm Only</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Accommodation Date : </label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Starting Date : (DD/MM/YYYY)</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="accommodation_startingDate" ng-model="student.accommodation_startingTime" >
+					</div>
+					<label class="col-sm-2 control-label">Finishing Date : </label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_finishingDate" >
+					</div>
+					<label class="col-sm-1 control-label"># of week</label>
+					<div class="col-sm-1">
+						<input type="number" class="form-control" name="accommodationOfWeeks" ng-model="student.accommodationOfWeeks" >
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Departure date from Toronto: </label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_departureDate" >
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Flight Information : </label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Arrival in Toronto</label>
+					<label class="col-sm-1 control-label">Date&Time</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="flight_arrivalDateTime" ng-model="student.flight_arrivalDateTime">
+					</div>
+					<label class="col-sm-1 control-label">Airline</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="flight_airline_arr" ng-model="student.flight_airline_arr">
+					</div>
+					<label class="col-sm-1 control-label">Flight#</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="flight_No_arr" ng-model="student.flight_No_arr">
+					</div>
+					<label class="col-sm-2 control-label">Airport Pick up Request</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="isPickup" ng-model="student.isPickup">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Departure from Toronto</label>
+					<label class="col-sm-1 control-label">Date&Time</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="flight_departureDateTime" ng-model="student.flight_departureDateTime" >
+					</div>
+					<label class="col-sm-1 control-label">Airline</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="flight_airline_dep" ng-model="student.flight_airline_dep" >
+					</div>
+					<label class="col-sm-1 control-label">Flight#</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="flight_No_dep" ng-model="student.flight_No_dep" >
+					</div>
+					<label class="col-sm-2 control-label">Airport Drop off Request</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="isdropOff" ng-model="student.isdropOff">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you smoke ?</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="IsSmoke" ng-model="student.IsSmoke">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="IswithSmoker" ng-model="student.IswithSmoker">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you live with pet ? </label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="IswithPet" ng-model="student.IswithPet">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you live with small children ? </label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="Iswithchildren" ng-model="student.Iswithchildren">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">What is your hobbies ? </label>
+					<div class="col-sm-7">
+						<textarea class="form-control" name="hobbies" ng-model="student.hobbies"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
+					<div class="col-sm-7">
+						<textarea class="form-control" name="occupation" ng-model="student.occupation"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Additional Comments : </label>
+					<div class="col-sm-7">
+						<textarea class="form-control" name="comments" ng-model="student.comments"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
+					<div class="col-sm-7">
+						<textarea class="form-control" name="special_food" ng-model="student.special_food"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
+					<div class="col-sm-7">
+						<textarea class="form-control" name="allergies_medical" ng-model="student.allergies_medical"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="IsPrivate" ng-model="student.IsPrivate">
+					</div>
+				</div>
+			</div> 
+		</div>
+	</div>
+
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
+				<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
+				<button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
+				<!-- add $("#last_submit").trigger('click') in wizard.js-->
+				<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 			</div>
 		</div>
 	</div>
+</div>
 </form>
 
 <script type="text/javascript">

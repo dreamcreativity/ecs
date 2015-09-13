@@ -10,39 +10,49 @@ angular.module('AgentApp')
 	today.getFullYear()+1,
 	today.getFullYear()+2
 	];
+	$scope.addDisplay = "Add new Course"
+
+
+	var doCalculation =  function(){
+   		$scope.displayCourses = [];
+      	var total = 0;
+
+		angular.forEach($scope.courseList, function(course, key) {
+			
+			if(course.selectDuration.week > 0){
+
+				// deep copy dreation course object
+				var tempCourse= jQuery.extend(true, {}, course);
+				tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
+
+				total += tempCourse.selectDuration.price;
+				var courseStartDate = new Date(tempCourse.startDate);
+				var courseEndDate = new Date(courseStartDate.valueOf());
+				courseEndDate.setDate( courseEndDate.getDate() + 7 * tempCourse.selectDuration.week);
+			
+				$scope.displayCourses.push({
+					title: tempCourse.title,
+					startDate: tempCourse.startDate,
+					endDate: courseEndDate.toJSON(),
+					duration: tempCourse.selectDuration
+				});			
+			}
+
+
+		}, function(){
+
+		});
+      	$scope.calculatedTotal = total;
+
+	}
 
 	$scope.$watch(
-		'courseList',
-		function(newValue,oldValue) {
-			$scope.displayCourses = [];
-			var total = 0;
-
-			angular.forEach($scope.courseList, function(course, key) {
-				
-				if(course.selectDuration.week > 0){
-					total += course.selectDuration.price;
-					var courseStartDate = new Date(course.startDate);
-					var courseEndDate = new Date(courseStartDate.valueOf());
-					courseEndDate.setDate( courseEndDate.getDate() + 7 * course.selectDuration.week);
-
-					$scope.displayCourses.push({
-						title: course.title,
-						startDate: course.startDate,
-						endDate: courseEndDate.toJSON(),
-						duration: course.selectDuration.week
-					});			
-				}
-
-
-			}, function(){
-
-			});
-			$scope.calculatedTotal = total;
-			console.log(total);
-
-		}, 
-		true
-		);
+	  'courseList',
+	  function(newValue,oldValue) {
+	  		//doCalculation();
+	  }, 
+	  true
+	);
 
 	Registrations.query(function(result){
 		$scope.registrations = result;
@@ -58,31 +68,64 @@ angular.module('AgentApp')
 		});
 	}
 
-	$scope.addCourse = function(course){
-		Courses.getCourstStartDateList({id:course._id, year:$scope.availableYears[0]}, function(data){
+	$scope.addNewRow = function() {
+		$scope.newrowShow = !$scope.newrowShow;
+
+		$scope.addDisplay = $scope.newrowShow ? "Cancel" : "Add new Course"
+		//$scope.$apply();
+	}
+
+	$scope.addCourse = function(course) {
+		if(typeof course != "undefined"){
+			if (typeof course.startDate == "undefined" ||
+				typeof course.duration == "undefined" ||
+				typeof course.year == "undefined"
+				) {
+				ShowGritterCenter('System Notification','Please enter complete course information');
+			}
+		else{
 			$scope.courseList.push({
 				id : course._id,
 				title: course.title,
-				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
-				startDate: data.data[0],
-				durations: course.durations,
-				startDates: data.data,
+				startDate: course.startDate,
+				duration: course.duration,
+				year:course.year
 			});
-			closeAllSelectList();
-			setTimeout(function(){
-				initTitleBox();	
-			},50);
-		})
+		}
+	}
+	else {
+		ShowGritterCenter('System Notification','Please enter complete course information');
+	}
+}
+
+	$scope.removeCourse = function(){
+		var len = $scope.courseList.length;
+		if(len > 0) {
+			$scope.courseList.splice(len-1, 1);
+		}
 	}
 
-	$scope.changeCourse = function(currentCourse, targetCourse){
 
-		currentCourse.id = targetCourse._id;
-		currentCourse.title = targetCourse.title;
-		currentCourse.selectDuration =  { _id: '', title:'Select a Duration', price: 0, week : 0},
-		currentCourse.durations = targetCourse.durations;
-		closeAllSelectList();
+	$scope.changeCourse = function(targetCourse){
+		Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
+					$scope.course.availableYears = $scope.availableYears;
+					$scope.course.startDates = data.data
+				});
+	}
 
+	$scope.changeStartDate = function(course, startDate){
+		course.startDate =  startDate;
+		//closeAllSelectList();
+	}
+
+	$scope.changeStartYear =  function(course){
+		if(typeof course != "undefined"){
+			Courses.getCourstStartDateList({id:course._id, year:course.year}, function(data){
+				course.startDate = data.data[0];
+				course.startDates = data.data;
+			//closeAllSelectList();
+		});
+		}
 	}
 })
 
@@ -122,4 +165,34 @@ angular.module('AgentApp')
 			console.log("fail to send invitation")
 		});
 	}
-});
+})
+
+
+ .directive('requiredSelect', function () {
+    return {
+      restrict: 'AE',
+      require: 'ngModel',
+      link: function(scope, elm, attr, ctrl) {
+
+        if (!ctrl) return;
+          attr.requiredSelect = true; // force truthy in case we are on non input element
+
+          var validator = function(value) {
+            if (attr.requiredSelect && ctrl.$isEmpty(value)) {
+              ctrl.$setValidity('requiredSelect', false);
+              return;
+            } else {
+              ctrl.$setValidity('requiredSelect', true);
+              return value;
+            }
+          };
+
+          ctrl.$formatters.push(validator);
+          ctrl.$parsers.unshift(validator);
+
+          attr.$observe('requiredSelect', function() {
+            validator(ctrl.$viewValue);
+          });
+      }
+    };
+  });
