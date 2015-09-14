@@ -205,16 +205,43 @@
 }
 
 
+/*-----------------*/
+#section-course{
+
+}
+
+#section-course .banner{
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+#section-course .banner img{
+	width: 100%;
+}
 
 
+#section-course  .float-seaction{
+
+	float: right;
+	padding: 30px;
+}
+
+#section-course  .float-seaction ul{
+	list-style: none;
+}
+
+#section-course  .float-seaction ul li a{
+	color: #9592A4;
+    font-size: 16px;
+    line-height: 36px;
+}
 
 
-
-
-
-
-
-
+#section-course .desc{
+    font-size: 15px;
+    color: #464646;
+    line-height: 36px;
+}
 
 
 

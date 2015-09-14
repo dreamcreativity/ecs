@@ -3,6 +3,7 @@ var router = express.Router();
 var template = require('../modules/templateController');
 var Slider = require('../models/slider');
 var Media = require('../models/media');
+var Course = require('../models/course');
 var async = require("async");
 var constants = require("../constants");
 
@@ -12,6 +13,8 @@ var constants = require("../constants");
 
 
 router.get('/', function(req, res) {
+
+
 	var sliders;
 	Slider.find({is_active:true}, function(err, result){
 		sliders = result;
@@ -24,13 +27,15 @@ router.get('/', function(req, res) {
 				next();
 			});
 		}, function(err){
-			console.log(sliders);
+		
 			template(req,res,'client_main','client/main.html',{ 
 				title: 'ESC - Englist School of Canada',
 				sliders : sliders 
 			});		
 		});
 	});
+
+	
 });
 
 
@@ -40,12 +45,9 @@ router.get('/activity', function(req, res){
 
 	Activity.find(function(err,result){
 
-
-		console.log(result[0]);
-
 		// find media
 		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
-			console.log(imgs);
+			
 			template(req,res,'client_normal','client/activity.html',{ a : result[0], images:imgs});
 		});
 		
@@ -63,10 +65,30 @@ router.get('/calculator', function(req, res){
 
 
 
-router.get('/course', function(req, res){
+router.get('/course/:id', function(req, res){
+	
 
-	template(req,res,'client_normal','client/course.html',{});
+	var id = req.params.id;
+
+	Course.find({_id:id, isActive:true })
+					.populate('links')
+					.populate('banner')
+					.populate('cover')
+					.exec(function(err, result){
+		if(err){
+			console.log(err);
+			res.redirect('/');
+		}
+			
+
+
+		console.log(result);
+		template(req,res,'client_normal','client/course.html',{'course' :  result[0]});	
+	});
+	
 });
+
+
 
 
 
@@ -76,9 +98,6 @@ router.get('/events', function(req, res){
 	var Activity = require('../models/activity');
 
 	Activity.find(function(err,result){
-
-
-		console.log(result[0]);
 
 		// find media
 		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
