@@ -22,20 +22,9 @@ var RegistrationSchema = mongoose.model('Registration', new mongoose.Schema({
 	englishLevel : {type: String},
 	toefl : {type: Number},
 	ielts : {type: Number},
-	generalProgram : {type: String},
-	generalProgram_startingDate: {type:Date},
-	generalProgramOfWeek : {type: Number},
-	examPpreparationProgram : {type: String},
-	examPpreparationProgram_startingDate : {type: Date},
-	examPreparationOfWeek: {type: Number},
-	focusProgram : {type: String},
-	focusProgram_startingDate : {type: Date},
-	focusProgramOfWeek: {type: Number},
-	UCTPProgram : {type: String},
-	UCTP_startingDate : {type: Date},
-	uctpOfweek: {type: Number},
 	healthInsurance_endDate :{type: Date},
 	healthInsurance_startingDate :{type: Date},
+	coursesList : [],
 	//Step 3
 	ishomestay :{type: String},
 	accommodation_way : {type: String},
@@ -60,6 +49,9 @@ var RegistrationSchema = mongoose.model('Registration', new mongoose.Schema({
 	allergies_medical : {type: String},
 	IsPrivate : {type:Boolean, required:true,default:false}
 }));
+
+
+
 
 var Registration = mongoose.model('Registration', RegistrationSchema);
 

@@ -1,7 +1,7 @@
-'use strict';
-angular.module('AgentApp')
+	'use strict';
+	angular.module('AgentApp')
 
-.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Registrations,Courses, $window){
+	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Registrations,Courses, $window){
 	$scope.courseList =[];
 	$scope.displayCourses = [];
 	var today = new Date();
@@ -10,39 +10,8 @@ angular.module('AgentApp')
 	today.getFullYear()+1,
 	today.getFullYear()+2
 	];
+	$scope.isDisabled = false;
 
-	$scope.$watch(
-		'courseList',
-		function(newValue,oldValue) {
-			$scope.displayCourses = [];
-			var total = 0;
-
-			angular.forEach($scope.courseList, function(course, key) {
-				
-				if(course.selectDuration.week > 0){
-					total += course.selectDuration.price;
-					var courseStartDate = new Date(course.startDate);
-					var courseEndDate = new Date(courseStartDate.valueOf());
-					courseEndDate.setDate( courseEndDate.getDate() + 7 * course.selectDuration.week);
-
-					$scope.displayCourses.push({
-						title: course.title,
-						startDate: course.startDate,
-						endDate: courseEndDate.toJSON(),
-						duration: course.selectDuration.week
-					});			
-				}
-
-
-			}, function(){
-
-			});
-			$scope.calculatedTotal = total;
-			console.log(total);
-
-		}, 
-		true
-		);
 
 	Registrations.query(function(result){
 		$scope.registrations = result;
@@ -53,41 +22,101 @@ angular.module('AgentApp')
 	});
 
 	$scope.register = function(isValid){
+		$scope.student.coursesList = $scope.courseList;
 		Registrations.save($scope.student, function(result){
 			var message = result.messages;	  
+			if(message == "successed"){
+				$http.post('/api/pdf',{registerId:result.data._id})
+				.success(function(data,status,headers,config){
+					if(data.status == "successed"){
+						$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+							subject:"success registration", 
+							context: "Welcome", 
+							attachments : [data.data]})
+						.success(function(data,status,headers,config){
+							ShowGritterCenter('System Notification','Success to registration');
+							setInterval(function(){
+  							 $window.location='/agent/students';
+							}, 2000); 
+						})
+						.error(function(data,status,headers,config){
+							console.log("fail to send registration email")
+						});
+					}
+				})
+				.error(function(data,status,headers,config){
+					console.log("fail to pdf")
+				});
+			}
 		});
 	}
 
-	$scope.addCourse = function(course){
-		Courses.getCourstStartDateList({id:course._id, year:$scope.availableYears[0]}, function(data){
+	$scope.addNewRow = function() {
+		$scope.newrowShow = true;
+		$("#addrow_button").attr("disabled", true)
+		//$scope.$apply();
+	}
+
+	$scope.addCourse = function(course) {
+		if(typeof course != "undefined"){
+			if (typeof course.startDate == "undefined" ||
+				typeof course.duration == "undefined" ||
+				typeof course.year == "undefined"
+				) {
+				ShowGritterCenter('System Notification','Please enter complete course information');
+		}
+		else{
 			$scope.courseList.push({
 				id : course._id,
 				title: course.title,
-				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
-				startDate: data.data[0],
-				durations: course.durations,
-				startDates: data.data,
+				startDate: course.startDate,
+				duration: course.duration,
+				year:course.year
 			});
-			closeAllSelectList();
-			setTimeout(function(){
-				initTitleBox();	
-			},50);
-		})
+			$scope.newrowShow = false
+			$("#addrow_button").attr("disabled", false)
+		}
+	}
+	else {
+		ShowGritterCenter('System Notification','Please enter complete course information');
+	}
 	}
 
-	$scope.changeCourse = function(currentCourse, targetCourse){
-
-		currentCourse.id = targetCourse._id;
-		currentCourse.title = targetCourse.title;
-		currentCourse.selectDuration =  { _id: '', title:'Select a Duration', price: 0, week : 0},
-		currentCourse.durations = targetCourse.durations;
-		closeAllSelectList();
-
+	$scope.removeRow = function(){
+	$scope.newrowShow = false
+	$("#addrow_button").attr("disabled", false)
 	}
-})
+
+	$scope.removeCourse = function(course){
+	var index = $scope.courseList.indexOf(course);
+	$scope.courseList.splice(index, 1);     
+	}
 
 
-.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Registrations,$window){
+	$scope.changeCourse = function(targetCourse){
+	Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
+		$scope.course.availableYears = $scope.availableYears;
+		$scope.course.startDates = data.data
+	});
+	}
+
+	$scope.changeStartDate = function(course, startDate){
+	course.startDate =  startDate;
+		//closeAllSelectList();
+	}
+
+	$scope.changeStartYear =  function(course){
+		if(typeof course != "undefined"){
+			Courses.getCourstStartDateList({id:course._id, year:course.year}, function(data){
+				course.startDate = data.data[0];
+				course.startDates = data.data;
+			//closeAllSelectList();
+		});
+		}
+	}
+	})
+
+	.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Registrations,$window){
 	var registrationId = url_params.id;
 	loading();
 
@@ -102,9 +131,20 @@ angular.module('AgentApp')
 	$scope.toggle = function() {
 		console.log("here");
 		var htmlContext = angular.element('#formPrint');
-		$http.get('/api/pdf')
+		$http.post('/api/pdf',{registerId:"55f5954d567102d80ee9b9dc"})
 		.success(function(data,status,headers,config){
-			console.log("success to pdf")
+			if(data.status == "successed"){
+			$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+				subject:"success registration", 
+				context: "Welcome", 
+				attachments : [data.data]})
+			.success(function(data,status,headers,config){
+				console.log("success to send registration email")
+			})
+			.error(function(data,status,headers,config){
+				console.log("fail to send registration email")
+			});
+		}
 		})
 		.error(function(data,status,headers,config){
 			console.log("fail to pdf")
@@ -112,7 +152,7 @@ angular.module('AgentApp')
 	}
 })
 
-.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
+	.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
 	$scope.create = function() {
 		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId:"55da132f8c7e89c5060c77cb"})
 		.success(function(data,status,headers,config){
@@ -122,4 +162,4 @@ angular.module('AgentApp')
 			console.log("fail to send invitation")
 		});
 	}
-});
+	});
