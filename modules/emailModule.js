@@ -21,7 +21,7 @@ exports.sendEmail = function(to,subject,context,attachments, callback){
 		};
 	if(attachments !=null){
 		for (var i = 0; i < attachments.length; i++) {
-			message["attachments"].push({filename: "attachment_" + i, path:attachments[i]});
+			message["attachments"].push({filename: "attachment_" + i +".pdf", path:attachments[i]});
 		};
 				transporter.sendMail(message,function(err, success){
 					if(err) message ="Fail to send email";

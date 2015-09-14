@@ -17,11 +17,12 @@ var pdf = require('html-pdf');
 // }
 
 
-function generatePDF (layout, callback) {
+exports.generatePDF = function (layout, callback) {
      var message ="";
-     pdf.create(layout).toFile('./example.pdf', function(err,res){
+     var path = "./example.pdf";
+     pdf.create(layout).toFile(path, function(err,res){
       if(err) message = err;
       else message =  "success";
-      callback(message);
-     })
+      callback(message,path);
+     });
 }

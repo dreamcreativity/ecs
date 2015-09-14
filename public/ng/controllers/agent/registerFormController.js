@@ -1,7 +1,7 @@
-'use strict';
-angular.module('AgentApp')
+	'use strict';
+	angular.module('AgentApp')
 
-.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Registrations,Courses, $window){
+	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Registrations,Courses, $window){
 	$scope.courseList =[];
 	$scope.displayCourses = [];
 	var today = new Date();
@@ -12,47 +12,6 @@ angular.module('AgentApp')
 	];
 	$scope.isDisabled = false;
 
-
-	var doCalculation =  function(){
-   		$scope.displayCourses = [];
-      	var total = 0;
-
-		angular.forEach($scope.courseList, function(course, key) {
-			
-			if(course.selectDuration.week > 0){
-
-				// deep copy dreation course object
-				var tempCourse= jQuery.extend(true, {}, course);
-				tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
-
-				total += tempCourse.selectDuration.price;
-				var courseStartDate = new Date(tempCourse.startDate);
-				var courseEndDate = new Date(courseStartDate.valueOf());
-				courseEndDate.setDate( courseEndDate.getDate() + 7 * tempCourse.selectDuration.week);
-			
-				$scope.displayCourses.push({
-					title: tempCourse.title,
-					startDate: tempCourse.startDate,
-					endDate: courseEndDate.toJSON(),
-					duration: tempCourse.selectDuration
-				});			
-			}
-
-
-		}, function(){
-
-		});
-      	$scope.calculatedTotal = total;
-
-	}
-
-	$scope.$watch(
-	  'courseList',
-	  function(newValue,oldValue) {
-	  		//doCalculation();
-	  }, 
-	  true
-	);
 
 	Registrations.query(function(result){
 		$scope.registrations = result;
@@ -66,12 +25,34 @@ angular.module('AgentApp')
 		$scope.student.coursesList = $scope.courseList;
 		Registrations.save($scope.student, function(result){
 			var message = result.messages;	  
+			if(message == "successed"){
+				$http.post('/api/pdf',{registerId:result.data._id})
+				.success(function(data,status,headers,config){
+					if(data.status == "successed"){
+						$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+							subject:"success registration", 
+							context: "Welcome", 
+							attachments : [data.data]})
+						.success(function(data,status,headers,config){
+							ShowGritterCenter('System Notification','Success to registration');
+							setInterval(function(){
+  							 $window.location='/agent/students';
+							}, 2000); 
+						})
+						.error(function(data,status,headers,config){
+							console.log("fail to send registration email")
+						});
+					}
+				})
+				.error(function(data,status,headers,config){
+					console.log("fail to pdf")
+				});
+			}
 		});
 	}
 
 	$scope.addNewRow = function() {
 		$scope.newrowShow = true;
-
 		$("#addrow_button").attr("disabled", true)
 		//$scope.$apply();
 	}
@@ -83,7 +64,7 @@ angular.module('AgentApp')
 				typeof course.year == "undefined"
 				) {
 				ShowGritterCenter('System Notification','Please enter complete course information');
-			}
+		}
 		else{
 			$scope.courseList.push({
 				id : course._id,
@@ -99,28 +80,28 @@ angular.module('AgentApp')
 	else {
 		ShowGritterCenter('System Notification','Please enter complete course information');
 	}
-}
+	}
 
-$scope.removeRow = function(){
-	  $scope.newrowShow = false
-			$("#addrow_button").attr("disabled", false)
-		}
+	$scope.removeRow = function(){
+	$scope.newrowShow = false
+	$("#addrow_button").attr("disabled", false)
+	}
 
 	$scope.removeCourse = function(course){
-		var index = $scope.courseList.indexOf(course);
-  		$scope.courseList.splice(index, 1);     
+	var index = $scope.courseList.indexOf(course);
+	$scope.courseList.splice(index, 1);     
 	}
 
 
 	$scope.changeCourse = function(targetCourse){
-		Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
-					$scope.course.availableYears = $scope.availableYears;
-					$scope.course.startDates = data.data
-				});
+	Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
+		$scope.course.availableYears = $scope.availableYears;
+		$scope.course.startDates = data.data
+	});
 	}
 
 	$scope.changeStartDate = function(course, startDate){
-		course.startDate =  startDate;
+	course.startDate =  startDate;
 		//closeAllSelectList();
 	}
 
@@ -133,10 +114,9 @@ $scope.removeRow = function(){
 		});
 		}
 	}
-})
+	})
 
-
-.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Registrations,$window){
+	.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Registrations,$window){
 	var registrationId = url_params.id;
 	loading();
 
@@ -151,9 +131,20 @@ $scope.removeRow = function(){
 	$scope.toggle = function() {
 		console.log("here");
 		var htmlContext = angular.element('#formPrint');
-		$http.get('/api/pdf')
+		$http.post('/api/pdf',{registerId:"55f5954d567102d80ee9b9dc"})
 		.success(function(data,status,headers,config){
-			console.log("success to pdf")
+			if(data.status == "successed"){
+			$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+				subject:"success registration", 
+				context: "Welcome", 
+				attachments : [data.data]})
+			.success(function(data,status,headers,config){
+				console.log("success to send registration email")
+			})
+			.error(function(data,status,headers,config){
+				console.log("fail to send registration email")
+			});
+		}
 		})
 		.error(function(data,status,headers,config){
 			console.log("fail to pdf")
@@ -161,7 +152,7 @@ $scope.removeRow = function(){
 	}
 })
 
-.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
+	.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
 	$scope.create = function() {
 		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId:"55da132f8c7e89c5060c77cb"})
 		.success(function(data,status,headers,config){
@@ -171,34 +162,4 @@ $scope.removeRow = function(){
 			console.log("fail to send invitation")
 		});
 	}
-})
-
-
- .directive('requiredSelect', function () {
-    return {
-      restrict: 'AE',
-      require: 'ngModel',
-      link: function(scope, elm, attr, ctrl) {
-
-        if (!ctrl) return;
-          attr.requiredSelect = true; // force truthy in case we are on non input element
-
-          var validator = function(value) {
-            if (attr.requiredSelect && ctrl.$isEmpty(value)) {
-              ctrl.$setValidity('requiredSelect', false);
-              return;
-            } else {
-              ctrl.$setValidity('requiredSelect', true);
-              return value;
-            }
-          };
-
-          ctrl.$formatters.push(validator);
-          ctrl.$parsers.unshift(validator);
-
-          attr.$observe('requiredSelect', function() {
-            validator(ctrl.$viewValue);
-          });
-      }
-    };
-  });
+	});

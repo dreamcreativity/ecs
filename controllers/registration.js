@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Registration = require('../models/registration');
 var EmailSender = require('../modules/emailModule');
+var Pdf = require('../modules/pdfModule');
 
 
 exports.create = function (req,res){
@@ -74,21 +75,40 @@ exports.generatePDF = function (req,res){
 			});			
 		}
 		else {
-			var registration = new Registration(result);
-			var html = "<p><% Firstname %></p><p><% Lastname %></p><p><% Gender %></p><p><% From %></p>";
-			variables_list.push({});
+			var registration = new Registration(result[0]);
+			//var html = "<p><% Firstname %></p><p><% Lastname %></p><p><% Gender %></p><p><% From %></p>";
+			var html = "<p>" + registration.firstname + "</p>" +"<p>" + registration.lastname + "</p>"+"<p>" + registration.gender + "</p>" +
+						"<p>" + registration.birthday + "</p>" +"<p>" + registration.age + "</p>"+"<p>" + registration.citizenship + "</p>" +
+						"<p>" + registration.address + "</p>" +"<p>" + registration.city + "</p>"+"<p>" + registration.province + "</p>" +
+						"<p>" + registration.postcal + "</p>" +"<p>" + registration.country + "</p>"+"<p>" + registration.telephone + "</p>" +
+						"<p>" + registration.fax + "</p>" +"<p>" + registration.email + "</p>"+"<p>" + registration.emergency + "</p>" +
+						"<p>" + registration.englishLevel + "</p>" +"<p>" + registration.toefl + "</p>"+"<p>" + registration.ielts + "</p>" +
+						"<p>" + registration.healthInsurance_startingDate + "</p>" +"<p>" + registration.healthInsurance_endDate + "</p>"+"<p>" + registration.ishomestay + "</p>";
+			Pdf.generatePDF(html, function(message, path){
+				if(message == "success"){
+					res.json({
+						status: 'successed',
+						data : path
+					});
+				}
+				else {
+					res.json({
+						status: 'fail',
+						data : null
+					});
+				}
+			});
 		}
 	})
 }
 
 exports.sendEmail = function(req,res){
 	var message = "";
-	var from = req.body.from;
 	var to = req.body.to;
 	var subject = req.body.subject;
 	var context = req.body.context;
-	var attachment = req.body.attachment;
-	EmailSender.sendEmail(to,subject,context,attachment, function(message){
+	var attachments = req.body.attachments;
+	EmailSender.sendEmail(to,subject,context,attachments, function(message){
 		res.json(
 			{
 				returnmessage : message
