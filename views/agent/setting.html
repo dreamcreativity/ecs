@@ -21,167 +21,41 @@
 									<div class="col-lg-2" >{{agent.company}}</div>
 								</div>
 								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Work :</strong></div>
-									<div class="col-lg-2" >{{agent.workphone}}</div>
-								</div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Work :</strong></div>
+										<div class="col-lg-2" >{{agent.workphone}}</div>
+									</div>
 								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Cell :</strong></div>
-									<div class="col-lg-2" >{{agent.cellphone}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Email :</strong></div>
-									<div class="col-lg-2" >{{agent.email}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Region :</strong></div>
-									<div class="col-lg-2" >{{agent.region}}</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="row">
-									<div class="col-lg-2 right"><strong>Commission :</strong></div>
-									<div class="col-lg-2" >{{agent.commission}}%</div>
-								</div>
-
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Cell :</strong></div>
+										<div class="col-lg-2" >{{agent.cellphone}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Email :</strong></div>
+										<div class="col-lg-2" >{{agent.email}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"><strong>Region :</strong></div>
+										<div class="col-lg-2" >{{agent.region}}</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="row">
+										<div class="col-lg-2 right"></div>
+										<div class="col-lg-4" >
+											<input type="submit" class="btn btn-primary" value="Edit">
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
 
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<button class="btn btn-sm btn-primary" ng-bootbox-title="A new student"
-						ng-bootbox-custom-dialog
-						ng-bootbox-custom-dialog-template="/admin/student/agent/create">
-						Create
-					</button>
-					<div class="portlet no-border-bottom">
-						<div class="portlet-heading dark">
-							<div class="portlet-title">
-								<h4><i class="fa fa-rss"></i> Students under the Agent</h4>
-							</div>
-							<div class="portlet-widgets">
-								<a href="javascript:;"><i class="fa fa-refresh"></i></a>
-								<span class="divider"></span>
-								<a href="#" class="tooltip-danger" data-placement="left" data-rel="tooltip" title="Clear"><i class="fa fa-trash-o bigger-110"></i></a>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="portlet-body no-padding">
-							<ul class="lists">
-								<li ng-repeat="student in students">
-									<span class="col-sm-1">{{student.student_id}}</span>
-									<span class="col-sm-2 icons glyphicon glyphicon-user"> {{student.firstname}} {{student.lastname}}</span>
-								</ul>
-							</div>
-						</div>
+				</div>		
 
-						<div class="hr hr-12 hr-double"></div>
-						<div class="action-buttons">
-							<a href="#"><i class="fa fa-search-plus"></i> View all</a>
-						</div>
-
-					</div>
-				</div>			
-			</div>
-
-			<div class="tab-pane fade" id="p2">
-				<h2>Agent details</h2>
-				<div class="hr hr-12 hr-double"></div>
-				<form name="updateForm" class="form-horizontal" role="form" ng-submit="update(updateForm.$valid)" novalidate>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Username</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="username" ng-model="agent.username" value="{{agent.username}}"required disabled="disabled">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Region</label>
-						<div class="col-sm-3">
-							<select ng-model="agent.region" >
-								<option ng-selected="value.name==agent.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
-							</select>
-							<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Commission Rate(%):</label>
-						<div class="col-sm-3">
-							<input type="number" class="form-control" name="commission" ng-model="agent.commission" value="{{agent.commission}}" min="0" max="100">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">First Name:</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="firstname" ng-model="agent.firstname" value="{{agent.firstname}}"required>
-							<p ng-show="updateForm.firstname.$invalid && !updateForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Last Name:</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="lastname" ng-model="agent.lastname" required>
-							<p ng-show="updateForm.lastname.$invalid && !updateForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Work phone:</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="agent.workphone" required>
-							<p ng-show="updateForm.workphone.$invalid && !updateForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
-							<p ng-show="updateForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
-						</div>
-					</div>		
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Cell phone:</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="agent.cellphone" required>
-							<p ng-show="updateForm.cellphone.$invalid && !updateForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
-							<p ng-show="updateForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
-						</div>
-					</div>											
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Email</label>
-						<div class="col-sm-4">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-								<input type="email" class="form-control" name="email" ng-model="agent.email" required>
-							</div>
-							<p ng-show="updateForm.email.$invalid && !updateForm.email.$pristine" class="help-block text-danger">email is invalid</p>
-						</div>
-					</div>
-
-					<hr class="separator">
-					<div class="form-group">
-						<label class="col-sm-3 control-label"></label>
-						<div class="col-sm-3">
-							<div class="tcb">
-								<label>
-									<input type="checkbox" ng-model="agent.isDelete" class="tc">
-									<span class="labels"> Delete</span>
-								</label>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="form-actions">
-						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-2">
-								<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="updateForm.$invalid">
-							</div>
-						</div>
-					</div>
-				</form>
 			</div>
 
 		</div>
-
-
 
 	</div>
 </div>

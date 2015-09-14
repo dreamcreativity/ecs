@@ -60,6 +60,37 @@
  	});
  }
 
+ exports.getAgentbyToken = function(req,res){
+ 	var token = req.body.token;
+ 	Token.findOne({_id:token}, function(err, result){
+ 		if(err){
+ 			res.json({
+ 				status: 'fail',
+ 				messages: err,
+ 				data: null
+ 			})
+ 		}
+ 		else{
+ 			Agent.findOne({_id:result.user}, function(err, result2){
+ 				if(err){
+ 					res.json({
+ 						status: 'fail',
+ 						messages: err,
+ 						data: null
+ 					})
+ 				}
+ 				else {
+ 					res.json({
+ 						status: 'successed',
+ 						messages: 'ok',
+ 						data: result2
+ 					});
+ 				}
+ 			});
+ 		}
+ 	});
+ }
+
  exports.resetpassword = function(req,res) {
  	var pwd = req.body.password;
  	Token.findOne({_id : req.body.token}, function(err, result){

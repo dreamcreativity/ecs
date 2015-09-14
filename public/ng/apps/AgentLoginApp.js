@@ -53,7 +53,6 @@ angular.module('AgentLoginApp', ['ngRoute','esc.auth'])
 				}, 2000);
 			}
 		})
-
 	}
 
 })

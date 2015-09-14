@@ -45,11 +45,11 @@ router.get('/login', function(req, res) {
 });
 
 router.get('/resetpassword', function(req, res) {
-	template(req,res,'agent_bg_paint','agent/resetpassword.html',
+	template(req,res,'agent_main','agent/resetpassword.html',
 			{ 
 				title: 'Reset password',
-				category: '',
-				cur_tap: 'Login',
+				category: 'setting',
+				cur_tap: 'reset password',
 				cur_selected : ''
 			}
 		);

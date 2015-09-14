@@ -204,6 +204,9 @@ router.post('/agent/login', agent.login);
 //POST agent reset password
 router.post('/agent/resetpassword', agent.resetpassword);
 
+//GET current agent by token
+router.post('/agent/token', agent.getAgentbyToken);
+
 //-----------------------Materials ----------------------------------
 
 //GET a material by material ID

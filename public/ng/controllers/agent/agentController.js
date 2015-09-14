@@ -3,14 +3,21 @@ angular.module('AgentApp')
 
 .controller('AgentDetail', function AgentDetail($scope, $http, Agents,$window){
 	loading();
-	var agent_id = url.params.id;
 
 	function loading() {
-		if(agent_id) {
-			Agents.get({id:agent_id}, function(result){
-				$scope.agent = result.data;
+		var token = sessionStorage.token;
+
+		$http.post('/api/agent/token',{token:token})
+			.success(function(data,status,headers,config){
+				if(data.status == "successed"){
+					$scope.agent = data.data;
+				}
+				else {
+					console.log("error");
+				}
+			})
+			.error(function(data,status){
 			});
-		}
 	}
 
 	$scope.update = function(isValid) {
@@ -23,5 +30,21 @@ angular.module('AgentApp')
 			});
 	}
 
+	//Reset Password
+	$scope.resetpassword =function(){
+		var token = sessionStorage.token;
+		$scope.resetObj.token = token;
+		$http.post('/api/agent/resetpassword', $scope.resetObj)
+		.success(function(data){
+			if(data.status === "ok"){
+				$scope.returnMessage = "success to reset password";
+	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 		    setInterval(function(){
+  					 $window.location='/agent/login';
+				}, 2000);
+			}
+		})
+	}
+
 	
-})
+});
