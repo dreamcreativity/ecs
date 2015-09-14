@@ -85,6 +85,19 @@ resources.factory('Agents',['$resource',
     });
 }])
 
+.factory('Accommodations',['$resource',
+    function($resource){
+        return $resource('/api/accommodation', {}, {
+        create:{ method: 'POST'}
+    });
+}])
+
+.factory('FlightInfo',['$resource',
+    function($resource){
+        return $resource('/api/flightInfo', {}, {
+        create:{ method: 'POST'}
+    });
+}])
 
 resources.factory('StudentByAgent',['$resource',
     function($resource){

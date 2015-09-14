@@ -1,7 +1,7 @@
 	'use strict';
 	angular.module('AgentApp')
 
-	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Registrations,Courses, $window){
+	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Registrations,Courses,Accommodations,FlightInfo, $window){
 	$scope.courseList =[];
 	$scope.displayCourses = [];
 	var today = new Date();
@@ -21,35 +21,75 @@
 		$scope.courses = data.data;
 	});
 
+	//$scope.register = function(isValid){
+		// $scope.student.coursesList = $scope.courseList;
+		// Registrations.save($scope.student, function(result){
+		// 	var message = result.messages;	  
+		// 	if(message == "successed"){
+		// 		$http.post('/api/pdf',{registerId:result.data._id})
+		// 		.success(function(data,status,headers,config){
+		// 			if(data.status == "successed"){
+		// 				$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+		// 					subject:"success registration", 
+		// 					context: "Welcome", 
+		// 					attachments : [data.data]})
+		// 				.success(function(data,status,headers,config){
+		// 					ShowGritterCenter('System Notification','Success to registration');
+		// 					setInterval(function(){
+  // 							 $window.location='/agent/students';
+		// 					}, 2000); 
+		// 				})
+		// 				.error(function(data,status,headers,config){
+		// 					console.log("fail to send registration email")
+		// 				});
+		// 			}
+		// 		})
+		// 		.error(function(data,status,headers,config){
+		// 			console.log("fail to pdf")
+		// 		});
+		// 	}
+		// });
+	//}
+
 	$scope.register = function(isValid){
-		$scope.student.coursesList = $scope.courseList;
-		Registrations.save($scope.student, function(result){
-			var message = result.messages;	  
-			if(message == "successed"){
-				$http.post('/api/pdf',{registerId:result.data._id})
-				.success(function(data,status,headers,config){
-					if(data.status == "successed"){
-						$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-							subject:"success registration", 
-							context: "Welcome", 
-							attachments : [data.data]})
-						.success(function(data,status,headers,config){
-							ShowGritterCenter('System Notification','Success to registration');
-							setInterval(function(){
-  							 $window.location='/agent/students';
-							}, 2000); 
-						})
-						.error(function(data,status,headers,config){
-							console.log("fail to send registration email")
+		Accommodations.save($scope.accommodation, function(result){
+			if(result.message == "successed"){
+				var accommodationId = result.data._id;
+				FlightInfo.save($scope.flightInfo, function(result1){
+					if(result1.message == "successed"){
+						var flightInfoId = result.data._id;
+						$scope.student.accommodation = accommodationId;
+						$scope.student.flightInfo = flightInfoId;
+						Students.save($scope.student, function(result2){
+							if(message == "successed"){
+								$http.post('/api/pdf',{registerId:result.data._id})
+								.success(function(data,status,headers,config){
+									if(data.status == "successed"){
+										$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+											subject:"success registration", 
+											context: "Welcome", 
+											attachments : [data.data]})
+										.success(function(data,status,headers,config){
+											ShowGritterCenter('System Notification','Success to registration');
+											setInterval(function(){
+												$window.location='/agent/students';
+											}, 2000); 
+										})
+										.error(function(data,status,headers,config){
+											console.log("fail to send registration email")
+										});
+									}
+								})
+								.error(function(data,status,headers,config){
+									console.log("fail to pdf")
+								});
+							}
 						});
 					}
-				})
-				.error(function(data,status,headers,config){
-					console.log("fail to pdf")
 				});
 			}
-		});
-	}
+			});
+			}
 
 	$scope.addNewRow = function() {
 		$scope.newrowShow = true;

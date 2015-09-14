@@ -1,5 +1,7 @@
 var Student = require('../models/student');
 var Agent = require('../models/agent');
+var Accommodation = require('../models/agent');
+var FlightInfo = require('../models/agent');
 
 async = require("async");
 
@@ -154,6 +156,47 @@ exports.quit = function(req,res){
 } 
 
 
+//Create a accommodation for student
+exports.createAccommodation = function(req,res){
+	var accommodation = new Accommodation(req.body);
+	accommodation.save(function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result[0]
+			});
+		}
+	});
+}
+
+//Create a flight information for student
+exports.createFlightInfo = function(req,res){
+	var flightInfo = new flightInfo(req.body);
+	flightInfo.save(function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result[0]
+			});
+		}
+	});
+}
 
 
 

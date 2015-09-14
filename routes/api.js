@@ -179,6 +179,12 @@ router.get('/student/agent/:id',student.getStudentbyAgentId);
 //POST : create a student record
 router.post('/student', student.create);
 
+//POST : create a accommodation
+router.post('/accommodation', student.createAccommodation);
+
+//POST : create a flightInfo
+router.post('/flightInfo', student.createFlightInfo);
+
 //PUT : Edit a student info
 router.put('/student/:id', student.edit)
 
