@@ -45,8 +45,14 @@ angular.module('AdminApp')
 			 	'course': $scope.course._id
 			};
 
-			
-
+			// create media seleoct click buttons
+			$scope.changeCover = createMediaSelectorFunction($modal, $scope.meidas,function( selectedMedia){ 
+				$scope.course.cover = selectedMedia;
+			});
+			$scope.changeBanner = createMediaSelectorFunction($modal, $scope.meidas,function( selectedMedia){ 
+				$scope.course.banner = selectedMedia;
+			});
+	
 	 	});	 	
 	 }
 
@@ -120,48 +126,53 @@ angular.module('AdminApp')
 
 
 	// change banner
-	$scope.changeBanner = function(){
-	var modalInstance = $modal.open({
-		  templateUrl: 'courseMedias.html',
-		  controller: 'ModalMediaInstanceCtrl',
-		  windowClass: 'app-modal-lg',
-		  resolve: {
-		  	meidas: function(){
-		  		return $scope.meidas 
-		  	}
-		  }
-		});
+	// $scope.changeBanner = function(){
+	// 	var modalInstance = $modal.open({
+	// 	  templateUrl: 'courseMedias.html',
+	// 	  controller: 'ModalMediaInstanceCtrl',
+	// 	  windowClass: 'app-modal-lg',
+	// 	  resolve: {
+	// 	  	meidas: function(){
+	// 	  		return $scope.meidas 
+	// 	  	}
+	// 	  }
+	// 	});
 
-		modalInstance.result.then(function (selectedMedia) {
-		  $scope.course.banner = selectedMedia;
-		}, function () {
-		  	// done
-		});
-	}
+	// 	modalInstance.result.then(function (selectedMedia) {
+	// 	  $scope.course.banner = selectedMedia;
+	// 	}, function () {
+	// 	  	// done
+	// 	});
+	// }
+
+
+
 
 
 	 // change cover image for course
-	 $scope.changeCover = function(){
-		var modalInstance = $modal.open({
-		  templateUrl: 'courseMedias.html',
-		  controller: 'ModalMediaInstanceCtrl',
-		  windowClass: 'app-modal-lg',
-		  resolve: {
-		  	meidas: function(){
-		  		return $scope.meidas 
-		  	}
-		  }
-		});
+	 // $scope.changeCover = function(){
+		// var modalInstance = $modal.open({
+		//   templateUrl: 'courseMedias.html',
+		//   controller: 'ModalMediaInstanceCtrl',
+		//   windowClass: 'app-modal-lg',
+		//   resolve: {
+		//   	meidas: function(){
+		//   		return $scope.meidas 
+		//   	}
+		//   }
+		// });
 
-		modalInstance.result.then(function (selectedMedia) {
-		  //$scope.user.name = user.name;
-		  $scope.course.cover = selectedMedia;
+		// modalInstance.result.then(function (selectedMedia) {
+		//   //$scope.user.name = user.name;
+		//   $scope.course.cover = selectedMedia;
 		  
-		  //$scope.selectedDuration = duration;
-		}, function () {
-		  	// done
-		});
-	 }
+		//   //$scope.selectedDuration = duration;
+		// }, function () {
+		//   	// done
+		// });
+	 // }
+
+
 
 	$scope.createLink = function() {
 		CourseLink.create($scope.newCourseLink, function(result){
@@ -245,23 +256,25 @@ angular.module('AdminApp')
 
 })
 
-.controller('ModalMediaInstanceCtrl', function ($scope, $modalInstance, meidas) {
+// .controller('ModalMediaInstanceCtrl', function ($scope, $modalInstance, meidas) {
 
-	$scope.Medias = meidas;
-	$scope.selectedMedia = null;
-	$scope.ok = function () {
-	//$modalInstance.close($scope.duration );
-	$modalInstance.close($scope.selectedMedia);
-	};
+// 	$scope.Medias = meidas;
+// 	$scope.selectedMedia = null;
+// 	$scope.ok = function () {
+// 	//$modalInstance.close($scope.duration );
+// 	$modalInstance.close($scope.selectedMedia);
+// 	};
 
-	$scope.cancel = function () {
-	$modalInstance.dismiss('cancel');
-	};
+// 	$scope.cancel = function () {
+// 	$modalInstance.dismiss('cancel');
+// 	};
 
-	$scope.selectMedia = function(selectedMedia){
-		$modalInstance.close(selectedMedia);
-	}
-})
+// 	$scope.selectMedia = function(selectedMedia){
+// 		$modalInstance.close(selectedMedia);
+// 	}
+// })
+
+
 .controller('EditLinkModalInstanceCtrl', function ($scope, $modalInstance, editCourseLink) {
 
 

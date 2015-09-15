@@ -81,6 +81,7 @@ angular.module('AdminApp')
 	$scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 
 	if(staff_id !=null){
+		
 	 	Staffs.get({id:staff_id}, function(result){
 	 		$scope.staff = result.data;
 

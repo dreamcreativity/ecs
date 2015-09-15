@@ -304,39 +304,9 @@
     </script>
 
 
-    <script type="text/ng-template" id="courseMedias.html">
-        <div class="modal-header">
-            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Select meida from list</h4>
-        </div>
-        <div class="modal-body lg">
-            <div class="form-horizontal">
-	
+    <!-- include the media selector mockup -->
+    <div ng-include="'/ng/html/MediaSelector.html'"></div>
 
-				<div class="well white padding-25">
-					<!-- Gallery Style 2-->
-					<ul class="tc-gallery-2 clearfix">
-						<li class="thumbnail" ng-repeat="m in Medias">
-		
-							<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
-								<img alt="" src="{{m.thumbnail}}" style="width:160px; height: 120px;">
-								<div class="text">
-									<div class="inner">Sample Caption on Hover</div>
-								</div>
-							</a>
-						</li>
-					
-					</ul>
-				</div>
-
-
-	      	</div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
 
 </div>			
 
