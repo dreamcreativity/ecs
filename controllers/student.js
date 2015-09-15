@@ -6,38 +6,58 @@ var FlightInfo = require('../models/agent');
 async = require("async");
 
 // Insert a new student record
+// exports.create = function(req,res){
+// 	var newStudent = new Student(req.body);
+
+// 	Student.findOne({student_id : newStudent.student_id}, function(err, student){
+// 		if(err){
+// 			res.json({
+// 				type:false,
+// 				data: "Error occured: " +err
+// 			});
+// 		}
+// 		else {
+// 			if(student){
+// 				res.json({
+// 					type:false,
+// 					data:"Student ID  is already exists"
+// 				});
+// 			}else {
+
+// 				newStudent.save(function(err,result){
+// 					if(err){
+// 						res.json({
+// 							type:false,
+// 							data:"Error occured: " +err
+// 							});
+// 					}
+// 					res.json({
+// 						type:true,
+// 						data:result
+// 					});
+// 				});
+// 			}
+// 		}
+// 	});
+// }
+
 exports.create = function(req,res){
 	var newStudent = new Student(req.body);
-
-	Student.findOne({student_id : newStudent.student_id}, function(err, student){
-		if(err){
-			res.json({
-				type:false,
-				data: "Error occured: " +err
-			});
-		}
-		else {
-			if(student){
+	Student.findOne({}).sort(studentID, 1).run(function(err, data){
+		var new_studentID = data.studentID + 1;
+		newStudent.studentID = new_studentID;
+		newStudent.save(function(err,result){
+			if(err){
 				res.json({
 					type:false,
-					data:"Student ID  is already exists"
-				});
-			}else {
-
-				newStudent.save(function(err,result){
-					if(err){
-						res.json({
-							type:false,
-							data:"Error occured: " +err
-							});
-					}
-					res.json({
-						type:true,
-						data:result
-					});
+					data:"Error occured: " +err
 				});
 			}
-		}
+			res.json({
+				type:true,
+				data:result
+			});
+		});
 	});
 }
 
