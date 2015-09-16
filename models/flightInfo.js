@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var FlightInfoSchema = mongoose.model('FlightInfo', new mongoose.Schema({
+var FlightInfoSchema = new mongoose.Schema({
 	arrivalDateTime:{type: Date},
 	arrivalAirline : {type:String},
 	isPickup : {type:Boolean, default:false},
@@ -8,7 +8,7 @@ var FlightInfoSchema = mongoose.model('FlightInfo', new mongoose.Schema({
 	departureAirline : {type:String},
 	isDropoff : {type:Boolean, default:false},
 	students : [{type : mongoose.Schema.ObjectId, ref:'Student', default:null}],
-}));
+});
 
 var FlightInfo = mongoose.model('FlightInfo', FlightInfoSchema);
 

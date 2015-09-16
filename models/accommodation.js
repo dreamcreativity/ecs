@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var AccommodationSchema = mongoose.model('Accommodation', new mongoose.Schema({
+var AccommodationSchema = new mongoose.Schema({
 	isHomestay: {type: Boolean,default:true},
 	option : {type: String},
 	startDate : {type : Date},
@@ -15,7 +15,7 @@ var AccommodationSchema = mongoose.model('Accommodation', new mongoose.Schema({
 	specialFood : {type: String},
 	allergiesMedical : {type: String},
 	isPrivateBathroom : {type:Boolean, default:false}
-}));
+});
 
 var Accommodation = mongoose.model('Accommodation', AccommodationSchema);
 

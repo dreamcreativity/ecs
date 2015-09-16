@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var StaffSchema = mongoose.model('Staff', new mongoose.Schema({
+var StaffSchema = new mongoose.Schema({
 	username: {type: String, required: true },
 	password: {type: String, required: true },
 	//token: {type: String, default: null},
@@ -25,7 +25,7 @@ var StaffSchema = mongoose.model('Staff', new mongoose.Schema({
     lastLoginDateTime : {type : Date, default : Date.now },
     lastLoginIP : {type:String, default:null}
 
-}));
+});
 
 
 var Staff = mongoose.model('Staff', StaffSchema);

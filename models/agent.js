@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var AgentSchema = mongoose.model('Agent', new mongoose.Schema({
+var AgentSchema = new mongoose.Schema({
 	username: {type: String, required: true },
 	password: {type: String, required: true},
 	firstname: {type: String, required: true },
@@ -15,7 +15,7 @@ var AgentSchema = mongoose.model('Agent', new mongoose.Schema({
 	isDelete : {type : Boolean, default : false },
 	isActive : {type : Boolean, default : false },
 	createDate : {type : Date, default : Date.now },
-}));
+});
 
 
 var Agent = mongoose.model('Agent', AgentSchema);

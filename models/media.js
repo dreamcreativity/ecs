@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var MediaSchema = mongoose.model('Media', new mongoose.Schema({
+var MediaSchema = new mongoose.Schema({
 	title: {type: String, required: true, default: 'Untitled' },
 	size: {type: Number, required: true },
 	ext: {type: String, required: true },
@@ -12,7 +12,7 @@ var MediaSchema = mongoose.model('Media', new mongoose.Schema({
 	target: { type: String, required: true, default: 'Gallery' },
 	createDate : {type : Date, default : Date.now },
 	archive : {type : Boolean, default : false }
-}));
+});
 
 var Media = mongoose.model('Media', MediaSchema);
 module.exports =Media;

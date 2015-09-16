@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var SliderSchema = mongoose.model('Slider', new mongoose.Schema({
+var SliderSchema = new mongoose.Schema({
 	heading: {type: String, required: true },
 	sub_heading: {type: String, required: true },
 	// headings: [{ type: Schema.Types.ObjectId, ref: 'Media', default: null }],
@@ -11,7 +11,7 @@ var SliderSchema = mongoose.model('Slider', new mongoose.Schema({
 	position:{type: String, required: true },
 	createDate : {type : Date, default : Date.now },
 	is_active : {type : Boolean, default : false }
-}));
+});
 
 var Slider = mongoose.model('Slider', SliderSchema);
 

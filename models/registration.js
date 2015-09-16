@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var RegistrationSchema = mongoose.model('Registration', new mongoose.Schema({
+var RegistrationSchema = new mongoose.Schema({
 	//Step 1 
 	firstname: {type: String, required: true },
 	lastname : {type: String, required: true },
@@ -48,7 +48,7 @@ var RegistrationSchema = mongoose.model('Registration', new mongoose.Schema({
 	special_food : {type: String},
 	allergies_medical : {type: String},
 	IsPrivate : {type:Boolean, required:true,default:false}
-}));
+});
 
 
 

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var StudentSchema = mongoose.model('Student', new mongoose.Schema({
+var StudentSchema = new mongoose.Schema({
 	//basic info
 	studentID: {type: String},
 	agent: {type: mongoose.Schema.ObjectId, ref:'Agent', default: null},
@@ -37,7 +37,7 @@ var StudentSchema = mongoose.model('Student', new mongoose.Schema({
 	note: {type: String},
 	registerDate: {type: Date,default: Date.now },
 	isQuit : {type : Boolean, default : false },
-}));
+});
 
 
 var Student = mongoose.model('Student', StudentSchema);
