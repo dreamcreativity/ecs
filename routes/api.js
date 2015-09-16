@@ -39,7 +39,6 @@ function IsAuthException(path, method){
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/registration', method: 'POST', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'}
-
 	];
 
 	for(i in list){

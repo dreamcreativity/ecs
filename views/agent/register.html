@@ -152,7 +152,7 @@
 						<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is invalid</p>
 					</div>
 				</div>
-
+ 
  				<div class="form-group">
  				<label class="col-sm-offset-1">
 					<input type="checkbox" class="tc" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
@@ -184,14 +184,14 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Official TOEFL source</label>
 					<div class="col-sm-1">
-					<input type="number" class="form-control" name="toefl" ng-model="student.toefl" min=0 required>
+					<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 required>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Official IELTS source</label>
 					<div class="col-sm-1">
-					<input type="number" class="form-control" name="ielts" ng-model="student.ielts" min=0 required>
+					<input type="number" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 required>
 					</div>
 				</div>
 
@@ -276,14 +276,14 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">From Date : </label>
 				<div class="col-sm-2">
-					<input type="date" class="form-control" name="healthInsurance_startingDate" ng-model="student.healthInsurance_startingDate">
+					<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">To Date : </label>
 				<div class="col-sm-2">
-					<input type="date" class="form-control" name="healthInsurance_endDate" ng-model="student.healthInsurance_endDate">
+					<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
 				</div>
 			</div> 
 		</div> 
@@ -296,7 +296,7 @@
 					<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{accommodation.isHomestay}} ng-model="accommodation.isHomestay">
 				</div>
 			</div>
-			<div ng-show=student.ishomestay>
+			<div ng-show=accommodation.isHomestay>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Homestay Option</label>
 					<div class="col-sm-1">
@@ -327,7 +327,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Departure date from Toronto: </label>
 					<div class="col-sm-2">
-						<input type="date" class="form-control" name="accommodation_finishingDate" ng-model="student.accommodation_departureDate" >
+						<input type="date" class="form-control" name="departDate" ng-model="accommodation.departDate" >
 					</div>
 				</div>
 

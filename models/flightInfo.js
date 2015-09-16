@@ -6,7 +6,7 @@ var FlightInfoSchema = mongoose.model('FlightInfo', new mongoose.Schema({
 	isPickup : {type:Boolean, default:false},
 	departureDateTime:{type: Date},
 	departureAirline : {type:String},
-	isDropoff : {type:Boolean, default:false}，
+	isDropoff : {type:Boolean, default:false},
 	students : [{type : mongoose.Schema.ObjectId, ref:'Student', default:null}],
 }));
 

@@ -92,7 +92,7 @@ resources.factory('Agents',['$resource',
     });
 }])
 
-.factory('FlightInfo',['$resource',
+.factory('FlightInfos',['$resource',
     function($resource){
         return $resource('/api/flightInfo', {}, {
         create:{ method: 'POST'}

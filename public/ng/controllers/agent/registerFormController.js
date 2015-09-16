@@ -1,7 +1,7 @@
 	'use strict';
 	angular.module('AgentApp')
 
-	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Registrations,Courses,Accommodations,FlightInfo, $window){
+	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Registrations,Courses,Accommodations,FlightInfos, $window){
 	$scope.courseList =[];
 	$scope.displayCourses = [];
 	var today = new Date();
@@ -53,15 +53,15 @@
 
 	$scope.register = function(isValid){
 		Accommodations.save($scope.accommodation, function(result){
-			if(result.message == "successed"){
+			if(result.messages == "successed"){
 				var accommodationId = result.data._id;
-				FlightInfo.save($scope.flightInfo, function(result1){
-					if(result1.message == "successed"){
+				FlightInfos.save($scope.flightInfo, function(result1){
+					if(result1.messages == "successed"){
 						var flightInfoId = result.data._id;
 						$scope.student.accommodation = accommodationId;
 						$scope.student.flightInfo = flightInfoId;
 						Students.save($scope.student, function(result2){
-							if(message == "successed"){
+							if(result2.type == true){
 								$http.post('/api/pdf',{registerId:result.data._id})
 								.success(function(data,status,headers,config){
 									if(data.status == "successed"){
