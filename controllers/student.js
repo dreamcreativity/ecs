@@ -1,4 +1,5 @@
 var Student = require('../models/student');
+var Counter = require('../models/counter');
 var Agent = require('../models/agent');
 var Accommodation = require('../models/accommodation');
 var FlightInfo = require('../models/flightInfo');
@@ -41,24 +42,42 @@ async = require("async");
 // 	});
 // }
 
+// function getNextSequenceValue(sequenceName){
+// 	var sequenceDocument = StudentId.findAndModify({
+// 		query:{_id:sequenceName},
+// 		update:{$inc:{sequence_value:1}}
+// 	});
+// 	return sequenceDocument.sequence_value;
+// }
+
 exports.create = function(req,res){
 	var newStudent = new Student(req.body);
-	Student.findOne({}).sort(studentID, 1).run(function(err, data){
-		var new_studentID = data.studentID + 1;
-		newStudent.studentID = new_studentID;
-		newStudent.save(function(err,result){
-			if(err){
-				res.json({
-					type:false,
-					data:"Error occured: " +err
-				});
-			}
-			res.json({
-				type:true,
-				data:result
-			});
-		});
-	});
+	//var studentId = getNextSequenceValue("StudentId");
+
+	var obj = new Counter();
+	obj._id = "student_id";
+	obj.next = 0;
+
+	// obj.save(function(err, data){
+
+	// });
+
+	// Student.find({}).sort(studentID, 1).run(function(err, data){
+	// 	var new_studentID = data.studentID + 1;
+	// 	newStudent.studentID = new_studentID;
+	// 	newStudent.save(function(err,result){
+	// 		if(err){
+	// 			res.json({
+	// 				type:false,
+	// 				data:"Error occured: " +err
+	// 			});
+	// 		}
+	// 		res.json({
+	// 			type:true,
+	// 			data:result
+	// 		});
+	// 	});
+	// });
 }
 
 //GET All Students

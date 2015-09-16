@@ -41,5 +41,4 @@ var StudentSchema = mongoose.model('Student', new mongoose.Schema({
 
 
 var Student = mongoose.model('Student', StudentSchema);
-
 module.exports =Student;
