@@ -39,8 +39,9 @@ angular.module('AdminApp')
 	 }
 })
 
-.controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$scope,$http,Regions,Staffs,$window) {
+.controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$scope,$http,$modal,Regions,Staffs,Medias,$window) {
 	var staff_id = url_params.id;
+	
 	loading();
 
 	$scope.update = function(isValid) {
@@ -50,6 +51,7 @@ angular.module('AdminApp')
 	 	for(var i=0; i<$scope.region_tags.length; i++){
 	 		$scope.staff.regions.push($scope.region_tags[i].text);
 	 	}
+
 	 	Staffs.update($scope.staff, function(result){
 	 			var message = result.messages;	    
 	 		    ShowGritterCenter('System Notification','Staff has been updated');
@@ -69,11 +71,32 @@ angular.module('AdminApp')
 	 				$scope.loadTags = function(query) {
 	 					return list;
 	 				};
+
 	 			});
 
 	 		}
 	 	});
+
+
+
 	 }
+
+
+	 // load meida image
+	Medias.getCategoryTargetMedia({target:'Staff',type:'Image'}, function(result){
+	 	$scope.meidas = result.data;
+	 	console.log($scope.meidas);
+
+			
+		$scope.changeCover = createMediaSelectorFunction($modal, $scope.meidas,function( selectedMedia){ 
+			$scope.staff.cover = selectedMedia;
+		});
+	});
+
+
+	
+
+
 })
 
 .controller('DetailCtrl', function DetailCtrl($scope,Staffs,Agents,SendEmail,$window){

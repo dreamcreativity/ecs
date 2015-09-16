@@ -138,6 +138,9 @@
 								<div class="form-actions">
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-6">
+
+									<a target="_blank" href="/course/{{course._id}}" class="btn btn-primary" >Preview</a>
+
 									<button type="submit" ng-disabled="editingForm.$invalid" class="btn btn-primary">Update</button>
 
 									<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editingForm.$invalid"> -->
@@ -269,6 +272,7 @@
 	      	</div>
         </div>
         <div class="modal-footer">
+
             <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>

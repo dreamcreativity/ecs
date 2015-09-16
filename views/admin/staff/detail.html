@@ -135,6 +135,15 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-sm-3 control-label">Cover Image</label>
+							<div class="col-sm-9">
+								<div ng-click="changeCover()" ng-if="staff.cover == null" class="cover-empty"><label>200 X 100</label></div>
+
+								<img class="preview-media"  ng-click="changeCover()"  ng-if="staff.cover != null" src="{{staff.cover.thumbnail}}">
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-sm-3 control-label">First Name:</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" value="{{staff.firstname}}"required>
@@ -211,4 +220,7 @@
 			<a href="/admin/staff/all"class="col-md-1 btn btn-sm btn-primary">Back</a>
 		</div><!--nav-tabs style 1-->
 	</div>
+
+	<!-- include the media selector mockup -->
+    <div ng-include="'/ng/html/MediaSelector.html'"></div>
 </div>		

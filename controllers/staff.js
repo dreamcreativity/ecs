@@ -5,6 +5,8 @@ var session = require('express-session')
 var Staff = require('../models/staff');
 var Token = require('../models/token');
 var crypto = require('crypto');
+var async = require("async");
+
 
 //POST : Create a Staff
 exports.create = function(req,res){
@@ -222,7 +224,9 @@ exports.getAllStaffs = function (req,res){
 //GET: staff by Id
 exports.getStaffbyId = function(req,res){
 	var id = req.params.id;
-	Staff.find({_id:id}, function(err, result){
+
+
+	Staff.find({_id:id}).populate('cover').exec(function(err, result){
 
 
 		if(err) {
@@ -255,30 +259,47 @@ exports.getStaffbyId = function(req,res){
 exports.edit = function(req,res){
 	var id = req.params.id;
 	//var staff = new Staff(req.body);
-	Staff.update({_id:id}, req.body, function(err, result){
-		if(err){
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
-		else {
-			if(result == 1){
-				res.json({
-					status: 'ok',
-					messages: 'successed',
-					data: result[0]
-				});	
-			}else{
+	console.log(req.body);
+	async.series([
+
+		function(next){
+			if (req.body.cover != null)
+	    		req.body.cover =  req.body.cover._id;
+
+	    	next();
+	    	
+	    },
+
+	], function(){
+		Staff.update({_id:id}, req.body, function(err, result){
+			if(err){
 				res.json({
 					status: 'fail',
-					messages: "multipulte result",
+					messages: err,
 					data: null
 				});
 			}
-		}
+			else {
+				if(result == 1){
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result[0]
+					});	
+				}else{
+					res.json({
+						status: 'fail',
+						messages: "multipulte result",
+						data: null
+					});
+				}
+			}
+		});
+
 	});
+
+
+
 }
 
 //DELETE : Set staff isDelete be true

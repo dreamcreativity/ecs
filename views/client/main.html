@@ -652,6 +652,35 @@
 
                     <div class="container clearfix">
 
+                        
+                        <% for(var i=0; i < staffs.length; i++){ %>
+                        <div class="col-md-6 bottommargin" >
+
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="<%- staffs[i].cover.path %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4><%- staffs[i].firstname + ' ' + staffs[i].lastname %></h4><span>Counselor - Pathways</span></div>
+                                    <div class="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
+                                    <a href="#" class="social-icon si-rounded si-small si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <% } %>
+
                         <div class="col-md-6 bottommargin">
 
                             <div class="team team-list clearfix">

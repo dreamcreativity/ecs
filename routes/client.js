@@ -4,6 +4,7 @@ var template = require('../modules/templateController');
 var Slider = require('../models/slider');
 var Media = require('../models/media');
 var Course = require('../models/course');
+var Staff = require('../models/staff');
 var async = require("async");
 var constants = require("../constants");
 
@@ -16,24 +17,46 @@ router.get('/', function(req, res) {
 
 
 	var sliders;
-	Slider.find({is_active:true}, function(err, result){
-		sliders = result;
+	var staffs;
 
-		async.each(sliders, function( slider, next) {
-			slider.media = Media.findOne({_id: slider.resource}, function(err,result){
-				if(err)
-					throw err;
-				slider.media = result; 
+	async.series([
+		function(next){
+			
+			Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+				staffs = result;
+				console.log('-----------------');
+				console.log(staffs);
 				next();
 			});
-		}, function(err){
-		
-			template(req,res,'client_main','client/main.html',{ 
-				title: 'ESC - Englist School of Canada',
-				sliders : sliders 
-			});		
+
+	    	
+	    	
+	    },
+
+	], function(){
+		Slider.find({is_active:true}, function(err, result){
+			sliders = result;
+
+			async.each(sliders, function( slider, next) {
+				slider.media = Media.findOne({_id: slider.resource}, function(err,result){
+					if(err)
+						throw err;
+					slider.media = result; 
+					next();
+				});
+			}, function(err){
+			
+				template(req,res,'client_main','client/main.html',{ 
+					title: 'ESC - Englist School of Canada',
+					sliders : sliders ,
+					staffs: staffs
+				});		
+			});
 		});
 	});
+
+
+
 
 	
 });
