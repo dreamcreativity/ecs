@@ -1,7 +1,7 @@
 	'use strict';
 	angular.module('AgentApp')
 
-	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Registrations,Courses,Accommodations,FlightInfos, $window){
+	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Accommodations,FlightInfos, $window){
 	$scope.courseList =[];
 	$scope.displayCourses = [];
 	var today = new Date();
@@ -13,43 +13,13 @@
 	$scope.isDisabled = false;
 
 
-	Registrations.query(function(result){
+	Students.query(function(result){
 		$scope.registrations = result;
 	});
 
 	Courses.getSimpleList(function(data){
 		$scope.courses = data.data;
 	});
-
-	//$scope.register = function(isValid){
-		// $scope.student.coursesList = $scope.courseList;
-		// Registrations.save($scope.student, function(result){
-		// 	var message = result.messages;	  
-		// 	if(message == "successed"){
-		// 		$http.post('/api/pdf',{registerId:result.data._id})
-		// 		.success(function(data,status,headers,config){
-		// 			if(data.status == "successed"){
-		// 				$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-		// 					subject:"success registration", 
-		// 					context: "Welcome", 
-		// 					attachments : [data.data]})
-		// 				.success(function(data,status,headers,config){
-		// 					ShowGritterCenter('System Notification','Success to registration');
-		// 					setInterval(function(){
-  // 							 $window.location='/agent/students';
-		// 					}, 2000); 
-		// 				})
-		// 				.error(function(data,status,headers,config){
-		// 					console.log("fail to send registration email")
-		// 				});
-		// 			}
-		// 		})
-		// 		.error(function(data,status,headers,config){
-		// 			console.log("fail to pdf")
-		// 		});
-		// 	}
-		// });
-	//}
 
 	$scope.register = function(isValid){
 		Accommodations.save($scope.accommodation, function(result){
@@ -156,14 +126,14 @@
 	}
 	})
 
-	.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Registrations,$window){
-	var registrationId = url_params.id;
+	.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,$window){
+	var obj_id = url_params.id;
 	loading();
 
 	function loading() {
-		if(registrationId !=null){
-			Registrations.get({id:registrationId}, function(result){
-				$scope.registration = result.data;
+		if(obj_id !=null){
+			Students.get({id:obj_id}, function(result){
+				$scope.student = result.data;
 			});
 		};
 	}

@@ -6,78 +6,30 @@ var FlightInfo = require('../models/flightInfo');
 
 async = require("async");
 
-// Insert a new student record
-// exports.create = function(req,res){
-// 	var newStudent = new Student(req.body);
-
-// 	Student.findOne({student_id : newStudent.student_id}, function(err, student){
-// 		if(err){
-// 			res.json({
-// 				type:false,
-// 				data: "Error occured: " +err
-// 			});
-// 		}
-// 		else {
-// 			if(student){
-// 				res.json({
-// 					type:false,
-// 					data:"Student ID  is already exists"
-// 				});
-// 			}else {
-
-// 				newStudent.save(function(err,result){
-// 					if(err){
-// 						res.json({
-// 							type:false,
-// 							data:"Error occured: " +err
-// 							});
-// 					}
-// 					res.json({
-// 						type:true,
-// 						data:result
-// 					});
-// 				});
-// 			}
-// 		}
-// 	});
-// }
-
-// function getNextSequenceValue(sequenceName){
-// 	var sequenceDocument = StudentId.findAndModify({
-// 		query:{_id:sequenceName},
-// 		update:{$inc:{sequence_value:1}}
-// 	});
-// 	return sequenceDocument.sequence_value;
-// }
-
 exports.create = function(req,res){
 	var newStudent = new Student(req.body);
-	//var studentId = getNextSequenceValue("StudentId");
+	Counter.findAndModify('student_id', function (err, counter) {
+  		if (err) {
+        	res.json({
+					type:false,
+					data:"Error occured: " +err
+				});
+    	}
 
-	var obj = new Counter();
-	obj._id = "student_id";
-	obj.next = 0;
-
-	// obj.save(function(err, data){
-
-	// });
-
-	// Student.find({}).sort(studentID, 1).run(function(err, data){
-	// 	var new_studentID = data.studentID + 1;
-	// 	newStudent.studentID = new_studentID;
-	// 	newStudent.save(function(err,result){
-	// 		if(err){
-	// 			res.json({
-	// 				type:false,
-	// 				data:"Error occured: " +err
-	// 			});
-	// 		}
-	// 		res.json({
-	// 			type:true,
-	// 			data:result
-	// 		});
-	// 	});
-	// });
+     	newStudent.studentID = counter.next;
+     		newStudent.save(function(err,result){
+			if(err){
+				res.json({
+					type:false,
+					data:"Error occured: " +err
+				});
+			}
+			res.json({
+				type:true,
+				data:result
+			});
+		});
+	});
 }
 
 //GET All Students

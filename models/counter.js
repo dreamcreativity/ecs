@@ -5,8 +5,9 @@ var CounterSchema = new mongoose.Schema({
 	next : {type: Number},
 });
 
+
 CounterSchema.statics.findAndModify = function (counter, callback) {
-    return this.findByIdAndUpdate(counter, { $inc: { next: 1 } }, {new: true, upsert: true, select: {next: 1}}, callback);
+     return this.findByIdAndUpdate(counter, { $inc: { next: 1 } }, {new: true, upsert: true, select: {next: 1}}, callback);
 };
 
 var Counter = mongoose.model('Counter', CounterSchema);
