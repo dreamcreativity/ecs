@@ -291,6 +291,43 @@
 		<!-- Step 3 Program registration accommodation -->
 		<div class="step-pane" id="step3">
 			<div class="form-group">
+					<label class="col-sm-2 control-label">Flight Information : </label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Arrival in Toronto</label>
+					<label class="col-sm-1 control-label">Date&Time</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="arrivalDateTime" ng-model="flightInfo.arrivalDateTime">
+					</div>
+					<label class="col-sm-1 control-label">Airline</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="arrivalAirline" ng-model="flightInfo.arrivalAirline">
+					</div>
+					<label class="col-sm-2 control-label">Airport Pick up Request</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="isPickup" ng-model="flightInfo.isPickup">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Departure from Toronto</label>
+					<label class="col-sm-1 control-label">Date&Time</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" name="departureDateTime" ng-model="flightInfo.departureDateTime" >
+					</div>
+					<label class="col-sm-1 control-label">Airline</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" name="departureAirline" ng-model="flightInfo.departureAirline" >
+					</div>
+					<label class="col-sm-2 control-label">Airport Drop off Request</label>
+					<div class="col-sm-1">
+						<input type="checkbox" class="form-control" name="isDropoff" ng-model="flightInfo.isDropoff">
+					</div>
+				</div>
+
+
+			<div class="form-group">
 				<label class="col-sm-2 control-label">Are you in home stay</label>
 				<div class="col-sm-1">
 					<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{accommodation.isHomestay}} ng-model="accommodation.isHomestay">
@@ -328,42 +365,6 @@
 					<label class="col-sm-2 control-label">Departure date from Toronto: </label>
 					<div class="col-sm-2">
 						<input type="date" class="form-control" name="departDate" ng-model="accommodation.departDate" >
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Flight Information : </label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Arrival in Toronto</label>
-					<label class="col-sm-1 control-label">Date&Time</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="arrivalDateTime" ng-model="flightInfo.arrivalDateTime">
-					</div>
-					<label class="col-sm-1 control-label">Airline</label>
-					<div class="col-sm-1">
-						<input type="text" class="form-control" name="arrivalAirline" ng-model="flightInfo.arrivalAirline">
-					</div>
-					<label class="col-sm-2 control-label">Airport Pick up Request</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isPickup" ng-model="flightInfo.isPickup">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Departure from Toronto</label>
-					<label class="col-sm-1 control-label">Date&Time</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="departureDateTime" ng-model="flightInfo.departureDateTime" >
-					</div>
-					<label class="col-sm-1 control-label">Airline</label>
-					<div class="col-sm-1">
-						<input type="text" class="form-control" name="departureAirline" ng-model="flightInfo.departureAirline" >
-					</div>
-					<label class="col-sm-2 control-label">Airport Drop off Request</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isDropoff" ng-model="flightInfo.isDropoff">
 					</div>
 				</div>
 
@@ -448,7 +449,7 @@
 			<div class="col-sm-offset-3 col-sm-9">
 				<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
 				<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
-				<button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
+				<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
 				<!-- add $("#last_submit").trigger('click') in wizard.js-->
 				<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 			</div>

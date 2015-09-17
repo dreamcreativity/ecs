@@ -22,6 +22,7 @@
 	});
 
 	$scope.register = function(isValid){
+		$scope.buttonDisabled = true;
 		Accommodations.save($scope.accommodation, function(result){
 			if(result.messages == "successed"){
 				var accommodationId = result.data._id;
