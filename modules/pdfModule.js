@@ -20,9 +20,33 @@ var pdf = require('html-pdf');
 exports.generatePDF = function (layout, callback) {
      var message ="";
      var path = "./example.pdf";
-     pdf.create(layout).toFile(path, function(err,res){
+
+     var options = {
+		"format": "Letter",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid 
+  		"orientation": "portrait",
+  		"border": {
+		    "top": "10mm",            // default is 0, units: mm, cm, in, px 
+		    "right": "10mm",
+		    "bottom": "10mm",
+		    "left": "10mm"
+  			}
+
+     };
+     pdf.create(layout,options).toFile(path, function(err,res){
       if(err) message = err;
       else message =  "success";
       callback(message,path);
      });
+}
+
+
+exports.getPdfTemplate = function(templateName, callback){
+
+	fs.readFile('./pdfTemplates/' + templateName, 'utf8', function (err,data) {
+	  if (err) {
+	    return console.log(err);
+	  }
+	  callback(data);
+	});
+
 }

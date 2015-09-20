@@ -85,6 +85,7 @@
 				year:course.year
 			});
 			$scope.newrowShow = false
+			delete $scope.course
 			$("#addrow_button").attr("disabled", false)
 		}
 	}

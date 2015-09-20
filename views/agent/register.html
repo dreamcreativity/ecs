@@ -23,7 +23,7 @@
 
 
 		<!-- Step 1 Student registration -->
-	    <div class="step-content">
+		<div class="step-content">
 			<div class="step-pane active" id="step1">											
 				<div class="form-group" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 					<label class="col-sm-1 control-label">First Name</label>
@@ -42,24 +42,24 @@
 				</div>
 
 				<div class="form-group">
-				<label class="col-sm-1 control-label">Gender</label>
+					<label class="col-sm-1 control-label">Gender</label>
 					<div class="col-sm-2">
-   					    <div class="tcb">
-					   <label class="tcb-inline">
-							<input type="radio" name="male" value="male" ng-model="student.gender" class="tc">
-							<span class="labels"> Male</span>
-					   </label>
-						<label class="tcb-inline">
-							<input type="radio" name="female" value="female" ng-model="student.gender" class="tc">
-							<span class="labels"> Female</span>
-						</label>
+						<div class="tcb">
+							<label class="tcb-inline">
+								<input type="radio" name="male" value="male" ng-model="student.gender" class="tc">
+								<span class="labels"> Male</span>
+							</label>
+							<label class="tcb-inline">
+								<input type="radio" name="female" value="female" ng-model="student.gender" class="tc">
+								<span class="labels"> Female</span>
+							</label>
 						</div>
-   					    <p ng-show="registerForm.gender.$invalid && !registerForm.gender.$pristine" class="help-block text-danger">gender is required</p>
+						<p ng-show="registerForm.gender.$invalid && !registerForm.gender.$pristine" class="help-block text-danger">gender is required</p>
 					</div>
 				</div>
 
 				<div class="form-group" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
-				<label class="col-sm-1 control-label">Birth Date</label>
+					<label class="col-sm-1 control-label">Birth Date</label>
 					<div class="col-sm-2">
 						<input type="date" class="form-control" name="birthday" ng-model="student.birthday" required>
 						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="form-group" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
-				<label class="col-sm-1 control-label">Age</label>
+					<label class="col-sm-1 control-label">Age</label>
 					<div class="col-sm-2">
 						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
 						<p ng-show="registerForm.age.$invalid && !registerForm.age.$pristine" class="help-block text-danger">age is invalid</p>
@@ -83,10 +83,10 @@
 				</div>
 
 				<div class="form-group"  ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
-				<label class="col-sm-1 control-label">Address</label>
+					<label class="col-sm-1 control-label">Address</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
-   					    <p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
+						<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
 					</div>
 				</div>
 
@@ -94,7 +94,7 @@
 					<label class="col-sm-1 control-label">Postal Code</label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
-   					    <p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">postcode code is required</p>
+						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">postcode code is required</p>
 					</div>
 				</div>
 
@@ -102,15 +102,15 @@
 					<label class="col-sm-1 control-label">City</label>
 					<div class="col-sm-1">
 						<input type="text" class="form-control" name="city" ng-model="student.city" required>
-   					    <p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
+						<p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
 					</div>
 				</div>
 
 				<div class="form-group" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
-				<label class="col-sm-1 control-label">Province</label>
+					<label class="col-sm-1 control-label">Province</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
-   					    <p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
+						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
 					</div>
 				</div>
 
@@ -118,7 +118,7 @@
 					<label class="col-sm-1 control-label">Country</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="country" ng-model="student.country" required>
-   					    <p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
+						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
 					</div>
 				</div>
 
@@ -126,7 +126,7 @@
 					<label class="col-sm-1 control-label">Telephone</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="telephone" ng-model="student.telephone" required>
-   					    <p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is invalid</p>
+						<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is invalid</p>
 					</div>
 				</div>
 
@@ -141,7 +141,7 @@
 					<label class="col-sm-1 control-label">Email</label>
 					<div class="col-sm-2">
 						<input type="email" class="form-control" name="email" ng-model="student.email" required>
-   					    <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is invalid</p>
+						<p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 					</div>
 				</div>
 
@@ -152,12 +152,12 @@
 						<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is invalid</p>
 					</div>
 				</div>
- 
- 				<div class="form-group">
- 				<label class="col-sm-offset-1">
-					<input type="checkbox" class="tc" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
-					<span class="labels"> Is this a home country address</span>
-				</label>
+				
+				<div class="form-group">
+					<label class="col-sm-offset-1">
+						<input type="checkbox" class="tc" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
+						<span class="labels"> Is this a home country address</span>
+					</label>
 				</div>
 			</div> 
 
@@ -184,14 +184,14 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Official TOEFL source</label>
 					<div class="col-sm-1">
-					<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 required>
+						<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 max=120 required>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Official IELTS source</label>
 					<div class="col-sm-1">
-					<input type="number" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 required>
+						<input type="number" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 max = 9 required>
 					</div>
 				</div>
 
@@ -203,262 +203,262 @@
 				<div class="form-group">
 					<div class="col-sm-2 right">
 						<button id="addrow_button" type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addNewRow()">
-						<i class="fa fa-plus icon-only"></i>
+							<i class="fa fa-plus icon-only"></i>
 						</button>
 					</div>
-				<div class="col-sm-10">
-				<table class="table table-bordered table-striped table-hover tc-table table-primary">
-						<thead>
-							<tr>
+					<div class="col-sm-10">
+						<table class="table table-bordered table-striped table-hover tc-table table-primary">
+							<thead>
 								<tr>
-								<th class="hidden-xs">Course</th>
-								<th class="hidden-xs">Year</th>
-								<th class="hidden-xs">Start Date</th>
-								<th class="hidden-xs">Duration</th>
-								<th class="col-medium center">Action</th>
-							</tr>
-							</tr>
-						</thead>
-						<tbody>
-							<tr id="newrow" ng-show="newrowShow">
-								<td class="hidden-xs">
-									<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
-								</td>
-								<td class="hidden-xs">
-									<select ng-model="course.year" ng-change="changeStartYear(course,year)">
-									<option value="" selected>--Select--</option>
-									<option ng-repeat="year in course.availableYears">{{year}}</option>
-									</select>
-								</td>
-								<td class="hidden-xs">
-									 <select ng-model="course.startDate" required>
-										<option value="" selected>--Select--</option>
-										<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
-									</select>
-								</td>
-								<td class="hidden-xs">
-									<select ng-model="course.duration">		
-									<option value="" selected>--Select--</option>								
-										<option ng-repeat="duration in course.durations">{{duration.title}}</option>
-									</select>
-								</td>
-								<td class="col-medium center">
-									<button type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addCourse(course)">
-										<i class="fa fa-check icon-only"></i>
-									</button>
-									<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeRow()">
-										<i class="fa fa-times icon-only"></i>
-									</button>
-								</td>
-							</tr>
-							<tr ng-repeat="c in courseList">
-								<td class="hidden-xs">{{c.title}}</td>
-								<td class="hidden-xs">{{c.year}}</td>
-								<td class="hidden-xs">{{c.startDate | date:'MMMM d'}}</td>
-								<td class="hidden-xs">{{c.duration}}</td>
-								<td class="col-medium center">
-									<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
-										<i class="fa fa-times icon-only"></i>
-									</button>
-								</td>
-							</tr>
-						</tbody>
+									<tr>
+										<th class="hidden-xs">Course</th>
+										<th class="hidden-xs">Year</th>
+										<th class="hidden-xs">Start Date</th>
+										<th class="hidden-xs">Duration</th>
+										<th class="col-medium center">Action</th>
+									</tr>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="newrow" ng-show="newrowShow">
+									<td class="hidden-xs">
+										<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
+										</td>
+										<td class="hidden-xs">
+											<select ng-model="course.year" ng-change="changeStartYear(course,year)">
+												<option value="" selected>--Select--</option>
+												<option ng-repeat="year in course.availableYears">{{year}}</option>
+											</select>
+										</td>
+										<td class="hidden-xs">
+											<select ng-model="course.startDate" required>
+												<option value="" selected>--Select--</option>
+												<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
+											</select>
+										</td>
+										<td class="hidden-xs">
+											<select ng-model="course.duration">		
+												<option value="" selected>--Select--</option>								
+												<option ng-repeat="duration in course.durations">{{duration.title}}</option>
+											</select>
+										</td>
+										<td class="col-medium center">
+											<button type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addCourse(course)">
+												<i class="fa fa-check icon-only"></i>
+											</button>
+											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeRow()">
+												<i class="fa fa-times icon-only"></i>
+											</button>
+										</td>
+									</tr>
+									<tr ng-repeat="c in courseList">
+										<td class="hidden-xs">{{c.title}}</td>
+										<td class="hidden-xs">{{c.year}}</td>
+										<td class="hidden-xs">{{c.startDate | date:'MMMM d'}}</td>
+										<td class="hidden-xs">{{c.duration}}</td>
+										<td class="col-medium center">
+											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
+												<i class="fa fa-times icon-only"></i>
+											</button>
+										</td>
+									</tr>
+								</tbody>
 
-					</table>
+							</table>
+						</div>
+					</div>
+
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Health Insurance</label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">From Date : </label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">To Date : </label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
+						</div>
+					</div> 
+				</div> 
+
+				<!-- Step 3 Program registration accommodation -->
+				<div class="step-pane" id="step3">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Flight Information : </label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Arrival in Toronto</label>
+						<label class="col-sm-1 control-label">Date&Time</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="arrivalDateTime" ng-model="flightInfo.arrivalDateTime">
+						</div>
+						<label class="col-sm-1 control-label">Airline</label>
+						<div class="col-sm-1">
+							<input type="text" class="form-control" name="arrivalAirline" ng-model="flightInfo.arrivalAirline">
+						</div>
+						<label class="col-sm-2 control-label">Airport Pick up Request</label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isPickup" ng-model="flightInfo.isPickup">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Departure from Toronto</label>
+						<label class="col-sm-1 control-label">Date&Time</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="departureDateTime" ng-model="flightInfo.departureDateTime" >
+						</div>
+						<label class="col-sm-1 control-label">Airline</label>
+						<div class="col-sm-1">
+							<input type="text" class="form-control" name="departureAirline" ng-model="flightInfo.departureAirline" >
+						</div>
+						<label class="col-sm-2 control-label">Airport Drop off Request</label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isDropoff" ng-model="flightInfo.isDropoff">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Are you in home stay</label>
+						<div class="col-sm-1">
+							<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{accommodation.isHomestay}} ng-model="accommodation.isHomestay">
+						</div>
+					</div>
+					<div ng-show=accommodation.isHomestay>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Homestay Option</label>
+							<div class="col-sm-1">
+								<select name="option" ng-model="accommodation.option">
+									<option value="">--</option>
+									<option value="fullboard">Full Board(3 meals per day)</option> 
+									<option value="halfboard">Half Board(2 meals per day)</option>
+									<option value="roomonly">Romm Only</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Accommodation Date : </label>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Starting Date :</label>
+							<div class="col-sm-2">
+								<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
+							</div>
+							<label class="col-sm-2 control-label">Finishing Date :</label>
+							<div class="col-sm-2">
+								<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Departure date from Toronto: </label>
+							<div class="col-sm-2">
+								<input type="date" class="form-control" name="departDate" ng-model="accommodation.departDate" >
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you smoke ?</label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isSmoke" ng-model="accommodation.isSmoke">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isWithSmoke" ng-model="accommodation.isWithSmoke">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you live with pet ? </label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isWithPet" ng-model="accommodation.isWithPet">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you live with small children ? </label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isWithKid" ng-model="accommodation.isWithKid">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">What is your hobbies ? </label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="hobbies" ng-model="accommodation.hobbies"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="occupation" ng-model="accommodation.occupation"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Additional Comments : </label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isPrivateBathroom" ng-model="accommodation.isPrivateBathroom">
+							</div>
+						</div>
+					</div> 
 				</div>
 			</div>
 
-			
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Health Insurance</label>
-			</div>
 
-			<div class="form-group">
-				<label class="col-sm-2 control-label">From Date : </label>
-				<div class="col-sm-2">
-					<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">To Date : </label>
-				<div class="col-sm-2">
-					<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
-				</div>
-			</div> 
-		</div> 
-
-		<!-- Step 3 Program registration accommodation -->
-		<div class="step-pane" id="step3">
-			<div class="form-group">
-					<label class="col-sm-2 control-label">Flight Information : </label>
-				</div>
-
+			<div class="form-actions">
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Arrival in Toronto</label>
-					<label class="col-sm-1 control-label">Date&Time</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="arrivalDateTime" ng-model="flightInfo.arrivalDateTime">
+					<div class="col-sm-offset-3 col-sm-9">
+						<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
+						<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
+						<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
+						<!-- add $("#last_submit").trigger('click') in wizard.js-->
+						<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 					</div>
-					<label class="col-sm-1 control-label">Airline</label>
-					<div class="col-sm-1">
-						<input type="text" class="form-control" name="arrivalAirline" ng-model="flightInfo.arrivalAirline">
-					</div>
-					<label class="col-sm-2 control-label">Airport Pick up Request</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isPickup" ng-model="flightInfo.isPickup">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Departure from Toronto</label>
-					<label class="col-sm-1 control-label">Date&Time</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="departureDateTime" ng-model="flightInfo.departureDateTime" >
-					</div>
-					<label class="col-sm-1 control-label">Airline</label>
-					<div class="col-sm-1">
-						<input type="text" class="form-control" name="departureAirline" ng-model="flightInfo.departureAirline" >
-					</div>
-					<label class="col-sm-2 control-label">Airport Drop off Request</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isDropoff" ng-model="flightInfo.isDropoff">
-					</div>
-				</div>
-
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Are you in home stay</label>
-				<div class="col-sm-1">
-					<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{accommodation.isHomestay}} ng-model="accommodation.isHomestay">
 				</div>
 			</div>
-			<div ng-show=accommodation.isHomestay>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Homestay Option</label>
-					<div class="col-sm-1">
-						<select name="option" ng-model="accommodation.option">
-							<option value="">--</option>
-							<option value="fullboard">Full Board(3 meals per day)</option> 
-							<option value="halfboard">Half Board(2 meals per day)</option>
-							<option value="roomonly">Romm Only</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Accommodation Date : </label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Starting Date :</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
-					</div>
-					<label class="col-sm-2 control-label">Finishing Date :</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Departure date from Toronto: </label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" name="departDate" ng-model="accommodation.departDate" >
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you smoke ?</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isSmoke" ng-model="accommodation.isSmoke">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isWithSmoke" ng-model="accommodation.isWithSmoke">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you live with pet ? </label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isWithPet" ng-model="accommodation.isWithPet">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you live with small children ? </label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isWithKid" ng-model="accommodation.isWithKid">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">What is your hobbies ? </label>
-					<div class="col-sm-7">
-						<textarea class="form-control" name="hobbies" ng-model="accommodation.hobbies"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
-					<div class="col-sm-7">
-						<textarea class="form-control" name="occupation" ng-model="accommodation.occupation"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Additional Comments : </label>
-					<div class="col-sm-7">
-						<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
-					<div class="col-sm-7">
-						<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
-					<div class="col-sm-7">
-						<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
-					<div class="col-sm-1">
-						<input type="checkbox" class="form-control" name="isPrivateBathroom" ng-model="accommodation.isPrivateBathroom">
-					</div>
-				</div>
-			</div> 
 		</div>
-	</div>
+	</form>
 
-
-	<div class="form-actions">
-		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-9">
-				<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
-				<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
-				<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
-				<!-- add $("#last_submit").trigger('click') in wizard.js-->
-				<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
-			</div>
-		</div>
-	</div>
-</div>
-</form>
-
-<script type="text/javascript">
+	<script type="text/javascript">
 // 	$( document ).ready(function() {
 //     	$('#ishomestay').change(function() {
 //         if($(this).is(":checked")) {

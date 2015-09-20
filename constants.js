@@ -22,5 +22,13 @@ module.exports = {
 	CourseType: [
 		'Weekly',
 		'Fixed Period'
-	]
+	],
+
+
+
+	// template seaction
+
+	// RegistrationTemplateVars = [
+	// 	'ProgramList' : 'ProgramList'
+	// ]
 }
