@@ -115,6 +115,13 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-sm-3 control-label">Position</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="username" ng-model="staff.position" value="{{staff.position}}" required >
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-sm-3 control-label">Role</label>
 							<div class="col-sm-3">
 								<select name="role" ng-model="staff.role" class="form-control" required>
@@ -157,6 +164,17 @@
 								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
 							</div>
 						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Description</label>
+							<div class="col-sm-9">
+								<textarea name="description" class="form-control col-sm-9"  ng-model="staff.description" required></textarea>
+								<p ng-show="loginForm.description.$invalid && !loginForm.description.$pristine" class="help-block">description is required</p>	
+							</div>
+						</div>
+
+
+
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Work phone:</label>
 							<div class="col-sm-3">

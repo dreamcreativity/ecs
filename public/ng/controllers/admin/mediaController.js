@@ -6,6 +6,7 @@ angular.module('AdminApp')
 	$scope.uploadList = [];
 	$scope.order = 0;
 	$scope.allTarget = 'Slider';
+	$scope.titlePrefix = '';
 
 	$scope.startAll = function(){
 
@@ -25,12 +26,16 @@ angular.module('AdminApp')
 
 		console.log($scope.allTarget);
 
-
+		var index = 1;
 		for (var x in $scope.uploadList) {
 
 			var file = $scope.uploadList[x];
-			//console.log(file);
+			if($scope.titlePrefix != ''){
+				var title = $scope.titlePrefix + '-' + index.toString();
+				file.title = title;
+			}
 			file.target = 	$scope.allTarget;	
+			index++;
 		};
 	}
 

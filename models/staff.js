@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var StaffSchema = new mongoose.Schema({
 	username: {type: String, required: true },
 	password: {type: String, required: true },
+	position: {type: String, required: true },
 	//token: {type: String, default: null},
 	cover: {type:  mongoose.Schema.ObjectId, ref:'Media', default:null},
 	description: {type: String, default: ''},

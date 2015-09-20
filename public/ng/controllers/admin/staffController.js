@@ -52,6 +52,7 @@ angular.module('AdminApp')
 	 		$scope.staff.regions.push($scope.region_tags[i].text);
 	 	}
 
+	 	console.log($scope.staff);
 	 	Staffs.update($scope.staff, function(result){
 	 			var message = result.messages;	    
 	 		    ShowGritterCenter('System Notification','Staff has been updated');
