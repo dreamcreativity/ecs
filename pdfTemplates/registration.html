@@ -4,16 +4,11 @@
 		width: 1200px;
 		color: black;
 		font-family: Helvetica;
-
+		font-size: 18px;
 	}
-
-
-
 	.page{
 		height: 1400px;
 		position: relative;
-		/*background-color: #ccc;*/
-
 	}
 
 	.page .pageHeader{height: 170px; margin-top: 10px; position: relative;clear:both;}
@@ -23,10 +18,25 @@
 		font-size: 26px;
 	}
 
+	.page .pageHeader .logo{
+		position: absolute;
+	    top: -15px;
+	    left: 30px;
+	    width: 120px;
+	    background-color: white;
+	    padding: 10px
+	}
+	.page .pageHeader .logo .title{
+		font-size: 30px;
+	    width: 400px;
+	    top: 120px;
+	    left: 20px;
+	    font-weight: bold;
+	}
 	.page .pageHeader .dli{
 		position: absolute;
-	    top: 60px;
-	    left: 540px;
+	    top: 80px;
+	    left: 520px;
 	    text-align: center;
 	    line-height: 27px;
 	}
@@ -47,15 +57,12 @@
 		bottom: 0;
 		height: 50px;
 		padding: 10px 0;
-		/*background-color: blue;*/
 		text-align: center;
-
-
 	}
 
 
 
-	.page .seaction{height: 60px; margin-top: 30px; position: relative; clear: both;}
+	.page .seaction{height: 60px; margin-top: 50px; position: relative; clear: both;}
 	.page .seaction .first{background-color: black; height: 2px; margin-bottom: 4px}
 	.page .seaction .second{background-color: black; height: 5px}
 
@@ -64,17 +71,18 @@
 		height: 28px; line-height: 28px; padding: 5px 10px; 
 	}
 
-	.page .row{clear: both; margin: 10px 0 ;}
-
-	.page .feildBlock{display:table-row; clear: both;}
-	.page .feildBlock .title{display:table-cell; }
-	.page .feildBlock .content{ display:table-cell;border-bottom: 1px solid #000;}
-
-	.page .feildBlock.col-6{ width: 480px }
-	.page .feildBlock.col-4{ width: 319px}
-	.page .feildBlock.col-2{ width: 157px}
 
 
+	.row{ margin: 10px 0; }
+	.feildBlock{ display: table-cell}
+	.feildBlock .title{display: inline; margin-right: 20px; font-weight: bold;}
+	.feildBlock .content{display:inline; color: #6E6E6E }
+
+	.feildBlock.col-9{ width: 900px }
+	.feildBlock.col-6{ width: 600px }
+	.feildBlock.col-4{ width: 400px}
+	.feildBlock.col-3{ width: 300px}
+	.feildBlock.col-2{ width: 200px}
 </style> 
 
 
@@ -99,6 +107,10 @@
 					Agency: N/A
 				</div>
 			</div>
+			<div class="logo">
+				<img class="logo" src="images/logo.png">
+				<div class="title">English School of Canada</div>
+			</div>	
 		</div>
 
 		<div class="seaction">
@@ -106,57 +118,76 @@
 			<div class="second"></div>
 			<h2 class="title">Student Information</h2>
 		</div>
-		 
 
-		 <div class="feildBlock col-6">
-			<div class="title">First Name :</div>
-			<div class="content">fdsfds</div>
+
+
+		<div class="row">
+			<div class="feildBlock col-6">
+				<div class="title">First Name :</div>
+				<div class="content">fdsfds</div>
+			</div>
+
+			<div class="feildBlock col-6">
+				<div class="title">Last Name :</div>
+				<div class="content">ssssssddsadsadsadsadsassssss</div>
+			</div>
 		</div>
 
-		<div class="feildBlock col-6">
-			<div class="title">Last Name :</div>
-			<div class="content">ssssssddsadsadsadsadsassssss</div>
+
+		<div class="row">
+			<div class="feildBlock col-3">
+				<div class="title">Gender :</div>
+				<div class="content">Male / Ffemale</div>
+			</div>
+
+			<div class="feildBlock col-3">
+				<div class="title">Birth Date :</div>
+				<div class="content">Sept 12, 1995</div>
+			</div>
+
+			<div class="feildBlock col-3">
+				<div class="title">Age :</div>
+				<div class="content"> 23 </div>
+			</div>
+
+			<div class="feildBlock col-3">
+				<div class="title">Citizenship :</div>
+				<div class="content">China</div>
+			</div>
 		</div>
 		
-		<div class="feildBlock col-4">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
+		<div class="row">
+			<div class="feildBlock col-9">
+				<div class="title">Address :</div>
+				<div class="content">Somewhere in the world</div>
+			</div>
+
+			<div class="feildBlock col-3">
+				<div class="title">Country:</div>
+				<div class="content">China</div>
+			</div>
+
+			
+		</div>
+		
+		<div class="row">
+			<div class="feildBlock col-3">
+				<div class="title">Telephone :</div>
+				<div class="content">222-222-2222 </div>
+			</div>
+
+			<div class="feildBlock col-3">
+				<div class="title">Fax :</div>
+				<div class="content">222-222-2222 </div>
+			</div>
+
+			<div class="feildBlock col-6">
+				<div class="title">Email :</div>
+				<div class="content">abc@xyz.com</div>
+			</div>
+
 		</div>
 
-		<div class="feildBlock col-4">
-			<div class="title">Lastfdsafd Name :</div>
-			<div class="content">ss</div>
-		</div>
-
-		<div class="feildBlock col-4">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
-
-		<div class="feildBlock col-2">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
-		<div class="feildBlock col-2">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
-		<div class="feildBlock col-2">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
-		<div class="feildBlock col-2">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
-		<div class="feildBlock col-2">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
-		<div class="feildBlock col-2">
-			<div class="title">Last Name :</div>
-			<div class="content">ss</div>
-		</div>
 
 
 		<div class="seaction">
