@@ -1,120 +1,182 @@
 <style type="text/css">
 	body{
-	
 		margin: 0 auto;
-		width: 980px;
+		width: 1200px;
+		color: black;
+		font-family: Helvetica;
 
-		height: 800px;
 	}
 
 
 
+	.page{
+		height: 1400px;
+		position: relative;
+		/*background-color: #ccc;*/
+
+	}
+
+	.page .pageHeader{height: 170px; margin-top: 10px; position: relative;clear:both;}
+	.page .pageHeader .first{background-color: black; height: 2px; margin-bottom: 4px}
+	.page .pageHeader .second{background-color: black; height: 5px}
+	.page .pageHeader .title{ text-align: center; width: 250px; position: absolute; top:-30px; right: 65px; background-color: white;
+		font-size: 26px;
+	}
+
+	.page .pageHeader .dli{
+		position: absolute;
+	    top: 60px;
+	    left: 540px;
+	    text-align: center;
+	    line-height: 27px;
+	}
+
+	.page .pageHeader .studentTypy{
+		position: absolute;
+	    top: 60px;
+	    left: 900px;
+	    line-height: 27px;
+	    width: 300px;
+	}
 
 
-	.pageHeader{ /*background-color: red; */min-height: 60px; margin-top: 10px; position: relative;clear: both;}
-	.pageHeader .first{background-color: gray; height: 2px; margin-bottom: 4px}
-	.pageHeader .second{background-color: gray; height: 5px}
-	.pageHeader .title{ text-align: center; width: 200px; position: absolute; top:-26px; right: 50px; background-color: white}
 
-	.seaction{ /*background-color: red; */min-height: 60px; margin-top: 10px; position: relative; clear: both;}
-	.seaction .first{background-color: gray; height: 2px; margin-bottom: 4px}
-	.seaction .second{background-color: gray; height: 5px}
+	.page .pageFootor{
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		height: 50px;
+		padding: 10px 0;
+		/*background-color: blue;*/
+		text-align: center;
 
-	.seaction .title {width: 300px; position: absolute; top:-31px; left: 0px; 
+
+	}
+
+
+
+	.page .seaction{height: 60px; margin-top: 30px; position: relative; clear: both;}
+	.page .seaction .first{background-color: black; height: 2px; margin-bottom: 4px}
+	.page .seaction .second{background-color: black; height: 5px}
+
+	.page .seaction .title {width: 300px; position: absolute; top:-31px; left: 0px; 
 		background-color: #585858; color:#fff; font-size: 19px;
 		height: 28px; line-height: 28px; padding: 5px 10px; 
 	}
 
 
-	.row{clear: both; margin: 10px 0 ;}
+	.page .row{clear: both; margin: 10px 0 ;}
 
-	.feildBlock{display: inline-flex;  position: relative; clear: both; height: 45px}
-	.feildBlock .title{ position: absolute;top: 0;left: 0; background-color: white; z-index: 3; height: 20px}
-	.feildBlock .content{ position: absolute; top: 0;left: 0; border-bottom: 1px solid #000; width: 100%; }
+	.page .feildBlock{display:table-row; clear: both;}
+	.page .feildBlock .title{display:table-cell; }
+	.page .feildBlock .content{ display:table-cell;border-bottom: 1px solid #000;}
 
-	.feildBlock.col-6{ width: 480px }
-	.feildBlock.col-4{ width: 319px}
-	.feildBlock.col-2{ width: 157px}
+	.page .feildBlock.col-6{ width: 480px }
+	.page .feildBlock.col-4{ width: 319px}
+	.page .feildBlock.col-2{ width: 157px}
 
 
 </style> 
 
 
 <body>
+	<div class="page">
+		<div class="pageHeader">
+			<div class="first"></div>
+			<div class="second"></div>
+			<h2 class="title">2015 <br> Registration Form</h2>
+			<p class="dli">
+				Designated Learning Institution Number<br>
+				<strong>dDLI#O19350421222</strong>
+			</p>
+			<div class="studentTypy">
+				<div>
+					Type: New Student / Extending Student
+				</div>
+				<div>
+					Student Number: 678343
+				</div>
+				<div>
+					Agency: N/A
+				</div>
+			</div>
+		</div>
+
+		<div class="seaction">
+			<div class="first"></div>
+			<div class="second"></div>
+			<h2 class="title">Student Information</h2>
+		</div>
+		 
+
+		 <div class="feildBlock col-6">
+			<div class="title">First Name :</div>
+			<div class="content">fdsfds</div>
+		</div>
+
+		<div class="feildBlock col-6">
+			<div class="title">Last Name :</div>
+			<div class="content">ssssssddsadsadsadsadsassssss</div>
+		</div>
+		
+		<div class="feildBlock col-4">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+
+		<div class="feildBlock col-4">
+			<div class="title">Lastfdsafd Name :</div>
+			<div class="content">ss</div>
+		</div>
+
+		<div class="feildBlock col-4">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+
+		<div class="feildBlock col-2">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+		<div class="feildBlock col-2">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+		<div class="feildBlock col-2">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+		<div class="feildBlock col-2">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+		<div class="feildBlock col-2">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+		<div class="feildBlock col-2">
+			<div class="title">Last Name :</div>
+			<div class="content">ss</div>
+		</div>
+
+
+		<div class="seaction">
+			<div class="first"></div>
+			<div class="second"></div>
+
+			<h2 class="title">Program Registration</h2>
+		</div>
+
+		<div class="pageFootor">
+			79 St. Clair Avenue East, Suit 202, Toronto, Ontario M4T 1M6 Canada<br>
+			Tel:(416) 686-7960 * Website: www.esc-toronto.com * Email: info@esc-toronto.com
+		</div>
+	</div>
+
+
+
+
+
+
 	
-	<div class="pageHeader">
-		<div class="first"></div>
-		<div class="second"></div>
-		<h2 class="title">2015 <br> Registration Form</h2>
-	</div>
-
-	<div class="seaction">
-		<div class="first"></div>
-		<div class="second"></div>
-		<h2 class="title">Student Information</h2>
-	</div>
-	 
-
-	 <div class="feildBlock col-6">
-		<div class="title">First Name :</div>
-		<div class="content">fdsfds</div>
-	</div>
-
-	<div class="feildBlock col-6">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-	
-	<div class="feildBlock col-4">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-
-	<div class="feildBlock col-4">
-		<div class="title">Lastfdsafd Name :</div>
-		<div class="content">ss</div>
-	</div>
-
-	<div class="feildBlock col-4">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-
-	<div class="feildBlock col-2">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-	<div class="feildBlock col-2">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-	<div class="feildBlock col-2">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-	<div class="feildBlock col-2">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-	<div class="feildBlock col-2">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-	<div class="feildBlock col-2">
-		<div class="title">Last Name :</div>
-		<div class="content">ss</div>
-	</div>
-
-
-	<div class="seaction">
-		<div class="first"></div>
-		<div class="second"></div>
-
-		<h2 class="title">Program Registration</h2>
-	</div>
-
-
-	@@ProgramList@@
-
-	 <h2>footor</h2>
 </body>
