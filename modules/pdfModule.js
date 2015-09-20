@@ -50,3 +50,33 @@ exports.getPdfTemplate = function(templateName, callback){
 	});
 
 }
+
+exports.replaceTamplateValue = function(template, data){
+	var result =template;
+	for(var key in data){
+		result = result.replace("@" + key + "@", data[key]);
+	}
+	return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
