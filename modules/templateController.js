@@ -19,7 +19,7 @@ module.exports = function (req, res, template_name, subview_file, parms, callFir
 		// 	}
 		// }
 		
-		//console.log('----->>>> ' + __dirname + '/../views/');
+
 		subview_content = fs.readFileSync(__dirname + '/../views/' + subview_file , 'utf-8'),
 	    html = ejs.render(subview_content, parms);
 	  	res.render('templates/' + template_name, { request: req, body: html, parms: parms });
