@@ -11,7 +11,6 @@ var promotion = require('../controllers/promotion');
 var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
-var registration = require('../controllers/registration');
 var events = require('../controllers/event');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
@@ -30,15 +29,10 @@ function IsAuthException(path, method){
 		{	path : '/api/staffs', method: 'POST',type: 'direct' },
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
-		{	path : '/api/registration', method: 'GET', type: 'direct' },
-		{	path : '/api/registration', method: 'POST', type: 'direct'},
-		{   path : '/api/registration/sendEmail', method: 'POST', type: 'direct' },
-		{	path : '/api/registration/', method: 'GET', type: 'contain'}, // Delete late
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, // Delete late
-		{	path : '/api/registration', method: 'POST', type: 'direct'},
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
-		{	path : '/api/registration', method: 'POST', type: 'direct' },
-		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'}
+		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
+		{	path : '/api/student/register', method:'POST', type:'direct'}
 	];
 
 	for(i in list){
@@ -177,6 +171,9 @@ router.get('/student/agent/:id',student.getStudentbyAgentId);
 
 //POST : create a student record
 router.post('/student', student.create);
+
+//POST : create a student record
+router.post('/student/register', student.register);
 
 //POST : create a accommodation
 router.post('/accommodation', student.createAccommodation);
@@ -329,21 +326,12 @@ router.put('/events/:id',events.edit);
 router.get('/events/:id', events.getEventbyId);
 
 
-//-------------------------Registration--------------------------------------
-router.post('/registration', registration.create);
-
-router.get('/registration', registration.getAllRegistrations);
-
-router.get('/registration/:id', registration.getById);
-
-
-
 //-------------------------Email Sender--------------------------------------------
 
- router.post('/registration/sendEmail', registration.sendEmail);
+ router.post('/registration/sendEmail', student.sendEmail);
 
 //-------------------------Generate PDF--------------------------------------------
-router.post('/pdf',registration.generatePDF);
+router.post('/pdf',student.generatePDF);
 
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);

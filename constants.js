@@ -50,8 +50,29 @@ module.exports = {
 		healthInsuranceEndDate : null,
 		healthInsuranceStartingDate : null,
 		commissionRate : null,
-		pomotionRate : null
-	}
+		pomotionRate : null,
+		isHomestay : null,
+		startDate : null,
+		endDate : null,
+		isSmoke : null,
+		isWithSmoke : null,
+		isWithPet : null,
+		isWithKid : null,
+		hobbies : null,
+		occupation : null,
+		comments : null,
+		specialFood : null,
+		allergiesMedical : null,
+		isPrivateBathroom : null,
+		arrivalDateTime : null,
+		arrivalAirline : null,
+		isPickup : null,
+		departureDateTime : null,
+		departureAirline : null,
+		isDropoff : null
+	},
+
+	CourseRegistrationTemplateVars : []
 }
 
 
