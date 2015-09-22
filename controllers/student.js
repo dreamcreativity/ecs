@@ -37,24 +37,7 @@ exports.create = function(req,res){
 	});
 }
 
-exports._createStudent = function(data){
-	Counter.findAndModify('student_id', function(err, counter){
-		if(err){ return null;}
-		else {
-			data.studentID = counter.next;
-			data.save(function(err, result){
-				if(err){
-					return null;
-				}
-				else 
-				{
-					return result.data;
-				}
-			});
-		}
-	});
-}
-
+//Resiteration on Agent port
 exports.register = function(req,res){
 	var student = new Student(req.body.student);
 	var accommodation = new Accommodation(req.body.accommodation);
@@ -86,17 +69,25 @@ exports.register = function(req,res){
 		},
 		function(callback){
 			var programRegistration_ids = [];
-			async.eachSeries(programs, function(item){
+			async.each(programs, function(item, callback2){
 				var obj = new ProgramRegistration(item);
 				obj.save(function(err,result){
-					if(err){}
-						else {
-							programRegistration_ids.push(result._id);
-						}
-					});
-			},function done(){
-				student.programRegistration = programRegistration_ids;
-				callback();
+					if(err){
+						callback2()
+					}
+					else {
+						programRegistration_ids.push(result._id);
+						callback2()
+					}
+				});
+			},function(err){
+				if(err){
+					callback();
+				}
+				else {
+					student.programRegistration = programRegistration_ids;
+					callback();
+				}
 			});
 		},
 		function(callback){
@@ -106,16 +97,16 @@ exports.register = function(req,res){
 				else {
 					student.studentID = counter.next;
 					student.save(function(err, result){
-						if(err){}
-							else {
-								obj = result;
-							}
-						});
+						if(err){
+							callback(null)
+						}
+						else {
+							callback(null, result)
+						}
+					});
 				}
 			});
-			callback(null, obj)
-		}
-		],function(err, result){
+		}],function(err, result){
 			if(err){
 				res.json({
 					type:false,
@@ -139,7 +130,6 @@ exports.register = function(req,res){
 			}
 
 		});
-
 }
 
 //GET All Students
@@ -188,7 +178,7 @@ exports.getStudentbyStudentId = function(req,res){
 //GET: Student by Id
 exports.getStudentbyId = function(req,res){
 	var id = req.params.id;
-	Student.find({_id:id}, function(err, result){
+	Student.findOne({_id:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
 
 		if(err) {
 			res.json({
@@ -197,19 +187,11 @@ exports.getStudentbyId = function(req,res){
 				data: null
 			});
 		}
-
-
-		if(result.length == 1){
-			res.json({
-				status: 'ok',
-				messages: 'successed',
-				data: result[0]
-			});	
-		}else{
+		else{
 			res.json({
 				status: 'fail',
 				messages: "multipulte result",
-				data: null
+				data: result
 			});
 		}
 		
@@ -278,16 +260,6 @@ exports.createAccommodation = function(req,res){
 	});
 }
 
-var _createAccommodation =function(data){
-	data.save(function(err,result){
-		if(err){
-			return null;
-		}
-		else {
-			return result.data._id;
-		}
-	});
-}
 
 //Create a flight information for student
 exports.createFlightInfo = function(req,res){
@@ -309,33 +281,6 @@ exports.createFlightInfo = function(req,res){
 		}
 	});
 }
-
-var _createFlightInfo = function(data){
-	data.save(function(err, result){
-		if(err){
-			return null;
-		}
-		else {
-			return result.data._id;
-		}
-	});
-}
-
-var _createProgramRegistration = function(data_list){
-	var programRegistration_ids = [];
-	async.eachSeries(data_list, function(item){
-		var obj = new ProgramRegistration(item);
-		obj.save(function(err,result){
-			if(err){}
-				else {
-					programRegistration_ids.push(result.data._id);
-				}
-			});
-	},function done(){
-		return programRegistration_ids;
-	});
-}
-
 
 exports.generatePDF = function (req,res){
 	var id = req.body.registerId;
