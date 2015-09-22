@@ -25,11 +25,12 @@ exports.generatePDF = function (layout, callback) {
 		"format": "Letter",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid 
   		"orientation": "portrait",
   		"border": {
-		    "top": "10mm",            // default is 0, units: mm, cm, in, px 
+		    "top": "5mm",            // default is 0, units: mm, cm, in, px 
 		    "right": "10mm",
-		    "bottom": "10mm",
+		    "bottom": "5mm",
 		    "left": "10mm"
-  			}
+  		},
+  		
 
      };
      pdf.create(layout,options).toFile(path, function(err,res){
