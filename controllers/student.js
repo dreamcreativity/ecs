@@ -326,6 +326,46 @@ exports.generatePDF = function (req,res){
 	})
 }
 
+exports.generatePDFTest = function (req,res){
+	var id = req.body.registerId;
+	var variables_list = [];
+	Student.find({_id : id}, function(err, result){
+		if(err){
+			res.json(
+			{
+				status: 'fail',
+				messages: err,
+				data: null
+			});			
+		}
+		else {
+
+
+			Pdf.getPdfTemplate('registration.html',function(data){
+
+				var htmlTemplate = data;
+
+				// replate variables
+				Pdf.generatePDF(htmlTemplate, function(message, path){
+					if(message == "success"){
+						res.json({
+							status: 'successed',
+							data : path
+						});
+					}
+					else {
+						res.json({
+							status: 'fail',
+							data : null
+						});
+					}
+				});
+			});
+		}
+	})
+}
+
+
 
 exports.sendEmail = function(req,res){
 	var message = "";

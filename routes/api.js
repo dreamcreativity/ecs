@@ -332,7 +332,7 @@ router.get('/events/:id', events.getEventbyId);
 
 //-------------------------Generate PDF--------------------------------------------
 router.post('/pdf',student.generatePDF);
-
+router.post('/pdftest',student.generatePDFTest);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 
