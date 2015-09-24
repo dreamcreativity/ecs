@@ -285,7 +285,7 @@ exports.createFlightInfo = function(req,res){
 exports.generatePDF = function (req,res){
 	var id = req.body.registerId;
 	var variables_list = [];
-	Student.find({_id : id}, function(err, result){
+	Student.findOne({_id : id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
 		if(err){
 			res.json(
 			{
@@ -295,15 +295,39 @@ exports.generatePDF = function (req,res){
 			});			
 		}
 		else {
-			var obj = result[0];
+			var student_obj = result;
+			var student_accommodation_obj = result.accommodation;
+			var student_flightInfo_obj = result.flightInfo;
+			var courses_obj = result.programRegistration;
 			for (var key in constant.RegistrationTemplateVars) {
-					constant.RegistrationTemplateVars[key] = obj[key];
+					constant.RegistrationTemplateVars[key] = student_obj[key];
 				};
+			for (var key in constant.AccommodationTemplateVars) {
+					constant.AccommodationTemplateVars[key] = student_accommodation_obj[key];
+				};
+			for (var key in constant.FlightTemplateVars) {
+					constant.FlightTemplateVars[key] = student_flightInfo_obj[key];
+				};
+
+
+			var listOfCourseRegistration = [];
+			for (var i = 0; i < courses_obj.length; i++) {
+				var item = courses_obj[i];
+				for (var key in constant.CourseRegistrationTemplateVars) {
+					constant.CourseRegistrationTemplateVars[key] = item[key];
+				};
+				listOfCourseRegistration.push(constant.CourseRegistrationTemplateVars);
+			};
 
 			Pdf.getPdfTemplate('registration.html',function(data){
 			
 
 				var htmlTemplate = data;
+				//Four paramaters should be passed into below function
+				//1.constant.RegistrationTemplateVars
+				//2.constant.AccommodationTemplateVars
+				//3.constant.FlightTemplateVars
+				//4.listOfCourseRegistration
 				htmlTemplate = Pdf.replaceTamplateValue(htmlTemplate,constant.RegistrationTemplateVars);
 
 
@@ -324,7 +348,7 @@ exports.generatePDF = function (req,res){
 				});
 			});
 		}
-	})
+	});
 }
 
 exports.generatePDFTest = function (req,res){

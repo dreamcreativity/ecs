@@ -52,6 +52,9 @@ module.exports = {
 		commissionRate : null,
 		pomotionRate : null,
 		isHomestay : null,
+	},
+
+	AccommodationTemplateVars : {
 		startDate : null,
 		endDate : null,
 		isSmoke : null,
@@ -64,15 +67,25 @@ module.exports = {
 		specialFood : null,
 		allergiesMedical : null,
 		isPrivateBathroom : null,
+	},
+
+	FlightTemplateVars : {
 		arrivalDateTime : null,
 		arrivalAirline : null,
 		isPickup : null,
 		departureDateTime : null,
 		departureAirline : null,
-		isDropoff : null
+		isDropoff : null	
 	},
 
-	CourseRegistrationTemplateVars : []
+
+	CourseRegistrationTemplateVars :
+		{
+			course : null,
+			title : null,
+			duration : null,
+			startDate : null
+		}
 }
 
 
