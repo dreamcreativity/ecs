@@ -16,12 +16,12 @@
 	.page .pageHeader .second{background-color: black; height: 5px}
 	.page .pageHeader .title{ 
 		text-align: center;
-	    width: 250px;
+	    width: 299px;
 	    position: absolute;
-	    top: 0;
+	    top: 9px;
 	    right: 65px;
 	    background-color: white;
-	    font-size: 22px;
+	    font-size: 16px;
 	    font-size: bold;
 	}
 
@@ -68,6 +68,7 @@
 		height: 50px;
 		padding: 10px 0;
 		text-align: center;
+		clear:both;
 	}
 
 
@@ -118,7 +119,7 @@
 
 	.signatureSeaction{
 	    border: 1px solid black;
-	    margin-top: 70px;
+	    margin-top: 30px;
 	    padding: 3px 50px 18px 50px;
 	    font-size: 14px;
 	    width: 903px;
@@ -129,14 +130,51 @@
 	    font-size: 13px;
 	}
 
+	.seactionFullWidthHeader{
+		width: 1024px;
+		background-color: #D3C4C4;
+		padding: 6px;
+		text-align: center;
+		font-style: italic;
+		font-family: -webkit-pictograph;
+		margin: 20px 0 15px 0!important
+	}
 
-	.row{ margin: 5px 0; clear: both;}
+	.row{ margin: 10px 0; clear: both;}
 	.feildBlock{ display: table-cell}
 	.feildBlock .title{display: inline-table;  margin-right: 5px; font-weight: bold;}
 	.feildBlock .title.long{ width: 300px; }
 	.feildBlock .title.med{ width: 200px; }
+	.feildBlock .title.infoHeader{ 
+		width: 200px;
+	    background-color: #D3C4C4;
+	    font-size: 13px;
+	    padding: 8px 13px 8px 13px;
+	    display: block;
+	}
+
+	.feildBlock .title.fullInfoHeader{ 
+	    background-color: #D3C4C4;
+	    font-size: 13px;
+	    padding: 8px 13px 8px 13px;
+	    display: block;
+	    font-weight: normal;
+	}
+
 
 	.feildBlock .content{display:inline-table; color: #6E6E6E; font-size: 15px }
+	.feildBlock .content .option{margin: 5px 21px;color: black;font-size: 13px;} 
+	.feildBlock .content .option strong{margin-left: 8px; margin-right: 15px} 
+
+	.feildBlock .subrow{margin-bottom: 20px; } 
+	.feildBlock .answer{
+		margin-bottom: 8px;
+	    width: 420px;
+	    margin: 0 0 0 15px;
+	    max-height: 30px;
+    	overflow: hidden;
+    	font-size: 12px;
+	} 
 
 	.feildBlock.col-12{ width: 1020px }
 	.feildBlock.col-11{ width: 935px }
@@ -162,7 +200,7 @@
 		<div class="pageHeader">
 			<div class="first"></div>
 			<div class="second"></div>
-			<h2 class="title">2015 <br> Registration Form</h2>
+			<h2 class="title">Accommodation Registration Form<br>2015</h2>
 			<p class="dli">
 				Designated Learning Institution Number<br>
 				<strong>DLI # O19350421222</strong>
@@ -272,7 +310,7 @@
 			</div>
 
 			<div class="feildBlock col-6">
-				<div class="title ">Home Country or Canada :</div>
+				<div class="title long">Home Country or Canada :</div>
 				<div class="content"> Canada</div>
 			</div>
 		</div>
@@ -283,192 +321,162 @@
 		<div class="seaction">
 			<div class="first"></div>
 			<div class="second"></div>
-			<h2 class="title">Program Registration</h2>
+			<h2 class="title">Accommodation Information</h2>
 		</div>
 
 		<div class="row">
-			
 			<div class="feildBlock col-6">
-				<!-- <div class="title">For Direct Entr (UCTP or Focus Program):</div> -->
-				<div class="content forDirectEntry">
-					<h3>For Direct Entr (UCTP or Focus Program):</h3>
-					<div><label>Offical TOEFL score :</label> _________________ </div>
-					<div><label>Offical IELTS score :</label> _________________ </div>
+				<div class="title">Accommodation Type</div>
+				<div class="content"> 
+					Homestay / Residence (May - Aug. only)
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="feildBlock col-5">
+				<div class="title infoHeader">Homestay options</div>
+				<div class="content"> 
+					<div class="option">Full Board (3 meals per day)</div>
+					<div class="option">Half Board (2 meals per day)</div>
+					<div class="option">Room Only</div>
 				</div>
 			</div>
 
-			<div class="feildBlock col-4">
-				<div class="title">English Level :</div>
-				<div class="content"> High Intermediate</div>
+			<div class="feildBlock col-6">
+				<div class="title infoHeader">Accommodation Datesr</div>
+				<div class="content"> 
+					<div class="option">Start Date:   <strong>Nov 21, 2015</strong></div>
+					<div class="option">Finishing Date:   <strong>Nov 21, 2016</strong></div>
+					<div class="option">Number of weeks: <strong>54</strong></div>
+					<div class="option">Departure date from Toronto : <strong>Dec 21, 2016</strong></div>
+				</div>
 			</div>
 		</div>
 
-		<div class="row programs">
-			<ul>
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
+		<!-- <div class="seaction">
+			<div class="first"></div>
+			<div class="second"></div>
+			<h2 class="title">Flight Information</h2>
+		</div> -->
 
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-				
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-			</ul>
-
-
-			<div class="row">
-				<div class="totalWeek">
-					Total Number Of Weeks Registered: 50 weeks
+		<div class="row">
+			<div class="feildBlock col-5">
+				<div class="title infoHeader">Arrival in Toronto </div>
+				<div class="content"> 
+					<div class="option">Airport Pick-up Requested <strong>Yes / No</strong></div>
+					<div class="option">Date:   <strong>Nov 21, 2015</strong></div>
+					<div class="option">
+						Time:<strong> 4:00 PM</strong>
+						Airline:<strong> Air Canada</strong>
+						Flight#:<strong> 991</strong>
+					</div>
 				</div>
 			</div>
 
+			<div class="feildBlock col-5">
+				<div class="title infoHeader">Departure from Toronto</div>
+				<div class="content"> 
+					<div class="option">Start Date:   <strong>Nov 21, 2015</strong></div>
+					<div class="option">Finishing Date:   <strong>Nov 21, 2016</strong></div>
+					<div class="option">Number of weeks: <strong>54</strong></div>
+				</div>
+			</div>
 		</div>
 
 
+		<div class="row seactionFullWidthHeader">
+			Please answer the following questions to assist us in finding an appropriate host family for you.
+		</div>
 
+		<div class="row">
+			<div class="feildBlock col-6">
+				<div class="subrow">
+					<div class="feildBlock col-4">1. Do you smoke?</div>
+					<div class="feildBlock col-2">Yes / No</div>
+				</div>
+				<div class="subrow">
+					<div class="feildBlock col-4">2. Can you live in a home with smokers?</div>
+					<div class="feildBlock col-2">Yes / No</div>
+				</div>
+				<div class="subrow">
+					<div class="feildBlock col-4">3. Can you live with pets?</div>
+					<div class="feildBlock col-2">Yes / No</div>
+				</div>
+				<div class="subrow">
+					<div class="feildBlock col-4">4. Can you live with small children?</div>
+					<div class="feildBlock col-2">Yes / No</div>
+				</div>
+				<div class="subrow">
+					<div class="feildBlock col-6">
+						5. What are your hobbies?
+						<p class="answer">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and </p>
+					</div>
+				</div>
+
+				<div class="subrow">
+					<div class="feildBlock col-6">
+						Profession (What is your occupation?)
+						<p class="answer">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and </p>
+					</div>
+				</div>
+
+				<div class="subrow">
+					<div class="feildBlock col-6">
+						Additional Comments:
+						<p class="answer">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and </p>
+					</div>
+				</div>
+
+			</div>
+			<div class="feildBlock col-6">
+				<div class="subrow">
+					<div class="feildBlock col-4">Do you have any special diet or food preferences?</div>
+					<div class="feildBlock col-2">Yes / No</div>
+				</div>
+				<div class="subrow">
+					<div class="feildBlock col-6">
+						If yes, please Describe:
+						<p class="answer">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and </p>
+					</div>
+				</div>
+
+
+				<div class="subrow">
+					<div class="feildBlock col-4">Do you have any allergies or medical concerns?</div>
+					<div class="feildBlock col-2">Yes / No</div>
+				</div>
+				<div class="subrow">
+					<div class="feildBlock col-6">
+						If yes, please Describe:
+						<p class="answer">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and </p>
+					</div>
+				</div>
+
+				<div class="subrow">
+					<div class="feildBlock col-6">
+						<div class="title fullInfoHeader">
+							<strong>Extra Options</strong> (please note that a extra charge will apply)
+						</div>
+						<div class="content"> 
+							<div class="option">Private Bathroom (Subject to availability)</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="signatureSeaction">
 				<p>
 					I confirm that I have read and I accpet the Conditions of Enrolment as well as the refund 
 					policies of the English School of Canada as stated in the registration package.
-					 I understand that English School of Canada may be required to submit attendance records 
-					 and/or proof of program advancement or completion to the federal government.
 				</p>
 
 				<div>

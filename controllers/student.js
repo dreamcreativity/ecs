@@ -301,6 +301,7 @@ exports.generatePDF = function (req,res){
 				};
 
 			Pdf.getPdfTemplate('registration.html',function(data){
+			
 
 				var htmlTemplate = data;
 				htmlTemplate = Pdf.replaceTamplateValue(htmlTemplate,constant.RegistrationTemplateVars);
@@ -341,8 +342,8 @@ exports.generatePDFTest = function (req,res){
 		else {
 
 
-			Pdf.getPdfTemplate('registration.html',function(data){
-
+			//Pdf.getPdfTemplate('org/registrationFull.html',function(data){
+			Pdf.getPdfTemplate('org/accommodationRegistrationFull.html',function(data){
 				var htmlTemplate = data;
 
 				// replate variables
