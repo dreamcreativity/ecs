@@ -9,6 +9,7 @@ angular.module(
 		'esc.filters',
 		'esc.directives',
 		'esc.auth',
+		'esc.constants',
 		'esc.mediaSelector',
 		'ui.bootstrap'
 	]

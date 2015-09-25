@@ -7,14 +7,28 @@
         <div class="modal-body lg">
         	<div class="media-selector-filters">
         		<label>Kyeword: </label>
-        		<input type="text" class="form-control nowarp"  ng-model="" >
+        		<input type="text" class="form-control" ng-model="searchKeyword" >
 
-        		<label>Category: </label>
-        		<input type="text" class="form-control nowarp"  ng-model="" >
+        		<label>Media Type: </label>
+        		<select class="form-control"  ng-model="selectedMediaType">
+        			<option value="">All</option>
+        			<option value="{{type}}" ng-repeat="type in MediaTypes">{{type}}</option>
+        		</select>
+
+        		<label>Date: </label>
+        		<select class="form-control">
+        			<option value="">All</option>
+        			<option value="1">Today</option>
+        			<option value="{{1*7}}">In One Week</option>
+        			<option value="{{2*7}}">In Two Weeks</option>
+        			<option value="{{4*7}}">In Four Weeks</option>
+        			<option value="{{10*7}}">In Ten Weeks</option>
+        		</select>
+
         	</div>
         	<div class="media-selector-body">
 				<ul>
-					<li class="thumbnail" ng-repeat="m in Medias">
+					<li class="thumbnail" ng-repeat="m in Medias | filter:{ type: selectedMediaType || '' , title : searchKeyword || '' }">
 	
 						<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
 							<img alt="" src="{{m.thumbnail}}" >

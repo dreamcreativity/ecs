@@ -1,11 +1,15 @@
 'use strict';
 
-var mediaSelector = angular.module('esc.mediaSelector', [])
+var mediaSelector = angular.module('esc.mediaSelector', ['esc.constants'])
 
-mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInstance, meidas) {
+mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInstance, meidas, MediaType) {
 
+	$scope.MediaTypes = MediaType;
 	$scope.Medias = meidas;
 	$scope.selectedMedia = null;
+	$scope.selectedMediaType = '';
+	$scope.searchKeyword = '';
+
 	$scope.ok = function () {
 		$modalInstance.close($scope.selectedMedia);
 	};
