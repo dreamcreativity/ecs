@@ -10,7 +10,7 @@ angular.module('loginApp', ['ngRoute','esc.auth'])
 	 	$("#messageReturn").fadeIn('slow');
 
 
-		$http.post('http://localhost:3000/api/staffs/login',$scope.staff)
+		$http.post('/api/staffs/login',$scope.staff)
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
 				console.log(data.data);

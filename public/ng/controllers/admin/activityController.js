@@ -81,7 +81,7 @@ angular.module('AdminApp')
 
 .factory('Activity',['$resource',
 	function($resource){
-		return $resource('http://localhost:3000/api/activities/:id', {}, {
+		return $resource('/api/activities/:id', {}, {
 		query:{ method: 'GET'},
 		update : { method : 'PUT', params: {id:'@_id'}}
 	});
