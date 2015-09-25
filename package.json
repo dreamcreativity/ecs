@@ -33,6 +33,7 @@
     "easyimage": "~2.1.0",
     "busboy": "~0.2.11",
     "type-is": "~1.6.8",
-    "html-pdf" : "~1.4.0"
+    "html-pdf" : "~1.4.0",
+    "dateformat" : "~1.0.11"
   }
 }

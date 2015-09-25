@@ -1,21 +1,6 @@
 var fs = require("fs");
 var pdf = require('html-pdf');
-
-
-// function generatePDF (layout, variables, callback) {
-//      var message ="";
-//      for(var i=0; i<variables.length; i++){
-//       var obj = variables[i];
-//       layout = layout.replace( "<% " + Object.keys(obj)[0] + " %>", obj[Object.keys(obj)[0]]);
-//      }
-
-//      pdf.create(layout).toFile('./example.pdf', function(err,res){
-//       if(err) message = err;
-//       else message =  "success";
-//       callback(message);
-//      })
-// }
-
+var dateFormat = require('dateformat');
 
 exports.generatePDF = function (layout, callback) {
      var message ="";
@@ -52,10 +37,27 @@ exports.getPdfTemplate = function(templateName, callback){
 
 }
 
-exports.replaceTamplateValue = function(template, data){
+exports.replaceTamplateValue = function(template, registeration, accommodation, flightinfo, listofcourse){
 	var result =template;
-	for(var key in data){
-		result = result.replace("@" + key + "@", data[key]);
+	for(var key in registeration){
+		if(registeration[key] instanceof Date){
+			result = result.replace("@" + key + "@", dateFormat(registeration[key],"mmm dd, yyyy"));
+		}
+		else if(key == "isHomeCountryAddress"){
+			var replaceValue = registeration[key]
+			if(registeration[key]){
+				replaceValue = "Home Country";
+			}
+			else replaceValue = "Canada";
+			result = result.replace("@" + key + "@", replaceValue);
+		}
+		else {
+			var replaceValue = registeration[key]
+			if(typeof registeration[key] == "undefined"){
+				replaceValue = '';
+			}
+			result = result.replace("@" + key + "@", replaceValue);
+		}
 	}
 	return result;
 }

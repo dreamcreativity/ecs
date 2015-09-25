@@ -4,7 +4,7 @@
 		width: 1024px;
 		color: black;
 		font-family: Helvetica;
-		font-size: 18px;
+		font-size: 14px;
 	}
 	.page{
 		height: 1430px;
@@ -77,7 +77,7 @@
 	.page .seaction .second{background-color: black; height: 5px}
 
 	.page .seaction .title {width: 300px; position: absolute; top:-31px; left: 0px; 
-		background-color: #585858; color:#fff; font-size: 19px;
+		background-color: #312323; color:#fff; font-size: 19px;
 		height: 28px; line-height: 28px; padding: 5px 10px; 
 	}
 
@@ -107,19 +107,39 @@
 		width: 400px;
 		padding: 5px 20px;
 		font-size: 16px;
-		float: right;
-		margin-right: 10px;
+		/*float: right;
+		margin-right: 10px;*/
+		position: absolute;;
+		bottom: 240px;
+		right: 9px;
 	}
 
 	.forDirectEntry{ color:#000!important}
 	.forDirectEntry h3{ font-size: 17px}
 	.forDirectEntry label{ width: 145px; display: inline-block;}
 
-	.row{ margin: 10px 0; clear: both;}
+
+	.signatureSeaction{
+	    border: 1px solid black;
+	    padding: 3px 50px 18px 50px;
+	    font-size: 14px;
+	    width: 903px;
+	    position: absolute;
+	    bottom: 95px;
+	    left: 10px;
+	}
+
+	.signatureSeaction p{
+	    font-size: 13px;
+	}
+
+
+	.row{ margin: 5px 0; clear: both;}
 	.feildBlock{ display: table-cell}
 	.feildBlock .title{display: inline-table;  margin-right: 5px; font-weight: bold;}
 	.feildBlock .title.long{ width: 300px; }
 	.feildBlock .title.med{ width: 200px; }
+
 	.feildBlock .content{display:inline-table; color: #6E6E6E; font-size: 15px }
 
 	.feildBlock.col-12{ width: 1020px }
@@ -184,12 +204,12 @@
 		<div class="row">
 			<div class="feildBlock col-6">
 				<div class="title">First Name :</div>
-				<div class="content">Andy</div>
+				<div class="content">@firstname@</div>
 			</div>
 
 			<div class="feildBlock col-6">
 				<div class="title">Last Name :</div>
-				<div class="content">Zhou</div>
+				<div class="content">@lastname@</div>
 			</div>
 		</div>
 
@@ -197,34 +217,34 @@
 		<div class="row">
 			<div class="feildBlock col-3">
 				<div class="title">Gender :</div>
-				<div class="content">Male / Ffemale</div>
+				<div class="content">@gender@</div>
 			</div>
 
 			<div class="feildBlock col-3">
 				<div class="title">Birth Date :</div>
-				<div class="content">Sept 12, 1995</div>
+				<div class="content">@birthday@</div>
 			</div>
 
 			<div class="feildBlock col-3">
 				<div class="title">Age :</div>
-				<div class="content"> 23 </div>
+				<div class="content">@age@</div>
 			</div>
 
 			<div class="feildBlock col-3">
 				<div class="title">Citizenship :</div>
-				<div class="content">China</div>
+				<div class="content">@citizenship@</div>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="feildBlock col-9">
 				<div class="title">Address :</div>
-				<div class="content">Somewhere in the world</div>
+				<div class="content">@address@</div>
 			</div>
 
 			<div class="feildBlock col-3">
 				<div class="title">Country:</div>
-				<div class="content">China</div>
+				<div class="content">@country@</div>
 			</div>
 
 			
@@ -234,17 +254,17 @@
 		<div class="row">
 			<div class="feildBlock col-3">
 				<div class="title">Telephone :</div>
-				<div class="content">222-222-2222 </div>
+				<div class="content">@telephone@</div>
 			</div>
 
 			<div class="feildBlock col-3">
 				<div class="title">Fax :</div>
-				<div class="content">222-222-2222 </div>
+				<div class="content">@fax@</div>
 			</div>
 
 			<div class="feildBlock col-6">
 				<div class="title">Email :</div>
-				<div class="content">abc@xyz.com</div>
+				<div class="content">@email@</div>
 			</div>
 
 		</div>
@@ -252,12 +272,12 @@
 		<div class="row">
 			<div class="feildBlock col-6">
 				<div class="title">Emergency Contact & Telephone :</div>
-				<div class="content">222-222-2222 </div>
+				<div class="content">@emergency@</div>
 			</div>
 
 			<div class="feildBlock col-6">
 				<div class="title ">Home Country or Canada :</div>
-				<div class="content"> Canada</div>
+				<div class="content">@isHomeCountryAddress@</div>
 			</div>
 		</div>
 
@@ -276,14 +296,14 @@
 				<!-- <div class="title">For Direct Entr (UCTP or Focus Program):</div> -->
 				<div class="content forDirectEntry">
 					<h3>For Direct Entr (UCTP or Focus Program):</h3>
-					<div><label>Offical TOEFL score :</label> _________________ </div>
-					<div><label>Offical IELTS score :</label> _________________ </div>
+					<div><label>Offical TOEFL score :</label> @TOEFL@ </div>
+					<div><label>Offical IELTS score :</label> @IELTS@ </div>
 				</div>
 			</div>
 
 			<div class="feildBlock col-4">
 				<div class="title">English Level :</div>
-				<div class="content"> High Intermediate</div>
+				<div class="content"> @englishLevel@</div>
 			</div>
 		</div>
 
@@ -397,41 +417,8 @@
 					</div>	
 				</li>
 				
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
+				
+				
 			</ul>
 
 
@@ -444,20 +431,6 @@
 		</div>
 
 
-		<style type="text/css">
-			.signatureSeaction{
-			    border: 1px solid black;
-			    margin-top: 70px;
-			    padding: 3px 50px 18px 50px;
-			    font-size: 14px;
-			    width: 903px;
-			    margin-left: 10px;
-			}
-
-			.signatureSeaction p{
-			    font-size: 13px;
-			}
-		</style>
 
 
 		<div class="row">
@@ -465,7 +438,7 @@
 				<p>
 					I confirm that I have read and I accpet the Conditions of Enrolment as well as the refund 
 					policies of the English School of Canada as stated in the registration package.
-					 i understand that English School of Canada may be required to submit attendance records 
+					 I understand that English School of Canada may be required to submit attendance records 
 					 and/or proof of program advancement or completion to the federal government.
 				</p>
 
