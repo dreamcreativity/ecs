@@ -401,7 +401,7 @@
 -------------------------------------
 */
 .media-selector-body{
-	height: 500px;
+	height: 570px;
 	overflow-y: auto;
 	padding: 0!important;
 }
@@ -420,9 +420,20 @@
 .thumbnail .inner{
 	font-size: 10px;
 	position: absolute;
-    left: 5px;
-    bottom: 5px;
-    background-color:#6D0F0F;
+    left: 3px;
+    bottom: 3px;
+    background-color:rgba(57, 4, 4, 0.5);
+    color: white;
+    padding: 3px 5px;
+    margin-right: 3px;
+}
+
+.thumbnail .file-size{
+	font-size: 10px;
+	position: absolute;
+    right: 3px;
+    top: 3px;
+    background-color: rgba(64, 71, 1, 0.5);
     color: white;
     padding: 3px 5px;
 }

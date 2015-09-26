@@ -11,14 +11,14 @@ filters.filter('filesize', function() {
 
     if(input / (1024*1024) >= 1.0){
     	outputVal = Math.round(input / (1024*1024), -1);
-    	outputString =  outputVal + ' mb';
+    	outputString =  outputVal + ' MB';
     }else{
     	if(input / 1024 >= 1.0){
     		outputVal = Math.round(input / 1024);
-    		outputString  =	outputVal + ' kb'; 
+    		outputString  =	outputVal + ' KB'; 
     	}else{
     		outputVal = Math.round(input / 1024, -2);
-    		outputString  =	outputVal + ' kb'; 
+    		outputString  =	outputVal + ' KB'; 
     	}
     }
 

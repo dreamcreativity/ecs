@@ -1,6 +1,6 @@
 'use strict';
 
-var mediaSelector = angular.module('esc.mediaSelector', ['esc.constants'])
+var mediaSelector = angular.module('esc.mediaSelector', ['esc.filters','esc.constants'])
 
 mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInstance, meidas, MediaType) {
 
@@ -9,6 +9,11 @@ mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInsta
 	$scope.selectedMedia = null;
 	$scope.selectedMediaType = '';
 	$scope.searchKeyword = '';
+	$scope.selectedDate = '0';
+	$scope.dateFilter = '0';
+	var today = new Date();
+	today = new Date(today.getFullYear(),today.getMonth(), today.getDate()+1);
+	$scope.dateFilter = today;
 
 	$scope.ok = function () {
 		$modalInstance.close($scope.selectedMedia);
@@ -21,6 +26,15 @@ mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInsta
 	$scope.selectMedia = function(selectedMedia){
 		$modalInstance.close(selectedMedia);
 	}
+
+	$scope.$watch('selectedDate', function(newValue, oldValue) {
+	  	console.log($scope.selectedDate );
+	  	if(newValue != oldValue){
+	  		$scope.dateFilter.setDate(today.getDate() - $scope.selectedDate );	
+	  		console.log($scope.dateFilter);
+	  	}
+	  		
+	});
 })
 
 

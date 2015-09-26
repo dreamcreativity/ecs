@@ -16,8 +16,8 @@
         		</select>
 
         		<label>Date: </label>
-        		<select class="form-control">
-        			<option value="">All</option>
+        		<select class="form-control" ng-model="selectedDate" >
+        			<option value="0">All</option>
         			<option value="1">Today</option>
         			<option value="{{1*7}}">In One Week</option>
         			<option value="{{2*7}}">In Two Weeks</option>
@@ -34,6 +34,7 @@
 							<img alt="" src="{{m.thumbnail}}" >
 							<div class="text">
 								<div class="inner">{{m.title}}</div>
+                                <div class="file-size">{{m.size | filesize}}</div>
 							</div>
 						</a>
 					</li>
@@ -48,36 +49,3 @@
         </div>
     </script>
 
-    <!-- 
-    <script type="text/ng-template" id="courseMedias.html">
-        <div class="modal-header">
-            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Select meida from list</h4>
-        </div>
-        <div class="modal-body lg">
-        	<div class="media-selector-body">
-	            <div class="form-horizontal">
-					<div class="well white padding-25">
-						<ul class="tc-gallery-2 clearfix">
-							<li class="thumbnail" ng-repeat="m in Medias">
-			
-								<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
-									<img alt="" src="{{m.thumbnail}}" style="width:160px; height: 120px;">
-									<div class="text">
-										<div class="inner">Sample Caption on Hover</div>
-									</div>
-								</a>
-							</li>
-						
-						</ul>
-					</div>
-		      	</div>
-        	</div>
-
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">Select No Image</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
-    -->
