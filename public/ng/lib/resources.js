@@ -49,6 +49,12 @@ resources.factory('Medias',['$resource',
             method : 'GET', 
             params: {target:'@_target', type:'@_type'}
         },
+        getMediaByTarget : 
+        {
+            url: '/api/media/target/:target',
+            method : 'GET', 
+            params: {target:'@_target'}
+        },
     });
 }]);
 

@@ -83,48 +83,14 @@
 						</div>
 					</div>
 
-					<div class="form-group" ng-show="slider.resource != null">
-						<label class="col-sm-3 control-label">Preview:</label>
-						<div class="col-sm-4">
-							<div class="media-info">
-								<div>Title : {{ slider.media.title}}</div>
-								<div>Size : {{ slider.media.size | filesize}}</div>
-								<div>Created Date : {{ slider.media.createDate | date:'MMMM d, yyyy' : 'UTC'}}</div>								
-							</div>
-							<img style="width: 100%" src="{{slider.media.path}}" ng-show="slider.media.type=='Image'">
-							<video width="100%" src="{{slider.media.path}}" controls ng-show="slider.media.type=='Video'">
-							  Your browser does not support the <code>video</code> element.
-							</video>
-						</div>
-					</div>
-					<div class="form-group" ng-show="slider.resource == null">
-						<label class="col-sm-3 control-label"></label>
-						<div class="col-sm-5">
-							<h3>Please select a media from the list below</h3>
-						</div>
-					</div>
-
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Resource:</label>
-						<div class="col-sm-7">							
-							<div class="media-resource">
-								<ul>
-									<li ng-repeat="media in media_list.data" >
+						<div class="col-sm-9">
+							<div ng-click="changeSource()" ng-if="slider.resource == null" class="cover-empty"><label>Clic to change</label></div>
 
-										<div ng-show="media.type=='Document' "  resource-Picker>	
-											<i class="fa fa-file-pdf-o"></i>
-										</div>	
-										
-										<img width="120" src="{{media.thumbnail}}" ng-show="media.type=='Image'"  resource-Picker>
-										<video width="120" src="{{media.path}}" controls ng-show="media.type=='Video'" style="margin-top:27px"  resource-Picker>
-										  Your browser does not support the <code>video</code> element.
-										</video>
-									</li>
-								</ul>					
-							</div>												
+							<img class="preview-media"  ng-click="changeSource()"  ng-if="slider.resource != null" src="{{slider.resource.thumbnail}}">
 						</div>
 					</div>
-
 
 					<div class="form-group">
 						<div class="col-sm-3"></div>	
@@ -138,7 +104,12 @@
 				</div>
 			</div>
 		</form>
+
+
 		</div>
+
+		<!-- include the media selector mockup -->
+    	<div ng-include="'/ng/html/MediaSelector.html'"></div>
 	</div>
 	<script type="text/javascript">
 		var url_params = <%- JSON.stringify(url_params) %>

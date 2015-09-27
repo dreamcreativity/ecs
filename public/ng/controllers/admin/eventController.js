@@ -30,7 +30,7 @@
 
 	})
 
-	.controller('EventEditCtrl', function ActivityEditCtrl($scope,$http,Events,Medias,$window,DateRanges){
+	.controller('EventEditCtrl', function ActivityEditCtrl($scope,$http,Events,$modal,Medias,$window,DateRanges){
 		var event_id = url_params.id;
 		$scope.dateRanges = DateRanges;
 		$scope.dateAfter = $scope.dateRanges[0];
@@ -39,12 +39,17 @@
 		if(event_id !=null){
 			Events.get({id:event_id}, function(result){
 				$scope.event = result.data;
-				$scope.array.push(result.data["mediaId"]);
 			});	
 		}
 
-		Medias.get({target : 'Event'},function(result){
-			$scope.medias=result;
+		Medias.getCategoryTargetMedia({target : 'Event', type:'Image'},function(result){
+			$scope.medias=result.data;
+			console.log($scope.medias);
+
+			$scope.changeCover = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.event.cover = selectedMedia;
+			});
+
 		})
 
 		$scope.update = function(isValid) {

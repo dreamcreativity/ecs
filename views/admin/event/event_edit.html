@@ -32,15 +32,25 @@ var url_params = <%- JSON.stringify(url_params) %>
 			</select>
 		</div>
 	</div>
+	
 	<div class="form-group">
+		<label class="col-sm-3 control-label">Image:</label>
+		<div class="col-sm-9">
+			<div ng-click="changeCover()" ng-if="event.cover == null" class="cover-empty"><label>Clic to change</label></div>
+
+			<img class="preview-media"  ng-click="changeCover()"  ng-if="event.cover != null" src="{{event.cover.thumbnail}}">
+		</div>
+	</div>
+
+	
+	<!-- <div class="form-group">
 		<label class="col-sm-3 control-label">Search</label>
 		<div class="col-sm-2">
 			<input type="text" class="form-control" name="activity_filter" ng-model="activity_filter">
 		</div>
-	</div>
-	
+	</div> -->
 
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label class="col-sm-3 control-label">Images</label>
 		<div class="col-sm-3">
 			<div class="well white padding-25 image-arear">
@@ -72,7 +82,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<hr class="separator">
 	<div class="form-group">
@@ -100,6 +110,9 @@ var url_params = <%- JSON.stringify(url_params) %>
 			</div>
 		</div>
 	</div>
+
+	<!-- include the media selector mockup -->
+   	<div ng-include="'/ng/html/MediaSelector.html'"></div>
 
 </form>
 

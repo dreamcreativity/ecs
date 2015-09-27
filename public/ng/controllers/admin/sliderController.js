@@ -1,6 +1,6 @@
 'use strict';
 angular.module('AdminApp')
-.controller('SliderController', function($rootScope,$scope,$location,$http,$window,Sliders,Medias){
+.controller('SliderController', function SliderController($rootScope,$scope,$location,$http,$modal,$window,Sliders,Medias){
 
 	if ( typeof url_params === "undefined" || typeof url_params.id === "undefined"){
 		$scope.slider = {
@@ -18,7 +18,15 @@ angular.module('AdminApp')
 	}
 
 	$scope.list = getAllSliders();
-	$scope.media_list = getAllSliderMedia();
+
+
+	Medias.getMediaByTarget({target:'Slider'}, function(result){
+		$scope.medias = result.data;
+		$scope.changeSource = createMediaSelectorFunction($modal,$scope.medias,function(selectedMedia){ 
+			$scope.slider.resource = selectedMedia;
+		});
+		
+	});
 
 
 
@@ -52,9 +60,7 @@ angular.module('AdminApp')
 	}
 
 
-	function getAllSliderMedia(){
-		return Medias.query({'target': 'Slider'});
-	}
+
 
 	$scope.create = function(){
 		Sliders.create($scope.slider,function(result){
@@ -91,11 +97,7 @@ angular.module('AdminApp')
 	}
 
 
-	$scope.selectResource = function(mediaResource){
-		console.log('click');
-		$scope.slider.resource = mediaResource;
 
-	}
 
 })
 .factory('Sliders',['$resource',
@@ -130,45 +132,6 @@ angular.module('AdminApp')
             });
         }
   };
-})
-
-.directive('resourcePicker', function() {
-  return {
-  	link: function (scope, element, attrs) {
-            element.on('click', function () {
-
-            	
-            	var newMedia = scope.media;
-            	delete newMedia.$$hashKey;
-            	// console.log(scope.$parent);
-            	// console.log(newMedia);
-            	
-            	
-            	scope.$parent.resource = newMedia._id;
-            	scope.$parent.media = scope.media;
-
-            	scope.$parent.$apply();
-
-            });
-        }
-  };
 });
 
 
-
-
-
-
-
-
-
-// .factory('Sliders',['$resource',
-// 	function($resource){
-// 		return $resource('/api/slider/:id', {}, {
-// 			query:{method: 'GET' },
-// 			get:{method: 'GET', params: {id:'@_id'}},
-// 			create:{ method: 'POST'},
-// 			delete:{ method: 'DELETE',params: {id:'@_id'}},
-// 			update : { method : 'PUT', params: {id:'@_id'}}
-// 	});
-// }]);

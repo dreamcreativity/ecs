@@ -1,6 +1,8 @@
 var Slider = require('../models/slider');
 var Media = require('../models/media');
 var fs = require('fs');
+var async = require("async");
+
 
 // Insert a new Slider record
 exports.create = function(req,res){
@@ -27,7 +29,7 @@ exports.create = function(req,res){
 
 exports.get = function(req,res){
 	var id = req.params.id;
-	Slider.find({_id:id}, function(err, result){
+	Slider.find({_id:id}).populate('resource').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -109,24 +111,40 @@ exports.edit = function(req,res){
 	delete slider._id;
 	delete slider.__v;
 
-	Slider.update({_id:update_id}, req.body, {}, function(err, result){
-		if(err){
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
-		else {
+	async.series([
 
-			console.log(result);
-			res.json({
-				status: 'ok',
-				messages: 'successed',
-				data: result + ' record(s) effected.'
-			});	
-		}
+		function(next){
+			if (req.body.resource != null)
+	    		req.body.resource =  req.body.resource._id;
+
+	    	next();
+	    	
+	    },
+
+	], function(){
+		Slider.update({_id:update_id}, req.body, {}, function(err, result){
+			if(err){
+				res.json({
+					status: 'fail',
+					messages: err,
+					data: null
+				});
+			}
+			else {
+
+				console.log(result);
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result + ' record(s) effected.'
+				});	
+			}
+		});
+
 	});
+
+
+
 }
 
 

@@ -24,58 +24,10 @@
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="col-sm-3 control-label"></label>
-		<div class="col-sm-2">
-			<select name="region" ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Search</label>
-		<div class="col-sm-2">
-			<input type="text" class="form-control" name="event_filter" ng-model="event_filter">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Images</label>
-		<div class="col-sm-3">
-			<div class="well white padding-25 image-arear">
-				<ul class="tc-gallery-2 clearfix">
-					<li class="thumbnail" ng-repeat="item in medias.data" ng-if="(array.indexOf(item._id) > -1)" checkbox-unselect-event>
-						<div class="thumb-preview">
-							<div class="thumb-image">
-								<img src="{{item.thumbnail}}" alt="" >
-							</div>
-
-						</div>
-				
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="col-sm-6">
-			<div class="well white padding-25 image-arear">
-				<ul class="tc-gallery-2 clearfix">
-					<li  ng-repeat="item in medias.data | isAfter:dateAfter.date | filter: event_filter" checkbox-select-event>
-						<div class="thumb-preview">
-							<div class="thumb-image">
-								<img src="{{item.thumbnail}}" alt="" >
-							</div>
-							<div class='cover' ng-class="{'selected':(array.indexOf(item._id) > -1)}"><i style="color:#fff; font-size: 16px; margin:0 auto" class="fa fa-check-circle"></i></div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
 
 
 
-
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label class="col-sm-3 control-label"></label>
 		<div class="col-sm-9">
 			<div class="tcb">
@@ -85,7 +37,7 @@
 				</label>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="form-actions">
 		<div class="form-group">
