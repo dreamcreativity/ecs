@@ -55,18 +55,23 @@ module.exports = {
 	},
 
 	AccommodationTemplateVars : {
+		option : null,
 		startDate : null,
 		endDate : null,
+		numOfWeeks : null,
 		isSmoke : null,
 		isWithSmoke : null,
 		isWithPet : null,
 		isWithKid : null,
+		isSpecialFood : null,
+		isAllergies :null,
 		hobbies : null,
 		occupation : null,
 		comments : null,
 		specialFood : null,
 		allergiesMedical : null,
 		isPrivateBathroom : null,
+		departureDateFromToronto : null
 	},
 
 	FlightTemplateVars : {

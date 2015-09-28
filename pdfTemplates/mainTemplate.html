@@ -133,6 +133,16 @@
 	    font-size: 13px;
 	}
 
+	.seactionFullWidthHeader{
+		width: 1024px;
+		background-color: #D3C4C4;
+		padding: 6px;
+		text-align: center;
+		font-style: italic;
+		font-family: -webkit-pictograph;
+		margin: 20px 0 15px 0!important
+	}
+
 
 	.row{ margin: 5px 0; clear: both;}
 	.feildBlock{ display: table-cell}
@@ -140,7 +150,35 @@
 	.feildBlock .title.long{ width: 300px; }
 	.feildBlock .title.med{ width: 200px; }
 
+	.feildBlock .title.infoHeader{ 
+		width: 200px;
+	    background-color: #D3C4C4;
+	    font-size: 13px;
+	    padding: 8px 13px 8px 13px;
+	    display: block;
+	}
+
+	.feildBlock .title.fullInfoHeader{ 
+	    background-color: #D3C4C4;
+	    font-size: 13px;
+	    padding: 8px 13px 8px 13px;
+	    display: block;
+	    font-weight: normal;
+	}
+
 	.feildBlock .content{display:inline-table; color: #6E6E6E; font-size: 15px }
+	.feildBlock .content .option{margin: 5px 21px;color: black;font-size: 13px;} 
+	.feildBlock .content .option strong{margin-left: 8px; margin-right: 15px} 
+
+	.feildBlock .subrow{margin-bottom: 20px; } 
+	.feildBlock .answer{
+		margin-bottom: 8px;
+	    width: 420px;
+	    margin: 0 0 0 15px;
+	    max-height: 30px;
+    	overflow: hidden;
+    	font-size: 12px;
+	} 
 
 	.feildBlock.col-12{ width: 1020px }
 	.feildBlock.col-11{ width: 935px }
@@ -157,6 +195,7 @@
 
 
 </style> 
+
 
 
 <body>
@@ -193,95 +232,7 @@
 
 
 		<!-- Student Information -->
-		<div class="seaction">
-			<div class="first"></div>
-			<div class="second"></div>
-			<h2 class="title">Student Information</h2>
-		</div>
-
-
-
-		<div class="row">
-			<div class="feildBlock col-6">
-				<div class="title">First Name :</div>
-				<div class="content">@firstname@</div>
-			</div>
-
-			<div class="feildBlock col-6">
-				<div class="title">Last Name :</div>
-				<div class="content">@lastname@</div>
-			</div>
-		</div>
-
-
-		<div class="row">
-			<div class="feildBlock col-3">
-				<div class="title">Gender :</div>
-				<div class="content">@gender@</div>
-			</div>
-
-			<div class="feildBlock col-3">
-				<div class="title">Birth Date :</div>
-				<div class="content">@birthday@</div>
-			</div>
-
-			<div class="feildBlock col-3">
-				<div class="title">Age :</div>
-				<div class="content">@age@</div>
-			</div>
-
-			<div class="feildBlock col-3">
-				<div class="title">Citizenship :</div>
-				<div class="content">@citizenship@</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="feildBlock col-9">
-				<div class="title">Address :</div>
-				<div class="content">@address@</div>
-			</div>
-
-			<div class="feildBlock col-3">
-				<div class="title">Country:</div>
-				<div class="content">@country@</div>
-			</div>
-
-			
-		</div>
-		
-
-		<div class="row">
-			<div class="feildBlock col-3">
-				<div class="title">Telephone :</div>
-				<div class="content">@telephone@</div>
-			</div>
-
-			<div class="feildBlock col-3">
-				<div class="title">Fax :</div>
-				<div class="content">@fax@</div>
-			</div>
-
-			<div class="feildBlock col-6">
-				<div class="title">Email :</div>
-				<div class="content">@email@</div>
-			</div>
-
-		</div>
-
-		<div class="row">
-			<div class="feildBlock col-6">
-				<div class="title">Emergency Contact & Telephone :</div>
-				<div class="content">@emergency@</div>
-			</div>
-
-			<div class="feildBlock col-6">
-				<div class="title ">Home Country or Canada :</div>
-				<div class="content">@isHomeCountryAddress@</div>
-			</div>
-		</div>
-
-
+		@studentTemplate@
 
 		<!-- Program Registration -->
 		<div class="seaction">
@@ -289,7 +240,6 @@
 			<div class="second"></div>
 			<h2 class="title">Program Registration</h2>
 		</div>
-
 		<div class="row">
 			
 			<div class="feildBlock col-6">
@@ -309,116 +259,7 @@
 
 		<div class="row programs">
 			<ul>
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-
-				<li class='program-block'>
-					<div class="title">General English Programs</div>
-					<div class="detail">
-						<div class="row">
-							<div class="feildBlock col-2">Level</div>
-							<div class="feildBlock col-4">Intensive (30 hours / weeks)</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Start Date</div>
-							<div class="feildBlock col-4">Sept 11, 2011</div>
-						</div>
-						<div class="row">
-							<div class="feildBlock col-2">Number of Weeks</div>
-							<div class="feildBlock col-4">8</div>
-						</div>
-					</div>	
-				</li>
-				
-				
-				
+				@courseTempates@
 			</ul>
 
 
@@ -430,7 +271,8 @@
 
 		</div>
 
-
+		<!-- Accommodation Tempate -->
+		@accommodationTemplate@
 
 
 		<div class="row">
@@ -438,8 +280,6 @@
 				<p>
 					I confirm that I have read and I accpet the Conditions of Enrolment as well as the refund 
 					policies of the English School of Canada as stated in the registration package.
-					 I understand that English School of Canada may be required to submit attendance records 
-					 and/or proof of program advancement or completion to the federal government.
 				</p>
 
 				<div>
@@ -468,5 +308,11 @@
 
 
 
+
 	
 </body>
+
+
+
+
+
