@@ -16,9 +16,13 @@
 			</div>
 			<div id="filters" class="panel-collapse collapse in">
 				<div class="portlet-body row media-filters">
-					<div class="col-md-4 col-lg-3">
+					<div class="col-md-3">
+						<label>Search: </label>
+						<input ng-model="keyword" class="" >
+					</div>
+					<div class="col-md-3">
 						<label>Target: </label>
-						<select ng-model="target">
+						<select ng-model="target" ng-model="target">
 							<option value="" >All</option>
 							<% for(var i=0; i<constants.MediaTarget.length; i++) {%>
 							<option value="<%- constants.MediaTarget[i] %>" ><%- constants.MediaTarget[i] %></option>
@@ -26,9 +30,9 @@
 						</select>
 					</div>
 
-					<div class="col-md-4 col-lg-3">
+					<div class="col-md-3">
 						<label>Type: </label>
-						<select ng-model="type">
+						<select ng-model="type" ng-model="type">
 							<option value="" >All</option>
 							<% for(var i=0; i<constants.MediaTypes.length; i++) {%>
 							<option value="<%- constants.MediaTypes[i] %>" ><%- constants.MediaTypes[i] %></option>
@@ -36,20 +40,37 @@
 						</select>
 					</div>
 
-					<div class="col-md-4 col-lg-3">
-						<label>Status: </label>
-						<select>
-							<option value="Unitiled" >Unitiled</option>
-							<option value="Deleted" >Deleted</option>
-					
-						</select>
+					<div class="col-md-3">
+						<button type="button" class="btn btn-default" ng-click="deleteSelectedItem()" ng-show="selectedList.length != 0">Delete {{selectedList.length}} selected items</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
 
-		<div class="portlet">
+		<div class="media-item-list">
+			<ul  ngCloak>
+				<li ng-repeat="m in medias | filter : { target: '' || target, type: '' || type, title: keyword || ''} ">
+					<img ng-show="m.type=='Image'" ng-src="{{m.thumbnail}}">
+					<video height="100" ng-src="{{m.path}}" controls ng-show="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+
+					<i ng-show="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+					<i ng-show="m.type=='Document' && ( m.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+
+					<div class="title">{{m.title}} [{{m.target}}]</div>
+					<input 
+						ng-click="checkChange($event,m._id)" 
+						ng-checked="isSelected(m._id)"  
+						type="checkbox"  
+						class="item-selected" >
+					<a class="edit" href="/admin/media/edit/{{m._id}}">Edit</a>
+					<span class="filesize">{{m.size | filesize}}</span>
+					
+				</li>
+			</ul>
+		</div>
+
+		<!-- <div class="portlet">
 			<div class="portlet-heading dark">
 				<div class="portlet-title">
 					<h4> List </h4>
@@ -83,7 +104,7 @@
 									<video width="300" src="{{m.path}}" controls ng-show="m.type=='Video'">
 									  Your browser does not support the <code>video</code> element.
 									</video>
-									<!-- <img width=300 src="https://www.google.ca/images/srpr/logo11w.png" ng-show="m.type=='jpg'" > -->
+									
 									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Image' "><img height=150 src="{{m.thumbnail}}"></a>
 
 									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Document' && m.ext=='pdf' ">
@@ -117,8 +138,7 @@
 					</table>
 				</div>
 			</div>					 
-		</div>
-
+		</div>-->
 
 
 	</div>

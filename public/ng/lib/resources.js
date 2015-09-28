@@ -43,6 +43,11 @@ resources.factory('Medias',['$resource',
         get : { method : 'GET', params: {id:'@_id'}},
         update : { method : 'PUT', params: {id:'@_id'}},
         delete : { method : 'DELETE', params: {id:'@_id'}},
+        deleteMedias : { 
+            url: '/api/media/deleteMedias',
+            method : 'POST', 
+            params: {ids:'@_ids'}
+        },
         getCategoryTargetMedia : 
         {
             url: '/api/media/target/:target/type/:type',

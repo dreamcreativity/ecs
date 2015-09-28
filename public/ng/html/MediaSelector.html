@@ -31,7 +31,9 @@
 					<li class="thumbnail" ng-repeat="m in Medias | filter:{ type: selectedMediaType || '' , title : searchKeyword || '' }">
 	
 						<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
-							<img alt="" src="{{m.thumbnail}}" >
+							<img ng-show="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
+                            <video height="100" src="{{m.path}}" controls ng-show="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+
 							<div class="text">
 								<div class="inner">{{m.title}}</div>
                                 <div class="file-size">{{m.size | filesize}}</div>

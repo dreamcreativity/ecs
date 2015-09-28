@@ -9,7 +9,7 @@ module.exports = {
 
 	MediaTarget : [
 		'Slider',
-		'Gallery',
+		// 'Gallery',
 		'Material',
 		'Course',
 		'Student',

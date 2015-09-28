@@ -124,6 +124,7 @@ router.get('/media/:id', media.get);
 router.put('/media/:id', media.edit);
 router.get('/media/target/:target/type/:type', media.getCategoryTargetMedia);
 router.delete('/media/:id', media.delete);
+router.post('/media/deleteMedias', media.deleteMedias);
 router.get('/media/target/:target', media.getByTarget);
 
 

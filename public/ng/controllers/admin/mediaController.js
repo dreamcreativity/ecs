@@ -327,19 +327,59 @@ angular.module('AdminApp')
 .controller('ListController',function ListController($scope,$location,$http,Medias,$window){
 
 	//var token = sessionStorage.token;
-	$scope.medias = getAllMedias();
+	
 	$scope.target = ""; 
 	$scope.type = ""; 
-	$scope.showList = function (){
-		//console.log($scope.medias);
-		console.log('hello');
+	$scope.keyword = ""; 
+	$scope.selectedList = [];
+
+
+	Medias.query({},function(result){
+		$scope.medias = result.data;
+	});
+
+
+	$scope.deleteSelectedItem = function(){
+		console.log($scope.selectedList);
+
+		Medias.deleteMedias({ids:$scope.selectedList},function(result){
+			console.log(result);
+		});
 	}
 
-	function getAllMedias(){
-		 return Medias.query();
+
+	$scope.getSelectedList = function() {
+	    return $scope.selectedList;
+	};
+
+	$scope.check = function(value, checked) {
+    	var idx = $scope.selectedList.indexOf(value);
+	    if (idx >= 0 && !checked) {
+	      $scope.selectedList.splice(idx, 1);
+	    }
+	    if (idx < 0 && checked) {
+	      $scope.selectedList.push(value);
+	    }
+	};
+
+	var updateSelected = function(action, id) {
+		if (action === 'add' && $scope.selectedList.indexOf(id) === -1) {
+			$scope.selectedList.push(id);
+		}
+		if (action === 'remove' && $scope.selectedList.indexOf(id) !== -1) {
+			$scope.selectedList.splice($scope.selectedList.indexOf(id), 1);
+		}
+
+	};
+	$scope.checkChange = function ($event, id) {
+		var checkbox = $event.target;
+		var action = (checkbox.checked ? 'add' : 'remove');
+		updateSelected(action,id);
 	}
 
-	
+	$scope.isSelected = function(id) {
+	  return $scope.selectedList.indexOf(id) >= 0;
+	};
 })
 
 

@@ -10,7 +10,6 @@ var async = require("async");
 // Insert a new Slider record
 exports.upload = function(req,res){
 
-	console.log('fuck');
 	console.log(req.body) // form fields
     console.log(req.files) // form files
 
@@ -328,41 +327,127 @@ exports.delete = function(req,res){
 		}
 
 
-		var file_path = path.resolve(__dirname) + path.resolve(obj[0].path);
 
-		file_path = file_path.replace("controllers", "public"); 
+		async.series([
 
-		// remove file if exist
-		if (fs.existsSync(file_path)) {
-		    fs.unlinkSync(file_path);
-		}
-		
-	
+			// delete image
+			function(next){
+				var file_path = path.resolve(__dirname) + path.resolve(obj[0].path);
+				file_path = file_path.replace("controllers", "public"); 
+				// remove file if exist
+				if (fs.existsSync(file_path)) {
+				    fs.unlinkSync(file_path);
+				}
+				next();
+		    },
 
-		Media.find({ _id:remove_id }).remove(function(err,result){
+		    // delete thumbnail image
+		    function(next){
+				var file_path = path.resolve(__dirname) + path.resolve(obj[0].thumbnail);
+				file_path = file_path.replace("controllers", "public"); 
+				// remove file if exist
+				if (fs.existsSync(file_path)) {
+				    fs.unlinkSync(file_path);
+				}
+				next();
+		    },
+		], function(){
 
-			if(err){
-				res.json({
-					status: 'fail',
-					messages: err,
-					data: null
-				});
-			}
-			else {
+			Media.find({ _id:remove_id }).remove(function(err,result){
+
+				if(err){
+					res.json({
+						status: 'fail',
+						messages: err,
+						data: null
+					});
+				}
+				else {
 
 
-				// remove file
-				res.json({
-					status: 'ok',
-					messages: 'successed',
-					data: result + ' record(s) effected.'
-				});	
-			}
+					// remove file
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result + ' record(s) effected.'
+					});	
+				}
+			});
+
 		});
 		
 	});
 
 }
+
+
+
+exports.deleteMedias = function(req,res){
+	console.log(req.body);
+	var ids = req.body.ids;
+
+
+
+	Media.find({_id:{ $in: ids }}, function(err, medias){
+
+		// return error message if error 
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		async.eachSeries(medias, function iterator(mediaItem, callback) {
+
+			async.series([
+				// delete image
+				function(next){
+					var file_path = path.resolve(__dirname) + path.resolve(mediaItem.path);
+					file_path = file_path.replace("controllers", "public"); 
+					// remove file if exist
+					if (fs.existsSync(file_path)) {
+					    fs.unlinkSync(file_path);
+					}
+					next();
+			    },
+			    // delete thumbnail image
+			    function(next){
+					var file_path = path.resolve(__dirname) + path.resolve(mediaItem.thumbnail);
+					file_path = file_path.replace("controllers", "public"); 
+					// remove file if exist
+					if (fs.existsSync(file_path)) {
+					    fs.unlinkSync(file_path);
+					}
+					next();
+			    },
+			], function(){
+				callback();
+			});
+
+		}, function done() {
+			Media.find({ _id:{ $in: ids }}).remove(function(err,result){
+				if(err){
+					res.json({
+						status: 'fail',
+						messages: err,
+						data: null
+					});
+				}
+				else {
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result + ' record(s) effected.'
+					});	
+				}
+			});
+		});
+	});
+
+}
+
+
 
 
 

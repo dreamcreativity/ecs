@@ -181,6 +181,79 @@
 	margin-bottom: 20px!important;
 }
 
+/*----------------------------------------	
+	css for media resource list display
+------------------------------------------
+*/
+
+.media-item-list{
+	border: 1px solid #eee;
+	background-color: white;
+	padding: 15px;
+	border-radius: 5px;
+}
+.media-item-list ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	height: 600px;
+	overflow-y:scroll; 
+}
+.media-item-list ul li{
+	height: 130px;
+	float: left;
+	border: 1px solid #ccc;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	padding: 5px;
+	position: relative;
+
+}
+
+.media-item-list ul li img{
+	height: 100px;
+}
+.media-item-list ul li .fa{
+	font-size: 70px;
+    width: 150px;
+    margin-top: 30px;
+
+}
+
+.media-item-list ul li .title{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	background-color: rgba(67, 2, 2, 0.5);
+	padding: 5px;
+	color:white;
+	font-size: 11px;
+	margin-right: 5px;
+}
+.media-item-list ul li .item-selected{
+	position: absolute;
+	bottom: 5px;
+	left: 3px;
+	z-index: 10;
+	background-color: blue;
+	font-size: 40px
+}
+.media-item-list ul li .edit{
+	position: absolute;
+	bottom: 3px;
+	right: 7px;
+	z-index: 10;
+
+	font-size: 12px
+}
+.media-item-list ul li .filesize{
+	position: absolute;
+	bottom: 3px;
+	left: 30px;
+	z-index: 10;
+
+	font-size: 12px
+}
 
 /*-----------------------------------	
 	css for media resource sessions
