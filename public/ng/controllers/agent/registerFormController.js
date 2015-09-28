@@ -70,19 +70,19 @@
 			$http.post('/api/pdf',{registerId:data.data._id})
 			.success(function(data,status,headers,config){
 				if(data.status == "successed"){
-					$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-						subject:"success registration", 
-						context: "Welcome", 
-						attachments : [data.data]})
-					.success(function(data,status,headers,config){
-						ShowGritterCenter('System Notification','Success to registration');
-						setInterval(function(){
-							$window.location='/agent/students';
-						}, 2000); 
-					})
-					.error(function(data,status,headers,config){
-						console.log("fail to send registration email")
-					});
+					// $http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+					// 	subject:"success registration", 
+					// 	context: "Welcome", 
+					// 	attachments : [data.data]})
+					// .success(function(data,status,headers,config){
+					// 	ShowGritterCenter('System Notification','Success to registration');
+					// 	setInterval(function(){
+					// 		$window.location='/agent/students';
+					// 	}, 2000); 
+					// })
+					// .error(function(data,status,headers,config){
+					// 	console.log("fail to send registration email")
+					// });
 				}
 			})
 			.error(function(data,status,headers,config){
@@ -180,16 +180,16 @@
 		$http.post('/api/pdf',{registerId:$scope.student._id})
 		.success(function(data,status,headers,config){
 			if(data.status == "successed"){
-			$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-				subject:"success registration", 
-				context: "Welcome", 
-				attachments : [data.data]})
-			.success(function(data,status,headers,config){
-				console.log("success to send registration email")
-			})
-			.error(function(data,status,headers,config){
-				console.log("fail to send registration email")
-			});
+			// $http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+			// 	subject:"success registration", 
+			// 	context: "Welcome", 
+			// 	attachments : [data.data]})
+			// .success(function(data,status,headers,config){
+			// 	console.log("success to send registration email")
+			// })
+			// .error(function(data,status,headers,config){
+			// 	console.log("fail to send registration email")
+			// });
 		}
 		})
 		.error(function(data,status,headers,config){

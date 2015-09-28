@@ -47,6 +47,7 @@ exports.register = function(req,res){
 	async.waterfall([
 		function(callback){
 			var accommodation_id =null;
+			accommodation.numOfWeeks = (accommodation.startDate-accommodation.endDate)/(1000*60*60*24*7).toFixed(2);
 			accommodation.save(function(err,result){
 				if(err){}
 					else {
@@ -313,30 +314,50 @@ exports.generatePDF = function (req,res){
 			var listOfCourseRegistration = [];
 			for (var i = 0; i < courses_obj.length; i++) {
 				var item = courses_obj[i];
-				for (var key in constant.CourseRegistrationTemplateVars) {
-					constant.CourseRegistrationTemplateVars[key] = item[key];
-				};
-				listOfCourseRegistration.push(constant.CourseRegistrationTemplateVars);
+				var insertValue = {
+					course : item.course,
+					title : item.title,
+					startDate : item.startDate,
+					duration : item.duration
+				}
+				listOfCourseRegistration.push(insertValue);
 			};
-
-			Pdf.getPdfTemplate('registration.html',function(data){
-			
-
-				var htmlTemplate = data;
+			var templates = ['mainTemplate.html','secondTemplate.html','studentTemplate.html','courseTemplate.html','accommodationTemplate.html'];
+			Pdf.getPdfTemplateList(templates,function(data){
+				var firstTemplate = [data[0],data[2],data[3],data[4]];
+				var secondTemplate = [data[1],data[2],data[3],data[4]];
 				//Four paramaters should be passed into below function
 				//1.constant.RegistrationTemplateVars
 				//2.constant.AccommodationTemplateVars
 				//3.constant.FlightTemplateVars
 				//4.listOfCourseRegistration
-				htmlTemplate = Pdf.replaceTamplateValue(htmlTemplate,constant.RegistrationTemplateVars);
+				var resultTemplate1 = Pdf.replaceTamplateValue(firstTemplate,constant.RegistrationTemplateVars,
+														null,
+														null,
+														listOfCourseRegistration);
+
+				var resultTemplate2 = Pdf.replaceTamplateValue(secondTemplate,constant.RegistrationTemplateVars,
+														constant.AccommodationTemplateVars,
+														constant.FlightTemplateVars,
+														null);
 
 
 				// replate variables
-				Pdf.generatePDF(htmlTemplate, function(message, path){
+				Pdf.generatePDF(resultTemplate1,"first", function(message, path){
 					if(message == "success"){
-						res.json({
-							status: 'successed',
-							data : path
+						Pdf.generatePDF(resultTemplate2,"second",function(message,path){
+							if(message == "success"){
+								res.json({
+									status: 'successed',
+									data : path
+								});
+							}
+							else {
+								res.json({
+									status: 'fail',
+									data : null
+								});
+							}
 						});
 					}
 					else {
