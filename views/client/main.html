@@ -653,7 +653,10 @@
                     <div class="container clearfix">
 
                         
-                        <% for(var i=0; i < staffs.length; i++){ %>
+                        <% for(var i=0; i < staffs.length; i++){ 
+                            if(staffs[i].cover != null){ 
+                        %>
+                      
                         <div class="col-md-6 bottommargin" >
 
                             <div class="team team-list clearfix">
@@ -679,7 +682,7 @@
                             </div>
 
                         </div>
-                        <% } %>
+                        <% }} %>
 
                         
                         <!-- <div class="col-md-6 bottommargin">
