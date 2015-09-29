@@ -32,6 +32,7 @@ angular.module('AdminApp')
 
 	$scope.material = Meterials.get(url_params, function(){
 		$scope.material = $scope.material.data;	
+		console.log($scope.material);
 	});
 
 	$scope.selectedAgents = [];

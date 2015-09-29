@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var Media = require('../models/media');
+var Region = require('../models/region');
 var Schema = mongoose.Schema;
 
 

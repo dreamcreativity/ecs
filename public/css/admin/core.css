@@ -545,3 +545,17 @@
 	display: inline;
 }
 
+/*------------------------*/
+
+.media-display-seaction{
+	display: inline-block;
+	position: relative;
+}
+
+.media-display-seaction .info{
+	position: absolute;
+	top: 0;
+	width: 200px;
+	right: -220px;
+	font-size: 12px;
+}
