@@ -338,12 +338,24 @@ angular.module('AdminApp')
 		$scope.medias = result.data;
 	});
 
+	var removeItemFromSelectedList =  function()
+	{
+		
+		$scope.medias= $scope.medias.filter(function( obj ) {
+			return $scope.selectedList.indexOf(obj._id) < 0 ;
+		});
+
+		setTimeout(function(){
+			$scope.selectedList = [];	
+			$scope.$apply();
+		},200);
+		
+
+	}	
 
 	$scope.deleteSelectedItem = function(){
-		console.log($scope.selectedList);
-
 		Medias.deleteMedias({ids:$scope.selectedList},function(result){
-			console.log(result);
+			removeItemFromSelectedList();
 		});
 	}
 
