@@ -260,7 +260,15 @@ router.get('/student/all', function(req, res) {
 });
 
 router.get('/student/create', function(req, res) {
-	res.render('admin/student/student_new.html');
+	template(req,res,'admin_main','admin/student/student_new.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Create Student',
+				url_params : req.params
+			}
+		);
 });
 
 router.get('/student/agent/create', function(req,res){

@@ -223,7 +223,8 @@
 								<tr id="newrow" ng-show="newrowShow">
 									<td class="hidden-xs">
 										<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
-										</td>
+										</select>
+									</td>
 										<td class="hidden-xs">
 											<select ng-model="course.year" ng-change="changeStartYear(course,year)">
 												<option value="" selected>--Select--</option>
@@ -446,7 +447,8 @@
 
 			<div class="form-actions">
 				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-9">
+					<div class="col-sm-offset-2 col-sm-9">
+					<a href="/agent/students" class="btn btn-primary">Cancel</a>
 						<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
 						<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
 						<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>

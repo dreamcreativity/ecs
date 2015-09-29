@@ -100,15 +100,10 @@
 									</a>
 										<ul class="dropdown-menu dropdown-user">
 											<li>
-												<a href="profile.html">
+												<a href="profile">
 													<i class="fa fa-user"></i> My Profile
 												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fa fa-gear"></i> Settings
-												</a>
-											</li>											
+											</li>										
 											<li>
 												<a href="login.html">
 													<i class="fa fa-power-off"></i> Logout
@@ -229,13 +224,13 @@
 							</li>
 							
 							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">
-								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
-									<i class="fa fa-sliders"></i> Settings <span class="fa arrow"></span>
+								<a href="/agent/profile" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
+									<i class="fa fa-sliders"></i> Profile <span class="fa arrow"></span>
 								</a>
-								<ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
+								<!-- <ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
 										<li>
 											<a href="/agent/setting" class="<%if(parms.cur_selected=='Material'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Basic Info
+												<i class="fa fa-angle-double-right"></i> Setting
 											</a>
 										</li>			
 										<li>
@@ -243,7 +238,7 @@
 												<i class="fa fa-angle-double-right"></i> Password
 											</a>
 										</li>									
-									</ul>
+									</ul> -->
 							</li>
 
 			
@@ -299,60 +294,7 @@
 								<div class="page-header title">
 								<!-- PAGE TITLE ROW -->
 									<h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>									
-								</div>
-								
-								<!-- /#ek-layout-button -->	
-								<!-- <div class="qs-layout-menu">
-									<div class="btn btn-gray qs-setting-btn" id="qs-setting-btn">
-										<i class="fa fa-cog bigger-150 icon-only"></i>
-									</div>
-									<div class="qs-setting-box" id="qs-setting-box">
-									
-										<div class="hidden-xs hidden-sm">
-											<span class="bigger-120">Layout Options</span>
-											
-											<div class="hr hr-dotted hr-8"></div>
-											<label>
-												<input type="checkbox" class="tc" id="fixed-navbar" />
-													<span id="#fixed-navbar" class="labels"> Fixed NavBar</span>
-											</label>
-											<label>
-												<input type="checkbox" class="tc" id="fixed-sidebar" />
-													<span id="#fixed-sidebar" class="labels"> Fixed NavBar+SideBar</span>
-											</label>
-											<label>
-												<input type="checkbox" class="tc" id="sidebar-toggle" />
-													<span id="#sidebar-toggle" class="labels"> Sidebar Toggle</span>
-											</label>
-											<label>
-												<input type="checkbox" class="tc" id="in-container" />
-													<span id="#in-container" class="labels"> Inside<strong>.container</strong></span>
-											</label>
-										
-											<div class="space-4"></div>
-										</div>
-										
-										<span class="bigger-120">Color Options</span>
-										
-										<div class="hr hr-dotted hr-8"></div>
-										
-										<label>
-											<input type="checkbox" class="tc" id="side-bar-color" />
-											<span id="#side-bar-color" class="labels"> SideBar (Light)</span>
-										</label>
-										
-										<ul>									
-											<li><button class="btn" style="background-color:#d15050;" onclick="swapStyle('/assets/css/themes/style.css')"></button></li>
-											<li><button class="btn" style="background-color:#86618f;" onclick="swapStyle('/assets/css/themes/style-1.css')"></button></li> 
-											<li><button class="btn" style="background-color:#ba5d32;" onclick="swapStyle('/assets/css/themes/style-2.css')"></button></li>
-											<li><button class="btn" style="background-color:#488075;" onclick="swapStyle('/assets/css/themes/style-3.css')"></button></li>
-											<li><button class="btn" style="background-color:#4e72c2;" onclick="swapStyle('/assets/css/themes/style-4.css')"></button></li>
-										</ul>
-										
-									</div>
-								</div> -->
-								<!-- /#ek-layout-button -->		
-								
+								</div>							
 							</div><!-- /.col-lg-12 -->
 						</div><!-- /.row -->
 					<!-- END PAGE HEADING ROW -->					

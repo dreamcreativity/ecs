@@ -24,6 +24,9 @@ angular.module('AgentApp')
 		Agents.update($scope.agent, function(result){
 			if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Material document has been updated');
+			 		    setInterval(function(){
+		  					 $window.location='/agent/profile';
+						}, 2000);
 				}else{
 					ShowGritterCenter('System Notification','Material document update fail : ' + result.messages.err);
 				}
@@ -48,3 +51,16 @@ angular.module('AgentApp')
 
 	
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

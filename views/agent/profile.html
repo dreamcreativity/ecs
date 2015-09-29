@@ -1,0 +1,96 @@
+<!-- <div class="row" ng-controller='AgentDetail'>										
+	<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+		<div class="portlet no-border">
+			<div class="portlet-heading">
+				<div class="portlet-title">
+					<h2>{{agent.firstname}} {{agent.lastname}}</h2>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="portlet-body">
+				<div class="row">
+					<div class="col-lg-2 right"><strong>Company :</strong></div>
+					<div class="col-lg-2" >{{agent.company}}</div>
+				</div>
+				<div class="space-4"></div>
+				<div class="row">
+					<div class="col-lg-2 right"><strong>Work :</strong></div>
+					<div class="col-lg-2" >{{agent.workphone}}</div>
+				</div>
+				<div class="space-4"></div>
+				<div class="row">
+					<div class="col-lg-2 right"><strong>Cell :</strong></div>
+					<div class="col-lg-2" >{{agent.cellphone}}</div>
+				</div>
+				<div class="space-4"></div>
+				<div class="row">
+					<div class="col-lg-2 right"><strong>Email :</strong></div>
+					<div class="col-lg-2" >{{agent.email}}</div>
+				</div>
+				<div class="space-4"></div>
+				<div class="row">
+					<div class="col-lg-2 right"><strong>Region :</strong></div>
+					<div class="col-lg-2" >{{agent.region}}</div>
+				</div>
+				<div class="space-4"></div>
+				<div class="row">
+					<div class="col-lg-2 right"></div>
+					<div class="col-lg-1" >
+						<a href="/agent/edit" class="btn btn-sm btn-primary">Edit</a>
+					</div>
+					<div class="col-lg-4" >
+						<a href="/agent/resetpassword" class="btn btn-sm btn-primary">Reset password</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div> -->
+<div class="row form-horizontal" ng-controller='AgentDetail'>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Name : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.firstname}} {{agent.lastname}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Company : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.company}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Work Phone : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.workphone}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Cell Phone : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.cellphone}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Email : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.email}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Region : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.region}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+	<div class="col-sm-2">
+	</div>
+		<div class="col-sm-2">
+			<a href="/agent/edit" class="btn btn-sm btn-primary">Edit</a>
+		</div>
+		<div class="col-sm-2">
+			<a href="/agent/resetpassword" class="btn btn-sm btn-primary">Reset password</a>
+		</div>
+	</div>
+</div>

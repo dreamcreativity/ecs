@@ -13,17 +13,35 @@
 						<thead>
 							<tr>
 								<tr>
+								<th class="hidden-xs">Student ID</th>
 								<th class="hidden-xs">Firstname</th>
 								<th class="hidden-xs">Lastname</th>
 								<th class="hidden-xs">Gender</th>
+								<th class="hidden-xs">Phone</th>
+								<th class="hidden-xs">Email</th>
+								<th class="hidden-xs">Registeration Date</th>
+								<th class="hidden-xs">Status</th>
+								<th class="hidden-xs center">Action</th>
 							</tr>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="item in registrations.data | filter:query">
+							<td class="hidden-xs">00000{{item.studentID}}</td>
 							<td class="hidden-xs">{{item.firstname}}</td>
-								<td class="hidden-xs"><a href="/agent/students/detail/{{item._id}}">{{item.lastname}}</a></td>
-								<td class="hidden-xs">{{item.gender}}</td>
+							<td class="hidden-xs">{{item.lastname}}</td>
+							<td class="hidden-xs">{{item.gender}}</td>
+							<td class="hidden-xs">{{item.telephone}}</td>
+							<td class="hidden-xs">{{item.email}}</td>
+							<td class="hidden-xs">{{item.registerDate | date:'MMM dd yyyy'}}</td>
+							<td><span ng-if="item.isQuit == 0" class="label label-active">Active</span>
+								<span ng-if="item.isQuit == 1" class="label label-danger">Deleted</span>
+							</td>
+							<td class="col-medium center">
+								<div class="btn-group btn-group-xs ">
+									<a href="/agent/students/detail/{{item._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+								</div>	
+							</td> 
 							</tr>
 						</tbody>
 
@@ -31,6 +49,8 @@
 				</div>
 			</div>					 
 		</div>
+
+		<a href="/agent/register" class="btn btn-sm btn-primary">Register</a>
 		
 	</div>
 

@@ -48,9 +48,9 @@ router.get('/resetpassword', function(req, res) {
 	template(req,res,'agent_main','agent/resetpassword.html',
 			{ 
 				title: 'Reset password',
-				category: 'setting',
-				cur_tap: 'reset password',
-				cur_selected : ''
+				category: 'profile',
+				cur_tap: 'Profile',
+				cur_selected : 'Rest password'
 			}
 		);
 });
@@ -71,8 +71,8 @@ router.get('/students', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/students.html',
 			{ 
 				title: 'Student',
-				category: 'Student',
-				cur_tap: 'Registeration',
+				category: 'Students',
+				cur_tap: 'Students',
 				cur_selected : ''
 			}
 		);
@@ -82,9 +82,9 @@ router.get('/students/detail/:id', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/detail.html',
 			{ 
 				title: 'Student',
-				category: 'Student',
-				cur_tap: 'Registeration',
-				cur_selected : '',
+				category: 'Students',
+				cur_tap: 'Students',
+				cur_selected : 'Detail',
 				url_params : req.params
 			}
 		);
@@ -102,13 +102,25 @@ router.get('/students/invitation', function(req, res) {
 		);
 });
 
-router.get('/setting', function(req,res){
-	template(req,res,'agent_main', 'agent/setting.html',
+router.get('/profile', function(req,res){
+	template(req,res,'agent_main', 'agent/profile.html',
 	{
-		title: 'Setting',
-		category : 'Setting',
-		cur_tap : 'Setting',
+		title: 'Profile',
+		category : 'Profile',
+		cur_tap : 'Profile',
 		cur_selected : '',
+		url_params : req.params
+
+	});
+});
+
+router.get('/edit', function(req,res){
+	template(req,res,'agent_main', 'agent/edit.html',
+	{
+		title: 'Profile',
+		category : 'Profile',
+		cur_tap : 'Profile',
+		cur_selected : 'Edit',
 		url_params : req.params
 
 	});
