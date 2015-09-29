@@ -33,7 +33,8 @@
 						<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
 							<img ng-show="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
                             <video height="100" src="{{m.path}}" controls ng-show="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
-
+                            <i ng-show="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+                            <i ng-show="m.type=='Document' && ( m.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
 							<div class="text">
 								<div class="inner">{{m.title}}</div>
                                 <div class="file-size">{{m.size | filesize}}</div>

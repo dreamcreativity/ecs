@@ -64,8 +64,22 @@
 				</div>
 
 				<hr class="separator" />
-
 				<div class="form-group">
+					<label class="col-sm-3 control-label">Media:</label>
+					<div class="col-sm-9">
+						<div ng-click="changeMeida()" ng-if="material.media == null" class="cover-empty"><label>Clic to change</label></div>
+
+						<video height="200"  ng-click="changeMeida()"  src="{{material.media.path}}" controls ng-show="material.media != null && material.media.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+
+						<img class="preview-media"  ng-click="changeMeida()"  ng-if="material.media != null && material.media.type=='Image'" src="{{material.media.thumbnail}}">
+
+						<i ng-click="changeMeida()" ng-show="material.media != null && material.media.type=='Document' && ( material.media.ext=='doc' || material.media.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+                        <i ng-click="changeMeida()"ng-show="material.media != null && material.media.type=='Document' && ( material.media.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+					</div>
+				</div>
+
+
+				<!-- <div class="form-group">
 					<label class="col-sm-3 control-label" for="password2">Media:</label>
 					<div class="col-sm-4">
 
@@ -97,9 +111,9 @@
 					<div class="col-sm-5">
 						<h3>Please select a media from the list below</h3>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label class="col-sm-3 control-label">Resource:</label>
 					<div class="col-sm-7">		
 
@@ -108,20 +122,6 @@
 							<div class="title">Filter By:</div>
 
 							<div class="row form-group">
-									<!-- <div class="col-md-4">
-										<label>Target: </label>
-										<select>
-											<option value="" >All</option>
-											<option value="Slider" >Slider</option>
-											<option value="Gallery">Gallery</option>
-											<option value="Material">Material</option>
-											<option value="Student">Student</option>
-											<option value="Staff">Staff</option>
-											<option value="Activity">Activity</option>
-											<option value="Other">Other</option>
-										</select>
-									</div> -->
-
 									<div class="col-md-4">
 										<label>Search: </label>
 										<input class="form-control" type="text" ng-model="resourceSearch">
@@ -139,13 +139,6 @@
 
 									<div class="col-md-4">
 										<label>Date: </label>
-									<!-- 	<select>
-											<option value="" >All</option>
-											<option value="Unitiled" >Today</option>
-											<option value="Deleted" >Last Day</option>
-											<option value="Gallery">Last 10 Days</option>
-											<option value="Gallery">Last Month</option>
-										</select> -->
 										<select ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
 									</select>
 									</div>
@@ -174,6 +167,7 @@
 						</div>												
 					</div>
 				</div>
+				 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Premission:</label>
 					<div class="col-sm-7 row">
@@ -246,6 +240,10 @@
 		</div>
 	</form>
 	</div>
+
+	<!-- include the media selector mockup -->
+   	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+
 </div>
 
 

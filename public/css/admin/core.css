@@ -485,10 +485,22 @@
 	float: left;
 	margin-right: 15px;
 	position: relative;
+	height: 98px;
+	text-align: center;
+	min-width: 130px;
 }
 
 .media-selector-body li img{ 
 	height: 90px;
+}
+
+.media-selector-body li video{ 
+	height: 90px;
+}
+
+.media-selector-body li .fa{ 
+	font-size: 50px;
+	line-height: 85px;
 }
 
 .thumbnail .inner{

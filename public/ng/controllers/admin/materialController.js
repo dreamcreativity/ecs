@@ -27,7 +27,7 @@ angular.module('AdminApp')
 	}
 })
 
-.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$window,Regions,Medias,Meterials,Agents,DateRanges){
+.controller('EditMaterialController',function EditMaterialController($rootScope,$scope,$location,$http,$modal,$window,Regions,Medias,Meterials,Agents,DateRanges){
 	var id = url_params.id;
 
 	$scope.material = Meterials.get(url_params, function(){
@@ -84,7 +84,17 @@ angular.module('AdminApp')
 	
 	//$scope.medias = Medias.query({'targer':'Material'});
 
-	$scope.medias = getMedias();
+
+
+	// load meida image
+	Medias.getMediaByTarget({target:'Material'}, function(result){
+	 	$scope.medias = result.data;
+	 	console.log($scope.medias);	
+		$scope.changeMeida = createMediaSelectorFunction($modal, $scope.medias,function( selectedMedia){ 
+			$scope.material.media = selectedMedia;
+		});
+	});
+
 
 	$scope.update = function(){
 		Meterials.update($scope.material,function(result){
@@ -96,9 +106,7 @@ angular.module('AdminApp')
 		});
 	}
 
-	function getMedias(){
-		return Medias.query({'target': 'Material'});
-	}
+
 
 })
 
