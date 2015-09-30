@@ -32,6 +32,7 @@ angular.module('AdminApp')
 
 	$scope.material = Meterials.get(url_params, function(){
 		$scope.material = $scope.material.data;	
+		
 		console.log($scope.material);
 	});
 
@@ -58,14 +59,14 @@ angular.module('AdminApp')
 
 	$scope.addAgentPremission =  function(agent){
 
-		$scope.material.agentIds.push(agent._id);
+		$scope.material.agents.push(agent);
 		$scope.RefreshAgentList();
 	}
 
 	$scope.removeAgentPremission =  function(agent){
 
-		$scope.material.agentIds = jQuery.grep($scope.material.agentIds , function(value) {
-							  return value != agent._id;
+		$scope.material.agents = jQuery.grep($scope.material.agents , function(value) {
+							  return value._id != agent._id;
 							});
 
 		$scope.RefreshAgentList();
@@ -73,12 +74,12 @@ angular.module('AdminApp')
 
 	$scope.RefreshAgentList = function(){
 		$scope.selectedAgents = jQuery.grep($scope.allAgents , function(value) {
-							  return jQuery.inArray(value._id, $scope.material.agentIds)  > -1;
+							  return jQuery.inArray(value, $scope.material.agents)  > -1;
 							  
 							});
 
 		$scope.unselectedAgents = jQuery.grep($scope.allAgents , function(value) {
-							  return jQuery.inArray(value._id, $scope.material.agentIds)  <= -1;
+							  return jQuery.inArray(value, $scope.material.agents)  <= -1;
 							});
 	}
 

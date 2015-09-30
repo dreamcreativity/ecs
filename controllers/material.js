@@ -53,7 +53,7 @@ exports.all = function(req,res){
 //GET: material by Id
 exports.get = function(req,res){
 	var id = req.params.id;
-	Material.find({_id:id}).populate('media').populate('region').exec(function(err, result){
+	Material.find({_id:id}).populate('media').populate('agents').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -85,27 +85,30 @@ exports.get = function(req,res){
 exports.edit = function(req,res){
 	var update_id = req.params.id;
 
+	var agentList = [];
 	console.log(req.body);
 	async.series([
 		// save each duration object in the list
 		function(next){
-			console.log('andy is here');
 			if(req.body.media !=null ){
 				console.log(req.body);
 				req.body.media = req.body.media._id;
 			}	
-				
-
 			next();
 		},
-		function(next){
-			if(req.body.region !=null )
-				req.body.region = req.body.region._id;
 
-			next();
-		}
+		function(next){
+			
+			async.eachSeries(req.body.agents, function iterator(item, callback) {
+				agentList.push(item._id);
+				callback();
+			}, function done() {
+				req.body.agents = agentList;
+				next();
+			});
 
 		
+		}
 	], function(){
 		// update
 		console.log('andy is here 2');

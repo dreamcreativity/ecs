@@ -70,12 +70,12 @@
 						<div class="media-display-seaction">
 							<div ng-click="changeMeida()" ng-if="material.media == null" class="cover-empty"><label>Clic to change</label></div>
 
-							<video height="200"  ng-click="changeMeida()"  src="{{material.media.path}}" controls ng-show="material.media != null && material.media.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+							<video height="200"  ng-click="changeMeida()"  src="{{material.media.path}}" controls ng-if="material.media != null && material.media.type=='Video'">Your browser does not support the <code>video</code> element.</video>
 
 							<img class="preview-media"  ng-click="changeMeida()"  ng-if="material.media != null && material.media.type=='Image'" src="{{material.media.thumbnail}}">
 
-							<i ng-click="changeMeida()" ng-show="material.media != null && material.media.type=='Document' && ( material.media.ext=='doc' || material.media.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
-	                        <i ng-click="changeMeida()"ng-show="material.media != null && material.media.type=='Document' && ( material.media.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+							<i ng-click="changeMeida()" ng-if="material.media != null && material.media.type=='Document' && ( material.media.ext=='doc' || material.media.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+	                        <i ng-click="changeMeida()"ng-if="material.media != null && material.media.type=='Document' && ( material.media.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
 
 
 	                        <div class="info" ng-if="material.media != null">
