@@ -11,6 +11,8 @@ var async = require("async");
 //POST : Create a Staff
 exports.create = function(req,res){
 	var newStaff = new Staff(req.body);
+
+	console.log(newStaff);
 	Staff.findOne({username : newStaff.username}, function(err, user){
 		if(err){
 			res.json({

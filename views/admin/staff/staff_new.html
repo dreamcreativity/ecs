@@ -21,6 +21,13 @@
 			</select>
 		</div>
 	</div>
+<div class="form-group">
+		<label class="col-sm-3 control-label">Position</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="position" ng-model="staff.position" required>
+			<p ng-show="createForm.position.$invalid && !createForm.position.$pristine" class="help-block text-danger">position is required</p>	
+		</div>
+	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Username</label>

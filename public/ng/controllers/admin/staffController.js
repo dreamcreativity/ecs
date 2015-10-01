@@ -13,7 +13,8 @@ angular.module('AdminApp')
 	 		$scope.staff.regions.push($scope.region_tags[i].text);
 	 	}
 	 	Staffs.save($scope.staff,function(result){
-	 		     ShowGritterCenter('System Notification','Staff has been created');
+	 			console.log(result);
+	 		    ShowGritterCenter('System Notification','Staff has been created');
 	 			setInterval(function(){
   					 $window.location='/admin/staff/all';
 				}, 2000); 
