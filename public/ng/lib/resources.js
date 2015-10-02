@@ -198,6 +198,13 @@ resources.factory('Registrations',['$resource',
     });
 }]);
 
+resources.factory('Constants',['$resource',
+    function($resource){
+        return $resource('/api/constants/:name', {}, {
+        get:{ method: 'GET', params: {name:'@_name'} }
+    });
+}]);
+
 
 
 

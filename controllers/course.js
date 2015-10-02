@@ -359,7 +359,10 @@ exports.edit = function(req,res){
 	    	
 	    	if(req.body.durations.length == 0)
 	    		req.body.isActive = false;
-
+	    	if(req.body.cover == null)
+	    		req.body.isActive = false;
+	    	if(req.body.banner == null)
+	    		req.body.isActive = false;
 	    	next();
 	    	
 	    },

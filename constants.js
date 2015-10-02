@@ -24,6 +24,12 @@ module.exports = {
 		'Fixed Period'
 	],
 
+	CourseLevel: [
+		'Intensive',
+		'Standard',
+		'Part-time'
+	],
+
 
 
 	// template seaction

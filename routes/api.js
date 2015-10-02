@@ -12,6 +12,7 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 var emailSender = require('../modules/emailModule');
@@ -29,7 +30,7 @@ function IsAuthException(path, method){
 		{	path : '/api/staffs', method: 'POST',type: 'direct' },
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
-		{	path : '/api/media/target', method: 'GET', type: 'contain'},
+		{	path : '/api/constants', method: 'GET', type: 'contain'},
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, // Delete late
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
@@ -327,6 +328,11 @@ router.put('/events/:id',events.edit);
 
 //GET a course
 router.get('/events/:id', events.getEventbyId);
+
+
+
+//-------------------------- Constants ---------------------------------------
+ router.get('/constants/:name', constants.get);
 
 
 //-------------------------Email Sender--------------------------------------------

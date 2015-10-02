@@ -8,6 +8,35 @@
 	</div>
 
 	<div class="form-group">
+		<label class="col-sm-3 control-label">Tag</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="tag" ng-model="course.tag" >
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Level</label>
+		<div class="col-sm-9">
+			<!-- <input type="text" class="form-control" name="level" ng-model="course.level" required> -->
+			<select class="form-control" name="level" ng-model="course.level" required>
+				<option ng-repeat="level in levels" value="{{level}}">{{level}}</option>
+			</select>
+			<p ng-show="createForm.level.$invalid && !createForm.level.$pristine" class="help-block text-danger">Level is required</p>	
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Type</label>
+		<div class="col-sm-9">
+			<!-- <input type="text" class="form-control" name="level" ng-model="course.level" required> -->
+			<select class="form-control" name="type" ng-model="course.type" required>
+				<option ng-repeat="type in types" value="{{type}}">{{type}}</option>
+			</select>
+			<p ng-show="createForm.level.$invalid && !createForm.level.$pristine" class="help-block text-danger">Level is required</p>	
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="col-sm-3 control-label">Description</label>
 		<div class="col-sm-9">
 		<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="course.description" placeholder="This textarea has a limit of 225 chars."></textarea>
@@ -16,9 +45,13 @@
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-4">
+			<div class="col-sm-offset-3 col-sm-3">
 				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
 			</div>
+			<div class="col-sm-3">
+				<input type="button" class="btn btn-primary" value="Close" >
+			</div>
+			
 		</div>
 		<div class="form-group">
 			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
