@@ -84,11 +84,13 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-3 control-label">Resource:</label>
+						<label class="col-sm-3 control-label">Media:</label>
 						<div class="col-sm-9">
 							<div ng-click="changeSource()" ng-if="slider.resource == null" class="cover-empty"><label>Clic to change</label></div>
 
-							<img class="preview-media"  ng-click="changeSource()"  ng-if="slider.resource != null" src="{{slider.resource.thumbnail}}">
+							<img ng-click="changeSource()" class="preview-media"  ng-click="changeSource()"  ng-if="slider.resource != null && slider.resource.type=='Image'" src="{{slider.resource.thumbnail}}" >
+
+							<video ng-click="changeSource()" src="{{slider.resource.path}}" controls ng-if="slider.resource.type=='Video'">Your browser does not support the <code>video</code> element.</video>
 						</div>
 					</div>
 

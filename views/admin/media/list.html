@@ -51,11 +51,11 @@
 		<div class="media-item-list">
 			<ul  ngCloak>
 				<li ng-repeat="m in medias | filter : { target: '' || target, type: '' || type, title: keyword || ''} ">
-					<img ng-show="m.type=='Image'" ng-src="{{m.thumbnail}}">
-					<video height="100" ng-src="{{m.path}}" controls ng-show="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+					<img data-animate="fadeIn" ng-if="m.type=='Image'" ng-src="{{m.thumbnail}}">
+					<video height="100" ng-src="{{m.path}}" controls ng-if="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
 
-					<i ng-show="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
-					<i ng-show="m.type=='Document' && ( m.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+					<i ng-if="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+					<i ng-if="m.type=='Document' && ( m.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
 
 					<div class="title">{{m.title}} [{{m.target}}]</div>
 					<input 
