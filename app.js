@@ -58,7 +58,7 @@ app.use(multer({
 
 
 
-app.use(session({secret: 'whatthefuckyoutalkingabout'}));
+//app.use(session({secret: 'whatthefuckyoutalkingabout'}));
 
 
 
