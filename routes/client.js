@@ -18,6 +18,7 @@ router.get('/', function(req, res) {
 
 	var sliders;
 	var staffs;
+	var courses;
 
 	async.series([
 		function(next){
@@ -29,8 +30,16 @@ router.get('/', function(req, res) {
 				next();
 			});
 
-	    	
-	    	
+	    },
+	    function(next){
+			
+			Course.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+				courses = result;
+				console.log('-----------------');
+				console.log(courses);
+				next();
+			});
+
 	    },
 
 	], function(){
@@ -49,7 +58,8 @@ router.get('/', function(req, res) {
 				template(req,res,'client_main','client/main.html',{ 
 					title: 'ESC - Englist School of Canada',
 					sliders : sliders ,
-					staffs: staffs
+					staffs: staffs,
+					courses: courses,
 				});		
 			});
 		});
