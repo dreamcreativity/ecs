@@ -31,7 +31,7 @@ function IsAuthException(path, method){
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
 		// {	path : '/api/constants', method: 'GET', type: 'contain'},
-		// {	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
+		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'}
