@@ -22,24 +22,20 @@ router.get('/', function(req, res) {
 
 	async.series([
 		function(next){
-			
 			Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
 				staffs = result;
 				console.log('-----------------');
 				console.log(staffs);
 				next();
 			});
-
 	    },
 	    function(next){
-			
 			Course.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
 				courses = result;
 				console.log('-----------------');
 				console.log(courses);
 				next();
 			});
-
 	    },
 
 	], function(){

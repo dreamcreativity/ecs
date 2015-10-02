@@ -763,6 +763,17 @@
                     </div>
 
                     <div class="container clearfix">
+                        <% for(var i=0; i < courses.length; i++){ %>
+                        <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
+                                <div class="fbox-photo">
+                                    <a href="#"><img src="<%- courses[i].cover.path %>" alt="<%- courses[i].title %>"/></a>
+                                </div>
+                                <h3><%- courses[i].title %></h3>
+                                <p><%- courses[i].description %></p>
+                            </div>
+                        </div>
+                        <% } %>
 
                         <div class="col_one_third">
                             <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn">
