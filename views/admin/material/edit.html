@@ -85,102 +85,10 @@
 	                        	<div><label>Title : </label> {{material.media.title}}</div>	
 	                        </div>
 						</div>
-
-
-						
 					</div>
 				</div>
 
 
-				<!-- <div class="form-group">
-					<label class="col-sm-3 control-label" for="password2">Media:</label>
-					<div class="col-sm-4">
-
-							<div class="media-info">
-								<div>Title : {{ material.mediaObject.title}}</div>
-								<div>Size : {{ material.mediaObject.size | filesize}}</div>
-								<div>Created Date : {{ material.mediaObject.createDate | date:'MMMM d, yyyy' : 'UTC'}}</div>						
-							</div>
-
-							<div ng-show="material.mediaObject.type=='Document' && material.mediaObject.ext=='pdf'"  resource-Picker>	
-								<i class="fa fa-file-pdf-o preview-file-type" ></i>
-							</div>
-
-							<div ng-show="material.mediaObject.type=='Document' && (material.mediaObject.ext=='doc'  || material.mediaObject.ext=='docx') "  resource-Picker>	
-								<i class="fa fa-file-word-o preview-file-type" ></i>
-							</div>
-
-
-							<img style="width: 100%" src="{{material.mediaObject.thumbnail}}" ng-show="material.mediaObject.type=='Image'">
-							<video width="100%" src="{{material.mediaObject.path}}" controls ng-show="material.mediaObject.type=='Video'">
-							  Your browser does not support the <code>video</code> element.
-							</video>
-						</div>
-				</div>
-
-
-				<div class="form-group" ng-show="material.mediaObject == null">
-					<label class="col-sm-3 control-label"></label>
-					<div class="col-sm-5">
-						<h3>Please select a media from the list below</h3>
-					</div>
-				</div> -->
-
-				<!-- <div class="form-group">
-					<label class="col-sm-3 control-label">Resource:</label>
-					<div class="col-sm-7">		
-
-						<div class="resource-filters">
-							
-							<div class="title">Filter By:</div>
-
-							<div class="row form-group">
-									<div class="col-md-4">
-										<label>Search: </label>
-										<input class="form-control" type="text" ng-model="resourceSearch">
-									</div>
-
-									<div class="col-md-4">
-										<label>Type: </label>
-										<select ng-model="resourceType">
-											<option value="" >All</option>
-											<% for(var i=0; i<constants.MediaTypes.length; i++) {%>
-											<option value="<%- constants.MediaTypes[i] %>" ><%- constants.MediaTypes[i] %></option>
-											<% } %>
-										</select>
-									</div>
-
-									<div class="col-md-4">
-										<label>Date: </label>
-										<select ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
-									</select>
-									</div>
-							</div>
-							
-
-
-						</div>						
-						<div class="media-resource">
-							<ul>
-								<li ng-repeat="media in medias.data | isAfter:dateAfter.date | filter: {  'title': resourceSearch, type: resourceType }" >
-
-									<div ng-show="media.type=='Document' &&  media.ext=='pdf'"  resource-Picker>	
-										<i class="fa fa-file-pdf-o xlg"></i>
-									</div>
-
-									<div ng-show="media.type=='Document' && ( media.ext=='doc' || media.ext=='docx' )"  resource-Picker>	
-										<i class="fa fa-file-word-o xlg"></i>
-									</div>
-									<img width="120" src="{{media.thumbnail}}" ng-show="media.type=='Image'"  resource-Picker>
-									<video width="120" src="{{media.path}}" controls ng-show="media.type=='Video'" style="margin-top:27px"  resource-Picker>
-									  Your browser does not support the <code>video</code> element.
-									</video>
-								</li>
-							</ul>					
-						</div>												
-					</div>
-				</div>
-				 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Premission:</label>
 					<div class="col-sm-7 row">
@@ -203,14 +111,6 @@
 									</div>   
 									<select multiple="multiple" id="bootstrap-duallistbox-nonselected-list_duallistbox_demo1[]" class="form-control" style="height: 250px;">
 										<option value="{{agent._id}}" ng-repeat="agent in selectedAgents" ng-click="removeAgentPremission(agent)">{{agent.firstname + ' ' + agent.lastname}}</option>
-										<!-- <option value="option3" selected="selected">Option 3</option>
-										<option value="option4">Option 4</option>
-										<option value="option5">Option 5</option>
-										<option value="option6" selected="selected">Option 6</option>
-										<option value="option7">Option 7</option>
-										<option value="option8">Option 8</option>
-										<option value="option9">Option 9</option>
-										<option value="option0">Option 10</option> -->
 									</select> 
 								</div> 
 								<div class="box2 col-md-6">   
@@ -244,6 +144,7 @@
 				<div class="form-group">
 					<div class="col-sm-3"></div>	
 					<div class="col-sm-3">											
+						<a type="button" class="btn btn-info" target="_blank" href="{{material.media.path}}" >View</a>
 						<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
 						<button type="button" class="btn btn-default" onclick='location="/admin/material"'>Cancel</button>
 					</div>

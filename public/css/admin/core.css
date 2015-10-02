@@ -207,7 +207,9 @@
 	margin-bottom: 20px;
 	padding: 5px;
 	position: relative;
-
+	min-width: 150px;
+    text-align: center;
+    background-color: #FFFAFA;
 }
 
 .media-item-list ul li img{
