@@ -1,4 +1,6 @@
 'use strict';
+
+
 angular.module('AdminApp')
 
 .controller('uploadController',function uploadController($rootScope,$scope,$location,$http,$window){
@@ -392,6 +394,7 @@ angular.module('AdminApp')
 	$scope.isSelected = function(id) {
 	  return $scope.selectedList.indexOf(id) >= 0;
 	};
+	
 })
 
 

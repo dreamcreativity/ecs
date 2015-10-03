@@ -51,7 +51,7 @@
 		<div class="media-item-list">
 			<ul  ngCloak>
 				<li ng-repeat="m in medias | filter : { target: '' || target, type: '' || type, title: keyword || ''} ">
-					<img data-animate="fadeIn" ng-if="m.type=='Image'" ng-src="{{m.thumbnail}}">
+					<img data-animate="fadeIn" class="list-item-img" ng-if="m.type=='Image'" ng-src="{{m.thumbnail}}">
 					<video height="100" ng-src="{{m.path}}" controls ng-if="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
 
 					<i ng-if="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
@@ -151,7 +151,6 @@
 <script src="/assets/js/plugins/datatables/datatables.init.js"></script>
 <script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
 <script>
-
 
 	//for tables checkbox demo
 	jQuery(function($) {

@@ -36,7 +36,7 @@ angular.module('AdminApp')
 	}	
 })
 
-.controller('ActivityEditCtrl', function ActivityEditCtrl($scope,$http,Activity,Medias,$window,DateRanges){
+.controller('ActivityEditCtrl', function ActivityEditCtrl($scope,$http,$modal,Activity,Medias,$window,DateRanges){
 	var activity_id = url_params.id;
 	$scope.dateRanges = DateRanges;
 	$scope.dateAfter = $scope.dateRanges[0];
@@ -48,9 +48,15 @@ angular.module('AdminApp')
 	 	});	
 	 }
 
-	 Medias.get({target : 'Activity'},function(result){
-			$scope.medias=result;
-		})
+	Medias.getCategoryTargetMedia({target : 'Activity',type:'Image'},function(result){
+			$scope.medias=result.data;
+			$scope.selectedMedias = [];
+
+			$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.selectedMedias, function(result){
+
+			});
+
+	});
 
 	 $scope.update = function(isValid) {
 		$scope.returnMessage="";
