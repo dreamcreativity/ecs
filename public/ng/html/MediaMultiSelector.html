@@ -28,7 +28,7 @@
         	</div>
         	<div class="media-selector-body">
 				<ul>
-					<li class="thumbnail" ng-repeat="m in Medias | filter:{ type: selectedMediaType || '' , title : searchKeyword || '' }">
+					<li class="thumbnail" ng-repeat="m in (filteredItems = ( Medias | filter:{ type: selectedMediaType || '' , title : searchKeyword || '' }) )">
 	
 						<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
 							<img ng-if="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
@@ -50,6 +50,8 @@
         </div>
         <div class="modal-footer">
             <span class="left-text">{{SelectedMedias.length}} items selected</span>
+            <button class="btn btn-success" ng-click="selectAll()">Select all</button>
+            <button class="btn btn-success" ng-click="clearAll()">Clear all</button>
             <button class="btn btn-primary" ng-click="ok()">Save</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>

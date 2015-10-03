@@ -44,7 +44,7 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 
 	$scope.MediaTypes = MediaType;
 	$scope.Medias = meidas;
-
+	$scope.filteredItems = [];
 	$scope.SelectedMedias = [];
 	for (var i = 0; i < selectedMeidas.length; i++) {
 		$scope.SelectedMedias.push(selectedMeidas[i]);
@@ -58,6 +58,25 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 	var today = new Date();
 	today = new Date(today.getFullYear(),today.getMonth(), today.getDate()+1);
 	$scope.dateFilter = today;
+
+
+	$scope.selectAll = function () {
+	
+		$scope.SelectedMedias.length = 0;
+		for (var i = 0; i < $scope.filteredItems.length; i++) {
+			$scope.SelectedMedias.push($scope.filteredItems[i]);
+		};
+	};
+
+	$scope.clearAll = function () {
+	
+		for (var i = 0; i < $scope.filteredItems.length; i++) {
+			if( $scope.SelectedMedias.indexOf($scope.filteredItems[i]) >= 0){
+				 $scope.SelectedMedias.splice($scope.SelectedMedias.indexOf($scope.filteredItems[i]) ,1);
+			}
+		};
+	};
+
 
 	$scope.ok = function () {
 		selectedMeidas.length = 0;

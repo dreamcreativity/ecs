@@ -46,18 +46,15 @@ angular.module('AdminApp')
 	 	Activity.get({id:activity_id}, function(result){
 	 		$scope.activity = result.data;
 	 		$scope.array = result.data["mediaIds"];
+
+ 			Medias.getCategoryTargetMedia({target : 'Activity',type:'Image'},function(result){
+				$scope.medias=result.data;
+				$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.selectedMedias, function(){});
+			});
 	 	});	
 	 }
 
-	Medias.getCategoryTargetMedia({target : 'Activity',type:'Image'},function(result){
-			$scope.medias=result.data;
-			
 
-			$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.selectedMedias, function(){
-	
-			});
-
-	});
 
 	 $scope.update = function(isValid) {
 		$scope.returnMessage="";
