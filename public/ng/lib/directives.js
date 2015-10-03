@@ -16,3 +16,4 @@ directives.directive('logoutButton', function() {
         }
   };
 })
+

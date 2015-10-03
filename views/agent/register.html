@@ -22,35 +22,34 @@
 		<hr class="separator" />
 
 
-		<!-- Step 1 Student registration -->
 		<div class="step-content">
-			<div class="step-pane active" id="step1">											
-				<div class="form-group" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
-					<label class="col-sm-2 control-label">First Name</label>
-					<div class="col-sm-2">
+			<!-- Step 1 Student registration -->
+			<div class="step-pane active" id="step1">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">First Name</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
 						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
 					</div>
-				</div>
-
-				<div class="form-group" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
-					<label class="col-sm-2 control-label">Family Name</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
+					<label class="col-sm-3 col-md-1 control-label">Last Name</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
+						<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
 						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Gender</label>
-					<div class="col-sm-2">
+					<label class="col-sm-3 col-md-1 control-label">Gender</label>
+					<div class="col-sm-9">
 						<div class="tcb">
-							<label class="tcb-inline">
-								<input type="radio" name="male" value="male" ng-model="student.gender" class="tc">
-								<span class="labels"> Male</span>
+							<label>
+							<input name="male" value="male" type="radio" ng-model="student.gender" class="tc">
+							<span class="labels"> Male</span>
 							</label>
-							<label class="tcb-inline">
-								<input type="radio" name="female" value="female" ng-model="student.gender" class="tc">
+						</div>
+						<div class="tcb">
+							<label>
+								<input name="female" value="female" type="radio" ng-model="student.gender" class="tc">
 								<span class="labels"> Female</span>
 							</label>
 						</div>
@@ -58,114 +57,104 @@
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
-					<label class="col-sm-2 control-label">Birth Date</label>
-					<div class="col-sm-2">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Birth Date</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
 						<input type="date" class="form-control" name="birthday" ng-model="student.birthday" required>
 						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
 					</div>
-				</div>
-
-				<div class="form-group" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
-					<label class="col-sm-2 control-label">Age</label>
-					<div class="col-sm-2">
+					<label class="col-sm-3 col-md-1 control-label">Age</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
 						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
 						<p ng-show="registerForm.age.$invalid && !registerForm.age.$pristine" class="help-block text-danger">age is invalid</p>
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
-					<label class="col-sm-2 control-label">Citizenship</label>
-					<div class="col-sm-2">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Citizenship</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
 						<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
 						<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">citizenship is required</p>
 					</div>
 				</div>
 
-				<div class="form-group"  ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
-					<label class="col-sm-2 control-label">Address</label>
-					<div class="col-sm-2">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Address</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
 						<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
-					<label class="col-sm-2 control-label">Postal Code</label>
-					<div class="col-sm-1">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Postal Code</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
 						<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
 						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">postcode code is required</p>
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
-					<label class="col-sm-2 control-label">City</label>
-					<div class="col-sm-1">
+				<div class="form-group" n>
+					<label class="col-sm-3 col-md-1 control-label">City</label>
+					<div class="col-sm-3" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
 						<input type="text" class="form-control" name="city" ng-model="student.city" required>
 						<p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
-					<label class="col-sm-2 control-label">Province</label>
-					<div class="col-sm-2">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Province</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
 						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
-					<label class="col-sm-2 control-label">Country</label>
-					<div class="col-sm-2">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Country</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
 						<input type="text" class="form-control" name="country" ng-model="student.country" required>
 						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
-					<label class="col-sm-2 control-label">Telephone</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" name="telephone" ng-model="student.telephone" required>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">Telephone</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
+						<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
 						<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is invalid</p>
 					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Fax</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" name="fax" ng-model="student.fax">
-					</div>
-				</div>
-
-				<div class="form-group" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
-					<label class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-2">
-						<input type="email" class="form-control" name="email" ng-model="student.email" required>
-						<p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is invalid</p>
-					</div>
-				</div>
-
-				<div class="form-group" ng-class="{'has-error' : registerForm.emergency.$invalid && !registerForm.emergency.$pristine}"}>
-					<label class="col-sm-2 control-label">Emergency Contact & Telephone</label>
-					<div class="col-sm-2">
+					<label class="col-sm-3 col-md-1 control-label">Emergency call</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.emergency.$invalid && !registerForm.emergency.$pristine}"}>
 						<input type="number" class="form-control" name="emergency" ng-model="student.emergency" required>
 						<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is invalid</p>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
-					<label class="col-sm-offset-1">
+					<label class="col-sm-3 col-md-1 control-label">Email</label>
+					<div class="col-sm-3" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
+						<input type="email" class="form-control" name="email" ng-model="student.email" required>
+						<p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is invalid</p>
+					</div>
+					<label class="col-sm-3 col-md-1 control-label">Fax</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" name="fax" ng-model="student.fax">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-offset-1 col-sm-9">
 						<input type="checkbox" class="tc" name="isHomeCountryAddress" ng-model="student.isHomeCountryAddresss">
 						<span class="labels"> Is this a home country address</span>
 					</label>
 				</div>
-			</div> 
-
+			</div>
 
 			<!-- Step 2 Program registration -->
 			<div class="step-pane" id="step2">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">English Level : </label>
+			<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">English Level : </label>
 					<div class="col-sm-3">
 						<select name="englishlevel" ng-model="student.englishLevel">
 							<option value="">--</option>
@@ -178,66 +167,76 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-offset-2  control-label">For Direst Entry(UCTP or Focus Program)</label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Official TOEFL source</label>
+					<label class="col-sm-3 col-md-1 control-label">TOEFL </label>
 					<div class="col-sm-1">
 						<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 max=120 required>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Official IELTS source</label>
+					<label class="col-sm-3 col-md-1 control-label">IELTS </label>
 					<div class="col-sm-1">
 						<input type="number" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 max = 9 required>
 					</div>
 				</div>
 
+				<!-- dynamic course template-->
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Program Choice</label>
+					<label class="col-sm-2 col-md-2 control-label">Program Choice</label>
 				</div>
 
-
 				<div class="form-group">
-					<div class="col-sm-2 right">
+					<label class="col-sm-offset-11 col-md-1 control-label">
 						<button id="addrow_button" type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addNewRow()">
 							<i class="fa fa-plus icon-only"></i>
 						</button>
-					</div>
-					<div class="col-sm-10">
+					</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-12">
 						<table class="table table-bordered table-striped table-hover tc-table table-primary">
 							<thead>
 								<tr>
 									<tr>
-										<th class="hidden-xs">Course</th>
-										<th class="hidden-xs">Year</th>
-										<th class="hidden-xs">Start Date</th>
-										<th class="hidden-xs">Duration</th>
+										<th class="hidden-xs center">Course</th>
+										<th class="hidden-xs center">Description</th>
+										<th class="hidden-xs center">Level</th>
+										<th class="hidden-xs center">Year</th>
+										<th class="hidden-xs center">Start Date</th>
+										<th class="hidden-xs center">Duration</th>
 										<th class="col-medium center">Action</th>
 									</tr>
 								</tr>
 							</thead>
 							<tbody>
 								<tr id="newrow" ng-show="newrowShow">
-									<td class="hidden-xs">
+									<td class="hidden-xs center">
 										<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
 										</select>
 									</td>
-										<td class="hidden-xs">
+									<td class="hidden-xs center">
+										<label class="label label-lg arrowed">{{course.tag}}</label>
+									</td>
+									<td class="hidden-xs center">
+											<select ng-model="course.level">
+												<option value="" selected>--Select--</option>
+												<option ng-repeat="item in corseLevel">{{item}}</option>
+											</select>
+									</td>
+										<td class="hidden-xs center">
 											<select ng-model="course.year" ng-change="changeStartYear(course,year)">
 												<option value="" selected>--Select--</option>
 												<option ng-repeat="year in course.availableYears">{{year}}</option>
 											</select>
 										</td>
-										<td class="hidden-xs">
+										<td class="hidden-xs center">
 											<select ng-model="course.startDate" required>
 												<option value="" selected>--Select--</option>
 												<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
 											</select>
 										</td>
-										<td class="hidden-xs">
+										<td class="hidden-xs center">
 											<select ng-model="course.duration">		
 												<option value="" selected>--Select--</option>								
 												<option ng-repeat="duration in course.durations">{{duration.title}}</option>
@@ -253,10 +252,16 @@
 										</td>
 									</tr>
 									<tr ng-repeat="c in courseList">
-										<td class="hidden-xs">{{c.title}}</td>
-										<td class="hidden-xs">{{c.year}}</td>
-										<td class="hidden-xs">{{c.startDate | date:'MMMM d'}}</td>
-										<td class="hidden-xs">{{c.duration}}</td>
+										<td class="hidden-xs center">{{c.title}}</td>
+										<td class="hidden-xs center">
+											<label class="label label-lg arrowed">
+												{{c.tag}}
+											</label>
+										</td>
+										<td class="hidden-xs center">{{c.level}}</td>
+										<td class="hidden-xs center">{{c.year}}</td>
+										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+										<td class="hidden-xs center">{{c.duration}}</td>
 										<td class="col-medium center">
 											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
 												<i class="fa fa-times icon-only"></i>
@@ -267,30 +272,41 @@
 
 							</table>
 						</div>
-					</div>
+				</div>
 
-					
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Health Insurance</label>
-					</div>
+				<!-- End dynamic course template-->
 
-					<div class="form-group">
-						<label class="col-sm-2 control-label">From Date : </label>
-						<div class="col-sm-2">
-							<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
-						</div>
-					</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-md-2 control-label">Health Insurance</label>
+				</div>
 
-					<div class="form-group">
-						<label class="col-sm-2 control-label">To Date : </label>
-						<div class="col-sm-2">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-1 control-label">From Date : </label>
+					<div class="col-sm-3">
+						<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
+					</div>
+				</div>
+
+				<div class="form-group">
+						<label class="col-sm-3 col-md-1 control-label">To Date : </label>
+						<div class="col-sm-3">
 							<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
 						</div>
-					</div> 
 				</div> 
 
-				<!-- Step 3 Program registration accommodation -->
+			</div>
+
+
+			<!-- Step 3 Program registration accommodation -->
 				<div class="step-pane" id="step3">
+				<div class="form-group">
+						<label class="col-sm-2 control-label">Are you in home stay</label>
+						<div class="col-sm-1">
+							<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{accommodation.isHomestay}} ng-model="accommodation.isHomestay">
+						</div>
+				</div>
+
+				<div ng-show=accommodation.isHomestay>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Flight Information : </label>
 					</div>
@@ -327,15 +343,7 @@
 						</div>
 					</div>
 
-
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Are you in home stay</label>
-						<div class="col-sm-1">
-							<input id="ishomestay" type="checkbox" class="form-control" name="ishomestay" value={{accommodation.isHomestay}} ng-model="accommodation.isHomestay">
-						</div>
-					</div>
-					<div ng-show=accommodation.isHomestay>
-						<div class="form-group">
 							<label class="col-sm-2 control-label">Homestay Option</label>
 							<div class="col-sm-1">
 								<select name="option" ng-model="accommodation.option">
@@ -344,8 +352,8 @@
 									<option value="Half Board(2 meals per day)">Half Board(2 meals per day)</option>
 									<option value="Romm Only">Romm Only</option>
 								</select>
-							</div>
-						</div>
+							</div>	
+					</div>
 
 						<div class="form-group">
 							<label class="col-sm-2 control-label">Accommodation Date : </label>
@@ -442,10 +450,7 @@
 						</div>
 					</div> 
 				</div>
-			</div>
 
-
-			<div class="form-actions">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-9">
 					<a href="/agent/students" class="btn btn-primary">Cancel</a>
@@ -456,28 +461,21 @@
 						<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 					</div>
 				</div>
-			</div>
+
+				<div style="height:60px"></div>
+
 		</div>
+
+		
+		
 	</form>
 
-	<script type="text/javascript">
-// 	$( document ).ready(function() {
-//     	$('#ishomestay').change(function() {
-//         if($(this).is(":checked")) {
-//         	debugger
-//            // $('[name ="flight_No_arr"]').prop('required',true)
-//         }
-//     });
-// });
-</script>
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
 
 
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-
-
-<!-- PAGE LEVEL PLUGINS JS -->
-<!-- <script src="/assets/js/plugins/fuelux/wizard.min.js"></script> -->
-<script src="/assets/js/plugins/fuelux/wizard.js"></script>
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<!-- <script src="/assets/js/plugins/fuelux/wizard.min.js"></script> -->
+	<script src="/assets/js/plugins/fuelux/wizard.js"></script>
 
 

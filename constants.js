@@ -94,6 +94,7 @@ module.exports = {
 		{
 			course : null,
 			title : null,
+			level : null,
 			duration : null,
 			startDate : null
 		}

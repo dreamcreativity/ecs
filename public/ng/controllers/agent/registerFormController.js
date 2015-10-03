@@ -1,7 +1,7 @@
 	'use strict';
 	angular.module('AgentApp')
 
-	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Accommodations,FlightInfos, $window){
+	.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Constants,Accommodations,FlightInfos, $window){
 	$scope.courseList =[];
 	$scope.displayCourses = [];
 	var today = new Date();
@@ -11,6 +11,7 @@
 	today.getFullYear()+2
 	];
 	$scope.isDisabled = false;
+	$scope.corseLevel = [];
 
 
 	Students.query(function(result){
@@ -21,46 +22,13 @@
 		$scope.courses = data.data;
 	});
 
+	Constants.get({name : "CourseLevel"}, function(result){
+		if(result.status =="ok"){
+			$scope.corseLevel = result.data;
+		}
+	});
+
 	$scope.register = function(isValid){
-		//$scope.buttonDisabled = true;
-		// Accommodations.save($scope.accommodation, function(result){
-		// 	if(result.messages == "successed"){
-		// 		var accommodationId = result.data._id;
-		// 		FlightInfos.save($scope.flightInfo, function(result1){
-		// 			if(result1.messages == "successed"){
-		// 				var flightInfoId = result.data._id;
-		// 				$scope.student.accommodation = accommodationId;
-		// 				$scope.student.flightInfo = flightInfoId;
-		// 				Students.save($scope.student, function(result2){
-		// 					if(result2.type == true){
-		// 						$http.post('/api/pdf',{registerId:result.data._id})
-		// 						.success(function(data,status,headers,config){
-		// 							if(data.status == "successed"){
-		// 								$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-		// 									subject:"success registration", 
-		// 									context: "Welcome", 
-		// 									attachments : [data.data]})
-		// 								.success(function(data,status,headers,config){
-		// 									ShowGritterCenter('System Notification','Success to registration');
-		// 									setInterval(function(){
-		// 										$window.location='/agent/students';
-		// 									}, 2000); 
-		// 								})
-		// 								.error(function(data,status,headers,config){
-		// 									console.log("fail to send registration email")
-		// 								});
-		// 							}
-		// 						})
-		// 						.error(function(data,status,headers,config){
-		// 							console.log("fail to pdf")
-		// 						});
-		// 					}
-		// 				});
-		// 			}
-		// 		});
-		// 	}
-		// 	});
-	//--------------------------------------
 	$http.post('/api/student/register',{student : $scope.student, 
 		accommodation : $scope.accommodation, 
 		flightInfo : $scope.flightInfo, 
@@ -113,7 +81,9 @@
 		else{
 			$scope.courseList.push({
 				id : course._id,
+				tag : course.tag,
 				title: course.title,
+				level: course.level,
 				startDate: course.startDate,
 				duration: course.duration,
 				year:course.year

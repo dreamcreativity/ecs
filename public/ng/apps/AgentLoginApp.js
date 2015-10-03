@@ -12,13 +12,12 @@ angular.module('AgentLoginApp', ['ngRoute','esc.auth'])
 		$http.post('/api/agent/login',$scope.agent)
 		.success(function(data,status,headers,config){
 			if(data.status === "resetpassword") {
-				sessionStorage.token = data.data.token;
-				$window.location = '/agent/resetpassword';
+				sessionStorage.token = data.token;
+				$window.location = '/agent/setNewpassword';
 			}
 
 			else if(data.status === "ok"){
 				sessionStorage.token = data.data.token;
-				console.log(sessionStorage.token);
 				$window.location='/agent';
 			}
 			else {
@@ -56,5 +55,62 @@ angular.module('AgentLoginApp', ['ngRoute','esc.auth'])
 	}
 
 })
+
+.directive('passwordVerify', function(){
+	return {
+		require : "ngModel",
+		scope : {
+			passwordVerify: '='
+		},
+		link: function(scope,element,attrs,ctrl){
+			scope.$watch(function(){
+				var combined;
+				if(scope.passwordVerify || ctrl.$viewValue) {   //$viewValue is the value of element in controller
+					combined = scope.passwordVerify + "_" + ctrl.$viewValue;
+				}
+				return combined;
+			},function(value){
+
+				if (value) {
+				/**
+			     * This function is added to the list of the $parsers.
+			     * It will be executed the DOM (the view value) change.
+			     * Array.unshift() put it in the beginning of the list, so
+			     * it will be executed before all the other
+			     */
+			     ctrl.$parsers.unshift(function(viewValue) {
+			     	var origin = scope.passwordVerify;
+			     	if (origin !== viewValue) {
+			     		ctrl.$setValidity("passwordVerify", false);
+			     		return undefined;
+			     	} else {
+			     		ctrl.$setValidity("passwordVerify", true);
+			     		return viewValue;
+			     	}
+			     });
+			 }
+			});
+		}
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

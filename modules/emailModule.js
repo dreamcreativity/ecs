@@ -2,18 +2,19 @@ var nodemailer = require('nodemailer');
 var Email = require('../models/email');
 var fs = require("fs");
 
+var email = 'esc.mailsystem@gmail.com';
 var transporter = nodemailer.createTransport({
 	service : 'gmail',
 	auth : {
-		user: 'cheng.sun@omittech.com',
-		pass: 'Woaini123'
+		user: email,
+		pass: 'Asdf_1234'
 	}
 });
 
 
 exports.sendEmail = function(to,subject,context,attachments, callback){
 	var message = {
-		from : "cheng.sun@omittech.com",
+		from : email,
 		to : to,
 		subject : subject,
 		html : context,

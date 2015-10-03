@@ -34,28 +34,22 @@ angular.module('AgentApp')
 	}
 
 	//Reset Password
-	$scope.resetpassword =function(){
+	$scope.resetpassword =function(ctrl){
+		var val = $("#oldpassword").val();
 		var token = sessionStorage.token;
 		$scope.resetObj.token = token;
-		$http.post('/api/agent/resetpassword', $scope.resetObj)
-		.success(function(data){
-			if(data.status === "ok"){
-				$scope.returnMessage = "success to reset password";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
-	 		    setInterval(function(){
-  					 $window.location='/agent/login';
-				}, 2000);
-			}
-		})
-	}
-
-	
+		// $http.post('/api/agent/resetpassword', $scope.resetObj)
+		// .success(function(data){
+		// 	if(data.status === "ok"){
+		// 		$scope.returnMessage = "success to reset password";
+	 // 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 // 		    setInterval(function(){
+  // 					 $window.location='/agent/login';
+		// 		}, 2000);
+		// 	}
+		// })
+	}	
 });
-
-
-
-
-
 
 
 

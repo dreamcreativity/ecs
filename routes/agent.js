@@ -45,7 +45,18 @@ router.get('/login', function(req, res) {
 });
 
 router.get('/resetpassword', function(req, res) {
-	template(req,res,'agent_main','agent/resetpassword.html',
+	template(req,res,'agent_main','agent/profile/resetpassword.html',
+			{ 
+				title: 'Reset password',
+				category: 'profile',
+				cur_tap: 'Profile',
+				cur_selected : 'Rest password'
+			}
+		);
+});
+
+router.get('/setnewPassword', function(req,res){
+	template(req,res,'agent_bg_paint','agent/setnewpassword.html',
 			{ 
 				title: 'Reset password',
 				category: 'profile',
@@ -57,7 +68,7 @@ router.get('/resetpassword', function(req, res) {
 
 
 router.get('/material', function(req, res) {
-	template(req,res,'agent_main','agent/material.html',
+	template(req,res,'agent_main','agent/profile/material.html',
 			{ 
 				title: 'Login',
 				category: '',
@@ -103,7 +114,7 @@ router.get('/students/invitation', function(req, res) {
 });
 
 router.get('/profile', function(req,res){
-	template(req,res,'agent_main', 'agent/profile.html',
+	template(req,res,'agent_main', 'agent/profile/profile.html',
 	{
 		title: 'Profile',
 		category : 'Profile',
