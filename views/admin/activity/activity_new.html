@@ -6,7 +6,13 @@
 			<p ng-show="createForm.title.$invalid && !createForm.title.$pristine" class="help-block text-danger">title is required</p>
 		</div>
 	</div>
-
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1  control-label">Sub Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="subtitle" ng-model="activity.subtitle" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="createForm.subtitle.$invalid && !createForm.subtitle.$pristine" class="help-block text-danger">subtitle is required</p>
+		</div>
+	</div>
 	<div class="form-group">
 		<label class="col-sm-3 col-md-1  control-label">Description</label>
 		<div class="col-sm-9">

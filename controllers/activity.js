@@ -95,7 +95,8 @@ exports.edit = function(req,res){
 	//var staff = new Staff(req.body);
 	async.series([
 	    function(next){ 
-	    	req.body.cover = req.body.cover._id;
+	    	if(req.body.cover != null)
+	    		req.body.cover = req.body.cover._id;
 
 
 			for (var i = 0; i < req.body.album.length; i++) {

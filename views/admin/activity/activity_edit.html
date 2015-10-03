@@ -12,6 +12,14 @@ var url_params = <%- JSON.stringify(url_params) %>
 	</div>
 
 	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Sub Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="subtitle" ng-model="activity.subtitle" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="editForm.subtitle.$invalid && !editForm.subtitle.$pristine" class="help-block text-danger">sub-title is required</p>
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="col-sm-3 col-md-1 control-label">Description</label>
 		<div class="col-sm-9">
 			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="activity.description" placeholder="This textarea has a limit of 225 chars."></textarea>
