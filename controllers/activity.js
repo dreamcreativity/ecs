@@ -54,7 +54,7 @@ exports.getActivitybyId = function(req,res){
 	var activity =null;
 	var mediaList = [];
 
-	Activity.find({_id:id}).populate('album').exec(function(err, results){
+	Activity.find({_id:id}).populate('cover').populate('album').exec(function(err, results){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -95,17 +95,9 @@ exports.edit = function(req,res){
 	//var staff = new Staff(req.body);
 	async.series([
 	    function(next){ 
+	    	req.body.cover = req.body.cover._id;
 
-	  //   	async.eachSeries(req.body.album, function(mediaItem, callback) {
-			// 	console.log('---------------');
-			// 	console.log(mediaItem);	
 
-			// 	mediaItem = mediaItem._id;
-			// 	console.log(mediaItem);	
-			// 	callback();
-			// }, function done() {
-			// 	next();
-			// });
 			for (var i = 0; i < req.body.album.length; i++) {
 				req.body.album[i] = req.body.album[i]._id;
 

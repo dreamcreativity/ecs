@@ -52,6 +52,9 @@ angular.module('AdminApp')
  			Medias.getCategoryTargetMedia({target : 'Activity',type:'Image'},function(result){
 				$scope.medias=result.data;
 				$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.activity.album, function(){});
+				$scope.changeCover = createMediaSelectorFunction($modal,$scope.medias, function(result){
+					$scope.activity.cover = result;
+				});
 			});
 	 	});	
 	 }
