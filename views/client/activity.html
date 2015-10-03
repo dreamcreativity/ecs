@@ -1,14 +1,25 @@
-<style type="text/css">
+<section >
+	<div class="content-wrap">
+		 <section id="section-course" class="page-section">
+		 	<div class="container clearfix">
 
-	.activity-img{
-		margin: 10px 0;
-		
-	}
+		 		<h2><%- activity.title %></h2>
 
-	
-</style>
-<section id="section-team" class="page-section topmargin-lg">
-	<% for(var i=0; i<images.length; i++) {%>
-		<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3 activity-img"><img style="width:100%" src="<%- images[i].path %>"></div>
-	<% } %>
+		 		<!-- <div class="row hidden-sm hidden-xs">
+			 		<div class='col-xs-12 '>
+			 			<img  src="<%- activity.cover.path %>">
+			 		</div>
+		 		</div> -->
+
+		 		<div class="row">
+				<% for(var i=0; i< activity.album.length; i++) {%>
+					<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3 activity-img"><img style="width:100%" src="<%- activity.album[i].path %>"></div>
+				<% } %>
+
+		 		</div>
+
+		 	</div>
+		 </div>
+	</div>
 </div>
+<div style="margin-bottom:100px"></div>

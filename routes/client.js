@@ -5,6 +5,7 @@ var Slider = require('../models/slider');
 var Media = require('../models/media');
 var Course = require('../models/course');
 var Staff = require('../models/staff');
+var Activity = require('../models/activity');
 var async = require("async");
 var constants = require("../constants");
 
@@ -19,6 +20,7 @@ router.get('/', function(req, res) {
 	var sliders;
 	var staffs;
 	var courses;
+	var activities;
 
 	async.series([
 		function(next){
@@ -34,6 +36,14 @@ router.get('/', function(req, res) {
 				courses = result;
 				console.log('-----------------');
 				console.log(courses);
+				next();
+			});
+	    },
+	    function(next){
+			Activity.find({cover: { $ne: null }, isActive: true }).populate('cover').exec(function(err,result){
+				activities = result;
+				console.log('-----------------');
+				console.log(activities);
 				next();
 			});
 	    },
@@ -56,6 +66,7 @@ router.get('/', function(req, res) {
 					sliders : sliders ,
 					staffs: staffs,
 					courses: courses,
+					activities: activities,
 				});		
 			});
 		});
@@ -68,19 +79,14 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/activity', function(req, res){
+router.get('/activity/:id', function(req, res){
+	var id = req.params.id;
 
-	var Activity = require('../models/activity');
-
-	Activity.find(function(err,result){
-
-		// find media
-		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
-			
-			template(req,res,'client_normal','client/activity.html',{ a : result[0], images:imgs});
-		});
-		
+	Activity.find({'_id':id}).populate('album').populate('cover').exec(function(err,result){
+		template(req,res,'client_normal','client/activity.html',{ activity : result[0]});
 	});
+		
+
 
 	//template(req,res,'client_normal','client/activity.html',{});
 });
