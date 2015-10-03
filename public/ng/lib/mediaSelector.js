@@ -47,7 +47,13 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 	$scope.filteredItems = [];
 	$scope.SelectedMedias = [];
 	for (var i = 0; i < selectedMeidas.length; i++) {
-		$scope.SelectedMedias.push(selectedMeidas[i]);
+
+		var tempArr = $scope.Medias.filter(function(obj) { 
+			return obj._id == selectedMeidas[i]._id; 
+		});
+		console.log(tempArr);
+		if(tempArr.length > 0)
+			$scope.SelectedMedias.push(tempArr[0]);
 	};
 	
 	$scope.selectedMedia = null;
@@ -116,6 +122,10 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 	  	}
 	  		
 	});
+
+	var isMediaExistInArray = function(arr, media){
+		return arr.filter(function(obj) { return obj._id == media._id; }).length != 0;
+	}
 });
 
 

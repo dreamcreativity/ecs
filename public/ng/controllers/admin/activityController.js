@@ -16,10 +16,12 @@ angular.module('AdminApp')
 			$scope.activity.mediaIds.push($scope.array[i]);
 		}
 	 	Activity.save($scope.activity,function(result){
-	 		     $scope.returnMessage = "successfully";
-	 			setInterval(function(){
-  					 $window.location='/admin/activity/all';
-				}, 2000); 
+ 		    $scope.returnMessage = "successfully";
+
+ 		    
+ 			setInterval(function(){
+					 $window.location='/admin/activity/all';
+			}, 2000); 
  		})
 	}
 
@@ -40,16 +42,16 @@ angular.module('AdminApp')
 	var activity_id = url_params.id;
 	$scope.dateRanges = DateRanges;
 	$scope.dateAfter = $scope.dateRanges[0];
-	$scope.selectedMedias = [];
+	//$scope.selectedMedias = [];
 
 	if(activity_id !=null){
 	 	Activity.get({id:activity_id}, function(result){
 	 		$scope.activity = result.data;
-	 		$scope.array = result.data["mediaIds"];
+	 	
 
  			Medias.getCategoryTargetMedia({target : 'Activity',type:'Image'},function(result){
 				$scope.medias=result.data;
-				$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.selectedMedias, function(){});
+				$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.activity.album, function(){});
 			});
 	 	});	
 	 }
@@ -60,9 +62,11 @@ angular.module('AdminApp')
 		$scope.returnMessage="";
 	 	$("#messageReturn").fadeIn('slow');
 	 	Activity.update($scope.activity, function(result){
-	 			var message = result.messages;	    
-	 		    $scope.returnMessage = "activity is save successfully";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+
+	 			ShowGritterCenter('System Notification','Activity has been updated');
+	 			// var message = result.messages;	    
+	 		 //    $scope.returnMessage = "activity is save successfully";
+	 		 //    $("#messageReturn").delay(2000).fadeOut('slow');
 	 	})
 	 }
 })

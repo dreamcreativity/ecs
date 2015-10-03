@@ -53,7 +53,8 @@ exports.getActivitybyId = function(req,res){
 	var id = req.params.id;
 	var activity =null;
 	var mediaList = [];
-	Activity.find({_id:id}, function(err, results){
+
+	Activity.find({_id:id}).populate('album').exec(function(err, results){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -62,10 +63,10 @@ exports.getActivitybyId = function(req,res){
 			});
 		}
 		res.json({
-				status: 'ok',
-				messages: 'successed',
-		 		data: results[0]
-			});
+			status: 'ok',
+			messages: 'successed',
+	 		data: results[0]
+		});
 		// activity = results;
 		// async.eachSeries(results[0].mediaIds, function(item,callback){
 		// 	Media.find({_id:item}).exec(function(err,result_media){
@@ -89,31 +90,58 @@ exports.getActivitybyId = function(req,res){
 //PUT : Activity 
 exports.edit = function(req,res){
 	var id = req.params.id;
+
+	console.log(req.body);
 	//var staff = new Staff(req.body);
-	Activity.update({_id:id}, req.body, function(err, result){
-		if(err){
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
-		else {
-			if(result == 1){
-				res.json({
-					status: 'ok',
-					messages: 'successed',
-					data: result[0]
-				});	
-			}else{
+	async.series([
+	    function(next){ 
+
+	  //   	async.eachSeries(req.body.album, function(mediaItem, callback) {
+			// 	console.log('---------------');
+			// 	console.log(mediaItem);	
+
+			// 	mediaItem = mediaItem._id;
+			// 	console.log(mediaItem);	
+			// 	callback();
+			// }, function done() {
+			// 	next();
+			// });
+			for (var i = 0; i < req.body.album.length; i++) {
+				req.body.album[i] = req.body.album[i]._id;
+
+			};
+			next();
+
+	    }
+	], function(){
+		console.log(req.body.album);
+		Activity.update({_id:id}, req.body, function(err, result){
+			if(err){
 				res.json({
 					status: 'fail',
-					messages: "multipulte result",
+					messages: err,
 					data: null
 				});
 			}
-		}
+			else {
+				if(result == 1){
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result[0]
+					});	
+				}else{
+					res.json({
+						status: 'fail',
+						messages: "multipulte result",
+						data: null
+					});
+				}
+			}
+		});
+
 	});
+
 }
 
 

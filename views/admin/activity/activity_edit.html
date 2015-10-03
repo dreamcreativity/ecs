@@ -27,7 +27,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 			<div class="image-area">
 				<div class="media-selector-body">
 					<ul>
-						<li class="thumbnail" ng-repeat="m in selectedMedias">
+						<li class="thumbnail" ng-repeat="m in activity.album">
 		
 							<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
 								<img ng-if="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
