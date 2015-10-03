@@ -352,7 +352,13 @@
 -------------------------------------
 */
 
-.image-arear{
+.image-area{
+	background-color: white;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+/*.image-arear{
 	height: 480px;
 	overflow: auto;
 }
@@ -388,14 +394,6 @@
 	
 }
 
-.image-arear li:hover{
-
-/*	transform: translate3d(0,0,0);
-  	background: #121121;
-  	padding: 10px;*/
- 
-}
-
 
 .image-arear li .thumb-image {
 	overflow: hidden;
@@ -403,7 +401,7 @@
 .image-arear li .thumb-image img{
   	height: 100px;
 }
-
+*/
 
 /*-----------------------------------	
 	css for course
@@ -471,6 +469,15 @@
 }
 
 
+/*-----------------------------------	
+	modal modify
+-------------------------------------
+*/
+.modal-footer .left-text{
+	float: left;
+	font-size: 15px;
+  	line-height: 40px;
+}
 
 /*-----------------------------------	
 	Media Selector
@@ -526,6 +533,29 @@
     color: white;
     padding: 3px 5px;
 }
+
+
+.thumbnail .cover{
+	position: absolute;
+    height: 98px;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: none;
+    cursor: pointer;
+}
+.thumbnail .cover .fa{
+	color: #CBCBCB;
+    font-size: 25px;
+    position: absolute;
+    top: -22px;
+    left: 9px;
+}
+.thumbnail .cover.selected{
+    display: block;
+}
+
 
 .media-selector-filters{
 	border: 1px solid #ddd;

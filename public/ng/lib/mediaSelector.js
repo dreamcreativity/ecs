@@ -11,6 +11,9 @@ mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInsta
 	$scope.searchKeyword = '';
 	$scope.selectedDate = '0';
 	$scope.dateFilter = '0';
+
+
+
 	var today = new Date();
 	today = new Date(today.getFullYear(),today.getMonth(), today.getDate()+1);
 	$scope.dateFilter = today;
@@ -42,8 +45,11 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 	$scope.MediaTypes = MediaType;
 	$scope.Medias = meidas;
 
-	console.log($scope.Medias );
-	$scope.SelectedMedias = selectedMeidas;
+	$scope.SelectedMedias = [];
+	for (var i = 0; i < selectedMeidas.length; i++) {
+		$scope.SelectedMedias.push(selectedMeidas[i]);
+	};
+	
 	$scope.selectedMedia = null;
 	$scope.selectedMediaType = '';
 	$scope.searchKeyword = '';
@@ -54,7 +60,12 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 	$scope.dateFilter = today;
 
 	$scope.ok = function () {
-		$modalInstance.close($scope.selectedMedia);
+		selectedMeidas.length = 0;
+		for (var i = 0; i < $scope.SelectedMedias.length; i++) {
+			selectedMeidas.push($scope.SelectedMedias[i]);
+		};
+		//$modalInstance.close($scope.SelectedMedias);
+		$modalInstance.close();
 	};
 
 	$scope.cancel = function () {
@@ -62,8 +73,21 @@ mediaSelector.controller('ModalMultiMediaInstanceCtrl', function ($scope, $modal
 	};
 
 	$scope.selectMedia = function(selectedMedia){
-		$modalInstance.close(selectedMedia);
+		//$modalInstance.close(selectedMedia);
+		if( $scope.SelectedMedias.indexOf(selectedMedia) < 0){
+			$scope.SelectedMedias.push(selectedMedia);
+		}else{
+			 $scope.SelectedMedias.splice($scope.SelectedMedias.indexOf(selectedMedia) ,1);
+		}
 	}
+
+	$scope.isMediaSelected =  function(m){
+		if( $scope.SelectedMedias.indexOf(m) < 0)
+			return false;
+		else
+			return true;
+	}
+
 
 	$scope.$watch('selectedDate', function(newValue, oldValue) {
 
@@ -93,10 +117,7 @@ var createMediaSelectorFunction = function($modal, mediaList, selectCallback){
 		});
 
 		modalInstance.result.then(function (selectedMedia) {
-			//$scope.user.name = user.name;
 			selectCallback(selectedMedia);
-			  
-		  	//$scope.selectedDuration = duration;
 		}, function () {
 		  	// done
 		});
@@ -109,7 +130,6 @@ var createMediaSelectorFunction = function($modal, mediaList, selectCallback){
 var createMultiMediaSelectorFunction = function($modal, mediaList, mediaSelectedList, selectCallback){
 	
 	return function(){
-
 		var modalInstance = $modal.open({
 			templateUrl: 'MultiMediaSelector.html',
 			controller: 'ModalMultiMediaInstanceCtrl',
@@ -124,11 +144,8 @@ var createMultiMediaSelectorFunction = function($modal, mediaList, mediaSelected
 			}
 		});
 
-		modalInstance.result.then(function (selectedMedia) {
-			//$scope.user.name = user.name;
-			selectCallback(selectedMedia);
-			  
-		  	//$scope.selectedDuration = duration;
+		modalInstance.result.then(function (selectedMediaList) {
+			selectCallback(selectedMediaList);
 		}, function () {
 		  	// done
 		});

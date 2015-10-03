@@ -21,7 +21,31 @@ var url_params = <%- JSON.stringify(url_params) %>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Images</label>
 		<div class="col-sm-9">
-			<input type="button" class="btn btn-primary" value="Select Media"  ng-click="changeMediaList()">
+
+
+			<button type="button" class="btn btn-primary" ng-click="changeMediaList()">Choose Images</button>
+			<div class="image-area">
+				<div class="media-selector-body">
+					<ul>
+						<li class="thumbnail" ng-repeat="m in selectedMedias">
+		
+							<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
+								<img ng-if="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
+	                           
+								<div class="text">
+									<div class="inner">{{m.title}}</div>
+	                                <div class="file-size">{{m.size | filesize}}</div>
+								</div>
+							</a>
+						</li>
+					
+					</ul>
+				</div>
+			</div>
+
+
+
+
 		</div>
 	</div>
 

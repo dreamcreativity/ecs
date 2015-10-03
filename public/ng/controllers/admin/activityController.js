@@ -40,6 +40,7 @@ angular.module('AdminApp')
 	var activity_id = url_params.id;
 	$scope.dateRanges = DateRanges;
 	$scope.dateAfter = $scope.dateRanges[0];
+	$scope.selectedMedias = [];
 
 	if(activity_id !=null){
 	 	Activity.get({id:activity_id}, function(result){
@@ -50,10 +51,10 @@ angular.module('AdminApp')
 
 	Medias.getCategoryTargetMedia({target : 'Activity',type:'Image'},function(result){
 			$scope.medias=result.data;
-			$scope.selectedMedias = [];
+			
 
-			$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.selectedMedias, function(result){
-
+			$scope.changeMediaList = createMultiMediaSelectorFunction($modal,$scope.medias,$scope.selectedMedias, function(){
+	
 			});
 
 	});

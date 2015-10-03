@@ -40,6 +40,8 @@
                                 <div class="file-size">{{m.size | filesize}}</div>
 							</div>
 						</a>
+
+                        <div class="cover" ng-click="selectMedia(m)"  ng-class="{selected: isMediaSelected(m)}"><i class="fa fa-check-square"></i></div>
 					</li>
 				
 				</ul>
@@ -47,6 +49,7 @@
         	</div>
         </div>
         <div class="modal-footer">
+            <span class="left-text">{{SelectedMedias.length}} items selected</span>
             <button class="btn btn-primary" ng-click="ok()">Save</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
