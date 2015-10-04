@@ -135,7 +135,12 @@ resources.factory('Meterials',['$resource',
         query:{method: 'GET'},
         create:{ method: 'POST'},
         get:{ method: 'GET', params: {id:'@_id'} },
-        update:{ method: 'PUT', params: {id:'@_id'} }
+        update:{ method: 'PUT', params: {id:'@_id'}},
+        getMaterialByAgentId :{
+            url: '/api/materials/agent/:id',
+            method : 'GET',
+            params : {id : '@_id'}
+        }
     });
 }]);
 

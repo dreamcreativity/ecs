@@ -68,12 +68,24 @@ router.get('/setnewPassword', function(req,res){
 
 
 router.get('/material', function(req, res) {
-	template(req,res,'agent_main','agent/profile/material.html',
+	template(req,res,'agent_main','agent/material/material.html',
 			{ 
-				title: 'Login',
-				category: '',
-				cur_tap: 'Login',
+				title: 'Materials',
+				category: 'Materials',
+				cur_tap: 'Materials',
 				cur_selected : ''
+			}
+		);
+});
+
+router.get('/material/detail/:id', function(req, res) {
+	template(req,res,'agent_main','agent/material/detail.html',
+			{ 
+				title: 'Materials Detail',
+				category: 'Materials',
+				cur_tap: 'Detail',
+				cur_selected : '',
+				url_params : req.params
 			}
 		);
 });
@@ -126,7 +138,7 @@ router.get('/profile', function(req,res){
 });
 
 router.get('/edit', function(req,res){
-	template(req,res,'agent_main', 'agent/edit.html',
+	template(req,res,'agent_main', 'agent/profile/edit.html',
 	{
 		title: 'Profile',
 		category : 'Profile',

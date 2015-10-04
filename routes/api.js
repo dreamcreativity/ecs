@@ -227,6 +227,9 @@ router.get('/materials', material.all);
 //PUT : Edit a material info
 router.put('/materials/:id', material.edit)
 
+//GET : Get materials by agent id
+router.get('/materials/agent/:id', material.getByAgentId);
+
 //----------------------Regions---------------------------------------
 
 //GET : all regions

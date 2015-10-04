@@ -168,3 +168,37 @@ exports.delete = function(req,res){
 	});
 }
 
+
+//GET by AgentId
+exports.getByAgentId = function(req,res){
+	var agent_id = req.params.id;
+	Material.find({agents : agent_id}).populate('media').populate('region').exec(function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else {
+			res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result
+				});	
+
+		}
+	});
+}
+
+
+
+
+
+
+
+
+
+
+
+

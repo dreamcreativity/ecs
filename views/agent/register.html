@@ -26,12 +26,12 @@
 			<!-- Step 1 Student registration -->
 			<div class="step-pane active" id="step1">
 				<div class="form-group">
-					<label class="col-sm-3 col-md-1 control-label">First Name</label>
+					<label class="col-sm-3 col-md-1 control-label">First Name </label>
 					<div class="col-sm-3" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
 						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
 					</div>
-					<label class="col-sm-3 col-md-1 control-label">Last Name</label>
+					<label class="col-sm-3 col-md-1 control-label">Last Name </label>
 					<div class="col-sm-3" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
 						<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
 						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
@@ -39,7 +39,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-3 col-md-1 control-label">Gender</label>
+					<label class="col-sm-3 col-md-1 control-label">Gender </label>
 					<div class="col-sm-9">
 						<div class="tcb">
 							<label>
@@ -53,7 +53,7 @@
 								<span class="labels"> Female</span>
 							</label>
 						</div>
-						<p ng-show="registerForm.gender.$invalid && !registerForm.gender.$pristine" class="help-block text-danger">gender is required</p>
+						<!-- <p ng-show="registerForm.gender.$invalid && !registerForm.gender.$pristine" class="help-block text-danger">gender is required</p> -->
 					</div>
 				</div>
 
@@ -456,7 +456,7 @@
 					<a href="/agent/students" class="btn btn-primary">Cancel</a>
 						<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
 						<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
-						<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
+						<button type="button" class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
 						<!-- add $("#last_submit").trigger('click') in wizard.js-->
 						<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 					</div>
