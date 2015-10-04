@@ -130,7 +130,6 @@ router.get('/course/:id', function(req, res){
 router.get('/events', function(req, res){
 
 
-	var Activity = require('../models/activity');
 
 	Activity.find(function(err,result){
 
@@ -142,8 +141,19 @@ router.get('/events', function(req, res){
 		
 	});
 
+});
+
+
+router.get('/calendar', function(req, res){
+
+	template(req,res,'client_normal','client/calendar.html',{});
+	
+
 	//template(req,res,'client_normal','client/activity.html',{});
 });
+
+
+
 
 router.get('/login', function(req, res) {
 	template(req,res,'client_main','client/login.html',{ });
