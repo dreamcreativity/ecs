@@ -197,7 +197,15 @@
                             <li><a href="#" data-href="#section-about"><div>About</div></a></li>
                             <li><a href="#" data-href="#section-activity"><div>Activity</div></a></li>
                             <li><a href="#" data-href="#section-team"><div>Team</div></a></li>
-                            <li><a href="#" data-href="#section-programs"><div>Programs</div></a></li>
+                            <li>
+                                <a href="#" data-href="#section-programs"><div>Programs</div></a>
+                                <ul class="width300">
+
+                                    <% for(var i=0; i < courses.length; i++){ %>
+                                    <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                    <% } %>
+                                </ul>
+                            </li>
                             <li><a href="#" data-href="#section-testimonials"><div>Testimonials</div></a></li>
                             <li><a href="/Calculator" ><div>Calculator</div></a></li>
                             <li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>

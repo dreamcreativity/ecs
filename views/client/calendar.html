@@ -2,7 +2,7 @@
 <script type="text/javascript" src="assets/js/jquery.calendario.js"></script>
 <script type="text/javascript" src="assets/js/events-data.js"></script>
 <script type="text/javascript" src="assets/js/plugins.js"></script>
-<link rel="stylesheet" href="assets/css/calendar.css" type="text/css" />
+
 
 <script type="text/javascript" src="assets/js/functions.js"></script>
 <section >
@@ -12,7 +12,8 @@
 
 		 		<h2>School Calendar</h2>
 
-				
+                <div class="row">
+
                     <div class="container clearfix">
 
                         <div class="events-calendar">
@@ -32,7 +33,13 @@
                         </div>
 
                         <script type="text/javascript">
+                            console.log(canvasEvents);
 
+                            var eventData = {
+                                '10-05-2015' : '<a>this is test this is test this is test this is test this is test this is test this is test this is test this is test </a><a>second event here </a>',
+                            
+
+                            };
                             var cal = $( '#calendar' ).calendario( {
                                     onDayClick : function( $el, $contentEl, dateProperties ) {
 
@@ -41,7 +48,7 @@
                                         }
 
                                     },
-                                    caldata : canvasEvents
+                                    caldata : eventData
                                 } ),
                                 $month = $( '#calendar-month' ).html( cal.getMonthName() ),
                                 $year = $( '#calendar-year' ).html( cal.getYear() );
@@ -64,6 +71,9 @@
                         </script>
 
                     </div>
+
+                </div>
+				
 
                 </div>
 		 	</div>

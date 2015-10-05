@@ -244,6 +244,47 @@
 }
 
 
+/*------- overwirte template menu sytling ----------*/
+.sub-menu ul.width300{
+	width: 300px!important;
+}
+
+
+/*------- overwirte calendar sytling ----------*/
+.fc-calendar .fc-body {
+	height: 1200px;
+}
+.fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+	white-space: normal;
+}
+
+@media screen and (max-width: 991px){
+	.fc-calendar .fc-body {
+	    height: 2400px;
+	}
+}
+/*.fc-calendar .fc-body{
+	height: auto;
+}
+
+.fc-calendar .fc-row {
+	height: 200px!important;
+}
+
+
+.fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+	white-space: normal!important;
+}
+
+
+*/
+
+
+
+
+
+
+
 
 
 
