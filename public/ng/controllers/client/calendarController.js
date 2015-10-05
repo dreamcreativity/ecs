@@ -2,144 +2,87 @@
 angular.module('ClientApp')
 .controller('CalendarCtrl',function CalendarCtrl($rootScope,$scope,$http,Courses){
 	
-	$scope.courseList = [];
-	$scope.displayCourses = [];
-	$scope.calculatedTotal = 0;
-	$scope.selectedCurrency = 'Canadian Dollors';
+	var eventData = {};
+	// create calendar event data
+	Courses.getSimpleList({},function(result){
 
-	$scope.currencyList = [
-		{ code: 'CAD', description: 'Canadian Dollors', rate: 1.0 },
-		{ code: 'USD', description: 'USA Dollors', rate: 1.34 }
-	];
+		$scope.courses = result.data;
+		console.log($scope.courses );
 
-	$scope.selectedCurrency = $scope.currencyList[0];
+		Courses.getCourstStartDateList({id:$scope.courses[0]._id, year: 2016},function(result){
 
+			$scope.startDateList = result.data;
+			console.log($scope.startDateList );
 
-	Courses.getSimpleList(function(data){
-		$scope.courses = data.data;
-		console.log($scope.courses);
+			for( var i in $scope.startDateList){
+				var eventDate = new Date($scope.startDateList[i]);
+				var dateString = numberFormat(eventDate.getMonth()) + '-' + numberFormat(eventDate.getDate()) + '-' + eventDate.getFullYear();
+				console.log(eventDate );
+				console.log(dateString );
 
-	})
-
-	var today = new Date();
-	$scope.availableYears = [
-		today.getFullYear(),
-		today.getFullYear()+1,
-		today.getFullYear()+2
-	];
-
-	var doCalculation =  function(){
-   		$scope.displayCourses = [];
-      	var total = 0;
-
-		angular.forEach($scope.courseList, function(course, key) {
-			
-			if(course.selectDuration.week > 0){
-
-				// deep copy dreation course object
-				var tempCourse= jQuery.extend(true, {}, course);
-				tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
-
-				total += tempCourse.selectDuration.price;
-				var courseStartDate = new Date(tempCourse.startDate);
-				var courseEndDate = new Date(courseStartDate.valueOf());
-				courseEndDate.setDate( courseEndDate.getDate() + 7 * tempCourse.selectDuration.week);
-			
-				$scope.displayCourses.push({
-					title: tempCourse.title,
-					startDate: tempCourse.startDate,
-					endDate: courseEndDate.toJSON(),
-					duration: tempCourse.selectDuration
-				});			
+				eventData[dateString] = '<a>' + 
+										$scope.courses[0].title +
+										' - (' + $scope.courses[0].durations[0].title + ')'
+										+ '</a>';
 			}
 
 
-		}, function(){
+			// init calendar object
+			var cal = $( '#calendar' ).calendario( {
+			        onDayClick : function( $el, $contentEl, dateProperties ) {
+
+			            for( var key in dateProperties ) {
+			                console.log( key + ' = ' + dateProperties[ key ] );
+			            }
+
+			        },
+			        	caldata : eventData
+			        } ),
+			        $month = $( '#calendar-month' ).html( cal.getMonthName() ),
+			        $year = $( '#calendar-year' ).html( cal.getYear() 
+			    );
+
+			$( '#calendar-next' ).on( 'click', function() {
+			    cal.gotoNextMonth( updateMonthYear );
+			} );
+			$( '#calendar-prev' ).on( 'click', function() {
+			    cal.gotoPreviousMonth( updateMonthYear );
+			} );
+			$( '#calendar-current' ).on( 'click', function() {
+			    cal.gotoNow( updateMonthYear );
+			} );
+
+			function updateMonthYear() {
+		        $month.html( cal.getMonthName() );
+		        $year.html( cal.getYear() );
+
+		    }
+		    function numberFormat(num){
+		    	if(num <10 )
+		    		return '0' + num.toString();
+		    	else
+		    		return num.toString();
+		    }
+
+
 
 		});
-      	$scope.calculatedTotal = total;
 
-	}
-
+	});
 
 
-	$scope.$watch(
-	  'courseList',
-	  function(newValue,oldValue) {
-	  		doCalculation();
-	  }, 
-	  true
-	);
 
-	$scope.$watch(
-	  'selectedCurrency',
-	  function(newValue,oldValue) {
-	  		doCalculation();
-	  }, 
-	  true
-	);
+	/*
+	var eventData = {
+        '10-05-2015' : '<a>this is test this is test this is test this is test this is test this is test this is test this is test this is test </a><a>second event here </a>',
+        '10-04-2015' : '<a>this is test this is test this is test this is test this is test this is test this is test this is test this is test </a><a>second event here </a>',
 
-	$scope.changeCurrency =  function(inputCurrency){
-		$scope.selectedCurrency = inputCurrency;
-		closeAllSelectList();
-	}
-
-	$scope.changeStartYear =  function(course, year){
-
-		Courses.getCourstStartDateList({id:course.id, year:year}, function(data){
-			course.startDate = data.data[0];
-			course.startDates = data.data;
-			closeAllSelectList();
-		});
-	}
-
-	$scope.changeStartDate = function(course, startDate){
-		course.startDate =  startDate;
-		closeAllSelectList();
-	}
+    };
+	*/
 
 
-	$scope.addCourse = function(course){
 
-		Courses.getCourstStartDateList({id:course._id, year:$scope.availableYears[0]}, function(data){
-			$scope.courseList.push({
-				id : course._id,
-				title: course.title,
-				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
-				startDate: data.data[0],
-				durations: course.durations,
-				startDates: data.data,
-			});
-			closeAllSelectList();
-			setTimeout(function(){
-				initTitleBox();	
-			},50);
-		})
-
-
-	}
-
-	$scope.changeCourse = function(currentCourse, targetCourse){
-
-		currentCourse.id = targetCourse._id;
-		currentCourse.title = targetCourse.title;
-		currentCourse.selectDuration =  { _id: '', title:'Select a Duration', price: 0, week : 0},
-		currentCourse.durations = targetCourse.durations;
-		closeAllSelectList();
-
-	}
-
-	$scope.changeDuration = function(currentDuration, targetDuration){
-
-		currentDuration._id = targetDuration._id;
-		currentDuration.title = targetDuration.title;
-		currentDuration.price = targetDuration.price;
-		currentDuration.week = targetDuration.week;
-
-		closeAllSelectList();
-
-	}
-
+    
 
 
 	
