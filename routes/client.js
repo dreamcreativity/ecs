@@ -81,10 +81,29 @@ router.get('/', function(req, res) {
 
 router.get('/activity/:id', function(req, res){
 	var id = req.params.id;
+	var activityList = [];
+	async.series([
+		function(next){
+			Activity.find({'isActive': true}).populate('cover').exec(function(err,result){	
+				activityList = result;
 
-	Activity.find({'_id':id}).populate('album').populate('cover').exec(function(err,result){
-		template(req,res,'client_normal','client/activity.html',{ activity : result[0]});
+				next();
+			});
+	    },
+
+	], function(){
+		console.log(activityList);
+		Activity.find({'_id':id}).populate('album').populate('cover').exec(function(err,result){
+			template(req,res,'client_normal','client/activity.html',{ 
+				activity : result[0],
+				activityList : activityList,
+			});
+		});
 	});
+
+
+
+
 		
 
 

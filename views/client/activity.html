@@ -1,9 +1,62 @@
+<style type="text/css">
+	.activity-banner{
+		position: relative;
+		height: 300px;
+		overflow: hidden;
+		margin-bottom: 20px;
+	}
+
+	.activity-banner .title{
+		position: absolute;
+		top: 200px; left: 10%;
+		z-index: 2;
+	}
+
+	.activity-banner .banner-img{
+		position: absolute;
+		top: 0; left: 0;
+	}
+
+	.activity-banner .banner-list{
+		position: absolute;
+		top: 200px; right: 100px;
+		list-style: none;
+
+	}
+	.activity-banner .banner-list li{
+		list-style: none;
+		float: left;
+		margin-right: 10px;
+	}
+	.activity-banner .banner-list li img{
+		height: 50px;
+	}
+</style>
 <section >
 	<div class="content-wrap">
-		 <section id="section-course" class="page-section">
+		<section>
+			<div class="activity-banner">
+
+				<h2 class="title"><%- activity.title %></h2>
+
+
+				<img class="banner-img" src="<%- activity.cover.path %>">
+
+				<ul class="banner-list">
+					<% for(var j=0; j < activityList.length; j++) { %>
+					<li> <img src="<%- activityList[j].cover.thumbnail %>"></li>
+					<% } %>
+				</ul>
+			</div>
+			
+			
+		</section>
+
+
+		 <section id="section-course" class="page-section " style="clear:both">
 		 	<div class="container clearfix">
 
-		 		<h2><%- activity.title %></h2>
+		 		
 
 		 		<!-- <div class="row hidden-sm hidden-xs">
 			 		<div class='col-xs-12 '>

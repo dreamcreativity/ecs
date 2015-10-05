@@ -356,6 +356,7 @@
 	background-color: white;
     padding: 10px;
     margin: 15px 0;
+    border: 1px solid #eee;
 }
 
 /*.image-arear{
@@ -484,7 +485,8 @@
 -------------------------------------
 */
 .media-selector-body{
-	height: 570px;
+	min-height: 80px;
+	max-height: 450px;
 	overflow-y: auto;
 	padding: 0!important;
 }
