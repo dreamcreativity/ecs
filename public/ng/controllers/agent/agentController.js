@@ -1,22 +1,19 @@
 'use strict';
 angular.module('AgentApp')
 
-.controller('AgentDetail', function AgentDetail($scope, $http, Agents,$window){
+.controller('AgentDetail', function AgentDetail($scope, $http, Agents,AgentTokens,$window){
 	loading();
 
 	function loading() {
 		var token = sessionStorage.token;
 
-		$http.post('/api/agent/token',{token:token})
-			.success(function(data,status,headers,config){
+		AgentTokens.post({token:token},function(data){
 				if(data.status == "successed"){
 					$scope.agent = data.data;
 				}
 				else {
 					console.log("error");
 				}
-			})
-			.error(function(data,status){
 			});
 	}
 
