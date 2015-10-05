@@ -49,6 +49,10 @@ angular.module('AgentApp')
 		// 	}
 		// })
 	}	
+})
+
+.controller('Dashboard', function ($scope, Students){
+
 });
 
 

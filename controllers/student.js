@@ -4,6 +4,7 @@ var Agent = require('../models/agent');
 var Accommodation = require('../models/accommodation');
 var FlightInfo = require('../models/flightInfo');
 var ProgramRegistration = require('../models/programRegistration')
+var Registration = require('../models/registration');
 var EmailSender = require('../modules/emailModule');
 var Pdf = require('../modules/pdfModule');
 var constant = require('../constants.js');
@@ -43,6 +44,8 @@ exports.register = function(req,res){
 	var accommodation = new Accommodation(req.body.accommodation);
 	var flightInfo = new FlightInfo(req.body.flightInfo);
 	var programs = req.body.courseList; 
+	var registration = new Registration();
+		registration.agent = student.agent;
 
 	async.waterfall([
 		function(callback){
@@ -52,7 +55,8 @@ exports.register = function(req,res){
 				if(err){}
 					else {
 						accommodation_id = result._id;
-						student.accommodation = accommodation_id;
+						student.accommodation = accommodation_id; //Delete later
+						registration.accommodation = accommodation_id;
 						callback();
 					}
 				});
@@ -63,7 +67,8 @@ exports.register = function(req,res){
 				if(err){}
 					else {
 						flightInfo_id = result._id;
-						student.flightInfo = flightInfo_id;
+						student.flightInfo = flightInfo_id; //Delete later
+						registration.flightInfo = flightInfo_id;
 						callback();
 					}
 				});
@@ -86,7 +91,8 @@ exports.register = function(req,res){
 					callback();
 				}
 				else {
-					student.programRegistration = programRegistration_ids;
+					student.programRegistration = programRegistration_ids; // Delete later
+					registration.programRegistration = programRegistration_ids;
 					callback();
 				}
 			});
@@ -99,12 +105,23 @@ exports.register = function(req,res){
 					student.studentID = counter.next;
 					student.save(function(err, result){
 						if(err){
-							callback(null)
+							callback()
 						}
 						else {
-							callback(null, result)
+							registration.student = result._id
+							callback()
 						}
 					});
+				}
+			});
+		},
+		function(callback){
+			registration.save(function(err, result){
+				if(err) {
+					callback(null);
+				}
+				else {
+					callback(null,result);
 				}
 			});
 		}],function(err, result){
@@ -203,7 +220,22 @@ exports.getStudentbyId = function(req,res){
 //GET: Student rows by student ID
 exports.getStudentbyAgentId = function(req,res){
 	var id = req.params.id;
-	Student.find({agent_id:id}, function(err, result){
+	Student.find({agent:id}, function(err, result){
+		if(err) {
+			res.json('Error occured: ' + err);
+		}
+		res.json({
+			type: true,
+			data: result
+		});
+	});
+}
+
+
+//GET: Registration records by agent ID
+exports.getRegistrationByAgent = function(req,res){
+	var id = req.params.id;
+	Registration.find({agent:id}, function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}

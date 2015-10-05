@@ -173,6 +173,9 @@ router.get('/student/:id', student.getStudentbyId);
 //GET students by Agent ID
 router.get('/student/agent/:id',student.getStudentbyAgentId);
 
+//GET students regiration by Agent ID
+router.get('/regiration/agent/:id',student.getRegistrationByAgent);
+
 //POST : create a student record
 router.post('/student', student.create);
 
@@ -211,7 +214,7 @@ router.post('/agent/login', agent.login);
 router.post('/agent/resetpassword', agent.resetpassword);
 
 //GET current agent by token
-router.post('/agent/token', agent.getAgentbyToken);
+router.post('/agent/token/:token', agent.getAgentbyToken);
 
 //-----------------------Materials ----------------------------------
 

@@ -1,18 +1,24 @@
 'use strict';
 angular.module('AgentApp')
 
-.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Constants,Accommodations,FlightInfos, $window){
+.controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Constants,Accommodations,FlightInfos, AgentTokens, $window){
 	loading();
 
 	//Loaded all info in register form
 	function loading(){
+		var token = sessionStorage.token;
 		$scope.courseList =[];
 		$scope.displayCourses = [];
 		var today = new Date();
 		$scope.availableYears = [today.getFullYear(),today.getFullYear()+1,today.getFullYear()+2];
 		$scope.isDisabled = false;
 		$scope.corseLevel = [];
-		
+
+
+		AgentTokens.post({token:token}, function(result){
+			$scope.currentAgent_id = result.data._id;
+		});
+
 		Students.query(function(result){
 			$scope.registrations = result;
 		});
@@ -30,13 +36,14 @@ angular.module('AgentApp')
 
 	//register action
 	$scope.register = function(isValid){
+		$scope.student.agent = $scope.currentAgent_id;
 			$http.post('/api/student/register',{student : $scope.student, 
 				accommodation : $scope.accommodation, 
 				flightInfo : $scope.flightInfo, 
 				courseList : $scope.courseList})
 			.success(function(data,status,headers,config){
 				if(data.messages == "successed"){
-					$http.post('/api/pdf',{registerId:data.data._id})
+					$http.post('/api/pdf',{registerId:data.data.student})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
 							$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",

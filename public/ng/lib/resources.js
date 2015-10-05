@@ -92,7 +92,17 @@ resources.factory('Agents',['$resource',
     function($resource){
         return $resource('/api/student/:id', {}, {
         query:{ method: 'GET'},
-        update : { method : 'PUT', params: {id:'@_id'}}
+        update : { method : 'PUT', params: {id:'@_id'}},
+        getStudentsByAgent : {
+            url : '/api/student/agent/:id',
+            method : 'GET',
+            params : {id : '@_id'}
+        },
+        getRegistrationsByAgent : {
+            url : '/api/regiration/agent/:id',
+            method : 'GET',
+            params : {id : '@_id'}
+        }
     });
 }])
 
@@ -207,6 +217,13 @@ resources.factory('Constants',['$resource',
     function($resource){
         return $resource('/api/constants/:name', {}, {
         get:{ method: 'GET', params: {name:'@_name'} }
+    });
+}]);
+
+resources.factory('AgentTokens',['$resource',
+    function($resource){
+        return $resource('/api/agent/token/:token', {}, {
+        post:{ method: 'POST', params: {token:'@token'} }
     });
 }]);
 
