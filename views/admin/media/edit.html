@@ -1,0 +1,97 @@
+
+
+				<div ng-controller='DetailController' id="media-detail" class="portlet">
+					<div class="portlet-heading dark">
+						<div class="portlet-title">
+							<h4><i class="fa fa-gears"></i> Media Detail Edit</h4>
+						</div>
+						<div class="portlet-widgets">
+							<a data-toggle="collapse" data-parent="#accordion" href="#lgs" class="" aria-expanded="true"><i class="fa fa-chevron-down"></i></a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					<div id="`" class="panel-collapse collapse in" aria-expanded="true">
+						<div class="portlet-body">
+						
+							<div class="row">
+								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label>Media Title</label></div>
+								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>Media Title</label></div>
+								<div class=" col-xs-12 col-md-6">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+										<input type="text" class="form-control" ng-model="m.title">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label>Media Type</label></div>
+								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>Media Type</label></div>
+								<div class=" col-xs-12 col-md-6">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-cube"></i></span>
+										<input type="text" class="form-control"  readonly value="{{m.type}}">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label>Target</label></div>
+								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>Target</label></div>
+								<div class=" col-xs-12 col-md-6">
+									<select ng-model="m.target">
+										<% for(var i=0; i<constants.MediaTarget.length; i++) {%>
+										<option value="<%- constants.MediaTarget[i] %>" ><%- constants.MediaTarget[i] %></option>
+										<% } %>
+									</select>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label>File Size</label></div>
+								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>File Size</label></div>
+								<div class=" col-xs-12 col-md-6 vcenter">
+									<label class="label label-success">{{m.size|filesize }}</label>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label>Preview</label></div>
+								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label>Preview</label></div>
+								<div class=" col-xs-12 col-md-6 col-lg-4" >
+
+									<video style="width:100%" src="{{m.path}}" controls ng-if="m.type=='Video'">
+									  Your browser does not support the <code>video</code> element.
+									</video>
+									<!-- <img width=300 src="https://www.google.ca/images/srpr/logo11w.png" ng-show="m.type=='jpg'" > -->
+									<a href="{{m.path}}" target="_blank" ng-show="m.type=='Image'">
+										<img style="width:100%" src="{{m.thumbnail}}" >
+									</a>
+
+									<a  ng-if="m.type=='Document'" href="{{m.path}}" target="_blank">
+										<i ng-if="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+										<i ng-if="m.type=='Document' && ( m.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+									</a>
+
+
+																
+								</div>
+							</div>
+
+							<div class="row">
+								<div class=" col-md-3 right vcenter hidden-sm hidden-xs"><label></label></div>
+								<div class=" col-xs-12 vcenter hidden-md hidden-lg" ><label></label></div>
+								<div class=" col-xs-12 col-md-6 vcenter">
+									<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
+									<button type="button" class="btn btn-default" onclick='location="/admin/media/"'>Back</button>
+									<button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script type="text/javascript">
+					var url_params = <%- JSON.stringify(url_params) %>
+				</script>

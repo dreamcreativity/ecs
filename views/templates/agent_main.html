@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='AgentApp'>
+  <head>
+    <meta charset="utf-8">
+    <title> <%- parms.title %> - ECS Staff</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+	<link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+		
+	<!-- PAGE LEVEL PLUGINS STYLES -->	
+	<!-- <link href="/assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+	<link href="/assets/css/plugins/morris/morris.css" rel="stylesheet"> 
+	<link rel="stylesheet" href="/assets/css/plugins/bootstrap-datepicker/datepicker.css"> -->
+	<link rel="stylesheet" href="/assets/css/plugins/footable/footable.min.css">
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/plugins/gritter/jquery.gritter.css" />
+
+    <!-- Tc core CSS -->
+	<link id="qstyle" rel="stylesheet" href="/assets/css/themes/style.css">
+	<link rel="stylesheet" href="/assets/css/themes/style-1.css">
+	
+    <!-- Add custom CSS here -->
+	<link rel="stylesheet" href="/assets/css/only-for-demos.css">
+	<link rel="stylesheet" href="/css/admin/core.css">
+	<link rel="stylesheet" href="/css/agent/core.css">
+	<!-- End custom CSS here -->
+	
+    <!--[if lt IE 9]>
+    <script src="/assets/js/html5shiv.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+	
+	<!--[if lte IE 8]>
+	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
+	<![endif]-->
+
+
+	 <!-- Angular JS -->
+	<script src="/assets/js/jquery.min.js"></script>
+ 	<script src="/js/client/angular.min.js"></script>
+    <script src="/js/client/angular-resource.js"></script>
+    <script src="/js/client/angular-cookies.js"></script>
+    <script src="/js/client/angular-route.js"></script>
+    <script src="/js/client/ngBootbox.min.js"></script>
+    <script src="/js/admin/moment.js"></script>
+    <script src="/js/admin/ng-tags-input.min.js"></script>
+
+    	<!-- include ng common use modual -->
+	<script src="/ng/lib/auth.js"></script>
+	<script src="/ng/lib/filters.js"></script>
+	<script src="/ng/lib/resources.js"></script>
+	<script src="/ng/lib/directives.js"></script>
+
+	<!-- include ng App here -->
+	<script src="/ng/apps/AgentApp.js"></script>
+
+
+	<!-- include ag controller -->
+    <script src="/ng/controllers/agent/registerFormController.js"></script>
+    <script src="/ng/controllers/agent/agentController.js"></script>
+    <script src="/ng/controllers/agent/materialController.js"></script>
+    <script src="/ng/controllers/agent/dashboardController.js"></script>
+
+
+  </head>
+
+  <body>
+	<div id="wrapper">
+		<div id="main-container">		
+			<!-- BEGIN TOP NAVIGATION -->
+				<nav class="navbar-top" role="navigation">
+					<!-- BEGIN BRAND HEADING -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".top-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+						<div class="navbar-brand">
+							<a href="/agent">
+								<!--img src="/assets/images/logo.png" alt="logo" class="img-responsive"-->
+								ESC LOGO
+							</a>
+						</div>
+					</div>
+					<!-- END BRAND HEADING -->
+					<div class="nav-top">
+						<!-- BEGIN RIGHT SIDE DROPDOWN BUTTONS -->
+							<ul class="nav navbar-right">
+								<li class="dropdown">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+										<i class="fa fa-bars"></i>
+									</button>
+								</li>
+							
+								<!--Speech Icon-->
+								<li class="dropdown user-box">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">Administrator</span> <b class="caret"></b>
+									</a>
+										<ul class="dropdown-menu dropdown-user">
+											<li>
+												<a href="profile">
+													<i class="fa fa-user"></i> My Profile
+												</a>
+											</li>										
+											<li>
+												<a href="login.html">
+													<i class="fa fa-power-off"></i> Logout
+												</a>
+											</li>
+										</ul>
+								</li>
+								<!--Search Box-->
+								<li class="dropdown nav-search-icon">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<span class="glyphicon glyphicon-search"></span>
+									</a>
+									<ul class="dropdown-menu dropdown-search">
+										<li>
+											<div class="search-box">
+												<form class="" role="search">
+													<input type="text" class="form-control" placeholder="Search" />
+												</form>
+											</div>
+										</li>
+									</ul>
+								</li>
+								<!--Search Box-->
+							</ul>
+						<!-- END RIGHT SIDE DROPDOWN BUTTONS -->
+						
+						<!-- BEGIN TOP MENU -->
+							<div class="collapse navbar-collapse top-collapse">
+								<!-- .nav -->
+								<ul class="nav navbar-left navbar-nav">
+									<li><a href="/agent">Agent Dashboard</a></li>
+								</ul>
+								<ul class="nav navbar-left navbar-nav">
+									<li><a href="/" target="_blank">Client Home</a></li>
+								</ul>
+								<!-- /.nav -->
+							</div>
+						<!-- END TOP MENU -->
+						
+					</div><!-- /.nav-top -->
+				</nav><!-- /.navbar-top -->
+				<!-- END TOP NAVIGATION -->
+
+				
+				<!-- BEGIN SIDE NAVIGATION -->				
+				<nav class="navbar-side" role="navigation">							
+					<div class="navbar-collapse sidebar-collapse collapse">
+					
+						<!-- BEGIN SHORTCUT BUTTONS -->
+						<div class="media">							
+							<ul class="sidebar-shortcuts">
+								<li><a class="btn"><i class="fa fa-user icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-envelope icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-th icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-gear icon-only"></i></a></li>
+							</ul>	
+						</div>
+						<!-- END SHORTCUT BUTTONS -->	
+							
+						<!-- BEGIN FIND MENU ITEM INPUT -->
+						<div class="media-search">	
+							<input type="text" class="input-menu" id="input-items" placeholder="Find...">
+						</div>						
+						<!-- END FIND MENU ITEM INPUT -->
+					
+						<ul id="side" class="nav navbar-nav side-nav">
+							<!-- BEGIN SIDE NAV MENU -->
+							
+
+							<!-- Management category -->
+							<li>
+								<h4>Management</h4> 								
+							</li>
+							
+							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentStudent">
+									<i class="fa fa-user"></i> Student <span class="fa arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">
+									<li>
+										<a href="/agent/students" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Students
+										</a>
+									</li>		
+									<li>
+										<a href="/agent/register" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>New Student
+										</a>
+									</li>			
+									<li>
+										<a href="/agent/students/invitation" class="<%if(parms.cur_selected=='IN'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Send Inventaion
+										</a>
+									</li>										
+								</ul>
+
+							</li>
+
+
+						
+
+							<li class="panel <%if(parms.cur_tap=='Course'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentHistory">
+									<i class="fa fa-users"></i> History<span class="fa arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentHistory">
+										<li>
+											<a href="/admin/course/all" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Student Records
+											</a>
+										</li>			
+										<li>
+											<a href="/admin/promotion/all" class="<%if(parms.cur_selected=='Promotion'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Commissions
+											</a>
+										</li>										
+									</ul>
+							</li>
+							
+							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">
+								<a href="/agent/profile" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
+									<i class="fa fa-sliders"></i> Profile <span class="fa arrow"></span>
+								</a>
+								<!-- <ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
+										<li>
+											<a href="/agent/setting" class="<%if(parms.cur_selected=='Material'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Setting
+											</a>
+										</li>			
+										<li>
+											<a href="/agent/resetpassword" class="<%if(parms.cur_selected=='Material'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Password
+											</a>
+										</li>									
+									</ul> -->
+							</li>
+
+			
+
+					
+
+							<!-- Management category -->
+							<li>
+								<h4>Marketing</h4> 								
+							</li>
+							<li class="panel">
+								<a href="/agent/material/"  >
+									<i class="fa fa-upload"></i> Materials
+								</a>
+						
+							</li>
+
+							<li class="panel">
+								<a href="/agent" >
+									<i class="fa fa-film"></i> More.. 
+								</a>
+							</li>
+							
+							<!-- Navigation category -->
+
+							
+						
+						</ul><!-- /.side-nav -->
+											
+						
+						
+					</div><!-- /.navbar-collapse -->
+				</nav><!-- /.navbar-side -->
+			<!-- END SIDE NAVIGATION -->
+				
+
+			<!-- BEGIN MAIN PAGE CONTENT -->
+				<div id="page-wrapper">
+					<!-- BEGIN PAGE HEADING ROW -->
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- BEGIN BREADCRUMB -->
+								<div class="breadcrumbs">
+									<ul class="breadcrumb">
+										<li>
+											<a href="/admin">Home</a>
+										</li>
+										<li class="active"><%- parms.category %></li>
+									</ul>									
+								</div>
+								<!-- END BREADCRUMB -->	
+								
+								<div class="page-header title">
+								<!-- PAGE TITLE ROW -->
+									<h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>									
+								</div>							
+							</div><!-- /.col-lg-12 -->
+						</div><!-- /.row -->
+					<!-- END PAGE HEADING ROW -->					
+						<div class="row">
+							<div class="col-lg-12">
+							
+								<!-- START YOUR CONTENT HERE -->
+								<%- body %>		
+								<!-- END YOUR CONTENT HERE -->
+					
+							</div>
+						</div>
+						
+					<!-- BEGIN FOOTER CONTENT -->		
+						<div class="footer">
+							<div class="footer-inner">
+								<!-- basics/footer -->
+								<div class="footer-content">
+									&copy; 2015 <a href="/">English School of Canada</a>, All Rights Reserved.
+								</div>
+								<!-- /basics/footer -->
+							</div>
+						</div>
+						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+						</button>
+					<!-- END FOOTER CONTENT -->
+						
+				</div><!-- /#page-wrapper -->	  
+			<!-- END MAIN PAGE CONTENT -->
+		</div>  
+	</div>
+	 
+    <!-- core JavaScript -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/assets/js/plugins/pace/pace.min.js"></script>
+	
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="/assets/js/plugins/jqueryui/jquery-ui.custom.min.js"></script>
+	<script src="/assets/js/plugins/jqueryui/jquery.ui.touch-punch.min.js"></script>	
+    <script src="/assets/js/plugins/daterangepicker/moment.js"></script>
+    <script src="/assets/js/plugins/daterangepicker/daterangepicker.js"></script>	
+  
+
+    <script src="/assets/js/plugins/morris/raphael-min.js"></script>
+    <script src="/assets/js/plugins/morris/morris.min.js"></script>
+    
+	<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+	<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+	<script src="/assets/js/plugins/easypiechart/jquery.easypiechart.min.js"></script>
+	<script src="/assets/js/plugins/easypiechart/excanvas.compiled.js"></script>	
+	<script src="/assets/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="/assets/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="/assets/js/plugins/footable/footable.min.js"></script>	
+	
+	<script src="/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/plugins/datatables/datatables.js"></script>
+	<script src="/assets/js/plugins/datatables/datatables.responsive.js"></script>
+
+    <!-- Themes Core Scripts -->	
+	<script src="/assets/js/main.js"></script>
+	
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<script src="/assets/js/speech-commands.js"></script>
+	<script src="/assets/js/plugins/gritter/jquery.gritter.min.js"></script>		
+	
+	<!-- initial page level scripts for examples -->
+	<script src="/assets/js/plugins/slimscroll/jquery.slimscroll.init.js"></script>
+	<script src="/assets/js/home-page.init.js"></script>
+	<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.init.js"></script>
+	<script src="/assets/js/plugins/easypiechart/jquery.easypiechart.init.js"></script>
+
+	<!-- initial Custom Functions -->
+	<script src="/js/admin/plugin-init.js"></script>
+	<!-- <script src="/js/admin/image-picker.min.js"></script> -->
+	<script type="text/javascript">
+
+		/*
+		//Live Chat
+		jQuery(function($) {
+			$('#live-chat-ui header').on('click', function() {
+			$('.chat').slideToggle(300, 'swing');
+			$('.chat-message-counter').fadeToggle(300, 'swing');
+
+		});
+
+			$('.chat-close').on('click', function(e) {
+				e.preventDefault();
+				$('#live-chat-ui').fadeOut(300);
+			});
+
+		})
+		*/
+		$('#minicalendar').datepicker();
+
+		jQuery('#gritter-centered').click(function(){
+			jQuery.gritter.add({
+				// (string | mandatory) the heading of the notification
+				title: 'System Notification!',
+				// (string | mandatory) the text inside the notification
+				text: 'Record has been updated',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: false,
+				// use style classes 
+				class_name: 'bg-warning gritter-center',
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500'				
+			});
+			return false;
+		});
+
+		var show_update = function(){
+			jQuery.gritter.add({
+				// (string | mandatory) the heading of the notification
+				title: 'System Notification!',
+				// (string | mandatory) the text inside the notification
+				text: 'Record has been updated',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: false,
+				// use style classes 
+				class_name: 'bg-warning gritter-center',
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500'				
+			});
+			return false;
+		}
+
+	</script>
+  </body>
+</html>

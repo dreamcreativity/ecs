@@ -1,11 +1,18 @@
-var Staff = require('../models/staff');
-var SHA256 = require("crypto-js/sha256")
+var SHA256 = require("crypto-js/sha256");
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
+var session = require('express-session')
+var Staff = require('../models/staff');
+var Token = require('../models/token');
+var crypto = require('crypto');
+var async = require("async");
+
 
 //POST : Create a Staff
 exports.create = function(req,res){
 	var newStaff = new Staff(req.body);
+
+	console.log(newStaff);
 	Staff.findOne({username : newStaff.username}, function(err, user){
 		if(err){
 			res.json({
@@ -46,10 +53,42 @@ exports.create = function(req,res){
 }
 
 //POST : Login
+exports.logout = function (req,res){
+
+	if(sessionStorage.token){
+		console.log(sessionStorage.token);
+	}else{
+
+		res.redirect('/admin/login');
+	}
+
+	// remove old token data for the current found user
+	Token.find({user:sessionStorage.token}, function(err, result){
+		
+		 if(err)
+			console.log(err);
+
+	}).remove(function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: 'can not remove old session data',
+				data : null
+			});
+		}
+		res.redirect('/admin');
+	});
+	
+}
+
+
+//POST : Login
 exports.login = function (req,res){
-	var pwd = SHA256(req.body.password);
+	var pwd = crypto.createHash('sha256').update(req.body.password).digest("hex"); 
+
 	Staff.findOne({username : req.body.username, password: pwd}, function(err, user){
 		if(err){
+
 			res.json(
 			{
 				status: 'fail',
@@ -58,6 +97,7 @@ exports.login = function (req,res){
 			});
 		}
 		else {
+
 			if(user == null){
 				res.json(
 				{
@@ -67,32 +107,58 @@ exports.login = function (req,res){
 				});
 			}
 			else {
-				var token = jwt.sign(user.username,"secret", { expiresInMinutes:60*5 });
-				user.token = token;
-				user.save(function(err){
-					if(err) {
+
+				//---------------------------------
+				// found user in the database
+				//---------------------------------
+
+				// remove old token data for the current found user
+				Token.find({user:user._id, isActived: true}, function(err, result){
+					
+					 if(err)
+						console.log(err);
+
+				}).remove(function(err, result){
+					
+					if(err){
 						res.json({
 							status: 'fail',
-							messages:err,
+							messages: 'can not remove old session data',
 							data : null
 						});
 					}
-					else {
-						res.json({
-							status: 'ok',
-							messages: 'successed',
-							data : token,
-							OID : user._id
-						});
-					}
+
+					//so now can create access token
+					var newToken = new Token();
+					newToken.user = user._id;
+					newToken.type = 'Staff';
+					newToken.isActived = true;
+					newToken.save();
+
+
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data : {
+							id: user.id,
+							username : user.username,
+							email: user.email,
+							token: newToken.id
+						}
+					});
+
 				});
+
 			}
+
 		}
 	});
 }
 
+
+
 // Authorized 
-exports.ensureAuthorized = function(req,res, next){
+exports.ensureAuthorized = function(req,res, next){   
 	var bearerToken;
 	var bearerHeader = req.header["authorization"];
 	if(typeof bearerHeader !== 'undefined'){
@@ -160,7 +226,9 @@ exports.getAllStaffs = function (req,res){
 //GET: staff by Id
 exports.getStaffbyId = function(req,res){
 	var id = req.params.id;
-	Staff.find({_id:id}, function(err, result){
+
+
+	Staff.find({_id:id}).populate('cover').exec(function(err, result){
 
 
 		if(err) {
@@ -192,31 +260,48 @@ exports.getStaffbyId = function(req,res){
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	var staff = new Staff(req.body);
-	Staff.update({_id:id}, staff, function(err, result){
-		if(err){
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
-		else {
-			if(result.length == 1){
-				res.json({
-					status: 'ok',
-					messages: 'successed',
-					data: result[0]
-				});	
-			}else{
+	//var staff = new Staff(req.body);
+	console.log(req.body);
+	async.series([
+
+		function(next){
+			if (req.body.cover != null)
+	    		req.body.cover =  req.body.cover._id;
+
+	    	next();
+	    	
+	    },
+
+	], function(){
+		Staff.update({_id:id}, req.body, function(err, result){
+			if(err){
 				res.json({
 					status: 'fail',
-					messages: "multipulte result",
+					messages: err,
 					data: null
 				});
 			}
-		}
+			else {
+				if(result == 1){
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result[0]
+					});	
+				}else{
+					res.json({
+						status: 'fail',
+						messages: "multipulte result",
+						data: null
+					});
+				}
+			}
+		});
+
 	});
+
+
+
 }
 
 //DELETE : Set staff isDelete be true
@@ -254,14 +339,75 @@ exports.delete = function(req,res){
 
 
 
+//GET: staff  by session
+exports.getStaffAccount = function(req,res){
+
+	Token.find({type:'Staff', _id: req.headers.api_token } ,function(err, result){
+
+		// res.json({
+
+		// 	result: result
+		// });
+
+		if(result.length > 1){
+			res.json({
+				status: 'fail',
+				messages: 'multipulte result',
+				data: null
+			});
+		}else if(result.length == 0){
+			res.json({
+				status: 'fail',
+				messages: 'no record found',
+				data: null
+			});
+		}else{
+			tokenRecord = result[0];
 
 
 
+			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}, function(err, users){
+
+
+					if(err) {
+						res.json({
+							status: 'fail',
+							messages: err,
+							data: null
+						});
+					}
+
+					if(result.length == 1){
 
 
 
+						res.json({
+							status: 'ok',
+							messages: 'successed',
+							data: {
+								username: users[0].username,
+								workphone: users[0].workphone,
+								cellphone: users[0].cellphone,
+								firstname: users[0].firstname,
+								lastname: users[0].lastname
 
+							}
+						});	
+					}else{
+						res.json({
+							status: 'fail',
+							messages: "multipulte result",
+							data: null
+						});
+					}
+					
+				});
 
+		}
+
+	});
+	
+}
 
 
 

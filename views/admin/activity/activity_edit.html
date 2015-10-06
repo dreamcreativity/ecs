@@ -1,0 +1,111 @@
+<script type="text/javascript">
+var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<form name="editForm" class="form-horizontal" ng-controller='ActivityEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="title" ng-model="activity.title" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="editForm.title.$invalid && !editForm.title.$pristine" class="help-block text-danger">title is required</p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Sub Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="subtitle" ng-model="activity.subtitle" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="editForm.subtitle.$invalid && !editForm.subtitle.$pristine" class="help-block text-danger">sub-title is required</p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Description</label>
+		<div class="col-sm-9">
+			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="activity.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Cover Image</label>
+		<div class="col-sm-6">
+			<div ng-click="changeCover()" ng-if="activity.cover == null" class="cover-empty"><label>200 X 100</label></div>
+
+			<img class="preview-media"  ng-click="changeCover()"  ng-if="activity.cover != null" src="{{activity.cover.thumbnail}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Images</label>
+		<div class="col-sm-9">
+			<button type="button" class="btn btn-primary" ng-click="changeMediaList()">Choose Images</button>
+			<div class="image-area">
+				<div class="media-selector-body">
+					<ul>
+						<li class="thumbnail" ng-repeat="m in activity.album">
+		
+							<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
+								<img ng-if="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
+	                           
+								<div class="text">
+									<div class="inner">{{m.title}}</div>
+	                                <div class="file-size">{{m.size | filesize}}</div>
+								</div>
+							</a>
+						</li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<hr class="separator">
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1 control-label">Active</label>
+		<div class="col-sm-3">
+			<div class="tcb">
+				<label>
+					<input name="isActive" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="activity.isActive" />
+					<span class="labels"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<div class="form-group">
+			<label class="col-sm-3 col-md-1 control-label"></label>
+			<div class="col-sm-3">
+				<a href="/activity/{{activity._id}}" target="_blank"><button type="button" class="btn btn-info" >Preview</button></a>
+				
+				<button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">Submit</button>
+
+				<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editForm.$invalid"> -->
+				<a href="/admin/activity/all" type="submit" class="btn btn-default">Cancel</a>
+			</div>
+		
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
+			</div>
+		</div>
+	</div>
+	<!-- include the media selector mockup -->
+   	<div ng-include="'/ng/html/MediaMultiSelector.html'"></div>
+   	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+</form>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/masked-input/jquery.maskedinput.min.js"></script>
+<script src="/assets/js/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="/assets/js/plugins/datetime/bootstrap-datetimepicker.min.js"></script>
+<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script data-require="moment.js@2.8.3" data-semver="2.8.3" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+<script>
+$(document).ready(function() { 	
+        	//Bootstrap Datepicker
+        	$('.datepicker').datepicker();		
+        });
+</script>

@@ -1,0 +1,244 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<div class="row"  ng-controller='DetailCtrl'>
+	<div class="col-lg-12 col-md-12">
+		<div class="tc-tabs"><!-- Nav tabs style 1 -->
+			<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
+				<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Overview</a></li>
+				<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Edit Account</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="p1">
+					<div class="row">													
+						<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+							<div class="portlet no-border">
+								<div class="portlet-heading">
+									<div class="portlet-title">
+										<h2>{{staff.firstname}} {{staff.lastname}}</h2>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body">
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Work :</strong></div>
+									<div class="col-lg-2" >{{staff.workphone}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Cell :</strong></div>
+									<div class="col-lg-2" >{{staff.cellphone}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Email :</strong></div>
+									<div class="col-lg-2" >{{staff.email}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row"> 
+									<div class="col-lg-2 right"><strong>Last Login :</strong></div>
+									<div class="col-lg-3" >{{staff.lastLoginDateTime  | date:'MMM dd yyyy h:mma'}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right"><strong>Region :</strong></div>
+									<div class="col-lg-2">{{staff.region}}</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<div class="col-lg-2 right">
+										
+									</div>
+									<div class="col-lg-8">
+										<tags-input ng-model="email_list" 
+												placeholder="Add a email" 
+												allowed-tags-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+										</tags-input>
+									   <button class="col-md-3 btn btn-sm btn-primary" ng-click="sendEmail()">Send</button>
+									</div>
+								</div>
+
+								</div>
+							</div>
+						</div>
+
+
+				
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="portlet no-border-bottom">
+								<div class="portlet-heading dark">
+									<div class="portlet-title">
+										<h4>Recent Agents</h4>
+									</div>
+									<div class="portlet-widgets">
+										<a href="javascript:;"><i class="fa fa-refresh"></i></a>													
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body no-padding">
+									<ul class="lists">
+										<li ng-repeat="agent in agents">
+											<a href="/admin/agent/detail/{{agent._id}}">
+												<span class="col-sm-2 icons">{{agent.company}}</span>
+												<span class="col-sm-2 icons glyphicon glyphicon-user"> {{agent.firstname}} {{agent.lastname}}</span>
+												<span class="col-sm-2 icons glyphicon glyphicon-phone-alt"> {{agent.workphone}}</span>
+												<span class="col-sm-2 icons glyphicon glyphicon-phone"> {{agent.workphone}}</span>
+												<span class="col-sm-4 icons glyphicon glyphicon-envelope"> {{agent.email}}</span>
+											</a>
+										</li>									
+									</ul>
+								</div>
+							</div>
+
+							<div class="hr hr-12 hr-double"></div>
+							<div class="action-buttons">
+								<a href="#"><i class="fa fa-search-plus"></i> View all</a>
+							</div>
+						</div>
+					</div>		
+					
+				</div>
+				<div class="tab-pane fade" id="p2" ng-controller='StaffEditCtrl'>
+					<h2>Account Detail</h2>
+					<div class="hr hr-12 hr-double"></div>
+					<form name="loginForm" class="form-horizontal" role="form" ng-submit="update(loginForm.$valid)" novalidate>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Username</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="username" ng-model="staff.username" value="{{staff.username}}"required disabled="disabled">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Position</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="username" ng-model="staff.position" value="{{staff.position}}" required >
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Role</label>
+							<div class="col-sm-3">
+								<select name="role" ng-model="staff.role" class="form-control" required>
+									<option value="Administrator">Administrator</option>
+									<option value="Supervise">Supervise</option>
+									<option value="Staff" selected>Staff</option>
+								</select>
+								<p ng-show="loginForm.role.$invalid && !loginForm.role.$pristine" class="help-block text-danger">role is required</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Regions</label>
+							<div class="col-sm-3">
+							<select ng-model="staff.region" >
+								<option ng-selected="value.name==staff.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
+							</select>
+    						</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Cover Image</label>
+							<div class="col-sm-9">
+								<div ng-click="changeCover()" ng-if="staff.cover == null" class="cover-empty"><label>200 X 100</label></div>
+
+								<img class="preview-media"  ng-click="changeCover()"  ng-if="staff.cover != null" src="{{staff.cover.thumbnail}}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">First Name:</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" value="{{staff.firstname}}"required>
+								<p ng-show="loginForm.firstname.$invalid && !loginForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Last Name:</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
+								<p ng-show="loginForm.lastname.$invalid && !loginForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Description</label>
+							<div class="col-sm-9">
+								<textarea name="description" class="form-control col-sm-9"  ng-model="staff.description" required></textarea>
+								<p ng-show="loginForm.description.$invalid && !loginForm.description.$pristine" class="help-block">description is required</p>	
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Work phone:</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
+								<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
+								<p ng-show="loginForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
+							</div>
+						</div>		
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Cell phone:</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
+								<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
+								<p ng-show="loginForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
+							</div>
+						</div>											
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Email</label>
+							<div class="col-sm-4">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" class="form-control" name="email" ng-model="staff.email" required>
+								</div>
+								<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block text-danger">email is invalid</p>
+							</div>
+						</div>
+
+						<hr class="separator">
+						<div class="form-group">
+							<label class="col-sm-3 control-label"></label>
+							<div class="col-sm-3">
+								<div class="tcb">
+									<label>
+										<input type="checkbox" ng-model="staff.isDelete" class="tc">
+										<span class="labels"> Delete</span>
+									</label>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-actions">
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-2">
+									<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="loginForm.$invalid">
+								</div>
+							</div>
+							<div class="form-group">
+								<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+								{{returnMessage}}
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="tab-pane fade" id="p3">
+					Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+				</div>
+			</div>
+			<a href="/admin/staff/all"class="col-md-1 btn btn-sm btn-primary">Back</a>
+		</div><!--nav-tabs style 1-->
+	</div>
+
+	<!-- include the media selector mockup -->
+    <div ng-include="'/ng/html/MediaSelector.html'"></div>
+</div>		

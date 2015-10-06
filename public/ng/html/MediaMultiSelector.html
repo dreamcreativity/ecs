@@ -1,0 +1,59 @@
+
+    <script type="text/ng-template" id="MultiMediaSelector.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Select meida from list</h4>
+        </div>
+        <div class="modal-body lg">
+        	<div class="media-selector-filters">
+        		<label>Kyeword: </label>
+        		<input type="text" class="form-control" ng-model="searchKeyword" >
+
+        		<label>Media Type: </label>
+        		<select class="form-control"  ng-model="selectedMediaType">
+        			<option value="">All</option>
+        			<option value="{{type}}" ng-repeat="type in MediaTypes">{{type}}</option>
+        		</select>
+
+        		<label>Date: </label>
+        		<select class="form-control" ng-model="selectedDate" >
+        			<option value="0">All</option>
+        			<option value="1">Today</option>
+        			<option value="{{1*7}}">In One Week</option>
+        			<option value="{{2*7}}">In Two Weeks</option>
+        			<option value="{{4*7}}">In Four Weeks</option>
+        			<option value="{{10*7}}">In Ten Weeks</option>
+        		</select>
+
+        	</div>
+        	<div class="media-selector-body">
+				<ul>
+					<li class="thumbnail" ng-repeat="m in (filteredItems = ( Medias | filter:{ type: selectedMediaType || '' , title : searchKeyword || '' }) )">
+	
+						<a href="javascript:void(0)" ng-click="selectMedia(m)" data-rel="colorbox" class="cboxElement">
+							<img ng-if="m.type=='Image'" alt="" src="{{m.thumbnail}}" >
+                            <video height="100" src="{{m.path}}" controls ng-if="m.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+                            <i ng-if="m.type=='Document' && ( m.ext=='doc' || m.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+                            <i ng-if="m.type=='Document' && ( m.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+							<div class="text">
+								<div class="inner">{{m.title}}</div>
+                                <div class="file-size">{{m.size | filesize}}</div>
+							</div>
+						</a>
+
+                        <div class="cover" ng-click="selectMedia(m)"  ng-class="{selected: isMediaSelected(m)}"><i class="fa fa-check-square"></i></div>
+					</li>
+				
+				</ul>
+	
+        	</div>
+        </div>
+        <div class="modal-footer">
+            <span class="left-text">{{SelectedMedias.length}} items selected</span>
+            <button class="btn btn-success" ng-click="selectAll()">Select all</button>
+            <button class="btn btn-success" ng-click="clearAll()">Clear all</button>
+            <button class="btn btn-primary" ng-click="ok()">Save</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+

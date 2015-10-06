@@ -1,0 +1,69 @@
+
+<form name="createForm" ng-controller='EventCtrl' class="form-horizontal" role="form" ng-submit="create(createForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="title" ng-model="event.title" value="{{event.title}}"required>
+			<!-- <p ng-show="createForm.title.$invalid && !createForm.title.$pristine" class="help-block text-danger">title is required</p>	 -->
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Description</label>
+		<div class="col-sm-9">
+			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="event.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Time</label>
+		<div class="col-sm-9">
+			 <input id="datetimepicker" type="text" ng-model="event.date" value="{{event.date}}" required>
+
+		</div>
+	</div>
+
+
+
+
+	<!-- <div class="form-group">
+		<label class="col-sm-3 control-label"></label>
+		<div class="col-sm-9">
+			<div class="tcb">
+				<label>
+					<input type="checkbox" ng-model="event.isActive" class="tc">
+					<span class="labels">Delete</span>
+				</label>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-4">
+				<input type="submit" class="btn btn-primary" value="Submit">
+				<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid"> -->
+				<!-- 		<a href="/admin/event/all" type="submit" class="btn">Cancel</a> -->
+			</div>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+		jQuery('#datetimepicker').datetimepicker();
+
+		});
+
+</script>
+
+

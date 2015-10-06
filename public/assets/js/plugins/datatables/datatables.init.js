@@ -6,6 +6,7 @@ $(document).ready(function () {
         tablet: 1024,
         phone : 480
     };
+     setTimeout(function() {
     var tableElement = $('#SampleDT');
 
     tableElement.dataTable({
@@ -23,6 +24,7 @@ $(document).ready(function () {
             responsiveHelper.respond();
         }
     });
+}, 500);
 });
 
 

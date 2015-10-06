@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="/assets/css/plugins/duallistbox/bootstrap-duallistbox.min.css">
+
+<div class="portlet"  ng-controller='MaterialDetail'>
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Edit Material</h4>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+	<form class="form-horizontal" id="validate-form" method="get">
+		<div id="bwizard">
+			
+			<div class="tab-content">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Name:</label>
+					<div class="col-sm-7">
+						<div class="clearfix">
+							<input type="text" name="heading" ng-model="material.name" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password">Description:</label>
+					<div class="col-sm-7">
+						<div class="clearfix">
+							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password2">Region:</label>
+					<div class="col-sm-3">
+						<div class="clearfix">{{region.name}}
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password2">Created:</label>
+					<div class="col-sm-3">
+						<label class="label label-default label-xlg">{{material.created | date:'MMMM d, yyyy' : 'UTC'}}</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password2">Last Modified:</label>
+					<div class="col-sm-3">
+						<label class="label label-success label-xlg">{{material.modified | date:'MMMM d, yyyy' : 'UTC'}}</label>
+					</div>
+				</div>
+
+				<hr class="separator" />
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Media:</label>
+					<div class="col-sm-9">
+						<div class="media-display-seaction">
+							<div ng-click="changeMeida()" ng-if="material.media == null" class="cover-empty"><label>Clic to change</label></div>
+
+							<video height="200"  ng-click="changeMeida()"  src="{{material.media.path}}" controls ng-if="material.media != null && material.media.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+
+							<img class="preview-media"  ng-click="changeMeida()"  ng-if="material.media != null && material.media.type=='Image'" src="{{material.media.thumbnail}}">
+
+							<i ng-click="changeMeida()" ng-if="material.media != null && material.media.type=='Document' && ( material.media.ext=='doc' || material.media.ext=='docx') " class="fa fa-file-word-o preview-file-type-list"></i>
+	                        <i ng-click="changeMeida()"ng-if="material.media != null && material.media.type=='Document' && ( material.media.ext=='pdf') " class="fa fa-file-pdf-o preview-file-type-list"></i>
+
+
+	                        <div class="info" ng-if="material.media != null">
+	                        	<div><label>Media Type :</label> {{material.media.type}}</div>	
+	                        	<div><label>File Type :</label> {{material.media.ext.toUpperCase()}}</div>
+	                        	<div><label>File Size :</label> {{material.media.size | filesize}}</div>		
+	                        	<div><label>Title : </label> {{material.media.title}}</div>	
+	                        </div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="separator" />
+
+				
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3">											
+						<a type="button" class="btn btn-info" target="_blank" href="{{material.media.path}}" >View</a>
+						<button type="button" class="btn btn-default" onclick='location="/agent/material"'>Cancel</button>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</form>
+	</div>
+
+	<!-- include the media selector mockup -->
+   	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+
+</div>
+
+
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+

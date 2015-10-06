@@ -10,7 +10,4 @@ var UserModel = mongoose.model('User', new mongoose.Schema({
 	modified: Date
 }));
 
-
-
-
 module.exports = UserModel;

@@ -1,5 +1,5 @@
 			<link rel="stylesheet" href="../css/admin/core.css">
-			<div class="login-container">
+			<div class="login-container" ng-app='loginApp' ng-controller='LoginController'>
 
 				<!--
 				<h2>
@@ -17,54 +17,26 @@
 					
 					<div class="hr hr-8 hr-double dotted"></div>
 					
-					<form method="post" action="index.html">
+					<form ng-submit="login()">
 						<div class="form-group">
 							<div class="input-icon right">
 								<span class="fa fa-key text-gray"></span>
-								<input type="text" class="form-control" placeholder="Username">
+								<input type="text" class="form-control" placeholder="Username" ng-model="staff.username" required>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-icon right">
 								<span class="fa fa-lock text-gray"></span>
-								<input type="password" class="form-control" placeholder="your password">
+								<input type="password" class="form-control" placeholder="your password" ng-model="staff.password" required>
 							</div>
 						</div>
 						<div class="tcb">
 							<label>
-								<input type="checkbox" class="tc">
-								<span class="labels"> Remember me</span>
+								<span id="messageReturn" class="labels text-danger">{{returnMessage}}</span>
 							</label>
-							<a href="#" class="pull-right btn btn-primary">Login<i class="fa fa-key icon-on-right"></i></a>
+							<input type="submit" class="pull-right btn btn-primary" value="Login" />
 							<div class="clearfix"></div>
-						</div>				
-						
-
-						<!--
-						<div class="social-or-login">
-							<span class="text-primary">Or Login Using</span>
-						</div>
-							
-						<div class="space-4"></div>
-						
-						<div class="text-center">
-							<a href="#" class="btn btn-twitter btn-sm btn-circle"><i class="fa fa-twitter icon-only bigger-130"></i></a>
-							<a href="#" class="btn btn-googleplus btn-sm btn-circle"><i class="fa fa-google-plus icon-only bigger-130"></i></a>
-							<a href="#" class="btn btn-facebook btn-sm btn-circle"><i class="fa fa-facebook icon-only bigger-130"></i></a>
-						</div>
-
-						<div class="footer-wrap">
-							<span class="pull-left">
-								<a href="#" onclick="show_box('forgot-box'); return false;"><i class="fa fa-angle-double-left"></i> Forgot password?</a>
-							</span>
-							
-							<span class="pull-right">
-								<a href="#" onclick="show_box('registration-box'); return false;">Register here <i class="fa fa-angle-double-right"></i></a>
-							</span>
-							
-							<div class="clearfix"></div>
-						</div>
-						-->							
+						</div>									
 					</form>
 				</div>
 				<!-- END LOGIN BOX -->

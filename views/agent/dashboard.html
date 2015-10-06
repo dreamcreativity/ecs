@@ -1,0 +1,183 @@
+								<div class="row" ng-controller="DashboardController">
+									<div class="col-lg-9 col-sm-12">
+
+										<div class="row">
+										
+											<div class="col-lg-4 col-sm-4">
+												<a href="/agent/students" class="tile-button btn btn-primary">
+													<div class="tile-content-wrapper">
+														<i class="fa fa-users"></i>
+														<div class="tile-content">
+															{{registrations.length}}
+														</div>
+														<small>
+															This month
+														</small>
+													</div>
+												</a>												
+											</div>
+
+											<div class="col-lg-4 col-sm-4">
+												<a href="/agent/students" class="tile-button btn btn-inverse">
+													<div class="tile-content-wrapper">
+														<i class="fa fa-users"></i>
+														<div class="tile-content">
+															{{students.length}}
+														</div>
+														<small>
+															 Total students
+														</small>												
+													</div>
+												</a>												
+											</div>
+
+											
+											<div class="col-lg-4 col-sm-4">
+												<a href="/agent/material" class="tile-button btn btn-white">
+													<div class="tile-content-wrapper">
+														<i class="fa fa-users"></i>
+														<div class="tile-content text-primary">
+															3
+														</div>
+														<small>
+															Meteritals
+														</small>
+													</div>
+												</a>												
+											</div>
+											
+											
+										</div>
+								
+										<!-- Recent Activities -->
+										<div class="portlet no-border-bottom">
+											<div class="portlet-heading dark">
+												<div class="portlet-title">
+													<h4><i class="fa fa-list-ul"></i> Recent 10 students</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#recent"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="recent" class="panel-collapse collapse in">
+												<div class="portlet-body no-padding">
+													<div class="tc-tabs no-margin">
+														<ul class="nav nav-tabs tab-small-button no-padding">
+															<li class="active"><a href="#tab14" data-toggle="tab"><i class="fa fa-users bigger-130"></i><span class="badge badge-primary">{{students.length}}</span></a></li>
+														</ul>
+														
+														<div class="tab-content no-padding no-border-left no-border-right no-border-bottom">
+															<div class="tab-pane active" id="tab14">
+																<ul class="lists" ng-repeat=" item in students">
+																	<li>
+																		<span class="date">{{item.registerDate | date:'MMM dd yyyy'}}</span>
+																		{{item.firstname}} {{item.lastname}}
+																		<a href="/agent/students/detail/{{item._id}}"><i class="fa fa-eye bigger-130"></i></a>
+																	</li>
+																</ul>
+															</div>
+															
+															<div class="tab-pane" id="tab16">
+																<ul class="lists">
+																	
+																</ul>
+															</div>
+															
+														</div>
+														
+													</div>
+												</div>
+												
+											</div>
+										</div>
+										<div class="portlet no-border-bottom">
+											<div class="portlet-heading dark">
+												<div class="portlet-title">
+													<h4><i class="fa fa-list-ul"></i> Recent 10 Meterial</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#recent"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="recent" class="panel-collapse collapse in">
+												<div class="portlet-body no-padding">
+													<div class="tc-tabs no-margin">
+														<ul class="nav nav-tabs tab-small-button no-padding">
+															<li class="active"><a href="#tab14" data-toggle="tab"><i class="fa fa-book bigger-130"></i><span class="badge badge-primary">{{materials.length}}</span></a></li>
+														</ul>
+														
+														<div class="tab-content no-padding no-border-left no-border-right no-border-bottom">
+															<div class="tab-pane active" id="tab14">
+																<ul class="lists" ng-repeat=" item in materials">
+																	<li>
+																		<span class="date">{{item.modified | date:'MMM dd yyyy'}}</span>
+																		{{item.name}} -- {{item.description}}
+																		<i class="fa fa-download bigger-130"></i>
+																	</li>
+																</ul>
+															</div>
+															
+															<div class="tab-pane" id="tab15">
+																<ul class="lists">
+																	<li>
+																		<span class="icons"><i class="fa fa-envelope"></i></span>
+																		<a href="#">Jame Prick</a> - Created
+																	</li>
+																	<li>
+																		<span class="icons"><i class="fa fa-envelope"></i></span>
+																		<a href="#">Tester Chow</a> - Created
+																	</li>
+																	
+																</ul>
+															</div>
+															
+															<div class="tab-pane" id="tab16">
+																<ul class="lists">
+																	
+																</ul>
+															</div>
+															
+														</div>
+														
+													</div>
+												</div>
+												
+											</div>
+										</div>
+										<!-- End Recent Activities -->
+										
+									</div><!-- //col-lg-9 -->
+									
+									<div class="col-lg-3 col-sm-12">
+										<!-- Mini Calendar -->
+										<div class="portlet hidden-widgets">
+											<div class="portlet-heading inverse">
+												<div class="portlet-title">
+													<h4><i class="fa fa-calendar"></i> Calendar</h4>
+												</div>
+												<div class="portlet-widgets">
+													<a data-toggle="collapse" data-parent="#accordion" href="#mini-calendar"><i class="fa fa-chevron-down"></i></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div id="mini-calendar" class="panel-collapse collapse in">
+												<div class="portlet-body">
+													<div id="minicalendar"></div>
+												
+													<div class="space-8"></div>
+												
+													<div class="notice bg-primary marker-on-top no-margin-bottom">
+														<h4>Today's Event</h4>
+														<ul class="list-unstyled smaller-90">
+															<li>Demo</li>
+														</ul>
+													
+														<a href="#"><i class="fa fa-plus"></i> Add New Event</a>
+													</div>
+												</div>
+											</div>
+										</div>										
+										<!-- End Mini Calendar -->
+								</div>			

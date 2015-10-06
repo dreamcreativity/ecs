@@ -1,0 +1,64 @@
+<div class="row" ng-app='promotionApp' ng-controller='PromotionCtrl'>
+
+<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Promotion Rate<small class="text-white"></small></h4>
+				</div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<tr>
+								<th class="hidden-xs">StartDate</th>
+								<th class="hidden-xs">EndDate</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="promotion in promotions.data | filter:query">
+								<td class="hidden-xs"><a href="/admin/promotion/detail/{{promotion._id}}">{{promotion.region}} {{promotion.rate}}</a></td>
+								<td><span ng-if="promotion.isDelete == 1" class="label label-danger">Deleted</span>
+								<span ng-if="promotion.isDelete == 0" class="label label-active">Active</span>
+								</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/promotion/detail/{{agent._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>					 
+		</div>
+		<button class="btn btn-sm btn-primary"
+					ng-bootbox-title="A new promotion rate"
+					ng-bootbox-custom-dialog
+					ng-bootbox-custom-dialog-template="create">
+					Create
+		</button>
+<!-- 		<a href="/admin" class="btn btn-sm btn-primary">Back</a> -->
+		
+	</div>
+
+</div>	 			
+
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
+<script src="/assets/js/plugins/datetime/bootstrap-datetimepicker.min.js"></script>
+<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+
+
+
+

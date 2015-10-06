@@ -1,0 +1,52 @@
+<div >
+<div class="row" ng-controller='ActivityCtrl'>
+	<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4 >Activities<small class="text-white"></small></h4>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<th class="hidden-xs">Title</th>
+								<th class="hidden-xs">Description</th>
+								<th class="hidden-xs">Location</th>
+								<th class="hidden-xs">Status</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="activity in activities.data | filter:query">
+								<td class="hidden-xs">{{activity.title}}</td>
+								<td class="hidden-xs">{{activity.description}}</td>
+								<td class="hidden-xs"> </td>
+								<td>
+									<label class="label label-active label-lg arrowed arrowed-right" ng-show="activity.isActive")>Active</label>
+									<label class="label label-terminated label-lg arrowed arrowed-right" ng-show="!activity.isActive">No Active</label>
+								</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/activity/edit/{{activity._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<a href="/admin/activity/create" class="col-md-1 btn btn-sm btn-primary">Create</a>
+	</div>
+</div>
+</div>
+
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>

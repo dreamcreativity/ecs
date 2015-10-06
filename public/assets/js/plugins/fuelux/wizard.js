@@ -124,8 +124,10 @@
 				this.currentStep += 1;
 				this.setState();
 			}
-			else if (lastStep) {
-				this.$element.trigger('finished');
+			else if (lastStep) {		
+				// this.$element.trigger('finished');
+			    $("#last_submit").trigger('click');
+
 			}
 		},
 

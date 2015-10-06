@@ -1,0 +1,295 @@
+.calendar{
+	margin: 20px auto;
+}
+
+.calendar .calendar-header .header-cell{
+	display: inline-block;
+	text-align: center;
+	width: 14.3%;
+	background-color: black;
+	color: white;
+	padding: 15px 15px;
+	margin-right: -3px;
+	font-size: 20px;
+}
+
+.calendar .calendar-row {
+
+	text-align: left;
+
+}
+
+
+.calendar .calendar-row .calendar-item{
+	display: inline-block;
+	text-align: center;
+	width: 14.3%;
+	padding: 15px 10px;
+	margin: 20px 0 0 -3px;
+	font-size: 20px;
+	font-size: 11px;
+}
+
+.calendar .calendar-row .calendar-item .wraper{
+	border: 1px solid #ccc;
+}
+
+
+.calendar .calendar-row  .calendar-item  .wraper .date{
+	width: 100%;
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.calendar .calendar-row  .calendar-item  .wraper .title{
+	width: 100%;
+	text-align: left;
+}
+
+.calendar .calendar-row  .calendar-item  .wraper .desc{
+	width: 100%;
+	text-align: left;
+
+}
+
+
+.calendar .calendar-row  .calendar-item  .wraper img{
+	width: 100%;
+}
+/*
+.calendar {
+	
+}
+
+.calendar .filter{
+	width: 100%;
+	height: 20px;
+}
+
+.calendar .events{
+	width: 100%;
+}
+
+
+.calendar .events .event{
+	text-align: left;
+	margin: 25px 0;
+}
+
+
+
+.calendar .event .date{
+	font-weight: bold;
+	font-size: 25px;
+    color: #524242;
+}
+
+.calendar .event .title{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+
+.calendar .event .desc{
+	font-weight: bold;
+	font-size: 16x;
+}
+
+
+.calendar .event img{
+	width: 100%;
+}*/
+
+
+
+/*--------  page: calculator  --------*/
+.course-seaction{
+	background-color: #F8F2F4;
+	border: 1px solid #FFEAEA;
+    margin: 15px 0;
+    padding: 15px;
+}
+
+.course-seaction .row{
+	margin-bottom: 15px;
+}
+
+.styling-dropdown{
+	border: 1px solid #EEDADA;
+	border-radius: 5px;
+	width: 100%;
+	padding: 5px 10px;
+	background-color: white;
+	position: relative;
+	cursor: pointer;
+}
+.styling-dropdown:hover{
+	border: 1px solid #D29595;
+}
+
+.styling-dropdown .right-arrow{
+	width: 25px;
+    background-color: #EEDADA;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    border-radius: 0 5px 5px 0;
+    padding: 5px;
+    border-right: 1px;
+    text-align: center;
+    color: #92A59A;
+
+}
+
+.styling-dropdown .select-list{
+	border: 1px solid #EEDADA;
+	/*border-top: 0;*/
+	padding: 5px 10px;
+	position: absolute;
+    width: 100%;
+    top: 35px;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+    max-height: 420px;
+    overflow-y: scroll;
+}
+
+.styling-dropdown .select-list.hidden{
+	display: none;
+}
+.styling-dropdown .select-list .list-item{
+	cursor: pointer;
+	padding: 8px 20px;
+}
+
+.styling-dropdown .select-list .list-item:hover{
+	background-color: red;
+	color: white;
+}
+
+
+/*----------------------------------*/
+
+.calculator-edit-seacsion{	    
+	padding-right: 20px!important;
+}
+.selected-course-display-seaction{
+	background-color: #F8F2F3;
+	border: 1px solid #F2E8E8;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.selected-course-display-seaction .title{
+	font-size: 18px;
+    font-weight: bold;
+    color: #515150;
+}
+
+.selected-course-display-seaction .date{
+	font-size: 12px;
+}
+
+.selected-course-display-seaction .price{
+	font-size: 12px;
+	color: #A29999;
+}
+
+.selected-course-total-seaction{
+	background-color: #2A1F15;
+    color: #F4EDED;
+    padding: 10px 15px 10px 17px;
+    font-size: 15px;
+}
+
+
+/*-----------------*/
+#section-course{
+
+}
+
+#section-course .banner{
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+#section-course .banner img{
+	width: 100%;
+}
+
+
+#section-course  .float-seaction{
+
+	float: right;
+	padding: 30px;
+}
+
+#section-course  .float-seaction ul{
+	list-style: none;
+}
+
+#section-course  .float-seaction ul li a{
+	color: #9592A4;
+    font-size: 16px;
+    line-height: 36px;
+}
+
+
+#section-course .desc{
+    font-size: 15px;
+    color: #464646;
+    line-height: 36px;
+}
+
+
+/*------- overwirte template menu sytling ----------*/
+.sub-menu ul.width300{
+	width: 300px!important;
+}
+
+
+/*------- overwirte calendar sytling ----------*/
+.fc-calendar .fc-body {
+	height: 1800px;
+}
+.fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+	white-space: normal;
+}
+
+@media screen and (max-width: 991px){
+	.fc-calendar .fc-body {
+	    height: 2400px;
+	}
+}
+/*.fc-calendar .fc-body{
+	height: auto;
+}
+
+.fc-calendar .fc-row {
+	height: 200px!important;
+}
+
+
+.fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+	white-space: normal!important;
+}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

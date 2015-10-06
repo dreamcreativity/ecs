@@ -1,0 +1,32 @@
+<div class="form-horizontal" ng-controller='AgentDetail'>
+	<div class="row">
+		<label class="col-sm-3 col-md-1 control-label">Name : </label>
+		<div class="col-sm-3">{{agent.firstname}} {{agent.lastname}}</div>
+	</div>
+	<div class="row">
+		<label class="col-sm-3 col-md-1 control-label">Company : </label>
+		<div class="col-sm-3">{{agent.company}}</div>
+	</div>
+	<div class="row">
+		<label class="col-sm-3 col-md-1 control-label">Work Phone : </label>
+		<div class="col-sm-3">{{agent.workphone}}</div>
+	</div>
+	<div class="row">
+		<label class="col-sm-3 col-md-1 control-label">Cell Phone : </label>
+		<div class="col-sm-3">{{agent.cellphone}}</div>
+	</div>
+	<div class="row">
+		<label class="col-sm-3 col-md-1 control-label">Email : </label>
+		<div class="col-sm-3">{{agent.email}}</div>
+	</div>
+	<div class="row">
+		<label class="col-sm-3 col-md-1 control-label">Region : </label>
+		<div class="col-sm-3">{{agent.region}}</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-md-4">
+			<a href="/agent/edit" class="btn btn-sm btn-primary">Edit</a>
+			<a href="/agent/resetpassword" class="btn btn-sm btn-primary">Reset password</a>
+		</div>
+	</div>
+</div>

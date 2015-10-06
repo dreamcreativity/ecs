@@ -1,0 +1,106 @@
+<form name="createForm" class="form-horizontal"  ng-controller='ActivityCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1  control-label">Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="title" ng-model="activity.title" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="createForm.title.$invalid && !createForm.title.$pristine" class="help-block text-danger">title is required</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1  control-label">Sub Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" name="subtitle" ng-model="activity.subtitle" ng-minlength="4" ng-maxlength="100" required>
+			<p ng-show="createForm.subtitle.$invalid && !createForm.subtitle.$pristine" class="help-block text-danger">subtitle is required</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 col-md-1  control-label">Description</label>
+		<div class="col-sm-9">
+			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="activity.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+		</div>
+	</div>
+
+	<!-- <div class="form-group">
+		<label class="col-sm-3 control-label"></label>
+		<div class="col-sm-2">
+			<select name="region" ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
+			</select>
+		</div>
+	</div> -->
+	<!-- <div class="form-group">
+		<label class="col-sm-3 control-label">Search</label>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" name="activity_filter" ng-model="activity_filter">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Images</label>
+		<div class="col-sm-3">
+			<div class="well white padding-25 image-arear">
+				<ul class="tc-gallery-2 clearfix">
+					<li class="thumbnail" ng-repeat="item in medias.data" ng-if="(array.indexOf(item._id) > -1)" checkbox-unselect>
+						<div class="thumb-preview">
+							<div class="thumb-image">
+								<img src="{{item.thumbnail}}" alt="" >
+							</div>
+
+						</div>
+				
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="well white padding-25 image-arear">
+				<ul class="tc-gallery-2 clearfix">
+					<li  ng-repeat="item in medias.data | isAfter:dateAfter.date | filter: activity_filter" checkbox-select>
+						<div class="thumb-preview">
+							<div class="thumb-image">
+								<img src="{{item.thumbnail}}" alt="" >
+							</div>
+							<div class='cover' ng-class="{'selected':(array.indexOf(item._id) > -1)}"><i style="color:#fff; font-size: 16px; margin:0 auto" class="fa fa-check-circle"></i></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="form-actions">
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-offset-1 col-sm-2">
+				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
+			</div>
+		</div>
+		<div class="form-group">
+			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+				{{returnMessage}}
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="form-group">
+		<label class="col-sm-3 control-label">Images</label>
+		<div class="col-sm-9">
+			 <select multiple="multiple" class="image-picker show-html">
+			  <option ng-repeat="item in medias.data" data-img-src="{{item.path}}" value="{{item._id}}"></option> 
+			</select> 
+		</div>
+	</div> -->
+
+	<!-- <div class="form-group">
+		<label class="col-sm-3 control-label">Images</label>
+		<div class="col-sm-9">
+			<select multiple="multiple" class="image-picker show-html">
+				<option data-img-src="/docs/Image/Activity/b9c4d19d-918f-4a8a-a3f5-72f73d28d849.jpg" value="1"></option>
+			</select>
+		</div>
+	</div> -->
+
+</form>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
