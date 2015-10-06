@@ -142,17 +142,13 @@ $scope.changeStartYear =  function(course){
 	function loading() {
 		AgentTokens.post({token:token}, function(result){
 			var currentAgent_id = result.data._id;
-			if(currentAgent_id){
-				Students.getRegistrationsByAgent({id:currentAgent_id},function(result){
-					$scope.programs = result.data[0].programRegistration;
-					$scope.accommodation = result.data[0].accommodation;
-				});
-			}
 		});
 
 		if(obj_id !=null){
 			Students.get({id:obj_id}, function(result){
 				$scope.student = result.data;
+				$scope.programs = result.data.programRegistration;
+				$scope.accommodation = result.data.accommodation;
 			});
 		};
 	}
