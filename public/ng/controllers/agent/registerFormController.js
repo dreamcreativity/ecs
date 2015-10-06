@@ -134,14 +134,21 @@ $scope.changeStartYear =  function(course){
 	}}
 })
 
-.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,$window){
+.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,AgentTokens,$window){
 	var obj_id = url_params.id;
+	var token = sessionStorage.token;
 	loading();
 
 	function loading() {
+		AgentTokens.post({token:token}, function(result){
+			var currentAgent_id = result.data._id;
+		});
+
 		if(obj_id !=null){
 			Students.get({id:obj_id}, function(result){
 				$scope.student = result.data;
+				$scope.programs = result.data.programRegistration;
+				$scope.accommodation = result.data.accommodation;
 			});
 		};
 	}
