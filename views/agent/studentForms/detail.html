@@ -3,7 +3,123 @@
 </script>
 
 <div class="row" ng-controller='StudentRegisterDetail'>
-	<div class="col-lg-12 col-md-12">
+
+<div class="tc-tabs"><!-- Nav tabs style 1 -->
+			<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
+				<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+				<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+				<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registered courses</a></li>
+			</ul>
+
+<div class="tab-content">
+	<div class="tab-pane fade in portlet-body active" id="p1">
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>First name : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.firstname}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Last name : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.lastname}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Gender : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.gender}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Address : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.address}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Post code : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.postcode}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>City : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.city}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Province : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.province}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Country : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.country}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Telephone : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.telephone}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Emergency : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.emergency}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Email : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.email}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-1"><strong>Fax : </strong></div>
+			<div class="col-sm-3 col-md-1">{{student.fax}}</div>
+		</div>
+	</div>
+
+	<div class="tab-pane fade" id="p2">
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>accommdation option : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.option}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>start date : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.startDate}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>end date : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.endDate}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>is private bath room : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.isPrivateBathroom}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>is With Kid : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.isWithKid}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>is With Pet : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.isWithPet}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>is With Smoke : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.isWithSmoke}}</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2"><strong>is Allergies : </strong></div>
+			<div class="col-sm-3 col-md-2">{{accommodation.isAllergies}}</div>
+		</div>
+	</div>
+
+	<div class="tab-pane fade" id="p3">
+		<div ng-repeat = "item in programs">
+			<div class="row">
+				<div class="col-sm-3 col-md-2"><strong>title : </strong></div>
+				<div class="col-sm-3 col-md-2">{{item.title}}</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3 col-md-2"><strong>start Date : </strong></div>
+				<div class="col-sm-3 col-md-2">{{item.startDate}}</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3 col-md-2"><strong>duration : </strong></div>
+				<div class="col-sm-3 col-md-2">{{item.duration}}</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+</div>
+
+<!-- 	<div class="col-lg-12 col-md-12">
 		<div class="tc-tabs">
 			<div id="formPrint">
 				<p>firstname : {{student.firstname}}</p>
@@ -32,9 +148,11 @@
 			<a href="/agent/students"class="col-md-1 btn btn-sm btn-primary">Back</a>
 			<button ng-click="toggle()">Print to pdf</button>
 		</div>
-	</div>
+	</div> -->
 </div>	
+<a href="/agent/students"class="col-md-1 btn btn-sm btn-primary">Back</a>
 
+<button class="col-md-1 btn btn-sm btn-primary" ng-click="toggle()">Print to pdf</button>
 
 
 

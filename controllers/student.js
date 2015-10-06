@@ -235,7 +235,7 @@ exports.getStudentbyAgentId = function(req,res){
 //GET: Registration records by agent ID
 exports.getRegistrationByAgent = function(req,res){
 	var id = req.params.id;
-	Registration.find({agent:id}, function(err, result){
+	Registration.find({agent:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
