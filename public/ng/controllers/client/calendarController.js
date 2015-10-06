@@ -9,8 +9,8 @@ angular.module('ClientApp')
 	
 	var insertStartDate = function(startDateList, course, eventDataList){
 
-		if(course.title == 'English for Health Care')
-			console.log(startDateList);
+		// if(course.title == 'English for Health Care')
+		// 	console.log(startDateList);
 
 		for( var i in startDateList){
 			var eventDate = new Date(startDateList[i]);
@@ -36,10 +36,11 @@ angular.module('ClientApp')
     		return num.toString();
     }
 
+    // get all course records
 	Courses.getSimpleList({},function(result){
 
 		$scope.courses = result.data;
-		console.log($scope.courses );
+		
 		var today = new Date();
 		var currentYear = today.getFullYear();
 
