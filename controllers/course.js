@@ -150,8 +150,9 @@ exports.getCourseStartDate = function (req,res){
 								break;
 							var newStartDateItem = new Date(startPoint.valueOf());
 
-							if( !publicHolidayModule.isPublicHoliday(publicHolidayList, newStartDateItem))
-								newStartDateItem.setDate(newStartDateItem.getDate()-1);
+							if( publicHolidayModule.isPublicHoliday(publicHolidayList, newStartDateItem))
+								newStartDateItem.setDate(newStartDateItem.getDate()+1);
+
 							startDateList.push(new Date(newStartDateItem));
 							startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
 						}

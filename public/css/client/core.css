@@ -252,7 +252,7 @@
 
 /*------- overwirte calendar sytling ----------*/
 .fc-calendar .fc-body {
-	height: 1200px;
+	height: 1800px;
 }
 .fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
 	white-space: normal;

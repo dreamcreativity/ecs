@@ -1,32 +1,76 @@
 'use strict';
 angular.module('ClientApp')
 .controller('CalendarCtrl',function CalendarCtrl($rootScope,$scope,$http,Courses){
-	
-	var eventData = {};
+
+
 	// create calendar event data
+
+	var eventData = {};
+	
+	var insertStartDate = function(startDateList, course, eventDataList){
+
+		if(course.title == 'English for Health Care')
+			console.log(startDateList);
+
+		for( var i in startDateList){
+			var eventDate = new Date(startDateList[i]);
+			var dateString = numberFormat(eventDate.getMonth()+1) + '-' + numberFormat(eventDate.getDate()) + '-' + eventDate.getFullYear();
+			// console.log(eventDate );
+			// console.log(dateString );
+
+
+			if( typeof eventDataList[dateString] === 'undefined')
+				eventDataList[dateString] = '';
+
+			eventDataList[dateString] += '<a>' +  course.title +
+										' - (' + course.durations[0].title + ')'
+										+ '</a>';
+
+
+		}
+	}
+    var numberFormat =  function(num){
+    	if(num <10 )
+    		return '0' + num.toString();
+    	else
+    		return num.toString();
+    }
+
 	Courses.getSimpleList({},function(result){
 
 		$scope.courses = result.data;
 		console.log($scope.courses );
+		var today = new Date();
+		var currentYear = today.getFullYear();
 
-		Courses.getCourstStartDateList({id:$scope.courses[0]._id, year: 2016},function(result){
+		async.eachSeries($scope.courses, function iterator(course, next) {
+			async.series([
+			    function(nextYear){
+					Courses.getCourstStartDateList({id: course._id, year: currentYear},function(result){
+						var startDateList = result.data;
+						insertStartDate(startDateList, course,eventData);
+						nextYear();
+					});
+			    },
+			    function(nextYear){
+					Courses.getCourstStartDateList({id: course._id, year: currentYear+1},function(result){
+						var startDateList = result.data;
+						insertStartDate(startDateList, course,eventData);
+						nextYear();
+					});
+			    },
+			    function(nextYear){
+					Courses.getCourstStartDateList({id: course._id, year: currentYear+2},function(result){
+						var startDateList = result.data;
+						insertStartDate(startDateList, course,eventData);
+						nextYear();
+					});
+			    },
 
-			$scope.startDateList = result.data;
-			console.log($scope.startDateList );
-
-			for( var i in $scope.startDateList){
-				var eventDate = new Date($scope.startDateList[i]);
-				var dateString = numberFormat(eventDate.getMonth()) + '-' + numberFormat(eventDate.getDate()) + '-' + eventDate.getFullYear();
-				console.log(eventDate );
-				console.log(dateString );
-
-				eventData[dateString] = '<a>' + 
-										$scope.courses[0].title +
-										' - (' + $scope.courses[0].durations[0].title + ')'
-										+ '</a>';
-			}
-
-
+			], function(){
+				next();
+			});
+		}, function done() {
 			// init calendar object
 			var cal = $( '#calendar' ).calendario( {
 			        onDayClick : function( $el, $contentEl, dateProperties ) {
@@ -57,16 +101,11 @@ angular.module('ClientApp')
 		        $year.html( cal.getYear() );
 
 		    }
-		    function numberFormat(num){
-		    	if(num <10 )
-		    		return '0' + num.toString();
-		    	else
-		    		return num.toString();
-		    }
-
-
 
 		});
+
+
+
 
 	});
 
