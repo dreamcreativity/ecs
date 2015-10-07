@@ -251,39 +251,87 @@
 
 
 /*------- overwirte calendar sytling ----------*/
-.fc-calendar .fc-body {
+#school-calendar .fc-calendar .fc-body {
 	height: 1800px;
 }
-.fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+#school-calendar .fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
 	white-space: normal;
 }
 
+
+#event-calendar .fc-calendar .fc-body {
+	height: 850px;
+}
+#event-calendar .fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+	white-space: normal;
+}
+#event-calendar .fc-calendar .fc-body{
+	background-color: white;
+}
+#event-calendar .fc-calendar .fc-body{
+	padding: 0;
+}
+
 @media screen and (max-width: 991px){
-	.fc-calendar .fc-body {
+	#school-calendar .fc-calendar .fc-body {
 	    height: 2400px;
 	}
-}
-/*.fc-calendar .fc-body{
-	height: auto;
-}
 
-.fc-calendar .fc-row {
-	height: 200px!important;
-}
+	#event-calendar .fc-calendar .fc-body {
+	    height: 5400px;
+	}
 
 
-.fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
-	white-space: normal!important;
 }
 
 
-*/
 
 
 
+.event-images{
+	padding: 5px;
+	border: 1px solid #EFE6E6;
+    background-color: #FFF1F1;
+    cursor: pointer;
+    height: 112px;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+}
+.event-images img{ 
+	width: 100%!important;
+	height:auto;
+}
 
+#event-calendar .testimonial .flex-control-nav li {
+	margin: 0 0 0 8px;
+}
 
+#event-calendar .testimonial.testimonial-full .flex-control-nav {
+	position: absolute;
+	margin-top: 7px;
+	right: 15px;
+	text-align: right;
+	
+}
 
+#event-calendar .fc-calendar .fc-row > div > div > li{
+	margin-left: 7px;
+}
+#event-calendar .fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
+	padding: 5px;
+	border-radius: 5px;
+	background-color: red;
+}
+
+@media screen and (max-width: 991px){
+
+	.event-images img{ 
+		width: 120px!important;
+		height: 90px!important;
+	}
+
+}
 
 
 

@@ -56,9 +56,9 @@
 			Events.update($scope.event, function(result){
 	 		 if(result.type == true){
 	 		 	ShowGritterCenter('System Notification','Event document has been updated');
-	 		 	setInterval(function(){
-  					 $window.location='/admin/event/all';
-				}, 2000); 
+	 		//  	setInterval(function(){
+  		// 			 $window.location='/admin/event/all';
+				// }, 2000); 
 	 		 }else{
 	 		 	ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
 	 		 }
@@ -76,12 +76,12 @@
 		}
 	})
 
-	.value('DateRangesEvent', [
-		{name:'All', date:moment().subtract(10, 'year')},
-		{name:'Last one day', date:moment().subtract(1, 'day')},
-		{name:'Last one month', date:moment().subtract(1, 'month')},
-		{name:'Last three months', date:moment().subtract(3, 'month')}
-		])
+	// .value('DateRangesEvent', [
+	// 	{name:'All', date:moment().subtract(10, 'year')},
+	// 	{name:'Last one day', date:moment().subtract(1, 'day')},
+	// 	{name:'Last one month', date:moment().subtract(1, 'month')},
+	// 	{name:'Last three months', date:moment().subtract(3, 'month')}
+	// 	])
 
 	.directive("checkboxSelectEvent", function () {
 		return {
