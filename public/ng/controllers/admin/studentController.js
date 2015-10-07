@@ -69,9 +69,9 @@ angular.module('AdminApp')
 	 }
 
 	 $scope.registerCourse = function(isValid){
-	 	for (var i = 0; i < $scope.courseList.length; i++) {
-	 			$scope.student.programRegistration.push($scope.courseList[i]);
-	 	};
+	 	// for (var i = 0; i < $scope.courseList.length; i++) {
+	 	// 		$scope.student.programRegistration.push($scope.courseList[i]);
+	 	// };
 	 	// Students.save($scope.student,function(err, result){
 	 	// 			ShowGritterCenter('System Notification','Student has been updated');
 		 // 			setInterval(function(){

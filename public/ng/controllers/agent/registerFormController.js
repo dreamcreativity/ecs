@@ -34,9 +34,12 @@ angular.module('AgentApp')
 		});
 	}
 
-	$scope.nextClick = function() {
-		console.log("click");
+	$scope.checkStudentInfo = function(isValid) {
+		console.log("checkStudentInfo");
+		return;
 	}
+
+
 
 
 	//register action

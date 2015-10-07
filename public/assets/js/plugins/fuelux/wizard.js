@@ -121,6 +121,13 @@
 
 				if (e.isDefaultPrevented()) return;
 
+				swith(this.currentStep) {
+					case 1 : $("#step1_submit").trigger('click'); break;
+					case 2 : $("#step2_submit").trigger('click'); break;
+					case 3 : $("#step3_submit").trigger('click'); break;
+					default : break;
+				}
+
 				this.currentStep += 1;
 				this.setState();
 			}
