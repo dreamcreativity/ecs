@@ -34,6 +34,11 @@ angular.module('AgentApp')
 		});
 	}
 
+	$scope.nextClick = function() {
+		console.log("click");
+	}
+
+
 	//register action
 	$scope.register = function(isValid){
 		$scope.student.agent = $scope.currentAgent_id;

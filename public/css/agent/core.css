@@ -1,12 +1,6 @@
-/*
-input:required {
-	border-right: 15px solid ;
-	content: "*";
-}*/
 
-
-input:required:invalid {
+/*input:required:invalid {
   border: 1px solid #843534;
   outline: none;
-}
+}*/
 

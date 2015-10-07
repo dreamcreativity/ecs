@@ -50,28 +50,34 @@ exports.register = function(req,res){
 	async.waterfall([
 		function(callback){
 			var accommodation_id =null;
-			accommodation.numOfWeeks = (accommodation.startDate-accommodation.endDate)/(1000*60*60*24*7).toFixed(2);
-			accommodation.save(function(err,result){
-				if(err){}
-					else {
-						accommodation_id = result._id;
-						student.accommodation = accommodation_id; //Delete later
-						registration.accommodation = accommodation_id;
-						callback();
-					}
-				});
+			if(accommodation.isHomestay){
+				accommodation.numOfWeeks = (accommodation.startDate-accommodation.endDate)/(1000*60*60*24*7).toFixed(2);
+				accommodation.save(function(err,result){
+					if(err){}
+						else {
+							accommodation_id = result._id;
+							student.accommodation = accommodation_id; //Delete later
+							registration.accommodation = accommodation_id;
+							callback();
+						}
+					});
+			}
+			else callback();
 		},
 		function(callback){
 			var flightInfo_id = null;
-			flightInfo.save(function(err,result){
-				if(err){}
-					else {
-						flightInfo_id = result._id;
-						student.flightInfo = flightInfo_id; //Delete later
-						registration.flightInfo = flightInfo_id;
-						callback();
-					}
-				});
+			if(accommodation.isHomestay){
+				flightInfo.save(function(err,result){
+					if(err){}
+						else {
+							flightInfo_id = result._id;
+							student.flightInfo = flightInfo_id; //Delete later
+							registration.flightInfo = flightInfo_id;
+							callback();
+						}
+					});
+			}
+			else callback();
 		},
 		function(callback){
 			var programRegistration_ids = [];
@@ -153,30 +159,20 @@ exports.register = function(req,res){
 //GET All Students
 exports.getStudents = function(req,res){
 	var studentList = [];
-	Student.find({}, function(err, results){
+	Student.find({}).populate('agent').exec(function(err, results){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
-
-		async.eachSeries(results, function(item,callback){
-			Agent.find({_id: item.agent_id}).lean().exec(function (err, results){
-				if(err){
-
-				}
-				item.agent = results[0];
-				studentList.push(item);
-				callback();
-			});
-		}, function(err, results){
-			if(err){
-
-			}
+		else {
 			res.json({
-				type: true,
-				data: studentList
+				status: 'ok',
+				messages: 'successed',
+				data: results
 			});
-		});
-	})};
+		}
+
+	});
+}
 
 
 //GET: Student rows by student ID
@@ -335,12 +331,16 @@ exports.generatePDF = function (req,res){
 			for (var key in constant.RegistrationTemplateVars) {
 					constant.RegistrationTemplateVars[key] = student_obj[key];
 				};
-			for (var key in constant.AccommodationTemplateVars) {
-					constant.AccommodationTemplateVars[key] = student_accommodation_obj[key];
-				};
-			for (var key in constant.FlightTemplateVars) {
-					constant.FlightTemplateVars[key] = student_flightInfo_obj[key];
-				};
+			if(student_accommodation_obj){
+				for (var key in constant.AccommodationTemplateVars) {
+						constant.AccommodationTemplateVars[key] = student_accommodation_obj[key];
+					};
+			}
+			if(student_flightInfo_obj){
+				for (var key in constant.FlightTemplateVars) {
+						constant.FlightTemplateVars[key] = student_flightInfo_obj[key];
+					};
+			}
 
 
 			var listOfCourseRegistration = [];
@@ -349,6 +349,7 @@ exports.generatePDF = function (req,res){
 				var insertValue = {
 					course : item.course,
 					title : item.title,
+					level : item.level,
 					startDate : item.startDate,
 					duration : item.duration
 				}
@@ -368,29 +369,39 @@ exports.generatePDF = function (req,res){
 														null,
 														listOfCourseRegistration);
 
-				var resultTemplate2 = Pdf.replaceTamplateValue(secondTemplate,constant.RegistrationTemplateVars,
-														constant.AccommodationTemplateVars,
-														constant.FlightTemplateVars,
-														null);
+				if(student_accommodation_obj != null && student_flightInfo_obj!=null){
+					var resultTemplate2 = Pdf.replaceTamplateValue(secondTemplate,constant.RegistrationTemplateVars,
+															constant.AccommodationTemplateVars,
+															constant.FlightTemplateVars,
+															null);
+				}
 
 
 				// replate variables
 				Pdf.generatePDF(resultTemplate1,"first", function(message, path){
 					if(message == "success"){
-						Pdf.generatePDF(resultTemplate2,"second",function(message,path){
-							if(message == "success"){
-								res.json({
-									status: 'successed',
-									data : path
-								});
-							}
-							else {
-								res.json({
-									status: 'fail',
-									data : null
-								});
-							}
-						});
+						if(student_accommodation_obj != null && student_flightInfo_obj!=null){
+							Pdf.generatePDF(resultTemplate2,"second",function(message,path){
+								if(message == "success"){
+									res.json({
+										status: 'successed',
+										data : path
+									});
+								}
+								else {
+									res.json({
+										status: 'fail',
+										data : null
+									});
+								}
+							});
+						}
+						else {
+							res.json({
+								status: 'successed',
+								data : path
+							});
+						}
 					}
 					else {
 						res.json({

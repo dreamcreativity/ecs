@@ -3,86 +3,289 @@
 </script>
 
 <div class="row" ng-controller='StudentEditCtrl'>
-	<div class="col-lg-12">
-		<div class="row">
-			<div class="col-lg-6">									
-				<div class="portlet">
-					<div id="f-3" class="panel-collapse collapse in">
-						<div class="portlet-body">
-							<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Student ID</label>
-									<div class="col-sm-9">
-										<div class="input-group">
-											<input type="text" class="form-control" name="studentId" ng-model="student.student_id">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label">First Name</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required>
-										<p ng-show="studentForm.firstname.$invalid && !studentForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Last Name</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-										<p ng-show="studentForm.lastname.$invalid && !studentForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" ng-model="student.email">Commission Rate</label>
-									<div class="col-sm-9">
-										<div class="input-group">
-											<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
-										</div>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" ng-model="student.email">Pomotion Rate</label>
-									<div class="col-sm-9">
-										<div class="input-group">
-											<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-								<label class="col-sm-3 control-label"></label>
-									<div class="col-sm-9">
-										<div class="tcb">
-											<label>
-												<input type="checkbox" ng-model="student.isQuit" class="tc">
-												<span class="labels"> Delete</span>
-											</label>
-										</div>
-									</div>
-								</div>
+	<div class="tc-tabs"><!-- Nav tabs style 1 -->
+		<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
+			<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+			<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+			<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registered courses</a></li>
+		</ul>
 
 
-								<div class="form-actions">
-									<div class="form-group">
-										<div class="col-sm-offset-3 col-sm-3">
-											<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="studentForm.$invalid">
-										</div>
-										<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
-									</div>
-								</div>
-							</form>
+		<div class="tab-content">
+			<div class="tab-pane fade in portlet-body active" id="p1">
+				<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Student ID</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="studentId" ng-model="student.studentID" readonly>
+							</div>
 						</div>
 					</div>
-				</div>
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">First Name</label>
+						<div class="col-sm-1 col-md-3">
+							<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required>
+							<p ng-show="studentForm.firstname.$invalid && !studentForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Last Name</label>
+						<div class="col-sm-1 col-md-3">
+							<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
+							<p ng-show="studentForm.lastname.$invalid && !studentForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Gender</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="gender" ng-model="student.gender">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Age</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="age" ng-model="student.age">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Commission Rate</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Pomotion Rate</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Address</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="address" ng-model="student.address">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">City</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="city" ng-model="student.city">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Province</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="province" ng-model="student.province">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Citizenship</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="citizenship" ng-model="student.citizenship">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Telephone</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="telephone" ng-model="student.telephone">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Emergency</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="emergency" ng-model="student.emergency">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label"></label>
+						<div class="col-sm-1 col-md-3">
+							<div class="tcb">
+								<label>
+									<input type="checkbox" ng-model="student.isQuit" class="tc">
+									<span class="labels"> Delete</span>
+								</label>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-actions">
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-3">
+								<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="studentForm.$invalid">
+							</div>
+							<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
+						</div>
+					</div>
+				</form>
 			</div>
-		</div>								
-		<!-- END YOUR CONTENT HERE -->
+
+			<div class="tab-pane fade in portlet-body active" id="p2">
+			</div>
+
+			<div class="tab-pane fade in portlet-body active" id="p3">
+				<label class="col-sm-1 col-md-3 control-label">History</label>
+				<table class="table table-bordered table-striped table-hover tc-table table-primary">
+					<thead>
+						<tr>
+							<tr>
+								<th class="hidden-xs center">Course</th>
+								<th class="hidden-xs center">Description</th>
+								<th class="hidden-xs center">Level</th>
+								<th class="hidden-xs center">Year</th>
+								<th class="hidden-xs center">Start Date</th>
+								<th class="hidden-xs center">Duration</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="c in student.programRegistration">
+							<td class="hidden-xs center">{{c.title}}</td>
+							<td class="hidden-xs center">
+								<label class="label label-lg arrowed">
+									{{c.tag}}
+								</label>
+							</td>
+							<td class="hidden-xs center">{{c.level}}</td>
+							<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
+							<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+							<td class="hidden-xs center">{{c.duration}}</td>
+							<td class="col-medium center">
+								<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)" disabled="disabled">
+									<i class="fa fa-times icon-only"></i>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<label class="col-sm-1 col-md-3 control-label">
+					<button id="addrow_button" type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addNewRow()">
+							<i class="fa fa-plus icon-only"></i>
+						</button>
+						Add new Course
+				</label>
+
+				<table class="table table-bordered table-striped table-hover tc-table table-primary">
+							<thead>
+								<tr>
+									<tr>
+										<th class="hidden-xs center">Course</th>
+										<th class="hidden-xs center">Description</th>
+										<th class="hidden-xs center">Level</th>
+										<th class="hidden-xs center">Year</th>
+										<th class="hidden-xs center">Start Date</th>
+										<th class="hidden-xs center">Duration</th>
+										<th class="col-medium center">Action</th>
+									</tr>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="newrow" ng-show="newrowShow">
+									<td class="hidden-xs center">
+										<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
+										</select>
+									</td>
+									<td class="hidden-xs center">
+										<label class="label label-lg arrowed">{{course.tag}}</label>
+									</td>
+									<td class="hidden-xs center">
+											<select ng-model="course.level">
+												<option value="" selected>--Select--</option>
+												<option ng-repeat="item in corseLevel">{{item}}</option>
+											</select>
+									</td>
+										<td class="hidden-xs center">
+											<select ng-model="course.year" ng-change="changeStartYear(course,year)">
+												<option value="" selected>--Select--</option>
+												<option ng-repeat="year in course.availableYears">{{year}}</option>
+											</select>
+										</td>
+										<td class="hidden-xs center">
+											<select ng-model="course.startDate" required>
+												<option value="" selected>--Select--</option>
+												<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
+											</select>
+										</td>
+										<td class="hidden-xs center">
+											<select ng-model="course.duration">		
+												<option value="" selected>--Select--</option>								
+												<option ng-repeat="duration in course.durations">{{duration.title}}</option>
+											</select>
+										</td>
+										<td class="col-medium center">
+											<button type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addCourse(course)">
+												<i class="fa fa-check icon-only"></i>
+											</button>
+											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeRow()">
+												<i class="fa fa-times icon-only"></i>
+											</button>
+										</td>
+									</tr>
+									<tr ng-repeat="c in courseList">
+										<td class="hidden-xs center">{{c.title}}</td>
+										<td class="hidden-xs center">
+											<label class="label label-lg arrowed">
+												{{c.tag}}
+											</label>
+										</td>
+										<td class="hidden-xs center">{{c.level}}</td>
+										<td class="hidden-xs center">{{c.year}}</td>
+										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+										<td class="hidden-xs center">{{c.duration}}</td>
+										<td class="col-medium center">
+											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
+												<i class="fa fa-times icon-only"></i>
+											</button>
+										</td>
+									</tr>
+								</tbody>
+
+							</table>
+							<div class="row">
+								<div class="col-sm-1 col-md-2">
+								<input id="submit_button" type="submit" class="btn btn-primary" value="Submit" ng-click="registerCourse()" ng-disabled="true">
+								</div>
+							</div>
+
+			</div>
+		</div>
 
 	</div>
-</div>					
-
-<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
-	<i class="fa fa-angle-double-up icon-only bigger-110"></i>
-</button>
+</div>

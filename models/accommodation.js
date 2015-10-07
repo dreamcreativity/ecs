@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var AccommodationSchema = new mongoose.Schema({
-	isHomestay: {type: Boolean,default:true},
+	isHomestay: {type: Boolean,default:false},
 	option : {type: String},
 	startDate : {type : Date},
 	endDate : {type : Date},
