@@ -141,12 +141,13 @@ $scope.changeStartYear =  function(course){
 
 .controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,AgentTokens,$window){
 	var obj_id = url_params.id;
+	var currentAgent_id = null;
 	var token = sessionStorage.token;
 	loading();
 
 	function loading() {
 		AgentTokens.post({token:token}, function(result){
-			var currentAgent_id = result.data._id;
+			currentAgent_id = result.data._id;
 		});
 
 		if(obj_id !=null){
@@ -182,8 +183,18 @@ $scope.changeStartYear =  function(course){
 )
 
 .controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
+	var currentAgent_id = null;
+	loading();
+
+	function loading(){
+	var token = sessionStorage.token;
+	AgentTokens.post({token:token}, function(result){
+		 currentAgent_id = result.data._id;
+		});
+	}
+
 	$scope.create = function() {
-		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId:"55da132f8c7e89c5060c77cb"})
+		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId: currentAgent_id})
 		.success(function(data,status,headers,config){
 			console.log("success to send invitation")
 		})

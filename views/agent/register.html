@@ -153,7 +153,7 @@
 
 			<!-- Step 2 Program registration -->
 			<div class="step-pane" id="step2">
-			<div class="form-group">
+				<div class="form-group">
 					<label class="col-sm-3 col-md-1 control-label">English Level : </label>
 					<div class="col-sm-3">
 						<select name="englishlevel" ng-model="student.englishLevel">
@@ -219,59 +219,59 @@
 										<label class="label label-lg arrowed">{{course.tag}}</label>
 									</td>
 									<td class="hidden-xs center">
-											<select ng-model="course.level">
-												<option value="" selected>--Select--</option>
-												<option ng-repeat="item in corseLevel">{{item}}</option>
-											</select>
+										<select ng-model="course.level">
+											<option value="" selected>--Select--</option>
+											<option ng-repeat="item in corseLevel">{{item}}</option>
+										</select>
 									</td>
-										<td class="hidden-xs center">
-											<select ng-model="course.year" ng-change="changeStartYear(course,year)">
-												<option value="" selected>--Select--</option>
-												<option ng-repeat="year in course.availableYears">{{year}}</option>
-											</select>
-										</td>
-										<td class="hidden-xs center">
-											<select ng-model="course.startDate" required>
-												<option value="" selected>--Select--</option>
-												<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
-											</select>
-										</td>
-										<td class="hidden-xs center">
-											<select ng-model="course.duration">		
-												<option value="" selected>--Select--</option>								
-												<option ng-repeat="duration in course.durations">{{duration.title}}</option>
-											</select>
-										</td>
-										<td class="col-medium center">
-											<button type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addCourse(course)">
-												<i class="fa fa-check icon-only"></i>
-											</button>
-											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeRow()">
-												<i class="fa fa-times icon-only"></i>
-											</button>
-										</td>
-									</tr>
-									<tr ng-repeat="c in courseList">
-										<td class="hidden-xs center">{{c.title}}</td>
-										<td class="hidden-xs center">
-											<label class="label label-lg arrowed">
-												{{c.tag}}
-											</label>
-										</td>
-										<td class="hidden-xs center">{{c.level}}</td>
-										<td class="hidden-xs center">{{c.year}}</td>
-										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
-										<td class="hidden-xs center">{{c.duration}}</td>
-										<td class="col-medium center">
-											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
-												<i class="fa fa-times icon-only"></i>
-											</button>
-										</td>
-									</tr>
-								</tbody>
+									<td class="hidden-xs center">
+										<select ng-model="course.year" ng-change="changeStartYear(course,year)">
+											<option value="" selected>--Select--</option>
+											<option ng-repeat="year in course.availableYears">{{year}}</option>
+										</select>
+									</td>
+									<td class="hidden-xs center">
+										<select ng-model="course.startDate" required>
+											<option value="" selected>--Select--</option>
+											<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
+										</select>
+									</td>
+									<td class="hidden-xs center">
+										<select ng-model="course.duration">		
+											<option value="" selected>--Select--</option>								
+											<option ng-repeat="duration in course.durations">{{duration.title}}</option>
+										</select>
+									</td>
+									<td class="col-medium center">
+										<button type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addCourse(course)">
+											<i class="fa fa-check icon-only"></i>
+										</button>
+										<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeRow()">
+											<i class="fa fa-times icon-only"></i>
+										</button>
+									</td>
+								</tr>
+								<tr ng-repeat="c in courseList">
+									<td class="hidden-xs center">{{c.title}}</td>
+									<td class="hidden-xs center">
+										<label class="label label-lg arrowed">
+											{{c.tag}}
+										</label>
+									</td>
+									<td class="hidden-xs center">{{c.level}}</td>
+									<td class="hidden-xs center">{{c.year}}</td>
+									<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+									<td class="hidden-xs center">{{c.duration}}</td>
+									<td class="col-medium center">
+										<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
+											<i class="fa fa-times icon-only"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
 
-							</table>
-						</div>
+						</table>
+					</div>
 				</div>
 
 				<!-- End dynamic course template-->
@@ -288,12 +288,11 @@
 				</div>
 
 				<div class="form-group">
-						<label class="col-sm-3 col-md-1 control-label">To Date : </label>
-						<div class="col-sm-3">
-							<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
-						</div>
+					<label class="col-sm-3 col-md-1 control-label">To Date : </label>
+					<div class="col-sm-3">
+						<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
+					</div>
 				</div> 
-
 			</div>
 
 
