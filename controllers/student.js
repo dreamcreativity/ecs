@@ -192,7 +192,7 @@ exports.getStudentbyStudentId = function(req,res){
 //GET: Student by Id
 exports.getStudentbyId = function(req,res){
 	var id = req.params.id;
-	Student.findOne({_id:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+	Student.findOne({_id:id}).populate('agent').populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
 
 		if(err) {
 			res.json({
@@ -246,18 +246,27 @@ exports.getRegistrationByAgent = function(req,res){
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	//var Student = new Student(req.body);
+	var programs = req.body.programRegistration;
+	req.body.programRegistration =[];
+	for (var i = 0; i < programs.length; i++) {
+		req.body.programRegistration.push(programs[i]._id);
+	};
+
 	Student.update({_id:id}, req.body, function(err, result){
 		if(err){
 			res.json({
-				type: false,
-				data: 'Error occured: ' + err}
-				);
+				status: 'fail',
+				messages: err,
+				data: null
+				});
 		}
-		res.json({
-			type:true,
-			data: result
-		});
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
 	});
 }
 
@@ -309,6 +318,49 @@ exports.createFlightInfo = function(req,res){
 			});
 		}
 	});
+}
+
+
+//Extending courses for student
+exports.createExtendingCourse = function(req,res){
+	var student_id = req.body.student_id;
+	var programs = req.body.courseList;
+	var programRegistration_ids = [];
+
+	async.each(programs, function(item, callback){
+				var obj = new ProgramRegistration(item);
+				obj.save(function(err,result){
+					if(err){
+						callback()
+					}
+					else {
+						programRegistration_ids.push(result._id);
+						callback()
+					}
+				});
+			},function(err){
+				if(err){
+					callback();
+				}
+				else {
+					Student.findOne({_id:student_id}, function(err, result){
+						if(!err){
+							var temp = result.programRegistration;
+							result.programRegistration.push(programRegistration_ids);
+							result.save(function(err, result1){
+								if(!err){
+									res.json({
+										status: 'ok',
+										messages: 'successed',
+										data: result
+									});
+								}
+							})
+						}
+					});
+				}
+			});
+
 }
 
 exports.generatePDF = function (req,res){

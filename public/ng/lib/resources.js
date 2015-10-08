@@ -102,6 +102,11 @@ resources.factory('Agents',['$resource',
             url : '/api/regiration/agent/:id',
             method : 'GET',
             params : {id : '@_id'}
+        },
+        createExtendingCourse : {
+            url : '/api/student/extending',
+            method : 'POST',
+            params : {student_id : '@student_id', courseList : '@courseList'}
         }
     });
 }])

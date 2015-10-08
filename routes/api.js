@@ -188,6 +188,9 @@ router.post('/accommodation', student.createAccommodation);
 //POST : create a flightInfo
 router.post('/flightInfo', student.createFlightInfo);
 
+//POST students by Agent ID
+router.post('/student/extending',student.createExtendingCourse);
+
 //PUT : Edit a student info
 router.put('/student/:id', student.edit)
 

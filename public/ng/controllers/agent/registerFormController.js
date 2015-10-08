@@ -34,14 +34,6 @@ angular.module('AgentApp')
 		});
 	}
 
-	$scope.checkStudentInfo = function(isValid) {
-		console.log("checkStudentInfo");
-		return;
-	}
-
-
-
-
 	//register action
 	$scope.register = function(isValid){
 		$scope.student.agent = $scope.currentAgent_id;

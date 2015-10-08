@@ -271,6 +271,18 @@ router.get('/student/create', function(req, res) {
 		);
 });
 
+router.get('/student/extending/:id', function(req, res) {
+	template(req,res,'admin_main','admin/student/student_extending.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Extending course',
+				url_params : req.params
+			}
+		);
+});
+
 router.get('/student/agent/create', function(req,res){
 	res.render('admin/student/studentbyAgent_new.html');
 })

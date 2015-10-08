@@ -39,7 +39,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Gender</label>
+						<label class="col-sm-1 col-md-3 control-label">Gender</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input type="text" class="form-control" name="gender" ng-model="student.gender">
@@ -48,7 +48,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Age</label>
+						<label class="col-sm-1 col-md-3 control-label">Age</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input type="text" class="form-control" name="age" ng-model="student.age">
@@ -57,7 +57,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Commission Rate</label>
+						<label class="col-sm-1 col-md-3 control-label">Commission Rate</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
@@ -66,7 +66,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Pomotion Rate</label>
+						<label class="col-sm-1 col-md-3 control-label">Pomotion Rate</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
@@ -75,7 +75,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Address</label>
+						<label class="col-sm-1 col-md-3 control-label">Address</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="address" ng-model="student.address">
@@ -84,7 +84,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">City</label>
+						<label class="col-sm-1 col-md-3 control-label">City</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="city" ng-model="student.city">
@@ -93,7 +93,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Province</label>
+						<label class="col-sm-1 col-md-3 control-label">Province</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="province" ng-model="student.province">
@@ -102,7 +102,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Citizenship</label>
+						<label class="col-sm-1 col-md-3 control-label">Citizenship</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="citizenship" ng-model="student.citizenship">
@@ -112,7 +112,7 @@
 
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Telephone</label>
+						<label class="col-sm-1 col-md-3 control-label">Telephone</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="telephone" ng-model="student.telephone">
@@ -121,7 +121,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-1 col-md-3 control-label" ng-model="student.email">Emergency</label>
+						<label class="col-sm-1 col-md-3 control-label">Emergency</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<input id="touchspin-demo2" type="text" class="form-control" name="emergency" ng-model="student.emergency">
@@ -145,24 +145,30 @@
 
 					<div class="form-actions">
 						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-3">
+							<div class="col-sm-1">
+								<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary">Extening course</a>
+							</div>
+							<div class="col-sm-offset-2 col-sm-1">
 								<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="studentForm.$invalid">
 							</div>
-							<a href="/admin/student/all" type="submit" class="btn">Cancel</a>
+							<div class="col-sm-1">
+								<a href="/admin/student/all" type="submit" class="btn btn-primary">Cancel</a>
+							</div>
 						</div>
 					</div>
 				</form>
 			</div>
 
-			<div class="tab-pane fade in portlet-body active" id="p2">
+			<div class="tab-pane fade in portlet-body" id="p2">
 			</div>
 
-			<div class="tab-pane fade in portlet-body active" id="p3">
+			<div class="tab-pane fade in portlet-body" id="p3">
 				<label class="col-sm-1 col-md-3 control-label">History</label>
 				<table class="table table-bordered table-striped table-hover tc-table table-primary">
 					<thead>
 						<tr>
 							<tr>
+								<th class="hidden-xs center">Register Date</th>
 								<th class="hidden-xs center">Course</th>
 								<th class="hidden-xs center">Description</th>
 								<th class="hidden-xs center">Level</th>
@@ -175,12 +181,9 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="c in student.programRegistration">
+							<td class="hidden-xs center"><label class="label label-success">{{ c.createDate  | date:'MMMM d, yyyy'}}</label></td>
 							<td class="hidden-xs center">{{c.title}}</td>
-							<td class="hidden-xs center">
-								<label class="label label-lg arrowed">
-									{{c.tag}}
-								</label>
-							</td>
+							<td class="hidden-xs center">{{c.tag}}</td>
 							<td class="hidden-xs center">{{c.level}}</td>
 							<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
 							<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
@@ -194,97 +197,9 @@
 					</tbody>
 				</table>
 
-
-				<label class="col-sm-1 col-md-3 control-label">
-					<button id="addrow_button" type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addNewRow()">
-							<i class="fa fa-plus icon-only"></i>
-						</button>
-						Add new Course
-				</label>
-
-				<table class="table table-bordered table-striped table-hover tc-table table-primary">
-							<thead>
-								<tr>
-									<tr>
-										<th class="hidden-xs center">Course</th>
-										<th class="hidden-xs center">Description</th>
-										<th class="hidden-xs center">Level</th>
-										<th class="hidden-xs center">Year</th>
-										<th class="hidden-xs center">Start Date</th>
-										<th class="hidden-xs center">Duration</th>
-										<th class="col-medium center">Action</th>
-									</tr>
-								</tr>
-							</thead>
-							<tbody>
-								<tr id="newrow" ng-show="newrowShow">
-									<td class="hidden-xs center">
-										<select ng-model="course" ng-init="course = courses[0]" ng-options="course as course.title for course in courses " ng-change="changeCourse(course)">
-										</select>
-									</td>
-									<td class="hidden-xs center">
-										<label class="label label-lg arrowed">{{course.tag}}</label>
-									</td>
-									<td class="hidden-xs center">
-											<select ng-model="course.level">
-												<option value="" selected>--Select--</option>
-												<option ng-repeat="item in corseLevel">{{item}}</option>
-											</select>
-									</td>
-										<td class="hidden-xs center">
-											<select ng-model="course.year" ng-change="changeStartYear(course,year)">
-												<option value="" selected>--Select--</option>
-												<option ng-repeat="year in course.availableYears">{{year}}</option>
-											</select>
-										</td>
-										<td class="hidden-xs center">
-											<select ng-model="course.startDate" required>
-												<option value="" selected>--Select--</option>
-												<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:'MMMM d'}}</option>
-											</select>
-										</td>
-										<td class="hidden-xs center">
-											<select ng-model="course.duration">		
-												<option value="" selected>--Select--</option>								
-												<option ng-repeat="duration in course.durations">{{duration.title}}</option>
-											</select>
-										</td>
-										<td class="col-medium center">
-											<button type="button" class="btn btn-danger btn-xs btn-circle" ng-click="addCourse(course)">
-												<i class="fa fa-check icon-only"></i>
-											</button>
-											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeRow()">
-												<i class="fa fa-times icon-only"></i>
-											</button>
-										</td>
-									</tr>
-									<tr ng-repeat="c in courseList">
-										<td class="hidden-xs center">{{c.title}}</td>
-										<td class="hidden-xs center">
-											<label class="label label-lg arrowed">
-												{{c.tag}}
-											</label>
-										</td>
-										<td class="hidden-xs center">{{c.level}}</td>
-										<td class="hidden-xs center">{{c.year}}</td>
-										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
-										<td class="hidden-xs center">{{c.duration}}</td>
-										<td class="col-medium center">
-											<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
-												<i class="fa fa-times icon-only"></i>
-											</button>
-										</td>
-									</tr>
-								</tbody>
-
-							</table>
-							<div class="row">
-								<div class="col-sm-1 col-md-2">
-								<input id="submit_button" type="submit" class="btn btn-primary" value="Submit" ng-click="registerCourse()" ng-disabled="true">
-								</div>
-							</div>
-
 			</div>
+
+
 		</div>
 
 	</div>

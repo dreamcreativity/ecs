@@ -6,6 +6,7 @@ var ProgramRegistrationSchema = new mongoose.Schema({
 	level : {type : String},
 	duration : {type: String},
 	startDate : {type : Date},
+	createDate : {type : Date, default : Date.now }
 });
 
 var ProgramRegistrationSchema = mongoose.model('ProgramRegistration', ProgramRegistrationSchema);
