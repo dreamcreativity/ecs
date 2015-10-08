@@ -87,14 +87,15 @@
 	/* Portfolio - No Margin
 	-----------------------------------------------------------------*/
 
-	.portfolio-nomargin .portfolio-item { width: 224px; }
+	.portfolio-nomargin .portfolio-item { width: 50%; }
 
-	.portfolio-nomargin .portfolio-item .portfolio-image,
-	.portfolio-nomargin .portfolio-item .portfolio-image a,
-	.portfolio-nomargin .portfolio-item .portfolio-image img {
-	    width: 234px;
-	    height: 176px;
+	.portfolio-nomargin .portfolio-item .portfolio-image{
+	    height:240px;
 	}
+	.portfolio-nomargin .portfolio-item .portfolio-image a,
+	.portfolio-nomargin .portfolio-item .portfolio-image img{height:auto}
+	.portfolio-nomargin .portfolio-desc{padding:200px 15px 0}
+	.portfolio-nomargin .portfolio-desc:hover{padding:160px 15px 0;background-size:100% 85%}
 
 	/* Portfolio - Sidebar
 	-----------------------------------------------------------------*/
@@ -1041,14 +1042,16 @@
 	/* Portfolio - No Margin
 	-----------------------------------------------------------------*/
 
-	#portfolio.portfolio-nomargin .portfolio-item { width: 229px; }
+	#portfolio.portfolio-nomargin .portfolio-item {margin:0 0 20px;width:50%}
 
-	#portfolio.portfolio-nomargin .portfolio-item .portfolio-image,
+	#portfolio.portfolio-nomargin .portfolio-item .portfolio-image{height:210px;width:100%}
 	#portfolio.portfolio-nomargin .portfolio-item .portfolio-image a,
 	#portfolio.portfolio-nomargin .portfolio-item .portfolio-image img {
-	    width: 239px;
-	    height: 178px;
+	    height: auto;width:100%
 	}
+	
+	.portfolio-nomargin .portfolio-desc{padding:170px 15px 0}
+	.portfolio-nomargin .portfolio-desc:hover{padding:130px 15px 0}
 
 	/* Portfolio - Items - 2 Columns
 	-----------------------------------------------------------------*/
@@ -1766,19 +1769,22 @@
 	/* Portfolio - Items - 5 & 6 Columns - No Margin
 	-----------------------------------------------------------------*/
 
-	#portfolio.portfolio-nomargin:not(.portfolio-1) .portfolio-item { width: 219px; }
+	#portfolio.portfolio-nomargin:not(.portfolio-1) .portfolio-item { width: 100%; }
 
-	#portfolio.portfolio-nomargin:not(.portfolio-1) .portfolio-item .portfolio-image,
+	#portfolio.portfolio-nomargin:not(.portfolio-1) .portfolio-item .portfolio-image{width:100%;height:240px}
 	#portfolio.portfolio-nomargin:not(.portfolio-1) .portfolio-item .portfolio-image a,
 	#portfolio.portfolio-nomargin:not(.portfolio-1) .portfolio-item .portfolio-image img {
-	    width: 219px;
-	    height: 164px;
+	    width: 100%;
+	    height: auto;
 	}
+	
+	.portfolio-nomargin .portfolio-desc{padding:200px 15px 0}
+	.portfolio-nomargin .portfolio-desc:hover{padding:160px 15px 0}
 
 	/* Portfolio - Items - Descriptions
 	-----------------------------------------------------------------*/
 
-	#portfolio:not(.portfolio-1) .portfolio-desc { padding: 15px 5px 10px; }
+	#portfolio:not(.portfolio-1) .portfolio-desc {}
 
 	#portfolio:not(.portfolio-1) .portfolio-desc h3 { font-size: 16px; }
 
