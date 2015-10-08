@@ -23,6 +23,7 @@ function IsAuthException(path, method){
 	// auth exception list , put urls into this array
 	//--------------------------------------------------
 	var list = [
+		{	path : '/api/events', method: 'GET', type: 'direct'},
 		{	path : '/api/slider', method: 'GET', type: 'direct'},
 		{	path : '/api/activities', method: 'GET', type: 'direct' },
 		{	path : '/api/staffs/login', method: 'POST', type: 'direct' },

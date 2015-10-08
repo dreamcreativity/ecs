@@ -57,7 +57,7 @@ var _event = new Event(req.body);
 
 //GET all events
 exports.get = function(req,res){
-Event.find({},function(err,results){
+Event.find({}).populate('cover').exec(function(err,results){
 	if(err){
 		res.json(
 			{

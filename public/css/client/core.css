@@ -293,12 +293,16 @@
 	border: 1px solid #EFE6E6;
     background-color: #FFF1F1;
     cursor: pointer;
-    height: 112px;
-    overflow: hidden;
+    height: 115px;
+    
     vertical-align: middle;
     position: relative;
 }
-.event-images img{ 
+.event-images .wraper{
+	overflow: hidden;
+	height: 105px;
+}
+.event-images .wraper img{ 
 	width: 100%!important;
 	height:auto;
 }
