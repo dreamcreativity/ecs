@@ -1968,14 +1968,16 @@
 
 	#portfolio:not(.portfolio-1) { margin: 0 !important; }
 
-	#portfolio:not(.portfolio-1) .portfolio-item { width: 280px; }
+	#portfolio:not(.portfolio-1) .portfolio-item {width:100%}
 
-	#portfolio:not(.portfolio-1) .portfolio-item .portfolio-image,
+	#portfolio:not(.portfolio-1) .portfolio-item .portfolio-image{width:100%;height:160px}
 	#portfolio:not(.portfolio-1) .portfolio-item .portfolio-image a,
 	#portfolio:not(.portfolio-1) .portfolio-item .portfolio-image img {
-	    width: 280px;
-	    height: 211px;
+	    width:100%;
+	    height: auto;
 	}
+	.portfolio-nomargin .portfolio-desc{padding:120px 15px 0}
+	.portfolio-nomargin .portfolio-desc:hover{padding:80px 15px 0}
 
 	.post-grid:not(.post-masonry) .entry-image iframe { height: 157px; }
 
