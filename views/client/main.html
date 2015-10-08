@@ -337,10 +337,10 @@
                                         <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                                     </div> -->
                                     
-                                    <div class="portfolio-desc">
-                                        <h3><a href="javascript:void(0)"><%- activities[i].title %></a></h3>
-                                        <span><a href="javascript:void(0)"><%- activities[i].subtitle %></a></span>
-                                    </div>
+                                    <a href="/activity/<%- activities[i]._id %>" class="portfolio-desc">
+                                        <h3><%- activities[i].title %></h3>
+                                        <span><%- activities[i].subtitle %></span>
+                                    </a>
                                 </div>
                             </article>
                             <% } %>
