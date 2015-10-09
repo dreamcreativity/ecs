@@ -58,6 +58,7 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 	var studentTemplate = templates[1];
 	var courseTemplate = templates[2];
 	var accommodationTempate = templates[3];
+	var formTitleTemplate = templates[4];
 
 	//replace value in main template
 	for (var key in studentinfo) {
@@ -75,6 +76,14 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 			if(studentinfo[key]) studentTemplate = studentTemplate.replace("@" + key + "@", "Home Country");
 	 		else studentTemplate = studentTemplate.replace("@" + key + "@", "Canada");
 		}
+		else if(key == "type" || key == "studentID"){
+			formTitleTemplate = formTitleTemplate.replace("@" + key + "@", studentinfo[key]);
+		}
+		else if(key == "agent"){
+			var replaceValue = (studentinfo[key] != null) ? studentinfo[key].firstname + " " + studentinfo[key].lastname : 'N/A'
+			formTitleTemplate = formTitleTemplate.replace("@" + key + "@", replaceValue);
+		}
+
 		else {
 			var replaceValue = studentinfo[key]
 			if(typeof studentinfo[key] == "undefined") replaceValue ='';
@@ -83,6 +92,7 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 	}
 
 	result = result.replace("@studentTemplate@", studentTemplate);
+	result = result.replace("@formTitleTemplate@", formTitleTemplate);
 
 	//replace value in course template
 	if(listofcourse){

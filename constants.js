@@ -58,6 +58,9 @@ module.exports = {
 		commissionRate : null,
 		pomotionRate : null,
 		isHomestay : null,
+		type : null,
+		studentID : null,
+		agent :null
 	},
 
 	AccommodationTemplateVars : {

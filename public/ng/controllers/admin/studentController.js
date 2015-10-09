@@ -32,7 +32,7 @@ angular.module('AdminApp')
 				courseList : $scope.courseList})
 			.success(function(data,status,headers,config){
 				if(data.messages == "successed"){
-					$http.post('/api/pdf',{registerId:data.data.student})
+					$http.post('/api/pdf',{registerId:data.data.student, type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
 							$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
@@ -126,11 +126,8 @@ angular.module('AdminApp')
 			Courses.getCourstStartDateList({id:course._id, year:course.year}, function(data){
 				course.startDate = data.data[0];
 				course.startDates = data.data;
-				//closeAllSelectList();
 			});
 		}}
-
-
 })
 
 .controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,Students,Courses,Constants,$window) {

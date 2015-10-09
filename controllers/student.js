@@ -365,8 +365,9 @@ exports.createExtendingCourse = function(req,res){
 
 exports.generatePDF = function (req,res){
 	var id = req.body.registerId;
+	var type = req.body.type;
 	var variables_list = [];
-	Student.findOne({_id : id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+	Student.findOne({_id : id}).populate('agent').populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
 		if(err){
 			res.json(
 			{
@@ -380,8 +381,12 @@ exports.generatePDF = function (req,res){
 			var student_accommodation_obj = result.accommodation;
 			var student_flightInfo_obj = result.flightInfo;
 			var courses_obj = result.programRegistration;
+
 			for (var key in constant.RegistrationTemplateVars) {
-					constant.RegistrationTemplateVars[key] = student_obj[key];
+					if(key == "type"){
+						constant.RegistrationTemplateVars[key] = type;
+					}
+					else constant.RegistrationTemplateVars[key] = student_obj[key];
 				};
 			if(student_accommodation_obj){
 				for (var key in constant.AccommodationTemplateVars) {
@@ -407,10 +412,10 @@ exports.generatePDF = function (req,res){
 				}
 				listOfCourseRegistration.push(insertValue);
 			};
-			var templates = ['mainTemplate.html','secondTemplate.html','studentTemplate.html','courseTemplate.html','accommodationTemplate.html'];
+			var templates = ['mainTemplate.html','secondTemplate.html','studentTemplate.html','courseTemplate.html','accommodationTemplate.html','formTitleTemplate.html'];
 			Pdf.getPdfTemplateList(templates,function(data){
-				var firstTemplate = [data[0],data[2],data[3],data[4]];
-				var secondTemplate = [data[1],data[2],data[3],data[4]];
+				var firstTemplate = [data[0],data[2],data[3],data[4],data[5]];
+				var secondTemplate = [data[1],data[2],data[3],data[4],data[5]];
 				//Four paramaters should be passed into below function
 				//1.constant.RegistrationTemplateVars
 				//2.constant.AccommodationTemplateVars
