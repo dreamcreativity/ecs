@@ -70,69 +70,7 @@ angular.module('AgentApp')
 				console.log("fail to send registration email")
 			});
 	}
-
-$scope.addNewRow = function() {
-	$scope.newrowShow = true;
-	$("#addrow_button").attr("disabled", true)
-	//$scope.$apply();
-}
-
-$scope.addCourse = function(course) {
-	if(typeof course != "undefined"){
-		if (typeof course.startDate == "undefined" ||typeof course.duration == "undefined" ||typeof course.year == "undefined") {
-				ShowGritterCenter('System Notification','Please enter complete course information');
-		}
-		else{
-			$scope.courseList.push({
-				id : course._id,
-				tag : course.tag,
-				title: course.title,
-				level: course.level,
-				startDate: course.startDate,
-				duration: course.duration,
-				year:course.year
-			});
-			$scope.newrowShow = false
-			delete $scope.course
-			$("#addrow_button").attr("disabled", false)
-		}
-	}
-	else {
-		ShowGritterCenter('System Notification','Please enter complete course information');
-	}
-}
-
-$scope.removeRow = function(){
-	$scope.newrowShow = false
-	$("#addrow_button").attr("disabled", false)
-}
-
-$scope.removeCourse = function(course){
-	var index = $scope.courseList.indexOf(course);
-	$scope.courseList.splice(index, 1);     
-}
-
-
-$scope.changeCourse = function(targetCourse){
-	Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
-		$scope.course.availableYears = $scope.availableYears;
-		$scope.course.startDates = data.data
-	});
-}
-
-$scope.changeStartDate = function(course, startDate){
-	course.startDate =  startDate;
-}
-
-$scope.changeStartYear =  function(course){
-	if(typeof course != "undefined"){
-		Courses.getCourstStartDateList({id:course._id, year:course.year}, function(data){
-			course.startDate = data.data[0];
-			course.startDates = data.data;
-			//closeAllSelectList();
-		});
-	}}
-})
+ })
 
 .controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,AgentTokens,$window){
 	var obj_id = url_params.id;
