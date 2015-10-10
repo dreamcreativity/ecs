@@ -1,0 +1,69 @@
+<style type="text/css">
+.activity-banner{height:50vh;min-height:250px;overflow:hidden;margin-bottom:40px;background-size:cover;background-position:50% 25%}
+.activity-banner>div{background-image:url('/images/black_through.png');background-size:100% 100%;background-repeat:no-repeat;width:100%;height:100%}
+.activity-banner .container{position:relative}
+.activity-banner .container .title{color:#fff}
+
+	.activity-banner .banner-img{
+		position: absolute;
+		top: 0; left: 0;
+	}
+
+	.activity-banner .banner-list{
+		position: absolute;
+		top: 200px; right: 100px;
+		list-style: none;
+
+	}
+	.activity-banner .banner-list li{
+		list-style: none;
+		float: left;
+		margin-right: 10px;
+	}
+	.activity-banner .banner-list li img{
+		height: 50px;
+	}
+</style>
+<section >
+	<div class="content-wrap" style="padding-top:0">
+		<section>
+			<div class="activity-banner" style="background-image:url(<%- activity.cover.path %>)">
+            	<div>
+				<div class="container clearfix">
+                    <h2 class="title"><%- activity.title %></h2>
+                    <ul class="banner-list">
+                        <% for(var j=0; j < activityList.length; j++) { %>
+                        <li> <a href="/activity/detail/<%- activityList[j]._id %>"><img src="<%- activityList[j].cover.thumbnail %>"></a></li>
+                        <% } %>
+                    </ul>
+                </div>
+                </div>
+			</div>
+			
+			
+		</section>
+
+
+		 <section id="section-course" class="page-section " style="clear:both">
+		 	<div class="container clearfix">
+
+		 		
+
+		 		<!-- <div class="row hidden-sm hidden-xs">
+			 		<div class='col-xs-12 '>
+			 			<img  src="<%- activity.cover.path %>">
+			 		</div>
+		 		</div> -->
+
+		 		<div class="row">
+				<% for(var i=0; i< activity.album.length; i++) {%>
+					<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3 activity-img"><img style="width:100%" src="<%- activity.album[i].path %>"></div>
+				<% } %>
+
+		 		</div>
+
+		 	</div>
+		 </div>
+	</div>
+</div>
+<div style="margin-bottom:100px"></div>

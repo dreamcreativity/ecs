@@ -329,7 +329,7 @@
                             <% for(i in activities){ %>
                             <article class="portfolio-item pf-media pf-icons">
                                 <div class="portfolio-image">
-                                    <a href="/activity/<%- activities[i]._id %>">
+                                    <a href="/activity/detail/<%- activities[i]._id %>">
                                         <img src="<%- activities[i].cover.path %>" alt="Open Imagination">
                                     </a>
                                     <!-- <div class="portfolio-overlay">
@@ -337,7 +337,7 @@
                                         <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                                     </div> -->
                                     
-                                    <a href="/activity/<%- activities[i]._id %>" class="portfolio-desc">
+                                    <a href="/activity/detail/<%- activities[i]._id %>" class="portfolio-desc">
                                         <h3><%- activities[i].title %></h3>
                                         <span><%- activities[i].subtitle %></span>
                                     </a>

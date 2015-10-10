@@ -90,6 +90,14 @@
 									</div>
 								</div>
 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Page Content</label>
+									<div class="col-sm-6">
+										<textarea id="page-content" class="form-control"></textarea>
+
+										<!-- <div  class="form-control wysiwyg-editor" id="page-content"></div> -->
+									</div>
+								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Cover Image</label>
@@ -328,6 +336,42 @@
 
 
 </div>			
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+			$('#page-content').ek_wysiwyg({
+
+				toolbar:
+					[
+						'font',
+						null,
+						'fontSize',
+						null,
+						'bold',
+						'italic',
+						'strikethrough',
+						'underline',
+						null,
+						'justifyleft',
+						'justifycenter',
+						'justifyright',
+						null,
+						'createLink',
+						'unlink',
+						null,
+						'insertImage',
+						null,
+						'undo',
+						'redo'
+					]
+			}).prev().addClass('editor-style1 text-center');
+
+
+
+
+	});
+</script>
 
 
 

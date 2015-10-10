@@ -8,14 +8,14 @@
 
 		function loading() {
 			$scope.events = Events.query();
-			$scope.array = [];
+		
 			Medias.get({target : 'Event'},function(result){
 				$scope.medias=result;
 			})
 		}
 
 		$scope.create = function(isValid){
-			$scope.event.mediaId = $scope.array[0];
+			
 			Events.save($scope.event,function(result){
 				if(result.type == true){
 					ShowGritterCenter('System Notification','Event document has been updated');

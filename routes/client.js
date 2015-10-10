@@ -79,7 +79,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/activity/:id', function(req, res){
+router.get('/activity/detail/:id', function(req, res){
 	var id = req.params.id;
 	var activityList = [];
 	async.series([
@@ -94,27 +94,32 @@ router.get('/activity/:id', function(req, res){
 	], function(){
 		console.log(activityList);
 		Activity.find({'_id':id}).populate('album').populate('cover').exec(function(err,result){
-			template(req,res,'client_normal','client/activity.html',{ 
+			template(req,res,'client_normal','client/activityDetail.html',{ 
 				activity : result[0],
 				activityList : activityList,
 			});
 		});
 	});
 
-
-
-
-		
-
-
-	//template(req,res,'client_normal','client/activity.html',{});
 });
+
+
+router.get('/activity', function(req, res){
+
+	Activity.find({}).populate('cover').exec(function(err,result){
+		template(req,res,'client_normal','client/activity.html',{ 
+			activitys : result
+		});
+	});
+
+});
+
 
 router.get('/calculator', function(req, res){
 	var constants = require("../constants")
 	var CourseModule = require('../modules/publicHolidayModule');
 
-	template(req,res,'client_normal','client/calculator.html',{});
+	template(req,res,'client_normal','client/calculatorDetail.html',{});
 });
 
 
