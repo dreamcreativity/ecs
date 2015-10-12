@@ -12,9 +12,10 @@
                     <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].media.path %>')">
                         <div class="curtain">
                         <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center">
+                            <div class="slider-caption slider-caption-center"  postion="<%- sliders[i].position %>">
                                 <h2 style="color:<%=  sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>"><%- sliders[i].heading %></h2>
                                 <p style="color:<%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>" data-caption-delay="200"><%- sliders[i].sub_heading %></p>
+                                <!-- <div style="display:none" class="caption-postion"><%- sliders[i].position %></div> -->
                             </div>
                         </div>
 
@@ -33,7 +34,7 @@
                     <% } %>
                     
 
-                    <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/2000x1200_home_slide_001.jpg')">
+                    <!-- <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/2000x1200_home_slide_001.jpg')">
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
@@ -55,7 +56,7 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <!-- <div class="swiper-slide dark">
                     	<div class="curtain">
@@ -74,7 +75,7 @@
                         </div>
                         </div>
                     </div> -->
-                    <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/students.jpg')">
+                    <!-- <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/students.jpg')">
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
@@ -83,7 +84,7 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
                 <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
