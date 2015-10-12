@@ -46,7 +46,7 @@ angular.module('AgentApp')
 					$http.post('/api/pdf',{registerId:data.data.student,type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
-							$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+							$http.post('/api/registration/sendEmail',{student:$scope.student,
 								subject:"success registration", 
 								context: "Welcome", 
 								attachments : [data.data]})

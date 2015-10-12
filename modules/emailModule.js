@@ -12,7 +12,29 @@ var transporter = nodemailer.createTransport({
 });
 
 
-exports.sendEmail = function(to,subject,context,attachments, callback){
+exports.getEmailTemplate = function(templateName, callback){
+
+	fs.readFile('./EmailTemplates/' + templateName, 'utf8', function (err,data) {
+		if (err) {
+			return console.log(err);
+		}
+		callback(data);
+	});
+
+}
+
+exports.replaceEmailTemplate = function(templateName, studentinfo){
+	var template = templateName;
+	for(var key in studentinfo){
+		var replaceValue = studentinfo[key];
+		template = template.replace('@' + key + '@', replaceValue);
+	}
+	return template;
+}
+
+
+
+exports.sendEmail = function(to,subject,context,attachments,callback){
 	var message = {
 		from : email,
 		to : to,

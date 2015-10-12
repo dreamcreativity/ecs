@@ -100,7 +100,19 @@ module.exports = {
 			level : null,
 			duration : null,
 			startDate : null
-		}
+		},
+
+
+	//Email Template variable 
+
+	EmailStudentTempaleVars : {
+		firstname : null,
+		lastname : null,
+		url : null
+	}
+
+
+
 }
 
 

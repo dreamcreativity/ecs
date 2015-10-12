@@ -51,7 +51,7 @@ exports.register = function(req,res){
 		function(callback){
 			var accommodation_id =null;
 			if(accommodation.isHomestay){
-				accommodation.numOfWeeks = (accommodation.startDate-accommodation.endDate)/(1000*60*60*24*7).toFixed(2);
+				accommodation.numOfWeeks = Math.round((accommodation.endDate-accommodation.startDate)/ 604800000);
 				accommodation.save(function(err,result){
 					if(err){}
 						else {
@@ -462,13 +462,16 @@ exports.generatePDF = function (req,res){
 
 				// replate variables
 				Pdf.generatePDF(resultTemplate1,"first", function(message, path){
+					var all_path = [];
 					if(message == "success"){
+						all_path.push(path);
 						if(student_accommodation_obj != null && student_flightInfo_obj!=null){
 							Pdf.generatePDF(resultTemplate2,"second",function(message,path){
 								if(message == "success"){
+									all_path.push(path);
 									res.json({
 										status: 'successed',
-										data : path
+										data : all_path
 									});
 								}
 								else {
@@ -482,7 +485,7 @@ exports.generatePDF = function (req,res){
 						else {
 							res.json({
 								status: 'successed',
-								data : path
+								data : all_path
 							});
 						}
 					}
@@ -498,59 +501,29 @@ exports.generatePDF = function (req,res){
 	});
 }
 
-exports.generatePDFTest = function (req,res){
-	var id = req.body.registerId;
-	var variables_list = [];
-	Student.find({_id : id}, function(err, result){
-		if(err){
-			res.json(
-			{
-				status: 'fail',
-				messages: err,
-				data: null
-			});			
-		}
-		else {
-
-
-			//Pdf.getPdfTemplate('org/registrationFull.html',function(data){
-			Pdf.getPdfTemplate('org/accommodationRegistrationFull.html',function(data){
-				var htmlTemplate = data;
-
-				// replate variables
-				Pdf.generatePDF(htmlTemplate, function(message, path){
-					if(message == "success"){
-						res.json({
-							status: 'successed',
-							data : path
-						});
-					}
-					else {
-						res.json({
-							status: 'fail',
-							data : null
-						});
-					}
-				});
-			});
-		}
-	})
-}
-
-
 
 exports.sendEmail = function(req,res){
-	var message = "";
-	var to = req.body.to;
-	var subject = req.body.subject;
-	var context = req.body.context;
-	var attachments = req.body.attachments;
-	EmailSender.sendEmail(to,subject,context,attachments, function(message){
-		res.json(
-			{
-				returnmessage : message
-			});		
-	});
+	var student_obj = req.body.student;
+	for (var key in constant.EmailStudentTempaleVars) {
+		constant.EmailStudentTempaleVars[key] = student_obj[key];
+	};
+
+	EmailSender.getEmailTemplate('registerSuccess.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
+
+		var message = "";
+		var to = student_obj.email;
+		var subject = req.body.subject;
+		var context = context;
+		var attachments = req.body.attachments;
+		EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+
 }
 
 
