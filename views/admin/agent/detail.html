@@ -56,43 +56,65 @@ var url_params = <%- JSON.stringify(url_params) %>
 								</div>
 							</div>
 						</div>
-
 					</div>
+
 					<div class="row">
-						<div class="col-md-12">
-							<button class="btn btn-sm btn-primary" ng-bootbox-title="A new student"
-							ng-bootbox-custom-dialog
-							ng-bootbox-custom-dialog-template="/admin/student/agent/create">
-							Create
-						</button>
-						<div class="portlet no-border-bottom">
-							<div class="portlet-heading dark">
-								<div class="portlet-title">
-									<h4><i class="fa fa-rss"></i> Students under the Agent</h4>
-								</div>
-								<div class="portlet-widgets">
-									<a href="javascript:;"><i class="fa fa-refresh"></i></a>
-									<span class="divider"></span>
-									<a href="#" class="tooltip-danger" data-placement="left" data-rel="tooltip" title="Clear"><i class="fa fa-trash-o bigger-110"></i></a>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="portlet-body no-padding">
-								<ul class="lists">
-									<li ng-repeat="student in students">
-										<span class="col-sm-1">{{student.student_id}}</span>
-										<span class="col-sm-2 icons glyphicon glyphicon-user"> {{student.firstname}} {{student.lastname}}</span>
-									</ul>
-								</div>
-							</div>
+						<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Students<small class="text-white"></small></h4>
+				</div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<th>Student ID</th>
+								<th class="hidden-xs">Name</th>
+								<th class="hidden-xs">Agent</th>
+								<th class="hidden-xs">Commission Rate</th>
+								<th class="hidden-xs">Pomotion Rate</th>
+								<th class="hidden-xs">Register Date</th>
+								<th class="hidden-xs">Status</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="student in students | filter:query">
+								<td>00000{{student.studentID}}</td>
+								<td class="hidden-xs">{{student.firstname}} {{student.lastname}}</td>
+								<td><a href="/admin/agent/detail/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
+								<td class="hidden-xs">{{student.commissionRate}}</td>
+								<td class="hidden-xs">{{student.pomotionRate}}</td>
+								<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>
+								<td><span ng-if="student.isQuit == 1" class="label label-danger">Deleted</span>
+								<span ng-if="student.isQuit == 0" class="label label-active">Active</span>
+								</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/student/edit/{{student._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+						</tbody>
 
-							<div class="hr hr-12 hr-double"></div>
-							<div class="action-buttons">
-								<a href="#"><i class="fa fa-search-plus"></i> View all</a>
-							</div>
+					</table>
+				</div>
+			</div>					 
+		</div>
+		<!-- <button class="btn btn-sm btn-primary"
+					ng-bootbox-title="A new student"
+					ng-bootbox-custom-dialog
+					ng-bootbox-custom-dialog-template="create">
+					Create
+		</button> -->
+		<a href="/admin/student/create/{{agent._id}}" class="btn btn-sm btn-primary">Create</a>
+		
+	</div>
+					</div>
 
-						</div>
-					</div>			
 				</div>
 
 				<div class="tab-pane fade" id="p2">

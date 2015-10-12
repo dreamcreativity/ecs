@@ -51,7 +51,7 @@ angular.module('AdminApp')
 	 			Agents.get({id:agent_id}, function(result){
 	 				$scope.agent = result.data;
 	 				$scope.region_tags = regions.data;
-	 				Students.get({agent_id : $scope.agent._id}, function(result){
+	 				Students.getStudentsByAgent({id : $scope.agent._id}, function(result){
 	 					$scope.students = result.data;
 	 				});
 	 			});

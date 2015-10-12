@@ -3,6 +3,11 @@ angular.module('AdminApp')
 
 .controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,Courses,Constants,Agents,$window){
 	 var token = sessionStorage.token;
+	 var agent_id =null;
+	 if (typeof(url_params) !== 'undefined') {
+	 		agent_id = url_params.id;
+		}
+	$scope.hasAgent = false;
 	 loading();
 	 $scope.students = getAllStudents();
 
@@ -23,9 +28,19 @@ angular.module('AdminApp')
 				$scope.corseLevel = result.data;
 			}
 		});
+
+		if(agent_id !=null){
+	 			Agents.get({id:agent_id}, function(result){
+	 				$scope.agent = result.data;
+	 				$scope.hasAgent = true;
+	 			});
+	 		}
 	 }
 
 	 $scope.create = function(isValid){
+	 	if($scope.agent) {
+	 		$scope.student.agent = $scope.agent._id;
+	 	}
 	 	$http.post('/api/student/register',{student : $scope.student, 
 				accommodation : $scope.accommodation, 
 				flightInfo : $scope.flightInfo, 

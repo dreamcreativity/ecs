@@ -271,6 +271,18 @@ router.get('/student/create', function(req, res) {
 		);
 });
 
+router.get('/student/create/:id', function(req, res) {
+	template(req,res,'admin_main','admin/student/student_new.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Create Student with Agent',
+				url_params : req.params
+			}
+		);
+});
+
 router.get('/student/extending/:id', function(req, res) {
 	template(req,res,'admin_main','admin/student/student_extending.html',
 			{ 

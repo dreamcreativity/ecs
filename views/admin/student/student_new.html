@@ -1,3 +1,6 @@
+<script type="text/javascript">
+var url_params = <%- JSON.stringify(url_params) %>
+</script>
 
  <form name="registerForm" class="form-horizontal" ng-controller='StudentCtrl' role="form" ng-submit="create(registerForm.$valid)" novalidate>
 	<div class="wizard">
@@ -28,6 +31,13 @@
 			<div class="step-pane active" id="step1">
 				<div class="form-group">
 				<label class="col-sm-offset-4 col-sm-5"><strong>Student Detail</strong></label>
+				</div>
+
+				<div class="form-group" ng-show='hasAgent'>
+					<label class="col-sm-3 col-md-1 control-label">Agent</label>
+					<div class="col-sm-2">
+						<input  type="text" class="form-control" name="agent.name" value="{{agent.firstname}} {{agent.lastname}}"readonly="">
+					</div>
 				</div>
 
 				<div class="form-group">
