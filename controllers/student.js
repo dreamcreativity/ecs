@@ -247,7 +247,12 @@ exports.getRegistrationByAgent = function(req,res){
 exports.edit = function(req,res){
 	var id = req.params.id;
 	var programs = req.body.programRegistration;
+	var accommodation = req.body.accommodation;
+	var flightInfo = req.body.flightInfo;
 	req.body.programRegistration =[];
+	req.body.accommodation = accommodation._id;
+	req.body.flightInfo = flightInfo._id;
+
 	for (var i = 0; i < programs.length; i++) {
 		req.body.programRegistration.push(programs[i]._id);
 	};
@@ -287,6 +292,26 @@ exports.createAccommodation = function(req,res){
 				messages: err,
 				data: null
 			});
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+}
+
+exports.updateAccommdation = function(req,res){
+	var id = req.params.id;
+	Accommodation.update({_id:id}, req.body, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+				});
 		}
 		else {
 			res.json({
@@ -345,8 +370,9 @@ exports.createExtendingCourse = function(req,res){
 				else {
 					Student.findOne({_id:student_id}, function(err, result){
 						if(!err){
-							var temp = result.programRegistration;
-							result.programRegistration.push(programRegistration_ids);
+							for (var i = 0; i < programRegistration_ids.length; i++) {
+								result.programRegistration.push(programRegistration_ids[i]);
+							};
 							result.save(function(err, result1){
 								if(!err){
 									res.json({

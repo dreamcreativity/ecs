@@ -67,14 +67,18 @@ angular.module('AdminApp')
 	
 })
 
-.controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,Students,Courses,Constants,$window) {
+.controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,Students,Accommodations,Courses,Constants,$window) {
 	var student_id = url_params.id;
+	$scope.havingAccommdation = false;
 
 	 if(student_id !=null){
 	 	Students.get({id:student_id}, function(result){
 	 		$scope.student = result.data;
+	 		$scope.accommodation = $scope.student.accommodation;
+	 		if($scope.accommodation !=null){
+	 			$scope.havingAccommdation = true;
+	 		}
 	 	});
-	 	
 	 }
 
 	$scope.update = function(isValid) {
@@ -87,6 +91,7 @@ angular.module('AdminApp')
 	 	})
 	 }
 
+
 	 $scope.registerCourse = function(isValid){
 	 	// for (var i = 0; i < $scope.courseList.length; i++) {
 	 	// 		$scope.student.programRegistration.push($scope.courseList[i]);
@@ -97,6 +102,18 @@ angular.module('AdminApp')
 	  // 					 $window.location='/admin/student/all';
 			// 		}, 2000); 
  		// });
+	 }
+
+	 $scope.submitAccommdation = function(isValid){
+	 	var acc = $scope.accommodation;
+	 		Accommodations.update(acc, function(err,result){
+	 			if(err){
+
+	 			}
+	 			else {
+	 				console.log("success");
+	 			}
+	 		});
 	 }
 
 
@@ -141,79 +158,13 @@ angular.module('AdminApp')
 	 			if(result.status == 'ok' && result.messages =='successed'){
 	 				ShowGritterCenter('System Notification','Courses has been successfully registered');
 	 				setInterval(function(){
-	 					$window.location='/admin/student/edit/student_id';
+	 					$window.location='/admin/student/edit/'+ student_id;
 	 				}, 2000); 
 	 			}
 	 		});
 	 	}
 	 }
 
-
-	 $scope.addNewRow = function() {
-		$scope.newrowShow = true;
-		$("#addrow_button").attr("disabled", true)
-	}
-
-	$scope.addCourse = function(course) {
-		if(typeof course != "undefined"){
-			if (typeof course.startDate == "undefined" ||typeof course.duration == "undefined" ||typeof course.year == "undefined") {
-					ShowGritterCenter('System Notification','Please enter complete course information');
-			}
-			else{
-				$scope.courseList.push({
-					id : course._id,
-					tag : course.tag,
-					title: course.title,
-					level: course.level,
-					startDate: course.startDate,
-					duration: course.duration,
-					year:course.year
-				});
-				$scope.newrowShow = false
-				delete $scope.course
-				$("#addrow_button").attr("disabled", false)
-				if($scope.courseList.length > 0) {
-					$("#submit_button").attr("disabled", false)
-				}
-			}
-		}
-		else {
-			ShowGritterCenter('System Notification','Please enter complete course information');
-		}
-	}
-
-	$scope.removeRow = function(){
-		$scope.newrowShow = false
-		$("#addrow_button").attr("disabled", false)
-	}
-
-	$scope.removeCourse = function(course){
-		var index = $scope.courseList.indexOf(course);
-		$scope.courseList.splice(index, 1);
-		if($scope.courseList.length == 0) $("#submit_button").attr("disabled", true)    
-
-	}
-
-
-	$scope.changeCourse = function(targetCourse){
-		Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
-			$scope.course.availableYears = $scope.availableYears;
-			$scope.course.startDates = data.data
-		});
-	}
-
-	$scope.changeStartDate = function(course, startDate){
-		course.startDate =  startDate;
-	}
-
-	$scope.changeStartYear =  function(course){
-		if(typeof course != "undefined"){
-			Courses.getCourstStartDateList({id:course._id, year:course.year}, function(data){
-				course.startDate = data.data[0];
-				course.startDates = data.data;
-				//closeAllSelectList();
-			});
-		}}
 });
 
 

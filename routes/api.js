@@ -193,7 +193,10 @@ router.post('/flightInfo', student.createFlightInfo);
 router.post('/student/extending',student.createExtendingCourse);
 
 //PUT : Edit a student info
-router.put('/student/:id', student.edit)
+router.put('/student/:id', student.edit);
+
+//PUT : Update Accomdation info
+router.put('/student/accommodation/:id', student.updateAccommdation);
 
 
 //----------------------Agent----------------------------------------

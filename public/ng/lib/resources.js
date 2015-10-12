@@ -114,7 +114,12 @@ resources.factory('Agents',['$resource',
 .factory('Accommodations',['$resource',
     function($resource){
         return $resource('/api/accommodation', {}, {
-        create:{ method: 'POST'}
+        create:{ method: 'POST'},
+        update :{
+            url: '/api/student/accommodation/:id',
+            method : 'PUT',
+            params : {id : '@_id'}
+        }
     });
 }])
 

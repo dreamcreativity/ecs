@@ -42,7 +42,10 @@
 						<label class="col-sm-1 col-md-3 control-label">Gender</label>
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
-								<input type="text" class="form-control" name="gender" ng-model="student.gender">
+								<select name="gender" ng-model="student.gender">
+									<option value="male">Male</option>
+									<option value="female">Female</option> 
+								</select>
 							</div>
 						</div>
 					</div>
@@ -160,6 +163,106 @@
 			</div>
 
 			<div class="tab-pane fade in portlet-body" id="p2">
+				<form name="accommdationForm" class="form-horizontal" role="form" ng-submit="submitAccommdation(accommdationForm.$valid)" novalidate ng-show="havingAccommdation">
+					<div class="form-group">
+							<label class="col-sm-2 control-label">Starting Date :</label>
+							<div class="col-sm-2">
+								<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
+							</div>
+							<label class="col-sm-2 control-label">Finishing Date :</label>
+							<div class="col-sm-2">
+								<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Departure date from Toronto: </label>
+							<div class="col-sm-2">
+								<input type="date" class="form-control" name="departDate" ng-model="accommodation.departureDateFromToronto" >
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you smoke ?</label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isSmoke" ng-model="accommodation.isSmoke">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isWithSmoke" ng-model="accommodation.isWithSmoke">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you live with pet ? </label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isWithPet" ng-model="accommodation.isWithPet">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you live with small children ? </label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isWithKid" ng-model="accommodation.isWithKid">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">What is your hobbies ? </label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="hobbies" ng-model="accommodation.hobbies"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="occupation" ng-model="accommodation.occupation"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Additional Comments : </label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
+							<div class="col-sm-1">
+								<input type="checkbox" class="form-control" name="isPrivateBathroom" ng-model="accommodation.isPrivateBathroom">
+							</div>
+						</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-1">
+							<input type="submit" class="btn btn-primary" value="Submit">
+						</div>
+						<div class="col-sm-1">
+							<input type="submit" class="btn btn-primary" ng-click="havingAccommdation=false" ng-disabled="havingAccommdation" value="Cancel">
+						</div>
+					</div>
+				</form>
+				<button class="btn btn-primary" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button>
 			</div>
 
 			<div class="tab-pane fade in portlet-body" id="p3">

@@ -1,4 +1,4 @@
-'use strict';
++-'use strict';
 angular.module('AgentApp')
 
 .controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Constants,Accommodations,FlightInfos, AgentTokens, $window){
