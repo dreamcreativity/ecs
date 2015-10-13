@@ -39,6 +39,7 @@
 		if(event_id !=null){
 			Events.get({id:event_id}, function(result){
 				$scope.event = result.data;
+				$scope.event.date = new Date($scope.event.date);
 			});	
 		}
 
@@ -53,12 +54,13 @@
 		})
 
 		$scope.update = function(isValid) {
+
+
+			console.log($scope.event);
 			Events.update($scope.event, function(result){
 	 		 if(result.type == true){
 	 		 	ShowGritterCenter('System Notification','Event document has been updated');
-	 		//  	setInterval(function(){
-  		// 			 $window.location='/admin/event/all';
-				// }, 2000); 
+	 
 	 		 }else{
 	 		 	ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
 	 		 }

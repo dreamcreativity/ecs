@@ -39,7 +39,7 @@ angular.module('AdminApp')
 	 		$scope.course = result.data;
 	 		$scope.course.durations.sort(SortByOrder);
 	 		$scope.course.startPoint =  new Date($scope.course.startPoint);
-	 		console.log($scope.course)
+	 		
 	 		$scope.newDuration = {
 			 	'title': '',
 			 	'price': 0.0,
@@ -56,7 +56,8 @@ angular.module('AdminApp')
 			// load meida image
 			Medias.getCategoryTargetMedia({target:'Course',type:'Image'}, function(result){
 			 	$scope.meidas = result.data;
-			 	console.log($scope.meidas);
+			 	//console.log($scope.meidas);
+			 	
 				// create media seleoct click buttons
 				$scope.changeCover = createMediaSelectorFunction($modal, $scope.meidas,function( selectedMedia){ 
 					$scope.course.cover = selectedMedia;
@@ -112,7 +113,7 @@ angular.module('AdminApp')
 
 		modalInstance.result.then(function (duration) {
 		  //$scope.user.name = user.name;
-		  console.log(duration);
+		  //console.log(duration);
 		  var result = $.grep($scope.course.durations, function(e){ return e._id == duration._id; });
 		  console.log(result[0]);
 		  result[0].title = duration.title;
@@ -204,17 +205,29 @@ angular.module('AdminApp')
 
 	// update course
 	$scope.update = function(isValid) {
-	$scope.returnMessage="";
-		$("#messageReturn").fadeIn('slow');
-		Courses.update($scope.course, function(result){
-				var message = result.messages;	   
-				console.log(message); 
 
-				ShowGritterCenter('System Notification','Couse info has been updated');
-			    // $scope.returnMessage = message;
-			    // $("#messageReturn").delay(2000).fadeOut('slow');
-				// $window.location='/admin/staff/detail/'+ staff_id;
-		})
+
+		//console.log($($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html());
+
+		$scope.course.content = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
+		
+
+		$scope.returnMessage="";
+		$("#messageReturn").fadeIn('slow');
+
+		setTimeout(function(){
+			Courses.update($scope.course, function(result){
+					var message = result.messages;	   
+
+
+					ShowGritterCenter('System Notification','Couse info has been updated');
+				    // $scope.returnMessage = message;
+				    // $("#messageReturn").delay(2000).fadeOut('slow');
+					// $window.location='/admin/staff/detail/'+ staff_id;
+			})
+
+		},200);
+
 	}
 
 

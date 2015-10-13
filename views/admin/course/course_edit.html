@@ -93,9 +93,8 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Page Content</label>
 									<div class="col-sm-6">
-										<textarea id="page-content" class="form-control"></textarea>
+										<textarea  style="height:50px;" ng-model="course.content"  id="page-content" class="form-control"></textarea>
 
-										<!-- <div  class="form-control wysiwyg-editor" id="page-content"></div> -->
 									</div>
 								</div>
 
@@ -337,38 +336,44 @@
 
 </div>			
 
+
+<style type="text/css">
+	textarea, .wysihtml5-sandbox{
+		height: 200px!important;
+	}
+</style>
 <script type="text/javascript">
 
 	$(document).ready(function(){
-			$('#page-content').ek_wysiwyg({
+			// $('#page-content').ek_wysiwyg({
 
-				toolbar:
-					[
-						'font',
-						null,
-						'fontSize',
-						null,
-						'bold',
-						'italic',
-						'strikethrough',
-						'underline',
-						null,
-						'justifyleft',
-						'justifycenter',
-						'justifyright',
-						null,
-						'createLink',
-						'unlink',
-						null,
-						'insertImage',
-						null,
-						'undo',
-						'redo'
-					]
-			}).prev().addClass('editor-style1 text-center');
+			// 	toolbar:
+			// 		[
+			// 			'font',
+			// 			null,
+			// 			'fontSize',
+			// 			null,
+			// 			'bold',
+			// 			'italic',
+			// 			'strikethrough',
+			// 			'underline',
+			// 			null,
+			// 			'justifyleft',
+			// 			'justifycenter',
+			// 			'justifyright',
+			// 			null,
+			// 			'createLink',
+			// 			'unlink',
+			// 			null,
+			// 			'insertImage',
+			// 			null,
+			// 			'undo',
+			// 			'redo'
+			// 		]
+			// });
 
 
-
+			$('#page-content').wysihtml5();
 
 	});
 </script>

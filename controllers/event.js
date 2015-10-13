@@ -31,7 +31,8 @@ var _event = new Event(req.body);
 			if (req.body.cover != null)
 	    		req.body.cover =  req.body.cover._id;
 	    	console.log(req.body);
-	    	req.body.date = new Date();
+
+	    	//req.body.date = new Date();
 
 	    	
 	    	next();

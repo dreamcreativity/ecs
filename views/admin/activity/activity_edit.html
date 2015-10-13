@@ -75,8 +75,8 @@ var url_params = <%- JSON.stringify(url_params) %>
 	<div class="form-actions">
 		<div class="form-group">
 			<label class="col-sm-3 col-md-1 control-label"></label>
-			<div class="col-sm-3">
-				<a href="/activity/{{activity._id}}" target="_blank"><button type="button" class="btn btn-info" >Preview</button></a>
+			<div class="col-sm-6">
+				<a href="/activity/detail/{{activity._id}}" target="_blank"><button type="button" class="btn btn-info" >Preview</button></a>
 				
 				<button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">Submit</button>
 
