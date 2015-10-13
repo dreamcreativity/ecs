@@ -2,6 +2,9 @@ var fs = require("fs");
 var pdf = require('html-pdf');
 var dateFormat = require('dateformat');
 var async = require("async");
+var PDFDocument = require('pdfkit');
+var path = require('path');
+var mime = require('mime');
 
 exports.generatePDF = function (layout,filename, callback) {
 	var message ="";
@@ -19,12 +22,32 @@ exports.generatePDF = function (layout,filename, callback) {
 		
 
 	};
-	pdf.create(layout,options).toFile(path, function(err,res){
+	// pdf.create(layout,options).toFile(path, function(err,res){
+	// 	if(err) message = err;
+	// 	else message =  "success";
+	// 	callback(message,path);
+	// });
+	pdf.create(layout,options).toBuffer(function(err,stream){
 		if(err) message = err;
 		else message =  "success";
-		callback(message,path);
+		callback(message,stream);
 	});
 }
+
+
+exports.downloadPDF = function(req,res){
+	 var file = __dirname + '/first.pdf';
+	 // res.download(file);
+  	var filename = path.basename(file);
+  	var mimetype = mime.lookup(file);
+
+	  res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+	  res.setHeader('Content-type', 'application/pdf');
+
+	  var filestream = fs.createReadStream(file);
+	  filestream.pipe(res);
+}
+
 
 
 exports.getPdfTemplate = function(templateName, callback){

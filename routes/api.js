@@ -16,6 +16,7 @@ var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 var emailSender = require('../modules/emailModule');
+var pdf = require('../modules/pdfModule');
 
 
 function IsAuthException(path, method){
@@ -31,6 +32,7 @@ function IsAuthException(path, method){
 		{	path : '/api/staffs', method: 'POST',type: 'direct' },
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
+		{	path : '/api/pdf/Download', method: 'GET', type: 'direct'},
 		// {	path : '/api/constants', method: 'GET', type: 'contain'},
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
@@ -357,6 +359,8 @@ router.get('/events/:id', events.getEventbyId);
 
 //-------------------------Generate PDF--------------------------------------------
 router.post('/pdf',student.generatePDF);
+//-------------------------Download PDF
+router.get('/pdf/Download',pdf.downloadPDF);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 

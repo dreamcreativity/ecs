@@ -97,42 +97,42 @@ angular.module('AgentApp')
 	 				$scope.havingAccommdation = true;
 	 				}
 			});
-		};
+		}
 	}
 
 	$scope.toggle = function() {
 		console.log("here");
 		var htmlContext = angular.element('#formPrint');
-		$http.post('/api/pdf',{registerId:$scope.student})
-		.success(function(data,status,headers,config){
+		//$http.get('/api/pdf/Download',{responseType:'arraybuffer'})
+		$http.post('/api/pdf',{registerId:$scope.student._id,responseType:'arraybuffer'})
+	 	.success(function(data,status,headers,config){
+   			console.log('Download');
+			 var blob = new Blob([data], {type: 'application/pdf' });
+			 var objectUrl = URL.createObjectURL(blob);
+           	 window.open(objectUrl);
+           	})
+	 	.error(function(data, status, headers, config) {
+		   });
+	 }
 
-			// var element = document.createElement('a');
-			//   element.setAttribute('href', 'data:application/pdf;base64,' + data.data);
-			//   element.setAttribute('download', 'filename');
 
-			//   element.style.display = 'none';
-			//   document.body.appendChild(element);
-
-			//   element.click();
-
-			//   document.body.removeChild(element);
-
-			if(data.status == "successed"){
-			$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-				subject:"success registration", 
-				context: "Welcome", 
-				attachments : [data.data]})
-			.success(function(data,status,headers,config){
-				console.log("success to send registration email")
-			})
-			.error(function(data,status,headers,config){
-				console.log("fail to send registration email")
-			});
-		}
-	}).error(function(data,status,headers,config){
-			console.log("fail to pdf")
-		});
-	}}
+	// 	// 	if(data.status == "successed"){
+	// 	// 	$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+	// 	// 		subject:"success registration", 
+	// 	// 		context: "Welcome", 
+	// 	// 		attachments : [data.data]})
+	// 	// 	.success(function(data,status,headers,config){
+	// 	// 		console.log("success to send registration email")
+	// 	// 	})
+	// 	// 	.error(function(data,status,headers,config){
+	// 	// 		console.log("fail to send registration email")
+	// 	// 	});
+	// 	// }
+	// }).error(function(data,status,headers,config){
+	// 		console.log("fail to pdf")
+	// 	});
+	// }
+	}
 )
 
 .controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,AgentTokens,$http,$window){

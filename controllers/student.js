@@ -457,21 +457,54 @@ exports.generatePDF = function (req,res){
 															constant.AccommodationTemplateVars,
 															constant.FlightTemplateVars,
 															null);
-				}
+				};
 
 
-				// replate variables
-				Pdf.generatePDF(resultTemplate1,"first", function(message, path){
-					var all_path = [];
+				//--------------------- replate variables-------------------------------------
+				// Pdf.generatePDF(resultTemplate1,"first", function(message, path){
+				// 	var all_path = [];
+				// 	if(message == "success"){
+				// 		all_path.push(path);
+				// 		if(student_accommodation_obj != null && student_flightInfo_obj!=null){
+				// 			Pdf.generatePDF(resultTemplate2,"second",function(message,path){
+				// 				if(message == "success"){
+				// 					all_path.push(path);
+				// 					res.json({
+				// 						status: 'successed',
+				// 						data : all_path
+				// 					});
+				// 				}
+				// 				else {
+				// 					res.json({
+				// 						status: 'fail',
+				// 						data : null
+				// 					});
+				// 				}
+				// 			});
+				// 		}
+				// 		else {
+				// 			res.json({
+				// 				status: 'successed',
+				// 				data : all_path
+				// 			});
+				// 		}
+				// 	}
+				// 	else {
+				// 		res.json({
+				// 			status: 'fail',
+				// 			data : null
+				// 		});
+				// 	}
+				// });
+				//---------------------------Delete later----------------------------------------------
+				Pdf.generatePDF(resultTemplate1,"first", function(message, stream){
 					if(message == "success"){
-						all_path.push(path);
 						if(student_accommodation_obj != null && student_flightInfo_obj!=null){
-							Pdf.generatePDF(resultTemplate2,"second",function(message,path){
+							Pdf.generatePDF(resultTemplate2,"second",function(message,stream){
 								if(message == "success"){
-									all_path.push(path);
 									res.json({
 										status: 'successed',
-										data : all_path
+										data : stream
 									});
 								}
 								else {
@@ -485,7 +518,7 @@ exports.generatePDF = function (req,res){
 						else {
 							res.json({
 								status: 'successed',
-								data : all_path
+								data : stream
 							});
 						}
 					}
@@ -496,10 +529,13 @@ exports.generatePDF = function (req,res){
 						});
 					}
 				});
+				//---------------------------Delete later----------------------------------------------
+
 			});
 		}
 	});
 }
+
 
 
 exports.sendEmail = function(req,res){
