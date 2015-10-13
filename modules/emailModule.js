@@ -23,10 +23,10 @@ exports.getEmailTemplate = function(templateName, callback){
 
 }
 
-exports.replaceEmailTemplate = function(templateName, studentinfo){
+exports.replaceEmailTemplate = function(templateName, info){
 	var template = templateName;
-	for(var key in studentinfo){
-		var replaceValue = studentinfo[key];
+	for(var key in info){
+		var replaceValue =info[key];
 		template = template.replace('@' + key + '@', replaceValue);
 	}
 	return template;

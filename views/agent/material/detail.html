@@ -3,7 +3,7 @@
 <div class="portlet"  ng-controller='MaterialDetail'>
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
-			<h4>Edit Material</h4>
+			<h4>{{material.name}}</h4>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -14,24 +14,25 @@
 			<div class="tab-content">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Name:</label>
-					<div class="col-sm-7">
+					<div class="col-sm-3">
 						<div class="clearfix">
-							<input type="text" name="heading" ng-model="material.name" class="form-control">
+							<input type="text" name="heading" ng-model="material.name" class="form-control" readonly="">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label" for="password">Description:</label>
-					<div class="col-sm-7">
+					<div class="col-sm-3">
 						<div class="clearfix">
-							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control">
+							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control" readonly="">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label" for="password2">Region:</label>
 					<div class="col-sm-3">
-						<div class="clearfix">{{region.name}}
+						<div class="clearfix">
+							<input type="text" name="sub_heading"  ng-model="material.region.name"  class="form-control" readonly="">
 						</div>
 					</div>
 				</div>

@@ -13,10 +13,9 @@
 	</div>
 	<div id="basic" class="panel-collapse collapse in">
 		<div class="portlet-body no-padding">
-			<table class="table table-bordered table-hover tc-table">
+			<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
 				<thead>
 					<tr>
-						<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
 						<th>Material Name</th>
 						<th class="hidden-xs">Description</th>
 						<th class="hidden-xs col-medium ">Region</th>
@@ -27,8 +26,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat=" item in materials">
-						<td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>
+					<tr ng-repeat=" item in materials">		
 						<td>{{item.name}}
 							<ul class="table-mobile-ul visible-xs list-unstyled">
 								<li>Description: {{item.description}}</li>
@@ -58,3 +56,5 @@
 		</div>
 	</div>
 </div>
+
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>	

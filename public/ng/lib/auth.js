@@ -21,7 +21,11 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
       }
       if (response.status === 403) {
         //console.log('please log in ');
-        window.location = '/admin/login';
+        var pathname = $window.location.pathname.substr($window.location.pathname.indexOf("/")+1).split(/\//)[0];
+        if(pathname == 'admin'){
+          window.location = '/admin/login';
+        }
+        else window.location = '/agent/login';
       }
       return response || $q.when(response);
     }

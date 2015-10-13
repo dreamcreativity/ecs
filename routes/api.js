@@ -220,6 +220,9 @@ router.post('/agent/login', agent.login);
 //POST agent reset password
 router.post('/agent/resetpassword', agent.resetpassword);
 
+//POST agent reset password in profile
+router.post('/agent/resetpasswordInProfile', agent.resetpasswordInProfile);
+
 //GET current agent by token
 router.post('/agent/token/:token', agent.getAgentbyToken);
 

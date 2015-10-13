@@ -504,6 +504,7 @@ exports.generatePDF = function (req,res){
 
 exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
+	var agent = req.body.agent;
 	for (var key in constant.EmailStudentTempaleVars) {
 		constant.EmailStudentTempaleVars[key] = student_obj[key];
 	};
@@ -512,7 +513,7 @@ exports.sendEmail = function(req,res){
 		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
 
 		var message = "";
-		var to = student_obj.email;
+		var to = agent.email;
 		var subject = req.body.subject;
 		var context = context;
 		var attachments = req.body.attachments;
@@ -525,6 +526,31 @@ exports.sendEmail = function(req,res){
 	})
 
 }
+
+// exports.sendInvitation = function(req,res){
+// 	var agent = req.body.agent;
+// 	for (var key in constant.AgentInvitationTemplateVars) {
+// 		constant.AgentInvitationTemplateVars[key] = agent[key];
+// 	};
+// 	constant.AgentInvitationTemplateVars['url'] = 'link';
+
+// 	EmailSender.getEmailTemplate('invitation.html',function(data){
+// 		var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
+
+// 		var message = "";
+// 		var to = req.body.email;
+// 		var subject = req.body.subject;
+// 		var context = context;
+// 		var attachments = req.body.attachments;
+// 		EmailSender.sendEmail(to,subject,context, function(message){
+// 			res.json(
+// 				{
+// 					returnmessage : message
+// 				});		
+// 		});
+// 	})
+
+// }
 
 
 

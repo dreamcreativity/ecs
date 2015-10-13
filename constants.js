@@ -109,6 +109,12 @@ module.exports = {
 		firstname : null,
 		lastname : null,
 		url : null
+	},
+
+	AgentInvitationTemplateVars : {
+		firstname : null,
+		lastname : null,
+		url : null
 	}
 
 

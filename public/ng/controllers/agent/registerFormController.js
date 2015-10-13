@@ -16,7 +16,7 @@ angular.module('AgentApp')
 
 
 		AgentTokens.post({token:token}, function(result){
-			$scope.currentAgent_id = result.data._id;
+			$scope.currentAgent = result.data;
 		});
 
 		Students.query(function(result){
@@ -36,7 +36,7 @@ angular.module('AgentApp')
 
 	//register action
 	$scope.register = function(isValid){
-		$scope.student.agent = $scope.currentAgent_id;
+		$scope.student.agent = $scope.currentAgent._id;
 			$http.post('/api/student/register',{student : $scope.student, 
 				accommodation : $scope.accommodation, 
 				flightInfo : $scope.flightInfo, 
@@ -46,7 +46,8 @@ angular.module('AgentApp')
 					$http.post('/api/pdf',{registerId:data.data.student,type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
-							$http.post('/api/registration/sendEmail',{student:$scope.student,
+							$http.post('/api/registration/sendEmail',{student:$scope.student, 
+								agent: $scope.currentAgent,
 								subject:"success registration", 
 								context: "Welcome", 
 								attachments : [data.data]})
@@ -76,6 +77,7 @@ angular.module('AgentApp')
 	var obj_id = url_params.id;
 	var currentAgent_id = null;
 	var token = sessionStorage.token;
+	$scope.havingAccommdation = false;
 	loading();
 
 	function loading() {
@@ -88,6 +90,12 @@ angular.module('AgentApp')
 				$scope.student = result.data;
 				$scope.programs = result.data.programRegistration;
 				$scope.accommodation = result.data.accommodation;
+				if($scope.accommodation !=null){
+					$scope.accommodation.startDate = new Date($scope.accommodation.startDate);
+					$scope.accommodation.endDate = new Date($scope.accommodation.endDate);
+					$scope.accommodation.departureDateFromToronto = new Date($scope.accommodation.departureDateFromTorontos);
+	 				$scope.havingAccommdation = true;
+	 				}
 			});
 		};
 	}
@@ -95,27 +103,39 @@ angular.module('AgentApp')
 	$scope.toggle = function() {
 		console.log("here");
 		var htmlContext = angular.element('#formPrint');
-		$http.post('/api/pdf',{registerId:$scope.student._id})
+		$http.post('/api/pdf',{registerId:$scope.student})
 		.success(function(data,status,headers,config){
+
+			// var element = document.createElement('a');
+			//   element.setAttribute('href', 'data:application/pdf;base64,' + data.data);
+			//   element.setAttribute('download', 'filename');
+
+			//   element.style.display = 'none';
+			//   document.body.appendChild(element);
+
+			//   element.click();
+
+			//   document.body.removeChild(element);
+
 			if(data.status == "successed"){
-			// $http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
-			// 	subject:"success registration", 
-			// 	context: "Welcome", 
-			// 	attachments : [data.data]})
-			// .success(function(data,status,headers,config){
-			// 	console.log("success to send registration email")
-			// })
-			// .error(function(data,status,headers,config){
-			// 	console.log("fail to send registration email")
-			// });
-	}
+			$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+				subject:"success registration", 
+				context: "Welcome", 
+				attachments : [data.data]})
+			.success(function(data,status,headers,config){
+				console.log("success to send registration email")
+			})
+			.error(function(data,status,headers,config){
+				console.log("fail to send registration email")
+			});
+		}
 	}).error(function(data,status,headers,config){
 			console.log("fail to pdf")
 		});
 	}}
 )
 
-.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,$http,$window){
+.controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,AgentTokens,$http,$window){
 	var currentAgent_id = null;
 	loading();
 
@@ -129,10 +149,14 @@ angular.module('AgentApp')
 	$scope.create = function() {
 		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId: currentAgent_id})
 		.success(function(data,status,headers,config){
-			console.log("success to send invitation")
+			$scope.returnMessage = "email invitation has been sent successfully"
 		})
 		.error(function(data,status,headers,config){
-			console.log("fail to send invitation")
+			$scope.returnMessage = "fail to sent invitation"
 		});
 	}
 });
+
+
+
+

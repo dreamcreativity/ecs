@@ -4,155 +4,282 @@
 
 <div class="row" ng-controller='StudentRegisterDetail'>
 
-<div class="tc-tabs"><!-- Nav tabs style 1 -->
-			<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
-				<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
-				<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-				<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registered courses</a></li>
-			</ul>
+	<div class="tc-tabs"><!-- Nav tabs style 1 -->
+		<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
+			<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+			<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+			<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registered courses</a></li>
+		</ul>
 
-<div class="tab-content">
-	<div class="tab-pane fade in portlet-body active" id="p1">
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>First name : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.firstname}}</div>
+		<div class="tab-content">
+			<div class="tab-pane fade in portlet-body active" id="p1">
+				<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Student ID</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="studentId" ng-model="student.studentID" readonly>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">First Name</label>
+						<div class="col-sm-1 col-md-3">
+							<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required readonly>	
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Last Name</label>
+						<div class="col-sm-1 col-md-3">
+							<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Gender</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<select name="gender" ng-model="student.gender">
+									<option value="male">Male</option>
+									<option value="female">Female</option> 
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Age</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="age" ng-model="student.age">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Commission Rate</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate" readonly>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Pomotion Rate</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate" readonly>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Address</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="address" ng-model="student.address">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">City</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="city" ng-model="student.city">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Province</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="province" ng-model="student.province">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Citizenship</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="citizenship" ng-model="student.citizenship">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Telephone</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="telephone" ng-model="student.telephone">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Emergency</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+								<input id="touchspin-demo2" type="text" class="form-control" name="emergency" ng-model="student.emergency">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Quit</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="tcb">
+								<label>
+									<input name="isQuit" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="student.isQuit" />
+									<span class="labels"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="tab-pane fade" id="p2">
+				<form name="accommdationForm" class="form-horizontal" role="form" ng-submit="" novalidate ng-show="havingAccommdation">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Starting Date :</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
+						</div>
+						<label class="col-sm-2 control-label">Finishing Date :</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Departure date from Toronto: </label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="departDate" ng-model="accommodation.departureDateFromToronto" >
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Do you smoke ?</label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isSmoke" ng-model="accommodation.isSmoke">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isWithSmoke" ng-model="accommodation.isWithSmoke">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Do you live with pet ? </label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isWithPet" ng-model="accommodation.isWithPet">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Do you live with small children ? </label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isWithKid" ng-model="accommodation.isWithKid">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">What is your hobbies ? </label>
+						<div class="col-sm-7">
+							<textarea class="form-control" name="hobbies" ng-model="accommodation.hobbies"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
+						<div class="col-sm-7">
+							<textarea class="form-control" name="occupation" ng-model="accommodation.occupation"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Additional Comments : </label>
+						<div class="col-sm-7">
+							<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
+						<div class="col-sm-7">
+							<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
+						<div class="col-sm-7">
+							<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
+						<div class="col-sm-1">
+							<input type="checkbox" class="form-control" name="isPrivateBathroom" ng-model="accommodation.isPrivateBathroom">
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+
+			<div class="tab-pane fade" id="p3">
+				<table class="table table-bordered table-striped table-hover tc-table table-primary">
+					<thead>
+						<tr>
+							<tr>
+								<th class="hidden-xs center">Register Date</th>
+								<th class="hidden-xs center">Course</th>
+								<th class="hidden-xs center">Description</th>
+								<th class="hidden-xs center">Level</th>
+								<th class="hidden-xs center">Year</th>
+								<th class="hidden-xs center">Start Date</th>
+								<th class="hidden-xs center">Duration</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="c in programs">
+							<td class="hidden-xs center"><label class="label label-success">{{ c.createDate  | date:'MMMM d, yyyy'}}</label></td>
+							<td class="hidden-xs center">{{c.title}}</td>
+							<td class="hidden-xs center">{{c.tag}}</td>
+							<td class="hidden-xs center">{{c.level}}</td>
+							<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
+							<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+							<td class="hidden-xs center">{{c.duration}}</td>
+							<td class="col-medium center">
+								<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)" disabled="disabled">
+									<i class="fa fa-times icon-only"></i>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Last name : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.lastname}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Gender : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.gender}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Address : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.address}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Post code : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.postcode}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>City : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.city}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Province : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.province}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Country : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.country}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Telephone : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.telephone}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Emergency : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.emergency}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Email : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.email}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-1"><strong>Fax : </strong></div>
-			<div class="col-sm-3 col-md-1">{{student.fax}}</div>
-		</div>
+		<a href="/agent/students"class="col-md-1 btn btn-sm btn-primary">Back</a>
+		<button class="col-md-1 btn btn-sm btn-primary" ng-click="toggle()">Print to pdf</button>
 	</div>
-
-	<div class="tab-pane fade" id="p2">
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>accommdation option : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.option}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>start date : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.startDate}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>end date : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.endDate}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>is private bath room : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.isPrivateBathroom}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>is With Kid : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.isWithKid}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>is With Pet : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.isWithPet}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>is With Smoke : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.isWithSmoke}}</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-md-2"><strong>is Allergies : </strong></div>
-			<div class="col-sm-3 col-md-2">{{accommodation.isAllergies}}</div>
-		</div>
-	</div>
-
-	<div class="tab-pane fade" id="p3">
-		<div ng-repeat = "item in programs">
-			<div class="row">
-				<div class="col-sm-3 col-md-2"><strong>title : </strong></div>
-				<div class="col-sm-3 col-md-2">{{item.title}}</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3 col-md-2"><strong>start Date : </strong></div>
-				<div class="col-sm-3 col-md-2">{{item.startDate}}</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3 col-md-2"><strong>duration : </strong></div>
-				<div class="col-sm-3 col-md-2">{{item.duration}}</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-</div>
-
-<!-- 	<div class="col-lg-12 col-md-12">
-		<div class="tc-tabs">
-			<div id="formPrint">
-				<p>firstname : {{student.firstname}}</p>
-				<p>lastname : {{student.lastname}}</p>
-				<p>gender : {{student.gender}}</p>
-				<p>age : {{student.age}}</p>
-				<p>citizenship : {{student.citizenship}}</p>
-				<p>address : {{student.address}}</p>
-				<p>postcal : {{student.postcal}}</p>
-				<p>city : {{student.city}}</p>
-				<p>province : {{student.province}}</p>
-				<p>country : {{student.country}}</p>
-				<p>telephone : {{student.telephone}}</p>
-				<p>fax : {{student.fax}}</p>
-				<p>email : {{student.email}}</p>
-				<p>emergency : {{student.emergency}}</p>
-				<p>isHomeCountryAddress : {{student.isHomeCountryAddress}}</p>
-				<p>englishLevel : {{student.englishLevel}}</p>
-				<p>toefl : {{student.toefl}}</p>
-				<p>ielts : {{student.ielts}}</p>
-				<p>generalProgram : {{student.generalProgram}}</p>
-
-				<p>generalProgram_startingDate : {{student.generalProgram_startingDate}}</p>
-			</div>
-
-			<a href="/agent/students"class="col-md-1 btn btn-sm btn-primary">Back</a>
-			<button ng-click="toggle()">Print to pdf</button>
-		</div>
-	</div> -->
 </div>	
-<a href="/agent/students"class="col-md-1 btn btn-sm btn-primary">Back</a>
-
-<button class="col-md-1 btn btn-sm btn-primary" ng-click="toggle()">Print to pdf</button>
 
 
 

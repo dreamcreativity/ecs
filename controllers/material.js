@@ -53,7 +53,7 @@ exports.all = function(req,res){
 //GET: material by Id
 exports.get = function(req,res){
 	var id = req.params.id;
-	Material.find({_id:id}).populate('media').populate('agents').exec(function(err, result){
+	Material.find({_id:id}).populate('media').populate('agents').populate('region').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',

@@ -62,6 +62,7 @@
 
 
 	<!-- include ag controller -->
+	<script src="/ng/controllers/agent/navBarController.js"></script>
     <script src="/ng/controllers/agent/registerFormController.js"></script>
     <script src="/ng/controllers/agent/agentController.js"></script>
     <script src="/ng/controllers/agent/materialController.js"></script>
@@ -74,7 +75,7 @@
 	<div id="wrapper">
 		<div id="main-container">		
 			<!-- BEGIN TOP NAVIGATION -->
-				<nav class="navbar-top" role="navigation">
+				<nav class="navbar-top" role="navigation" ng-controller='NavBarController'>
 					<!-- BEGIN BRAND HEADING -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".top-collapse">
@@ -100,7 +101,7 @@
 								<!--Speech Icon-->
 								<li class="dropdown user-box">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">Administrator</span> <b class="caret"></b>
+										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">{{agent.firstname}} {{agent.lastname}}</span> <b class="caret"></b>
 									</a>
 										<ul class="dropdown-menu dropdown-user">
 											<li>
@@ -109,7 +110,7 @@
 												</a>
 											</li>										
 											<li>
-												<a href="login.html">
+												<a href="javascript:void(0);" ng-click='logout()'>
 													<i class="fa fa-power-off"></i> Logout
 												</a>
 											</li>
@@ -215,15 +216,15 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentHistory">
 										<li>
-											<a href="/admin/course/all" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
+											<a href="/agent/students" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Student Records
 											</a>
 										</li>			
-										<li>
+										<!-- <li>
 											<a href="/admin/promotion/all" class="<%if(parms.cur_selected=='Promotion'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Commissions
 											</a>
-										</li>										
+										</li>	 -->									
 									</ul>
 							</li>
 							

@@ -134,6 +134,53 @@
  	});
  }
 
+ exports.resetpasswordInProfile = function(req,res){
+ 	var oldpw = req.body.oldpassword;
+ 	var newpw = req.body.password;
+ 	Token.findOne({_id : req.body.token}, function(err, result){
+ 		if(err){
+ 			res.json({
+ 				status: 'fail',
+ 				messages: err,
+ 				data: null
+ 			})
+ 		}
+ 		else {
+ 			Agent.findOne({_id:result.user}, function(err, result2){
+ 				if(err){
+ 					res.json({
+ 						status: 'fail',
+ 						messages: err,
+ 						data: null
+ 					})
+ 				}
+ 				else {
+ 					if(result2.password == oldpw){
+ 						result2.password = newpw;
+ 						Agent.update({_id: result2._id}, result2, function(err, result3){
+ 							if(!err){
+ 								res.json({
+ 								status: 'ok',
+ 								messages: 'reset successed',			
+ 								});
+ 							}
+ 						});
+ 					}
+ 					else {
+ 						res.json({
+ 								status: 'fail',
+ 								messages: 'old password is incorrect',
+ 								data: null			
+ 							});
+ 					}
+
+ 				}
+ 			});
+
+ 		}
+ 	});
+ }
+
 
 
 //POST: create new Agent

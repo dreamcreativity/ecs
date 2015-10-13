@@ -37,7 +37,7 @@
 													<div class="tile-content-wrapper">
 														<i class="fa fa-users"></i>
 														<div class="tile-content text-primary">
-															3
+															{{materials.length}}
 														</div>
 														<small>
 															Meteritals
@@ -114,7 +114,7 @@
 																	<li>
 																		<span class="date">{{item.modified | date:'MMM dd yyyy'}}</span>
 																		{{item.name}} -- {{item.description}}
-																		<i class="fa fa-download bigger-130"></i>
+																		<a href="agent/material/detail/{{item._id}}"><i class="fa fa-download bigger-130"></i></a>
 																	</li>
 																</ul>
 															</div>
