@@ -8,10 +8,10 @@ angular.module('ClientApp')
 	var eventData = {};
 	var eventRawData={};
 	// eventData = {
- //        '10-17-2015' : '<div class="event-images"><img src="http://stylonica.com/wp-content/uploads/2014/04/Cat-Wallpaper.jpg" /></div>',
- //        '10-21-2015' : '<div class="event-images"><img src="http://tokyodesu.com/wp-content/uploads/2014/05/cat2.jpg" /></div>',
+	//        '10-17-2015' : '<div class="event-images"><img src="http://stylonica.com/wp-content/uploads/2014/04/Cat-Wallpaper.jpg" /></div>',
+	//        '10-21-2015' : '<div class="event-images"><img src="http://tokyodesu.com/wp-content/uploads/2014/05/cat2.jpg" /></div>',
 
- //    };
+	//    };
 
     Events.query({}, function(result){
 
@@ -42,7 +42,7 @@ angular.module('ClientApp')
 			var slidersHTML = '';
 		 	angular.forEach(value, function(event, eventDateString) {
 
-		  		slidersHTML += document.getElementById('image-slider').innerHTML.replace('##eventcover##', event.cover.thumbnail).replace(/(\r\n|\n|\r)/gm,"");
+		  		slidersHTML += document.getElementById('image-slider').innerHTML.replace('##eventcover##', event.cover.thumbnail).replace(/(\r\n|\n|\r)/gm,"").replace('##title##', event.title);
 
 		  	});
 		 	

@@ -25,8 +25,8 @@ var url_params = <%- JSON.stringify(url_params) %>
 				<span class="input-group-addon">
 					<i class="glyphicon glyphicon-time"></i>
 				</span>														
-				<input ng-model="event.date"  class="form-control">
-														
+				<input type="date" ng-model="event.date"  class="form-control">
+				<input type="time" ng-model="event.date"  class="form-control">											
 			</div>
 			
 		</div>
@@ -125,6 +125,9 @@ var url_params = <%- JSON.stringify(url_params) %>
 
 </form>
 
+
+
+
 <script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -132,21 +135,21 @@ var url_params = <%- JSON.stringify(url_params) %>
 		//jQuery('#datetimepicker').datetimepicker();
 		//$('.form_datetime').datepicker();
 
-		$('.form_datetime').datetimepicker({
-				//2015-10-28T04:00:00.000Z
-				//language:  'fr',
-				//format: "yyyy-mm-dd hh:ii:00.000Z",
-				format: "yy-mm-dd hh:ii",
-				weekStart: 1,
-				todayBtn:  1,
-				autoclose: 1,
-				todayHighlight: 1,
-				startView: 2,
-				forceParse: 0,
-				showMeridian: 1
-			});
+		// $('.form_datetime').datetimepicker({
+		// 		//2015-10-28T04:00:00.000Z
+		// 		//language:  'fr',
+		// 		//format: "yyyy-mm-dd hh:ii:00.000Z",
+		// 		format: "yy-mm-dd hh:ii",
+		// 		weekStart: 1,
+		// 		todayBtn:  1,
+		// 		autoclose: 1,
+		// 		todayHighlight: 1,
+		// 		startView: 2,
+		// 		forceParse: 0,
+		// 		showMeridian: 1
+		// 	});
 
 
-});
+	});
 
 </script>

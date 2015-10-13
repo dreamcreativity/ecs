@@ -1103,7 +1103,7 @@ var SEMICOLON = SEMICOLON || {};
                         if( position == 'LT' || position == 'LM' || position == 'LB' )
                             currentCaption.css({ left: -(scapSliderWidth - slideCaptionWidth - 20 ) / 2 + 'px' });
 
-                        if( position == 'CENTER')
+                        if( position == 'CENTER' || position == 'LM' || position == 'RM' )
                             currentCaption.css({ top: ( scapSliderHeight - scapHeight ) / 2 + 'px' });
 
                     }, 50);

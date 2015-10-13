@@ -45,7 +45,7 @@
 
 		Medias.getCategoryTargetMedia({target : 'Event', type:'Image'},function(result){
 			$scope.medias=result.data;
-			console.log($scope.medias);
+			//console.log($scope.medias);
 
 			$scope.changeCover = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
 				$scope.event.cover = selectedMedia;

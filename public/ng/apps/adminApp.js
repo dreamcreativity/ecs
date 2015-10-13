@@ -12,6 +12,7 @@ angular.module(
 		'esc.constants',
 		'esc.mediaSelector',
 		'ui.bootstrap',
+	
 
 		
 	]

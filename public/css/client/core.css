@@ -307,6 +307,19 @@
 	height:auto;
 }
 
+
+.event-images .caption{ 
+	position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.74);
+    color: white;
+    width: 100%;
+    left: 0px;
+    height: 30px;
+    text-align: center;
+}
+
+
 #event-calendar .testimonial .flex-control-nav li {
 	margin: 0 0 0 8px;
 }
