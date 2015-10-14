@@ -50,7 +50,8 @@ angular.module('AdminApp')
 					$http.post('/api/pdf',{registerId:data.data.student, type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
-							$http.post('/api/registration/sendEmail',{to:"stiron88@gmail.com",
+							$http.post('/api/registration/sendEmail',{student:$scope.student,
+								agent: $scope.agent,
 								subject:"success registration", 
 								context: "Welcome", 
 								attachments : [data.data]})
@@ -91,6 +92,9 @@ angular.module('AdminApp')
 	 		$scope.student = result.data;
 	 		$scope.accommodation = $scope.student.accommodation;
 	 		if($scope.accommodation !=null){
+	 			$scope.accommodation.startDate = new Date($scope.accommodation.startDate);
+				$scope.accommodation.endDate = new Date($scope.accommodation.endDate);
+				$scope.accommodation.departureDateFromToronto = new Date($scope.accommodation.departureDateFromToronto);
 	 			$scope.havingAccommdation = true;
 	 		}
 	 	});
@@ -121,12 +125,15 @@ angular.module('AdminApp')
 
 	 $scope.submitAccommdation = function(isValid){
 	 	var acc = $scope.accommodation;
-	 		Accommodations.update(acc, function(err,result){
-	 			if(err){
-
+	 		Accommodations.update(acc, function(result){
+				if(result.status == 'ok' && result.messages == 'successed'){
+	 				ShowGritterCenter('System Notification','Student has been updated');
+		 			setInterval(function(){
+	  					 $window.location='/admin/student/edit/' +student_id;
+					}, 2000); 	
 	 			}
-	 			else {
-	 				console.log("success");
+	 			else{
+	 				ShowGritterCenter('System Notification','Fail');
 	 			}
 	 		});
 	 }

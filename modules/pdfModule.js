@@ -22,15 +22,10 @@ exports.generatePDF = function (layout,filename, callback) {
 		
 
 	};
-	// pdf.create(layout,options).toFile(path, function(err,res){
-	// 	if(err) message = err;
-	// 	else message =  "success";
-	// 	callback(message,path);
-	// });
-	pdf.create(layout,options).toBuffer(function(err,stream){
+	pdf.create(layout,options).toFile(path, function(err,res){
 		if(err) message = err;
 		else message =  "success";
-		callback(message,stream);
+		callback(message,path);
 	});
 }
 
