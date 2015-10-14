@@ -461,50 +461,17 @@ exports.generatePDF = function (req,res){
 
 
 				//--------------------- replate variables-------------------------------------
-				// Pdf.generatePDF(resultTemplate1,"first", function(message, path){
-				// 	var all_path = [];
-				// 	if(message == "success"){
-				// 		all_path.push(path);
-				// 		if(student_accommodation_obj != null && student_flightInfo_obj!=null){
-				// 			Pdf.generatePDF(resultTemplate2,"second",function(message,path){
-				// 				if(message == "success"){
-				// 					all_path.push(path);
-				// 					res.json({
-				// 						status: 'successed',
-				// 						data : all_path
-				// 					});
-				// 				}
-				// 				else {
-				// 					res.json({
-				// 						status: 'fail',
-				// 						data : null
-				// 					});
-				// 				}
-				// 			});
-				// 		}
-				// 		else {
-				// 			res.json({
-				// 				status: 'successed',
-				// 				data : all_path
-				// 			});
-				// 		}
-				// 	}
-				// 	else {
-				// 		res.json({
-				// 			status: 'fail',
-				// 			data : null
-				// 		});
-				// 	}
-				// });
-				//---------------------------Delete later----------------------------------------------
-				Pdf.generatePDF(resultTemplate1,"first", function(message, stream){
+				Pdf.generatePDF(resultTemplate1,'register_01', function(message, path){
+					var all_path = [];
 					if(message == "success"){
+						all_path.push(path);
 						if(student_accommodation_obj != null && student_flightInfo_obj!=null){
-							Pdf.generatePDF(resultTemplate2,"second",function(message,stream){
+							Pdf.generatePDF(resultTemplate2,'register_02',function(message,path){
 								if(message == "success"){
+									all_path.push(path);
 									res.json({
 										status: 'successed',
-										data : stream
+										data : all_path
 									});
 								}
 								else {
@@ -518,7 +485,7 @@ exports.generatePDF = function (req,res){
 						else {
 							res.json({
 								status: 'successed',
-								data : stream
+								data : all_path
 							});
 						}
 					}
@@ -529,7 +496,6 @@ exports.generatePDF = function (req,res){
 						});
 					}
 				});
-				//---------------------------Delete later----------------------------------------------
 
 			});
 		}
@@ -554,6 +520,7 @@ exports.sendEmail = function(req,res){
 		var context = context;
 		var attachments = req.body.attachments;
 		EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
+			
 			res.json(
 				{
 					returnmessage : message

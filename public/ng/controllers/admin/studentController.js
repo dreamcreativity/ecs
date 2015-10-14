@@ -107,18 +107,6 @@ angular.module('AdminApp')
 	 }
 
 
-	 $scope.registerCourse = function(isValid){
-	 	// for (var i = 0; i < $scope.courseList.length; i++) {
-	 	// 		$scope.student.programRegistration.push($scope.courseList[i]);
-	 	// };
-	 	// Students.save($scope.student,function(err, result){
-	 	// 			ShowGritterCenter('System Notification','Student has been updated');
-		 // 			setInterval(function(){
-	  // 					 $window.location='/admin/student/all';
-			// 		}, 2000); 
- 		// });
-	 }
-
 	 $scope.submitAccommdation = function(isValid){
 	 	var acc = $scope.accommodation;
 	 		Accommodations.update(acc, function(err,result){

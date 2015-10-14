@@ -47,15 +47,18 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 			message["attachments"].push({filename: "attachment_" + i +".pdf", path:attachments[i]});
 		};
 				transporter.sendMail(message,function(err, success){
-					if(err) message ="Fail to send email";
-					else message = "Success to send email";
+					if(err) message ="Fail";
+					else message = "Success";
+					for (var i = 0; i < attachments.length; i++) {
+						fs.unlinkSync(attachments[i]);
+					};
 					callback(message);
 				})
 	}
 	else {
 		transporter.sendMail(message, function(err, result){
-			if(err) message ="Fail to send email";
-			else message = "Success to send email";
+			if(err) message ="Fail";
+			else message = "Success";
 			callback(message);
 		});
 	}

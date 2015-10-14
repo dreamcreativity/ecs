@@ -8,7 +8,7 @@ var mime = require('mime');
 
 exports.generatePDF = function (layout,filename, callback) {
 	var message ="";
-	var path = "./" + filename + ".pdf";
+	var path = "./temp/" + filename + ".pdf";
 
 	var options = {
 		"format": "Letter",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid 
@@ -22,29 +22,43 @@ exports.generatePDF = function (layout,filename, callback) {
 		
 
 	};
-	// pdf.create(layout,options).toFile(path, function(err,res){
-	// 	if(err) message = err;
-	// 	else message =  "success";
-	// 	callback(message,path);
-	// });
-	pdf.create(layout,options).toBuffer(function(err,stream){
+	pdf.create(layout,options).toFile(path, function(err,res){
 		if(err) message = err;
 		else message =  "success";
-		callback(message,stream);
+		callback(message,path);
 	});
 }
 
 
-exports.downloadPDF = function(req,res){
-	 var file = __dirname + '/first.pdf';
-	 // res.download(file);
-  	var filename = path.basename(file);
-  	var mimetype = mime.lookup(file);
-
-	  res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+exports.downloadPDF01 = function(req,res){
+	 var file1 = "./temp/register_01.pdf";
+	 var file2 = "./temp/register_02.pdf";
+	  res.setHeader('Content-disposition', 'attachment; filename=' + "register_01");
 	  res.setHeader('Content-type', 'application/pdf');
 
-	  var filestream = fs.createReadStream(file);
+	  var filestream = fs.createReadStream(file1);
+	  fs.exists(file1, function(exists){
+	  	if(exists) fs.unlinkSync(file1)
+	  })
+	  fs.exists(file2, function(exists){
+	  	if(exists) fs.unlinkSync(file2)
+	  })
+	  filestream.pipe(res);
+}
+
+exports.downloadPDF02 = function(req,res){
+	 var file1 = "./temp/register_01.pdf";
+	 var file2 = "./temp/register_02.pdf";
+	  res.setHeader('Content-disposition', 'attachment; filename=' + "register_02");
+	  res.setHeader('Content-type', 'application/pdf');
+
+	  var filestream = fs.createReadStream(file2);
+	  fs.exists(file1, function(exists){
+	  	if(exists) fs.unlinkSync(file1)
+	  })
+	  fs.exists(file2, function(exists){
+	  	if(exists) fs.unlinkSync(file2)
+	  })
 	  filestream.pipe(res);
 }
 

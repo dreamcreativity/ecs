@@ -151,7 +151,10 @@
 							<div class="col-sm-1">
 								<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary">Extening course</a>
 							</div>
-							<div class="col-sm-offset-2 col-sm-1">
+							<div class="col-sm-offset-1 col-sm-1">
+					  			<button type="button" download-form01 class="btn btn-primary" ng-click="download_student()">Download</button>
+					  		</div>
+							<div class="col-sm-1">
 								<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="studentForm.$invalid">
 							</div>
 							<div class="col-sm-1">
@@ -255,6 +258,9 @@
 						</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-1">
+							<button download-form02 class="btn btn-primary" ng-click="download_accommdation()">Download</button>
+						</div>
+						<div class="col-sm-1">
 							<input type="submit" class="btn btn-primary" value="Submit">
 						</div>
 						<div class="col-sm-1">
