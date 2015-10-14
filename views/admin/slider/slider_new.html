@@ -6,23 +6,34 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="portlet-body">
-							<form class="form-horizontal" id="validate-form" method="get">
+							<form class="form-horizontal" name="validateForm" >
 								<div id="bwizard">
 									
 									<div class="tab-content">
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Main Heading:</label>
-											<div class="col-sm-7">
+											<div class="col-sm-6">
 												<div class="clearfix">
-													<input type="text" name="heading" ng-model="slider.heading" class="form-control">
+													<div class="input-group">
+														<input type="text" name="heading" ng-model="slider.heading" class="form-control" required>
+														<span ng-show="!validateForm.heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+														<span ng-show="validateForm.heading.$error.required" class="input-group-addon">Required</span>
+													</div>
 												</div>
+
 											</div>
+
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="password">Sub Heading:</label>
-											<div class="col-sm-7">
+											<div class="col-sm-6">
 												<div class="clearfix">
-													<input type="text" name="sub_heading"  ng-model="slider.sub_heading"  class="form-control">
+													<div class="input-group">
+														<input type="text" name="sub_heading"  ng-model="slider.sub_heading"  class="form-control" required>
+														<span ng-show="!validateForm.sub_heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+														<span ng-show="validateForm.sub_heading.$error.required" class="input-group-addon">Required</span>
+													</div>
+													
 												</div>
 											</div>
 										</div>
@@ -62,18 +73,21 @@
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Direction:</label>
-											<div class="col-sm-2">
-								
-												<select class="form-control " ng-model="slider.direction"  >
-													<option value="{{d.class}}" ng-repeat="d in directionOption">{{d.label}}</option>
-												</select>
+											<div class="col-sm-2 form-group">
+												<div class="clearfix">
+													<select class="form-control " ng-model="slider.direction" >
+														<option value="{{d.class}}" ng ng-repeat="d in directionOption">{{d.label}}</option>
+													</select>
+												</div>
+												
+
 											</div>
 										</div>
 
 										<div class="form-group">
 											<div class="col-sm-3"></div>	
 											<div class="col-sm-3">											
-												<button type="button" class="btn btn-primary" ng-click="create()">Create</button>
+												<button type="button" class="btn btn-primary" ng-disabled="!validateForm.$valid" ng-click="create()">Create</button>
 												<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
 											</div>
 										</div>

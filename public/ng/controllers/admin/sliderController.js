@@ -7,7 +7,7 @@ angular.module('AdminApp')
 			heading: '',
 			sub_heading : '',
 			color: '#ffffff',
-			direction : 'bottom',
+			direction : 'fadeInDown',
 			position : 'CENTER',
 			resource : null
 		};
