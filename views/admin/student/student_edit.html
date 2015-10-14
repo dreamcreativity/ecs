@@ -171,6 +171,7 @@
 							<label class="col-sm-2 control-label">Starting Date :</label>
 							<div class="col-sm-2">
 								<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
+								<p ng-show="accommdationForm.startDate.$invalid && !accommdationForm.startDate.$pristine" class="help-block text-danger">start date is required</p>
 							</div>
 							<label class="col-sm-2 control-label">Finishing Date :</label>
 							<div class="col-sm-2">

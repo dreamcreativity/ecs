@@ -458,8 +458,6 @@ exports.generatePDF = function (req,res){
 															constant.FlightTemplateVars,
 															null);
 				};
-
-
 				//--------------------- replate variables-------------------------------------
 				Pdf.generatePDF(resultTemplate1,'register_01', function(message, path){
 					var all_path = [];
@@ -496,7 +494,6 @@ exports.generatePDF = function (req,res){
 						});
 					}
 				});
-
 			});
 		}
 	});
@@ -507,6 +504,11 @@ exports.generatePDF = function (req,res){
 exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
 	var agent = req.body.agent;
+	var send_list =[];
+	if(!agent) {
+		send_list.push(agent.email);
+	}
+	send_list.push('esc.mailsystem@gmail.com');
 	for (var key in constant.EmailStudentTempaleVars) {
 		constant.EmailStudentTempaleVars[key] = student_obj[key];
 	};
@@ -515,7 +517,7 @@ exports.sendEmail = function(req,res){
 		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
 
 		var message = "";
-		var to = agent.email;
+		var to = send_list;
 		var subject = req.body.subject;
 		var context = context;
 		var attachments = req.body.attachments;
