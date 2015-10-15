@@ -113,6 +113,7 @@
 
 		next: function () {
 			var canMoveNext = (this.currentStep + 1 <= this.numSteps);
+			//var canMoveNext = false;
 			var lastStep = (this.currentStep === this.numSteps);
 
 			if (canMoveNext) {
