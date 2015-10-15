@@ -1,45 +1,38 @@
 <style type="text/css">
-.activity-banner{height:50vh;min-height:250px;overflow:hidden;margin-bottom:40px;background-size:cover;background-position:50% 25%}
-.activity-banner>div{background-image:url('/images/black_through.png');background-size:100% 100%;background-repeat:no-repeat;width:100%;height:100%}
+.activity-cover{min-height:250px;overflow:hidden;margin-bottom:40px;background-size:cover;background-position:50% 25%;font-size:20px;position:relative}
+.activity-banner{padding-top:120px;background-image:url('/images/black_through.png');background-size:100% 100%;background-repeat:no-repeat;width:100%;height:100%}
 .activity-banner .container{position:relative}
-.activity-banner .container .title{color:#fff}
+.activity-banner .container .actitle{color:#fff;margin-bottom:0}
+.activity-banner .container .acsub-title{color:rgba(255,255,255,0.7);margin-bottom:35px}
+.activity-banner .container .acdescription{color:rgba(255,255,255,0.85);padding-bottom:50px}
 
-	.activity-banner .banner-img{
-		position: absolute;
-		top: 0; left: 0;
-	}
+.activity-banner .banner-list{position:absolute;top:10px;left:0;width:100%;height:50px}
+.activity-banner .banner-list>ul{list-style:none;text-align:center}
+.activity-banner .banner-list>ul>li{list-style:none;display:inline-block;margin:0;padding:1px;background-color:transparent}
+.activity-banner .banner-list>ul>li img{height:40px}
+.activity-banner .banner-list>ul>li:hover{background-color:white}
 
-	.activity-banner .banner-list{
-		position: absolute;
-		top: 200px; right: 100px;
-		list-style: none;
-
-	}
-	.activity-banner .banner-list li{
-		list-style: none;
-		float: left;
-		margin-right: 10px;
-	}
-	.activity-banner .banner-list li img{
-		height: 50px;
-	}
+.activity-img{margin-bottom:30px}
 </style>
 
 <link rel="stylesheet" href="/plugin/lightbox/css/lightbox.css" rel="stylesheet">
 <script type="text/javascript" src="/plugin/lightbox/js/lightbox.js"></script>
 <section >
 	<div class="content-wrap" style="padding-top:0">
-		<section>
-			<div class="activity-banner" style="background-image:url(<%- activity.cover.path %>)">
-            	<div>
-				<div class="container clearfix">
-                    <h2 class="title"><%- activity.title %></h2>
-                    <ul class="banner-list">
+		<section class="activity-cover" style="background-image:url(<%- activity.cover.path %>)">
+			<div class="activity-banner">
+                <div class="container clearfix">
+                    <h1 class="actitle"><%- activity.title %></h1>
+                    <h3 class="acsub-title"><%- activity.subtitle %></h3>
+                    <div class="acdescription"><%- activity.description %></div>
+                </div>
+                
+                <div class="banner-list">
+                    <ul>
                         <% for(var j=0; j < activityList.length; j++) { %>
                         <li> <a href="/activity/detail/<%- activityList[j]._id %>"><img  src="<%- activityList[j].cover.thumbnail %>"></a></li>
                         <% } %>
                     </ul>
-                </div>
                 </div>
 			</div>
 			
