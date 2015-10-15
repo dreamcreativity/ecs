@@ -148,17 +148,17 @@
 
 					<div class="form-actions">
 						<div class="form-group">
-							<div class="col-sm-1">
-								<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary">Extening course</a>
+							<div class="col-sm-offset-2 col-sm-1">
+								<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block">Extening course</a>
 							</div>
-							<div class="col-sm-offset-1 col-sm-1">
-					  			<button type="button" download-form01 class="btn btn-primary" ng-click="download_student()">Download</button>
+							<div class="col-sm-1">
+					  			<button type="button" download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
 					  		</div>
 							<div class="col-sm-1">
-								<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="studentForm.$invalid">
+								<input type="submit" class="btn btn-primary btn-block" value="Submit" ng-disabled="studentForm.$invalid">
 							</div>
 							<div class="col-sm-1">
-								<a href="/admin/student/all" type="submit" class="btn btn-primary">Cancel</a>
+								<a href="/admin/student/all" type="submit" class="btn btn-primary btn-block">Cancel</a>
 							</div>
 						</div>
 					</div>
@@ -269,7 +269,11 @@
 						</div>
 					</div>
 				</form>
-				<button class="btn btn-primary" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button>
+				<div class="row">
+					<div class="col-sm-1">
+						<button class="btn btn-primary btn-block" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button>
+					</div>
+				</div>
 			</div>
 
 			<div class="tab-pane fade in portlet-body" id="p3">
