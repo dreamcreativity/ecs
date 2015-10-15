@@ -122,6 +122,11 @@
 
 				if (e.isDefaultPrevented()) return;
 
+				//Check last step for term condition
+				if(this.currentStep == 3){
+					this.$nextBtn.attr("disabled", "true");
+				}
+
 				this.currentStep += 1;
 				this.setState();
 			}

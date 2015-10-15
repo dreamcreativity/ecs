@@ -178,7 +178,6 @@
 						<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
 					</div>
 				</div> 
-
 			</div>
 
 
@@ -341,14 +340,22 @@
 						</div> 
 					</div> 
 				</div>
+				<div class="step-pane" id="step4">
+					<div class="form-group">
+					<label class="col-sm-offset-4 col-sm-8">
+						<input class="tc" id="termcondition" type="checkbox" class="form-control" name="termcondition" onclick='handleClick();'>
+						<span class="labels"> <strong>I agree with the Term condition</strong></span>
+					</label>
+					</div>
+				</div>
 		</div>
 
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-9">
+					<div class="col-sm-offset-4 col-sm-9">
 					<a href="/agent/students" class="btn btn-primary">Cancel</a>
 						<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
-					    <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button> 
-						<!-- <button ng-click="checkForm()" type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button> -->
+					   <!--  <button type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
+						<button type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
 						<!-- add $("#last_submit").trigger('click') in wizard.js-->
 						<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 					</div>
@@ -370,4 +377,17 @@
 	<!-- <script src="/assets/js/plugins/fuelux/wizard.min.js"></script> -->
 	<script src="/assets/js/plugins/fuelux/wizard.js"></script>
 
+
+<script type="text/javascript">
+	function handleClick(){
+		var cb = $("#termcondition").is(":checked");
+  		if(cb){
+  			$("#reigster_submit").removeAttr('disabled');
+  		}
+  		else {
+  			$("#reigster_submit").attr('disabled', 'disabled');
+  		}
+	}
+	
+</script>
 

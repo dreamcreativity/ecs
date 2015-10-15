@@ -71,9 +71,12 @@
 															<div class="tab-pane active" id="tab14">
 																<ul class="lists" ng-repeat=" item in students">
 																	<li>
-																		<span class="date">{{item.registerDate | date:'MMM dd yyyy'}}</span>
+																		<span class="date">
+																			<a href="/agent/students/detail/{{item._id}}"><i class="fa fa-eye bigger-130"></i></a>
+																			{{item.registerDate | date:'MMM dd yyyy'}}
+																		</span>
 																		{{item.firstname}} {{item.lastname}}
-																		<a href="/agent/students/detail/{{item._id}}"><i class="fa fa-eye bigger-130"></i></a>
+				
 																	</li>
 																</ul>
 															</div>
@@ -112,9 +115,12 @@
 															<div class="tab-pane active" id="tab14">
 																<ul class="lists" ng-repeat=" item in materials">
 																	<li>
-																		<span class="date">{{item.modified | date:'MMM dd yyyy'}}</span>
+																		<span class="date">
+																			<a href="agent/material/detail/{{item._id}}"><i class="fa fa-download bigger-130"></i></a>
+																			{{item.modified | date:'MMM dd yyyy'}}
+																		</span>
 																		{{item.name}} -- {{item.description}}
-																		<a href="agent/material/detail/{{item._id}}"><i class="fa fa-download bigger-130"></i></a>
+								
 																	</li>
 																</ul>
 															</div>

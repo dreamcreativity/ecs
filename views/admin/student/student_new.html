@@ -33,48 +33,45 @@ var url_params = <%- JSON.stringify(url_params) %>
 				<label class="col-sm-offset-4 col-sm-5"><strong>Student Detail</strong></label>
 				</div>
 
-				<div class="form-group" ng-show='hasAgent'>
-					<label class="col-sm-3 col-md-1 control-label">Agent</label>
-					<div class="col-sm-2">
-						<input  type="text" class="form-control" name="agent.name" value="{{agent.firstname}} {{agent.lastname}}"readonly="">
-					</div>
-				</div>
-
 				<div class="form-group">
 					<label class="col-sm-3 col-md-1 control-label">First Name </label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
-						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
+						<p ng-show="registerForm.firstname.$invalid" class="help-block text-danger">first name is required</p>
+
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">Last Name </label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
 						<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
+						<p ng-show="registerForm.lastname.$invalid" class="help-block text-danger">last name is required</p>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-3 col-md-1 control-label">Gender </label>
 					<div class="col-sm-2">
-						<select name="gender" ng-model="student.gender">
+						<select name="gender" ng-model="student.gender" ng-init="student.gender = 'male'">
 							<option value="male">Male</option>
 							<option value="female">Female</option> 
 						</select>
 					</div>
+				</div>
+ 				<div class="form-group">
 					<label class="col-sm-3 col-md-1 control-label">Birth Date</label>
-					<div class="col-sm-1" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
-						<input type="date" class="form-control" name="birthday" ng-model="student.birthday" required>
-						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
+					<div class="col-sm-2" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
+						<input type='date' class="form-control" name="birthday" ng-model="student.birthday" required>
+						<p ng-show="registerForm.birthday.$invalid" class="help-block text-danger">birthday is required</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">Age</label>
 					<div class="col-sm-1" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
 						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
-						<p ng-show="registerForm.age.$invalid && !registerForm.age.$pristine" class="help-block text-danger">age is invalid</p>
+						<p ng-show="registerForm.age.$error.required" class="help-block text-danger">age is required</p>
+						<p ng-show="registerForm.age.$invalid && !registerForm.age.$error.required" class="help-block text-danger">age is invalid</p>
 					</div>
-					<label class="col-sm-3 col-md-1 control-label">Citizenship</label>
-					<div class="col-sm-1" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
+					<label class="col-sm-offset-1 col-sm-3 col-md-1 control-label">Citizenship</label>
+					<div class="col-sm-2" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
 						<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
-						<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">citizenship is required</p>
+						<p ng-show="registerForm.citizenship.$invalid" class="help-block text-danger">citizenship is required</p>
 					</div>
 				</div>
 
@@ -82,17 +79,17 @@ var url_params = <%- JSON.stringify(url_params) %>
 					<label class="col-sm-3 col-md-1 control-label">Address</label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
-						<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
+						<p ng-show="registerForm.address.$invalid" class="help-block text-danger">address is required</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">Postal Code</label>
-					<div class="col-sm-1" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
+					<div class="col-sm-2" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
 						<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
-						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">postcode code is required</p>
+						<p ng-show="registerForm.postcode.$invalid" class="help-block text-danger">post code is required</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">City</label>
-					<div class="col-sm-1" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
+					<div class="col-sm-2" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
 						<input type="text" class="form-control" name="city" ng-model="student.city" required>
-						<p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
+						<p ng-show="registerForm.city.$invalid" class="help-block text-danger">city is required</p>
 					</div>
 				</div>
 
@@ -100,12 +97,12 @@ var url_params = <%- JSON.stringify(url_params) %>
 					<label class="col-sm-3 col-md-1 control-label">Province</label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
-						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
+						<p ng-show="registerForm.province.$invalid" class="help-block text-danger">province is required</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">Country</label>
-					<div class="col-sm-1" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
+					<div class="col-sm-2" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
 						<input type="text" class="form-control" name="country" ng-model="student.country" required>
-						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
+						<p ng-show="registerForm.country.$invalid" class="help-block text-danger">country is required</p>
 					</div>
 
 				</div>
@@ -115,12 +112,12 @@ var url_params = <%- JSON.stringify(url_params) %>
 					<label class="col-sm-3 col-md-1 control-label">Telephone</label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
 						<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
-						<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is invalid</p>
+						<p ng-show="registerForm.telephone.$invalid" class="help-block text-danger">phone is required</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">Emergency call</label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.emergency.$invalid && !registerForm.emergency.$pristine}"}>
 						<input type="number" class="form-control" name="emergency" ng-model="student.emergency" required>
-						<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is invalid</p>
+						<p ng-show="registerForm.emergency.$invalid" class="help-block text-danger">emergency contact is required</p>
 					</div>
 				</div>
 
@@ -128,7 +125,8 @@ var url_params = <%- JSON.stringify(url_params) %>
 					<label class="col-sm-3 col-md-1 control-label">Email</label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
 						<input type="email" class="form-control" name="email" ng-model="student.email" required>
-						<p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block text-danger">email is invalid</p>
+						<p ng-show="registerForm.email.$error.required" class="help-block text-danger">email is required</p>
+						<p ng-show="registerForm.email.$invalid && !registerForm.email.$error.required" class="help-block text-danger">email is invalid</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">Fax</label>
 					<div class="col-sm-2">
@@ -151,8 +149,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 				<div class="form-group">
 					<label class="col-sm-3 col-md-1 control-label">English Level : </label>
 					<div class="col-sm-2">
-						<select name="englishlevel" ng-model="student.englishLevel">
-							<option value="">--</option>
+						<select name="englishlevel" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
 							<option value="beginner">Beginner</option> 
 							<option value="low_Intermediate">Low Intermediate</option>
 							<option value="high_Intermediate">High Intermediate</option>
@@ -161,11 +158,13 @@ var url_params = <%- JSON.stringify(url_params) %>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">TOEFL </label>
 					<div class="col-sm-1">
-						<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 max=120 required>
+						<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 max=120>
+						<p ng-show="registerForm.TOEFL.$invalid && !registerForm.TOEFL.$error.required" class="help-block text-danger">TOEFL is invalid</p>
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">IELTS </label>
 					<div class="col-sm-1">
-						<input type="number" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 max = 9 required>
+						<input type="number" step="0.5" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 max = 9>
+						<p ng-show="registerForm.IELTS.$invalid && !registerForm.IELTS.$error.required" class="help-block text-danger">IELTS is invalid</p>
 					</div>
 			 	</div>
 
@@ -176,14 +175,13 @@ var url_params = <%- JSON.stringify(url_params) %>
 			 	<div class="form-group">
 					<label class="col-sm-3 col-md-1 control-label">From Date:</label>
 					<div class="col-sm-2">
-						<input data-provide="datepicker" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
+						<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
 					</div>
 					<label class="col-sm-3 col-md-1 control-label">To Date:</label>
 					<div class="col-sm-2">
-						<input data-provide="datepicker" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
+						<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
 					</div>
-				</div>
-
+				</div> 
 			</div>
 
 
@@ -347,15 +345,24 @@ var url_params = <%- JSON.stringify(url_params) %>
 						</div>
 					</div> 
 				</div>
+
+				<div class="step-pane" id="step4">
+					<div class="form-group">
+					<label class="col-sm-offset-4 col-sm-8">
+						<input class="tc" id="termcondition" type="checkbox" class="form-control" name="termcondition" onclick='handleClick();'>
+						<span class="labels"> <strong>I agree with the Term condition</strong></span>
+					</label>
+					</div>
+				</div>
 		</div>
 
 			<div class="form-actions">
 				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-9">
+					<div class="col-sm-offset-4 col-sm-9">
 					<a href="/admin/student/all" class="btn btn-primary">Cancel</a>
 						<button type="button" class="btn btn-prev"> <i class="fa fa-arrow-left"></i>Prev</button>
-						<!-- <button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
-						<button type="button" class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
+						<!-- <button type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button>  -->
+						<button type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish" ng-disabled="buttonDisabled">Next<i class="fa fa-arrow-right icon-on-right"></i></button>
 						<!-- add $("#last_submit").trigger('click') in wizard.js-->
 						<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
 					</div>
@@ -363,17 +370,6 @@ var url_params = <%- JSON.stringify(url_params) %>
 			</div>
 		</div>
 	</form>
-
-	<script type="text/javascript">
-// 	$( document ).ready(function() {
-//     	$('#ishomestay').change(function() {
-//         if($(this).is(":checked")) {
-//         	debugger
-//            // $('[name ="flight_No_arr"]').prop('required',true)
-//         }
-//     });
-// });
-</script>
 
 
 <script src="/assets/js/jquery.min.js"></script>
@@ -383,3 +379,18 @@ var url_params = <%- JSON.stringify(url_params) %>
 <!-- PAGE LEVEL PLUGINS JS -->
 <!-- <script src="/assets/js/plugins/fuelux/wizard.min.js"></script> -->
 <script src="/assets/js/plugins/fuelux/wizard.js"></script>
+
+
+<script type="text/javascript">
+	function handleClick(){
+		var cb = $("#termcondition").is(":checked");
+  		if(cb){
+  			$("#reigster_submit").removeAttr('disabled');
+  		}
+  		else {
+  			$("#reigster_submit").attr('disabled', 'disabled');
+  		}
+	}
+	
+</script>
+

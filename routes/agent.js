@@ -149,6 +149,9 @@ router.get('/edit', function(req,res){
 	});
 });
 
+router.get('/courseRegisterTemplate', function(req,res){
+	res.render('templates/courseRegister.html');
+});
 
 
 

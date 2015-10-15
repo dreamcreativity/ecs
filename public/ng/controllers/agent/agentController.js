@@ -38,8 +38,8 @@ angular.module('AgentApp')
 		$http.post('/api/agent/resetpasswordInProfile', $scope.resetObj)
 		.success(function(data){
 			if(data.status === "ok"){
-				$scope.returnMessage = "success to reset password";
-	 		    $("#messageReturn").delay(2000).fadeOut('slow');
+	 		    ShowGritterCenter('System Notification','Password has successfully been reset, Please login again');
+				delete sessionStorage.token;
 	 		    setInterval(function(){
   					 $window.location='/agent/login';
 				}, 2000);

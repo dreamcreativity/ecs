@@ -99,18 +99,28 @@ directives.directive('courseRegister', ['Courses',function(Courses){
 					ShowGritterCenter('System Notification','Please enter complete course information');
 				}
 				else{
-					$scope.courseList.push({
-						id : course._id,
+					var course_obj = {id : course._id,
 						tag : course.tag,
 						title: course.title,
 						level: course.level,
 						startDate: course.startDate,
 						duration: course.duration,
-						year:course.year
-					});
-					$scope.newrowShow = false
-					delete $scope.course
-					$("#addrow_button").attr("disabled", false)
+						year:course.year};
+						var isConflict = false;
+						for (var i = 0; i < $scope.courseList.length; i++) {
+							if($scope.courseList[i].startDate == course_obj.startDate && $scope.courseList[i].title == course_obj.title){
+								isConflict =true;
+							}
+						};
+					if(!isConflict){
+						$scope.courseList.push(course_obj);
+						$scope.newrowShow = false
+						delete $scope.course
+						$("#addrow_button").attr("disabled", false)
+					}
+					else {
+						ShowGritterCenter('System Notification','This course has been selected already');
+					}
 				}
 			}
 			else {
@@ -155,8 +165,8 @@ directives.directive('courseRegister', ['Courses',function(Courses){
 	return {
 		restrict : 'A',
 		controller : controller,
-		template : template
-
+		//template : template
+		templateUrl : '/agent/courseRegisterTemplate'
 	};
 }]
 );
