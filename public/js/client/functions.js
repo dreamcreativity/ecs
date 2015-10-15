@@ -1095,7 +1095,7 @@ var SEMICOLON = SEMICOLON || {};
                         if( position == 'LT' || position == 'MT' || position == 'RT' )
                             currentCaption.css({ top: 30 + 'px' });
                         if( position == 'LB' || position == 'MB' || position == 'RB' )
-                            currentCaption.css({ top: ( scapSliderHeight  - scapHeight -160 )  + 'px' });
+                            currentCaption.css({ top: ( scapSliderHeight  - scapHeight -100 )  + 'px' });
 
                         if( position == 'RT' || position == 'RM' || position == 'RB' )
                             currentCaption.css({ left: (scapSliderWidth - slideCaptionWidth - 20 ) / 2 + 'px' });
