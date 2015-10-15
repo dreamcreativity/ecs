@@ -289,18 +289,15 @@
 
 
 .event-images{
-	padding: 5px;
-	border: 1px solid #EFE6E6;
-    background-color: #FFF1F1;
+    background-color: #fff;
     cursor: pointer;
     height: 115px;
-    
     vertical-align: middle;
     position: relative;
 }
 .event-images .wraper{
 	overflow: hidden;
-	height: 105px;
+	height: 100%;background-size:cover
 }
 .event-images .wraper img{ 
 	width: 100%!important;
