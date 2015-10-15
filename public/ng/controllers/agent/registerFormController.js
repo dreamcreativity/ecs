@@ -34,7 +34,14 @@ angular.module('AgentApp')
 		});
 	}
 
-	//register action
+	$scope.checkForm = function(){
+		var step1 = ($scope.registerForm.firstname.$valid && $scope.registerForm.lastname.$valid && $scope.registerForm.birthday.$valid
+						&& $scope.registerForm.age.$valid && $scope.registerForm.citizenship.$valid && $scope.address.province.$valid
+						&& $scope.registerForm.postcode.$valid && $scope.registerForm.city.$valid && $scope.registerForm.email.$valid
+						&& $scope.registerForm.country.$valid && $scope.registerForm.telephone.$valid && $scope.registerForm.emergency.$valid);
+	}
+
+	//register 3
 	$scope.register = function(isValid){
 		$scope.student.agent = $scope.currentAgent._id;
 			$http.post('/api/student/register',{student : $scope.student, 
