@@ -11,8 +11,6 @@
 .activity-banner .banner-list>ul>li{list-style:none;display:inline-block;margin:0;padding:1px;background-color:transparent}
 .activity-banner .banner-list>ul>li img{height:40px}
 .activity-banner .banner-list>ul>li:hover{background-color:white}
-
-.activity-img{margin-bottom:30px}
 </style>
 
 <link rel="stylesheet" href="/plugin/lightbox/css/lightbox.css" rel="stylesheet">
@@ -53,12 +51,15 @@
 
 		 		<div class="row">
 				<% for(var i=0; i< activity.album.length; i++) {%>
-					<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3 activity-img">
-						<a  data-lightbox="ddd" href="<%- activity.album[i].path %>" >
-							<img style="width:100%"  src="<%- activity.album[i].thumbnail %>">
+					<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<a  data-lightbox="ddd" href="<%- activity.album[i].path %>"  style="background-image:url(<%- activity.album[i].thumbnail %>)" class="activity-img">
+							<div></div>
 						</a>
 					</div>
 				<% } %>
+
+
+
 
 		 		</div>
 
