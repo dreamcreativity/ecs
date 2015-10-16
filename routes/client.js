@@ -119,7 +119,7 @@ router.get('/calculator', function(req, res){
 	var constants = require("../constants")
 	var CourseModule = require('../modules/publicHolidayModule');
 
-	template(req,res,'client_normal','client/calculatorDetail.html',{});
+	template(req,res,'client_normal','client/calculator.html',{});
 });
 
 
@@ -175,6 +175,10 @@ router.get('/calendar', function(req, res){
 
 	//template(req,res,'client_normal','client/activity.html',{});
 });
+
+router.get('/register', function(req,res){
+	template(req,res, 'client_normal', 'client/register.html', {});
+})
 
 
 
