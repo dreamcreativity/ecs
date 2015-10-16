@@ -38,10 +38,10 @@
 
 						<div class="form-group">
 							<label class="col-sm-2 control-label">Address :</label>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<input type="text" class="form-control" name="address" ng-model="student.address" readonly="">
 							</div>
-							<label class="col-sm-1 control-label">Postcode :</label>
+							<label class="col-sm-2 control-label">Postcode :</label>
 							<div class="col-sm-2">
 								<input type="text" class="form-control" name="postcode" ng-model="student.postcode" readonly="">
 							</div>
@@ -117,11 +117,11 @@
 						<div course-register></div>
 
 						<div class="form-group">
-							<div class="col-sm-2">
-								<button type="submit" class="btn btn-primary" ng-click="extendingCourse()">Submit</button>
+							<div class="col-sm-1">
+								<button type="submit" class="btn btn-primary btn-block" ng-click="extendingCourse()">Submit</button>
 							</div>
 							<div class="col-sm-1">
-								<a href="/admin/student/edit/{{student._id}}" type="submit" class="btn btn-primary">Cancel</a>
+								<a href="/admin/student/edit/{{student._id}}" type="submit" class="btn btn-primary btn-block">Cancel</a>
 							</div>
 						</div>
 

@@ -1,12 +1,12 @@
 <form name="createForm" class="form-horizontal" ng-controller='InvitationCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Email</label>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			<input type="text" class="form-control" name="email" ng-model="email" required>
 			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block text-danger">Email is required</p>	
 		</div>
-		<div class="col-sm-3">
-				<input type="submit" class="btn btn-primary" value="Send" ng-disabled="createForm.$invalid">
+		<div class="col-sm-1">
+				<input type="submit" class="btn btn-primary btn-block" value="Send" ng-disabled="createForm.$invalid">
 		</div>
 	</div>
 

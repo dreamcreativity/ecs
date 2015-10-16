@@ -24,14 +24,14 @@
 					</div>
 					<div class="form-group">
 						<label class="col-sm-1 col-md-3 control-label">First Name</label>
-						<div class="col-sm-1 col-md-3">
+						<div class="col-sm-1 col-md-1">
 							<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required readonly>	
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-1 col-md-3 control-label">Last Name</label>
-						<div class="col-sm-1 col-md-3">
+						<div class="col-sm-1 col-md-1">
 							<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required readonly>
 						</div>
 					</div>
@@ -143,9 +143,11 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-3 col-sm-1 col-md-3">
-					  		<button download-form01 class="btn btn-primary" ng-click="download_student()">Download</button>
-					  		<a href="/agent/students"class="btn btn-primary">Back</a>
+						<div class="col-md-offset-3 col-sm-1 col-md-1">
+					  		<button download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
+					  	</div>
+					  	<div  class="col-sm-1 col-md-1">
+					  		<a href="/agent/students"class="btn btn-primary btn-block">Back</a>
 					  	</div>
 					</div>
 				</form>
@@ -154,25 +156,25 @@
 			<div class="tab-pane fade" id="p2">
 				<form name="accommdationForm" class="form-horizontal" role="form" ng-submit="" novalidate ng-show="havingAccommdation">
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Starting Date :</label>
+						<label class="col-sm-3 control-label">Starting Date :</label>
 						<div class="col-sm-2">
 							<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
 						</div>
-						<label class="col-sm-2 control-label">Finishing Date :</label>
+						<label class="col-sm-1 control-label">Finishing Date :</label>
 						<div class="col-sm-2">
 							<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Departure date from Toronto: </label>
+						<label class="col-sm-3 control-label">Departure date from Toronto: </label>
 						<div class="col-sm-2">
 							<input type="date" class="form-control" name="departDate" ng-model="accommodation.departureDateFromToronto" >
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-8 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
+						<label class="col-sm-offset-3 col-sm-4 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
 					</div>
 
 					<div class="form-group">
@@ -233,7 +235,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
+						<label class="col-sm-offset-2 col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
 					</div>
 
 					<div class="form-group">
@@ -243,9 +245,11 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-3 col-sm-1 col-md-3">
-					  		<button download-form02 class="btn btn-primary" ng-click="download_accommdation()">Download</button>
-					  		<a href="/agent/students"class="btn btn-primary">Back</a>
+						<div class="col-md-offset-3 col-sm-1">
+					  		<button download-form02 class="btn btn-primary btn-block" ng-click="download_accommdation()">Download</button>
+					  	</div>
+					  	<div class="col-sm-1">
+					  		<a href="/agent/students"class="btn btn-primary btn-block">Back</a>
 					  	</div>
 					</div>
 				</form>
