@@ -66,12 +66,15 @@ angular.module('ClientApp')
 
 			$( '#calendar-next' ).on( 'click', function() {
 			    cal.gotoNextMonth( updateMonthYear );
+			    SEMICOLON.widget. loadFlexSlider();
 			} );
 			$( '#calendar-prev' ).on( 'click', function() {
 			    cal.gotoPreviousMonth( updateMonthYear );
+			    SEMICOLON.widget. loadFlexSlider();
 			} );
 			$( '#calendar-current' ).on( 'click', function() {
 			    cal.gotoNow( updateMonthYear );
+			    SEMICOLON.widget. loadFlexSlider();
 			} );
 
 			function updateMonthYear() {
