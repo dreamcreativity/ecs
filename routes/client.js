@@ -152,9 +152,6 @@ router.get('/course/:id', function(req, res){
 
 
 router.get('/events', function(req, res){
-
-
-
 	Activity.find(function(err,result){
 
 		// find media
@@ -185,6 +182,13 @@ router.get('/register/:token', function(req,res){
 });
 
 
+router.get('/page/:page_name', function(req, res) {
+	var pageName = req.params.page_name;
+	pageName = pageName.replace('-','_');
+	template(req,res,'client_normal','client/static/'+ pageName + '.html' ,{ 
+		title: pageName
+	});
+});
 
 
 
