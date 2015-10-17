@@ -57,6 +57,25 @@ router.get('/logout', function(req, res) {
 	Silder 
 /----------------------------------------
 */
+router.get('/profile', function(req, res) {
+
+
+	template(req,res,'admin_main','admin/profile.html',
+			{ 
+				title: 'Staff Profile',
+				category: 'Management',
+				cur_tap: 'System',
+				cur_selected : 'Profile'
+			}
+		);
+});
+
+
+
+/*---------------------------------------
+	Silder 
+/----------------------------------------
+*/
 router.get('/slider/new', function(req, res) {
 	template(req,res,'admin_main','admin/slider/slider_new.html',
 			{ 
