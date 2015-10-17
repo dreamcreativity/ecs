@@ -176,9 +176,14 @@ router.get('/calendar', function(req, res){
 	//template(req,res,'client_normal','client/activity.html',{});
 });
 
-router.get('/register', function(req,res){
-	template(req,res, 'client_normal', 'client/register.html', {});
+router.get('/register/', function(req,res){
+	template(req,res, 'client_normal', 'client/register.html', {url_params : null});
 })
+
+router.get('/register/:token', function(req,res){
+	template(req,res, 'client_normal', 'client/register.html', {url_params : req.params});
+});
+
 
 
 

@@ -111,6 +111,7 @@ angular.module('AgentApp')
 
 .controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,AgentTokens,$http,$window){
 	var currentAgent_id = null;
+	var token = sessionStorage.token;
 	loading();
 
 	function loading(){
@@ -121,7 +122,7 @@ angular.module('AgentApp')
 	}
 
 	$scope.create = function() {
-		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId: currentAgent_id})
+		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId: currentAgent_id, token:token})
 		.success(function(data,status,headers,config){
 			$scope.returnMessage = "email invitation has been sent successfully"
 		})

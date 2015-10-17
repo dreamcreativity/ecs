@@ -336,6 +336,7 @@ exports.delete = function(req,res){
 //Send Agent Invitation to student
 exports.sendInvitation = function(req,res) {
 	var emailEnter = req.body.email;
+	var token =req.body.token;
 	var url = null;
 	AgentInvitation.findOne({email:emailEnter}, function(err,result){
 		if(err){
@@ -354,7 +355,7 @@ exports.sendInvitation = function(req,res) {
 				});
 			}
 			else {
-				url = req.url + "/" + result.code;
+				url = "http://" + req.headers.host + "/register/" + token;
 				url = '<a href="' + url +'">Invitation Link</a>';   //Need to change to register form link
 				console.log(url);
 				emailModule.sendEmail(emailEnter,"Invitation",url,null,function(messages){

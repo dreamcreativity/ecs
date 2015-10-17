@@ -22,7 +22,7 @@ exports.create = function(req,res){
 				});
     	}
 
-     	newStudent.studentID = counter.next;
+     	newStudent.studentID = pad(counter.next,6);
      		newStudent.save(function(err,result){
 			if(err){
 				res.json({
@@ -108,7 +108,7 @@ exports.register = function(req,res){
 			Counter.findAndModify('student_id', function(err, counter){
 				if(err){ return null;}
 				else {
-					student.studentID = counter.next;
+					student.studentID = pad(counter.next,6);
 					student.save(function(err, result){
 						if(err){
 							callback()
@@ -505,7 +505,7 @@ exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
 	var agent = req.body.agent;
 	var send_list =[];
-	if(!agent) {
+	if(agent) {
 		send_list.push(agent.email);
 	}
 	send_list.push('esc.mailsystem@gmail.com');
@@ -531,6 +531,15 @@ exports.sendEmail = function(req,res){
 	})
 
 }
+
+//Helper function 
+
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
 
 // exports.sendInvitation = function(req,res){
 // 	var agent = req.body.agent;

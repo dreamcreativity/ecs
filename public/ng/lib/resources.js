@@ -234,6 +234,7 @@ resources.factory('AgentTokens',['$resource',
     function($resource){
         return $resource('/api/agent/token/:token', {}, {
         post:{ method: 'POST', params: {token:'@token'} }
+        
     });
 }]);
 

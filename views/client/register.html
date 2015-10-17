@@ -1,3 +1,7 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
 <div class="row">
 	<div class="col-sm-12 center">
 		<h4>Student Register Online Form</h4>
@@ -48,6 +52,15 @@
 				<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">citizenship is required</p>
 			</div>
 		</div>
+
+		<div class="form-group">
+			<label class="col-sm-offset-3 col-sm-3 col-md-1 control-label">Address</label>
+			<div class="col-sm-2" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
+				<input type="text" class="form-control" name="address" ng-model="student.address" required>
+				<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
+			</div>
+		</div>
+
 		<div class="form-group">
 			<label class="col-sm-offset-3  col-sm-3 col-md-1 control-label">City</label>
 			<div class="col-sm-2" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
@@ -123,7 +136,7 @@
 			 	</div>
 			 	<div class="form-group">
 			 		<div class="col-sm-offset-5 col-sm-2">
-			 			<input type="submit" class="btn btn-primary btn-block" value="Submit">  
+			 			<input type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" value="Submit">  
 			 		</div>
 			 	</div>
 	</form>
