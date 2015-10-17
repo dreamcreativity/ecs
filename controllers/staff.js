@@ -260,49 +260,22 @@ exports.getStaffbyId = function(req,res){
 //PUT: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	//var staff = new Staff(req.body);
-	console.log(req.body);
-	async.series([
-
-		function(next){
-			if (req.body.cover != null)
-	    		req.body.cover =  req.body.cover._id;
-
-	    	next();
-	    	
-	    },
-
-	], function(){
-		Staff.update({_id:id}, req.body, function(err, result){
-			if(err){
-				res.json({
-					status: 'fail',
-					messages: err,
-					data: null
-				});
-			}
-			else {
-				if(result == 1){
+	Staff.update({_id:id}, req.body, function(err, result){
+				if(err){
+					res.json({
+						status: 'fail',
+						messages: "fail",
+						data: null
+					});
+				}else{
 					res.json({
 						status: 'ok',
 						messages: 'successed',
 						data: result[0]
 					});	
-				}else{
-					res.json({
-						status: 'fail',
-						messages: "multipulte result",
-						data: null
-					});
 				}
-			}
-		});
-
-	});
-
-
-
-}
+			});
+    }
 
 //DELETE : Set staff isDelete be true
 exports.delete = function(req,res){

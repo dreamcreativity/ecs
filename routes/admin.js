@@ -182,7 +182,14 @@ router.get('/staff/detail/:id', function(req, res) {
 });
 
 router.get('/staff/create', function(req, res) {
-	res.render('admin/staff/staff_new.html');
+	template(req,res,'admin_main','admin/staff/staff_new.html',
+			{ 
+				title: 'Staffs',
+				category: 'Management',
+				cur_tap: 'staff',
+				cur_selected : 'Create'
+			}
+		);
 });
 
 router.get('/staff/edit/:id', function(req, res) {

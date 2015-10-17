@@ -3,7 +3,7 @@
 <form name="createForm" class="form-horizontal" ng-controller='StaffCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Role</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
 			<select name="role" ng-model="staff.role" class="form-control" required>
 				<option value="Administrator">Administrator</option>
 				<option value="Supervise">Supervise</option>
@@ -15,48 +15,70 @@
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Regions</label>
-		<div class="col-sm-9">
-			<select ng-model="staff.region" >
-				<option ng-selected="value.name==staff.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
-			</select>
+		<div class="col-sm-3">
+			<tags-input ng-model="region_tags" placeholder="Add a Region" add-from-autocomplete-only="true" display-property="name" addFromAutocompleteOnly="true">
+				<auto-complete source="loadCountries($query)"
+                     min-length="0"
+                     max-results-to-show="32">
+				 </auto-complete>
+			</tags-input>
 		</div>
 	</div>
-<div class="form-group">
+	<div class="form-group">
 		<label class="col-sm-3 control-label">Position</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="position" ng-model="staff.position" required>
-			<p ng-show="createForm.position.$invalid && !createForm.position.$pristine" class="help-block text-danger">position is required</p>	
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
+					<input type="text" class="form-control" name="position" ng-model="staff.position" required>
+					<span ng-show="!createForm.position.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.position.$error.required" class="input-group-addon">Required</span>	
+				</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Username</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
+		<div class="clearfix">
+				<div class="input-group">
 			<input type="text" class="form-control" name="username" ng-model="staff.username" ng-minlength="4" ng-maxlength="10" required>						
-			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block text-danger">username is required</p>	
-			<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block text-danger">username is should be 4-10 characters</p>										
+			<span ng-show="!createForm.username.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.username.$error.required" class="input-group-addon">Required</span>	
+		</div>
+		</div>										
 		</div>
 
 	</div>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">First Name</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
 			<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" required>
-			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
+			<span ng-show="!createForm.firstname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.firstname.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Last Name</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
 			<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
-			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
+			<span ng-show="!createForm.lastname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.lastname.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>	
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label" ng-model="staff.workphone">Work phone</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
 			<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
 			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
 			<p ng-show="createForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
@@ -65,7 +87,7 @@
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Cell phone</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
 			<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
 			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
 			<p ng-show="createForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
@@ -73,7 +95,7 @@
 	</div>
 	<div class="form-group">
 		<label class="col-sm-3 control-label" ng-model="staff.email">Email</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 				<input type="email" class="form-control" name="email" ng-model="staff.email" required>
@@ -84,8 +106,8 @@
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-4">
-				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+			<div class="col-sm-offset-3 col-sm-1">
+				<input type="submit" class="btn btn-primary btn-block" value="Submit" ng-disabled="createForm.$invalid">
 				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
 			</div>
 		</div>

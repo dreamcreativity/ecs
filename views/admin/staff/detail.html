@@ -2,7 +2,7 @@
 	var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
-<div class="row"  ng-controller='DetailCtrl'>
+<div class="row"  ng-controller='StaffEditCtrl'>
 	<div class="col-lg-12 col-md-12">
 		<div class="tc-tabs"><!-- Nav tabs style 1 -->
 			<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
@@ -99,7 +99,7 @@
 					</div>		
 					
 				</div>
-				<div class="tab-pane fade" id="p2" ng-controller='StaffEditCtrl'>
+				<div class="tab-pane fade" id="p2">
 					<h2>Account Detail</h2>
 					<div class="hr hr-12 hr-double"></div>
 					<form name="loginForm" class="form-horizontal" role="form" ng-submit="update(loginForm.$valid)" novalidate>
@@ -131,9 +131,17 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Regions</label>
 							<div class="col-sm-3">
-							<select ng-model="staff.region" >
+							<!-- <select ng-model="staff.region" >
 								<option ng-selected="value.name==staff.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
-							</select>
+							</select> -->
+							<tags-input ng-model="region_tags" 
+									placeholder="Add a Region" add-from-autocomplete-only="true" display-property="name" addFromAutocompleteOnly="true">
+									<auto-complete source="loadCountries($query)"
+					                     min-length="0"
+					                     max-results-to-show="32">
+					                 </auto-complete>
+							</tags-input>
+
     						</div>
 						</div>
 
@@ -164,7 +172,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Description</label>
 							<div class="col-sm-9">
-								<textarea name="description" class="form-control col-sm-9"  ng-model="staff.description" required></textarea>
+								<textarea name="description" class="form-control col-sm-9"  ng-model="staff.description"></textarea>
 								<p ng-show="loginForm.description.$invalid && !loginForm.description.$pristine" class="help-block">description is required</p>	
 							</div>
 						</div>

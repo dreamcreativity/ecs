@@ -1,16 +1,21 @@
 <form name="createForm" class="form-horizontal" ng-controller='RegionCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Name</label>
-		<div class="col-sm-9">
+		<div class="col-sm-7">
+		<div class="clearfix">
+				<div class="input-group">
 			<input type="text" class="form-control" name="name" ng-model="region.name" ng-minlength="4" ng-maxlength="100" required>
-			<p ng-show="createForm.name.$invalid && !createForm.name.$pristine" class="help-block text-danger">name is required</p>
+			<span ng-show="!createForm.name.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.name.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-3">
-				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
+			<div class="col-sm-offset-4 col-sm-3">
+				<input type="submit" class="btn btn-primary btn-block" value="Submit" ng-disabled="createForm.$invalid">
 				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
 			</div>
 		</div>
