@@ -347,10 +347,17 @@
 
 }
 
-
-.activity-img{display:block;margin-bottom:30px;width:100%;height:175px;background-size:cover;background-position:50% 25%}
-.activity-img>div{background-image:url('/images/black_through.png');background-size:100% 100%;background-repeat:no-repeat;width:100%;height:100%;opacity:1;-moz-opacity:1;filter:alpha(opacity:100);transition:all 0.2s;-moz-transition:all 0.2s;-o-transition:all 0.2s;-webkit-transition:all 0.2s}
-.activity-img:hover>div{opacity:0.25;-moz-opacity:0.25;filter:alpha(opacity:25)}
+#event-calendar .caption a, #event-calendar .caption {
+	background-color: rgba(0, 0, 0, 0.46)!important;
+	border-radius: 0!important;
+	width: 100%
+}
+#event-calendar .caption{
+	background-color: gray;
+}
+#event-calendar .activity-img{display:block;margin-bottom:30px;width:100%;height:175px;background-size:cover;background-position:50% 25%}
+#event-calendar .activity-img>div{background-image:url('/images/black_through.png');background-size:100% 100%;background-repeat:no-repeat;width:100%;height:100%;opacity:1;-moz-opacity:1;filter:alpha(opacity:100);transition:all 0.2s;-moz-transition:all 0.2s;-o-transition:all 0.2s;-webkit-transition:all 0.2s}
+#event-calendar .activity-img:hover>div{opacity:0.25;-moz-opacity:0.25;filter:alpha(opacity:25)}
 
 
 

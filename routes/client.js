@@ -6,6 +6,7 @@ var Media = require('../models/media');
 var Course = require('../models/course');
 var Staff = require('../models/staff');
 var Activity = require('../models/activity');
+var Event = require('../models/event');
 var async = require("async");
 var constants = require("../constants");
 
@@ -149,18 +150,33 @@ router.get('/course/:id', function(req, res){
 
 
 
+router.get('/event/:id', function(req, res){
+	var moment = require('moment');
+	var id = req.params.id;
+
+	Event.find({_id:id}).populate('cover').exec(function(err, result){
+		var eventInfo = result[0];
+
+		var startDate = moment(eventInfo.date).format('MMM Do YYYY');
+		var startTime = moment(eventInfo.date).format('h : mm : ss a');
+
+	
+
+		template(req,res,'client_normal','client/eventDetail.html',{
+			title: 'Event Detail',
+			event: eventInfo,
+			startDate: startDate,
+			startTime: startTime
+		});
+
+	});
+	
+});
 
 
 router.get('/events', function(req, res){
-	Activity.find(function(err,result){
 
-		// find media
-		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
-			console.log(imgs);
-			template(req,res,'client_normal','client/event.html',{ a : result[0], images:imgs});
-		});
-		
-	});
+	template(req,res,'client_normal','client/event.html',{});
 
 });
 

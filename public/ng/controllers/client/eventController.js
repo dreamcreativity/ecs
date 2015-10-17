@@ -39,7 +39,11 @@ angular.module('ClientApp')
 				async.eachSeries(eventRawData, function(events, callback) {
 					var slidersHTML = '';
 				 	angular.forEach(events, function(event, eventDateString) {
-				  		slidersHTML += document.getElementById('image-slider').innerHTML.replace('##eventcover##', event.event.cover.thumbnail).replace(/(\r\n|\n|\r)/gm,"").replace('##title##', event.event.title);
+				  		slidersHTML += document.getElementById('image-slider').innerHTML
+				  						.replace('##eventcover##', event.event.cover.thumbnail)
+				  						.replace(/(\r\n|\n|\r)/gm,"")
+				  						.replace('##title##', event.event.title)
+				  						.replace('##url##', '/event/'+ event.event._id);
 				  	});
 				 	var eventHTML = document.getElementById('images').innerHTML.replace('##sliders##', slidersHTML).replace(/(\r\n|\n|\r)/gm,"");
 
