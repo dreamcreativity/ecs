@@ -54,7 +54,7 @@ router.get('/logout', function(req, res) {
 
 
 /*---------------------------------------
-	Silder 
+	Profile
 /----------------------------------------
 */
 router.get('/profile', function(req, res) {

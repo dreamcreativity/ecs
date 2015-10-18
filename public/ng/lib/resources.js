@@ -6,7 +6,13 @@ var resources = angular.module('esc.resources', ['ngResource']);
 resources.factory('StaffAccount',['$resource',
     function($resource){
         return $resource('/api/staff-account/:id', {}, {
-        query:{ method: 'GET'}
+        query:{ method: 'GET'},
+        changePassword:{
+            url: '/api/staffs/changepassword',
+            method: 'POST',
+            params: {passwordInfo: '@info'}
+        }
+
     });
 }]);
 
@@ -14,7 +20,7 @@ resources.factory('Staffs',['$resource',
     function($resource){
         return $resource('/api/staffs/:id', {}, {
         query:{ method: 'GET'},
-        update : { method : 'PUT', params: {id:'@_id'}}
+        update : { method : 'PUT', params: {id:'@_id'}},
     });
 }]);
 

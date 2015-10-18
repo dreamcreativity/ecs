@@ -160,7 +160,7 @@ router.delete('/staffs/:id',staff.delete);
 //-------------------------Staff Account-------------------------
 
 router.get('/staff-account/', staff.getStaffAccount);
-
+router.post('/staffs/changepassword', staff.changePassword);
 
 
 //-----------------------Student-----------------------------------
