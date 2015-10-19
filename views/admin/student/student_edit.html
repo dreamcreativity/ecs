@@ -149,7 +149,7 @@
 					<div class="form-actions">
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-1">
-								<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block">Extening course</a>
+								<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block">Add course</a>
 							</div>
 							<div class="col-sm-1">
 					  			<button type="button" download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
@@ -259,13 +259,13 @@
 						</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-1">
-							<button type="button" download-form02 class="btn btn-primary" ng-click="download_accommdation()">Download</button>
+							<button type="button" download-form02 class="btn btn-primary btn-block" ng-click="download_accommdation()">Download</button>
 						</div>
 						<div class="col-sm-1">
-							<input type="submit" class="btn btn-primary" value="Update">
+							<input type="submit" class="btn btn-primary btn-block" value="Update">
 						</div>
 						<div class="col-sm-1">
-							<input type="submit" class="btn btn-primary" ng-click="havingAccommdation=false" ng-disabled="havingAccommdation" value="Cancel">
+							<a href="/admin/student/all" type="submit" class="btn btn-primary btn-block">Cancel</a>
 						</div>
 					</div>
 				</form>
@@ -318,3 +318,12 @@
 
 	</div>
 </div>
+
+
+<script>
+$(document).on("keypress", "form", function(event) { 
+    return event.keyCode != 13;
+});
+</script>
+
+

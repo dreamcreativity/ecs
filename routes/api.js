@@ -91,8 +91,9 @@ router.use(function(req,res,next){
 
 			console.log(req.headers.api_token);
 			var accessToken = req.headers.api_token;
+			var accessReferer = req.headers.referer;
 
-			auth.IsTokenValid(accessToken, function(isValid){
+			auth.IsTokenValid(accessToken, accessReferer, function(isValid){
 
 
 				if(isValid){

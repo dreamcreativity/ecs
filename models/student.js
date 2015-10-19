@@ -14,6 +14,7 @@ var StudentSchema = new mongoose.Schema({
 	birthday : {type: Date, required: true},
 	age : {type: Number, required: true},
 	citizenship : {type: String, required: true},
+	region : {type:String,required:true},
 	//address
 	address : {type: String, required: true},
 	postcode : {type: String, required: true},

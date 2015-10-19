@@ -1,4 +1,4 @@
-<form name="registerForm" class="form-horizontal" ng-controller='StudentRegister' role="form" ng-submit="register(registerForm.$valid)" novalidate>
+<form name="registerForm" class="form-horizontal" ng-controller='StudentRegister' role="form" novalidate>
 	<div class="wizard">
 		<ul class="wizard-steps">
 			<li data-target="#step1" class="active">
@@ -50,6 +50,20 @@
 							</div>
 						</div>
 					</div>
+
+					<label class="col-sm-3 col-md-1 control-label">Region</label>
+					<div class="col-sm-2">
+						<div class="clearfix">
+							<div class="input-group">
+							<select name="region" class="form-control" ng-model="student.region" required>
+									<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
+								</select>
+								<span ng-show="registerForm.region.$error.required" class="input-group-addon">Required</span>
+								<span ng-show="!registerForm.region.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+							</div>
+						</div>
+					</div>
+
 				</div>
 
 				<div class="form-group">
@@ -57,9 +71,9 @@
 					<div class="col-sm-2">
 						<div class="clearfix">
 							<div class="input-group">
-								<select name="gender" class="form-control" ng-model="student.gender" ng-init="student.gender = 'male'">
-									<option value="male">Male</option>
-									<option value="female">Female</option> 
+								<select name="gender" class="form-control" ng-model="student.gender" ng-init="student.gender = 'Male'">
+									<option value="Male">Male</option>
+									<option value="Female">Female</option> 
 								</select>
 							</div>
 						</div>
@@ -441,7 +455,9 @@
 				 <button type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish" ng-disabled="registerForm.$invalid">Next<i class="fa fa-arrow-right icon-on-right"></i></button> 
 <!-- 				<button type="button" id='reigster_submit' class="btn btn-next btn-primary" data-last="Finish">Next<i class="fa fa-arrow-right icon-on-right"></i></button> -->
 				<!-- add $("#last_submit").trigger('click') in wizard.js-->
-				<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">  
+<!-- 				<input id="last_submit" type="submit" class="btn btn-primary" value="Submit" ng-hide="true">   -->
+				<button type="button" id="last_submit" class="btn btn-primary" ng-disabled="!registerForm.$valid" ng-hide="true" 
+				ng-click="register()">Create</button>
 			</div>
 		</div>
 
@@ -463,6 +479,9 @@
 
 
 <script type="text/javascript">
+
+
+
 	function handleClick(){
 		var cb = $("#termcondition").is(":checked");
 		if(cb){

@@ -33,7 +33,7 @@
  			else {
  				var newToken = new Token();
  				newToken.user = user._id;
- 				newToken.type = 'Agent';
+ 				newToken.type = 'agent';
  				newToken.isActived = true;
  				newToken.save();
 
