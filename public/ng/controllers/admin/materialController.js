@@ -2,13 +2,22 @@
 angular.module('AdminApp')
 
 
-.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Meterials,DateRanges){
+.controller('MaterialController',function MaterialController($rootScope,$scope,$location,$http,$window,Regions,Constants,Meterials,DateRanges){
 	
 	$scope.materials = Meterials.query();
 	$scope.regions = Regions.query();
 	$scope.dateRanges = DateRanges;
 	$scope.dateAfter = $scope.dateRanges[0];
 
+
+	Constants.get({name:"Country"}, function(result){
+			 		var regions = result.data;
+			 		var list =[]
+			 		for(var i=0; i<regions.length; i++){
+			 			list.push({"name" : regions[i]});
+			 		}
+			 		$scope.regionsList = list;
+			 	});
 
 
 
