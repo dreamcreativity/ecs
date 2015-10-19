@@ -28,7 +28,7 @@ exports.create = function(req,res){
 
 //GET: all Activities
 exports.getActivities = function (req,res){
-	Activity.find({},function(err,results){
+	Activity.find({}).populate('cover').sort({'displayOrder': -1}).exec(function(err,results){
 		if(err){
 			res.json(
 			{

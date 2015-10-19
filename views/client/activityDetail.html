@@ -28,7 +28,7 @@
                 <div class="banner-list">
                     <ul>
                         <% for(var j=0; j < activityList.length; j++) { %>
-                        <li> <a href="/activity/detail/<%- activityList[j]._id %>"><img  src="<%- activityList[j].cover.thumbnail %>"></a></li>
+                        <li title="<%- activityList[j].title %>"> <a href="/activity/detail/<%- activityList[j]._id %>"><img  src="<%- activityList[j].cover.thumbnail %>"></a></li>
                         <% } %>
                     </ul>
                 </div>

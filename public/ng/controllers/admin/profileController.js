@@ -10,7 +10,7 @@ angular.module('AdminApp')
 	// 	return StaffAccount.query({});
 	// }
 	StaffAccount.query({}, function(result){
-		console.log(result);
+		//console.log(result);
 		$scope.info = result.data;
 	});
 	

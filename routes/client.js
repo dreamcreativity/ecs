@@ -9,7 +9,7 @@ var Activity = require('../models/activity');
 var Event = require('../models/event');
 var async = require("async");
 var constants = require("../constants");
-
+var random = require('mongoose-random');
 
 
 /* GET home page. */
@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
 			});
 	    },
 	    function(next){
-			Activity.find({cover: { $ne: null }, isActive: true }).populate('cover').exec(function(err,result){
+			Activity.find({cover: { $ne: null }, isActive: true }).populate('cover').sort({'displayOrder': -1}).limit(9).exec(function(err,result){
 				activities = result;
 				console.log('-----------------');
 				console.log(activities);
@@ -85,7 +85,7 @@ router.get('/activity/detail/:id', function(req, res){
 	var activityList = [];
 	async.series([
 		function(next){
-			Activity.find({'isActive': true}).populate('cover').exec(function(err,result){	
+			Activity.find({'isActive': true, _id: { $ne: id } }).populate('cover').sort({'displayOrder': -1}).limit(8).exec(function(err,result){	
 				activityList = result;
 
 				next();
@@ -107,7 +107,8 @@ router.get('/activity/detail/:id', function(req, res){
 
 router.get('/activity', function(req, res){
 
-	Activity.find({}).populate('cover').exec(function(err,result){
+
+	Activity.find({'isActive': true}).populate('cover').sort({'displayOrder': -1}).limit(9).exec(function(err,result){
 		template(req,res,'client_normal','client/activity.html',{ 
 			activitys : result
 		});
