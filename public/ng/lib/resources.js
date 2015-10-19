@@ -243,6 +243,16 @@ resources.factory('AgentTokens',['$resource',
 }]);
 
 
+resources.factory('Promotions',['$resource',
+    function($resource){
+        return $resource('/api/promotions/:id', {}, {
+        query:{ method: 'GET'},
+        create:{ method: 'POST'},
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{ method: 'PUT', params: {id:'@_id'} }
+    });
+}]);
+
 
 
 // resources.factory('SendEmail', ['$resource',function($resource){

@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-var Pormotion = require('../models/promotion');
+var Promotion = require('../models/promotion');
 
 //GET: all Pormotions
 exports.getAllPormotions = function (req,res){
-	Pormotion.find({},function(err,results){
+	Promotion.find({},function(err,results){
 		if(err){
 			res.json(
 			{

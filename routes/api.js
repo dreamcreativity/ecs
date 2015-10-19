@@ -270,7 +270,7 @@ router.get('/promotions', promotion.getAllPormotions);
 router.get('/promotions/:id', promotion.getPromotionbyId);
 
 //POST : create a promotion record
-router.post('/promotion', promotion.create);
+router.post('/promotions', promotion.create);
 
 //------------------------Course----------------------------------------
 
