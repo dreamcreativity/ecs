@@ -1,6 +1,6 @@
 <div class="row" ng-controller='StudentCtrl'>
 
-<div class="col-lg-12">
+	<div class="col-lg-12">
 		<div class="portlet">
 			<div class="portlet-heading dark">
 				<div class="portlet-title">
@@ -24,14 +24,14 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="student in students.data | filter:query">
-								<td>00000{{student.studentID}}</td>
+								<td>{{student.studentID}}</td>
 								<td class="hidden-xs">{{student.firstname}} {{student.lastname}}</td>
 								<td><a href="/admin/agent/detail/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
 								<td class="hidden-xs">{{student.commissionRate}}</td>
 								<td class="hidden-xs">{{student.pomotionRate}}</td>
 								<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>
 								<td><span ng-if="student.isQuit == 1" class="label label-danger">Deleted</span>
-								<span ng-if="student.isQuit == 0" class="label label-active">Active</span>
+									<span ng-if="student.isQuit == 0" class="label label-active">Active</span>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
@@ -44,24 +44,8 @@
 					</table>
 				</div>
 			</div>					 
-		</div>
-		<!-- <button class="btn btn-sm btn-primary"
-					ng-bootbox-title="A new student"
-					ng-bootbox-custom-dialog
-					ng-bootbox-custom-dialog-template="create">
-					Create
-		</button> -->
-		<div class="row">
-			<div class="col-sm-1">
-			<a href="/admin/student/create" class="btn btn-primary btn-block">Create</a>
-			</div>
-			<div class="col-sm-1">
-				<a href="/admin" class="btn btn-primary btn-block">Back</a>
-			</div>
-		</div>
-		
+		</div>		
 	</div>
-
 </div>	 			
 
 

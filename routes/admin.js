@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 			{ 
 				title: 'Home',
 				category: 'Dashboard',
-				cur_tap: 'Dashboard',
+				cur_tap: '',
 				cur_selected : '',
 				staff_signin_require: true
 			},
@@ -82,7 +82,7 @@ router.get('/slider/new', function(req, res) {
 				title: 'New Slider',
 				category: 'Management',
 				cur_tap: 'Slider',
-				cur_selected : 'New Slider'
+				cur_selected : 'Create'
 			}
 		);
 });
@@ -91,10 +91,10 @@ router.get('/slider/new', function(req, res) {
 router.get('/slider/edit/:id', function(req, res) {
 	template(req,res,'admin_main','admin/slider/slider_edit.html',
 			{ 
-				title: 'Slider Tile',
+				title: 'Edit Slider',
 				category: 'Management',
 				cur_tap: 'Slider',
-				cur_selected : 'Edit Slider',
+				cur_selected : 'Edit',
 				url_params : req.params
 			}
 		);
@@ -106,7 +106,7 @@ router.get('/slider/all', function(req, res) {
 				title: 'Edit Slider',
 				category: 'Management',
 				cur_tap: 'Slider',
-				cur_selected : 'Edit Slider'
+				cur_selected : 'All'
 			}
 		);
 });
@@ -120,21 +120,21 @@ router.get('/media/uploader', function(req, res) {
 	template(req,res,'admin_main','admin/media/uploader.html',
 			{ 
 				title: 'Media Uploader',
-				category: 'Media',
-				cur_tap: 'Media Uploader',
+				category: 'Website Media',
+				cur_tap: 'Media',
 				cur_selected : 'Upload',
 				constants : constants,
 			}
 		);
 });
 
-router.get('/media/', function(req, res) {
+router.get('/media/all', function(req, res) {
 	template(req,res,'admin_main','admin/media/list.html',
 			{ 
 				title: 'Medias',
-				category: 'Medias',
+				category: 'Website Medias',
 				cur_tap: 'Media',
-				cur_selected : 'List',
+				cur_selected : 'All',
 				constants : constants
 			}
 		);
@@ -144,7 +144,7 @@ router.get('/media/edit/:id', function(req, res) {
 	template(req,res,'admin_main','admin/media/edit.html',
 			{ 
 				title: 'Media Uploader',
-				category: 'Media',
+				category: 'Website Medias',
 				cur_tap: 'Media',
 				cur_selected : 'Edit',
 				constants : constants,
@@ -164,7 +164,7 @@ router.get('/staff/all', function(req, res) {
 				title: 'Staffs',
 				category: 'Management',
 				cur_tap: 'Staff',
-				cur_selected : 'Staffs'
+				cur_selected : 'All'
 			}
 		);
 });
@@ -174,8 +174,8 @@ router.get('/staff/detail/:id', function(req, res) {
 			{ 
 				title: 'Staffs',
 				category: 'Management',
-				cur_tap: 'Profile',
-				cur_selected : 'Profile',
+				cur_tap: 'Staff',
+				cur_selected : 'Edit',
 				url_params : req.params
 			}
 		);
@@ -186,42 +186,25 @@ router.get('/staff/create', function(req, res) {
 			{ 
 				title: 'Staffs',
 				category: 'Management',
-				cur_tap: 'staff',
+				cur_tap: 'Staff',
 				cur_selected : 'Create'
 			}
 		);
 });
-
-router.get('/staff/edit/:id', function(req, res) {
-
-	template(req,res,'admin_main','admin/staff/staff_edit.html',
-			{ 
-				title: 'Edit Staff',
-				category: 'Management',
-				cur_tap: 'Staff',
-				cur_selected : 'Edit Staff',
-				url_params : req.params
-
-			}
-		);
-});
-
 
 /*---------------------------------------
 	Material
 /----------------------------------------
 */
 
-
-
-router.get('/material', function(req, res) {
+router.get('/material/all', function(req, res) {
 
 	template(req,res,'admin_main','admin/material/list.html',
 			{ 
 				title: 'Materials',
 				category: 'Management',
 				cur_tap: 'Material',
-				cur_selected : 'Material List'
+				cur_selected : 'All'
 			}
 		);
 });
@@ -233,7 +216,7 @@ router.get('/material/edit/:id', function(req, res) {
 				title: 'Edit Material',
 				category: 'Management',
 				cur_tap: 'Material',
-				cur_selected : 'Edit Material',
+				cur_selected : 'Edit',
 				constants : constants,
 				url_params : req.params
 			}
@@ -247,7 +230,7 @@ router.get('/material/new', function(req, res) {
 				title: 'New Material',
 				category: 'Management',
 				cur_tap: 'Material',
-				cur_selected : 'Create New Material',
+				cur_selected : 'Create',
 				constants : constants
 			}
 		);
@@ -280,7 +263,7 @@ router.get('/student/all', function(req, res) {
 				title: 'Student',
 				category: 'Management',
 				cur_tap: 'Student',
-				cur_selected : 'Student'
+				cur_selected : 'All'
 			}
 		);
 });
@@ -291,7 +274,7 @@ router.get('/student/create', function(req, res) {
 				title: 'Student',
 				category: 'Management',
 				cur_tap: 'Student',
-				cur_selected : 'Create Student',
+				cur_selected : 'Create',
 				url_params : req.params
 			}
 		);
@@ -332,7 +315,7 @@ router.get('/student/edit/:id', function(req, res) {
 				title: 'Student',
 				category: 'Management',
 				cur_tap: 'Student',
-				cur_selected : 'Edit Student',
+				cur_selected : 'Edit',
 				url_params : req.params
 			}
 		);
@@ -346,7 +329,7 @@ router.get('/agent/all', function(req, res) {
 				title: 'Agent',
 				category: 'Management',
 				cur_tap: 'Agent',
-				cur_selected : 'Agent',
+				cur_selected : 'All',
 			}
 		);
 });
@@ -357,7 +340,7 @@ router.get('/agent/detail/:id', function(req, res) {
 				title: 'Agent',
 				category: 'Management',
 				cur_tap: 'Agent',
-				cur_selected : 'Agent',
+				cur_selected : 'Edit',
 				url_params : req.params
 			}
 		);
@@ -365,7 +348,14 @@ router.get('/agent/detail/:id', function(req, res) {
 
 
 router.get('/agent/create', function(req, res) {
-	res.render('admin/agent/agent_new.html');
+	template(req,res,'admin_main','admin/agent/agent_new.html',
+			{ 
+				title: 'Agent',
+				category: 'Management',
+				cur_tap: 'Agent',
+				cur_selected : 'Create'
+			}
+		);
 });
 
 //-----------------------Pormotion---------------------------------
@@ -375,12 +365,18 @@ router.get('/promotion/all', function(req, res){
 		title : 'Promotion',
 		category : 'Management',
 		cur_tap : 'Promotion',
-		cur_selected : 'Promotion'
+		cur_selected : 'All'
 	});
 });
 
 router.get('/promotion/create', function(req,res){
-	res.render('admin/promotion/promotion_new.html');
+	template(req,res,'admin_main','admin/promotion/promotion_new.html',
+	{
+		title : 'Promotion',
+		category : 'Management',
+		cur_tap : 'Promotion',
+		cur_selected : 'Create'
+	});
 })
 
 //---------------------Courses----------------------------------------
@@ -390,12 +386,18 @@ router.get('/course/all', function(req,res){
 		title : 'Course',
 		category : 'Management',
 		cur_tap : 'Course',
-		cur_selected : 'Course'
+		cur_selected : 'All'
 	});
 });
 
 router.get('/course/create', function(req, res) {
-	res.render('admin/course/course_new.html');
+	template(req,res,'admin_main', 'admin/course/course_new.html', 
+	{
+		title : 'Course',
+		category : 'Management',
+		cur_tap : 'Course',
+		cur_selected : 'Create'
+	});
 });
 
 router.get('/course/edit/:id', function(req, res) {
@@ -404,7 +406,7 @@ router.get('/course/edit/:id', function(req, res) {
 				title: 'Course',
 				category: 'Management',
 				cur_tap: 'Course',
-				cur_selected : 'Edit Course',
+				cur_selected : 'Edit',
 				url_params : req.params
 			}
 		);
@@ -417,7 +419,7 @@ router.get('/activity/all', function(req,res) {
 			title : 'Activity',
 			category : 'Management',
 			cur_tap : 'Activity',
-			cur_selected : 'Activity'
+			cur_selected : 'All'
 		});
 });
 
@@ -427,7 +429,7 @@ router.get('/activity/create', function(req, res) {
 			title : 'Create Activity',
 			category : 'Management',
 			cur_tap : 'Activity',
-			cur_selected : 'Create Activity'
+			cur_selected : 'Create'
 		});
 });
 
@@ -437,36 +439,42 @@ router.get('/activity/edit/:id', function(req, res) {
 			title : 'Edit Activity',
 			category : 'Management',
 			cur_tap : 'Activity',
-			cur_selected : 'Edit Activity',
+			cur_selected : 'Edit',
 			url_params : req.params
 		});
 });
 
 //-------------------------Region-------------------------------------------
-router.get('/region/all', function(req,res){
-	template(req,res,'admin_main','admin/region/region.html',
-	{
-		title: 'Region',
-		category : 'Management',
-		cur_tap : 'Region',
-		cur_selected : 'Region'
-	});
-});
+// router.get('/region/all', function(req,res){
+// 	template(req,res,'admin_main','admin/region/region.html',
+// 	{
+// 		title: 'Region',
+// 		category : 'Management',
+// 		cur_tap : 'Region',
+// 		cur_selected : 'Region'
+// 	});
+// });
 
-router.get('/region/create', function(req, res) {
-	res.render('admin/region/region_new.html');
-});
+// router.get('/region/create', function(req, res) {
+// 	template(req,res,'admin_main','admin/region/region_new.html',
+// 	{
+// 		title: 'Create Region',
+// 		category : 'Management',
+// 		cur_tap : 'Region',
+// 		cur_selected : 'Create'
+// 	});
+// });
 
-router.get('/region/edit/:id', function(req, res) {
-	template(req,res,'admin_main', 'admin/region/region_edit.html', 
-		{
-			title : 'Edit Region',
-			category : 'Management',
-			cur_tap : 'Region',
-			cur_selected : 'Edit Region',
-			url_params : req.params
-		});
-});
+// router.get('/region/edit/:id', function(req, res) {
+// 	template(req,res,'admin_main', 'admin/region/region_edit.html', 
+// 		{
+// 			title : 'Edit Region',
+// 			category : 'Management',
+// 			cur_tap : 'Region',
+// 			cur_selected : 'Edit',
+// 			url_params : req.params
+// 		});
+// });
 
 //--------------------------Event--------------------------------------------
 
@@ -476,7 +484,7 @@ router.get('/event/all', function(req,res){
 		title: 'Event',
 		category : 'Management',
 		cur_tap : 'Event',
-		cur_selected : 'Event'
+		cur_selected : 'All'
 	});
 });
 
@@ -486,7 +494,7 @@ router.get('/event/create', function(req, res) {
 			title : 'Create Event',
 			category : 'Management',
 			cur_tap : 'Event',
-			cur_selected : 'Create Event'
+			cur_selected : 'Create'
 		});
 });
 
@@ -496,7 +504,7 @@ router.get('/event/detail/:id', function(req, res) {
 			title : 'Edit Event',
 			category : 'Management',
 			cur_tap : 'Event',
-			cur_selected : 'Edit Event',
+			cur_selected : 'Edit',
 			url_params : req.params
 		});
 });

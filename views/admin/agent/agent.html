@@ -45,17 +45,39 @@
 				</div>
 			</div>					 
 		</div>
-		<button class="btn btn-primary"
-					ng-bootbox-title="A new agent"
-					ng-bootbox-custom-dialog
-					ng-bootbox-custom-dialog-template="create">   <!-- Note /admin/agent/create -->
-					Create
-		</button>
-<!-- 		<a href="/admin" class="btn btn-sm btn-primary">Back</a> -->
-		
 	</div>
 
 </div>	 			
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+	
+	var form = null;
+	$.get( "/admin/staff/create", function( data ) {
+	  form = data
+	});
+
+});
+
+//for tables checkbox demo
+jQuery(function($) {
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox')
+		.each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+		
+	});
+});
+</script>
 
 
 
