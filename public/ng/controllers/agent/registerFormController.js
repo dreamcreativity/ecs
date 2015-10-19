@@ -14,7 +14,6 @@ angular.module('AgentApp')
 		$scope.isDisabled = false;
 		$scope.corseLevel = [];
 
-
 		AgentTokens.post({token:token}, function(result){
 			$scope.currentAgent = result.data;
 		});
@@ -32,6 +31,15 @@ angular.module('AgentApp')
 				$scope.corseLevel = result.data;
 			}
 		});
+
+		Constants.get({name:"Country"}, function(result){
+	 		var regions = result.data;
+	 		var list =[]
+	 		for(var i=0; i<regions.length; i++){
+	 			list.push({"name" : regions[i]});
+	 		}
+	 		$scope.regionsList = list;
+	 	});
 	}
 
 	$scope.checkForm = function(){
@@ -80,7 +88,7 @@ angular.module('AgentApp')
 	}
  })
 
-.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,AgentTokens,$window){
+.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,Constants,AgentTokens,$window){
 	var obj_id = url_params.id;
 	var currentAgent_id = null;
 	var token = sessionStorage.token;
@@ -105,6 +113,15 @@ angular.module('AgentApp')
 	 				}
 			});
 		}
+
+		Constants.get({name:"Country"}, function(result){
+	 		var regions = result.data;
+	 		var list =[]
+	 		for(var i=0; i<regions.length; i++){
+	 			list.push({"name" : regions[i]});
+	 		}
+	 		$scope.regionsList = list;
+	 	});
 	}
 	}
 )

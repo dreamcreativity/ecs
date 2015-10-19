@@ -13,7 +13,7 @@
 
 		<div class="tab-content">
 			<div class="tab-pane fade in portlet-body active" id="p1">
-				<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
+				<form name="studentForm" class="form-horizontal" role="form">
 					<div class="form-group">
 						<label class="col-sm-1 col-md-3 control-label">Student ID</label>
 						<div class="col-sm-1 col-md-3">
@@ -41,8 +41,8 @@
 						<div class="col-sm-1 col-md-3">
 							<div class="input-group">
 								<select name="gender" ng-model="student.gender">
-									<option value="male">Male</option>
-									<option value="female">Female</option> 
+									<option value="Male">Male</option>
+									<option value="Female">Female</option> 
 								</select>
 							</div>
 						</div>
@@ -130,6 +130,17 @@
 						</div>
 					</div>
 
+					<div class="form-group">
+						<label class="col-sm-1 col-md-3 control-label">Region</label>
+						<div class="col-sm-1 col-md-3">
+							<div class="input-group">
+							<select name="region" class="form-control" ng-model="student.region" required>
+									<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
+								</select>
+							</div>
+							</div>
+						</div>
+
 
 					<div class="form-group">
 						<label class="col-sm-1 col-md-3 control-label">Quit</label>
@@ -154,7 +165,7 @@
 			</div>
 
 			<div class="tab-pane fade" id="p2">
-				<form name="accommdationForm" class="form-horizontal" role="form" ng-submit="" novalidate ng-show="havingAccommdation">
+				<form name="accommdationForm" class="form-horizontal" role="form" novalidate ng-show="havingAccommdation">
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Starting Date :</label>
 						<div class="col-sm-2">
@@ -295,6 +306,11 @@
 	</div>
 </div>	
 
+<script>
+$(document).on("keypress", "form", function(event) { 
+    return event.keyCode != 13;
+});
+</script>
 
 
 <!-- core JavaScript -->

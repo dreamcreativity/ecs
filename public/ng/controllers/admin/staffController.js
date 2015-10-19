@@ -47,7 +47,7 @@ angular.module('AdminApp')
 })
 
 
-.controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$scope,$http,$modal,Regions,Staffs,Constants,Medias,$window) {
+.controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$q,$scope,$http,$filter,$modal,Regions,Staffs,Agents,Constants,Medias,$window) {
 	var staff_id = url_params.id;
 	$scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
 	
@@ -64,6 +64,12 @@ angular.module('AdminApp')
 	 	})
 	 }
 
+	 $scope.getAgentbyRegion = function(name, callback){
+	 	return Agents.getAgentbyRegion({name:name}, function(result){
+	 		return callback(result.data);
+	 	})
+	 }
+
 	 function loading() {
 	 	var list = [];
 	 	Constants.get({name:"Country"}, function(result){
@@ -75,9 +81,26 @@ angular.module('AdminApp')
 	 			Staffs.get({id:staff_id}, function(result){
 	 				$scope.staff = result.data;
 	 				$scope.regionsList = list;
+	 				if($scope.staff.regions !=null){
 	 				for(var i=0; i<$scope.staff.regions.length; i++){
-	 					$scope.region_tags.push({"name" : $scope.staff.regions[i]});
-	 					}
+		 					$scope.region_tags.push({"name" : $scope.staff.regions[i]});
+		 					}
+		 				var prom =[];
+		 				var list =[];
+		 				$scope.agents=[];
+		 				$scope.staff.regions.forEach(function (obj, i) {
+					           prom.push($scope.getAgentbyRegion(obj, function(result){
+					           	 list.push(result);
+					           }));
+					      });
+		 				$q.all(prom).then(function(res){
+		 					var re= res;
+		 					var i = $scope.agents;
+		 				});
+		 				deferred.resolve();
+	 				}
+
+
 	 			});
 	 		}
 	 	});
@@ -101,10 +124,6 @@ angular.module('AdminApp')
 			$scope.staff.cover = selectedMedia;
 		});
 	});
-
-
-	
-
 
 });
 

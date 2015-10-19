@@ -25,14 +25,6 @@ resources.factory('Staffs',['$resource',
 }]);
 
 
-resources.factory('Agents',['$resource',
-    function($resource){
-        return $resource('/api/agent/region/:name', {}, {
-        query:{ method: 'GET'}
-    });
-}]);
-
-
 resources.factory('MediaTarget',['$resource',
     function($resource){
         return $resource('/api/media/target/:target', {}, {
@@ -83,7 +75,13 @@ resources.factory('Agents',['$resource',
     function($resource){
         return $resource('/api/agent/:id', {}, {
         query:{ method: 'GET'},
-        update : { method : 'PUT', params: {id:'@_id'}}
+        update : { method : 'PUT', params: {id:'@_id'}},
+        getAgentbyRegion : 
+        {
+            url: '/api/agent/region/:name',
+            method : 'GET', 
+            params: {name:'@_name'}
+        }
     });
 }])
 
