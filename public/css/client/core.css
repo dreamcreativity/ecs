@@ -1,3 +1,13 @@
+/*Disable search button*/
+
+#header.full-header #primary-menu > ul {
+    padding-right: 0; 
+    border-right: 0; 
+}
+
+
+/*calendar client site styling*/
+
 .calendar{
 	margin: 20px auto;
 }
@@ -249,7 +259,9 @@
 	width: 300px!important;
 }
 
-
+.sub-menu ul.width200{
+	width: 200px!important;
+}
 /*------- overwirte calendar sytling ----------*/
 #school-calendar .fc-calendar .fc-body {
 	height: 1800px;

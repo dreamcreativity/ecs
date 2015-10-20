@@ -8,7 +8,8 @@ var RegistrationSchema = new mongoose.Schema({
 	accommodation: {type: mongoose.Schema.ObjectId, ref:'Accommodation', default: null},
 	flightInfo: {type: mongoose.Schema.ObjectId, ref:'FlightInfo', default: null},
 	createDate: {type: Date,default: Date.now },
-	isActive: {type: Boolean, default: true}
+	isActive: {type: Boolean, default: true},
+	payments: [{ type: Schema.Types.ObjectId, ref: 'Payment'}],
 
 });
 

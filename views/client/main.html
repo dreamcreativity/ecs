@@ -186,7 +186,6 @@
                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
-
                         <ul class="one-page-menu">
                             <li><a href="#" data-href="#home"><div>Home</div></a></li>
                             <li><a href="#" data-href="#section-about"><div>About</div></a></li>
@@ -201,8 +200,15 @@
                                     <% } %>
                                 </ul>
                             </li>
-                            <!-- <li><a href="#" data-href="#section-testimonials"><div>Testimonials</div></a></li> -->
-
+                            <li>
+                                <a href="#" data-href="#section-tools"><div>Tools</div></a>
+                                <ul class="width200">
+                                    <li><a href="/Calculator" ><div>Calculator</div></a></li>
+                                    <li><a href="/events" ><div>Events</div></a></li>
+                                    <li><a href="/register"><div>Register</div></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>
                             <li>
                                 <a href="#header" ><div>Info</div></a>
                                 <ul class="width200">
@@ -211,30 +217,17 @@
                                     <li><a href="/register"><div>Register</div></a></li>
                                 </ul>
                             </li>
-
-                            <li>
-                                <a href="#header" ><div>Tools</div></a>
-                                <ul class="width200">
-                                    <li><a href="/Calculator" ><div>Calculator</div></a></li>
-                                    <li><a href="/events" ><div>Events</div></a></li>
-                                    <li><a href="/register"><div>Register</div></a></li>
-                                </ul>
-                            </li>
-
-
-                            
-                            <li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>
                         </ul>
 
                         <!-- Top Search
                         ============================================= -->
-                        <div id="top-search">
+                        <!-- <div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                             <form action="search.html" method="get">
                                 <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
                             </form>
-                        </div><!-- #top-search end -->
-
+                        </div>
+                        -->
                     </nav><!-- #primary-menu end -->
 
                 </div>
@@ -334,6 +327,33 @@
 
                 </section>
 
+                <section id="section-programs" class="page-section topmargin-lg">
+
+                    <div class="heading-block center bottommargin-lg">
+                        <h2>ESC Programs</h2>
+                        <span>List of our main programs.</span>
+                    </div>
+
+                    <div class="container clearfix">
+                        <% for(var i=0; i < courses.length; i++){ %>
+                        <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
+                                <div class="fbox-photo">
+                                    <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.path %>" alt="<%- courses[i].title %>"/></a>
+                                </div>
+                                <h3><%- courses[i].title %></h3>
+                                <p><%- courses[i].description %></p>
+                            </div>
+                        </div>
+                        <% } %>
+
+
+                    </div>
+
+                    <div class="divider divider-short divider-center topmargin-lg"><i class="icon-star3"></i></div>
+
+                </section>
+
                 <section id="section-activity" class="page-section topmargin-lg">
 
                     <div class="heading-block center">
@@ -361,9 +381,16 @@
                                 </div>
                             </article>
                             <% } %>
+                        </div>
                     </div>
 
                 </section>
+
+                 <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+                        <div class="heading-block dark center nobottomborder nobottommargin">
+                            <h2>The key to learning how to speak English.</h2>
+                        </div>
+                    </div>
 
                 <section id="section-team" class="page-section topmargin-lg">
 
@@ -405,168 +432,30 @@
 
                         </div>
                         <% }} %>
-
-                        
-                        <!-- <div class="col-md-6 bottommargin">
-
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/staff/KarenColour.jpg" alt="Karen Osorio">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Karen Osorio</h4><span>Counselor - Latin America</span></div>
-                                    <div class="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
-                                    <a href="#" class="social-icon si-rounded si-small si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-linkedin">
-                                        <i class="icon-linkedin"></i>
-                                        <i class="icon-linkedin"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div> -->
-
                     
-
                     </div>
 
-                    <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
-                        <div class="heading-block dark center nobottomborder nobottommargin">
-                            <h2>The key to learning how to speak English.</h2>
+                   
+
+                </section>
+
+                
+
+
+                <section id="section-tools" class="page-section topmargin-lg">
+
+                    <div class="heading-block center">
+                        <h2>Tools</h2>
+                        <span>Some of the Awesome Monment we've worked on.</span>
+                    </div>
+
+                    <div class="container clearfix center">
+                        <div id="portfolio" class="portfolio-nomargin clearfix">
+                            hjklhjklhl
                         </div>
                     </div>
 
                 </section>
-
-                <section id="section-programs" class="page-section topmargin-lg">
-
-                    <div class="heading-block center bottommargin-lg">
-                        <h2>ECS Programs</h2>
-                        <span>List of our main programs.</span>
-                    </div>
-
-                    <div class="container clearfix">
-                        <% for(var i=0; i < courses.length; i++){ %>
-                        <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
-                                <div class="fbox-photo">
-                                    <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.path %>" alt="<%- courses[i].title %>"/></a>
-                                </div>
-                                <h3><%- courses[i].title %></h3>
-                                <p><%- courses[i].description %></p>
-                            </div>
-                        </div>
-                        <% } %>
-
-                        <!-- <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/British-Columbia-landlords-rent-to-students-BC.jpg" alt="iBT-TOEFL Preparation"/></a>
-                                </div>
-                                <h3>iBT-TOEFL Preparation</h3>
-                                <p>Duis quis rutrum urna. Nam dolor lorem, pulvinar non convallis nec, posuere vel ligula. </p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="200">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/college_student_online.jpg" alt="Focus on Writing"/></a>
-                                </div>
-                                <h3>Focus on Writing</h3>
-                                <p>Pellentesque scelerisque massa vitae tincidunt ultricies. Aliquam id mi vel leo consectetur molestie et sit amet diam.</p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third col_last">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="400">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/CS_academics.jpg" alt="English for Academic Purposes (UCTP)"/></a>
-                                </div>
-                                <h3>English for Academic Purposes (UCTP)</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit.</p>
-                            </div>
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="600">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/stressed-student-004.jpg" alt="Intensive General English Program"/></a>
-                                </div>
-                                <h3>Intensive General English Program</h3>
-                                <p>Ut in tempor leo, ut sollicitudin orci. Integer dignissim cursus auctor.</p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="800">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/students2_alamy_2352148b.jpg" alt="ESL for Health Care"/></a>
-                                </div>
-                                <h3>ESL for Health Care</h3>
-                                <p>Sed vitae magna et mi porttitor ornare. Donec sit amet metus quis ante laoreet interdum. </p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third col_last">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1000">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/zoom-41710588-1.jpg" alt="IELTS"/></a>
-                                </div>
-                                <h3>IELTS</h3>
-                                <p>Complete control on each &amp; every element that provides endless customization possibilities.</p>
-                            </div>
-                        </div> -->
-<!-- 
-                        <div class="clear"></div>
-
-                        <div class="col_one_third nobottommargin">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1200">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/zoom-28398566-3.jpg" alt="Focus on Speaking Program (FOS)"/></a>
-                                </div>
-                                <h3>Focus on Speaking Program (FOS)</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third nobottommargin">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1400">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/zoom-29924072-3.jpg" alt="Summer Teen Program"/></a>
-                                </div>
-                                <h3>Summer Teen Program</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third nobottommargin col_last">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1600">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/SH1.jpg" alt="Winter Teen Program"/></a>
-                                </div>
-                                <h3>Winter Teen Program</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
-                            </div>
-                        </div>
-
-                        <div class="clear"></div> -->
-
-                    </div>
-
-                    <div class="divider divider-short divider-center topmargin-lg"><i class="icon-star3"></i></div>
-
-                </section>
-
 
                 <section id="section-testimonials" class="page-section section parallax " style="background-image: url('images/clients/backgrounds/12.jpg'); padding: 50px 0;" data-stellar-background-ratio="0.3">
 

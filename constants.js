@@ -19,6 +19,16 @@ module.exports = {
 		'Other'
 	],
 
+	PaymentType : [
+		'Payment',
+		'Refund'
+	],
+
+	PaymentMethod : [
+		'Payment',
+		'Refund'
+	],
+
 	CourseType: [
 		'Weekly',
 		'Fixed Period'
