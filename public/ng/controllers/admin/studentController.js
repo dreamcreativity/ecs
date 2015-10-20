@@ -98,6 +98,10 @@ angular.module('AdminApp')
 	 			$scope.havingAccommdation = true;
 	 		}
 	 	});
+
+	 	Students.getRegistrationsByStudent({id:student_id}, function(result){
+	 		$scope.registrations = result.data;
+	 	});
 	 }
 
 	$scope.update = function(isValid) {

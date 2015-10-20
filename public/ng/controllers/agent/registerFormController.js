@@ -58,7 +58,7 @@ angular.module('AgentApp')
 				courseList : $scope.courseList})
 			.success(function(data,status,headers,config){
 				if(data.messages == "successed"){
-					$http.post('/api/pdf',{registerId:data.data.student,type:"New Student"})
+					$http.post('/api/pdf',{registerId:data.data,type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
 							$http.post('/api/registration/sendEmail',{student:$scope.student, 

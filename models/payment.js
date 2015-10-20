@@ -6,7 +6,7 @@ var PaymentSchema = new mongoose.Schema({
 	created : {type : Date},
 	paymentDate : {type : Date},
 	amount : {type : Number, min: 0 },
-	createBy: { type: Schema.Types.ObjectId, ref: 'Staff'},
+	createBy: { type: mongoose.Schema.ObjectId, ref: 'Staff'},
 	isVoid : {type : Boolean, default: false }
 });
 

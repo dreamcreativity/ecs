@@ -122,14 +122,17 @@ exports.register = function(req,res){
 			});
 		},
 		function(callback){
-			registration.save(function(err, result){
-				if(err) {
-					callback(null);
-				}
-				else {
-					callback(null,result);
-				}
-			});
+			if(programs.length != 0){
+				registration.save(function(err, result){
+					if(err) {
+						callback(null);
+					}
+					else {
+						callback(null,result.student);
+					}
+				});
+			}
+			else callback(null, registration.student)
 		}],function(err, result){
 			if(err){
 				res.json({
@@ -138,7 +141,7 @@ exports.register = function(req,res){
 				});
 			}
 			else {
-				if(!result){
+				if(err){
 					res.json({
 						type:false,
 						data:"Error occured: " +err
@@ -232,6 +235,20 @@ exports.getStudentbyAgentId = function(req,res){
 exports.getRegistrationByAgent = function(req,res){
 	var id = req.params.id;
 	Registration.find({agent:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+		if(err) {
+			res.json('Error occured: ' + err);
+		}
+		res.json({
+			type: true,
+			data: result
+		});
+	});
+}
+
+//GET : Registration records by Student ID
+exports.getRegistrationByStudent = function(req,res){
+	var id = req.params.id;
+	Registration.find({student:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
@@ -351,6 +368,8 @@ exports.createExtendingCourse = function(req,res){
 	var student_id = req.body.student_id;
 	var programs = req.body.courseList;
 	var programRegistration_ids = [];
+	var registration = new Registration();
+		registration.student = student_id;
 
 	async.each(programs, function(item, callback){
 				var obj = new ProgramRegistration(item);
@@ -360,6 +379,7 @@ exports.createExtendingCourse = function(req,res){
 					}
 					else {
 						programRegistration_ids.push(result._id);
+						registration.programRegistration.push(result._id);
 						callback()
 					}
 				});
@@ -370,15 +390,20 @@ exports.createExtendingCourse = function(req,res){
 				else {
 					Student.findOne({_id:student_id}, function(err, result){
 						if(!err){
+							registration.agent = result.agent
 							for (var i = 0; i < programRegistration_ids.length; i++) {
 								result.programRegistration.push(programRegistration_ids[i]);
 							};
 							result.save(function(err, result1){
 								if(!err){
-									res.json({
-										status: 'ok',
-										messages: 'successed',
-										data: result
+									registration.save(function(err,result2){
+										if(!err){
+											res.json({
+												status: 'ok',
+												messages: 'successed',
+												data: result
+											});
+										}
 									});
 								}
 							})

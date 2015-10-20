@@ -304,6 +304,19 @@ router.get('/student/extending/:id', function(req, res) {
 		);
 });
 
+router.get('/student/payment/:id', function(req, res) {
+	template(req,res,'admin_main','admin/student/payment.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Payment',
+				url_params : req.params
+			}
+		);
+});
+
+
 router.get('/student/agent/create', function(req,res){
 	res.render('admin/student/studentbyAgent_new.html');
 })

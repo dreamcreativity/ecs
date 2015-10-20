@@ -15,7 +15,8 @@ var url_params = <%- JSON.stringify(url_params) %>
 		<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
 			<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
 			<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-			<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registered courses</a></li>
+			<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register Course</a></li>
+			<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Payment Records</a></li>
 		</ul>
 
 
@@ -306,6 +307,50 @@ var url_params = <%- JSON.stringify(url_params) %>
 						</tr>
 					</tbody>
 				</table>
+			</div>
+
+			<div class="tab-pane fade in portlet-body" id="p4">
+				<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
+					<div class="portlet-heading dark">
+						<div class="portlet-title">
+						<h4>{{registration.createDate | date:'MMMM d yyyy'}} <small class="text-white">(unconfirm)</small></h4>
+						</div>
+						<div class="portlet-widgets">
+							<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+							<span class="divider"></span>
+							<a href="/admin/student/payment/{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div id="basic" class="panel-collapse collapse in">
+						<div class="portlet-body no-padding">
+							<table class="table table-bordered table-hover tc-table">
+								<thead>
+									<tr>
+										<th class="hidden-xs center">Course</th>
+										<th class="hidden-xs center">Description</th>
+										<th class="hidden-xs center">Level</th>
+										<th class="hidden-xs center">Year</th>
+										<th class="hidden-xs center">Start Date</th>
+										<th class="hidden-xs center">Duration</th>
+										<th class="col-medium center">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="c in registration.programRegistration">
+										<td class="hidden-xs center">{{c.title}}</td>
+										<td class="hidden-xs center">{{c.tag}}</td>
+										<td class="hidden-xs center">{{c.level}}</td>
+										<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
+										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+										<td class="hidden-xs center">{{c.duration}}</td>
+										<td class="hidden-xs center">confirm</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 
 

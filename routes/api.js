@@ -12,6 +12,7 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var payment = require('../controllers/payment');
 var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
@@ -180,8 +181,11 @@ router.get('/student/:id', student.getStudentbyId);
 //GET students by Agent ID
 router.get('/student/agent/:id',student.getStudentbyAgentId);
 
-//GET students regiration by Agent ID
-router.get('/regiration/agent/:id',student.getRegistrationByAgent);
+//GET students registration by Agent ID
+router.get('/registration/agent/:id',student.getRegistrationByAgent);
+
+//GET students registration by Student ID
+router.get('/registration/student/:id', student.getRegistrationByStudent);
 
 //POST : create a student record
 router.post('/student', student.create);
@@ -203,6 +207,11 @@ router.put('/student/:id', student.edit);
 
 //PUT : Update Accomdation info
 router.put('/student/accommodation/:id', student.updateAccommdation);
+
+
+//----------------------Payment---------------------------------------
+//POST : Add new payment to registration
+router.post('/payment/:id', payment.create);
 
 
 //----------------------Agent----------------------------------------

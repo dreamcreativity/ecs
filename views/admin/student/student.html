@@ -26,7 +26,8 @@
 							<tr ng-repeat="student in students.data | filter:query">
 								<td>{{student.studentID}}</td>
 								<td class="hidden-xs">{{student.firstname}} {{student.lastname}}</td>
-								<td><a href="/admin/agent/detail/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
+								<!-- <td><a href="/admin/agent/detail/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td> -->
+								<td>{{student.agent.lastname}} {{student.agent.firstname}}</td>
 								<td class="hidden-xs">{{student.commissionRate}}</td>
 								<td class="hidden-xs">{{student.pomotionRate}}</td>
 								<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>

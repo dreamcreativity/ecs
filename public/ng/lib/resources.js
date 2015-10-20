@@ -108,7 +108,12 @@ resources.factory('Agents',['$resource',
             params : {id : '@_id'}
         },
         getRegistrationsByAgent : {
-            url : '/api/regiration/agent/:id',
+            url : '/api/registration/agent/:id',
+            method : 'GET',
+            params : {id : '@_id'}
+        },
+        getRegistrationsByStudent : {
+            url : '/api/registration/student/:id',
             method : 'GET',
             params : {id : '@_id'}
         },
@@ -229,6 +234,15 @@ resources.factory('Registrations',['$resource',
         create:{ method: 'POST'},
         get:{ method: 'GET', params: {id:'@_id'} },
         update:{ method: 'PUT', params: {id:'@_id'} }
+    });
+}]);
+
+resources.factory('Payments',['$resource',
+    function($resource){
+        return $resource('/api/payment/:id', {}, {
+        //query:{ method: 'GET'},
+        create:{method: 'POST'},
+        update : { method : 'PUT', params: {id:'@_id'}}
     });
 }]);
 
