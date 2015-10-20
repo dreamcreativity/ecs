@@ -6,7 +6,8 @@ var Staff = require('../models/staff');
 var Token = require('../models/token');
 var crypto = require('crypto');
 var async = require("async");
-
+ var constant = require('../constants.js');
+ var EmailSender = require('../modules/emailModule');
 
 //POST : Create a Staff
 exports.create = function(req,res){
@@ -257,9 +258,30 @@ exports.getStaffbyId = function(req,res){
 	});
 }
 
-//PUT: 
+//POST: 
 exports.edit = function(req,res){
 	var id = req.params.id;
+	Staff.update({_id:id}, req.body, function(err, result){
+			if(err){
+				res.json({
+					status: 'fail',
+					messages: "fail",
+					data: null
+				});
+			}else{
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}
+		});
+}
+
+exports.updatePassword = function(req,res){
+	var id = req.params.id;
+	var pwd = crypto.createHash('sha256').update(req.body.password).digest("hex");
+	req.body.password = pwd
 	Staff.update({_id:id}, req.body, function(err, result){
 			if(err){
 				res.json({
@@ -454,6 +476,34 @@ exports.changePassword = function(req,res){
 
 	});
 }
+
+exports.sendNotificationForResetPassword = function(req,res){
+	var staff = req.body.staff;
+	staff.password =req.body.password;
+	var send_list =[];
+	if(staff) {
+		send_list.push(staff.email);
+	}
+	for (var key in constant.ResetPasswordTemplateVars) {
+		constant.ResetPasswordTemplateVars[key] = staff[key];
+	};
+	constant.ResetPasswordTemplateVars['type'] = 'Staff';
+
+	EmailSender.getEmailTemplate('resetpassword.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
+
+		var to = send_list;
+		var subject = "Reset password";
+		var context = context;
+		EmailSender.sendEmail(to,subject,context,null, function(message){		
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
 
 
 

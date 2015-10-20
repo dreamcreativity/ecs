@@ -12,57 +12,61 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="p1">
-					<div class="row">													
-						<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-							<div class="portlet no-border">
-								<div class="portlet-heading">
-									<div class="portlet-title">
-										<h2>{{staff.firstname}} {{staff.lastname}}</h2>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="portlet-body">
-									<div class="row">
-										<div class="col-lg-2 right"><strong>Work :</strong></div>
-										<div class="col-lg-2" >{{staff.workphone}}</div>
-									</div>
-									<div class="space-4"></div>
-									<div class="row">
-										<div class="col-lg-2 right"><strong>Cell :</strong></div>
-										<div class="col-lg-2" >{{staff.cellphone}}</div>
-									</div>
-									<div class="space-4"></div>
-									<div class="row">
-										<div class="col-lg-2 right"><strong>Email :</strong></div>
-										<div class="col-lg-2" >{{staff.email}}</div>
-									</div>
-									<div class="space-4"></div>
-									<div class="row"> 
-										<div class="col-lg-2 right"><strong>Last Login :</strong></div>
-										<div class="col-lg-3" >{{staff.lastLoginDateTime  | date:'MMM dd yyyy h:mma'}}</div>
-									</div>
-									<div class="space-4"></div>
-									<div class="row">
-										<div class="col-lg-2 right"><strong>Region :</strong></div>
-										<div class="col-lg-2">
-										<span ng-repeat="region in staff.regions track by $index">
-											  <label class="label label-lg arrowed">{{region}}</label>
-											</span>
+					<div class="portlet">
+						<div class="portlet-heading dark">
+							<div class="portlet-title">
+								<h4>{{staff.firstname}} {{staff.lastname}}</h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Work :</strong></div>
+												<div class="col-lg-2" >{{staff.workphone}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Cell :</strong></div>
+												<div class="col-lg-2" >{{staff.cellphone}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Email :</strong></div>
+												<div class="col-lg-2" >{{staff.email}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row"> 
+												<div class="col-lg-2 right"><strong>Last Login :</strong></div>
+												<div class="col-lg-3" >{{staff.lastLoginDateTime  | date:'MMM dd yyyy h:mma'}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Region :</strong></div>
+												<div class="col-lg-2">
+													<span ng-repeat="region in staff.regions track by $index">
+														<label class="label label-lg arrowed">{{region}}</label>
+													</span>
+												</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-sm-offset-1 col-sm-1 right">
+													<button class="btn btn-primary btn-block" ng-click="sendEmail()">Send</button>
+												</div>
+												<div class=" col-sm-4">
+													<tags-input ng-model="email_list" 
+													placeholder="Add a email" 
+													allowed-tags-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+												</tags-input>
+											</div>
 										</div>
-									</div>
-									<div class="space-4"></div>
-									<div class="row">
-										<div class="col-sm-offset-1 col-sm-1 right">
-											<button class="btn btn-primary btn-block" ng-click="sendEmail()">Send</button>
-										</div>
-										<div class=" col-sm-4">
-											<tags-input ng-model="email_list" 
-											placeholder="Add a email" 
-											allowed-tags-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
-										</tags-input>
-									</div>
-								</div>
 
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -104,8 +108,14 @@
 				
 			</div>
 			<div class="tab-pane fade" id="p2">
-				<h2>Account Detail</h2>
-				<div class="hr hr-12 hr-double"></div>
+				<div class="portlet">
+						<div class="portlet-heading dark">
+							<div class="portlet-title">
+								<h4>Edit staff</h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="portlet-body">
 				<form name="loginForm" class="form-horizontal" role="form" novalidate>
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Username</label>
@@ -221,18 +231,44 @@
 					</div>
 				</div>
 			</div>
-				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-3">
-						<button type="button" class="btn btn-primary" ng-disabled="!loginForm.$valid" ng-click="update()">Update</button>
-						<button type="button" class="btn btn-default" onclick='location="/admin/staff/all"'>Cancel</button>
-					</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-3">
+					<button type="button" class="btn btn-primary" ng-disabled="!loginForm.$valid" ng-click="update()">Update</button>
+					<button type="button" class="btn btn-default" onclick='location="/admin/staff/all"'>Cancel</button>
 				</div>
+			</div>
 		</form>
+		</div>
+		</div>
+
+<!-- Reset Password-->
+					<div class="portlet">
+						<div class="portlet-heading dark">
+							<div class="portlet-title">
+								<h4>Reset Agent password</h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="portlet-body">
+							<form name="resetpassowrdForm" class="form-horizontal" role="form" novalidate>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Password</label>
+									<div class="col-sm-3">
+										<input type="password" id="agent_pwd" class="form-control" name="password" ng-model="resetpassword" value="{{resetpassword}}"required>
+									</div>
+									<div class="col-sm-1"><button type="button" class="btn btn-default" ng-click="generate()">Generate</button></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-3">
+										<button type="button" class="btn btn-primary" ng-disabled="resetpassowrdForm.$invalid" ng-click="resetpwd()">Reset</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+		
 	</div>
 
-	<div class="tab-pane fade" id="p3">
-		Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
-	</div>
 </div>
 </div><!--nav-tabs style 1-->
 </div>
@@ -242,8 +278,8 @@
 </div>	
 
 <script>
-$(document).on("keypress", "form", function(event) { 
-    return event.keyCode != 13;
-});
+	$(document).on("keypress", "form", function(event) { 
+		return event.keyCode != 13;
+	});
 </script>
 

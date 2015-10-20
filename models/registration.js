@@ -9,7 +9,7 @@ var RegistrationSchema = new mongoose.Schema({
 	flightInfo: {type: mongoose.Schema.ObjectId, ref:'FlightInfo', default: null},
 	createDate: {type: Date,default: Date.now },
 	isActive: {type: Boolean, default: true},
-	payments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Payment'}]
+	payments: [{ type: mongoose.Schema.ObjectId, ref: 'Payment'}],
 
 });
 

@@ -21,6 +21,11 @@ resources.factory('Staffs',['$resource',
         return $resource('/api/staffs/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}},
+        resetpassword : {
+            url: '/api/staffs/resetpassword/:id',
+            method: 'POST',
+            params: {id:'@_id'}
+       } 
     });
 }]);
 

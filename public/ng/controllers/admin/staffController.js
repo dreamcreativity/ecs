@@ -113,6 +113,40 @@ angular.module('AdminApp')
       });
 	 }
 
+	 $scope.resetpwd = function(isValid) {
+		var newpassword = $scope.resetpassword;
+		$scope.staff.password = newpassword;
+	 	Staffs.resetpassword($scope.staff, function(result){
+	 			if(result.status == 'ok'){
+					ShowGritterCenter('System Notification','Staff passowrd has been updated');
+					$http.post('/api/staff/resetpassword/sendEmail',{staff: $scope.staff,password:newpassword})
+							.success(function(data,status,headers,config){
+								setInterval(function(){
+									$window.location='/admin/staff/detail/' + $scope.staff._id;
+								}, 2000); 
+							})
+							.error(function(data,status,headers,config){
+							
+							});
+				}
+	 	})
+	 }
+
+	  $scope.generate = function() {
+    	$scope.resetpassword = randomPassword(8);
+		}
+
+		function randomPassword(length) {
+			    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+			    var pass = "";
+			    for (var x = 0; x < length; x++) {
+			        var i = Math.floor(Math.random() * chars.length);
+			        pass += chars.charAt(i);
+			    }
+			    $("#agent_pwd").get(0).type ='text';
+			    return pass;
+			}
+
 
 	 // load meida image
 	Medias.getCategoryTargetMedia({target:'Staff',type:'Image'}, function(result){

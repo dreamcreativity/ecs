@@ -27,7 +27,7 @@ function IsAuthException(path, method){
 		{	path : '/api/events', method: 'GET', type: 'direct'},
 		{	path : '/api/slider', method: 'GET', type: 'direct'},
 		{	path : '/api/activities', method: 'GET', type: 'direct' },
-		{	path : '/api/staffs/login', method: 'POST', type: 'direct' },
+		{	path : '/api/staff/login', method: 'POST', type: 'direct' },
 		{	path : '/api/agent/login', method: 'POST', type: 'direct' },
 		{	path : '/api/staffs', method: 'POST',type: 'direct' },
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
@@ -150,7 +150,9 @@ router.post('/staffs', staff.create);
 
 router.put('/staffs/:id', staff.edit);
 
-router.post('/staffs/login', staff.login);
+router.post('/staffs/resetpassword/:id', staff.updatePassword);
+
+router.post('/staff/login', staff.login);
 
 router.get('/staffs', staff.getAllStaffs);
 
@@ -368,7 +370,8 @@ router.get('/pdf/Download_02',pdf.downloadPDF02);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 
-router.post('/resetpassword/sendEmail', agent.sendNotificationForResetPassword)
+router.post('/agent/resetpassword/sendEmail', agent.sendNotificationForResetPassword)
+router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPassword)
 
 
 

@@ -131,6 +131,7 @@ module.exports = {
 	ResetPasswordTemplateVars : {
 		firstname : null,
 		lastname : null,
+		type :null,
 		password : null
 	},
 

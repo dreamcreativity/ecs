@@ -407,7 +407,7 @@ exports.sendNotificationForResetPassword = function(req,res){
 	for (var key in constant.ResetPasswordTemplateVars) {
 		constant.ResetPasswordTemplateVars[key] = agent[key];
 	};
-
+	constant.ResetPasswordTemplateVars['type'] = 'Agent';
 	EmailSender.getEmailTemplate('resetpassword.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
 
