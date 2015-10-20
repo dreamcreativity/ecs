@@ -134,6 +134,19 @@ var url_params = <%- JSON.stringify(url_params) %>
 									</div>
 								</div>
 
+							<!-- 	<div class="form-group">
+								<label class="col-sm-3 control-label"></label>
+									<div class="col-sm-1 col-md-1">
+										<div class="input-group">
+											<input type="text" class="form-control" name="password" ng-model="agent.password" value="{{agent.password}}" required>
+										</div>
+									</div>
+									<div class="col-sm-1 col-md-2">
+										<button type="button" class="btn btn-primary" onclick=''>Generate</button>
+										<button type="button" class="btn btn-primary" onclick='' disabled="disabled">Reset</button>
+									</div>
+								</div> -->
+
 								<div class="form-group">
 									<label class="col-sm-1 col-md-3 control-label">Region</label>
 									<div class="col-sm-1 col-md-3">
@@ -213,6 +226,33 @@ var url_params = <%- JSON.stringify(url_params) %>
 							</form>
 						</div>
 					</div>
+
+					<!-- Reset Password-->
+					<div class="portlet">
+						<div class="portlet-heading dark">
+							<div class="portlet-title">
+								<h4>Reset Agent password</h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="portlet-body">
+							<form name="resetpassowrdForm" class="form-horizontal" role="form" novalidate>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Password</label>
+									<div class="col-sm-3">
+										<input type="password" id="agent_pwd" class="form-control" name="password" ng-model="agent.resetpassword" value="{{agent.password}}"required>
+									</div>
+									<div class="col-sm-1"><button type="button" class="btn btn-default" ng-click="generate()">Generate</button></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-3">
+										<button type="button" class="btn btn-primary" ng-disabled="resetpassowrdForm.$invalid" onclick="resetpassword()">Reset</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
 				</div>
 
 			</div>

@@ -131,7 +131,7 @@ exports.login = function (req,res){
 					//so now can create access token
 					var newToken = new Token();
 					newToken.user = user._id;
-					newToken.type = 'admin';
+					newToken.type = 'Staff';
 					newToken.isActived = true;
 					newToken.save();
 

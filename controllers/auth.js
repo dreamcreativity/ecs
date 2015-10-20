@@ -24,8 +24,11 @@ exports.IsTokenValid = function(AccessToken,accessReferer,callBack){
 				if(result.length != 1) callBack(false);
 				else {
 					var type = result[0].type;
+					var matchUrl = null;
+					if(type == 'Staff') matchUrl = 'admin'
+					else if(type =='Agent') matchUrl = 'agent'
 					var res = accessReferer.split('/');
-					if(res.indexOf(type) > -1){
+					if(res.indexOf(matchUrl) > -1){
 						callBack(true);
 					}
 					else callBack(false);

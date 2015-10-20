@@ -63,7 +63,6 @@ angular.module('AdminApp')
 
 	 $scope.update = function(isValid) {
 	 	$scope.returnMessage="";
-	 	$("#messageReturn").fadeIn('slow');
 	 	Agents.update($scope.agent, function(result){
 	 			if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Material document has been updated');
@@ -73,6 +72,16 @@ angular.module('AdminApp')
 	 	})
 	 }
 
+	$scope.resetpassword = function() {
+		$scope.agent.passowrd = $scope.resetpassword;
+	 	Agents.update($scope.agent, function(result){
+	 			if(result.status == 'ok'){
+					ShowGritterCenter('System Notification','Agent passowrd has been updated');
+				}
+	 	})
+	 }
+
+
 	 $scope.createStudent = function(isValid){
 	 	$scope.student.agent_id = agent_id;
 	 	StudentByAgent.save($scope.student,function(result){
@@ -81,6 +90,21 @@ angular.module('AdminApp')
 	 			$window.location='/admin/agent/detail/'+ agent_id;
  		})
 	 }
+
+	 $scope.generate = function() {
+    	$scope.agent.resetpassword = randomPassword(8);
+		}
+
+		function randomPassword(length) {
+			    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+			    var pass = "";
+			    for (var x = 0; x < length; x++) {
+			        var i = Math.floor(Math.random() * chars.length);
+			        pass += chars.charAt(i);
+			    }
+			    $("#agent_pwd").get(0).type ='text';
+			    return pass;
+			}
 
 
 });
