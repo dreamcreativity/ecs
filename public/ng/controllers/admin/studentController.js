@@ -168,7 +168,7 @@ angular.module('AdminApp')
 	 		ShowGritterCenter('System Notification','Courses cannot be empty');
 	 	}
 	 	else {
-	 		Students.createExtendingCourse({student_id: student_id, courseList : $scope.courseList}, function(result){
+	 		Students.createExtendingCourse({student_id: student_id, courseList : $scope.courseList, agent : $scope.student.agent}, function(result){
 	 			if(result.status == 'ok' && result.messages =='successed'){
 	 				ShowGritterCenter('System Notification','Courses has been successfully registered');
 	 				setInterval(function(){

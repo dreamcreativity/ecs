@@ -102,9 +102,10 @@ directives.directive('courseRegister', ['Courses',function(Courses){
 					var course_obj = {id : course._id,
 						tag : course.tag,
 						title: course.title,
+						course : course._id,
 						level: course.level,
 						startDate: course.startDate,
-						duration: course.duration,
+						duration: angular.fromJson(course.duration),
 						year:course.year};
 						var isConflict = false;
 						for (var i = 0; i < $scope.courseList.length; i++) {

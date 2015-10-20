@@ -5,6 +5,9 @@ var ProgramRegistrationSchema = new mongoose.Schema({
 	title: {type: String},
 	level : {type : String},
 	duration : {type: String},
+	price : {type : Number},
+	commissionRate : {type: Number, default : 0},
+	promotionRate : {type : Number, default : 0},
 	startDate : {type : Date},
 	createDate : {type : Date, default : Date.now }
 });

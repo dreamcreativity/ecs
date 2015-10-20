@@ -40,7 +40,7 @@
 					</select></td><td class="hidden-xs center">
 					<select ng-model="course.duration">
 						<option value="" selected>--Select--</option>
-						<option ng-repeat="duration in course.durations">{{duration.title}}</option>
+						<option ng-repeat="duration in course.durations" value="{{duration}}">{{duration.title}}</option>
 					</select>
 				</td>
 				<td class="col-medium center">
@@ -57,7 +57,7 @@
 				<td class="hidden-xs center">{{c.level}}</td>
 				<td class="hidden-xs center">{{c.year}}</td>
 				<td class="hidden-xs center">{{c.startDate | date:"MMMM d"}}</td>
-				<td class="hidden-xs center">{{c.duration}}</td>
+				<td class="hidden-xs center">{{c.duration.title}}</td>
 				<td class="col-medium center">
 					<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)">
 						<i class="fa fa-times icon-only"></i>

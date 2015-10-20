@@ -41,6 +41,8 @@ exports.create = function(req,res){
 //Resiteration on Agent port
 exports.register = function(req,res){
 	var student = new Student(req.body.student);
+
+	var agentId =req.body.agent;
 	var accommodation = new Accommodation(req.body.accommodation);
 	var flightInfo = new FlightInfo(req.body.flightInfo);
 	var programs = req.body.courseList; 
@@ -48,6 +50,17 @@ exports.register = function(req,res){
 		registration.agent = student.agent;
 
 	async.waterfall([
+		function(callback){
+			if(agentId !=null){
+				Agent.find({_id:agentId}, function(err,res){
+					if(!err){
+						agent = res[0];
+					}
+					callback();
+				});
+			}
+			else callback();
+		},
 		function(callback){
 			var accommodation_id =null;
 			if(accommodation.isHomestay){
@@ -83,6 +96,10 @@ exports.register = function(req,res){
 			var programRegistration_ids = [];
 			async.each(programs, function(item, callback2){
 				var obj = new ProgramRegistration(item);
+				obj.price = item.duration.price;
+				if(agentId) {
+					obj.commissionRate = agent.commission;
+				}
 				obj.save(function(err,result){
 					if(err){
 						callback2()
@@ -230,6 +247,20 @@ exports.getStudentbyAgentId = function(req,res){
 	});
 }
 
+//GET: Registration records by ID
+exports.getRegistrationById = function(req,res){
+	var id = req.params.id;
+	Registration.find({_id:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+		if(err) {
+			res.json('Error occured: ' + err);
+		}
+		res.json({
+			type: true,
+			data: result[0]
+		});
+	});
+}
+
 
 //GET: Registration records by agent ID
 exports.getRegistrationByAgent = function(req,res){
@@ -366,6 +397,7 @@ exports.createFlightInfo = function(req,res){
 //Extending courses for student
 exports.createExtendingCourse = function(req,res){
 	var student_id = req.body.student_id;
+	var agent = req.body.agent;
 	var programs = req.body.courseList;
 	var programRegistration_ids = [];
 	var registration = new Registration();
@@ -373,6 +405,10 @@ exports.createExtendingCourse = function(req,res){
 
 	async.each(programs, function(item, callback){
 				var obj = new ProgramRegistration(item);
+				obj.price = item.duration.price;
+				if(agent !=null) {
+					obj.commissionRate = agent.commission;
+				}
 				obj.save(function(err,result){
 					if(err){
 						callback()

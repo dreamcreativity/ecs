@@ -3,6 +3,40 @@
 </script>
 
 <div ng-controller='PaymentController'>
-payment
-</div>
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Payment for register on {{registration.createDate | date:'MMMM d yyyy'}}</h4>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="basic" class="panel-collapse collapse in">
 
+			<div class="portlet-body no-padding" ng-repeat="p in registration.programRegistration">
+				<div class="portlet"><!-- /Portlet -->
+					<div class="portlet-heading dark">
+						<div class="portlet-title">
+							<h4><small class="text-white">{{p.title}}</small></h4>
+						</div>
+						<div class="clearfix"></div>
+						<!-- content -->
+						<div id="basic" class="panel-collapse collapse in">
+							<form name="paymentForm" class="form-horizontal" role="form" novalidate>
+								<div class="form-group">
+								<label class="col-sm-1 col-md-3 control-label">Tile</label>
+								<div class="col-sm-1 col-md-3">
+									<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required>
+
+								</div>
+							</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>

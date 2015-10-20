@@ -53,6 +53,7 @@ angular.module('AgentApp')
 	$scope.register = function(isValid){
 		$scope.student.agent = $scope.currentAgent._id;
 			$http.post('/api/student/register',{student : $scope.student, 
+				agent : $scope.currentAgent._id,
 				accommodation : $scope.accommodation, 
 				flightInfo : $scope.flightInfo, 
 				courseList : $scope.courseList})
