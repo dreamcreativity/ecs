@@ -346,8 +346,9 @@
 }
 #event-calendar .fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
 	padding: 5px;
-	border-radius: 5px;
+	border-radius: 7px;
 	background-color: red;
+	border:1px solid rgba(255,255,255,0.75)
 }
 
 @media screen and (max-width: 991px){
