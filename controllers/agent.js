@@ -5,6 +5,8 @@
  var async = require("async");
  var emailModule = require('../modules/emailModule');
  var uuid = require('node-uuid');
+ var constant = require('../constants.js');
+ var EmailSender = require('../modules/emailModule');
 
  exports.login = function(req,res){
  	Agent.findOne({username : req.body.username, password: req.body.password}, function(err, user){
@@ -33,7 +35,7 @@
  			else {
  				var newToken = new Token();
  				newToken.user = user._id;
- 				newToken.type = 'agent';
+ 				newToken.type = 'Agent';
  				newToken.isActived = true;
  				newToken.save();
 
@@ -394,4 +396,36 @@ exports.sendInvitation = function(req,res) {
 	});
 
 }
+
+exports.sendNotificationForResetPassword = function(req,res){
+	var agent = req.body.agent;
+	var send_list =[];
+	if(agent) {
+		send_list.push(agent.email);
+	}
+	send_list.push('esc.mailsystem@gmail.com');
+	for (var key in constant.ResetPasswordTemplateVars) {
+		constant.ResetPasswordTemplateVars[key] = agent[key];
+	};
+
+	EmailSender.getEmailTemplate('resetpassword.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
+
+		var to = send_list;
+		var subject = "Reset password";
+		var context = context;
+		EmailSender.sendEmail(to,subject,context,null, function(message){		
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
+
+
+
+
+
 

@@ -368,6 +368,8 @@ router.get('/pdf/Download_02',pdf.downloadPDF02);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 
+router.post('/resetpassword/sendEmail', agent.sendNotificationForResetPassword)
+
 
 
 

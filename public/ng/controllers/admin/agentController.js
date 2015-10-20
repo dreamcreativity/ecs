@@ -72,11 +72,20 @@ angular.module('AdminApp')
 	 	})
 	 }
 
-	$scope.resetpassword = function() {
-		$scope.agent.passowrd = $scope.resetpassword;
+	$scope.resetpwd = function(isValid) {
+		$scope.agent.password = $scope.resetpassword;
 	 	Agents.update($scope.agent, function(result){
 	 			if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Agent passowrd has been updated');
+					$http.post('/api/resetpassword/sendEmail',{agent: $scope.agent})
+							.success(function(data,status,headers,config){
+								setInterval(function(){
+									$window.location='/admin/agent/detail/' + $scope.agent._id;
+								}, 2000); 
+							})
+							.error(function(data,status,headers,config){
+								console.log("fail to send registration email")
+							});
 				}
 	 	})
 	 }
@@ -92,7 +101,7 @@ angular.module('AdminApp')
 	 }
 
 	 $scope.generate = function() {
-    	$scope.agent.resetpassword = randomPassword(8);
+    	$scope.resetpassword = randomPassword(8);
 		}
 
 		function randomPassword(length) {

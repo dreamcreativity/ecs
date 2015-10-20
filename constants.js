@@ -117,6 +117,12 @@ module.exports = {
 		url : null
 	},
 
+	ResetPasswordTemplateVars : {
+		firstname : null,
+		lastname : null,
+		password : null
+	},
+
 	Country : [
 		"Afghanistan",
 		"Albania",
