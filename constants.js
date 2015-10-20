@@ -20,8 +20,9 @@ module.exports = {
 	],
 
 	PaymentType : [
-		'Payment',
-		'Refund'
+		'Cash',
+		'Wire Transfer',
+		'Credit Card'
 	],
 
 	PaymentMethod : [

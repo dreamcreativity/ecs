@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var PaymentSchema = new mongoose.Schema({
-	type: {type: String, default: 'Payment'},
+	paymentType: {type: String, default: 'Payment'},
 	paymentMethod : {type: String},
 	created : {type : Date},
 	paymentDate : {type : Date},
