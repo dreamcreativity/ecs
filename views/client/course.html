@@ -12,22 +12,19 @@
 		 		</div>
 
 		 		<div class="row">
-			 		<div class='col-xs-12'>
-			 			<div class='col-md-6 float-seaction'>
-			 				<div>
-			 					<ul>
-			 						<% for( var x = 0; x < course.links.length; x++){ %>
-			 						<li><a target="_blank" href="<%- course.links[x].href %>"><%- course.links[x].title %></a></li>
-			 						<% } %>
-			 					</ul>
-			 				</div>
-				 			<img src="<%- course.cover.path %>">
-				 		</div>
-				 		<p class='desc'><%- course.content %></p>
-			 			
+                    <div class='col-md-6 float-seaction'>
+                        <div>
+                            <ul>
+                                <% for( var x = 0; x < course.links.length; x++){ %>
+                                <li><a target="_blank" href="<%- course.links[x].href %>"><%- course.links[x].title %></a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    	<p class='desc'><%- course.content %></p>
+                    </div>
+					<div class='col-md-6 float-seaction'>
+                        <img src="<%- course.cover.path %>">
 			 		</div>
-
-			 		
 		 		</div>
 
 		 	</div>
