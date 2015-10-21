@@ -113,6 +113,10 @@ angular.module('AgentApp')
 	 				$scope.havingAccommdation = true;
 	 				}
 			});
+
+			Students.getRegistrationsByStudent({id:obj_id}, function(result){
+	 		$scope.registrations = result.data;
+	 	});
 		}
 
 		Constants.get({name:"Country"}, function(result){

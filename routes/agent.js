@@ -5,29 +5,25 @@ var staff =require('../controllers/staff');
 
 var auth = require('../controllers/auth');
 
-
-
 /* GET home page. */
-
-
 router.get('/', function(req, res) {
 	template(req,res,'agent_main','agent/dashboard.html',
 			{ 
 				title: 'Home',
 				category: 'Dashboard',
-				cur_tap: 'Dashboard',
+				cur_tap: '',
 				cur_selected : ''
 			}
 		);
 });
 
-router.get('/register', function(req, res) {
+router.get('/create', function(req, res) {
 	template(req,res,'agent_main','agent/register.html',
 			{ 
 				title: 'Home',
-				category: 'Student',
-				cur_tap: 'Registeration',
-				cur_selected : ''
+				category: 'Students',
+				cur_tap: 'Student',
+				cur_selected : 'Create'
 			}
 		);
 });
@@ -67,11 +63,11 @@ router.get('/setnewPassword', function(req,res){
 });
 
 
-router.get('/material', function(req, res) {
+router.get('/materials/all', function(req, res) {
 	template(req,res,'agent_main','agent/material/material.html',
 			{ 
 				title: 'Materials',
-				category: 'Materials',
+				category: 'Agent',
 				cur_tap: 'Materials',
 				cur_selected : ''
 			}
@@ -82,26 +78,26 @@ router.get('/material/detail/:id', function(req, res) {
 	template(req,res,'agent_main','agent/material/detail.html',
 			{ 
 				title: 'Materials Detail',
-				category: 'Materials',
-				cur_tap: 'Detail',
-				cur_selected : '',
+				category: 'Agent',
+				cur_tap: 'Materials',
+				cur_selected : 'Detail',
 				url_params : req.params
 			}
 		);
 });
 
-router.get('/students', function(req, res) {
+router.get('/student/all', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/students.html',
 			{ 
 				title: 'Student',
 				category: 'Students',
-				cur_tap: 'Students',
-				cur_selected : ''
+				cur_tap: 'Student',
+				cur_selected : 'All'
 			}
 		);
 });
 
-router.get('/students/detail/:id', function(req, res) {
+router.get('/student/detail/:id', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/detail.html',
 			{ 
 				title: 'Student',
@@ -113,13 +109,25 @@ router.get('/students/detail/:id', function(req, res) {
 		);
 });
 
-router.get('/students/invitation', function(req, res) {
+router.get('/student/commission/:id', function(req, res) {
+	template(req,res,'agent_main','agent/studentForms/commission.html',
+			{ 
+				title: 'Student',
+				category: 'Students',
+				cur_tap: 'Students',
+				cur_selected : 'Commission',
+				url_params : req.params
+			}
+		);
+});
+
+router.get('/invitation/all', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/invitation.html',
 			{ 
 				title: 'Student',
 				category: 'Student',
 				cur_tap: 'Invitation',
-				cur_selected : '',
+				cur_selected : 'Send',
 				url_params : req.params
 			}
 		);
@@ -129,7 +137,19 @@ router.get('/profile', function(req,res){
 	template(req,res,'agent_main', 'agent/profile/profile.html',
 	{
 		title: 'Profile',
-		category : 'Profile',
+		category : 'Agent',
+		cur_tap : 'Profile',
+		cur_selected : '',
+		url_params : req.params
+
+	});
+});
+
+router.get('/profile/all', function(req,res){
+	template(req,res,'agent_main', 'agent/profile/profile.html',
+	{
+		title: 'Profile',
+		category : 'Agent',
 		cur_tap : 'Profile',
 		cur_selected : '',
 		url_params : req.params
@@ -141,7 +161,7 @@ router.get('/edit', function(req,res){
 	template(req,res,'agent_main', 'agent/profile/edit.html',
 	{
 		title: 'Profile',
-		category : 'Profile',
+		category : 'Agent',
 		cur_tap : 'Profile',
 		cur_selected : 'Edit',
 		url_params : req.params

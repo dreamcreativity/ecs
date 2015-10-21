@@ -1,21 +1,31 @@
-<form name="createForm" class="form-horizontal" ng-controller='InvitationCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Email</label>
-		<div class="col-sm-3">
-			<input type="text" class="form-control" name="email" ng-model="email" required>
-			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block text-danger">Email is required</p>	
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Invitation</h4>
 		</div>
-		<div class="col-sm-1">
-				<input type="submit" class="btn btn-primary btn-block" value="Send" ng-disabled="createForm.$invalid">
-		</div>
+		<div class="clearfix"></div>
 	</div>
-
-	<div class="form-actions">
-		<div class="form-group">
-			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
-				{{returnMessage}}
+	<div class="portlet-body">
+		<form name="createForm" class="form-horizontal" ng-controller='InvitationCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Email</label>
+				<div class="col-sm-3">
+					<input type="email" class="form-control" name="email" ng-model="email" required>
+					<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block text-danger">Email is required</p>	
+				</div>
+				<div class="col-sm-1">
+					<input type="submit" class="btn btn-primary btn-block" value="Send" ng-disabled="createForm.$invalid">
+				</div>
 			</div>
-		</div>
-	</div>
 
-</form>
+			<div class="form-actions">
+				<div class="form-group">
+					<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+						{{returnMessage}}
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

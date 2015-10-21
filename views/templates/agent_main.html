@@ -68,7 +68,7 @@
     <script src="/ng/controllers/agent/agentController.js"></script>
     <script src="/ng/controllers/agent/materialController.js"></script>
     <script src="/ng/controllers/agent/dashboardController.js"></script>
-
+    <script src="/ng/controllers/agent/commissionController.js"></script>
 
   </head>
 
@@ -188,20 +188,20 @@
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentStudent">
 									<i class="fa fa-user"></i> Student <span class="fa arrow"></span>
 								</a>
-								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">
+								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">		
 									<li>
-										<a href="/agent/students" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
-											<i class="fa fa-angle-double-right"></i>Students
+										<a href="/agent/create" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Create
 										</a>
-									</li>		
+									</li>
 									<li>
-										<a href="/agent/register" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
-											<i class="fa fa-angle-double-right"></i>New Student
+										<a href="/agent/student/all" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Edit
 										</a>
 									</li>			
 									<li>
-										<a href="/agent/students/invitation" class="<%if(parms.cur_selected=='IN'){ %>active<%}%>">
-											<i class="fa fa-angle-double-right"></i>Send Inventaion
+										<a href="/agent/invitation/all" class="<%if(parms.cur_selected=='IN'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Inventaion
 										</a>
 									</li>										
 								</ul>
@@ -217,7 +217,7 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentHistory">
 										<li>
-											<a href="/agent/students" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
+											<a href="/agent/student/all" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Student Records
 											</a>
 										</li>			
@@ -229,8 +229,8 @@
 									</ul>
 							</li>
 							
-							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">
-								<a href="/agent/profile" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
+							<li class="panel <%if(parms.cur_tap=='Profile'){ %>open<% } %>">
+								<a href="/agent/profile" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#ProfileManagement">
 									<i class="fa fa-sliders"></i> Profile <span class="fa arrow"></span>
 								</a>
 								<!-- <ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
@@ -256,7 +256,7 @@
 								<h4>Marketing</h4> 								
 							</li>
 							<li class="panel">
-								<a href="/agent/material/"  >
+								<a href="/agent/materials/all"  >
 									<i class="fa fa-upload"></i> Materials
 								</a>
 						
@@ -293,13 +293,15 @@
 											<a href="/admin">Home</a>
 										</li>
 										<li class="active"><%- parms.category %></li>
+										<li class="<%if(parms.cur_tap==''){ %>hide<% } %>"><a href='/agent/<%- parms.cur_tap.toLowerCase() %>/all'><%- parms.cur_tap %></a></li>
+										<li class="active <%if(parms.cur_selected==''){ %>hide<% } %>"><%- parms.cur_selected %></li>
 									</ul>									
 								</div>
 								<!-- END BREADCRUMB -->	
 								
 								<div class="page-header title">
 								<!-- PAGE TITLE ROW -->
-									<h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>									
+									<!-- <h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>	 -->								
 								</div>							
 							</div><!-- /.col-lg-12 -->
 						</div><!-- /.row -->
