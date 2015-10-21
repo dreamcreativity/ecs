@@ -7,23 +7,23 @@ angular.module('AgentApp')
 
 		AgentTokens.post({token:token},function(result){
 			if(result.status == "successed"){
-					var agent_id = result.data._id;
-					Meterials.getMaterialByAgentId({id:agent_id},function(result){
-						if(result.status ="ok"){
-							$scope.materials = result.data;
-						}	
-					});
-					Students.getStudentsByAgent({id:agent_id}, function(result){
-						if(result.status ="ok"){
-							$scope.students = result.data;
-						}
-					});
+				var agent_id = result.data._id;
+				Meterials.getMaterialByAgentId({id:agent_id},function(result){
+					if(result.status ="ok"){
+						$scope.materials = result.data;
+					}	
+				});
+				Students.getStudentsByAgent({id:agent_id}, function(result){
+					if(result.status ="ok"){
+						$scope.students = result.data;
+					}
+				});
 
-				}
-				else {
-					console.log("error");
-				}
-			});
+			}
+			else {
+				console.log("error");
+			}
+		});
 
 		// $http.post('/api/agent/token',{token:token})
 		// 	.success(function(data,status,headers,config){
