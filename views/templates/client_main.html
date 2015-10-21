@@ -21,6 +21,13 @@
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
 
+    <!--  HTML 5 Datetime type -->
+    <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+    <script>
+        webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
+    </script>
+
     <!-- External JavaScripts
     ============================================= -->
 	<script type="text/javascript" src="js/client/jquery.js"></script>
