@@ -15,8 +15,8 @@ var url_params = <%- JSON.stringify(url_params) %>
 		<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
 			<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
 			<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-			<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register Course</a></li>
-			<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Payment Records</a></li>
+		<!-- 	<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register Course</a></li> -->
+			<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register History</a></li>
 		</ul>
 
 
@@ -273,7 +273,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 				</div>
 			</div>
 
-			<div class="tab-pane fade in portlet-body" id="p3">
+			<!-- <div class="tab-pane fade in portlet-body" id="p3">
 				<label class="col-sm-1 col-md-3 control-label">History</label>
 				<table class="table table-bordered table-striped table-hover tc-table table-primary">
 					<thead>
@@ -307,7 +307,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</div> -->
 
 			<div class="tab-pane fade in portlet-body" id="p4">
 				<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
@@ -343,7 +343,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 										<td class="hidden-xs center">{{c.level}}</td>
 										<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
 										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
-										<td class="hidden-xs center">{{c.duration}}</td>
+										<td class="hidden-xs center">{{c.coursePeriod}}</td>
 										<td class="hidden-xs center">confirm</td>
 									</tr>
 								</tbody>

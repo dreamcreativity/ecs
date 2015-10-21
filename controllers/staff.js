@@ -380,6 +380,7 @@ exports.getStaffAccount = function(req,res){
 							status: 'ok',
 							messages: 'successed',
 							data: {
+								id : users[0]._id,
 								username: users[0].username,
 								workphone: users[0].workphone,
 								cellphone: users[0].cellphone,

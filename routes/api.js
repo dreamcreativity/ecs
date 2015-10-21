@@ -214,7 +214,7 @@ router.put('/student/accommodation/:id', student.updateAccommdation);
 
 //----------------------Payment---------------------------------------
 //POST : Add new payment to registration
-router.post('/payment/:id', payment.create);
+router.post('/student/payment', payment.create);
 
 
 //----------------------Agent----------------------------------------

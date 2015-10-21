@@ -240,7 +240,7 @@ resources.factory('Registrations',['$resource',
 resources.factory('Payments',['$resource',
     function($resource){
         return $resource('/api/payment/:id', {}, {
-        //query:{ method: 'GET'},
+        query:{ method: 'GET'},
         create:{method: 'POST'},
         update : { method : 'PUT', params: {id:'@_id'}}
     });

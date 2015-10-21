@@ -8,35 +8,216 @@
 			<div class="portlet-title">
 				<h4>Payment for register on {{registration.createDate | date:'MMMM d yyyy'}}</h4>
 			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#basic" href="#basic"><i class="fa fa-chevron-down"></i></a>
+			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div id="basic" class="panel-collapse collapse in">
-
 			<div class="portlet-body no-padding" ng-repeat="p in registration.programRegistration">
-				<div class="portlet"><!-- /Portlet -->
-					<div class="portlet-heading dark">
-						<div class="portlet-title">
-							<h4><small class="text-white">{{p.title}}</small></h4>
+			  <div class="portlet">
+						<div class="portlet-heading ">
+							<div class="portlet-title">
+								<h4><strong>{{p.title}}</strong></h4>
+							</div>
+							<div class="clearfix"></div>
 						</div>
-						<div class="clearfix"></div>
-						<!-- content -->
-						<div id="basic" class="panel-collapse collapse in">
-							<form name="paymentForm" class="form-horizontal" role="form" novalidate>
-								<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Tile</label>
-								<div class="col-sm-1 col-md-3">
-									<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required>
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Course start Date :</strong></div>
+												<div class="col-lg-2" >{{p.startDate | date:'MMMM d'}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Level :</strong></div>
+												<div class="col-lg-2" >{{p.level}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Duration :</strong></div>
+												<div class="col-lg-2" >{{p.coursePeriod}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Price :</strong></div>
+												<div class="col-lg-2" >${{p.price}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Commission rate:</strong></div>
+												<div class="col-lg-2" >{{p.commissionRate | percentage:2}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Promotion rate:</strong></div>
+												<div class="col-lg-2" >{{(p.promotionRate == 0) ? 'N/A' : (p.promotionRate | percentage:2)}}</div>
+											</div>
+											<hr>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Promotion: </strong></div>
+												<div class="col-lg-2" >-${{p.price * p.promotionRate}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Total: </strong></div>
+												<div class="col-lg-2" >${{p.price - p.price * p.promotionRate}}</div>
+											</div>
 
+										</div>
+									</div>
 								</div>
 							</div>
-							</form>
 						</div>
-
 					</div>
-				</div>
 			</div>
 
 		</div>
 	</div>
+
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Payment History</h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" href="#history"><i class="fa fa-chevron-down"></i></a>
+				<span class="divider"></span>
+				<a href="" id="addrow_button" ng-click="addNewRow()"><i class="fa fa-plus icon-only"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="history" class="panel-collapse collapse in">
+			<div class="portlet-body no-padding">
+			<form name="paymentForm" class="form-horizontal" role="form" novalidate>
+				<table class="table table-bordered table-hover tc-table">
+					<thead>
+						<tr>
+							<th class="hidden-xs center">Type</th>
+							<th class="hidden-xs center">Method</th>
+							<th class="hidden-xs center">Pay Date</th>
+							<th class="hidden-xs center">Amount</th>
+							<th class="hidden-xs center">Sign by</th>
+							<th class="hidden-xs center">Status</th>
+							<th class="col-medium center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="newRecord" ng-show="newrowShow">
+							<td class="hidden-xs center">
+							<div class="clearfix">
+							<div class="input-group">
+								<select class="form-control" name="paymentType" ng-model="payment.paymentType" required>
+									<option ng-repeat="item in PaymentType" value="{{item}}">{{item}}</option>
+								</select>
+								<span ng-show="paymentForm.paymentType.$error.required" class="input-group-addon">Required</span>
+								<span ng-show="!paymentForm.paymentType.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								</div>
+								</div>
+							</td>
+							<td class="hidden-xs center">
+								<div class="clearfix">
+									<div class="input-group">
+								<select  class="form-control" name="paymentMethod" ng-model="payment.paymentMethod" required>
+									<option ng-repeat="item in PaymentMethod" value="{{item}}">{{item}}</option>
+								</select>
+								<span ng-show="paymentForm.paymentMethod.$error.required" class="input-group-addon">Required</span>
+								<span ng-show="!paymentForm.paymentMethod.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								</div>
+								</div>
+							</td>
+							<td class="hidden-xs center">
+								<div class="clearfix">
+								<div class="input-group">
+								<input  type="date" class="form-control" name="paymentDate" ng-model="payment.paymentDate" required>
+								<span ng-show="paymentForm.paymentDate.$error.required" class="input-group-addon">Required</span>
+								<span ng-show="!paymentForm.paymentDate.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								</div>
+								</div>
+							</td>
+							<td class="hidden-xs center">
+								<div class="clearfix">
+									<div class="input-group">
+										<input  type="number" class="form-control" name="amount" ng-model="payment.amount" required>
+										<span ng-show="paymentForm.amount.$error.required" class="input-group-addon">Required</span>
+								<span ng-show="!paymentForm.amount.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</td>
+							<td class="hidden-xs center">
+							     <label>{{staff.firstname}} {{staff.lastname}}</label>
+							</td>
+							<td class="hidden-xs center">
+								<label>
+									<input name="isVoid" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="payment.isVoid" />
+									<span class="labels"></span>
+								</label>	
+							</td>
+							<td class="hidden-xs center">
+								<button type="button" class="btn btn-danger btn-xs" ng-click="create()" ng-disabled="paymentForm.$invalid">
+									<i class="fa fa-check icon-only"></i></button>
+								<button type="button" class="btn btn-info btn-xs" ng-click="removeRow()"><i class="fa fa-times icon-only"></i>
+								</button>
+							</td>
+						</tr>
+						<tr ng-repeat="c in registration.payments">
+							<td class="hidden-xs center">{{c.paymentType}}</td>
+							<td class="hidden-xs center">{{c.paymentMethod}}</td>
+							<td class="hidden-xs center">{{c.paymentDate | date :'MMMM d' }}</td>
+							<td class="hidden-xs center">{{ (c.paymentMethod == 'Payment') ? '' : '-' }}${{c.amount}}</td>
+							<td class="hidden-xs center">{{c.createBy}}</td>
+							<td class="hidden-xs center">{{c.isVoid}}</td>
+							<td class="hidden-xs center">confirm</td>
+						</tr>
+					</tbody>
+				</table>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Balance -->
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Balance</h4>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="basic" class="panel-collapse collapse in">
+			<div class="portlet-body no-padding">
+				<div class="row">													
+					<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+						<div class="portlet no-border">
+							<div class="portlet-body">
+								<div class="row">
+								<div class="col-lg-2 right"><strong>Total : </strong></div>
+									<div class="col-lg-2" >${{total}}</div>
+								</div>
+								<div class="row">
+								<div class="col-lg-2 right"><strong>Pay : </strong></div>
+									<div class="col-lg-2" >-${{pay}}</div>
+								</div>
+								<div class="row">
+								<div class="col-lg-2 right"><strong>Refund : </strong></div>
+									<div class="col-lg-2" >${{refund}}</div>
+								</div>
+								<hr>
+								<div class="row">
+								<div class="col-lg-2 right"><strong>Balance : </strong></div>
+									<div class="col-lg-2" >${{balance}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </div>

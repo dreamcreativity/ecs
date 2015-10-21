@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var PaymentSchema = new mongoose.Schema({
 	paymentType: {type: String},
 	paymentMethod : {type: String},
-	created : {type : Date},
+	created : {type : Date,default : Date.now},
 	paymentDate : {type : Date},
 	amount : {type : Number, min: 0 },
 	createBy: { type: mongoose.Schema.ObjectId, ref: 'Staff'},

@@ -1,5 +1,6 @@
 var Student = require('../models/student');
 var Counter = require('../models/counter');
+var Staff = require('../models/staff');
 var Agent = require('../models/agent');
 var Accommodation = require('../models/accommodation');
 var FlightInfo = require('../models/flightInfo');
@@ -97,6 +98,7 @@ exports.register = function(req,res){
 			async.each(programs, function(item, callback2){
 				var obj = new ProgramRegistration(item);
 				obj.price = item.duration.price;
+				obj.coursePeriod = item.duration.title;
 				if(agentId) {
 					obj.commissionRate = agent.commission;
 				}
@@ -250,10 +252,15 @@ exports.getStudentbyAgentId = function(req,res){
 //GET: Registration records by ID
 exports.getRegistrationById = function(req,res){
 	var id = req.params.id;
-	Registration.find({_id:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+	Registration.find({_id:id}).populate('payments').populate('programRegistration').exec(function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
+		// async.each(result.payments, function(item, callback){
+		// 	Staff.findOne({_id:item.createBy}, function(result1){
+		// 		item.createBy = result1;
+		// 	})
+		// })
 		res.json({
 			type: true,
 			data: result[0]
@@ -279,7 +286,7 @@ exports.getRegistrationByAgent = function(req,res){
 //GET : Registration records by Student ID
 exports.getRegistrationByStudent = function(req,res){
 	var id = req.params.id;
-	Registration.find({student:id}).populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+	Registration.find({student:id}).populate('programRegistration').exec(function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
@@ -406,6 +413,7 @@ exports.createExtendingCourse = function(req,res){
 	async.each(programs, function(item, callback){
 				var obj = new ProgramRegistration(item);
 				obj.price = item.duration.price;
+				obj.coursePeriod = item.duration.title
 				if(agent !=null) {
 					obj.commissionRate = agent.commission;
 				}
