@@ -1,14 +1,17 @@
 <section >
-	<div class='program-banner' style="background-image:url(<%- course.banner.path %>)">
+	<div class='program-banner hidden-sm hidden-xs' style="background-image:url(<%- course.banner.path %>)">
     </div>
     
-	<div class="content-wrap" style="padding-top:0">
+	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
 
 		 		<h1><%- course.title %></h1>
 		 		
 		 		<div class="row">
+                    <div class='col-md-8'>
+                    	<div class='desc'><%- course.content %></div>
+                    </div>
 					<div class='col-md-4'>
                         <img src="<%- course.cover.path %>">
                     	<div class="desc">
@@ -26,9 +29,6 @@
                             </ul>
                         </div>
 			 		</div>
-                    <div class='col-md-8'>
-                    	<div class='desc'><%- course.content %></div>
-                    </div>
 		 		</div>
 
 		 	</div>
