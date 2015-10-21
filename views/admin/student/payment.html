@@ -102,7 +102,7 @@
 							<th class="hidden-xs center">Pay Date</th>
 							<th class="hidden-xs center">Amount</th>
 							<th class="hidden-xs center">Sign by</th>
-							<th class="hidden-xs center">Status</th>
+							<th class="hidden-xs center">Is Void</th>
 							<th class="col-medium center">Action</th>
 						</tr>
 					</thead>
@@ -169,9 +169,19 @@
 							<td class="hidden-xs center">{{c.paymentMethod}}</td>
 							<td class="hidden-xs center">{{c.paymentDate | date :'MMMM d' }}</td>
 							<td class="hidden-xs center">{{ (c.paymentMethod == 'Payment') ? '' : '-' }}${{c.amount}}</td>
-							<td class="hidden-xs center">{{c.createBy}}</td>
-							<td class="hidden-xs center">{{c.isVoid}}</td>
-							<td class="hidden-xs center">confirm</td>
+							<td class="hidden-xs center">{{c.createByName}}</td>
+							<td class="hidden-xs center">
+								<label>
+									<input class="tc tc-switch tc-switch-6 readonly" type="checkbox" ng-model="c.isVoid" />
+									<span class="labels"></span>
+								</label>
+							</td>
+							<td class="hidden-xs center">
+								<button type="button" class="btn btn-danger btn-xs" ng-show ="c.isVoid != {{c.isVoid}}" ng-click="update(c)">
+									<i class="fa fa-check icon-only"></i></button>
+								<button type="button" class="btn btn-info btn-xs" ng-show ="c.isVoid != {{c.isVoid}}" ng-click="c.isVoid = !c.isVoid"><i class="fa fa-times icon-only"></i>
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -196,11 +206,11 @@
 							<div class="portlet-body">
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Total : </strong></div>
-									<div class="col-lg-2" >${{total}}</div>
+									<div class="col-lg-2" >-${{total}}</div>
 								</div>
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Pay : </strong></div>
-									<div class="col-lg-2" >-${{pay}}</div>
+									<div class="col-lg-2" >${{pay}}</div>
 								</div>
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Refund : </strong></div>
@@ -209,7 +219,7 @@
 								<hr>
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Balance : </strong></div>
-									<div class="col-lg-2" >${{balance}}</div>
+									<div class="col-lg-2" >-${{balance}}</div>
 								</div>
 							</div>
 						</div>

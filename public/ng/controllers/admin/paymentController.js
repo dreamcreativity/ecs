@@ -20,10 +20,10 @@ angular.module('AdminApp')
 			};
 
 			for (var i = 0; i < payments.length; i++) {
-				if(payments[i].paymentMethod == 'Payment') {
+				if(payments[i].paymentMethod == 'Payment' && payments[i].isVoid == false) {
 					$scope.pay = $scope.pay + payments[i].amount;
 				}
-				if(payments[i].paymentMethod == 'Refund') {
+				if(payments[i].paymentMethod == 'Refund' && payments[i].isVoid == false) {
 					$scope.refund = $scope.refund + payments[i].amount;
 				}
 			};
@@ -72,6 +72,17 @@ angular.module('AdminApp')
 					}, 2000); 
 				}
 			});
+		}
+
+		$scope.update = function(payment) {
+			Payments.update(payment, function(result){
+				if(result.messages == "successed"){
+	 		    ShowGritterCenter('System Notification','Payment has been updated');
+	 		    setInterval(function(){
+	  					 $window.location='/admin/student/payment/' + registerId;
+					}, 2000); 
+	 		}
+	 	});
 		}
 
 	}

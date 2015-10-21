@@ -31,3 +31,22 @@ exports.create = function(req,res){
 		}
 	});
 }
+
+exports.edit = function(req,res) {
+	var id = req.params.id;
+	Payment.update({_id:id}, req.body, function(err, result){
+			if(err){
+				res.json({
+					status: 'fail',
+					messages: "fail",
+					data: null
+				});
+			}else{
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}
+		});
+}
