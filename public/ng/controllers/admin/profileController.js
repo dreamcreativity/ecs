@@ -39,6 +39,10 @@ angular.module('AdminApp')
 				$scope.changePasswordInfo.currentPassword = ''; 
 				$scope.changePasswordInfo.newPassword = ''; 
 				$scope.changePasswordInfo.confirmPassword = ''; 
+				setInterval(function(){
+					delete sessionStorage.token;
+					$window.location='/admin/login';
+				}, 2000); 
 			}
 			
 		});

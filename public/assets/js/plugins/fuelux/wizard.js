@@ -108,6 +108,7 @@
 
 				this.currentStep -= 1;
 				this.setState();
+				this.$nextBtn.removeAttr('disabled');
 			}
 		},
 

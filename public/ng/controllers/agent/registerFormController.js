@@ -1,4 +1,4 @@
-+-'use strict';
+'use strict';
 angular.module('AgentApp')
 
 .controller('StudentRegister', function StudentRegister($rootScope, $scope, $http, Students,Courses,Constants,Accommodations,FlightInfos, AgentTokens, $window){
@@ -70,7 +70,7 @@ angular.module('AgentApp')
 							.success(function(data,status,headers,config){
 								ShowGritterCenter('System Notification','Success to registration');
 								setInterval(function(){
-									$window.location='/agent/students';
+									$window.location='/agent/student/all';
 								}, 2000); 
 							})
 							.error(function(data,status,headers,config){

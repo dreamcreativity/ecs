@@ -44,19 +44,31 @@
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Price :</strong></div>
-												<div class="col-lg-2" >${{p.price}}</div>
+												<div class="col-lg-2" >
+												<label class="label label-danger">
+													${{p.price | number : 2}}
+												</label>
+												</div>
 											</div>
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Commission rate:</strong></div>
-												<div class="col-lg-2" >{{p.commissionRate | percentage:2}}</div>
+												<div class="col-lg-2" >
+													<label class="label label-info">
+														{{p.commissionRate | percentage:2}}
+													</label>
+												</div>
 											</div>
 											<div class="space-4"></div>
 											<hr>
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Commission: </strong></div>
-												<div class="col-lg-2" >${{p.price * p.commissionRate }}</div>
+												<div class="col-lg-2" >
+													<label class="label label-success">
+														${{p.price * p.commissionRate | number : 2 }}
+													</label>
+												</div>
 											</div>
 
 										</div>
@@ -85,7 +97,11 @@
 							<div class="portlet-body">
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Commission : </strong></div>
-									<div class="col-lg-2" >${{total}}</div>
+									<div class="col-lg-2" >
+										<label class="label label-success">
+											${{total | number : 2}}
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>

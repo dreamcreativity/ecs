@@ -24,8 +24,7 @@ angular.module('AdminApp')
 
  	$scope.create = function(isValid){
 	 	Agents.save($scope.agent,function(result){
-	 		    var message = result.messages;	    
-	 		     $scope.returnMessage = "successfully";
+	 		    ShowGritterCenter('System Notification','A new agent has been created');
 	 			setInterval(function(){
   					 $window.location='/admin/agent/all';
 				}, 2000); 
@@ -62,10 +61,12 @@ angular.module('AdminApp')
 	 }
 
 	 $scope.update = function(isValid) {
-	 	$scope.returnMessage="";
 	 	Agents.update($scope.agent, function(result){
 	 			if(result.status == 'ok'){
-					ShowGritterCenter('System Notification','Material document has been updated');
+					ShowGritterCenter('System Notification','Agent has been updated');
+					setInterval(function(){
+  					 $window.location='/admin/agent/detail/' + agent_id;
+					}, 2000);
 				}else{
 					ShowGritterCenter('System Notification','Material document update fail : ' + result.messages.err);
 				}
