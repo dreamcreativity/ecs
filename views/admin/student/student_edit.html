@@ -64,7 +64,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 								<label class="col-sm-1 col-md-3 control-label">Commission Rate</label>
 								<div class="col-sm-1 col-md-3">
 									<div class="input-group">
-										<input type="text" class="form-control" name="commissionRate" ng-model="student.commissionRate">
+										<input type="number" step='0.1' min='0' class="form-control" name="commissionRate" ng-model="student.commissionRate">
 									</div>
 								</div>
 							</div>
@@ -73,7 +73,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 								<label class="col-sm-1 col-md-3 control-label">Pomotion Rate</label>
 								<div class="col-sm-1 col-md-3">
 									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
+										<input id="touchspin-demo2" type="number" step='0.1' min='0' class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
 									</div>
 								</div>
 							</div>

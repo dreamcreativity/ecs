@@ -34,8 +34,8 @@ var StudentSchema = new mongoose.Schema({
 	healthInsuranceEndDate :{type: Date},
 	healthInsuranceStartingDate :{type: Date},
 	//commission info
-	commissionRate: {type: String},
-	pomotionRate: {type: String},
+	commissionRate: {type: Number,default :0},
+	pomotionRate: {type: Number, default :0},
 	note: {type: String},
 	registerDate: {type: Date,default: Date.now },
 	isQuit : {type : Boolean, default : false },

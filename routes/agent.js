@@ -114,7 +114,7 @@ router.get('/student/commission/:id', function(req, res) {
 			{ 
 				title: 'Student',
 				category: 'Students',
-				cur_tap: 'Students',
+				cur_tap: 'Student',
 				cur_selected : 'Commission',
 				url_params : req.params
 			}

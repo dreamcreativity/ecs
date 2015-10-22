@@ -1,6 +1,7 @@
 var Student = require('../models/student');
 var Counter = require('../models/counter');
 var Staff = require('../models/staff');
+var Token = require('../models/token');
 var Agent = require('../models/agent');
 var Accommodation = require('../models/accommodation');
 var FlightInfo = require('../models/flightInfo');
@@ -10,6 +11,7 @@ var EmailSender = require('../modules/emailModule');
 var Pdf = require('../modules/pdfModule');
 var constant = require('../constants.js');
 var async = require("async");
+var mongoose = require('mongoose');
 
 async = require("async");
 
@@ -42,6 +44,7 @@ exports.create = function(req,res){
 //Resiteration on Agent port
 exports.register = function(req,res){
 	var student = new Student(req.body.student);
+	var token = req.body.token
 
 	var agentId =req.body.agent;
 	var accommodation = new Accommodation(req.body.accommodation);
@@ -51,6 +54,22 @@ exports.register = function(req,res){
 		registration.agent = student.agent;
 
 	async.waterfall([
+		function(callback){
+			if(token){
+				Token.findOne({_id:token}, function(err, result){
+						if(!err){
+				 			Agent.findOne({_id:result.user}, function(err, result2){
+				 				if(!err){
+				 					student.agent = result2._id;
+				 					callback();
+				 				}
+				 			});
+				 		}
+				 		else callback();
+				});
+			}	
+			else callback();
+		},
 		function(callback){
 			if(agentId !=null){
 				Agent.find({_id:agentId}, function(err,res){
@@ -128,6 +147,9 @@ exports.register = function(req,res){
 				if(err){ return null;}
 				else {
 					student.studentID = pad(counter.next,6);
+					if(agentId) {
+						student.commissionRate = agent.commission;
+					}
 					student.save(function(err, result){
 						if(err){
 							callback()
@@ -311,8 +333,8 @@ exports.edit = function(req,res){
 	var accommodation = req.body.accommodation;
 	var flightInfo = req.body.flightInfo;
 	req.body.programRegistration =[];
-	req.body.accommodation = accommodation._id;
-	req.body.flightInfo = flightInfo._id;
+	if(accommodation) req.body.accommodation = accommodation._id;
+	if(flightInfo) req.body.flightInfo = flightInfo._id;
 
 	for (var i = 0; i < programs.length; i++) {
 		req.body.programRegistration.push(programs[i]._id);

@@ -29,6 +29,15 @@ angular.module('AdminApp')
 			}
 		});
 
+		Constants.get({name:"Country"}, function(result){
+			 		var regions = result.data;
+			 		var list =[]
+			 		for(var i=0; i<regions.length; i++){
+			 			list.push({"name" : regions[i]});
+			 		}
+			 		$scope.regionsList = list;
+			 	});
+
 		if(agent_id !=null){
 	 			Agents.get({id:agent_id}, function(result){
 	 				$scope.agent = result.data;
@@ -47,7 +56,7 @@ angular.module('AdminApp')
 				courseList : $scope.courseList})
 			.success(function(data,status,headers,config){
 				if(data.messages == "successed"){
-					$http.post('/api/pdf',{registerId:data.data.student, type:"New Student"})
+					$http.post('/api/pdf',{registerId:data.data, type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
 							$http.post('/api/registration/sendEmail',{student:$scope.student,

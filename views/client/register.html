@@ -24,10 +24,18 @@
 		<div class="form-group">
 			<label class="col-sm-offset-3 col-sm-3 col-md-1 control-label">Gender </label>
 			<div class="col-sm-2">
-				<select class="form-control" name="gender" ng-model="student.gender" ng-init="student.gender = 'male'">
-					<option value="male">Male</option>
-					<option value="female">Female</option> 
+				<select class="form-control" name="gender" ng-model="student.gender" ng-init="student.gender = 'Male'">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option> 
 				</select>
+			</div>
+
+			<label class="col-sm-3 col-md-1 control-label">Region </label>
+			<div class="col-sm-2">
+				<select name="region" class="form-control" ng-model="student.region" required>
+						<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
+				</select>
+				<p ng-show="registerForm.region.$invalid && !registerForm.region.$pristine" class="help-block text-danger">Region is required</p>
 			</div>
 		</div>
 
@@ -136,7 +144,8 @@
 			 	</div>
 			 	<div class="form-group">
 			 		<div class="col-sm-offset-5 col-sm-2">
-			 			<input type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" value="Submit">  
+			 			<input type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" value="Submit"> 
+			 			<p>{{returnMessage}}</p> 
 			 		</div>
 			 	</div>
 	</form>

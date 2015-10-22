@@ -16,10 +16,10 @@ angular.module('AgentApp')
 
 		AgentTokens.post({token:token}, function(result){
 			$scope.currentAgent = result.data;
-		});
 
-		Students.query(function(result){
-			$scope.registrations = result;
+			Students.getStudentsByAgent({id: $scope.currentAgent._id}, function(result){
+				$scope.registrations = result;
+			});
 		});
 
 		Courses.getSimpleList(function(data){

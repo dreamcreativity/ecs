@@ -44,28 +44,48 @@
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Price :</strong></div>
-												<div class="col-lg-2" >${{p.price}}</div>
+												<div class="col-lg-2" >
+													<label class="label label-danger">
+													${{p.price | number : 2}}
+												</label>
+												</div>
 											</div>
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Commission rate:</strong></div>
-												<div class="col-lg-2" >{{p.commissionRate | percentage:2}}</div>
+												<div class="col-lg-2" >
+													<label class="label label-info">
+														{{p.commissionRate | percentage:2}}
+													</label>
+												</div>
 											</div>
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Promotion rate:</strong></div>
-												<div class="col-lg-2" >{{(p.promotionRate == 0) ? 'N/A' : (p.promotionRate | percentage:2)}}</div>
+												<div class="col-lg-2" >
+												<label class="label label-warning">
+												{{(p.promotionRate == 0) ? 'N/A' : (p.promotionRate | percentage:2)}}
+												</label>
+												</div>
 											</div>
 											<hr>
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Promotion: </strong></div>
-												<div class="col-lg-2" >-${{p.price * p.promotionRate}}</div>
+												<div class="col-lg-2" >
+												<label class="label label-warning">
+												-${{p.price * p.promotionRate | number : 2 }}
+												</label>
+												</div>
 											</div>
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Total: </strong></div>
-												<div class="col-lg-2" >${{p.price - p.price * p.promotionRate}}</div>
+												<div class="col-lg-2" >
+													<label class="label label-danger">
+												${{p.price - p.price * p.promotionRate | number : 2 }}
+												</label>
+												</div>
 											</div>
 
 										</div>
@@ -206,20 +226,36 @@
 							<div class="portlet-body">
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Total : </strong></div>
-									<div class="col-lg-2" >-${{total}}</div>
+									<div class="col-lg-2" >
+										<label class="label label-danger">
+									-${{total | number : 2 }}
+									</label>
+									</div>
 								</div>
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Pay : </strong></div>
-									<div class="col-lg-2" >${{pay}}</div>
+									<div class="col-lg-2" >
+										<label class="label label-success">
+									${{pay | number : 2 }}
+									</label>
+									</div>
 								</div>
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Refund : </strong></div>
-									<div class="col-lg-2" >${{refund}}</div>
+									<div class="col-lg-2" >
+										<label class="label label-danger">
+									${{refund |  number : 2 }}
+										</label>
+									</div>
 								</div>
 								<hr>
 								<div class="row">
 								<div class="col-lg-2 right"><strong>Balance : </strong></div>
-									<div class="col-lg-2" >-${{balance}}</div>
+									<div class="col-lg-2" >
+									<label class="label label-success">
+									-${{balance | number : 2 }}
+									</label>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -73,6 +73,10 @@ var url_params = <%- JSON.stringify(url_params) %>
 									<div class="portlet-title">
 										<h4>Students<small class="text-white"></small></h4>
 									</div>
+									<div class="portlet-widgets">
+										<a href="/admin/student/create/{{agent._id}}"><i class="fa fa-plus icon-only"></i></a>
+									</div>
+									<div class="clearfix"></div>
 								</div>
 								<div id="basic" class="panel-collapse collapse in">
 									<div class="portlet-body no-padding">
@@ -91,11 +95,11 @@ var url_params = <%- JSON.stringify(url_params) %>
 											</thead>
 											<tbody>
 												<tr ng-repeat="student in students | filter:query">
-													<td>00000{{student.studentID}}</td>
+													<td>{{student.studentID}}</td>
 													<td class="hidden-xs">{{student.firstname}} {{student.lastname}}</td>
 													<td><a href="/admin/agent/detail/{{student.agent._id}}">{{student.agent.lastname}} {{student.agent.firstname}}</a></td>
-													<td class="hidden-xs">{{student.commissionRate}}</td>
-													<td class="hidden-xs">{{student.pomotionRate}}</td>
+													<td class="hidden-xs">{{student.commissionRate | percentage :2}}</td>
+													<td class="hidden-xs">{{student.pomotionRate | percentage :2}}</td>
 													<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>
 													<td><span ng-if="student.isQuit == 1" class="label label-danger">Deleted</span>
 														<span ng-if="student.isQuit == 0" class="label label-active">Active</span>
@@ -112,10 +116,6 @@ var url_params = <%- JSON.stringify(url_params) %>
 									</div>
 								</div>					 
 							</div>
-							<div class="col-sm-1">
-								<a href="/admin/student/create/{{agent._id}}" class="btn btn-primary btn-block">Create</a>
-							</div>
-
 						</div>
 					</div>
 
