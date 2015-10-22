@@ -175,6 +175,14 @@ router.get('/event/:id', function(req, res){
 });
 
 
+router.get('/welcome', function(req, res){
+
+	template(req,res,'client_normal','client/welcome.html',{});
+
+});
+
+
+
 router.get('/events', function(req, res){
 
 	template(req,res,'client_normal','client/event.html',{});

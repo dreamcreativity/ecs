@@ -605,6 +605,7 @@ exports.sendEmail = function(req,res){
 	if(agent) {
 		send_list.push(agent.email);
 	}
+	send_list.push(student_obj.email);
 	send_list.push('esc.mailsystem@gmail.com');
 	for (var key in constant.EmailStudentTempaleVars) {
 		constant.EmailStudentTempaleVars[key] = student_obj[key];

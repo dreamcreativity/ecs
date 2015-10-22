@@ -1,6 +1,6 @@
 'use strict';
 angular.module('ClientApp')
-.controller('RegisterCtrl',function RegisterCtrl($rootScope,$scope,$http,Courses,Constants,Students,AgentTokens){
+.controller('RegisterCtrl',function RegisterCtrl($rootScope,$scope,$http,Courses,Constants,Students,$window){
 	var token =null;
 	loading();
 
@@ -31,9 +31,8 @@ angular.module('ClientApp')
 								context: "Welcome", 
 								attachments : [data.data]})
 						.success(function(data,status,headers,config){
-							$scope.returnMessage = 'Successful Submit';
 							setInterval(function(){
-									$scope.returnMessage ='';
+									$window.location='/welcome';
 								}, 2000); 
 						})
 					}

@@ -188,7 +188,6 @@
 //POST: create new Agent
 exports.create = function(req,res){
 	var newAgent = new Agent(req.body);
-	newAgent.password = "temp";
 	newAgent.save(function(err ,result){
 		if(err){
 			res.json({

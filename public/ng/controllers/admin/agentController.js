@@ -31,6 +31,22 @@ angular.module('AdminApp')
  		})
 	 }
 
+	 $scope.generate = function() {
+    	$scope.agent.password = randomPassword(8);
+		}
+
+		function randomPassword(length) {
+			    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+			    var pass = "";
+			    for (var x = 0; x < length; x++) {
+			        var i = Math.floor(Math.random() * chars.length);
+			        pass += chars.charAt(i);
+			    }
+			    $("#agent_pwd").get(0).type ='text';
+			    return pass;
+			}
+
+
 })
 
 
