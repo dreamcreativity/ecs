@@ -535,7 +535,7 @@ exports.generatePDF = function (req,res){
 					title : item.title,
 					level : item.level,
 					startDate : item.startDate,
-					duration : item.duration
+					duration : item.coursePeriod
 				}
 				listOfCourseRegistration.push(insertValue);
 			};

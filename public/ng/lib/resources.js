@@ -268,7 +268,12 @@ resources.factory('Promotions',['$resource',
         query:{ method: 'GET'},
         create:{ method: 'POST'},
         get:{ method: 'GET', params: {id:'@_id'} },
-        update:{ method: 'PUT', params: {id:'@_id'} }
+        update:{ method: 'PUT', params: {id:'@_id'}},
+        getPromotionByRegion: {
+            url: '/api/promotions/region/:region',
+            method : 'GET', 
+            params: {region:'@region'}
+        },
     });
 }]);
 

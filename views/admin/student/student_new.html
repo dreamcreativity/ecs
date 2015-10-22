@@ -1,4 +1,4 @@
-<div class="portlet" ng-controller='SliderController'>
+<div class="portlet">
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
 			<h4>Create New Student</h4>
@@ -62,15 +62,17 @@
 						<div class="clearfix">
 							<div class="input-group">
 								<div class="input-group">
-											<select name="region" class="form-control" ng-model="student.region" required>
+											<select name="region" class="form-control" ng-model="student.region" ng-change="getPromotionRate()" required>
 												<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
 											</select>
 											<span ng-show="!registerForm.region.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-								<span ng-show="registerForm.region.$error.required" class="input-group-addon">Required</span>
+											<span ng-show="registerForm.region.$error.required" class="input-group-addon">Required</span>
 										</div>
 							</div>
 						</div>
 					</div>
+					
+					<!-- <span class="label label-success">0</span> -->
 				</div>
 
 				<div class="form-group">

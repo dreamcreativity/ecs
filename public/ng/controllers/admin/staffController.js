@@ -23,7 +23,6 @@ angular.module('AdminApp')
 
 	 function loading() {
 	 	var list = [];
-
 	 	Constants.get({name:"Country"}, function(result){
 	 		var regions = result.data;
 	 		for(var i=0; i<regions.length; i++){
@@ -44,6 +43,21 @@ angular.module('AdminApp')
        		 return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
       });
 	 }
+
+	   $scope.generate = function() {
+    	$scope.staff.password = randomPassword(8);
+		}
+
+		function randomPassword(length) {
+			    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+			    var pass = "";
+			    for (var x = 0; x < length; x++) {
+			        var i = Math.floor(Math.random() * chars.length);
+			        pass += chars.charAt(i);
+			    }
+			    $("#staff_pwd").get(0).type ='text';
+			    return pass;
+			}
 })
 
 

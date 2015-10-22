@@ -30,7 +30,6 @@ exports.create = function(req,res){
 					data: null
 				});
 			}else {
-				newStaff.password = '123456'  //Defalut password
 				newStaff.password = SHA256(newStaff.password); //Encrypt
 				newStaff.save(function(err,result){
 					if(err){

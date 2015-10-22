@@ -65,7 +65,7 @@ exports.edit = function (req,res) {
 //GET: promotion by Id
 exports.getPromotionbyId = function(req,res){
 	var id = req.params.id;
-	Material.find({_id:id}, function(err, result){
+	Promotion.find({_id:id}, function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -89,3 +89,26 @@ exports.getPromotionbyId = function(req,res){
 		
 	});
 }
+
+
+//GET: promotion by Id
+exports.getPromotionbyRegion = function(req,res){
+	var region = req.params.region;
+	Promotion.find({region:region}, function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: "successed",
+				data: result[0]
+			});
+		}
+		
+	});
+}
+

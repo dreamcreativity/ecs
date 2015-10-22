@@ -1,7 +1,7 @@
 'use strict';
 angular.module('AdminApp')
 
-.controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,Courses,Constants,Agents,$window){
+.controller('StudentCtrl',function StudentCtrl($rootScope,$scope,$http,Students,Courses,Constants,Agents,Promotions,$window){
 	 var token = sessionStorage.token;
 	 var agent_id =null;
 	 if (typeof(url_params) !== 'undefined') {
@@ -44,6 +44,16 @@ angular.module('AdminApp')
 	 				$scope.hasAgent = true;
 	 			});
 	 		}
+	 }
+
+	 $scope.getPromotionRate = function() {
+	 	Promotions.getPromotionByRegion({region: $scope.student.region}, function(result){
+	 		if(result.status == 'ok'){
+	 			if(result.data) {
+	 				$scope.student.pomotionRate = result.data.rate;
+	 			}
+	 		}
+	 	});
 	 }
 
 	 $scope.create = function(isValid){
