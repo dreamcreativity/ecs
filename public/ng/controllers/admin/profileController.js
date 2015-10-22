@@ -2,7 +2,7 @@
 
 angular.module('AdminApp')
 
-.controller('ProfileController',  function($scope,$http,$window,$location,StaffAccount){
+.controller('ProfileController',  function($scope,$http,$window,$location,StaffAccount,Staffs){
 
 
 	// function getAccountInfo(){
@@ -21,6 +21,13 @@ angular.module('AdminApp')
 		newPassword: '',
 		confirmPassword:''
 	};
+
+	$scope.updateInfo = function(){
+		Staffs.update($scope.info, function(result){
+	 		ShowGritterCenter('System Notification',result.messages);
+	 	})
+	}
+
 
 	$scope.isPasswordMatch = function(){
 		return $scope.changePasswordInfo.newPassword == $scope.changePasswordInfo.confirmPassword;

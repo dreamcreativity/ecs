@@ -14,33 +14,36 @@
 			<div class="clearfix"></div>
 		</div>
 		<div  class="portlet-body panel-collapse collapse in" id="staff-info">
-		<form class="form-horizontal"  method="get">
+		<form class="form-horizontal"  name="profile" method="get">
 			
 				
 				<div class="tab-content">
 					<div class="form-group col-sm-6">
-						<label class="col-sm-4 control-label">First Name:</label>
+						<label class="col-sm-4 control-label">User Name:</label>
 						<div class="col-sm-8">
 							<div class="clearfix">
-								<input type="text" value="{{info.firstname}}"  class="form-control" readonly>
+								<input type="text" value="{{info.username}}"  class="form-control" readonly>
 								
 							</div>
 						</div>
 					</div>
+
 					<div class="form-group col-sm-6">
-						<label class="col-sm-4 control-label">Last Name:</label>
-						<div class="col-sm-8 ">
+						<label class="col-sm-4 control-label">Create Date:</label>
+						<div class="col-sm-8">
 							<div class="clearfix">
-								<input type="text" value="{{info.lastname}}"  class="form-control" readonly>
+								<input type="text" value="{{info.createDate | date :'MMM dd, yyyy'}}"  class="form-control" readonly>
 								
 							</div>
 						</div>
 					</div>
+
+
 					<div class="form-group col-sm-6">
 						<label class="col-sm-4 control-label">Email:</label>
 						<div class="col-sm-8 ">
 							<div class="clearfix">
-								<input type="text" value="{{info.email}}"  class="form-control" readonly>
+								<input type="text" ng-model="info.email"  class="form-control" readonly>
 								
 							</div>
 						</div>
@@ -50,7 +53,26 @@
 						<label class="col-sm-4 control-label">Position:</label>
 						<div class="col-sm-8 ">
 							<div class="clearfix">
-								<input type="text" value="{{info.position}}"  class="form-control" readonly>
+								<input type="text" ng-model="info.position"  class="form-control" readonly>
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label class="col-sm-4 control-label">First Name:</label>
+						<div class="col-sm-8">
+							<div class="clearfix">
+								<input type="text" ng-model="info.firstname"  class="form-control" required>
+								
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-sm-6">
+						<label class="col-sm-4 control-label">Last Name:</label>
+						<div class="col-sm-8 ">
+							<div class="clearfix">
+								<input type="text" ng-model="info.lastname"  class="form-control" required>
 								
 							</div>
 						</div>
@@ -59,7 +81,7 @@
 						<label class="col-sm-4 control-label">Work Phone:</label>
 						<div class="col-sm-8 ">
 							<div class="clearfix">
-								<input type="text" value="{{info.workphone}}"  class="form-control" readonly>
+								<input type="text" ng-model="info.workphone"  class="form-control" required>
 								
 							</div>
 						</div>
@@ -69,29 +91,21 @@
 						<label class="col-sm-4 control-label">Cell Phone:</label>
 						<div class="col-sm-8 ">
 							<div class="clearfix">
-								<input type="text" value="{{info.cellphone}}"  class="form-control" readonly>
+								<input type="text" ng-model="info.cellphone"  class="form-control" required>
 								
 							</div>
 						</div>
 					</div>
 					
 
-
-
-					
-				
-					<!-- <hr class="separator" />
-
-					
+					<hr class="separator" />
 
 					<div class="form-group">
 						<div class="col-sm-3  col-md-2 "></div>	
-						<div class="col-sm-3">											
-							<a type="button" class="btn btn-info" target="_blank" href="{{material.media.path}}" >View</a>
-							<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
-							<button type="button" class="btn btn-default" onclick='location="/admin/material"'>Cancel</button>
+						<div class="col-sm-3">										
+							<button type="button" ng-disabled="profile.$invalid " class="btn btn-primary" ng-click="updateInfo()">Update</button>
 						</div>
-					</div> -->
+					</div>
 					<div class="clearfix"></div>
 				</div>
 			

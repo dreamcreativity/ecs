@@ -16,13 +16,6 @@
                         <img src="<%- course.cover.path %>">
                     	<div class="desc">
                             <ul style="padding-top:30px;list-style:none">
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
-                                <li><a target="_blank" href="http://www.google.com">Link Link Link Link Link Link Link Link Link Link Link </a></li>
                                 <% for( var x = 0; x < course.links.length; x++){ %>
                                 <li><a target="_blank" href="<%- course.links[x].href %>"><%- course.links[x].title %></a></li>
                                 <% } %>
