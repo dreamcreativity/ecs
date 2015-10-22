@@ -228,9 +228,9 @@
 }
 
 .program-banner{
-    height: 200px;
+    height: 280px;
     overflow: hidden;
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
 	background-size:cover;background-position:50% 25%
 }
 .program-banner .curtain{background:url("/images/black_gradient.png");background-position:0 150%;background-repeat:repeat-x;background-size:100% 80%;}

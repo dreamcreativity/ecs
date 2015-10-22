@@ -130,7 +130,7 @@
 									<div class="col-sm-6" >
 										
 										<div style="margin-bottom:15px;">
-											<button type="button" data-toggle="modal" data-target="#addNewLink" class="btn btn-primary">Add New Link</button>
+											<button type="button" ng-click="createLink()" class="btn btn-primary">Add New Link</button>
 										</div>
 										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
 											<li data-toggle="modal" ng-repeat="link in course.links | orderBy:'order' " class="list-group-item">
@@ -192,7 +192,7 @@
 
 	<!-- Modal -->
 
-	<div class="modal fade" id="addNewLink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- 	<div class="modal fade" id="addNewLink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -227,49 +227,38 @@
 	    </div>
 	  </div>
 	</div>
+ -->
 
-
-	<!-- <div class="modal fade" id="addNewDuration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Create new duration</h4>
-	      </div>
-	      <div class="modal-body">
-
+	<script type="text/ng-template" id="NewLinkModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Create New Link<</h4>
+        </div>
+        <div class="modal-body">
 	      	<div class="form-horizontal">
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">Title</label>
 		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control  input-large" ng-model="newDuration.title" >
+		      			<input type="text"  class="form-control" ng-model="link.title" >
 		      		</div>
 		      	</div>
+
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Week(s)</label>
+		      		<label class="col-sm-2 control-label">href</label>
 		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.week">
-		      		</div>
-		      	</div>
-		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Price</label>
-		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.price">
+		      			<input type="text"  class="form-control" ng-model="link.href">
 		      		</div>
 		      	</div>
 
 	      	</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 
 
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary"  ng-click="sss()">Create Duration</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
- -->
 
 
 	<script type="text/ng-template" id="addNewDurationModalContent.html">
@@ -387,41 +376,6 @@
 		height: 200px!important;
 	}
 </style>
-<script type="text/javascript">
-
-	$(document).ready(function(){
-			// $('#page-content').ek_wysiwyg({
-
-			// 	toolbar:
-			// 		[
-			// 			'font',
-			// 			null,
-			// 			'fontSize',
-			// 			null,
-			// 			'bold',
-			// 			'italic',
-			// 			'strikethrough',
-			// 			'underline',
-			// 			null,
-			// 			'justifyleft',
-			// 			'justifycenter',
-			// 			'justifyright',
-			// 			null,
-			// 			'createLink',
-			// 			'unlink',
-			// 			null,
-			// 			'insertImage',
-			// 			null,
-			// 			'undo',
-			// 			'redo'
-			// 		]
-			// });
-
-
-			//$('#page-content').wysihtml5();
-
-	});
-</script>
 
 
 

@@ -101,16 +101,13 @@ angular.module('AdminApp')
 		$scope.course.durations.splice(index, 1);
 	}
 
-
-
-
 	$scope.createDuration = function() {
 	 	
 	 	console.log($modal);
 		var obj = $scope.newDuration;
 		var modalInstance = $modal.open({
 		  templateUrl: 'addNewDurationModalContent.html',
-		  controller: 'ModalInstanceCtrl',
+		  controller: 'NewDurationModalInstanceCtrl',
 		  resolve: {
 		    newDuration: function () {
 		      return obj;
@@ -119,18 +116,18 @@ angular.module('AdminApp')
 		});
 
 		modalInstance.result.then(function (newDuration) {
-			console.log($modal);
-		 	// Duration.create(duration, function(result){
-		 	// 	 var newDuration = result.data;
-		 	// 	 newDuration.order = $scope.course.durations.length;
 
-		 	// 	$scope.course.durations.push(newDuration);
-		 	// 	$scope.newDuration.title = '';
-		 	// 	$scope.newDuration.price = 0.0;
-		 	// 	$scope.newDuration.week = 1;
-		 	// 	$scope.newDuration.order = $scope.newDuration.length + 1;
+		 	Duration.create(newDuration, function(result){
+		 		 var newDuration = result.data;
+		 		 newDuration.order = $scope.course.durations.length;
+
+		 		$scope.course.durations.push(newDuration);
+		 		$scope.newDuration.title = '';
+		 		$scope.newDuration.price = 0.0;
+		 		$scope.newDuration.week = 1;
+		 		$scope.newDuration.order = $scope.newDuration.length + 1;
 		 		
-		 	// });
+		 	});
 		}, function () {
 		  	// done
 		});
@@ -167,31 +164,46 @@ angular.module('AdminApp')
 	 	
 	}
 
-	 // $scope.createDuration = function() {
-	 // 	console.log(9);
-	 // 	Duration.create($scope.newDuration, function(result){
-	 // 		 var newDuration = result.data;
-	 // 		 newDuration.order = $scope.course.durations.length;
 
-	 // 		$scope.course.durations.push(newDuration);
-	 // 		$scope.newDuration.title = '';
-	 // 		$scope.newDuration.price = 0.0;
-	 // 		$scope.newDuration.week = 1;
-	 // 		$scope.newDuration.order = $scope.newDuration.length + 1;
-	 // 		$('#addNewDuration').modal('hide');
-	 // 	});
-	 // }
+	// function for course Link control
 
+	// $scope.createLink = function() {
+	// 	CourseLink.create($scope.newCourseLink, function(result){
+	// 		$scope.course.links.push(result.data);
+	// 		$scope.newCourseLink.title = '';
+	// 		$scope.newCourseLink.href = '';
+	// 		$scope.newCourseLink.order = $scope.course.links.length+1;
+	// 		$('#addNewLink').modal('hide');
+	// 	});
+	// }
 
 	$scope.createLink = function() {
-		CourseLink.create($scope.newCourseLink, function(result){
-			$scope.course.links.push(result.data);
-			$scope.newCourseLink.title = '';
-			$scope.newCourseLink.href = '';
-			$scope.newCourseLink.order = $scope.course.links.length+1;
-			$('#addNewLink').modal('hide');
+
+		var modalInstance = $modal.open({
+		  templateUrl: 'NewLinkModalContent.html',
+		  controller: 'NewLinkModalInstanceCtrl',
+		  windowClass: 'app-modal-lg',
+		  resolve: {
+		  	newCourseLink: function(){
+		  		return $scope.newCourseLink;
+		  	}
+		  }
+		});
+
+		modalInstance.result.then(function (editCourseLink) {
+	
+			CourseLink.create(editCourseLink, function(result){
+				$scope.course.links.push(result.data);
+				$scope.newCourseLink.title = '';
+				$scope.newCourseLink.href = '';
+				$scope.newCourseLink.order = $scope.course.links.length+1;
+			
+			});
+		}, function () {
+		  	// done
 		});
 	}
+
 
 	$scope.removeLink = function(object) {
 		var index = $scope.course.links.indexOf(object);
@@ -279,6 +291,19 @@ angular.module('AdminApp')
 
 
 
+
+.controller('NewLinkModalInstanceCtrl', function ($scope, $modalInstance, newCourseLink) {
+	$scope.link = newCourseLink;
+	
+	$scope.ok = function () {
+		$modalInstance.close($scope.link );
+	};
+
+	$scope.cancel = function () {
+	$modalInstance.dismiss('cancel');
+	};
+})
+
 .controller('EditLinkModalInstanceCtrl', function ($scope, $modalInstance, editCourseLink) {
 
 
@@ -291,6 +316,21 @@ angular.module('AdminApp')
 	$modalInstance.dismiss('cancel');
 	};
 })
+
+.controller('NewDurationModalInstanceCtrl', function ($scope, $modalInstance, newDuration) {
+
+
+	$scope.newDuration = newDuration;
+
+	$scope.ok = function () {
+		$modalInstance.close($scope.newDuration );
+	};
+
+	$scope.cancel = function () {
+		$modalInstance.dismiss('cancel');
+	};
+})
+
 
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, editDuration) {
 
