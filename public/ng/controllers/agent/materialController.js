@@ -11,6 +11,7 @@ angular.module('AgentApp')
 				Meterials.getMaterialByAgentId({id:agent_id},function(result){
 					if(result.status ="ok"){
 						$scope.materials = result.data;
+						console.log($scope.materials );
 					}	
 				});
 				Students.getStudentsByAgent({id:agent_id}, function(result){

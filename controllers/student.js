@@ -279,8 +279,11 @@ exports.getRegistrationById = function(req,res){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
+
+		console.log(result);
 		async.each(result[0].payments, function(item, callback){
 			Staff.findOne({_id:item.createBy}, function(err, result1){
+				console.log(result1);
 				item.createByName = result1.lastname + ' ' + result1.firstname;
 				payments.push(item);
 				callback();
@@ -289,6 +292,7 @@ exports.getRegistrationById = function(req,res){
 		},function(err){
 			result[0].payments = payments;
 			res.json({
+
 			type: true,
 			data: result[0]
 		});
