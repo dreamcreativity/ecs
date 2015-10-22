@@ -40,6 +40,11 @@ angular.module('AdminApp')
 	 		$scope.course.durations.sort(SortByOrder);
 	 		$scope.course.startPoint =  new Date($scope.course.startPoint);
 	 		
+
+	 		// init text editor
+	 		$('#page-content').wysihtml5();
+
+
 	 		$scope.newDuration = {
 			 	'title': '',
 			 	'price': 0.0,
@@ -96,7 +101,43 @@ angular.module('AdminApp')
 		$scope.course.durations.splice(index, 1);
 	}
 
-	 $scope.editDuration = function(object) {
+
+
+
+	$scope.createDuration = function() {
+	 	
+	 	console.log($modal);
+		var obj = $scope.newDuration;
+		var modalInstance = $modal.open({
+		  templateUrl: 'addNewDurationModalContent.html',
+		  controller: 'ModalInstanceCtrl',
+		  resolve: {
+		    newDuration: function () {
+		      return obj;
+		    }
+		  }
+		});
+
+		modalInstance.result.then(function (newDuration) {
+			console.log($modal);
+		 	// Duration.create(duration, function(result){
+		 	// 	 var newDuration = result.data;
+		 	// 	 newDuration.order = $scope.course.durations.length;
+
+		 	// 	$scope.course.durations.push(newDuration);
+		 	// 	$scope.newDuration.title = '';
+		 	// 	$scope.newDuration.price = 0.0;
+		 	// 	$scope.newDuration.week = 1;
+		 	// 	$scope.newDuration.order = $scope.newDuration.length + 1;
+		 		
+		 	// });
+		}, function () {
+		  	// done
+		});
+	 	
+	}
+
+	$scope.editDuration = function(object) {
 	 	
 	 	$scope.selectedDuration = object;
 
@@ -124,21 +165,22 @@ angular.module('AdminApp')
 		  	// done
 		});
 	 	
-	 }
+	}
 
-	 $scope.createDuration = function() {
-	 	Duration.create($scope.newDuration, function(result){
-	 		 var newDuration = result.data;
-	 		 newDuration.order = $scope.course.durations.length;
+	 // $scope.createDuration = function() {
+	 // 	console.log(9);
+	 // 	Duration.create($scope.newDuration, function(result){
+	 // 		 var newDuration = result.data;
+	 // 		 newDuration.order = $scope.course.durations.length;
 
-	 		$scope.course.durations.push(newDuration);
-	 		$scope.newDuration.title = '';
-	 		$scope.newDuration.price = 0.0;
-	 		$scope.newDuration.week = 1;
-	 		$scope.newDuration.order = $scope.newDuration.length + 1;
-	 		$('#addNewDuration').modal('hide');
-	 	});
-	 }
+	 // 		$scope.course.durations.push(newDuration);
+	 // 		$scope.newDuration.title = '';
+	 // 		$scope.newDuration.price = 0.0;
+	 // 		$scope.newDuration.week = 1;
+	 // 		$scope.newDuration.order = $scope.newDuration.length + 1;
+	 // 		$('#addNewDuration').modal('hide');
+	 // 	});
+	 // }
 
 
 	$scope.createLink = function() {
