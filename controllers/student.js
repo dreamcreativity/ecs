@@ -307,7 +307,11 @@ exports.getRegistrationById = function(req,res){
 		  function(err, staff) {
 		    if(err) return callback(err);
 		    	console.log(staff[0]);
-				res.json(staff[0]);
+				res.json({
+					status : 'ok',
+					messages : 'successed',
+					data : staff[0]
+					});
 		});
 
 
