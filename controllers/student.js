@@ -60,7 +60,7 @@ exports.register = function(req,res){
 			if(token){
 				AgentInvitation.findOne({_id:token}, function(err, result){
 						if(!err){				 					
-							student.agent = result._id;
+							student.agent = result.agent;
 				 			callback();
 				 		}
 				 		else callback();
