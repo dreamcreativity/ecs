@@ -128,8 +128,18 @@ angular.module('AgentApp')
 	 		$scope.regionsList = list;
 	 	});
 	}
-	}
-)
+
+	$scope.update = function(isValid) {
+	 	Students.updateByAgent($scope.student, function(result){
+	 			var message = result.messages;	    
+	 			 ShowGritterCenter('System Notification','Student has been updated');
+	 			setInterval(function(){
+  					 $window.location='/agent/student/detail/' + $scope.student._id;
+				}, 2000); 
+	 	})
+	 }
+	
+})
 
 .controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,AgentTokens,$http,$window){
 	var currentAgent_id = null;

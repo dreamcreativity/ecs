@@ -381,6 +381,44 @@ exports.edit = function(req,res){
 	});
 }
 
+//PUT: Edit by Agent
+exports.editByAgent = function(req,res){
+	var id = req.params.id;
+	var student = new Student(req.body);
+	Student.update({_id:id}, 
+		{
+			firstname : student.firstname,
+			lastname : student.lastname,
+			region : student.region,
+			address : student.address,
+			postcode : student.postcode,
+			city : student.city,
+			province : student.province,
+			country : student.country,
+			telephone : student.telephone,
+			fax : student.fax,
+			email : student.email,
+			emergency : student.emergency,
+			country : student.country
+		}, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+				});
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+}
+
+
 //Set Student is Quit
 
 exports.quit = function(req,res){

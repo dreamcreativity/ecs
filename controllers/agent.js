@@ -301,6 +301,7 @@ exports.edit = function(req,res){
 		}});
 }
 
+
 //DELETE : Set Agent isDelete be true
 exports.delete = function(req,res){
 	var id = req.params.id;

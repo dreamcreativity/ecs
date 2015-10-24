@@ -209,6 +209,9 @@ router.post('/student/extending',student.createExtendingCourse);
 //PUT : Edit a student info
 router.put('/student/:id', student.edit);
 
+//PUT : Edit a student info by Agent
+router.put('/student/agent/:id', student.editByAgent);
+
 //PUT : Update Accomdation info
 router.put('/student/accommodation/:id', student.updateAccommdation);
 

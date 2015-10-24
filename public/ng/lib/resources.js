@@ -102,6 +102,11 @@ resources.factory('Agents',['$resource',
         return $resource('/api/student/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}},
+        updateByAgent : {
+            url : '/api/student/agent/:id',
+            method : 'PUT',
+            params : {id : '@_id'}
+        },
         getStudentsByAgent : {
             url : '/api/student/agent/:id',
             method : 'GET',
