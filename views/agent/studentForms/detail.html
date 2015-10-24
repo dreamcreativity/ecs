@@ -15,8 +15,7 @@
 				<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
 					<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
 					<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-					<!-- <li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registered courses</a></li> -->
-					<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Commission Record</a></li>
+					<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Commission Record</a></li>
 				</ul>
 
 				<div class="tab-content">
@@ -166,6 +165,9 @@
 									<button download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
 								</div>
 								<div  class="col-sm-1 col-md-1">
+									<button class="btn btn-primary btn-block" ng-click="update()">Update</button>
+								</div>
+								<div  class="col-sm-1 col-md-1">
 									<a href="/agent/students"class="btn btn-primary btn-block">Back</a>
 								</div>
 							</div>
@@ -276,43 +278,8 @@
 
 					</div>
 
-					<div class="tab-pane fade" id="p3">
-						<!-- <table class="table table-bordered table-striped table-hover tc-table table-primary">
-							<thead>
-								<tr>
-									<tr>
-										<th class="hidden-xs center">Register Date</th>
-										<th class="hidden-xs center">Course</th>
-										<th class="hidden-xs center">Description</th>
-										<th class="hidden-xs center">Level</th>
-										<th class="hidden-xs center">Year</th>
-										<th class="hidden-xs center">Start Date</th>
-										<th class="hidden-xs center">Duration</th>
-										<th class="col-medium center">Action</th>
-									</tr>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="c in programs">
-									<td class="hidden-xs center"><label class="label label-success">{{ c.createDate  | date:'MMMM d, yyyy'}}</label></td>
-									<td class="hidden-xs center">{{c.title}}</td>
-									<td class="hidden-xs center">{{c.tag}}</td>
-									<td class="hidden-xs center">{{c.level}}</td>
-									<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
-									<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
-									<td class="hidden-xs center">{{c.duration}}</td>
-									<td class="col-medium center">
-										<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)" disabled="disabled">
-											<i class="fa fa-times icon-only"></i>
-										</button>
-									</td>
-								</tr>
-							</tbody>
-						</table> -->
-					</div>
-
 					<!-- Tab4 -->
-					<div class="tab-pane fade" id="p4">
+					<div class="tab-pane fade" id="p3">
 						<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
 							<div class="portlet-heading dark">
 								<div class="portlet-title">

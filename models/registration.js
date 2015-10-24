@@ -7,6 +7,7 @@ var RegistrationSchema = new mongoose.Schema({
 	programRegistration : [{type : mongoose.Schema.ObjectId, ref:'ProgramRegistration', default:null}],
 	accommodation: {type: mongoose.Schema.ObjectId, ref:'Accommodation', default: null},
 	flightInfo: {type: mongoose.Schema.ObjectId, ref:'FlightInfo', default: null},
+	commissionRate : {type: Number, default : 0},
 	createDate: {type: Date,default: Date.now },
 	isActive: {type: Boolean, default: true},
 	payments: [{ type: mongoose.Schema.ObjectId, ref: 'Payment'}],

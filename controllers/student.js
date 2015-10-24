@@ -135,6 +135,9 @@ exports.register = function(req,res){
 				else {
 					student.programRegistration = programRegistration_ids; // Delete later
 					registration.programRegistration = programRegistration_ids;
+					if(agentId) {
+					registration.commissionRate = agent.commission;
+					}
 					callback();
 				}
 			});
