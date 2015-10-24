@@ -486,6 +486,9 @@ exports.createExtendingCourse = function(req,res){
 					Student.findOne({_id:student_id}, function(err, result){
 						if(!err){
 							registration.agent = result.agent
+							if(agent !=null) {
+								registration.commissionRate = agent.commission;
+								}
 							for (var i = 0; i < programRegistration_ids.length; i++) {
 								result.programRegistration.push(programRegistration_ids[i]);
 							};
