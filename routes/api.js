@@ -13,6 +13,7 @@ var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
 var payment = require('../controllers/payment');
+var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
@@ -214,6 +215,10 @@ router.put('/student/agent/:id', student.editByAgent);
 
 //PUT : Update Accomdation info
 router.put('/student/accommodation/:id', student.updateAccommdation);
+
+
+//---------------------- Commissions ---------------------------------------
+router.post('/commission/byAgentId', commission.getCommissionByAgentId);
 
 
 //----------------------Payment---------------------------------------

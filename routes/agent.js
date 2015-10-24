@@ -133,7 +133,7 @@ router.get('/invitation/all', function(req, res) {
 		);
 });
 
-router.get('/history/student/all', function(req,res){
+router.get('/history/student', function(req,res){
 	template(req,res,'agent_main','agent/history/students.html',
 			{ 
 				title: 'Student',
@@ -146,7 +146,7 @@ router.get('/history/student/all', function(req,res){
 });
 
 
-router.get('/history/commission/all', function(req,res){
+router.get('/history/commission', function(req,res){
 	template(req,res,'agent_main','agent/history/commission.html',
 			{ 
 				title: 'Commission',
@@ -158,17 +158,17 @@ router.get('/history/commission/all', function(req,res){
 		);
 });
 
-router.get('/commission/all', function(req,res){
-	template(req,res,'agent_main','agent/history/commission.html',
-			{ 
-				title: 'Commission',
-				category: 'History',
-				cur_tap: 'Commission',
-				cur_selected : 'All',
-				url_params : req.params
-			}
-		);
-})
+// router.get('/commission/all', function(req,res){
+// 	template(req,res,'agent_main','agent/history/commission.html',
+// 			{ 
+// 				title: 'Commission',
+// 				category: 'History',
+// 				cur_tap: 'Commission',
+// 				cur_selected : 'All',
+// 				url_params : req.params
+// 			}
+// 		);
+// })
 
 
 router.get('/profile', function(req,res){

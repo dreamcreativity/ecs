@@ -130,6 +130,19 @@ resources.factory('Agents',['$resource',
     });
 }])
 
+
+.factory('Commissions',['$resource',
+    function($resource){
+        return $resource('/api/commissions', {}, {
+        getByAgentId :{
+            url: '/api/commission/byAgentId',
+            method : 'POST',
+            params : {agentId: '@agentId'}
+        }
+    });
+}])
+
+
 .factory('Accommodations',['$resource',
     function($resource){
         return $resource('/api/accommodation', {}, {

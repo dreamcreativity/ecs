@@ -360,7 +360,7 @@ exports.getStaffAccount = function(req,res){
 
 
 
-			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}, function(err, users){
+			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}).populate('cover').exec(function(err, users){
 
 
 					if(err) {
@@ -390,6 +390,7 @@ exports.getStaffAccount = function(req,res){
 								regions: users[0].regions,
 								email: users[0].email,
 								createDate: users[0].createDate,
+								cover: users[0].cover
 								
 
 							}
