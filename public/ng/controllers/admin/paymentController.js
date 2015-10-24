@@ -63,7 +63,7 @@ angular.module('AdminApp')
 			if($scope.payment.paymentMethod=='Refund') {
 				$scope.payment.amount = 0-$scope.payment.amount;
 			}
-			$scope.payment.createBy = $scope.staff.id;
+			$scope.payment.createBy = $scope.staff._id;
 			$http.post('/api/student/payment',{payment : $scope.payment, registerId : registerId}).success(function(result){
 				if(result){
 					ShowGritterCenter('System Notification','Payment record has been created');

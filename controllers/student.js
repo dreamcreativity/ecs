@@ -275,27 +275,17 @@ exports.getStudentbyAgentId = function(req,res){
 exports.getRegistrationById = function(req,res){
 	var id = req.params.id;
 	var payments = [];
-	Registration.find({_id:id}).populate('payments').populate('programRegistration').exec(function(err, result){
+	Registration.find({_id:id}).populate('payments').populate('payments.createBy').populate('programRegistration').exec(function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
 
 		console.log(result);
-		async.each(result[0].payments, function(item, callback){
-			Staff.findOne({_id:item.createBy}, function(err, result1){
-				console.log(result1);
-				item.createByName = result1.lastname + ' ' + result1.firstname;
-				payments.push(item);
-				callback();
 
-			})
-		},function(err){
-			result[0].payments = payments;
-			res.json({
+		res.json({
 
 			type: true,
 			data: result[0]
-		});
 		});
 	});
 }
