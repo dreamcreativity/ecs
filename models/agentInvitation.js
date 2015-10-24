@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 
 var AgentInvitationSchema = new mongoose.Schema({
 	agent: {type: mongoose.Schema.ObjectId, ref : 'Agent'},
-	code: {type: String, required: true },
 	createDate : {type : Date, default : Date.now }
 });
 
