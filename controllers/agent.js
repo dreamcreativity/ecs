@@ -334,67 +334,60 @@ exports.delete = function(req,res){
 	});
 }
 
+
 //Send Agent Invitation to student
-exports.sendInvitation = function(req,res) {
-	var emailEnter = req.body.email;
-	var token =req.body.token;
-	var url = null;
-	AgentInvitation.findOne({email:emailEnter}, function(err,result){
-		if(err){
-			res.json({
-				status:'fail',
-				messages: err, 
-				data:null
+exports.sendInvitation = function(req,res){
+	var email = req.body.email;
+	var agentId = req.body.agentId;
+
+	AgentInvitation.find({agent : agentId}).populate('agent').exec(function(err, result){
+		if(!err && result.length>0){
+			for (var key in constant.AgentInvitationTemplateVars) {
+				constant.AgentInvitationTemplateVars[key] = result[0].agent[key];
+			};
+			constant.AgentInvitationTemplateVars['url'] = "http://" + req.headers.host + "/register/" + result[0]._id
+			EmailSender.getEmailTemplate('invitation.html',function(data){
+				var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
+				var to = email;
+				var subject = "Register Invitation";
+				var context = context;
+				EmailSender.sendEmail(to,subject,context,null, function(message){		
+					res.json(
+					{
+						returnmessage : message
+					});		
+				});
 			});
 		}
-		if(result !=null){
-			if(result.isActive) {
-				res.json({
-					status: 'fail',
-					messages: 'this student has already in record',
-					data: null
-				});
-			}
-			else {
-				url = "http://" + req.headers.host + "/register/" + token;
-				url = '<a href="' + url +'">Invitation Link</a>';   //Need to change to register form link
-				console.log(url);
-				emailModule.sendEmail(emailEnter,"Invitation",url,null,function(messages){
-					res.json({
-						status:'ok',
-						messages: messages
-					});
-				});
-			}
-		}
-		else{
-			var agentInvitationObj = new AgentInvitation();
-			agentInvitationObj.agentId = req.body.agentId;
-			agentInvitationObj.code = uuid.v4();
-			agentInvitationObj.email = emailEnter;
-			
-			agentInvitationObj.save(function(err, result){
-				if(err){
-					res.json({
-						status:'fail',
-						messages: err, 
-						data:null
-					});
-				}
-				else {
-					url = req.url+result.code;
-					emailModule.sendEmail(email,"Invitation",url,null,function(messages){
-						res.json({
-							status:'ok',
-							messages: messages
+		else {
+			var agentInvitation = new AgentInvitation();
+			agentInvitation.agent = agentId;
+			agentInvitation.save(function(err, result){
+				if(!err){
+					for (var key in constant.AgentInvitationTemplateVars) {
+						constant.AgentInvitationTemplateVars[key] = result[key];
+					};
+					constant.AgentInvitationTemplateVars['url'] = "http://" + req.headers.host + "/register/" + result._id;
+					EmailSender.getEmailTemplate('invitation.html',function(data){
+						var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
+						var to = email;
+						var subject = "Register Invitation";
+						var context = context;
+						EmailSender.sendEmail(to,subject,context,null, function(message){		
+							res.json(
+							{
+								returnmessage : message
+							});		
 						});
 					});
 				}
-			});
+			})
 		}
-	});
+
+	})
 
 }
+
 
 exports.sendNotificationForResetPassword = function(req,res){
 	var agent = req.body.agent;

@@ -144,7 +144,7 @@ angular.module('AgentApp')
 	}
 
 	$scope.create = function() {
-		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId: currentAgent_id, token:token})
+		$http.post('/api/invitation/sendEmail',{email:$scope.email, agentId: currentAgent_id})
 		.success(function(data,status,headers,config){
 			$scope.returnMessage = "email invitation has been sent successfully"
 		})

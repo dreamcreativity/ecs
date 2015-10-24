@@ -2,6 +2,7 @@ var Student = require('../models/student');
 var Counter = require('../models/counter');
 var Staff = require('../models/staff');
 var Token = require('../models/token');
+var AgentInvitation = require('../models/agentInvitation');
 var Agent = require('../models/agent');
 var Accommodation = require('../models/accommodation');
 var FlightInfo = require('../models/flightInfo');
@@ -57,14 +58,10 @@ exports.register = function(req,res){
 	async.waterfall([
 		function(callback){
 			if(token){
-				Token.findOne({_id:token}, function(err, result){
-						if(!err){
-				 			Agent.findOne({_id:result.user}, function(err, result2){
-				 				if(!err){
-				 					student.agent = result2._id;
-				 					callback();
-				 				}
-				 			});
+				AgentInvitation.findOne({_id:token}, function(err, result){
+						if(!err){				 					
+							student.agent = result._id;
+				 			callback();
 				 		}
 				 		else callback();
 				});
@@ -661,31 +658,6 @@ function pad(n, width, z) {
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 
-
-// exports.sendInvitation = function(req,res){
-// 	var agent = req.body.agent;
-// 	for (var key in constant.AgentInvitationTemplateVars) {
-// 		constant.AgentInvitationTemplateVars[key] = agent[key];
-// 	};
-// 	constant.AgentInvitationTemplateVars['url'] = 'link';
-
-// 	EmailSender.getEmailTemplate('invitation.html',function(data){
-// 		var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
-
-// 		var message = "";
-// 		var to = req.body.email;
-// 		var subject = req.body.subject;
-// 		var context = context;
-// 		var attachments = req.body.attachments;
-// 		EmailSender.sendEmail(to,subject,context, function(message){
-// 			res.json(
-// 				{
-// 					returnmessage : message
-// 				});		
-// 		});
-// 	})
-
-// }
 
 
 
