@@ -8,6 +8,7 @@ var FlightInfo = require('../models/flightInfo');
 var ProgramRegistration = require('../models/programRegistration')
 var Registration = require('../models/registration');
 var EmailSender = require('../modules/emailModule');
+var Payment = require('../models/payment');
 var Pdf = require('../modules/pdfModule');
 var constant = require('../constants.js');
 var async = require("async");
@@ -275,20 +276,44 @@ exports.getStudentbyAgentId = function(req,res){
 exports.getRegistrationById = function(req,res){
 	var id = req.params.id;
 	var payments = [];
-	Registration.find({_id:id}).populate('payments').populate('payments.createBy').populate('programRegistration').exec(function(err, result){
+	Registration.find({_id:id}).populate('payments').populate('programRegistration').exec(function(err, result){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
 
-		console.log(result);
+		//async.each(result[0].payments, function(item, callback){
 
-		res.json({
+		// 	Staff.findOne({_id:item.createBy}, function(err, result1){
+		// 		console.log(result1);
+		// 		item.createByName = result1.lastname + ' ' + result1.firstname;
+		// 		payments.push(item);
+		// 		callback();
 
-			type: true,
-			data: result[0]
+		// 	})
+		// },function(err){
+		// 	result[0].payments = payments;
+		// 	res.json({
+
+		// 	type: true,
+		// 	data: result[0]
+		// });
+		//});
+
+
+		Payment.populate(result, {
+		    path: 'payments.createBy',
+		    model: 'Staff'
+		  },
+		  function(err, staff) {
+		    if(err) return callback(err);
+		    	console.log(staff[0]);
+				res.json(staff[0]);
 		});
-	});
-}
+
+
+	
+	});}
+
 
 
 //GET: Registration records by agent ID

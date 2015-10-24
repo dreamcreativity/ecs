@@ -9,7 +9,7 @@ angular.module('AdminApp')
 		var registerId = url_params.id;
 
 		Registrations.get({id : registerId}, function(result){
-			$scope.registration = result.data;
+			$scope.registration = result;
 			var programes = $scope.registration.programRegistration;
 			var payments = $scope.registration.payments;
 			 $scope.total =0;

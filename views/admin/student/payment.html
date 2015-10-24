@@ -169,7 +169,7 @@
 								</div>
 							</td>
 							<td class="hidden-xs center">
-							     <label>{{payment.createBy.firstname}}</label>
+							     <label>{{staff.firstname}} {{staff.lastname}}</label>
 							</td>
 							<td class="hidden-xs center">
 								<label>
@@ -189,7 +189,7 @@
 							<td class="hidden-xs center">{{c.paymentMethod}}</td>
 							<td class="hidden-xs center">{{c.paymentDate | date :'MMMM d' }}</td>
 							<td class="hidden-xs center">{{ (c.paymentMethod == 'Payment') ? '' : '-' }}${{c.amount}}</td>
-							<td class="hidden-xs center">{{c.createByName}}</td>
+							<td class="hidden-xs center">{{c.createBy.firstname}} {{c.createBy.lastname}}</td>
 							<td class="hidden-xs center">
 								<label>
 									<input class="tc tc-switch tc-switch-6 readonly" type="checkbox" ng-model="c.isVoid" />
@@ -253,7 +253,7 @@
 								<div class="col-lg-2 right"><strong>Balance : </strong></div>
 									<div class="col-lg-2" >
 									<label class="label label-success">
-									-${{balance | number : 2 }}
+									${{balance | number : 2 }}
 									</label>
 									</div>
 								</div>
