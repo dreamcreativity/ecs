@@ -64,6 +64,7 @@ angular.module('AdminApp')
 .controller('StaffEditCtrl', function StaffEditCtrl($rootScope,$q,$scope,$http,$filter,$modal,Regions,Staffs,Agents,Constants,Medias,$window) {
 	var staff_id = url_params.id;
 	$scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
+	var list = [];
 	
 	loading();
 
@@ -85,16 +86,15 @@ angular.module('AdminApp')
 	 }
 
 	 function loading() {
-	 	var list = [];
 	 	Constants.get({name:"Country"}, function(result){
+	 		$scope.regionsList=[];
 	 		var regions = result.data;
 	 		for(var i=0; i<regions.length; i++){
-	 			list.push({"name" : regions[i]});
+	 			$scope.regionsList.push({"name" : regions[i]});
 	 		}
 	 		if(staff_id !=null){
 	 			Staffs.get({id:staff_id}, function(result){
 	 				$scope.staff = result.data;
-	 				$scope.regionsList = list;
 	 				if($scope.staff.regions !=null){
 	 				for(var i=0; i<$scope.staff.regions.length; i++){
 		 					$scope.region_tags.push({"name" : $scope.staff.regions[i]});
@@ -107,11 +107,6 @@ angular.module('AdminApp')
 					           	 list.push(result);
 					           }));
 					      });
-		 				$q.all(prom).then(function(res){
-		 					var re= res;
-		 					var i = $scope.agents;
-		 				});
-		 				deferred.resolve();
 	 				}
 
 

@@ -46,13 +46,13 @@
 											<div class="space-4"></div>
 											<div class="row">
 												<div class="col-lg-2 right"><strong>Region :</strong></div>
-												<div class="col-lg-2">
+												<div class="col-lg-10">
 													<span ng-repeat="region in staff.regions track by $index">
 														<label class="label label-lg arrowed">{{region}}</label>
 													</span>
 												</div>
 											</div>
-											<div class="space-4"></div>
+										<!-- 	<div class="space-4"></div>
 											<div class="row">
 												<div class="col-sm-offset-1 col-sm-1 right">
 													<button class="btn btn-primary btn-block" ng-click="sendEmail()">Send</button>
@@ -62,7 +62,7 @@
 													placeholder="Add a email" 
 													allowed-tags-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
 												</tags-input>
-											</div>
+											</div> -->
 										</div>
 
 									</div>
@@ -72,7 +72,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-md-12">
 						<div class="portlet no-border-bottom">
 							<div class="portlet-heading dark">
@@ -104,9 +104,8 @@
 							<a href="#"><i class="fa fa-search-plus"></i> View all</a>
 						</div>
 					</div>
-				</div>		
+				</div>		 -->
 				
-			</div>
 			<div class="tab-pane fade" id="p2">
 				<div class="portlet">
 						<div class="portlet-heading dark">
@@ -145,9 +144,6 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Regions</label>
 						<div class="col-sm-3">
-							<!-- <select ng-model="staff.region" >
-								<option ng-selected="value.name==staff.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
-							</select> -->
 							<tags-input ng-model="region_tags" 
 							placeholder="Add a Region" add-from-autocomplete-only="true" display-property="name" addFromAutocompleteOnly="true">
 							<auto-complete source="loadCountries($query)"
