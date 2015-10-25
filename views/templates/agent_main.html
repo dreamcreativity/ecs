@@ -179,19 +179,20 @@
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentStudent">
 									<i class="fa fa-user"></i> Student <span class="fa arrow"></span>
 								</a>
-								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">		
+								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="AgentStudent">		
 									<li>
-										<a href="/agent/create" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+										<a href="/agent/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
 											<i class="fa fa-angle-double-right"></i>Create
 										</a>
 									</li>
 									<li>
-										<a href="/agent/student/all" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
+										<a href="/agent/student/all" class="<%if(parms.cur_selected=='Edit' ||
+										parms.cur_selected=='All'){ %>active<%}%>">
 											<i class="fa fa-angle-double-right"></i>Edit
 										</a>
 									</li>			
 									<li>
-										<a href="/agent/invitation/all" class="<%if(parms.cur_selected=='IN'){ %>active<%}%>">
+										<a href="/agent/invitation/all" class="<%if(parms.cur_selected=='Send'){ %>active<%}%>">
 											<i class="fa fa-angle-double-right"></i>Inventaion
 										</a>
 									</li>										

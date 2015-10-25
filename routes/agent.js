@@ -103,7 +103,7 @@ router.get('/student/detail/:id', function(req, res) {
 				title: 'Student',
 				category: 'Students',
 				cur_tap: 'Students',
-				cur_selected : 'Detail',
+				cur_selected : 'Edit',
 				url_params : req.params
 			}
 		);

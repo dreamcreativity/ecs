@@ -205,12 +205,12 @@
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Slider'){ %>in<%}%> nav" id="SliderManagement">
 										<li>
-											<a href="/admin/slider/new" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/slider/new" class="<%if(parms.cur_tap=='Slider' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/slider/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/slider/all" class="<%if(parms.cur_tap=='Slider' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -222,12 +222,12 @@
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
 										<li>
-											<a href="/admin/staff/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/staff/create" class="<%if(parms.cur_tap=='Staff' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/staff/all" class="<%if(parms.cur_selected=='Edit'|| parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/staff/all" class="<%if(parms.cur_tap=='Staff' && (parms.cur_selected=='Edit'|| parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -241,12 +241,12 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Agent'){ %>in<%}%> nav" id="AgentManagement">
 										<li>
-											<a href="/admin/agent/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/agent/create" class="<%if(parms.cur_tap=='Agent' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/agent/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/agent/all" class="<%if(parms.cur_tap=='Agent' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -258,13 +258,13 @@
 									<i class="fa fa-users"></i> Students <span class="arrow"></span>
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="AgentManagement">
-										<li>
-											<a href="/admin/student/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+										<li> 
+											<a href="/admin/student/create" class="<%if(parms.cur_tap=='Student' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/student/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/student/all" class="<%if(parms.cur_tap=='Student' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -277,12 +277,12 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="CourseManagement">
 										<li>
-											<a href="/admin/course/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/course/create" class="<%if(parms.cur_tap=='Course' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>			
 										<li>
-											<a href="/admin/course/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/course/all" class="<%if(parms.cur_tap=='Course' &&  (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -295,12 +295,12 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Promotion'){ %>in<%}%> nav" id="PromotionManagement">
 										<li>
-											<a href="/admin/promotion/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/promotion/create" class="<%if(parms.cur_tap=='Promotion' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>			
 										<li>
-											<a href="/admin/promotion/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/promotion/all" class="<%if(parms.cur_tap=='Promotion' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -313,12 +313,12 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
 										<li>
-											<a href="/admin/material/new" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/material/new" class="<%if(parms.cur_tap=='Material' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/material/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/material/all" class="<%if(parms.cur_tap=='Material' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>			
@@ -332,12 +332,12 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Activity'){ %>in<%}%> nav" id="ActivityManagement">
 										<li>
-											<a href="/admin/activity/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/activity/create" class="<%if(parms.cur_tap=='Activity' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/activity/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/activity/all" class="<%if(parms.cur_tap=='Activity' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>																	
@@ -350,12 +350,12 @@
 								</a>	
 								<ul class="collapse <%if(parms.cur_tap=='Event'){ %>in<%}%> nav" id="EventManagement">
 										<li>
-											<a href="/admin/event/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/event/create" class="<%if(parms.cur_tap=='Event' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/event/all" class="<%if(parms.cur_selected=='Edit' || parms.cur_selected=='All'){ %>active<%}%>">
+											<a href="/admin/event/all" class="<%if(parms.cur_tap=='Event' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>																	
