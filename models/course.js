@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var CourseSchema = new mongoose.Schema({
 	title: {type: String},
 	tag: {type: String, default: ''},
+	category: {type: String},
 	level: {type: String, required: true },
 	description : {type: String},
 	content : {type: String, default: ''},

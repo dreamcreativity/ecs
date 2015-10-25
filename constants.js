@@ -41,6 +41,10 @@ module.exports = {
 		'Part-time'
 	],
 
+	CourseCategory: [
+		'Adult Programes',
+		'Junior Programes'
+	],
 
 
 	// template seaction

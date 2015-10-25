@@ -57,6 +57,16 @@
 										</select>
 									</div>
 								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Category</label>
+									<div class="col-sm-6">
+										<!-- <input type="text" class="form-control" name="level" ng-model="course.level" required> -->
+										<select class="form-control" name="category" ng-model="course.category" required>
+											<option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+										</select>
+										<p ng-show="createForm.category.$invalid && !createForm.category.$pristine" class="help-block text-danger">Category is required</p>	
+									</div>
+								</div>
 
 								<div class="form-group" ng-if="course.type=='Fixed Period'">
 									<label class="col-sm-3 control-label">Start Point</label>
@@ -192,42 +202,6 @@
 
 	<!-- Modal -->
 
-<!-- 	<div class="modal fade" id="addNewLink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Create new link</h4>
-	      </div>
-	      <div class="modal-body">
-
-	      	<div class="form-horizontal">
-		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Title</label>
-		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control" ng-model="newCourseLink.title" >
-		      		</div>
-		      	</div>
-
-		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">href</label>
-		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control" ng-model="newCourseLink.href">
-		      		</div>
-		      	</div>
-
-	      	</div>
-
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary" ng-disabled="" ng-click="createLink()">Create Link</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
- -->
 
 	<script type="text/ng-template" id="NewLinkModalContent.html">
         <div class="modal-header">

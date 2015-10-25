@@ -27,6 +27,10 @@ angular.module('AdminApp')
 	Constants.get({name: 'CourseType'}, function(result){
 		$scope.types = result.data;		
 	});
+	
+	Constants.get({name: 'CourseCategory'}, function(result){
+		$scope.categories = result.data;		
+	});
 })
 
 
@@ -92,6 +96,10 @@ angular.module('AdminApp')
 
 	Constants.get({name: 'CourseType'}, function(result){
 		$scope.types = result.data;		
+	});
+
+	Constants.get({name: 'CourseCategory'}, function(result){
+		$scope.categories = result.data;		
 	});
 
 	// function for duration control

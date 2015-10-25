@@ -296,29 +296,7 @@
 
                         <div class="container clearfix">
 
-                            <!-- <div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
-                                <div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>K+</div>
-                                <h5>Lines of Codes</h5>
-                            </div>
-
-                            <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
-                                <div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
-                                <h5>KBs of HTML Files</h5>
-                            </div>
-
-                            <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-                                <div class="counter counter-lined"><span data-from="10" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
-                                <h5>No. of Templates</h5>
-                            </div>
-
-                            <div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
-                                <div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
-                                <h5>Hours of Coding</h5>
-                            </div> -->
+                          
 
                             <div style="height:300px;">&nbsp;</div>
 
@@ -340,7 +318,7 @@
                         <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
                             <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
                                 <div class="fbox-photo">
-                                    <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.path %>" alt="<%- courses[i].title %>"/></a>
+                                    <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.thumbnail %>" alt="<%- courses[i].title %>"/></a>
                                 </div>
                                 <h3><%- courses[i].title %></h3>
                                 <p class="program-home-des"><%- courses[i].description %></p>
@@ -368,7 +346,7 @@
                             <article class="portfolio-item pf-media pf-icons">
                                 <div class="portfolio-image">
                                     <a href="/activity/detail/<%- activities[i]._id %>">
-                                        <img src="<%- activities[i].cover.path %>" alt="Open Imagination">
+                                        <img src="<%- activities[i].cover.thumbnail %>" alt="Open Imagination">
                                     </a>
                                     <!-- <div class="portfolio-overlay">
                                         <a href="images/clients/activity/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
@@ -411,7 +389,7 @@
 
                             <div class="team team-list clearfix">
                                 <div class="team-image">
-                                    <img src="<%- staffs[i].cover.path %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
+                                    <img src="<%- staffs[i].cover.thumbnail %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
                                 </div>
                                 <div class="team-desc">
                                     <div class="team-title"><h4><%- staffs[i].firstname + ' ' + staffs[i].lastname %></h4><span><%- staffs[i].position %></span></div>
@@ -460,7 +438,7 @@
                                 <p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
                             </div>
  -->
-                            <div class="feature-box fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
+                            <div class="feature-box fbox-effect fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
                                 <div class="fbox-icon">
                                     <a href="/register"><i class="icon-line-paper"></i></a>
                                 </div>
@@ -468,7 +446,7 @@
                                 <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
                             </div>
 
-                            <div class="feature-box fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
+                            <div class="feature-box fbox-effect  fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
                                 <div class="fbox-icon">
                                     <a href="/events"><i class="icon-line-layers"></i></a>
                                 </div>
@@ -492,15 +470,17 @@
                                 <p>Canvas provides support for Native HTML5 Videos that can be added to a Background.</p>
                             </div> -->
 
-                            <div class="feature-box topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
+                            <div class="feature-box fbox-effect  topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
                                 <div class="fbox-icon">
-                                    <a href="/calendar"><i class="icon-line-check"></i></a>
+                                    <a href="/calendar"><i class="icon-line-check i-alt"></i></a>
                                 </div>
+
+                              
                                 <h3>Course Calendar</h3>
                                 <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
                             </div>
 
-                            <div class="feature-box topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
+                            <div class="feature-box fbox-effect  topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
                                 <div class="fbox-icon">
                                     <a href="/Calculator"><i class="icon-bulb"></i></a>
                                 </div>
@@ -569,7 +549,7 @@
 
                         
                         
-                        <div class="col_half nobottommargin col_first">
+                        <div class="">
 
                             <div class="heading-block center">
                                 <h4>What Students say?</h4>
