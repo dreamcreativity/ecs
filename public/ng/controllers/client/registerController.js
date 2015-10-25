@@ -42,3 +42,15 @@ angular.module('ClientApp')
 
 	}
 })
+
+.controller('SendEmailController', function SendEmailController($rootScope,$scope,$http,$window){
+	$scope.sendEmail = function(isValid){
+	$http.post('/api/client/sendEmail', {messageForm : $scope.messageForm})
+		.success(function(data,status,headers,config){
+			setInterval(function(){
+				$window.location='/welcome';
+			}, 2000);
+		})
+	}
+});
+

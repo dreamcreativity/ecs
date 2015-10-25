@@ -116,6 +116,9 @@ module.exports = {
 
 	//Email Template variable 
 
+	SchoolInfoEmails : [
+		'minxianzhou@gmail.com'
+	],
 	EmailStudentTempaleVars : {
 		firstname : null,
 		lastname : null,
@@ -133,6 +136,15 @@ module.exports = {
 		lastname : null,
 		type :null,
 		password : null
+	},
+
+	ClientMessageFormVars : {
+		name : null,
+		email : null,
+		phone : null,
+		subject : null,
+		service : null,
+		message : null
 	},
 
 	Country : [

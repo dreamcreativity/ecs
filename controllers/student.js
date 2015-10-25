@@ -695,6 +695,28 @@ exports.sendEmail = function(req,res){
 
 }
 
+
+//Send Email form in client site
+exports.client_sendEmail = function(req,res){
+	var messageForm = req.body.messageForm;
+	for (var key in constant.ClientMessageFormVars) {
+		constant.ClientMessageFormVars[key] = messageForm[key];
+	};
+
+	EmailSender.getEmailTemplate('clientMessageForm.html', function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.ClientMessageFormVars);
+		var to = constant.SchoolInfoEmails
+		var subject = 'Send us an Email';
+		var attachment = [];
+		EmailSender.sendEmail(to,subject,context,attachment, function(message){
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
 //Helper function 
 
 function pad(n, width, z) {
