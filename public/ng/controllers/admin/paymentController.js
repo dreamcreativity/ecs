@@ -10,6 +10,9 @@ angular.module('AdminApp')
 
 		Registrations.get({id : registerId}, function(result){
 			$scope.registration = result.data;
+			Students.get({id: $scope.registration.student}, function(result){
+				$scope.student = result.data;
+			});
 			var programes = $scope.registration.programRegistration;
 			var payments = $scope.registration.payments;
 			 $scope.total =0;
@@ -63,7 +66,7 @@ angular.module('AdminApp')
 			if($scope.payment.paymentMethod=='Refund') {
 				$scope.payment.amount = 0-$scope.payment.amount;
 			}
-			$scope.payment.createBy = $scope.staff.id;
+			$scope.payment.createBy = $scope.staff._id;
 			$http.post('/api/student/payment',{payment : $scope.payment, registerId : registerId}).success(function(result){
 				if(result){
 					ShowGritterCenter('System Notification','Payment record has been created');
