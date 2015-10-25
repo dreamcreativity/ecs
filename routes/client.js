@@ -27,50 +27,61 @@ router.get('/', function(req, res) {
 		function(next){
 			Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
 				staffs = result;
-				console.log('-----------------');
-				console.log(staffs);
 				next();
 			});
 	    },
 	    function(next){
 			Course.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
 				courses = result;
-				console.log('-----------------');
-				console.log(courses);
 				next();
 			});
 	    },
 	    function(next){
 			Activity.find({cover: { $ne: null }, isActive: true }).populate('cover').sort({'displayOrder': -1}).limit(9).exec(function(err,result){
 				activities = result;
-				console.log('-----------------');
-				console.log(activities);
+				next();
+			});
+	    },
+	    function(next){
+			Slider.find({ resource: { $ne: null }, is_active: true }).populate('resource').sort({'order': 1}).exec(function(err,result){
+				console.log(result);
+				sliders = result;
 				next();
 			});
 	    },
 
 	], function(){
-		Slider.find({is_active:true}, function(err, result){
-			sliders = result;
+		// Slider.find({is_active:true}, function(err, result){
+		// 	sliders = result;
 
-			async.each(sliders, function( slider, next) {
-				slider.media = Media.findOne({_id: slider.resource}, function(err,result){
-					if(err)
-						throw err;
-					slider.media = result; 
-					next();
-				});
-			}, function(err){
+		// 	async.each(sliders, function( slider, next) {
+		// 		slider.media = Media.findOne({_id: slider.resource}, function(err,result){
+		// 			if(err)
+		// 				throw err;
+		// 			slider.media = result; 
+		// 			next();
+		// 		});
+		// 	}, function(err){
 			
-				template(req,res,'client_main','client/main.html',{ 
-					title: 'ESC - Englist School of Canada',
-					sliders : sliders ,
-					staffs: staffs,
-					courses: courses,
-					activities: activities,
-				});		
-			});
-		});
+		// 		template(req,res,'client_main','client/main.html',{ 
+		// 			title: 'ESC - Englist School of Canada',
+		// 			sliders : sliders ,
+		// 			staffs: staffs,
+		// 			courses: courses,
+		// 			activities: activities,
+		// 		});		
+		// 	});
+		// });
+
+		template(req,res,'client_main','client/main.html',{ 
+			title: 'ESC - Englist School of Canada',
+			sliders : sliders ,
+			staffs: staffs,
+			courses: courses,
+			activities: activities,
+		});	
+
+
 	});
 
 

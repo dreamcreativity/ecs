@@ -10,7 +10,7 @@
             <div class="swiper-container swiper-parent">
                 <div class="swiper-wrapper">
                     <% for(var i=0; i<sliders.length; i++) {%>
-                    <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].media.path %>')">
+                    <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].resource.path %>')">
                         <div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center"  postion="<%- sliders[i].position %>">
@@ -20,10 +20,10 @@
                             </div>
                         </div>
 
-                        <% if(sliders[i].media.type == 'Video') {%>
+                        <% if(sliders[i].resource.type == 'Video') {%>
                         <div class="video-wrap" >
                             <video id="video" type="video" poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay  muted>
-                                <source src='<%- sliders[i].media.path %>'  />
+                                <source src='<%- sliders[i].resource.path %>'  />
                               
                             </video>
                             <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>

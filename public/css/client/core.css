@@ -1,7 +1,11 @@
 /*Disable search button*/
 
 .standard-logo{
-	width: 150px;
+	width: 140px;
+}
+
+#logo a.retina-logo {
+	width: 140px;
 }
 #header.full-header #primary-menu > ul {
     padding-right: 0; 
