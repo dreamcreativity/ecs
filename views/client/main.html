@@ -252,6 +252,9 @@
                             <span>One of the most Biggest Lanague School in Toronto Canada</span>
                         </div>
 
+
+
+
                         <div class="col_one_third nobottommargin">
                             <div class="feature-box media-box">
                                 <div class="fbox-media">
@@ -313,6 +316,15 @@
                         <span>List of our main programs.</span>
                     </div>
 
+
+
+
+
+
+
+
+
+
                     <div class="container clearfix">
                         <% for(var i=0; i < courses.length; i++){ %>
                         <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
@@ -321,7 +333,7 @@
                                     <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.thumbnail %>" alt="<%- courses[i].title %>"/></a>
                                 </div>
                                 <h3><%- courses[i].title %></h3>
-                                <p class="program-home-des"><%- courses[i].description %></p>
+                                <!-- <p class="program-home-des"><%- courses[i].description %></p> -->
                             </div>
                         </div>
                         <% } %>
@@ -332,6 +344,11 @@
                     <div class="divider divider-short divider-center topmargin-lg"><i class="icon-star3"></i></div>
 
                 </section>
+
+
+
+
+                
 
                 <section id="section-activity" class="page-section topmargin-lg">
 

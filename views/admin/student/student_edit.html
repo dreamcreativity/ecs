@@ -16,7 +16,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 			<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
 			<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
 		<!-- 	<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register Course</a></li> -->
-			<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register History</a></li>
+			<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration History</a></li>
 		</ul>
 
 
@@ -320,7 +320,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 				<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
 					<div class="portlet-heading dark">
 						<div class="portlet-title">
-						<h4>{{registration.createDate | date:'MMMM d yyyy'}} <small class="text-white">(unconfirm)</small></h4>
+						<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
 						</div>
 						<div class="portlet-widgets">
 							<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>

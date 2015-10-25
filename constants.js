@@ -42,8 +42,8 @@ module.exports = {
 	],
 
 	CourseCategory: [
-		'Adult Programes',
-		'Junior Programes'
+		'Adult Programs',
+		'Junior Programs'
 	],
 
 
