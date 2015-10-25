@@ -2,8 +2,7 @@ var mongoose = require('mongoose');
 // var Token = require('../models/token');
 // var Staff = require('../models/staff');
 // var Agent = require('../models/agent');
-// var Student = require('../models/student');
-
+var Student = require('../models/student');
 var Registration = require('../models/registration');
 var async = require("async");
 

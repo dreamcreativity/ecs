@@ -260,6 +260,7 @@ exports.getStudentbyId = function(req,res){
 
 //GET: Student rows by student ID
 exports.getStudentbyAgentId = function(req,res){
+
 	var id = req.params.id;
 	Student.find({agent:id}, function(err, result){
 		if(err) {

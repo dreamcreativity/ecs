@@ -1,2 +1,63 @@
-<div ng-controller="HistoryController">
+
+<div class="paddingTop20" ng-controller="StudentHistoryController">
+
+
+
+	<div class="portlet "><!-- /Portlet -->
+		<div class="portlet-heading dark ">
+			<div class="portlet-title">
+				<h4>Student History </h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+				<span class="divider"></span>
+				<a href="#" class="box-close"><i class="fa fa-times"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="basic" class="panel-collapse collapse in">
+			<div class="portlet-body no-padding">
+				<table class="table table-bordered table-hover tc-table">
+					<thead>
+						<tr>
+							<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
+							<th>Student ID</th>
+							<th class="hidden-xs">Student Name</th>
+							<th class="hidden-xs">Register Date</th>
+							<th class="hidden-xs">Gender</th>
+							<th class="hidden-xs">Email</th>
+							<th class="hidden-xs">Telephone</th>
+							<th class="hidden-xs">Country</th>
+							<th class="hidden-xs">Status</th>	
+							<th class="col-medium center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="student in students">
+							<td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>
+							<td>{{ student.studentID}}</td>
+							<td><a href="/agent/student/detail/{{student._id}}">{{ student.firstname + ' ' +  student.lastname }}</a></td>
+							<td class="hidden-xs">{{ student.registerDate | date : 'MMM dd, yyyy  hh:mm'}}</td>
+							<td class="hidden-xs">{{ student.gender }}</td>
+							<td class="hidden-xs">{{ student.email }}</td>
+							<td class="hidden-xs">{{ student.telephone }}</td>
+							<td class="hidden-xs">{{ student.country }}</td>
+							<td class="hidden-xs">
+								<span ng-if="student.isQuit == 0" class="label label-active ng-scope">Active</span>
+							</td>
+							<td class="col-medium center">
+								<div class="btn-group btn-group-xs ">
+									<a href="/agent/student/detail/{{student._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									<!-- <a href="" class="btn btn-danger"><i class="fa fa-times icon-only"></i></a> -->
+								</div>	
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>												
+			</div>
+		</div>
+	</div>
 </div>
+
+

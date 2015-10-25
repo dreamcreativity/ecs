@@ -1,25 +1,25 @@
 'use strict';
 angular.module('AgentApp')
 
-.controller('CommissionHistoryController', function CommissionHistoryController($rootScope, $scope, $http, Students,Constants, Commissions,AgentTokens, $window){
+.controller('CommissionHistoryController', function CommissionHistoryController($scope, Commissions,AgentTokens){
+	var token = sessionStorage.token;
+	AgentTokens.post({token:token},function(agentInfo){
+		Commissions.getByAgentId({ agentId: agentInfo.data._id},function(result){
+			$scope.records = result.data;
+		});
+	});
+})
+
+.controller('StudentHistoryController', function StudentHistoryController($scope, Students,AgentTokens){
 	var token = sessionStorage.token;
 
 	AgentTokens.post({token:token},function(agentInfo){
-
-
-		console.log(agentInfo);
-		console.log('history');
-
-		Commissions.getByAgentId({ agentId: agentInfo.data._id},function(result){
-
+		Students.getStudentsByAgent({id : agentInfo.data._id }, function(result){
+			$scope.students = result.data;
 			console.log(result);
-
-			$scope.records = result.data;
-
-
 		});
 
 	});
 
 
-});
+})
