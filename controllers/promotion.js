@@ -50,12 +50,14 @@ exports.edit = function (req,res) {
 	Promotion.update({_id:id}, promotion, function(err, result){
 		if(err){
 			res.json({
-				type: false,
+				status: 'fail',
+				messages: err,
 				data: 'Error occured: ' + err}
 				);
 		}
 		res.json({
-			type:true,
+			status: 'ok',
+			messages: 'successed',
 			data: result
 		});
 	});

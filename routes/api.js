@@ -295,6 +295,9 @@ router.get('/promotions', promotion.getAllPormotions);
 //GET a promotion by promotion ID
 router.get('/promotions/:id', promotion.getPromotionbyId);
 
+//PUT Edit promotion
+router.put('/promotions/:id', promotion.edit);
+
 router.get('/promotions/region/:region', promotion.getPromotionbyRegion);
 
 //POST : create a promotion record

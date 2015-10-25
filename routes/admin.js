@@ -392,6 +392,17 @@ router.get('/promotion/create', function(req,res){
 	});
 })
 
+router.get('/promotion/edit/:id', function(req,res){
+	template(req,res,'admin_main','admin/promotion/detail.html',
+	{
+		title : 'Promotion',
+		category : 'Management',
+		cur_tap : 'Promotion',
+		cur_selected : 'Edit',
+		url_params : req.params
+	});
+})
+
 //---------------------Courses----------------------------------------
 router.get('/course/all', function(req,res){
 	template(req,res,'admin_main', 'admin/course/course.html', 
