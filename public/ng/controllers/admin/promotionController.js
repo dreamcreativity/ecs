@@ -22,11 +22,11 @@ angular.module('AdminApp')
 	 $scope.create = function(isValid){
 	 	Promotions.create($scope.promotion,function(result){
 	 		    if(result.status == 'ok'){	    
-	 		    	ShowGritterCenter('System Notification','Material document has been updated');
-	 			}
-	 			setInterval(function(){
-  					 $window.location='/admin/promotion/all';
+	 		    	ShowGritterCenter('System Notification','Promotion has been updated');
+	 		    	setInterval(function(){
+  					 $window.location='/admin/promotion/edit/' +result.data._id;
 				}, 2000); 
+	 			}
  		})
 	 }
 

@@ -11,11 +11,13 @@ angular.module('AdminApp')
 
  	$scope.create = function(isValid){
 	 	Courses.save($scope.course,function(result){
-	 		    var message = result.messages;	    
+   				if(result.status == 'ok') {
+	 		    ShowGritterCenter('System Notification','Course has been created');
 	 		     $scope.returnMessage = "successfully";
 	 			setInterval(function(){
-  					 $window.location='/admin/course/all';
-				}, 1000); 
+  					 $window.location='/admin/course/edit/' + result.data._id;
+				}, 2000); 
+	 		}
  		})
 	 }
 

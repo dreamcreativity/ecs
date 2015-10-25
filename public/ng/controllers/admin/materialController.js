@@ -23,13 +23,13 @@ angular.module('AdminApp')
 
 	$scope.create = function(isValid){
 		Meterials.create($scope.material,function(result){
-
-			console.log(result);
 			if(result.status == 'ok'){
-				location = '/admin/material/edit/'+ result.data._id;
+				ShowGritterCenter('System Notification','material document has been created');
+				setInterval(function(){
+  					 $window.location='/admin/material/edit/'+ result.data._id;
+				}, 2000); 
 			}else{
 				ShowGritterCenter('System Notification','material document can not be created..' +  result.messages);
-				console.log(result.messages);
 			}
 				
 		});

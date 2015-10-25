@@ -16,12 +16,12 @@ angular.module('AdminApp')
 			$scope.activity.mediaIds.push($scope.array[i]);
 		}
 	 	Activity.save($scope.activity,function(result){
- 		    $scope.returnMessage = "successfully";
-
- 		    
- 			setInterval(function(){
-					 $window.location='/admin/activity/all';
-			}, 2000); 
+	 		if(result.status == 'ok'){
+				ShowGritterCenter('System Notification','A activity has been created');		    
+	 			setInterval(function(){
+						 $window.location='/admin/activity/edit/' + result.data._id;
+				}, 2000); 
+ 			}
  		})
 	}
 

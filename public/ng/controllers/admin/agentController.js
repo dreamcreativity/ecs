@@ -24,10 +24,12 @@ angular.module('AdminApp')
 
  	$scope.create = function(isValid){
 	 	Agents.save($scope.agent,function(result){
+	 		if(result.status == 'ok') {
 	 		    ShowGritterCenter('System Notification','A new agent has been created');
 	 			setInterval(function(){
-  					 $window.location='/admin/agent/all';
+  					 $window.location='/admin/agent/detail/' + result.data._id;
 				}, 2000); 
+	 		}
  		})
 	 }
 

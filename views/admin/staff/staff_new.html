@@ -104,17 +104,25 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label" ng-model="staff.workphone">Work phone</label>
 		<div class="col-sm-3">
-			<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
-			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
-			<p ng-show="createForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
+		<div class="clearfix">
+				<div class="input-group">
+			<input type="number" class="form-control" name="workphone" ng-model="staff.workphone" required>
+			<span ng-show="!createForm.workphone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+			<span ng-show="createForm.workphone.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Cell phone</label>
 		<div class="col-sm-3">
-			<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
-			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
-			<p ng-show="createForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
+		<div class="clearfix">
+				<div class="input-group">
+			<input type="number" class="form-control" name="cellphone" ng-model="staff.cellphone" required>
+			<span ng-show="!createForm.cellphone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+			<span ng-show="createForm.cellphone.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
@@ -129,7 +137,7 @@
 	</div>
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-3">
-				<button type="button" class="btn btn-primary" ng-disabled="!createForm.$valid" ng-click="create()">Create</button>
+				<button type="button" class="btn btn-primary" ng-disabled="createForm.$invalid" ng-click="create()">Create</button>
 				<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
 			</div>
 		</div>

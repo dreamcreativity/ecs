@@ -20,7 +20,7 @@
 				if(result.type == true){
 					ShowGritterCenter('System Notification','Event document has been updated');
 					setInterval(function(){
-  					 $window.location='/admin/event/all';
+  					 $window.location='/admin/event/detail/' + result.data._id;
 				}, 2000); 
 				}else{
 					ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);

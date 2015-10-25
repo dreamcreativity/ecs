@@ -192,7 +192,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">Work phone:</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
+					<input type="text" class="form-control" name="workphone" ng-model="staff.workphone" required>
 					<p ng-show="loginForm.workphone.$invalid && !loginForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
 					<p ng-show="loginForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 				</div>
@@ -200,7 +200,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">Cell phone:</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
+					<input type="text" class="form-control" name="cellphone" ng-model="staff.cellphone" required>
 					<p ng-show="loginForm.cellphone.$invalid && !loginForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
 					<p ng-show="loginForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
 				</div>
