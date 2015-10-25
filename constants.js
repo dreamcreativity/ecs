@@ -117,7 +117,8 @@ module.exports = {
 	//Email Template variable 
 
 	SchoolInfoEmails : [
-		'minxianzhou@gmail.com'
+		'minxianzhou@gmail.com',
+		'stiron88@gmail.com'
 	],
 	EmailStudentTempaleVars : {
 		firstname : null,

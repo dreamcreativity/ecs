@@ -45,12 +45,23 @@ angular.module('ClientApp')
 
 .controller('SendEmailController', function SendEmailController($rootScope,$scope,$http,$window){
 	$scope.sendEmail = function(isValid){
+	$('#email-sending-warning1').removeClass('hidden');
 	$http.post('/api/client/sendEmail', {messageForm : $scope.messageForm})
 		.success(function(data,status,headers,config){
-			setInterval(function(){
-				$window.location='/welcome';
-			}, 2000);
-		})
+			$('#email-sending-warning1').addClass('hidden');
+			$('#email-sending-warning2').removeClass('hidden');
+			setTimeout(function(){
+				$('#email-sending-warning2').addClass('hidden');
+				$scope.$apply(function () {
+            		$scope.messageForm.name=null;
+					$scope.messageForm.email=null;
+					$scope.messageForm.phone=null;
+					$scope.messageForm.subject=null;
+					$scope.messageForm.service=null;
+					$scope.messageForm.message=null;
+       			 });
+ 			}, 2000);
+		});
 	}
 });
 
