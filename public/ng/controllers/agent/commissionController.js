@@ -17,6 +17,10 @@ angular.module('AgentApp')
 				$scope.total = $scope.total + (programes[i].price * programes[i].commissionRate); 
 			};
 
+			Students.get({id:$scope.registration.student}, function(result){
+				$scope.student = result.data;
+			});
+
 		});
 	}
 

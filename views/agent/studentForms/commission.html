@@ -3,6 +3,14 @@
 </script>
 
 <div ng-controller='CommissionController'>
+	<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4><strong>Name</strong> : {{student.firstname}} {{student.lastname}} <strong>Student ID</strong> : {{student.studentID}} </h4>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 	<div class="portlet"><!-- /Portlet -->
 		<div class="portlet-heading dark">
 			<div class="portlet-title">
@@ -46,7 +54,7 @@
 												<div class="col-lg-2 right"><strong>Price :</strong></div>
 												<div class="col-lg-2" >
 												<label class="label label-danger">
-													${{p.price | number : 2}}
+													{{p.price | currency}}
 												</label>
 												</div>
 											</div>
@@ -66,7 +74,7 @@
 												<div class="col-lg-2 right"><strong>Commission: </strong></div>
 												<div class="col-lg-2" >
 													<label class="label label-success">
-														${{p.price * p.commissionRate | number : 2 }}
+														{{p.price * p.commissionRate | currency }}
 													</label>
 												</div>
 											</div>
@@ -99,7 +107,7 @@
 								<div class="col-lg-2 right"><strong>Commission : </strong></div>
 									<div class="col-lg-2" >
 										<label class="label label-success">
-											${{total | number : 2}}
+											{{total | currency}}
 										</label>
 									</div>
 								</div>
