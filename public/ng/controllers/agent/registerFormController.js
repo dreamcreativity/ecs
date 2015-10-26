@@ -52,14 +52,14 @@ angular.module('AgentApp')
 	//register 3
 	$scope.register = function(isValid){
 		$scope.student.agent = $scope.currentAgent._id;
-			$http.post('/api/student/register',{student : $scope.student, 
+			$http.post('/api/student/register',{student : $scope.student,  
 				agent : $scope.currentAgent._id,
 				accommodation : $scope.accommodation, 
 				flightInfo : $scope.flightInfo, 
 				courseList : $scope.courseList})
 			.success(function(data,status,headers,config){
 				if(data.messages == "successed"){
-					$http.post('/api/pdf',{registerId:data.data,type:"New Student"})
+					$http.post('/api/pdf',{registerId:null, studentId:data.data, type:"New Student"})
 					.success(function(data,status,headers,config){
 						if(data.status == "successed"){
 							$http.post('/api/registration/sendEmail',{student:$scope.student, 

@@ -258,6 +258,9 @@ router.post('/agent/resetpasswordInProfile', agent.resetpasswordInProfile);
 //GET current agent by token
 router.post('/agent/token/:token', agent.getAgentbyToken);
 
+//POST send email notification to Agent when create a new agent
+router.post('/agent/register/sendEmail', agent.sendEmailForRegister);
+
 //-----------------------Materials ----------------------------------
 
 //GET a material by material ID

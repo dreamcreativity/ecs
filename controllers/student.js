@@ -552,10 +552,16 @@ exports.createExtendingCourse = function(req,res){
 }
 
 exports.generatePDF = function (req,res){
-	var id = req.body.registerId;
+	var id = req.body.studentId;
+	var register_id = req.body.registerId;
+	var Obj =Student;
+	if(!id) {
+		id = register_id;
+		Obj = Registration;
+	}
 	var type = req.body.type;
 	var variables_list = [];
-	Student.findOne({_id : id}).populate('agent').populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
+	Obj.findOne({_id : id}).populate('agent').populate('accommodation').populate('programRegistration').populate('flightInfo').populate('student').exec(function(err, result){
 		if(err){
 			res.json(
 			{
@@ -566,6 +572,9 @@ exports.generatePDF = function (req,res){
 		}
 		else {
 			var student_obj = result;
+			if(register_id) {
+				student_obj = student_obj.student;
+			}
 			var student_accommodation_obj = result.accommodation;
 			var student_flightInfo_obj = result.flightInfo;
 			var courses_obj = result.programRegistration;

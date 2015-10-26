@@ -416,6 +416,32 @@ exports.sendNotificationForResetPassword = function(req,res){
 	})
 }
 
+exports.sendEmailForRegister = function(req,res){
+	var agent = req.body.agent;
+	agent.password =req.body.password;
+	var send_list =[];
+	if(agent) {
+		send_list.push(agent.email);
+	}
+	for (var key in constant.EmailAgentTempaleVars) {
+		constant.EmailAgentTempaleVars[key] = agent[key];
+	};
+	constant.EmailAgentTempaleVars['password'] = agent.password;
+	EmailSender.getEmailTemplate('registerSuccessForAgent.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.EmailAgentTempaleVars);
+
+		var to = send_list;
+		var subject = "Register success";
+		var context = context;
+		EmailSender.sendEmail(to,subject,context,null, function(message){		
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
 
 
 

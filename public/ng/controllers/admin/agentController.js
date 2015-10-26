@@ -24,11 +24,14 @@ angular.module('AdminApp')
 
  	$scope.create = function(isValid){
 	 	Agents.save($scope.agent,function(result){
-	 		if(result.status == 'ok') {
-	 		    ShowGritterCenter('System Notification','A new agent has been created');
-	 			setInterval(function(){
-  					 $window.location='/admin/agent/detail/' + result.data._id;
-				}, 2000); 
+	 		if(result.status == 'ok'){
+	 			$http.post('/api/agent/register/sendEmail',{agent: $scope.agent,password:$scope.agent.password})
+				.success(function(data,status,headers,config){
+					ShowGritterCenter('System Notification','Agent has been created');
+		 			setInterval(function(){
+		 				$window.location='/admin/agent/detail/' + result.data._id;
+		 			}, 2000); 
+				})
 	 		}
  		})
 	 }
@@ -96,7 +99,7 @@ angular.module('AdminApp')
 	 	Agents.update($scope.agent, function(result){
 	 			if(result.status == 'ok'){
 					ShowGritterCenter('System Notification','Agent passowrd has been updated');
-					$http.post('/api/resetpassword/sendEmail',{agent: $scope.agent})
+					$http.post('/api/agent/resetpassword/sendEmail',{agent: $scope.agent})
 							.success(function(data,status,headers,config){
 								setInterval(function(){
 									$window.location='/admin/agent/detail/' + $scope.agent._id;
