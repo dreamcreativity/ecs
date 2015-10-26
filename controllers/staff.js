@@ -506,6 +506,32 @@ exports.sendNotificationForResetPassword = function(req,res){
 	})
 }
 
+exports.sendEmailForRegister = function(req,res){
+	var staff = req.body.staff;
+	staff.password =req.body.password;
+	var send_list =[];
+	if(staff) {
+		send_list.push(staff.email);
+	}
+	for (var key in constant.EmailStaffTempaleVars) {
+		constant.EmailStaffTempaleVars[key] = staff[key];
+	};
+	constant.EmailStaffTempaleVars['password'] = staff.password;
+	EmailSender.getEmailTemplate('registerSuccessForStaff.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStaffTempaleVars);
+
+		var to = send_list;
+		var subject = "Register success";
+		var context = context;
+		EmailSender.sendEmail(to,subject,context,null, function(message){		
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
 
 
 

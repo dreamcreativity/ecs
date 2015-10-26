@@ -160,6 +160,8 @@ router.post('/staff/login', staff.login);
 
 router.get('/staffs', staff.getAllStaffs);
 
+router.post('/staffs/register/sendEmail', staff.sendEmailForRegister);
+
 router.delete('/staffs/:id',staff.delete);
 
 

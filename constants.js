@@ -129,6 +129,12 @@ module.exports = {
 		lastname : null,
 		url : null
 	},
+	EmailStaffTempaleVars : {
+		firstname : null,
+		lastname : null,
+		username : null,
+		password : null
+	},
 
 	AgentInvitationTemplateVars : {
 		firstname : null,

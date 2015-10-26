@@ -14,10 +14,13 @@ angular.module('AdminApp')
 	 	}
 	 	Staffs.save($scope.staff,function(result){
 	 		if(result.status == 'ok'){
-	 			ShowGritterCenter('System Notification','Staff has been created');
-	 			setInterval(function(){
-	 				$window.location='/admin/staff/detail/' + result.data._id;
-	 			}, 2000); 
+	 			$http.post('/api/staffs/register/sendEmail',{staff: $scope.staff,password:$scope.staff.password})
+				.success(function(data,status,headers,config){
+					ShowGritterCenter('System Notification','Staff has been created');
+		 			setInterval(function(){
+		 				$window.location='/admin/staff/detail/' + result.data._id;
+		 			}, 2000); 
+				})
 	 		}
 	 	});
 	 }
