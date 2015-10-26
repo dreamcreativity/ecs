@@ -47,6 +47,10 @@
 			$scope.medias=result.data;
 			//console.log($scope.medias);
 
+			// init text editor
+	 		$('#event-desc').wysihtml5();
+
+
 			$scope.changeCover = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
 				$scope.event.cover = selectedMedia;
 			});
@@ -55,6 +59,7 @@
 
 		$scope.update = function(isValid) {
 
+			$scope.event.description = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
 
 			console.log($scope.event);
 			Events.update($scope.event, function(result){
