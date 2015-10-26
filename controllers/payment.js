@@ -33,12 +33,13 @@ exports.create = function(req,res){
 }
 
 exports.edit = function(req,res) {
-	var id = req.params.id;
-	Payment.update({_id:id}, req.body, function(err, result){
+    var payment = req.body;
+    payment.createBy = payment.createBy._id;
+	Payment.update({_id:payment._id}, req.body, function(err, result){
 			if(err){
 				res.json({
 					status: 'fail',
-					messages: "fail",
+					messages: err,
 					data: null
 				});
 			}else{

@@ -42,7 +42,8 @@ var url_params = <%- JSON.stringify(url_params) %>
 							<div class="form-group">
 								<label class="col-sm-1 col-md-3 control-label">Agent</label>
 								<div class="col-sm-1 col-md-3">
-									<a href="#" class="control-label">{{student.agent.firstname}}</a>
+									<a class="form-control" href="/admin/agent/detail/{{student.agent._id}}" class="control-label" ng-if='student.agent != null'>{{student.agent.firstname}} {{student.agent.lastname}}</a>
+									<label class="form-control" ng-if='student.agent == null'>N/A</label>
 								</div>
 							</div>
 
@@ -275,7 +276,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 				</form>
 				<div class="row">
 					<div class="col-sm-1">
-						<button class="btn btn-primary btn-block" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button>
+						<!-- <button class="btn btn-primary btn-block" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button> -->
 					</div>
 				</div>
 			</div>

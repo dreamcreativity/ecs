@@ -53,7 +53,7 @@ directives.directive('downloadForm02', [function(){
 	var controller = ['$scope','$http', function($scope,$http){
 		$scope.download_accommdation = function() {
 			var htmlContext = angular.element('#formPrint');
-			$http.post('/api/pdf',{registerId:$scope.student._id})
+			$http.post('/api/pdf',{registerId:null, studentId: $scope.student._id})
 			.success(function(data,status,headers,config){
 				if(data.status == "successed"){
 					$http.get('/api/pdf/Download_02',{responseType:'arraybuffer'})

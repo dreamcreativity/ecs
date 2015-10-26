@@ -124,6 +124,9 @@ angular.module('AdminApp')
 	 }
 
 	$scope.update = function(isValid) {
+		if($scope.student.agent !=null) {
+			$scope.student.agent = $scope.student.agent._id;
+		}
 	 	Students.update($scope.student, function(result){
 	 			var message = result.messages;	    
 	 			 ShowGritterCenter('System Notification','Student has been updated');

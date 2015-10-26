@@ -55,7 +55,7 @@
 												<div class="col-lg-2 right"><strong>Price :</strong></div>
 												<div class="col-lg-2" >
 													<label class="label label-danger">
-													${{p.price | number : 2}}
+													{{p.price | currency}}
 												</label>
 												</div>
 											</div>
@@ -83,7 +83,7 @@
 												<div class="col-lg-2 right"><strong>Promotion: </strong></div>
 												<div class="col-lg-2" >
 												<label class="label label-warning">
-												-${{p.price * p.promotionRate | number : 2 }}
+												 {{p.price * p.promotionRate | currency}}
 												</label>
 												</div>
 											</div>
@@ -92,7 +92,7 @@
 												<div class="col-lg-2 right"><strong>Total: </strong></div>
 												<div class="col-lg-2" >
 													<label class="label label-danger">
-												${{p.price - p.price * p.promotionRate | number : 2 }}
+												{{p.price - p.price * p.promotionRate | currency }}
 												</label>
 												</div>
 											</div>
@@ -171,7 +171,7 @@
 							<td class="hidden-xs center">
 								<div class="clearfix">
 									<div class="input-group">
-										<input  type="number" class="form-control" name="amount" ng-model="payment.amount" required>
+										<input  type="number" class="form-control" name="amount" ng-model="payment.amount" min='1' required>
 										<span ng-show="paymentForm.amount.$error.required" class="input-group-addon">Required</span>
 								<span ng-show="!paymentForm.amount.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
 									</div>
@@ -197,7 +197,8 @@
 							<td class="hidden-xs center">{{c.paymentType}}</td>
 							<td class="hidden-xs center">{{c.paymentMethod}}</td>
 							<td class="hidden-xs center">{{c.paymentDate | date :'MMMM d' }}</td>
-							<td class="hidden-xs center">{{ (c.paymentMethod == 'Payment') ? '' : '-' }}${{c.amount}}</td>
+							<td class="hidden-xs center" ng-if = "c.paymentMethod == 'Refund'"><label class="label label-danger">{{c.amount | currency}}</label></td>
+							<td class="hidden-xs center" ng-if = "c.paymentMethod == 'Payment'"><label class="label label-success">{{c.amount | currency}}</label></td>
 							<td class="hidden-xs center">{{c.createBy.firstname}} {{c.createBy.lastname}}</td>
 							<td class="hidden-xs center">
 								<label>
@@ -237,7 +238,7 @@
 								<div class="col-lg-2 right"><strong>Total : </strong></div>
 									<div class="col-lg-2" >
 										<label class="label label-danger">
-									-${{total | number : 2 }}
+									 {{total | currency}}
 									</label>
 									</div>
 								</div>
@@ -245,7 +246,7 @@
 								<div class="col-lg-2 right"><strong>Pay : </strong></div>
 									<div class="col-lg-2" >
 										<label class="label label-success">
-									${{pay | number : 2 }}
+									{{pay | currency}}
 									</label>
 									</div>
 								</div>
@@ -253,7 +254,7 @@
 								<div class="col-lg-2 right"><strong>Refund : </strong></div>
 									<div class="col-lg-2" >
 										<label class="label label-danger">
-									${{refund |  number : 2 }}
+									{{refund | currency}}
 										</label>
 									</div>
 								</div>
@@ -262,7 +263,7 @@
 								<div class="col-lg-2 right"><strong>Balance : </strong></div>
 									<div class="col-lg-2" >
 									<label class="label label-success">
-									${{balance | number : 2 }}
+									{{balance | currency }}
 									</label>
 									</div>
 								</div>

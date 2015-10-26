@@ -27,7 +27,7 @@ angular.module('AdminApp')
 					$scope.pay = $scope.pay + payments[i].amount;
 				}
 				if(payments[i].paymentMethod == 'Refund' && payments[i].isVoid == false) {
-					$scope.refund = $scope.refund + payments[i].amount;
+					$scope.refund =payments[i].amount - $scope.refund;
 				}
 			};
 
@@ -63,9 +63,6 @@ angular.module('AdminApp')
 		}
 
 		$scope.create = function(){
-			if($scope.payment.paymentMethod=='Refund') {
-				$scope.payment.amount = 0-$scope.payment.amount;
-			}
 			$scope.payment.createBy = $scope.staff._id;
 			$http.post('/api/student/payment',{payment : $scope.payment, registerId : registerId}).success(function(result){
 				if(result){
