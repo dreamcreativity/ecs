@@ -283,8 +283,10 @@
 
 
 #event-calendar .fc-calendar .fc-body {
-	height: 850px;
+	height: 980px;
 }
+
+
 #event-calendar .fc-calendar .fc-row > div > div a, .fc-calendar .fc-row > div > div span{
 	white-space: normal;
 }
@@ -340,6 +342,11 @@
 }
 
 
+.fc-calendar .fc-row > div.fc-today {
+    background: #DADADA;
+}
+
+
 #event-calendar .testimonial .flex-control-nav li {
 	margin: 0 0 0 8px;
 }
@@ -374,7 +381,8 @@
 #event-calendar .caption a, #event-calendar .caption {
 	background-color: rgba(0, 0, 0, 0.46)!important;
 	border-radius: 0!important;
-	width: 100%
+	width: 100%;
+	line-height: 20px;
 }
 #event-calendar .caption{
 	background-color: gray;
