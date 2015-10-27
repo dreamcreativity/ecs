@@ -154,6 +154,7 @@ module.exports = {
 		firstname : null,
 		lastname : null,
 		type :null,
+		username : null,
 		password : null
 	},
 
