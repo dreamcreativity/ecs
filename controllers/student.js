@@ -320,6 +320,26 @@ exports.getRegistrationById = function(req,res){
 	});}
 
 
+//GET: Recent 10 Registration records for staff site
+exports.getRegistrations = function(req,res){
+	Registration.find().sort({'createDate' : -1}).limit(10).populate('student').exec(function(err, result){
+		if(err){
+			res.json({
+					status : 'fail',
+					messages : err,
+					data : null
+					});
+		}
+		else {
+			res.json({
+					status : 'ok',
+					messages : 'successed',
+					data : result
+					});
+		}
+	});
+}
+
 
 //GET: Registration records by agent ID
 exports.getRegistrationByAgent = function(req,res){

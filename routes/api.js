@@ -187,6 +187,9 @@ router.get('/student/:id', student.getStudentbyId);
 router.get('/student/agent/:id',student.getStudentbyAgentId);
 
 //GET registration by Id 
+router.get('/registration/top', student.getRegistrations);
+
+//GET registration by Id 
 router.get('/registration/:id', student.getRegistrationById);
 
 //GET students registration by Agent ID

@@ -126,6 +126,10 @@ resources.factory('Agents',['$resource',
             url : '/api/student/extending',
             method : 'POST',
             params : {student_id : '@student_id', courseList : '@courseList'}
+        },
+        getTopRegistrations : {
+             url : '/api/registration/top',
+             method : 'GET'
         }
     });
 }])
