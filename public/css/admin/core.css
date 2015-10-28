@@ -594,3 +594,24 @@
 	right: -220px;
 	font-size: 12px;
 }
+
+
+
+
+
+
+
+.step-pane {
+	max-width: 1400px;
+}
+
+
+.form-group .label{
+	margin-left: 6%;
+}
+
+.form-control.full{
+	width: 100%
+}
+
+

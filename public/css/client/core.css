@@ -299,11 +299,11 @@
 
 @media screen and (max-width: 991px){
 	#school-calendar .fc-calendar .fc-body {
-	    height: 2400px;
+	    height: auto;
 	}
 
 	#event-calendar .fc-calendar .fc-body {
-	    height: 5400px;
+	    height: auto;
 	}
 
 
@@ -400,7 +400,7 @@
 
 
 .fc-calendar .fc-row > div > div {
-    height: 240px;
+    max-height: 240px;
     overflow: auto;
 }
 
