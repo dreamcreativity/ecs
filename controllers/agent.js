@@ -188,20 +188,47 @@
 //POST: create new Agent
 exports.create = function(req,res){
 	var newAgent = new Agent(req.body);
-	newAgent.save(function(err ,result){
-		if(err){
+	Agent.find({'username' : newAgent.username, 'email' : newAgent.email}, function(err, result){
+		if (err) {
 			res.json({
 				status: 'fail',
 				messages: err,
 				data:null
 			});
 		}
-		else {
-			res.json({
-				status: 'ok',
-				messages: 'successed',
-				data: result
-			});	
+		if(result.length != 0){
+			if(result[0].username){
+				res.json({
+					status: 'exist',
+					messages: 'Username already exists',
+					data:null
+				});
+			}
+			else{
+				res.json({
+					status: 'exist',
+					messages: 'Email already exists',
+					data:null
+				});
+			}
+		}
+		else{
+			newAgent.save(function(err ,result){
+				if(err){
+					res.json({
+						status: 'fail',
+						messages: err,
+						data:null
+					});
+				}
+				else {
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result
+					});	
+				}
+			});
 		}
 	});
 }

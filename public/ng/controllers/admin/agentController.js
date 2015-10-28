@@ -25,13 +25,25 @@ angular.module('AdminApp')
  	$scope.create = function(isValid){
 	 	Agents.save($scope.agent,function(result){
 	 		if(result.status == 'ok'){
-	 			$http.post('/api/agent/register/sendEmail',{agent: $scope.agent,password:$scope.agent.password})
+	 			$http.post('/api/agent/register/sendEmail',{agent: $scope.agent, password:$scope.agent.password})
 				.success(function(data,status,headers,config){
 					ShowGritterCenter('System Notification','Agent has been created');
 		 			setInterval(function(){
 		 				$window.location='/admin/agent/detail/' + result.data._id;
 		 			}, 2000); 
 				})
+	 		}
+	 		else if(result.status == 'exist'){
+	 			ShowGritterCenter('System Notification',result.messages);
+		 			setInterval(function(){
+		 				$window.location='/admin/agent/detail/' + result.data._id;
+		 			}, 2000);
+	 		}
+	 		else {
+	 			ShowGritterCenter('System Notification','Agent create fail');
+		 			setInterval(function(){
+		 				$window.location='/admin/agent/detail/' + result.data._id;
+		 			}, 2000);
 	 		}
  		})
 	 }

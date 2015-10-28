@@ -25,7 +25,7 @@ var StudentSchema = new mongoose.Schema({
 	isHomeCountryAddress: {type:Boolean, default:false},
 	//contact info
 	telephone : {type: String, required: true},
-	fax : {type: String},
+	fax : {type: String,default: null},
 	email : {type: String, required: true},
 	emergency :{type: String, required: true},
 	//additional info
