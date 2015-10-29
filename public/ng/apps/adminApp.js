@@ -11,9 +11,6 @@ angular.module(
 		'esc.auth',
 		'esc.constants',
 		'esc.mediaSelector',
-		'ui.bootstrap'
-	
-
-		
+		'ui.bootstrap'		
 	]
 );
