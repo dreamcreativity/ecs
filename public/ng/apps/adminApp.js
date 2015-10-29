@@ -11,9 +11,7 @@ angular.module(
 		'esc.auth',
 		'esc.constants',
 		'esc.mediaSelector',
-		'ui.bootstrap',
-		'angular-loading-bar',
-		'ngAnimate'
+		'ui.bootstrap'
 	
 
 		
