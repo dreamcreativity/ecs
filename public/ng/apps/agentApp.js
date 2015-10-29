@@ -9,6 +9,8 @@ angular.module(
 		'esc.filters',
 		'esc.directives',
 		'esc.auth',
-		'ui.bootstrap.datetimepicker'
+		'ui.bootstrap.datetimepicker',
+		'ngAnimate',
+		'angular-loading-bar'
 	]
 );

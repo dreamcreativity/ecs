@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('loginApp', ['ngRoute','esc.auth'])
+angular.module('loginApp', ['ngRoute','esc.auth','ngAnimate','angular-loading-bar'])
 
 
 .controller('LoginController',function LoginController($scope,$http,$window,$location){
