@@ -1,5 +1,5 @@
-
-<div ng-controller='MaterialController' class="portlet"><!-- /Portlet -->
+<!-- 
+<div ng-controller='MaterialController' class="portlet">
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
 			<h4>Material List </h4>
@@ -7,7 +7,7 @@
 		<div class="portlet-widgets">
 			<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
 			
-			<!--a href="#" class="box-close"><i class="fa fa-times"></i></a-->
+			
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -20,7 +20,6 @@
 						<th>Material Name</th>
 						<th class="hidden-xs">Description</th>
 						<th class="hidden-xs col-medium ">Region</th>
-					
 						<th class="col-medium center hidden-xs">Delete</th>
 						<th class="col-medium center hidden-xs">Last Modified</th>
 						<th class="col-medium center">Action</th>
@@ -58,3 +57,61 @@
 		</div>
 	</div>
 </div>
+ -->
+<div class="row" ng-controller='MaterialController'>
+	<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Material List </h4>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<th>Material Name</th>
+								<th class="hidden-xs">Description</th>
+								<th class="hidden-xs col-large ">Region</th>
+								<th class="col-medium center hidden-xs">Delete</th>
+								<th class="col-medium center hidden-xs">Last Modified</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat=" item in materials.data">
+								
+							
+								<td>{{item.name}}</td>
+								<td class="hidden-xs">{{item.description}}</td>
+								<td class="hidden-xs  col-large ">{{item.region}}</td>
+								<td class="center hidden-xs ">
+									
+									<label class="label label-active label-lg arrowed arrowed-right" ng-show="!item.isDelete")>No</label>
+									<label class="label label-terminated label-lg arrowed arrowed-right" ng-show="item.isDelete">Yes</label>
+								</td>
+								<td class="hidden-xs col-medium center">{{item.modified | date:'MM d, yyyy' }}</td>
+								
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/material/edit/{{item._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									</div>	
+								</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+				</div>
+			</div>					 
+		</div>
+	</div>
+</div>
+
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>

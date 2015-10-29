@@ -18,6 +18,9 @@
 	bootstript css
 -----------------------------------------------
 */
+.pull-right{
+	margin-right: 10px;
+}
 
 .right{
 	text-align: right;
@@ -602,16 +605,39 @@
 
 
 .step-pane {
-	max-width: 1400px;
+	max-width: 86%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 
 .form-group .label{
-	margin-left: 6%;
+	/*margin-left: 6%;*/
 }
 
 .form-control.full{
 	width: 100%
 }
+
+
+
+label .row {
+	margin-left: -15px;
+}
+
+.form-horizontal .tcb input{
+	margin-right: 15px;
+}
+
+label.heading{
+	font-size: 19px;
+	margin-top: 20px;
+}
+
+
+
+
+
+
 
 
