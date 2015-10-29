@@ -46,7 +46,7 @@
 
 
 	
-	<!-- End custom CSS here -->
+			<!-- End custom CSS here -->
 	
     <!--[if lt IE 9]>
     <script src="/assets/js/html5shiv.js"></script>
@@ -57,10 +57,14 @@
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
 	<!--  HTML 5 Datetime type -->
-	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+	<!-- cdn for modernizr, if you haven't included it already -->
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+	<!-- polyfiller file to detect and load polyfills -->
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
 	<script>
-	    webshims.setOptions('forms-ext', {types: 'date'});
-	webshims.polyfill('forms forms-ext');
+	  webshims.setOptions('waitReady', false);
+	  webshims.setOptions('forms-ext', {types: 'date'});
+	  webshims.polyfill('forms forms-ext');
 	</script>
 
 	 <!-- Angular JS -->
