@@ -22,6 +22,9 @@ angular.module('AdminApp')
 		 			}, 2000); 
 				})
 	 		}
+	 		else if(result.status == 'exist') {
+	 			ShowGritterCenter('System Notification',result.messages);
+	 		}
 	 	});
 	 }
 

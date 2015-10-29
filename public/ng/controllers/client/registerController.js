@@ -7,7 +7,6 @@ angular.module('ClientApp')
 	//Loaded all info in register form
 	function loading(){
 		if(url_params) token = url_params.token;
-
 		Constants.get({name:"Country"}, function(result){
 			 		var regions = result.data;
 			 		var list =[]
@@ -22,7 +21,7 @@ angular.module('ClientApp')
 		$http.post('/api/student/register',{student:$scope.student, token:token ,courseList:[],accommodation:[]})
 		.success(function(data,status,headers,config){
 			if(data.messages == 'successed'){
-				$http.post('/api/pdf',{registerId:data.data, type:'New Student'})
+				$http.post('/api/pdf',{registerId:null, studentId: data.data,type:'New Student'})
 				.success(function(data,status,headers,config){
 					if(data.status == "successed"){
 						$http.post('/api/registration/sendEmail',{student:$scope.student, 

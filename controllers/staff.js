@@ -14,7 +14,7 @@ exports.create = function(req,res){
 	var newStaff = new Staff(req.body);
 
 	
-	Staff.findOne({username : newStaff.username}, function(err, user){
+	Staff.find({'username' : newStaff.username, 'email' : newStaff.email}, function(err, user){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -22,14 +22,24 @@ exports.create = function(req,res){
 				data: null
 			});
 		}
-		else {
-			if(user){
+		if(user.length != 0){
+			if(user[0].username){
 				res.json({
-					status: 'fail',
-					messages:"User already exists",
+					status: 'exist',
+					messages:"Username already exists",
 					data: null
 				});
-			}else {
+			}
+			else {
+				res.json({
+					status: 'exist',
+					messages: 'Email already exists',
+					data:null
+				});
+			}
+		}
+
+		else {
 				newStaff.password = SHA256(newStaff.password); //Encrypt
 				newStaff.save(function(err,result){
 					if(err){
@@ -48,8 +58,7 @@ exports.create = function(req,res){
 					}
 				});
 			}
-		}
-	});
+		});
 }
 
 //POST : Login
