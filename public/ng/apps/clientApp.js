@@ -7,7 +7,9 @@ angular.module(
 		// //'ngTagsInput',
 		'esc.resources',
 		'esc.filters',
-		'esc.directives'
+		'esc.directives',
+		'ngAnimate',
+		'angular-loading-bar'
 		// //'esc.auth',
 		// 'ui.bootstrap'
 	]
