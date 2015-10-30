@@ -110,11 +110,19 @@ angular.module('AdminApp')
 	 	Students.get({id:student_id}, function(result){
 	 		$scope.student = result.data;
 	 		$scope.accommodation = $scope.student.accommodation;
+	 		if($scope.student.birthday) $scope.student.birthday = new Date($scope.student.birthday);
+	 		if($scope.student.healthInsuranceEndDate) $scope.student.healthInsuranceEndDate = new Date($scope.student.healthInsuranceEndDate);
+	 		if($scope.student.healthInsuranceStartingDate) $scope.student.healthInsuranceStartingDate = new Date($scope.student.healthInsuranceStartingDate);
 	 		if($scope.accommodation !=null){
 	 			$scope.accommodation.startDate = new Date($scope.accommodation.startDate);
 				$scope.accommodation.endDate = new Date($scope.accommodation.endDate);
 				$scope.accommodation.departureDateFromToronto = new Date($scope.accommodation.departureDateFromToronto);
 	 			$scope.havingAccommdation = true;
+	 		}
+	 		$scope.flightInfo = $scope.student.flightInfo;
+	 		if($scope.flightInfo !=null){
+	 			$scope.flightInfo.arrivalDateTime = new Date($scope.flightInfo.arrivalDateTime);
+				$scope.flightInfo.departureDateTime = new Date($scope.flightInfo.departureDateTime);
 	 		}
 	 	});
 
