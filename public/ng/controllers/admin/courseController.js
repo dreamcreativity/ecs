@@ -281,13 +281,14 @@ angular.module('AdminApp')
 
 		setTimeout(function(){
 			Courses.update($scope.course, function(result){
+
+				console.log(result);
 					var message = result.messages;	   
-
-
-					ShowGritterCenter('System Notification','Couse info has been updated');
-				    // $scope.returnMessage = message;
-				    // $("#messageReturn").delay(2000).fadeOut('slow');
-					// $window.location='/admin/staff/detail/'+ staff_id;
+					if(result.status == 'ok')
+						ShowGritterCenter('System Notification','Couse info has been updated');
+					else
+						ShowGritterCenter('System Notification',message);
+	
 			})
 
 		},200);

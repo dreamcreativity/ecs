@@ -142,7 +142,7 @@ router.get('/course/:id', function(req, res){
 
 	var id = req.params.id;
 
-	Course.find({_id:id, isActive:true })
+	Course.findOne({_id:id})
 					.populate('links')
 					.populate('banner')
 					.populate('cover')
@@ -153,9 +153,17 @@ router.get('/course/:id', function(req, res){
 		}
 			
 
+		if(result.isActive == false ){
+			res.redirect('/');
+		}else{
+			template(req,res,'client_normal','client/course.html',{'course' :  result[0]});	
+		}
+			
 
-		console.log(result);
-		template(req,res,'client_normal','client/course.html',{'course' :  result[0]});	
+
+
+		//console.log(result);
+		
 	});
 	
 });
