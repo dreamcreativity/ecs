@@ -20,271 +20,487 @@
 
 				<div class="tab-content">
 					<div class="tab-pane fade in portlet-body active" id="p1">
-						<form name="studentForm" class="form-horizontal" role="form">
+						<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
 							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Student ID</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input type="text" class="form-control" name="studentId" ng-model="student.studentID" readonly>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">First Name</label>
-								<div class="col-sm-1 col-md-1">
-									<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required >	
-								</div>
+							<label class="label label-xlg label-pending arrowed-right">Student Information</label>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-sm-2  control-label">Reference ID : </label>
+							<div class="col-sm-4">
+								<input  type="text" class="form-control" name="referenceID" ng-model="student.referenceID" readonly="">
 							</div>
 
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Last Name</label>
-								<div class="col-sm-1 col-md-1">
-									<input type="text" class="form-control" name="lastname" ng-model="student.lastname" required >
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Gender</label>
-								<div class="col-sm-1 col-md-3">
+							<label class="col-sm-2 control-label">Gender : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
 									<div class="input-group">
-										<select name="gender" ng-model="student.gender">
+										<select name="gender" class="form-control" ng-model="student.gender" ng-init="student.gender = 'Male'">
 											<option value="Male">Male</option>
 											<option value="Female">Female</option> 
 										</select>
 									</div>
 								</div>
 							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">First Name : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+										<span ng-show="!registerForm.firstname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.firstname.$error.required" class="input-group-addon">Required</span>
+									</div>
+								</div>
+							</div>
+							<label class="col-sm-2 control-label">Last Name :  </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
+										<span ng-show="!registerForm.lastname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.lastname.$error.required" class="input-group-addon">Required</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
 
 							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Age</label>
-								<div class="col-sm-1 col-md-3">
+							
+							<label class="col-sm-2 control-label">Birth Date : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
 									<div class="input-group">
-										<input type="text" class="form-control" name="age" ng-model="student.age">
+										<input type='date' class="form-control" name="birthday" ng-model="student.birthday" required>
+										<span ng-show="!registerForm.birthday.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.birthday.$error.required" class="input-group-addon">Required</span>
 									</div>
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Commission Rate</label>
-								<div class="col-sm-1 col-md-3">
+							<label class="col-sm-2 control-label">Age : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
 									<div class="input-group">
-										<input type="number" class="form-control" name="commissionRate" value="{{student.commissionRate}}" readonly>
+										<input type="number" class="form-control" name="age" ng-model="student.age" required>
+										<span ng-show="registerForm.age.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!registerForm.age.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
 									</div>
 								</div>
 							</div>
+
+						</div>
+
+
+							<div class="form-group">
+								<!-- <label class="col-sm-2 control-label">Commission Rate</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<input type="number" step='0.1' min='0' class="form-control" name="commissionRate" ng-model="student.commissionRate">
+									</div>
+								</div> -->
+								<label class="col-sm-2 control-label">Pomotion Rate</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<input id="touchspin-demo2" type="number" step='0.1' min='0' class="form-control" name="pomotionRate" ng-model="student.pomotionRate" readonly="">
+									</div>
+								</div>
+							</div>
+
+						<div class="form-group">
+							
+							<label class="col-sm-2 control-label">Address : </label>
+							<div class="col-sm-10">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type='text' class="form-control" name="address" ng-model="student.address" required>
+										<span ng-show="!registerForm.address.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.address.$error.required" class="input-group-addon">Required</span>
+									</div>
+								</div>
+							</div>	
+							
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">City : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="text" class="form-control" name="city" ng-model="student.city" required>
+										<span ng-show="registerForm.city.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!registerForm.city.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</div>
+							<label class="col-sm-2 control-label">Province : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type='text' class="form-control" name="province" ng-model="student.province" required>
+										<span ng-show="!registerForm.province.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.province.$error.required" class="input-group-addon">Required</span>
+									</div>
+								</div>
+							</div>
+
+							
+						</div>
+						<div class="form-group">
+							
+							<label class="col-sm-2 control-label">Postal Code : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
+										<span ng-show="registerForm.postcode.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!registerForm.postcode.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</div>
+
+							<label class="col-sm-2 control-label">Country : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="text" class="form-control" name="country" ng-model="student.country" required>
+										<span ng-show="registerForm.country.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!registerForm.country.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+
+	
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Telephone : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type='text' class="form-control" name="telephone" ng-model="student.telephone" required>
+										<span ng-show="!registerForm.telephone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.telephone.$error.required" class="input-group-addon">Required</span>
+									</div>
+								</div>
+							</div>
+							<label class="col-sm-2 control-label">Emergency call : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="text" class="form-control" name="emergency" ng-model="student.emergency" required>
+										<span ng-show="registerForm.emergency.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!registerForm.emergency.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							
+							<label class="col-sm-2 control-label">Fax : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group" style="width:100%">
+										<input type="text" class="form-control" name="fax" ng-model="student.fax">
+									</div>
+								</div>
+							</div>
+
+							<label class="col-sm-2 control-label">Email : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type='text' class="form-control" name="email" ng-model="student.email" required readonly="">
+										<span ng-show="!registerForm.email.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										<span ng-show="registerForm.email.$error.required" class="input-group-addon">Required</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<hr class="separator">
+
+						<!-- <div class="form-group">
+							<label class="label label-xlg label-pending arrowed-right">English Level</label>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">English Level : </label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<select name="englishlevel" class="form-control full" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
+											<option value="beginner">Beginner</option> 
+											<option value="low_Intermediate">Low Intermediate</option>
+											<option value="high_Intermediate">High Intermediate</option>
+											<option value="advance">Advanced</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">TOEFL :  </label>
+							<div class="col-sm-2">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="number" class="form-control full" name="TOEFL" ng-model="student.TOEFL">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">IELTS :  </label>
+							<div class="col-sm-2">
+								<div class="clearfix">
+									<div class="input-group">
+								<input type="number" step="0.5" class="form-control full" name="IELTS" ng-model="student.IELTS">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<hr class="separator" />
+
+
+
+						<div class="form-group">
+							<label class="label label-xlg label-pending arrowed-right">Health Insurance</label>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">From Date:</label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
+									</div>
+								</div>
+							</div>
+						</div> 
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">To Date:</label>
+							<div class="col-sm-4">
+								<div class="clearfix">
+									<div class="input-group">
+										<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
+									</div>
+								</div>
+							</div>
+
+						</div> -->
+
 
 							<!-- <div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Pomotion Rate</label>
+								<label class="col-sm-1 col-md-3 control-label"></label>
 								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="pomotionRate" ng-model="student.pomotionRate" readonly>
+									<div class="tcb">
+										<label>
+											<input type="checkbox" ng-model="student.isQuit" class="tc">
+											<span class="labels"> Delete</span>
+										</label>
 									</div>
 								</div>
 							</div> -->
 
 							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Address</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="address" ng-model="student.address">
-									</div>
+								<div class="col-sm-offset-3 col-sm-1">
+									<!-- <a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block">Add course</a> -->
 								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">City</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="city" ng-model="student.city">
-									</div>
+								<!-- <div class="col-sm-1">
+									<button type="button" download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
+								</div> -->
+								<div class="col-sm-1">
+									<input type="submit" class="btn btn-primary btn-block" value="Update" ng-disabled="studentForm.$invalid">
 								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Province</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="province" ng-model="student.province">
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Citizenship</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="citizenship" ng-model="student.citizenship">
-									</div>
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Telephone</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="telephone" ng-model="student.telephone">
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Emergency</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="emergency" ng-model="student.emergency">
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Fax</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="text" class="form-control" name="fax" ng-model="student.fax">
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Region</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="input-group">
-										<select name="region" class="form-control" ng-model="student.region" required>
-											<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
-										</select>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label">Quit</label>
-								<div class="col-sm-1 col-md-3">
-									<div class="tcb">
-										<label>
-											<input name="isQuit" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="student.isQuit" />
-											<span class="labels"></span>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-md-offset-3 col-sm-1 col-md-1">
-									<button download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
-								</div>
-								<div  class="col-sm-1 col-md-1">
-									<button class="btn btn-primary btn-block" ng-click="update()">Update</button>
-								</div>
-								<div  class="col-sm-1 col-md-1">
-									<a href="/agent/students"class="btn btn-primary btn-block">Back</a>
+								<div class="col-sm-1">
+									<a href="/agent/student/all" type="submit" class="btn btn-default btn-block">Cancel</a>
 								</div>
 							</div>
 						</form>
 					</div>
 
-					<div class="tab-pane fade" id="p2">
-						<form name="accommdationForm" class="form-horizontal" role="form" novalidate ng-show="havingAccommdation">
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Starting Date :</label>
-								<div class="col-sm-2">
-									<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
-								</div>
-								<label class="col-sm-1 control-label">Finishing Date :</label>
-								<div class="col-sm-2">
-									<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
-								</div>
+					<div class="tab-pane fade in portlet-body" id="p2">
+						<form name="accommdationForm" class="form-horizontal" role="form" ng-submit="submitAccommdation(accommdationForm.$valid)" ng-show="havingAccommdation" novalidate>
+							<div class="form-group ">
+								<label class="label label-xlg label-pending arrowed-right">Flight Information : </label>
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Departure date from Toronto: </label>
-								<div class="col-sm-2">
-									<input type="date" class="form-control" name="departDate" ng-model="accommodation.departureDateFromToronto" >
+								<div class="col-sm-5">
+									<div class="form-group">
+										<label class="heading">Arrival in Toronto</label>
+									</div>
+									<div class="form-group">
+										<label>Date & Time</label>
+										<input type="date" class="form-control" name="arrivalDateTime" ng-model="flightInfo.arrivalDateTime">
+									</div>
+									<div class="form-group">
+										<label>Airline & Fligth No.</label>
+										<input type="text" class="form-control" name="arrivalAirline" ng-model="flightInfo.arrivalAirline">
+									</div>
+
+									<label class="row" >
+										<input type="checkbox" class="tc" name="isPickup" ng-model="flightInfo.isPickup"> 
+										<span class="labels"> <strong>Airport Pick up Request</strong></span>
+									</label>
+
+
+								
+								</div>
+
+								<div class="col-sm-offset-2 col-sm-5">
+								
+									<div class="form-group">
+										<label class="heading">Departure from Toronto</label>
+									</div>
+									<div class="form-group">
+										<label>Date & Time</label>
+										<input type="date" class="form-control" name="departureDateTime" ng-model="flightInfo.departureDateTime" >
+									</div>
+									<div class="form-group">
+										<label>Airline & Fligth No.</label>
+										<input type="text" class="form-control" name="departureAirline" ng-model="flightInfo.departureAirline" >
+									</div>
+
+									<label class="row" >
+										<input type="checkbox" class="tc" name="isDropoff" ng-model="flightInfo.isDropoff">
+										<span class="labels"> <strong>Airport Drop off Request</strong></span>
+									</label>
+
 								</div>
 							</div>
 
+							<hr class="separator" />
 							<div class="form-group">
-								<label class="col-sm-offset-3 col-sm-4 control-label">Please answer the following questions to assist us in finding an appropriate host family for you.</label>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Do you smoke ?</label>
-								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" name="isSmoke" ng-model="accommodation.isSmoke">
+								<div class="col-sm-5">
+									<!-- <div class="form-group">
+										<label class="heading">Arrival in Toronto</label>
+									</div> -->
+									<div class="form-group">
+										<label>Starting Date</label>
+										<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
+									</div>
+									<div class="form-group">
+										<label>Finishing Date </label>
+										<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
+									</div>
+									<div class="form-group">
+										<label>Departure date from Toronto</label>
+										<input type="date" class="form-control" name="departDate" ng-model="accommodation.departureDateFromToronto" >
+									</div>
+									
+								
 								</div>
 							</div>
 
+
+
+
+							<div class="form-group ">
+								<label class="label label-xlg label-pending arrowed-right">Please answer the following questions to assist us in finding an appropriate host family for you</label>
+							</div>
+
+
+							
+
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Do you live in a home with smoker ?</label>
-								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" name="isWithSmoke" ng-model="accommodation.isWithSmoke">
-								</div>
+								<label>
+									<input type="checkbox" class="tc" name="isSmoke" ng-model="accommodation.isSmoke">
+									<span class="labels"> <strong>Do you smoke ?</strong></span>
+								</label>
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Do you live with pet ? </label>
-								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" name="isWithPet" ng-model="accommodation.isWithPet">
-								</div>
+								<label>
+									<input type="checkbox" class="tc" name="isWithSmoke" ng-model="accommodation.isWithSmoke">
+									<span class="labels"> <strong>Do you live in a home with smoker ?</strong></span>
+								</label>
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Do you live with small children ? </label>
-								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" name="isWithKid" ng-model="accommodation.isWithKid">
-								</div>
+								<label>
+									<input type="checkbox" class="tc" name="isWithPet" ng-model="accommodation.isWithPet">
+									<span class="labels"> <strong>Do you live with pet ? </strong></span>
+								</label>
 							</div>
+
 							<div class="form-group">
-								<label class="col-sm-3 control-label">What is your hobbies ? </label>
-								<div class="col-sm-7">
-									<textarea class="form-control" name="hobbies" ng-model="accommodation.hobbies"></textarea>
-								</div>
+								<label>
+									<input type="checkbox" class="tc" name="isWithKid" ng-model="accommodation.isWithKid">
+									<span class="labels"> <strong>Do you live with small children ? </strong></span>
+								</label>					
 							</div>
+
+
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Peofession(What is your occupation ?) </label>
-								<div class="col-sm-7">
-									<textarea class="form-control" name="occupation" ng-model="accommodation.occupation"></textarea>
-								</div>
+								<label>What is your hobbies ? </label>
+								<textarea class="form-control" name="hobbies" ng-model="accommodation.hobbies"></textarea>
 							</div>
+
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Additional Comments : </label>
-								<div class="col-sm-7">
+								<label>Peofession(What is your occupation ?) </label>
+								<textarea class="form-control" name="occupation" ng-model="accommodation.occupation"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label>Additional Comments : </label>
+						
 									<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
-								</div>
+							
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Do you have any special diet or food preference ?</label>
-								<div class="col-sm-7">
+								<label>Do you have any special diet or food preference ?</label>
+					
 									<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
-								</div>
+						
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Do you have any allergies or medical concerns ?</label>
-								<div class="col-sm-7">
+								<label>Do you have any allergies or medical concerns ?</label>
+						
 									<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-offset-2 col-sm-4 control-label">Extra Options(Please note that an extra charge will apply)</label>
+								
 							</div>
 
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Private Bathroom(Subject to availability)</label>
-								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" name="isPrivateBathroom" ng-model="accommodation.isPrivateBathroom">
-								</div>
+							<div class="form-group ">
+								<label class="label label-xlg label-pending arrowed-right">Extra Options (Please note that an extra charge will apply)</label>
 							</div>
+
+
+
 							<div class="form-group">
-								<div class="col-md-offset-3 col-sm-1">
-									<button download-form02 class="btn btn-primary btn-block" ng-click="download_accommdation()">Download</button>
+								<label>
+									<input type="checkbox" class="tc" name="isPrivateBathroom" ng-model="accommodation.isPrivateBathroom">
+									<span class="labels"> <strong>Private Bathroom(Subject to availability)</strong></span>
+								</label>
+							</div>
+
+							
+							<!-- <div class="form-group">
+								<div class="col-sm-offset-2 col-sm-1">
+								 <button type="button" download-form02 class="btn btn-primary btn-block" ng-click="download_accommdation()">Download</button>
 								</div>
 								<div class="col-sm-1">
-									<a href="/agent/students"class="btn btn-primary btn-block">Back</a>
+									<input type="submit" class="btn btn-primary btn-block" value="Update">
 								</div>
-							</div>
+								<div class="col-sm-1">
+									<a href="/agent/student/all" type="submit" class="btn btn-primary btn-block">Cancel</a>
+								</div>
+							</div> -->
 						</form>
-
-
+						<div class="row">
+							<div class="col-sm-1">
+								<!-- <button class="btn btn-primary btn-block" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button> -->
+							</div>
+						</div>
 					</div>
 
 					<!-- Tab4 -->

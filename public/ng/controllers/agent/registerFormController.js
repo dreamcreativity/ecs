@@ -106,6 +106,9 @@ angular.module('AgentApp')
 				$scope.student = result.data;
 				$scope.programs = result.data.programRegistration;
 				$scope.accommodation = result.data.accommodation;
+				if($scope.student.birthday) $scope.student.birthday = new Date($scope.student.birthday);
+	 		if($scope.student.healthInsuranceEndDate) $scope.student.healthInsuranceEndDate = new Date($scope.student.healthInsuranceEndDate);
+	 		if($scope.student.healthInsuranceStartingDate) $scope.student.healthInsuranceStartingDate = new Date($scope.student.healthInsuranceStartingDate);
 				if($scope.accommodation !=null){
 					$scope.accommodation.startDate = new Date($scope.accommodation.startDate);
 					$scope.accommodation.endDate = new Date($scope.accommodation.endDate);
