@@ -18,16 +18,21 @@ angular.module('ClientApp')
     	async.series([
 		    function(next){ 
 		    	async.eachSeries(eventList, function(value, callback) {
-				  	var dateString = $filter('date')(value.date, "MM-dd-yyyy");
-		
-				  	if(typeof eventRawData[dateString] ===  'undefined'){
-				  		eventRawData[dateString] = [];
-				  	}
 
-				  	eventRawData[dateString].push({
-				  		'key': dateString,
-				  		'event': value
-				  	});
+		    		if(value.cover != null){
+					  	var dateString = $filter('date')(value.date, "MM-dd-yyyy");
+			
+					  	if(typeof eventRawData[dateString] ===  'undefined'){
+					  		eventRawData[dateString] = [];
+					  	}
+
+					  	eventRawData[dateString].push({
+					  		'key': dateString,
+					  		'event': value
+					  	});
+		    			
+		    		}
+
 				  	callback();
 
 				}, function(){
