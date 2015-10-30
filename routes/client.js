@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
 			});
 	    },
 	    function(next){
-			Course.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+			Course.find({cover: { $ne: null }, isActive: true}).populate('cover').exec(function(err,result){
 				courses = result;
 				next();
 			});
