@@ -151,12 +151,12 @@ router.get('/course/:id', function(req, res){
 			console.log(err);
 			res.redirect('/');
 		}
-			
+			console.log(result);
 
 		if(result.isActive == false ){
 			res.redirect('/');
 		}else{
-			template(req,res,'client_normal','client/course.html',{'course' :  result[0]});	
+			template(req,res,'client_normal','client/course.html',{'course' :  result});	
 		}
 			
 
