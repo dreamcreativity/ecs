@@ -21,6 +21,19 @@
 			</div>
 
 			<div class="form-group">
+				<label class="col-sm-3 control-label">Loaction</label>
+				<div class="col-sm-9">
+					<div class="clearfix">
+						<div class="input-group">
+							<input type="text" class="form-control" name="location" ng-model="event.location"  ng-maxlength="100" required>
+							<span ng-show="!createForm.location.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+							<span ng-show="createForm.location.$error.required" class="input-group-addon">Required</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
 				<label class="col-sm-3 control-label">Description</label>
 				<div class="col-sm-9">
 					<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="event.description" placeholder="This textarea has a limit of 225 chars."></textarea>
@@ -29,9 +42,15 @@
 
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label">Time</label>
-				<div class="col-sm-9">
-					<input id="datetimepicker" type="text" ng-model="event.date" value="{{event.date}}" required>
+				<label class="col-sm-3 control-label">Date & Time</label>
+				<div class="col-sm-4">
+					<div class="input-group date form_datetime">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-time"></i>
+						</span>														
+						<input type="date" ng-model="event.date"  class="form-control">
+						<input type="time" ng-model="event.date"  class="form-control">											
+					</div>
 
 				</div>
 			</div>
