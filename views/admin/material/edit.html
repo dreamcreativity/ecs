@@ -33,7 +33,7 @@
 					<div class="col-sm-3">
 						<div class="clearfix">
 							<select class="form-control" ng-model='material.region' >
-								<option value="{{region._id}}" ng-repeat="region in regions.data">{{region.name}}</option>
+								<option value="{{region}}" ng-repeat="region in regions">{{region}}</option>
 							</select>
 						</div>
 					</div>
@@ -96,12 +96,12 @@
 							<div class="box1 col-md-6">   
 								<label for="bootstrap-duallistbox-nonselected-list_duallistbox_demo1[]" style="display: none;"></label>   
 								<span class="info-container">     
-									<span class="info">Showing all 9</span>    
+									<!-- <span class="info">Showing all 9</span>    
 									 <button type="button" class="btn clear1 pull-right btn-default btn-xs">show all</button>   
 									</span>   
-									<input class="filter form-control" type="text" placeholder="Filter">   
+									<input class="filter form-control" type="text" placeholder="Filter">    -->
 									<div class="btn-group buttons">     
-										<button type="button" class="btn moveall btn-default" title="Move all">       
+										<button type="button" ng-click="RemoveAllAgentPremission()" class="btn moveall btn-default" title="Move all">       
 											<i class="glyphicon glyphicon-arrow-right"></i>       
 											<i class="glyphicon glyphicon-arrow-right"></i>     
 										</button>     
@@ -115,16 +115,16 @@
 								</div> 
 								<div class="box2 col-md-6">   
 									<label for="bootstrap-duallistbox-selected-list_duallistbox_demo1[]" style="display: none;"></label>   
-									<span class="info-container">     
+									<!-- <span class="info-container">     
 										<span class="info">Showing all 1</span>     
 										<button type="button" class="btn clear2 pull-right btn-default btn-xs">show all</button>   
 									</span>   
-									<input class="filter form-control" type="text" placeholder="Filter">   
+									<input class="filter form-control" type="text" placeholder="Filter">  -->  
 									<div class="btn-group buttons">     
 										<button type="button" class="btn remove btn-default" title="Remove selected">       
 											<i class="glyphicon glyphicon-arrow-left"></i>     
 										</button>
-										<button type="button" class="btn removeall btn-default" title="Remove all">       
+										<button type="button" ng-click="SelectAllAgentPremission()" class="btn removeall btn-default" title="Remove all">       
 											<i class="glyphicon glyphicon-arrow-left"></i>       
 											<i class="glyphicon glyphicon-arrow-left"></i>     
 										</button>   
@@ -146,7 +146,7 @@
 					<div class="col-sm-3">											
 						<a type="button" class="btn btn-info" target="_blank" href="{{material.media.path}}" >View</a>
 						<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
-						<button type="button" class="btn btn-default" onclick='location="/admin/material"'>Cancel</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/material/all"'>Cancel</button>
 					</div>
 				</div>
 		

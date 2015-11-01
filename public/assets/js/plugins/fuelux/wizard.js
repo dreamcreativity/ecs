@@ -108,11 +108,13 @@
 
 				this.currentStep -= 1;
 				this.setState();
+				this.$nextBtn.removeAttr('disabled');
 			}
 		},
 
 		next: function () {
 			var canMoveNext = (this.currentStep + 1 <= this.numSteps);
+			//var canMoveNext = false;
 			var lastStep = (this.currentStep === this.numSteps);
 
 			if (canMoveNext) {
@@ -121,11 +123,18 @@
 
 				if (e.isDefaultPrevented()) return;
 
+				//Check last step for term condition
+				if(this.currentStep == 3){
+					this.$nextBtn.attr("disabled", "true");
+				}
+
 				this.currentStep += 1;
 				this.setState();
 			}
 			else if (lastStep) {		
 				// this.$element.trigger('finished');
+				this.$prevBtn.attr("disabled", "true");
+				this.$nextBtn.attr("disabled", "true");
 			    $("#last_submit").trigger('click');
 
 			}

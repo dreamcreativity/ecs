@@ -1,4 +1,4 @@
-<div class="row" ng-app='promotionApp' ng-controller='PromotionCtrl'>
+<div class="row" ng-controller='PromotionCtrl'>
 
 <div class="col-lg-12">
 		<div class="portlet">
@@ -13,21 +13,27 @@
 						<thead>
 							<tr>
 								<tr>
+								<th class="hidden-xs">Region</th>
+								<th class="hidden-xs">Rate</th>
 								<th class="hidden-xs">StartDate</th>
 								<th class="hidden-xs">EndDate</th>
+								<th class="hidden-xs">Status</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="promotion in promotions.data | filter:query">
-								<td class="hidden-xs"><a href="/admin/promotion/detail/{{promotion._id}}">{{promotion.region}} {{promotion.rate}}</a></td>
+								<td class="hidden-xs">{{promotion.region}}</td>
+								<td class="hidden-xs">{{promotion.rate | percentage}}</td>
+								<td class="hidden-xs">{{promotion.startDate | date:'MMM dd yyyy'}}</td>
+								<td class="hidden-xs">{{promotion.endDate | date:'MMM dd yyyy'}}</td>
 								<td><span ng-if="promotion.isDelete == 1" class="label label-danger">Deleted</span>
 								<span ng-if="promotion.isDelete == 0" class="label label-active">Active</span>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
-										<a href="/admin/promotion/detail/{{agent._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+										<a href="/admin/promotion/edit/{{promotion._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
 									</div>	
 								</td>
 							</tr>
@@ -36,15 +42,7 @@
 					</table>
 				</div>
 			</div>					 
-		</div>
-		<button class="btn btn-sm btn-primary"
-					ng-bootbox-title="A new promotion rate"
-					ng-bootbox-custom-dialog
-					ng-bootbox-custom-dialog-template="create">
-					Create
-		</button>
-<!-- 		<a href="/admin" class="btn btn-sm btn-primary">Back</a> -->
-		
+		</div>	
 	</div>
 
 </div>	 			

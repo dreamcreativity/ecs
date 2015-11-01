@@ -14,9 +14,9 @@
 							<tr>
 								<tr>
 								<th class="hidden-xs">Title</th>
-								<th class="hidden-xs">Date</th>
-								<th class="hidden-xs">Description</th>
-								<th class="hidden-xs">Status</th>
+								<th class="col-medium hidden-xs">Date</th>
+								<th class="col-medium hidden-xs">Cover Image</th>
+								<th class="col-medium hidden-xs">Status</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 							</tr>
@@ -25,9 +25,13 @@
 							 <tr ng-repeat="event in events.data | filter:query">
 								<td class="hidden-xs"><a href="/admin/event/detail/{{event._id}}">{{event.title}}</a></td>
 								<td class="hidden-xs">{{event.date | date:'MMM dd yyyy'}}</td>
-								<td class="hidden-xs">{{event.description}}</td>
-								<td><span ng-if="event.isActive == 1" class="label label-active">Active</span>
-								<span ng-if="event.isActive == 0" class="label label-danger">Deleted</span>
+								<td class="hidden-xs center">
+									<label ng-if="event.cover != null" class="label label-primary">Yes</label>
+									<label ng-if="event.cover == null" class="label label-danger">No</label>
+								</td>
+								<td class="center ">
+									<span ng-if="event.isActive == 1" class="label label-active">Active</span>
+									<span ng-if="event.isActive == 0" class="label label-danger">Deleted</span>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
@@ -41,8 +45,6 @@
 				</div>
 			</div>					 
 		</div>
-		<a href="/admin/event/create" class="col-md-1 btn btn-sm btn-primary">Create</a>
-		
 	</div>
 
 </div>	 			

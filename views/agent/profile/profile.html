@@ -1,32 +1,58 @@
-<div class="form-horizontal" ng-controller='AgentDetail'>
-	<div class="row">
-		<label class="col-sm-3 col-md-1 control-label">Name : </label>
-		<div class="col-sm-3">{{agent.firstname}} {{agent.lastname}}</div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3 col-md-1 control-label">Company : </label>
-		<div class="col-sm-3">{{agent.company}}</div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3 col-md-1 control-label">Work Phone : </label>
-		<div class="col-sm-3">{{agent.workphone}}</div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3 col-md-1 control-label">Cell Phone : </label>
-		<div class="col-sm-3">{{agent.cellphone}}</div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3 col-md-1 control-label">Email : </label>
-		<div class="col-sm-3">{{agent.email}}</div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3 col-md-1 control-label">Region : </label>
-		<div class="col-sm-3">{{agent.region}}</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4 col-md-4">
-			<a href="/agent/edit" class="btn btn-sm btn-primary">Edit</a>
-			<a href="/agent/resetpassword" class="btn btn-sm btn-primary">Reset password</a>
+
+<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Profile</h4>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="portlet-body">
+<form name="editForm" class="form-horizontal" ng-controller='AgentDetail' role="form" ng-submit="update(editForm.$valid)" novalidate>
+<div class="row">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Name : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.firstname}} {{agent.lastname}}</label>
 		</div>
 	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Company : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.company}}</label>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{'has-error' : editForm.workphone.$invalid && !editForm.workphone.$pristine}"}>
+		<label class="col-sm-2 control-label">Work Phone : </label>
+		<div class="col-sm-2">
+			<label class="control-label">{{agent.workphone}}</label>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{'has-error' : editForm.cellphone.$invalid && !editForm.cellphone.$pristine}"}>
+		<label class="col-sm-2 control-label">Cell Phone : </label>
+		<div class="col-sm-2">
+			<label class="control-label">{{agent.cellphone}}</label>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{'has-error' : editForm.email.$invalid && !editForm.email.$pristine}"}>
+		<label class="col-sm-2 control-label">E-mail : </label>
+		<div class="col-sm-2">
+			<label class="control-label">{{agent.email}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Region : </label>
+		<div class="col-sm-4">
+		<label class="control-label">{{agent.region}}</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-2"></div>	
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary"  onclick='location="/agent/edit"'>Edit</button>
+						<button type="button" class="btn btn-default" onclick='location="/agent/resetpassword"'>Reset password</button>
+					</div>
+	</div>
+</div>
+</form>
+</div>
 </div>

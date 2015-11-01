@@ -6,7 +6,13 @@ var resources = angular.module('esc.resources', ['ngResource']);
 resources.factory('StaffAccount',['$resource',
     function($resource){
         return $resource('/api/staff-account/:id', {}, {
-        query:{ method: 'GET'}
+        query:{ method: 'GET'},
+        changePassword:{
+            url: '/api/staffs/changepassword',
+            method: 'POST',
+            params: {passwordInfo: '@info'}
+        }
+
     });
 }]);
 
@@ -14,15 +20,12 @@ resources.factory('Staffs',['$resource',
     function($resource){
         return $resource('/api/staffs/:id', {}, {
         query:{ method: 'GET'},
-        update : { method : 'PUT', params: {id:'@_id'}}
-    });
-}]);
-
-
-resources.factory('Agents',['$resource',
-    function($resource){
-        return $resource('/api/agent/region/:name', {}, {
-        query:{ method: 'GET'}
+        update : { method : 'PUT', params: {id:'@_id'}},
+        resetpassword : {
+            url: '/api/staffs/resetpassword/:id',
+            method: 'POST',
+            params: {id:'@_id'}
+       } 
     });
 }]);
 
@@ -77,7 +80,13 @@ resources.factory('Agents',['$resource',
     function($resource){
         return $resource('/api/agent/:id', {}, {
         query:{ method: 'GET'},
-        update : { method : 'PUT', params: {id:'@_id'}}
+        update : { method : 'PUT', params: {id:'@_id'}},
+        getAgentbyRegion : 
+        {
+            url: '/api/agent/region/:name',
+            method : 'GET', 
+            params: {name:'@_name'}
+        }
     });
 }])
 
@@ -93,23 +102,60 @@ resources.factory('Agents',['$resource',
         return $resource('/api/student/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}},
+        updateByAgent : {
+            url : '/api/student/agent/:id',
+            method : 'PUT',
+            params : {id : '@_id'}
+        },
         getStudentsByAgent : {
             url : '/api/student/agent/:id',
             method : 'GET',
             params : {id : '@_id'}
         },
         getRegistrationsByAgent : {
-            url : '/api/regiration/agent/:id',
+            url : '/api/registration/agent/:id',
             method : 'GET',
             params : {id : '@_id'}
+        },
+        getRegistrationsByStudent : {
+            url : '/api/registration/student/:id',
+            method : 'GET',
+            params : {id : '@_id'}
+        },
+        createExtendingCourse : {
+            url : '/api/student/extending',
+            method : 'POST',
+            params : {student_id : '@student_id', courseList : '@courseList'}
+        },
+        getTopRegistrations : {
+             url : '/api/registration/top',
+             method : 'GET'
         }
     });
 }])
 
+
+.factory('Commissions',['$resource',
+    function($resource){
+        return $resource('/api/commissions', {}, {
+        getByAgentId :{
+            url: '/api/commission/byAgentId',
+            method : 'POST',
+            params : {agentId: '@agentId'}
+        }
+    });
+}])
+
+
 .factory('Accommodations',['$resource',
     function($resource){
         return $resource('/api/accommodation', {}, {
-        create:{ method: 'POST'}
+        create:{ method: 'POST'},
+        update :{
+            url: '/api/student/accommodation/:id',
+            method : 'PUT',
+            params : {id : '@_id'}
+        }
     });
 }])
 
@@ -213,6 +259,15 @@ resources.factory('Registrations',['$resource',
     });
 }]);
 
+resources.factory('Payments',['$resource',
+    function($resource){
+        return $resource('/api/student/payment/:id', {}, {
+        query:{ method: 'GET'},
+        create:{method: 'POST'},
+        update : { method : 'PUT', params: {id:'@_id'}}
+    });
+}]);
+
 resources.factory('Constants',['$resource',
     function($resource){
         return $resource('/api/constants/:name', {}, {
@@ -224,9 +279,25 @@ resources.factory('AgentTokens',['$resource',
     function($resource){
         return $resource('/api/agent/token/:token', {}, {
         post:{ method: 'POST', params: {token:'@token'} }
+        
     });
 }]);
 
+
+resources.factory('Promotions',['$resource',
+    function($resource){
+        return $resource('/api/promotions/:id', {}, {
+        query:{ method: 'GET'},
+        create:{ method: 'POST'},
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{ method: 'PUT', params: {id:'@_id'}},
+        getPromotionByRegion: {
+            url: '/api/promotions/region/:region',
+            method : 'GET', 
+            params: {region:'@region'}
+        },
+    });
+}]);
 
 
 

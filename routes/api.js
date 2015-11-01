@@ -12,10 +12,13 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var payment = require('../controllers/payment');
+var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 var emailSender = require('../modules/emailModule');
+var pdf = require('../modules/pdfModule');
 
 
 function IsAuthException(path, method){
@@ -23,9 +26,10 @@ function IsAuthException(path, method){
 	// auth exception list , put urls into this array
 	//--------------------------------------------------
 	var list = [
+		{	path : '/api/events', method: 'GET', type: 'direct'},
 		{	path : '/api/slider', method: 'GET', type: 'direct'},
 		{	path : '/api/activities', method: 'GET', type: 'direct' },
-		{	path : '/api/staffs/login', method: 'POST', type: 'direct' },
+		{	path : '/api/staff/login', method: 'POST', type: 'direct' },
 		{	path : '/api/agent/login', method: 'POST', type: 'direct' },
 		{	path : '/api/staffs', method: 'POST',type: 'direct' },
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
@@ -34,7 +38,11 @@ function IsAuthException(path, method){
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
-		{	path : '/api/student/register', method:'POST', type:'direct'}
+		{	path : '/api/student/register', method:'POST', type:'direct'},
+		{	path : '/api/registration/sendEmail', method:'POST', type:'direct'},
+		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
+		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
+		{	path : '/api/constants/Country', method:'GET', type:'contain'}
 	];
 	
 
@@ -87,8 +95,9 @@ router.use(function(req,res,next){
 
 			console.log(req.headers.api_token);
 			var accessToken = req.headers.api_token;
+			var accessReferer = req.headers.referer;
 
-			auth.IsTokenValid(accessToken, function(isValid){
+			auth.IsTokenValid(accessToken, accessReferer, function(isValid){
 
 
 				if(isValid){
@@ -145,9 +154,13 @@ router.post('/staffs', staff.create);
 
 router.put('/staffs/:id', staff.edit);
 
-router.post('/staffs/login', staff.login);
+router.post('/staffs/resetpassword/:id', staff.updatePassword);
+
+router.post('/staff/login', staff.login);
 
 router.get('/staffs', staff.getAllStaffs);
+
+router.post('/staffs/register/sendEmail', staff.sendEmailForRegister);
 
 router.delete('/staffs/:id',staff.delete);
 
@@ -156,7 +169,7 @@ router.delete('/staffs/:id',staff.delete);
 //-------------------------Staff Account-------------------------
 
 router.get('/staff-account/', staff.getStaffAccount);
-
+router.post('/staffs/changepassword', staff.changePassword);
 
 
 //-----------------------Student-----------------------------------
@@ -173,8 +186,17 @@ router.get('/student/:id', student.getStudentbyId);
 //GET students by Agent ID
 router.get('/student/agent/:id',student.getStudentbyAgentId);
 
-//GET students regiration by Agent ID
-router.get('/regiration/agent/:id',student.getRegistrationByAgent);
+//GET registration by Id 
+router.get('/registration/top', student.getRegistrations);
+
+//GET registration by Id 
+router.get('/registration/:id', student.getRegistrationById);
+
+//GET students registration by Agent ID
+router.get('/registration/agent/:id',student.getRegistrationByAgent);
+
+//GET students registration by Student ID
+router.get('/registration/student/:id', student.getRegistrationByStudent);
 
 //POST : create a student record
 router.post('/student', student.create);
@@ -188,9 +210,29 @@ router.post('/accommodation', student.createAccommodation);
 //POST : create a flightInfo
 router.post('/flightInfo', student.createFlightInfo);
 
-//PUT : Edit a student info
-router.put('/student/:id', student.edit)
+//POST students by Agent ID
+router.post('/student/extending',student.createExtendingCourse);
 
+//PUT : Edit a student info
+router.put('/student/:id', student.edit);
+
+//PUT : Edit a student info by Agent
+router.put('/student/agent/:id', student.editByAgent);
+
+//PUT : Update Accomdation info
+router.put('/student/accommodation/:id', student.updateAccommdation);
+
+
+//---------------------- Commissions ---------------------------------------
+router.post('/commission/byAgentId', commission.getCommissionByAgentId);
+
+
+//----------------------Payment---------------------------------------
+//POST : Add new payment to registration
+router.post('/student/payment', payment.create);
+
+//POST : Update payment info
+router.put('/student/payment/:id', payment.edit);
 
 //----------------------Agent----------------------------------------
 //GET agents 
@@ -213,8 +255,14 @@ router.post('/agent/login', agent.login);
 //POST agent reset password
 router.post('/agent/resetpassword', agent.resetpassword);
 
+//POST agent reset password in profile
+router.post('/agent/resetpasswordInProfile', agent.resetpasswordInProfile);
+
 //GET current agent by token
 router.post('/agent/token/:token', agent.getAgentbyToken);
+
+//POST send email notification to Agent when create a new agent
+router.post('/agent/register/sendEmail', agent.sendEmailForRegister);
 
 //-----------------------Materials ----------------------------------
 
@@ -255,8 +303,13 @@ router.get('/promotions', promotion.getAllPormotions);
 //GET a promotion by promotion ID
 router.get('/promotions/:id', promotion.getPromotionbyId);
 
+//PUT Edit promotion
+router.put('/promotions/:id', promotion.edit);
+
+router.get('/promotions/region/:region', promotion.getPromotionbyRegion);
+
 //POST : create a promotion record
-router.post('/promotion', promotion.create);
+router.post('/promotions', promotion.create);
 
 //------------------------Course----------------------------------------
 
@@ -347,9 +400,18 @@ router.get('/events/:id', events.getEventbyId);
 
 //-------------------------Generate PDF--------------------------------------------
 router.post('/pdf',student.generatePDF);
-router.post('/pdftest',student.generatePDFTest);
+//-------------------------Download PDF
+router.get('/pdf/Download_01',pdf.downloadPDF01);
+
+router.get('/pdf/Download_02',pdf.downloadPDF02);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
+
+router.post('/agent/resetpassword/sendEmail', agent.sendNotificationForResetPassword)
+router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPassword)
+
+//------------------------Send Email in client site--------------------------------
+router.post('/client/sendEmail', student.client_sendEmail);
 
 
 

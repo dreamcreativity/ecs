@@ -1,0 +1,88 @@
+<style type="text/css">
+.activity-cover{min-height:250px;overflow:hidden;margin-bottom:40px;background-size:cover;background-position:50% 25%;font-size:20px;position:relative}
+.activity-banner{padding-top:120px;background-image:url('/images/black_through.png');background-size:100% 100%;background-repeat:no-repeat;width:100%;height:100%}
+.activity-banner .container{position:relative}
+.activity-banner .container .actitle{color:#fff;margin-bottom:0}
+.activity-banner .container .acsub-title{color:rgba(255,255,255,0.7);margin-bottom:35px}
+.activity-banner .container .acdescription{color:rgba(255,255,255,0.85);padding-bottom:50px}
+
+.activity-banner .banner-list{position:absolute;top:10px;left:0;width:100%;height:50px}
+.activity-banner .banner-list>ul{list-style:none;text-align:center}
+.activity-banner .banner-list>ul>li{list-style:none;display:inline-block;margin:0;padding:1px;background-color:transparent}
+.activity-banner .banner-list>ul>li img{height:40px}
+.activity-banner .banner-list>ul>li:hover{background-color:white}
+</style>
+
+<link rel="stylesheet" href="/plugin/lightbox/css/lightbox.css" rel="stylesheet">
+<script type="text/javascript" src="/plugin/lightbox/js/lightbox.js"></script>
+<section >
+	<div class="content-wrap" style="padding-top:0">
+		<section class="activity-cover" style="background-image:url(<%- activity.cover.path %>)">
+			<div class="activity-banner">
+                <div class="container clearfix">
+                    <h1 class="actitle"><%- activity.title %></h1>
+                    <h3 class="acsub-title"><%- activity.subtitle %></h3>
+                    <div class="acdescription"><%- activity.description %></div>
+                </div>
+                
+                <div class="banner-list">
+                    <ul>
+                        <% for(var j=0; j < activityList.length; j++) { %>
+                        <li title="<%- activityList[j].title %>"> <a href="/activity/detail/<%- activityList[j]._id %>"><img  src="<%- activityList[j].cover.thumbnail %>"></a></li>
+                        <% } %>
+                    </ul>
+                </div>
+			</div>
+			
+			
+		</section>
+
+
+		 <section id="section-course" class="page-section " style="clear:both">
+		 	<div class="container clearfix">
+
+		 		
+
+		 		<!-- <div class="row hidden-sm hidden-xs">
+			 		<div class='col-xs-12 '>
+			 			<img  src="<%- activity.cover.path %>">
+			 		</div>
+		 		</div> -->
+
+		 		<div class="row">
+				<% for(var i=0; i< activity.album.length; i++) {%>
+					<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<a  data-lightbox="ddd" href="<%- activity.album[i].path %>"  style="background-image:url(<%- activity.album[i].thumbnail %>)" class="activity-img">
+							<div></div>
+						</a>
+					</div>
+				<% } %>
+
+
+
+
+		 		</div>
+
+		 	</div>
+		 </div>
+	</div>
+</div>
+<div style="margin-bottom:100px"></div>
+<script type="text/javascript">
+	
+	// setTimeout(function() {
+		
+	// 	lightbox.option({
+	//       'resizeDuration': 200,
+	//       'wrapAround': true
+	//     })
+	// 	console.log(lightbox);
+	// }, 1000);
+
+
+</script>
+
+
+
+
+

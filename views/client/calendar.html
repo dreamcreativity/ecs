@@ -4,8 +4,26 @@
 <script type="text/javascript" src="assets/js/plugins.js"></script>
 
 
-<script type="text/javascript" src="assets/js/functions.js"></script>
-<section ng-controller="CalendarCtrl" >
+
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1>School Course Calendar</h1>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/events">Calendar</a></li>
+           
+        </ol>
+    </div>
+
+</section>
+
+
+
+
+
+<!-- <script type="text/javascript" src="assets/js/functions.js"></script> -->
+<section ng-controller="CalendarCtrl" id="school-calendar" >
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
@@ -13,7 +31,7 @@
                     <div class="container clearfix">
                         <div class="events-calendar">
                             <div class="events-calendar-header clearfix">
-                                <h2>School Calendar</h2>
+                                <h2>&nbsp;</h2>
                                 <h3 class="calendar-month-year">
                                     <span id="calendar-month" class="calendar-month"></span>
                                     <span id="calendar-year" class="calendar-year"></span>
@@ -28,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+                
 		 	</div>
 		 </div>
 	</div>

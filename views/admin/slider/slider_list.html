@@ -1,65 +1,112 @@
+<!-- 
+<div  ng-controller='SliderController' class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Slider Full List </h4>
+		</div>
+		<div class="portlet-widgets">
+			<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+			
+		
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div id="basic" class="panel-collapse collapse in">
+		<div class="portlet-body no-padding">
+			<table class="table table-bordered table-hover tc-table">
+				<thead>
+					<tr>
+						<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
+						<th>Heading</th>
+						<th class="col-small center hidden-xs">Order</th>
+						<th class="col-medium center hidden-xs">Active</th>
+						<th class="col-medium center hidden-xs">Create Date</th>
+						<th class="col-medium center">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat=" item in list.data">
+						<td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>
+						<td>{{item.heading}}</td>
+						<td class="hidden-xs col-small center">{{item.order}}</td>
+						<td class="hidden-xs col-medium center">
+							<label>
+								<input class="tc tc-switch tc-switch-6 readonly" type="checkbox" ng-model="item.is_active" />
+								<span class="labels"></span>
+							</label>
+						</td>
+						<td class="hidden-xs col-small center">{{item.createDate | date: 'MMM dd, yyyy'}}</td>
+						<td class="col-medium center">
+							<div class="btn-group btn-group-xs ">
+								<a href="/admin/slider/edit/{{item._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+							
+							</div>	
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>												
+		</div>
+	</div>
+</div> -->
 
-						<div  ng-controller='SliderController' class="portlet"><!-- /Portlet -->
-							<div class="portlet-heading dark">
-								<div class="portlet-title">
-									<h4>Slider Full List </h4>
-								</div>
-								<div class="portlet-widgets">
-									<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
-									<span class="divider"></span>
-									<!--a href="#" class="box-close"><i class="fa fa-times"></i></a-->
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div id="basic" class="panel-collapse collapse in">
-								<div class="portlet-body no-padding">
-									<table class="table table-bordered table-hover tc-table">
-										<thead>
-											<tr>
-												<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
-												<th>Heading</th>
-												<th class="hidden-xs">Sub-Heading</th>
-												<th class="hidden-xs">Position</th>
-												<th class="hidden-xs">Direction</th>
-												<th class="col-medium center hidden-xs">Text Color</th>
-												<th class="col-medium center hidden-xs">Active</th>
-												<th class="col-medium center">Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" item in list.data">
-												<td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>
-												<td>{{item.heading}}
-													<ul class="table-mobile-ul visible-xs list-unstyled">
-														<li>Referred: 35</li>
-														<li>Clicks: 387</li>
-														<li>Earned: $70</li>
-														<li><span class="label label-paid arrowed-in-right arrowed-in">Paid</span></li>
-													</ul>
-												</td>
-												<td class="hidden-xs">{{item.sub_heading}}</td>
-												<td class="hidden-xs">{{item.position}}</td>
-												<td class="hidden-xs"> From {{item.direction}}</td>
-												<td class="hidden-xs col-medium center"><div style="background-color:{{item.color}}!important; width:30px; border: 1px #ccc solid; margin: 0 auto">&nbsp;</div></td>
-												<td class="hidden-xs col-medium center">
-													<label>
-														<input class="tc tc-switch tc-switch-6 readonly" type="checkbox" ng-model="item.is_active" />
-														<span class="labels"></span>
-													</label>
-												</td>
-												<td class="col-medium center">
-													<div class="btn-group btn-group-xs ">
-														<a href="/admin/slider/edit/{{item._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
-														<a href="" class="btn btn-info"><i class="fa fa-arrow-up"></i></a>
-														<a href="" class="btn btn-info"><i class="fa fa-arrow-down"></i></i></a>
-														
-														
-													</div>	
-												</td>
-											</tr>
-											
-										</tbody>
-									</table>												
-								</div>
-							</div>
-						</div>
+
+
+<div class="row" ng-controller='SliderController'>
+	<div class="col-lg-12">
+		<div class="portlet">
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
+					<h4>Slider Full List <small class="text-white"></small></h4>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="basic" class="panel-collapse collapse in">
+				<div class="portlet-body no-padding">
+					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
+						<thead>
+							<tr>
+								<!-- <th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th> -->
+								<th>Heading</th>
+								<th class="col-medium center hidden-xs">Order</th>
+								<th class="col-medium center hidden-xs">Active</th>
+								<th class="col-medium center hidden-xs">Create Date</th>
+								<th class="col-medium center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat=" item in list.data">
+								
+								<!-- <td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td> -->
+								<td>{{item.heading}}</td>
+								<td class="hidden-xs col-medium center">{{item.order}}</td>
+								<td class="hidden-xs col-medium center">
+									<label>
+										<input class="tc tc-switch tc-switch-6 readonly" type="checkbox" ng-model="item.is_active" />
+										<span class="labels"></span>
+									</label>
+								</td>
+								<td class="hidden-xs col-small center">{{item.createDate | date: 'MMM dd, yyyy'}}</td>
+								<td class="col-medium center">
+									<div class="btn-group btn-group-xs ">
+										<a href="/admin/slider/edit/{{item._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+										<!-- <a href="" class="btn btn-info"><i class="fa fa-arrow-up"></i></a>
+										<a href="" class="btn btn-info"><i class="fa fa-arrow-down"></i></i></a> -->
+									</div>	
+								</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+				</div>
+			</div>					 
+		</div>
+	</div>
+</div>
+
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>

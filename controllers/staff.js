@@ -6,14 +6,15 @@ var Staff = require('../models/staff');
 var Token = require('../models/token');
 var crypto = require('crypto');
 var async = require("async");
-
+ var constant = require('../constants.js');
+ var EmailSender = require('../modules/emailModule');
 
 //POST : Create a Staff
 exports.create = function(req,res){
 	var newStaff = new Staff(req.body);
 
-	console.log(newStaff);
-	Staff.findOne({username : newStaff.username}, function(err, user){
+	
+	Staff.find({'username' : newStaff.username, 'email' : newStaff.email}, function(err, user){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -21,15 +22,24 @@ exports.create = function(req,res){
 				data: null
 			});
 		}
-		else {
-			if(user){
+		if(user.length != 0){
+			if(user[0].username){
 				res.json({
-					status: 'fail',
-					messages:"User already exists",
+					status: 'exist',
+					messages:"Username already exists",
 					data: null
 				});
-			}else {
-				newStaff.password = '123456'  //Defalut password
+			}
+			else {
+				res.json({
+					status: 'exist',
+					messages: 'Email already exists',
+					data:null
+				});
+			}
+		}
+
+		else {
 				newStaff.password = SHA256(newStaff.password); //Encrypt
 				newStaff.save(function(err,result){
 					if(err){
@@ -48,15 +58,14 @@ exports.create = function(req,res){
 					}
 				});
 			}
-		}
-	});
+		});
 }
 
 //POST : Login
 exports.logout = function (req,res){
 
 	if(sessionStorage.token){
-		console.log(sessionStorage.token);
+		//console.log(sessionStorage.token);
 	}else{
 
 		res.redirect('/admin/login');
@@ -257,51 +266,45 @@ exports.getStaffbyId = function(req,res){
 	});
 }
 
-//PUT: 
+//POST: 
 exports.edit = function(req,res){
 	var id = req.params.id;
-	//var staff = new Staff(req.body);
-	console.log(req.body);
-	async.series([
-
-		function(next){
-			if (req.body.cover != null)
-	    		req.body.cover =  req.body.cover._id;
-
-	    	next();
-	    	
-	    },
-
-	], function(){
-		Staff.update({_id:id}, req.body, function(err, result){
+	Staff.update({_id:id}, req.body, function(err, result){
 			if(err){
 				res.json({
 					status: 'fail',
-					messages: err,
+					messages: "fail",
 					data: null
 				});
-			}
-			else {
-				if(result == 1){
-					res.json({
-						status: 'ok',
-						messages: 'successed',
-						data: result[0]
-					});	
-				}else{
-					res.json({
-						status: 'fail',
-						messages: "multipulte result",
-						data: null
-					});
-				}
+			}else{
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
 			}
 		});
+}
 
-	});
-
-
-
+exports.updatePassword = function(req,res){
+	var id = req.params.id;
+	var pwd = crypto.createHash('sha256').update(req.body.password).digest("hex");
+	req.body.password = pwd
+	Staff.update({_id:id}, req.body, function(err, result){
+			if(err){
+				res.json({
+					status: 'fail',
+					messages: "fail",
+					data: null
+				});
+			}else{
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}
+		});
 }
 
 //DELETE : Set staff isDelete be true
@@ -366,7 +369,7 @@ exports.getStaffAccount = function(req,res){
 
 
 
-			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}, function(err, users){
+			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}).populate('cover').exec(function(err, users){
 
 
 					if(err) {
@@ -377,7 +380,7 @@ exports.getStaffAccount = function(req,res){
 						});
 					}
 
-					if(result.length == 1){
+					if(users.length == 1){
 
 
 
@@ -385,11 +388,19 @@ exports.getStaffAccount = function(req,res){
 							status: 'ok',
 							messages: 'successed',
 							data: {
+								_id : users[0]._id,
 								username: users[0].username,
 								workphone: users[0].workphone,
 								cellphone: users[0].cellphone,
 								firstname: users[0].firstname,
-								lastname: users[0].lastname
+								lastname: users[0].lastname,
+								position: users[0].position,
+								lastname: users[0].lastname,
+								regions: users[0].regions,
+								email: users[0].email,
+								createDate: users[0].createDate,
+								cover: users[0].cover
+								
 
 							}
 						});	
@@ -406,8 +417,132 @@ exports.getStaffAccount = function(req,res){
 		}
 
 	});
-	
+
 }
+
+exports.changePassword = function(req,res){
+
+	Token.find({type:'Staff', _id: req.headers.api_token, isActived:true } ,function(err, result){
+
+		if(result.length > 1){
+			res.json({
+				status: 'fail',
+				messages: 'multipulte result',
+				data: null
+			});
+		}else if(result.length == 0){
+			res.json({
+				status: 'fail',
+				messages: 'no record found',
+				data: null
+			});
+		}else{
+
+			tokenRecord = result[0];
+			var pwd = crypto.createHash('sha256').update(req.body.info.currentPassword).digest("hex"); 
+			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user), password: pwd }, function(err, users){
+				if(err) {
+					console.log(err);
+					res.json({
+						status: 'fail',
+						messages: err,
+						data: null
+					});
+				}else{
+					if(users.length == 1){
+						var updateUser = users[0];
+
+						updateUser.password = SHA256(req.body.info.newPassword);
+
+						Staff.update({_id:updateUser._id}, updateUser, function(err, result){
+							if(err){
+								res.json({
+									status: 'fail',
+									messages: "fail",
+									data: null
+								});
+							}else{
+								res.json({
+									status: 'ok',
+									messages: 'successed',
+									data: result[0]
+								});	
+							}
+						});
+
+					}else{
+						res.json({
+							status: 'fail',
+							messages: "multipulte result",
+							data: null
+						});
+					}
+
+				}
+
+				
+			});
+
+		}
+
+	});
+}
+
+exports.sendNotificationForResetPassword = function(req,res){
+	var staff = req.body.staff;
+	staff.password =req.body.password;
+	var send_list =[];
+	if(staff) {
+		send_list.push(staff.email);
+	}
+	for (var key in constant.ResetPasswordTemplateVars) {
+		constant.ResetPasswordTemplateVars[key] = staff[key];
+	};
+	constant.ResetPasswordTemplateVars['type'] = 'Staff';
+
+	EmailSender.getEmailTemplate('resetpassword.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
+
+		var to = send_list;
+		var subject = "Reset password";
+		var context = context;
+		EmailSender.sendEmail(to,subject,context,null, function(message){		
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
+exports.sendEmailForRegister = function(req,res){
+	var staff = req.body.staff;
+	staff.password =req.body.password;
+	var send_list =[];
+	if(staff) {
+		send_list.push(staff.email);
+	}
+	for (var key in constant.EmailStaffTempaleVars) {
+		constant.EmailStaffTempaleVars[key] = staff[key];
+	};
+	constant.EmailStaffTempaleVars['password'] = staff.password;
+	EmailSender.getEmailTemplate('registerSuccessForStaff.html',function(data){
+		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStaffTempaleVars);
+
+		var to = send_list;
+		var subject = "Register success";
+		var context = context;
+		EmailSender.sendEmail(to,subject,context,null, function(message){		
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
+}
+
+
+
 
 
 

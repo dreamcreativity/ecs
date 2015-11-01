@@ -2,10 +2,13 @@ var fs = require("fs");
 var pdf = require('html-pdf');
 var dateFormat = require('dateformat');
 var async = require("async");
+var PDFDocument = require('pdfkit');
+var path = require('path');
+var mime = require('mime');
 
 exports.generatePDF = function (layout,filename, callback) {
 	var message ="";
-	var path = "./" + filename + ".pdf";
+	var path = "./temp/" + filename + ".pdf";
 
 	var options = {
 		"format": "Letter",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid 
@@ -25,6 +28,40 @@ exports.generatePDF = function (layout,filename, callback) {
 		callback(message,path);
 	});
 }
+
+
+exports.downloadPDF01 = function(req,res){
+	 var file1 = "./temp/register_01.pdf";
+	 var file2 = "./temp/register_02.pdf";
+	  res.setHeader('Content-disposition', 'attachment; filename=' + "register_01");
+	  res.setHeader('Content-type', 'application/pdf');
+
+	  var filestream = fs.createReadStream(file1);
+	  fs.exists(file1, function(exists){
+	  	if(exists) fs.unlinkSync(file1)
+	  })
+	  fs.exists(file2, function(exists){
+	  	if(exists) fs.unlinkSync(file2)
+	  })
+	  filestream.pipe(res);
+}
+
+exports.downloadPDF02 = function(req,res){
+	 var file1 = "./temp/register_01.pdf";
+	 var file2 = "./temp/register_02.pdf";
+	  res.setHeader('Content-disposition', 'attachment; filename=' + "register_02");
+	  res.setHeader('Content-type', 'application/pdf');
+
+	  var filestream = fs.createReadStream(file2);
+	  fs.exists(file1, function(exists){
+	  	if(exists) fs.unlinkSync(file1)
+	  })
+	  fs.exists(file2, function(exists){
+	  	if(exists) fs.unlinkSync(file2)
+	  })
+	  filestream.pipe(res);
+}
+
 
 
 exports.getPdfTemplate = function(templateName, callback){
@@ -58,6 +95,7 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 	var studentTemplate = templates[1];
 	var courseTemplate = templates[2];
 	var accommodationTempate = templates[3];
+	var formTitleTemplate = templates[4];
 
 	//replace value in main template
 	for (var key in studentinfo) {
@@ -75,6 +113,14 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 			if(studentinfo[key]) studentTemplate = studentTemplate.replace("@" + key + "@", "Home Country");
 	 		else studentTemplate = studentTemplate.replace("@" + key + "@", "Canada");
 		}
+		else if(key == "type" || key == "studentID"){
+			formTitleTemplate = formTitleTemplate.replace("@" + key + "@", studentinfo[key]);
+		}
+		else if(key == "agent"){
+			var replaceValue = (studentinfo[key] != null) ? studentinfo[key].firstname + " " + studentinfo[key].lastname : 'N/A'
+			formTitleTemplate = formTitleTemplate.replace("@" + key + "@", replaceValue);
+		}
+
 		else {
 			var replaceValue = studentinfo[key]
 			if(typeof studentinfo[key] == "undefined") replaceValue ='';
@@ -83,6 +129,7 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 	}
 
 	result = result.replace("@studentTemplate@", studentTemplate);
+	result = result.replace("@formTitleTemplate@", formTitleTemplate);
 
 	//replace value in course template
 	if(listofcourse){

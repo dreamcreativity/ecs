@@ -1,5 +1,6 @@
     <!-- Document Wrapper
     ============================================= -->
+
     <div id="wrapper" class="clearfix">
 
         <div id="home" class="page-section" style="position:absolute;top:0;left:0;width:100%;height:200px;z-index:-2;"></div>
@@ -9,19 +10,20 @@
             <div class="swiper-container swiper-parent">
                 <div class="swiper-wrapper">
                     <% for(var i=0; i<sliders.length; i++) {%>
-                    <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].media.path %>')">
+                    <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].resource.path %>')">
                         <div class="curtain">
                         <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center">
+                            <div class="slider-caption slider-caption-center"  postion="<%- sliders[i].position %>">
                                 <h2 style="color:<%=  sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>"><%- sliders[i].heading %></h2>
                                 <p style="color:<%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>" data-caption-delay="200"><%- sliders[i].sub_heading %></p>
+                                <!-- <div style="display:none" class="caption-postion"><%- sliders[i].position %></div> -->
                             </div>
                         </div>
 
-                        <% if(sliders[i].media.type == 'Video') {%>
+                        <% if(sliders[i].resource.type == 'Video') {%>
                         <div class="video-wrap" >
-                            <video id="video" poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay  muted>
-                                <source src='<%- sliders[i].media.path %>'  />
+                            <video id="video" type="video" poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay  muted>
+                                <source src='<%- sliders[i].resource.path %>'  />
                               
                             </video>
                             <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
@@ -33,7 +35,7 @@
                     <% } %>
                     
 
-                    <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/2000x1200_home_slide_001.jpg')">
+                    <!-- <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/2000x1200_home_slide_001.jpg')">
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
@@ -55,7 +57,7 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <!-- <div class="swiper-slide dark">
                     	<div class="curtain">
@@ -74,7 +76,7 @@
                         </div>
                         </div>
                     </div> -->
-                    <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/students.jpg')">
+                    <!-- <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/students.jpg')">
                     	<div class="curtain">
                         <div class="container clearfix">
                             <div class="slider-caption slider-caption-center">
@@ -83,7 +85,7 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
                 <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
@@ -92,12 +94,6 @@
 
             <script>
                 jQuery(document).ready(function($){
-
-                    var video = document.getElementById('video');
-                    video.addEventListener('click',function(){
-                      video.play();
-                    },false);
-
                   
 
                     var swiperSlider = new Swiper('.swiper-parent',{
@@ -184,19 +180,17 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo">
-                        <a href="/" class="standard-logo" data-dark-logo="images/esc_logo.png"><img src="images/esc_logo.png" alt="ESC Logo"></a>
-                        <a href="/" class="retina-logo" data-dark-logo="images/esc_logo.png"><img src="images/esc_logo.png" alt="ESC Logo"></a>
-                    </div><!-- #logo end -->
+                        <a href="/" class="standard-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/esc-logo.svg" alt="ESC Logo"></a>
+                        <a href="/" class="retina-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/esc-logo.svg" alt="ESC Logo"></a>
+                    </div>
+                    <!-- #logo end -->
 
                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
-
                         <ul class="one-page-menu">
                             <li><a href="#" data-href="#home"><div>Home</div></a></li>
                             <li><a href="#" data-href="#section-about"><div>About</div></a></li>
-                            <li><a href="#" data-href="#section-activity"><div>Activity</div></a></li>
-                            <li><a href="#" data-href="#section-team"><div>Team</div></a></li>
                             <li>
                                 <a href="#" data-href="#section-programs"><div>Programs</div></a>
                                 <ul class="width300">
@@ -206,20 +200,36 @@
                                     <% } %>
                                 </ul>
                             </li>
-                            <li><a href="#" data-href="#section-testimonials"><div>Testimonials</div></a></li>
-                            <li><a href="/Calculator" ><div>Calculator</div></a></li>
+                            <li><a href="#" data-href="#section-activity"><div>Activity</div></a></li>
+                            <li><a href="#" data-href="#section-team"><div>Team</div></a></li>
+                            
+                            <li>
+                                <a href="#" data-href="#section-tools"><div>Tools</div></a>
+                                <ul class="width200">
+                                    <li><a href="/Calculator" ><div>Calculator</div></a></li>
+                                    <li><a href="/events" ><div>Events Calendar</div></a></li>
+                                    <li><a href="/calendar" ><div>Course Calendar</div></a></li>
+                                    <li><a href="/register"><div>Register</div></a></li>
+                                </ul>
+                            </li>
                             <li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>
+                            <li>
+                                <a href="#" ><div>Resources</div></a>
+                                <ul class="width200">
+                                    <li><a href="/Calculator" ><div>Terms & Conditions</div></a></li>
+                                </ul>
+                            </li>
                         </ul>
 
                         <!-- Top Search
                         ============================================= -->
-                        <div id="top-search">
+                        <!-- <div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                             <form action="search.html" method="get">
                                 <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
                             </form>
-                        </div><!-- #top-search end -->
-
+                        </div>
+                        -->
                     </nav><!-- #primary-menu end -->
 
                 </div>
@@ -243,6 +253,9 @@
                             <span>One of the most Biggest Lanague School in Toronto Canada</span>
                         </div>
 
+
+
+
                         <div class="col_one_third nobottommargin">
                             <div class="feature-box media-box">
                                 <div class="fbox-media">
@@ -250,7 +263,7 @@
                                 </div>
                                 <div class="fbox-desc">
                                     <h3>Why choose Us.<span class="subtitle">Because we are Experience & Reliable.</span></h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+                                    <p class="program-home-des">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +275,7 @@
                                 </div>
                                 <div class="fbox-desc">
                                     <h3>Our Goal.<span class="subtitle">Aenean tincidunt lectus eu massa.</span></h3>
-                                    <p>Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
+                                    <p class="program-home-des">Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +287,7 @@
                                 </div>
                                 <div class="fbox-desc">
                                     <h3>What we Do.<span class="subtitle">Provide high quality education service.</span></h3>
-                                    <p>Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+                                    <p class="program-home-des">Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
                                 </div>
                             </div>
                         </div>
@@ -283,33 +296,11 @@
 
                     </div>
 
-                    <div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('images/clients/backgrounds/11.jpg');" data-stellar-background-ratio="0.3">
+                    <div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('images/clients/backgrounds/13.jpg');" data-stellar-background-ratio="0.3">
 
                         <div class="container clearfix">
 
-                            <!-- <div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
-                                <div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>K+</div>
-                                <h5>Lines of Codes</h5>
-                            </div>
-
-                            <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
-                                <div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
-                                <h5>KBs of HTML Files</h5>
-                            </div>
-
-                            <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-                                <div class="counter counter-lined"><span data-from="10" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
-                                <h5>No. of Templates</h5>
-                            </div>
-
-                            <div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
-                                <i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
-                                <div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
-                                <h5>Hours of Coding</h5>
-                            </div> -->
+                          
 
                             <div style="height:300px;">&nbsp;</div>
 
@@ -319,6 +310,40 @@
 
                 </section>
 
+                <section id="section-programs" class="page-section topmargin-lg">
+
+                    <div class="heading-block center bottommargin-lg">
+                        <h2>ESC Programs</h2>
+                        <span>List of our main programs.</span>
+                    </div>
+
+
+
+                    <div class="container clearfix">
+                        <% for(var i=0; i < courses.length; i++){ %>
+                        <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
+                                <div class="fbox-photo">
+                                    <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.thumbnail %>" alt="<%- courses[i].title %>"/></a>
+                                </div>
+                                <h3><%- courses[i].title %></h3>
+                                <p class="program-home-des"><%- courses[i].description %></p>
+                            </div>
+                        </div>
+                        <% } %>
+
+
+                    </div>
+
+                    <div class="divider divider-short divider-center topmargin-lg"><i class="icon-star3"></i></div>
+
+                </section>
+
+
+
+
+                
+
                 <section id="section-activity" class="page-section topmargin-lg">
 
                     <div class="heading-block center">
@@ -327,357 +352,35 @@
                     </div>
 
                     <div class="container clearfix center">
-
-                        <!-- Portfolio Items
-                        ============================================= -->
                         <div id="portfolio" class="portfolio-nomargin clearfix">
-
                             <% for(i in activities){ %>
                             <article class="portfolio-item pf-media pf-icons">
                                 <div class="portfolio-image">
-                                    <a href="/activity/<%- activities[i]._id %>">
-                                        <img src="<%- activities[i].cover.path %>" alt="Open Imagination">
+                                    <a href="/activity/detail/<%- activities[i]._id %>">
+                                        <img src="<%- activities[i].cover.thumbnail %>" alt="Open Imagination">
                                     </a>
                                     <!-- <div class="portfolio-overlay">
                                         <a href="images/clients/activity/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
                                         <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                                     </div> -->
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)"><%- activities[i].title %></a></h3>
-                                    <span><a href="javascript:void(0)"><%- activities[i].subtitle %></a></span>
+                                    
+                                    <a href="/activity/detail/<%- activities[i]._id %>" class="portfolio-desc">
+                                        <h3><%- activities[i].title %></h3>
+                                        <span><%- activities[i].subtitle %></span>
+                                    </a>
                                 </div>
                             </article>
                             <% } %>
-
-
-                           <!--  <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/1.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
-
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/2.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/3.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/3.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
-
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/4.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/4.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
-
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/5.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/5.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
-
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/6.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/6.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
-
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="images/clients/activity/7.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/clients/activity/7.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="javascript:void(0)">Title</a></h3>
-                                    <span><a href="javascript:void(0)">subtitle</a></span>
-                                </div>
-                            </article>
- -->
-
-
-
-
-                            <!-- 
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html">
-                                        <img src="http://c1038.r38.cf3.rackcdn.com/group4/building39306/media/urcg_student_center.jpg" alt="Open Imagination">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single.html">Open Imagination</a></h3>
-                                    <span><a href="#">Media</a>, <a href="#">Icons</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-illustrations">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html">
-                                        <img src="images/portfolio/4/2.jpg" alt="Locked Steel Gate">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/portfolio/full/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single.html">Locked Steel Gate</a></h3>
-                                    <span><a href="#">Illustrations</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-graphics pf-uielements">
-                                <div class="portfolio-image">
-                                    <a href="#">
-                                        <img src="images/portfolio/4/3.jpg" alt="Mac Sunglasses">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="http://vimeo.com/89396394" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                                        <a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single-video.html">Mac Sunglasses</a></h3>
-                                    <span><a href="#">Graphics</a>, <a href="#">UI Elements</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-icons pf-illustrations">
-                                <div class="portfolio-image">
-                                    <a href="#">
-                                        <img src="images/portfolio/4/4.jpg" alt="Mac Sunglasses">
-                                    </a>
-                                    <div class="portfolio-overlay" data-lightbox="gallery">
-                                        <a href="images/portfolio/full/4.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                        <a href="images/portfolio/full/4-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single-gallery.html">Morning Dew</a></h3>
-                                    <span><a href="#"><a href="#">Icons</a>, <a href="#">Illustrations</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-uielements pf-media">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html">
-                                        <img src="images/portfolio/4/5.jpg" alt="Console Activity">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/portfolio/full/5.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single.html">Console Activity</a></h3>
-                                    <span><a href="#">UI Elements</a>, <a href="#">Media</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-graphics pf-illustrations">
-                                <div class="portfolio-image">
-                                    <a href="#">
-                                        <img src="images/portfolio/4/6.jpg" alt="Mac Sunglasses">
-                                    </a>
-                                    <div class="portfolio-overlay" data-lightbox="gallery">
-                                        <a href="images/portfolio/full/6.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                        <a href="images/portfolio/full/6-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="images/portfolio/full/6-2.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="images/portfolio/full/6-3.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single-gallery.html">Shake It!</a></h3>
-                                    <span><a href="#">Illustrations</a>, <a href="#">Graphics</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-uielements pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single-video.html">
-                                        <img src="images/portfolio/4/7.jpg" alt="Backpack Contents">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="http://www.youtube.com/watch?v=kuceVNBTJio" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                                        <a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single-video.html">Backpack Contents</a></h3>
-                                    <span><a href="#">UI Elements</a>, <a href="#">Icons</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-graphics">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html">
-                                        <img src="images/portfolio/4/8.jpg" alt="Sunset Bulb Glow">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/portfolio/full/8.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single.html">Sunset Bulb Glow</a></h3>
-                                    <span><a href="#">Graphics</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-illustrations pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="#">
-                                        <img src="images/portfolio/4/9.jpg" alt="Mac Sunglasses">
-                                    </a>
-                                    <div class="portfolio-overlay" data-lightbox="gallery">
-                                        <a href="images/portfolio/full/9.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                        <a href="images/portfolio/full/9-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="images/portfolio/full/9-2.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single.html">Bridge Side</a></h3>
-                                    <span><a href="#">Illustrations</a>, <a href="#">Icons</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-graphics pf-media pf-uielements">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single-video.html">
-                                        <img src="images/portfolio/4/10.jpg" alt="Study Table">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="http://vimeo.com/91973305" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                                        <a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single-video.html">Study Table</a></h3>
-                                    <span><a href="#">Graphics</a>, <a href="#">Media</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-media pf-icons">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html">
-                                        <img src="images/portfolio/4/11.jpg" alt="Workspace Stuff">
-                                    </a>
-                                    <div class="portfolio-overlay">
-                                        <a href="images/portfolio/full/11.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                        <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single.html">Workspace Stuff</a></h3>
-                                    <span><a href="#">Media</a>, <a href="#">Icons</a></span>
-                                </div>
-                            </article>
-
-                            <article class="portfolio-item pf-illustrations pf-graphics">
-                                <div class="portfolio-image">
-                                    <a href="#">
-                                        <img src="images/portfolio/4/12.jpg" alt="Mac Sunglasses">
-                                    </a>
-                                    <div class="portfolio-overlay" data-lightbox="gallery">
-                                        <a href="images/portfolio/full/12.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                        <a href="images/portfolio/full/12-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                        <a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                    <h3><a href="portfolio-single-gallery.html">Fixed Aperture</a></h3>
-                                    <span><a href="#">Illustrations</a>, <a href="#">Graphics</a></span>
-                                </div>
-                            </article>
-
-                        </div> -->
-                        <!-- #portfolio end -->
-
+                        </div>
                     </div>
 
                 </section>
+
+                 <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+                        <div class="heading-block dark center nobottomborder nobottommargin">
+                            <h2>The key to learning how to speak English.</h2>
+                        </div>
+                    </div>
 
                 <section id="section-team" class="page-section topmargin-lg">
 
@@ -697,7 +400,7 @@
 
                             <div class="team team-list clearfix">
                                 <div class="team-image">
-                                    <img src="<%- staffs[i].cover.path %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
+                                    <img src="<%- staffs[i].cover.thumbnail %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
                                 </div>
                                 <div class="team-desc">
                                     <div class="team-title"><h4><%- staffs[i].firstname + ' ' + staffs[i].lastname %></h4><span><%- staffs[i].position %></span></div>
@@ -719,318 +422,134 @@
 
                         </div>
                         <% }} %>
-
-                        
-                        <!-- <div class="col-md-6 bottommargin">
-
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/staff/KarenColour.jpg" alt="Karen Osorio">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Karen Osorio</h4><span>Counselor - Latin America</span></div>
-                                    <div class="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
-                                    <a href="#" class="social-icon si-rounded si-small si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-linkedin">
-                                        <i class="icon-linkedin"></i>
-                                        <i class="icon-linkedin"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div> -->
-
-                        <!-- <div class="clear"></div>
-
-                        <div class="fancy-title title-border title-center topmargin-sm">
-                            <h4>Skills we are Perfect in</h4>
-                        </div>
-
-                        <div class="col_one_fourth nobottommargin center">
-                            <div class="rounded-skill" data-color="#D01C1C" data-size="150" data-percent="90" data-width="2" data-animate="3000">
-                                <div class="counter counter-inherit"><span data-from="1" data-to="90" data-refresh-interval="50" data-speed="3000"></span>%</div>
-                            </div>
-                            <h5>HTML5</h5>
-                        </div>
-
-                        <div class="col_one_fourth nobottommargin center">
-                            <div class="rounded-skill" data-color="#1770A4" data-size="150" data-percent="75" data-width="2" data-animate="3000">
-                                <div class="counter counter-inherit"><span data-from="1" data-to="75" data-refresh-interval="50" data-speed="3000"></span>%</div>
-                            </div>
-                            <h5>CSS3</h5>
-                        </div>
-
-                        <div class="col_one_fourth nobottommargin center">
-                            <div class="rounded-skill" data-color="#6A89AA" data-size="150" data-percent="85" data-width="2" data-animate="3000">
-                                <div class="counter counter-inherit"><span data-from="1" data-to="85" data-refresh-interval="50" data-speed="3000"></span>%</div>
-                            </div>
-                            <h5>PHP</h5>
-                        </div>
-
-                        <div class="col_one_fourth nobottommargin center col_last">
-                            <div class="rounded-skill" data-color="#248673" data-size="150" data-percent="80" data-width="2" data-animate="3000">
-                                <div class="counter counter-inherit"><span data-from="1" data-to="80" data-refresh-interval="50" data-speed="3000"></span>%</div>
-                            </div>
-                            <h5>jQuery</h5>
-                        </div> -->
-
+                    
                     </div>
 
-                    <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
-                        <div class="heading-block dark center nobottomborder nobottommargin">
-                            <h2>The key to learning how to speak English.</h2>
-                        </div>
-                    </div>
+                   
 
                 </section>
 
-                <section id="section-programs" class="page-section topmargin-lg">
+                
+                <div id="section-tools" class="container clearfix">
 
-                    <div class="heading-block center bottommargin-lg">
-                        <h2>ECS Programs</h2>
-                        <span>List of our main programs.</span>
+                    <div class="row topmargin-lg bottommargin-sm">
+
+                        <div class="heading-block center">
+                            <h2>Feature Tools</h2>
+                            <span class="divcenter">Philanthropy convener livelihoods, initiative end hunger gender rights local. John Lennon storytelling; advocate, altruism impact catalyst.</span>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 bottommargin">
+
+                            <!-- <div class="feature-box fbox-right topmargin fadeIn animated" data-animate="fadeIn">
+                                <div class="fbox-icon">
+                                    <a href="#"><i class="icon-line-heart"></i></a>
+                                </div>
+                                <h3>Boxed &amp; Wide Layouts</h3>
+                                <p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+                            </div>
+ -->
+                            <div class="feature-box fbox-effect fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
+                                <div class="fbox-icon">
+                                    <a href="/register"><i class="icon-plus"></i></a>
+                                </div>
+                                <h3>Self-Registration</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                            <div class="feature-box fbox-effect  fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
+                                <div class="fbox-icon">
+                                    <a href="/events"><i class="icon-dribbble"></i></a>
+                                </div>
+                                <h3>Event Calendar</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 hidden-sm bottommargin center">
+                            <img src="images/services/iphone7.png" alt="iphone 2">
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 bottommargin">
+
+                            <!-- <div class="feature-box topmargin fadeIn animated" data-animate="fadeIn">
+                                <div class="fbox-icon">
+                                    <a href="#"><i class="icon-line-power"></i></a>
+                                </div>
+                                <h3>HTML5 Video</h3>
+                                <p>Canvas provides support for Native HTML5 Videos that can be added to a Background.</p>
+                            </div> -->
+
+                            <div class="feature-box fbox-effect  topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
+                                <div class="fbox-icon">
+                                    <a href="/calendar"><i class="icon-calendar3 i-alt"></i></a>
+                                </div>
+
+                              
+                                <h3>Course Calendar</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                            <div class="feature-box fbox-effect  topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
+                                <div class="fbox-icon">
+                                    <a href="/Calculator"><i class="icon-dollar"></i></a>
+                                </div>
+                                <h3>Course Calculator</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- <section id="section-tools" class="page-section topmargin-lg">
+
+                    <div class="heading-block center">
+                        <h2>Tools</h2>
+                        <span>Some of the Awesome Monment we've worked on.</span>
                     </div>
 
                     <div class="container clearfix">
-                        <% for(var i=0; i < courses.length; i++){ %>
-                        <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
-                                <div class="fbox-photo">
-                                    <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.path %>" alt="<%- courses[i].title %>"/></a>
-                                </div>
-                                <h3><%- courses[i].title %></h3>
-                                <p><%- courses[i].description %></p>
-                            </div>
-                        </div>
-                        <% } %>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/British-Columbia-landlords-rent-to-students-BC.jpg" alt="iBT-TOEFL Preparation"/></a>
-                                </div>
-                                <h3>iBT-TOEFL Preparation</h3>
-                                <p>Duis quis rutrum urna. Nam dolor lorem, pulvinar non convallis nec, posuere vel ligula. </p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="200">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/college_student_online.jpg" alt="Focus on Writing"/></a>
-                                </div>
-                                <h3>Focus on Writing</h3>
-                                <p>Pellentesque scelerisque massa vitae tincidunt ultricies. Aliquam id mi vel leo consectetur molestie et sit amet diam.</p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third col_last">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="400">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/CS_academics.jpg" alt="English for Academic Purposes (UCTP)"/></a>
-                                </div>
-                                <h3>English for Academic Purposes (UCTP)</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit.</p>
-                            </div>
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="600">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/stressed-student-004.jpg" alt="Intensive General English Program"/></a>
-                                </div>
-                                <h3>Intensive General English Program</h3>
-                                <p>Ut in tempor leo, ut sollicitudin orci. Integer dignissim cursus auctor.</p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="800">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/students2_alamy_2352148b.jpg" alt="ESL for Health Care"/></a>
-                                </div>
-                                <h3>ESL for Health Care</h3>
-                                <p>Sed vitae magna et mi porttitor ornare. Donec sit amet metus quis ante laoreet interdum. </p>
-                            </div>
-                        </div>
-
-                        <div class="col_one_third col_last">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1000">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/zoom-41710588-1.jpg" alt="IELTS"/></a>
-                                </div>
-                                <h3>IELTS</h3>
-                                <p>Complete control on each &amp; every element that provides endless customization possibilities.</p>
-                            </div>
-                        </div>
-
-                        <div class="clear"></div>
 
                         <div class="col_one_third nobottommargin">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1200">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/zoom-28398566-3.jpg" alt="Focus on Speaking Program (FOS)"/></a>
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <img src="images/services/1.jpg" alt="Why choose Us?">
                                 </div>
-                                <h3>Focus on Speaking Program (FOS)</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
+                                <div class="fbox-desc">
+                                    <h3>Why choose Us.<span class="subtitle">Because we are Reliable.</span></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col_one_third nobottommargin">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1400">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/zoom-29924072-3.jpg" alt="Summer Teen Program"/></a>
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <img src="images/services/2.jpg" alt="Why choose Us?">
                                 </div>
-                                <h3>Summer Teen Program</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
+                                <div class="fbox-desc">
+                                    <h3>Our Mission.<span class="subtitle">To Redefine your Brand.</span></h3>
+                                    <p>Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col_one_third nobottommargin col_last">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="1600">
-                                <div class="fbox-photo">
-                                    <a href="#"><img src="images/clients/school/SH1.jpg" alt="Winter Teen Program"/></a>
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <img src="images/services/3.jpg" alt="Why choose Us?">
                                 </div>
-                                <h3>Winter Teen Program</h3>
-                                <p>Duis elit enim, viverra eu dui nec, fringilla venenatis velit. Fusce eu arcu leo. Sed elementum porta auctor. </p>
+                                <div class="fbox-desc">
+                                    <h3>What we Do.<span class="subtitle">Make our Customers Happy.</span></h3>
+                                    <p>Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="clear"></div>
-
-                    </div>
-
-                    <div class="divider divider-short divider-center topmargin-lg"><i class="icon-star3"></i></div>
-
-                </section>
-<!-- 
-                <section id="section-pricing" class="page-section topmargin-lg">
-
-                    <div class="heading-block center">
-                        <h2>Pricing</h2>
-                        <span>We offer Flexible Pricing Options.</span>
-                    </div>
-
-                    <div class="container clearfix">
-
-                        <div class="pricing bottommargin clearfix">
-
-                            <div class="col-md-3" data-animate="fadeInLeft">
-
-                                <div class="pricing-box">
-                                    <div class="pricing-title">
-                                        <h3>Starter</h3>
-                                    </div>
-                                    <div class="pricing-price">
-                                        <span class="price-unit">&euro;</span>7<span class="price-tenure">/mo</span>
-                                    </div>
-                                    <div class="pricing-features">
-                                        <ul>
-                                            <li><strong>Full</strong> Access</li>
-                                            <li><i class="icon-code"></i> Source Files</li>
-                                            <li><strong>100</strong> User Accounts</li>
-                                            <li><strong>1 Year</strong> License</li>
-                                            <li>Phone &amp; Email Support</li>
-                                        </ul>
-                                    </div>
-                                    <div class="pricing-action">
-                                        <a href="#" class="btn btn-danger btn-block btn-lg">Sign Up</a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3" data-animate="fadeInDown"  data-delay="250">
-
-                                <div class="pricing-box best-price">
-                                    <div class="pricing-title">
-                                        <h3>Professional</h3>
-                                        <span>Most Popular</span>
-                                    </div>
-                                    <div class="pricing-price">
-                                        <span class="price-unit">&euro;</span>12<span class="price-tenure">/mo</span>
-                                    </div>
-                                    <div class="pricing-features">
-                                        <ul>
-                                            <li><strong>Full</strong> Access</li>
-                                            <li><i class="icon-code"></i> Source Files</li>
-                                            <li><strong>1000</strong> User Accounts</li>
-                                            <li><strong>2 Years</strong> License</li>
-                                            <li><i class="icon-star3"></i>
-                                            <i class="icon-star3"></i>
-                                            <i class="icon-star3"></i>
-                                            <i class="icon-star3"></i>
-                                            <i class="icon-star3"></i></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pricing-action">
-                                        <a href="#" class="btn btn-danger btn-block btn-lg bgcolor border-color">Sign Up</a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3" data-animate="fadeInUp" data-delay="500">
-
-                                <div class="pricing-box">
-                                    <div class="pricing-title">
-                                        <h3>Business</h3>
-                                    </div>
-                                    <div class="pricing-price">
-                                        <span class="price-unit">&euro;</span>19<span class="price-tenure">/mo</span>
-                                    </div>
-                                    <div class="pricing-features">
-                                        <ul>
-                                            <li><strong>Full</strong> Access</li>
-                                            <li><i class="icon-code"></i> Source Files</li>
-                                            <li><strong>500</strong> User Accounts</li>
-                                            <li><strong>3 Years</strong> License</li>
-                                            <li>Phone &amp; Email Support</li>
-                                        </ul>
-                                    </div>
-                                    <div class="pricing-action">
-                                        <a href="#" class="btn btn-danger btn-block btn-lg">Sign Up</a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3" data-animate="fadeInRight" data-delay="250">
-
-                                <div class="pricing-box">
-                                    <div class="pricing-title">
-                                        <h3>Enterprise</h3>
-                                    </div>
-                                    <div class="pricing-price">
-                                        <span class="price-unit">&euro;</span>29<span class="price-tenure">/mo</span>
-                                    </div>
-                                    <div class="pricing-features">
-                                        <ul>
-                                            <li><strong>Full</strong> Access</li>
-                                            <li><i class="icon-code"></i> Source Files</li>
-                                            <li><strong>1000</strong> User Accounts</li>
-                                            <li><strong>5 Years</strong> License</li>
-                                            <li>Phone &amp; Email Support</li>
-                                        </ul>
-                                    </div>
-                                    <div class="pricing-action">
-                                        <a href="#" class="btn btn-danger btn-block btn-lg">Sign Up</a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
                     </div>
 
                 </section> -->
@@ -1041,7 +560,7 @@
 
                         
                         
-                        <div class="col_half nobottommargin col_first">
+                        <div class="">
 
                             <div class="heading-block center">
                                 <h4>What Students say?</h4>
@@ -1109,35 +628,35 @@
 
                             <div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-                            <form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+                            <form class="nobottommargin" ng-controller='SendEmailController' id="template-contactform" name="template-contactform">
 
                                 <div class="form-process"></div>
 
                                 <div class="col_one_third">
                                     <label for="template-contactform-name">Name <small>*</small></label>
-                                    <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
+                                    <input type="text" id="template-contactform-name" name="name" ng-model='messageForm.name' class="sm-form-control required"/>
                                 </div>
 
                                 <div class="col_one_third">
                                     <label for="template-contactform-email">Email <small>*</small></label>
-                                    <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
+                                    <input type="email" id="template-contactform-email" name="email" ng-model='messageForm.email' class="required email sm-form-control"/>
                                 </div>
 
                                 <div class="col_one_third col_last">
                                     <label for="template-contactform-phone">Phone</label>
-                                    <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+                                    <input type="text" id="template-contactform-phone" name="phone" ng-model='messageForm.phone' class="sm-form-control"/>
                                 </div>
 
                                 <div class="clear"></div>
 
                                 <div class="col_two_third">
                                     <label for="template-contactform-subject">Subject <small>*</small></label>
-                                    <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />
+                                    <input type="text" id="template-contactform-subject" name="subject" ng-model='messageForm.subject' class="required sm-form-control"/>
                                 </div>
 
                                 <div class="col_one_third col_last">
                                     <label for="template-contactform-service">Services</label>
-                                    <select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+                                    <select id="template-contactform-service" name="service" ng-model='messageForm.service' class="sm-form-control">
                                         <option value="">-- Select One --</option>
                                         <option value="Programs">Programs</option>
                                         <option value="Policies">Policies</option>
@@ -1150,15 +669,24 @@
 
                                 <div class="col_full">
                                     <label for="template-contactform-message">Message <small>*</small></label>
-                                    <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+                                    <textarea class="required sm-form-control" id="template-contactform-message" name="message" ng-model='messageForm.message' rows="6" cols="30"></textarea>
                                 </div>
 
                                 <div class="col_full hidden">
-                                    <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+                                    <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control"/>
+                                </div>
+
+                                <div class="alert alert-warning hidden" id="email-sending-warning1">
+                                    <div class="counter counter-inherit"> Sending email <strong><span data-from="1" data-to="9" data-refresh-interval="150" data-speed="3000"></span></strong> seconds.</div>
+                                </div>
+
+                                <div class="alert alert-warning hidden" id="email-sending-warning2">
+                                    <div class="counter counter-inherit"> Email successfully be sended</div>
                                 </div>
 
                                 <div class="col_full">
-                                    <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+                                    <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="submit" value="submit">Send Message</button>
+                                    <button id='sendingEmail' class="hidden" ng-click="sendEmail()"></button>
                                 </div>
 
                             </form>
@@ -1167,16 +695,18 @@
 
                                 $("#template-contactform").validate({
                                     submitHandler: function(form) {
-                                        $('.form-process').fadeIn();
-                                        $(form).ajaxSubmit({
-                                            target: '#contact-form-result',
-                                            success: function() {
-                                                $('.form-process').fadeOut();
-                                                $('#template-contactform').find('.sm-form-control').val('');
-                                                $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
-                                                SEMICOLON.widget.notifications($('#contact-form-result'));
-                                            }
-                                        });
+                                       // $('.form-process').fadeIn();
+                                        $('#sendingEmail').click();
+                                       // $('.form-process').fadeOut();
+                                        // $(form).ajaxSubmit({
+                                        //     target: '#contact-form-result',
+                                        //     success: function() {
+                                        //         $('.form-process').fadeOut();
+                                        //         $('#template-contactform').find('.sm-form-control').val('');
+                                        //         $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
+                                        //         SEMICOLON.widget.notifications($('#contact-form-result'));
+                                        //     }
+                                        // });
                                     }
                                 });
 
@@ -1347,123 +877,7 @@
 
                         </div>
 
-                        <!-- <div class="col_one_third col_last">
-
-                            <div class="widget clearfix">
-                                <h4>Recent Posts</h4>
-
-                                <div id="post-list-footer">
-                                    <div class="spost clearfix">
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10th July 2014</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="spost clearfix">
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10th July 2014</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="spost clearfix">
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10th July 2014</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col_one_third col_last">
-
-                        <div class="widget clearfix" style="margin-bottom: -20px;">
-
-                            <div class="row">
-
-                                <div class="col-md-6 bottommargin-sm">
-                                    <div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-                                    <h5 class="nobottommargin">Total Downloads</h5>
-                                </div>
-
-                                <div class="col-md-6 bottommargin-sm">
-                                    <div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
-                                    <h5 class="nobottommargin">Clients</h5>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="widget subscribe-widget clearfix">
-                            <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
-                            <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
-                            <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
-                                <div class="input-group divcenter">
-                                    <span class="input-group-addon"><i class="icon-email2"></i></span>
-                                    <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success" type="submit">Subscribe</button>
-                                    </span>
-                                </div>
-                            </form>
-                            <script type="text/javascript">
-                                $("#widget-subscribe-form").validate({
-                                    submitHandler: function(form) {
-                                        $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                        $(form).ajaxSubmit({
-                                            target: '#widget-subscribe-form-result',
-                                            success: function() {
-                                                $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                $('#widget-subscribe-form').find('.form-control').val('');
-                                                $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                SEMICOLON.widget.notifications($('#widget-subscribe-form-result'));
-                                            }
-                                        });
-                                    }
-                                });
-                            </script>
-                        </div>
-
-                        <div class="widget clearfix" style="margin-bottom: -20px;">
-
-                            <div class="row">
-
-                                <div class="col-md-6 clearfix bottommargin-sm">
-                                    <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-                                </div>
-                                <div class="col-md-6 clearfix">
-                                    <a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-                                        <i class="icon-rss"></i>
-                                        <i class="icon-rss"></i>
-                                    </a>
-                                    <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-                                </div>
-
-                            </div>
-
-                        </div> -->
+                        
 
                     </div>
 

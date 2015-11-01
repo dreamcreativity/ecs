@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-var Pormotion = require('../models/promotion');
+var Promotion = require('../models/promotion');
 
 //GET: all Pormotions
 exports.getAllPormotions = function (req,res){
-	Pormotion.find({},function(err,results){
+	Promotion.find({},function(err,results){
 		if(err){
 			res.json(
 			{
@@ -50,12 +50,14 @@ exports.edit = function (req,res) {
 	Promotion.update({_id:id}, promotion, function(err, result){
 		if(err){
 			res.json({
-				type: false,
+				status: 'fail',
+				messages: err,
 				data: 'Error occured: ' + err}
 				);
 		}
 		res.json({
-			type:true,
+			status: 'ok',
+			messages: 'successed',
 			data: result
 		});
 	});
@@ -65,7 +67,7 @@ exports.edit = function (req,res) {
 //GET: promotion by Id
 exports.getPromotionbyId = function(req,res){
 	var id = req.params.id;
-	Material.find({_id:id}, function(err, result){
+	Promotion.find({_id:id}, function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -89,3 +91,26 @@ exports.getPromotionbyId = function(req,res){
 		
 	});
 }
+
+
+//GET: promotion by Id
+exports.getPromotionbyRegion = function(req,res){
+	var region = req.params.region;
+	Promotion.find({region:region}, function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: "successed",
+				data: result[0]
+			});
+		}
+		
+	});
+}
+

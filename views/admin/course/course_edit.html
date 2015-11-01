@@ -7,7 +7,12 @@
 		<div class="row">
 			<div class="col-lg-12">									
 				<div class="portlet">
-					<div id="f-3" class="panel-collapse collapse in">
+					<div class="portlet-heading dark">
+						<div class="portlet-title">
+							<h4>Edit Course</h4>
+						</div>
+						<div class="clearfix"></div>
+					</div>
 						<div class="portlet-body">
 							<form name="editingForm" class="form-horizontal" role="form" ng-submit="update(editingForm.$valid)" novalidate>
 
@@ -52,6 +57,16 @@
 										</select>
 									</div>
 								</div>
+								
+								<!-- <div class="form-group">
+									<label class="col-sm-3 control-label">Category</label>
+									<div class="col-sm-6">
+										<select class="form-control" name="category" ng-model="course.category" required>
+											<option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+										</select>
+										<p ng-show="createForm.category.$invalid && !createForm.category.$pristine" class="help-block text-danger">Category is required</p>	
+									</div>
+								</div> -->
 
 								<div class="form-group" ng-if="course.type=='Fixed Period'">
 									<label class="col-sm-3 control-label">Start Point</label>
@@ -65,7 +80,7 @@
 									<label class="col-sm-3 control-label">Durations</label>
 									<div class="col-sm-6">
 										<div style="margin-bottom:15px;">
-											<button type="button" data-toggle="modal" data-target="#addNewDuration" class="btn btn-primary">New Duration</button>
+											<button type="button" ng-click="createDuration()" class="btn btn-primary">New Duration</button>
 										</div>
 										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
 											<li data-toggle="modal" ng-repeat="duration in course.durations | orderBy:'order' " class="list-group-item">
@@ -90,6 +105,13 @@
 									</div>
 								</div>
 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Page Content</label>
+									<div class="col-sm-6">
+										<textarea  style="height:50px;" ng-model="course.content"  id="page-content" class="form-control"></textarea>
+
+									</div>
+								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Cover Image</label>
@@ -118,7 +140,7 @@
 									<div class="col-sm-6" >
 										
 										<div style="margin-bottom:15px;">
-											<button type="button" data-toggle="modal" data-target="#addNewLink" class="btn btn-primary">Add New Link</button>
+											<button type="button" ng-click="createLink()" class="btn btn-primary">Add New Link</button>
 										</div>
 										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
 											<li data-toggle="modal" ng-repeat="link in course.links | orderBy:'order' " class="list-group-item">
@@ -151,23 +173,23 @@
 
 
 								<div class="form-actions">
-							<div class="form-group">
-								<div class="col-sm-offset-3 col-sm-6">
+									<div class="form-group">
+										<div class="col-sm-offset-3 col-sm-6">
 
-									<a target="_blank" href="/course/{{course._id}}" class="btn btn-primary" >Preview</a>
+											<a target="_blank" href="/course/{{course._id}}" class="btn btn-primary" >Preview</a>
 
-									<button type="submit" ng-disabled="editingForm.$invalid" class="btn btn-primary">Update</button>
+											<button type="submit" ng-disabled="editingForm.$invalid" class="btn btn-primary">Update</button>
 
-									<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editingForm.$invalid"> -->
-									<a href="/admin/course/all" type="submit" class="btn">Cancel</a>
+											<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editingForm.$invalid"> -->
+											<a href="/admin/course/all" type="submit" class="btn">Cancel</a>
+										</div>
+									</div>
+									<div class="form-group">
+										<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
+										{{returnMessage}}
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
-								{{returnMessage}}
-								</div>
-							</div>
-						</div>
 							</form>
 						</div>
 					</div>
@@ -180,53 +202,46 @@
 
 	<!-- Modal -->
 
-	<div class="modal fade" id="addNewLink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Create new link</h4>
-	      </div>
-	      <div class="modal-body">
 
+	<script type="text/ng-template" id="NewLinkModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Create New Link<</h4>
+        </div>
+        <div class="modal-body">
 	      	<div class="form-horizontal">
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">Title</label>
 		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control" ng-model="newCourseLink.title" >
+		      			<input type="text"  class="form-control" ng-model="link.title" >
 		      		</div>
 		      	</div>
 
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">href</label>
 		      		<div class="col-sm-10">
-		      			<input type="text"  class="form-control" ng-model="newCourseLink.href">
+		      			<input type="text"  class="form-control" ng-model="link.href">
 		      		</div>
 		      	</div>
 
 	      	</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 
 
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary" ng-disabled="" ng-click="createLink()">Create Link</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 
 
-	<div class="modal fade" id="addNewDuration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Create new duration</h4>
-	      </div>
-	      <div class="modal-body">
-
-	      	<div class="form-horizontal">
+	<script type="text/ng-template" id="addNewDurationModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Create New Duration</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
 		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">Title</label>
 		      		<div class="col-sm-10">
@@ -248,15 +263,13 @@
 
 	      	</div>
 
+        </div>
+        <div class="modal-footer">
 
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary" ng-disabled="newDuration.title.$invalid ||  newDuration.price.$invalid" ng-click="createDuration()">Create Duration</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+            <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 
 	<script type="text/ng-template" id="editDurationModalContent.html">
         <div class="modal-header">
@@ -328,6 +341,15 @@
 
 
 </div>			
+
+
+
+
+<style type="text/css">
+	textarea, .wysihtml5-sandbox{
+		height: 200px!important;
+	}
+</style>
 
 
 

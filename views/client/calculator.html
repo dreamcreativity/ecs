@@ -1,139 +1,155 @@
+
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1>Program Course Calculator</h1>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            
+           
+        </ol>
+    </div>
+
+</section>
+
 <section ng-controller="CalculatorCtrl">
 	<div class="content-wrap">
 		 <section id="section-about" class="page-section">
 		 	<div class="container clearfix">
-		 		<h2>Program Course Calculator</h2>
+            	<div class="row">
+                	<div class="col-md-12">
+                    	
+    				</div>
+                    <div class="col-md-8 calculator-edit-seacsion" >
+                        
+                        <!-- add course -->
+                        <h4>Add Course</h4>
+    
+    
+                        <div class="course-seaction"  ng-repeat="c in courseList">
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div> <label>Courses</label> </div>
+                                    <div class="styling-dropdown">
+                                        {{c.title}}
+                                        <div class="right-arrow"><i class="icon-download2"></i></div>
+    
+                                        <div class="select-list hidden">
+                                            <div class="list-item" ng-repeat="course in courses" ng-click="changeCourse(c,course)">{{course.title}}</div>
+                                        </div>	
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <div class="row">
+    
+                                <div class="col-md-8">
+                                    <div class=""><label>Start Date</label></div>
+    
+                                    <div class="col-md-8 nopadding">
+                                        <div class="styling-dropdown col-md-8">
+                                            {{ c.startDate | date:'MMMM d' }}
+                                            <div class="right-arrow"><i class="icon-download2"></i></div>
+    
+                                            <div class="select-list hidden">
+                                                <div ng-click="changeStartDate(c,sd)" class="list-item" ng-repeat="sd in c.startDates" >{{ sd | date:'MMMM d' }}</div>
+                                            </div>	
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-4 nopadding">
+            
+                                        <div class="styling-dropdown  col-md-4">
+                                            2015
+                                            <div class="right-arrow"><i class="icon-download2"></i></div>
+                                            <div class="select-list hidden">
+                                                <div class="list-item" ng-repeat="y in availableYears" ng-click="changeStartYear(c,y)" >{{ y }}</div>
+                                            </div>	
+                                        </div>
+                                    </div>
+    
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <div class=""><label>Duration</label></div>
+                                    <div class="styling-dropdown">
+                                        {{c.selectDuration.title}}
+                                        <div class="right-arrow"><i class="icon-download2"></i></div>
+    
+                                        <div class="select-list hidden">
+                                            <div ng-click="changeDuration(c.selectDuration, duration)" class="list-item" ng-repeat="duration in c.durations" >{{duration.title}}</div>
+                                        </div>	
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+    
+    
+    
+                        </div>
+    
+                        <div class="col-md-8 nopadding">
+                            <div class="styling-dropdown">
+                                Add Course
+                                <div class="right-arrow"><i class="icon-download2"></i></div>
+    
+                                <div class="select-list hidden">
+                                    <div class="list-item" ng-repeat="course in courses" ng-click="addCourse(course)">
+                                        {{course.title}}
+                                    </div>
+                                </div>	
+                            </div>
+                        </div>
+    
+    
+    
+    
+                        <!-- <div class="col-md-12 nopadding">
+                            <button ng-click="show()">show</button>
+                        </div> -->
+                    </div>
+    
+                    <div class="col-md-4">
+                        <h4><label>Currency</label></h4>
+                        <div class="styling-dropdown">
+                            {{selectedCurrency.description}}
+                            <div class="right-arrow"><i class="icon-download2"></i></div>
+    
+                            <div class="select-list hidden">
+                                <div  class="list-item" ng-click="changeCurrency(currency)" ng-repeat="currency in currencyList">{{currency.description}}</div>
+                        
+                            </div>	
+                        </div>
+    
+    
+                        <div class="selected-course-display-seaction" ng-repeat="course in displayCourses">
+                            <div class="title" >{{course.title}}</div>
+    
+                            <div class="date" >Start Date: {{course.startDate | date:'MMMM d , yyyy' }}</div>
+                            <div class="date" >End Date: {{course.endDate | date:'MMMM d , yyyy' }}</div>
+                            <div class="date" >Durations: {{course.duration.week }}</div>
+    
+                            <div class="row price">
+                                <div class="col-sm-6">Price:</div>
+                                <div class="col-sm-6 text-right">{{course.duration.price  | currency:"$":2}}</div>
+                            </div>
+                        </div>
+    
+                        <div class="selected-course-total-seaction"  ng-if="displayCourses.length > 0">
+                            <div class="row">
+                                <div class="col-sm-6">Total*</div>
+                                <div class="col-sm-6  text-right">{{calculatedTotal | currency:"USD $":2}}</div>
+                            </div>
+                        </div>
+    
+                         
+                    </div>
 
-		 		<div class="col-md-7 nopadding calculator-edit-seacsion" >
-		 			
-		 			<!-- add course -->
-		 			<h2>Add Course</h2>
-
-
-		 			<div class="course-seaction"  ng-repeat="c in courseList">
-
-		 				<div class="row">
-		 					<div class="col-md-12">
-				 				<div> <label>Courses</label> </div>
-			 					<div class="styling-dropdown">
-			 						{{c.title}}
-			 						<div class="right-arrow"><i class="icon-download2"></i></div>
-
-			 						<div class="select-list hidden">
-						 				<div class="list-item" ng-repeat="course in courses" ng-click="changeCourse(c,course)">{{course.title}}</div>
-						 			</div>	
-			 					</div>
-		 					</div>
-
-		 				</div>
-
-		 				<div class="row">
-
-			 				<div class="col-md-8">
-				 				<div class=""><label>Start Date</label></div>
-
-				 				<div class="col-md-8 nopadding">
-				 					<div class="styling-dropdown col-md-8">
-				 						{{ c.startDate | date:'MMMM d' }}
-				 						<div class="right-arrow"><i class="icon-download2"></i></div>
-
-				 						<div class="select-list hidden">
-							 				<div ng-click="changeStartDate(c,sd)" class="list-item" ng-repeat="sd in c.startDates" >{{ sd | date:'MMMM d' }}</div>
-							 			</div>	
-				 					</div>
-				 				</div>
-
-				 				<div class="col-md-4">
-		
-				 					<div class="styling-dropdown  col-md-4">
-				 						2015
-				 						<div class="right-arrow"><i class="icon-download2"></i></div>
-				 						<div class="select-list hidden">
-							 				<div class="list-item" ng-repeat="y in availableYears" ng-click="changeStartYear(c,y)" >{{ y }}</div>
-							 			</div>	
-				 					</div>
-				 				</div>
-
-			 				</div>
-
-
-			 				<div class="col-md-4">
-				 				<div class=""><label>Duration</label></div>
-			 					<div class="styling-dropdown">
-			 						{{c.selectDuration.title}}
-			 						<div class="right-arrow"><i class="icon-download2"></i></div>
-
-			 						<div class="select-list hidden">
-						 				<div ng-click="changeDuration(c.selectDuration, duration)" class="list-item" ng-repeat="duration in c.durations" >{{duration.title}}</div>
-						 			</div>	
-			 					</div>
-			 				</div>
-
-		 				</div>
-
-
-
-
-		 			</div>
-
-		 			<div class="col-md-8 nopadding">
-			 			<div class="styling-dropdown">
-	 						Add Course
-	 						<div class="right-arrow"><i class="icon-download2"></i></div>
-
-				 			<div class="select-list hidden">
-				 				<div class="list-item" ng-repeat="course in courses" ng-click="addCourse(course)">
-				 					{{course.title}}
-				 				</div>
-				 			</div>	
-	 					</div>
-		 			</div>
-
-
-
-
-		 			<!-- <div class="col-md-12 nopadding">
-		 				<button ng-click="show()">show</button>
-		 			</div> -->
-		 		</div>
-
-		 		<div class="col-md-5  nopadding">
-		 			<div class=""><label>Currency</label></div>
-		 			<div class="styling-dropdown">
- 						{{selectedCurrency.description}}
- 						<div class="right-arrow"><i class="icon-download2"></i></div>
-
- 						<div class="select-list hidden">
-			 				<div  class="list-item" ng-click="changeCurrency(currency)" ng-repeat="currency in currencyList">{{currency.description}}</div>
-			 		
-			 			</div>	
- 					</div>
-
-
- 					<div class="selected-course-display-seaction" ng-repeat="course in displayCourses">
- 						<div class="title" >{{course.title}}</div>
-
- 						<div class="date" >Start Date: {{course.startDate | date:'MMMM d , yyyy' }}</div>
- 						<div class="date" >End Date: {{course.endDate | date:'MMMM d , yyyy' }}</div>
- 						<div class="date" >Durations: {{course.duration.week }}</div>
-
- 						<div class="row price">
- 							<div class="col-sm-6">Price:</div>
- 							<div class="col-sm-6 text-right">{{course.duration.price  | currency:"$":2}}</div>
- 						</div>
- 					</div>
-
- 					<div class="selected-course-total-seaction"  ng-if="displayCourses.length > 0">
- 						<div class="row">
- 							<div class="col-sm-6">Total*</div>
- 							<div class="col-sm-6  text-right">{{calculatedTotal | currency:"USD $":2}}</div>
- 						</div>
- 					</div>
-
-		 			 
-		 		</div>
-
-
+				</div>
 
 		 	</div>
 		 </div>

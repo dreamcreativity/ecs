@@ -1,0 +1,127 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<div ng-controller='CommissionController'>
+	<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4><strong>Name</strong> : {{student.firstname}} {{student.lastname}} <strong>Student ID</strong> : {{student.studentID}} </h4>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Commission on {{registration.createDate | date:'MMMM d yyyy'}}</h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#basic" href="#basic"><i class="fa fa-chevron-down"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="basic" class="panel-collapse collapse in">
+			<div class="portlet-body no-padding" ng-repeat="p in registration.programRegistration">
+			  <div class="portlet">
+						<div class="portlet-heading ">
+							<div class="portlet-title">
+								<h4><strong>{{p.title}}</strong></h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Course start Date :</strong></div>
+												<div class="col-lg-2" >{{p.startDate | date:'MMMM d'}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Level :</strong></div>
+												<div class="col-lg-2" >{{p.level}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Duration :</strong></div>
+												<div class="col-lg-2" >{{p.coursePeriod}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Price :</strong></div>
+												<div class="col-lg-2" >
+												<label class="label label-danger">
+													{{p.price | currency}}
+												</label>
+												</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Commission rate:</strong></div>
+												<div class="col-lg-2" >
+													<label class="label label-info">
+														{{p.commissionRate | percentage:2}}
+													</label>
+												</div>
+											</div>
+											<div class="space-4"></div>
+											<hr>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Commission: </strong></div>
+												<div class="col-lg-2" >
+													<label class="label label-success">
+														{{p.price * p.commissionRate | currency }}
+													</label>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Balance -->
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Total Commission</h4>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="basic" class="panel-collapse collapse in">
+			<div class="portlet-body no-padding">
+				<div class="row">													
+					<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+						<div class="portlet no-border">
+							<div class="portlet-body">
+								<div class="row">
+								<div class="col-lg-2 right"><strong>Commission : </strong></div>
+									<div class="col-lg-2" >
+										<label class="label label-success">
+											{{total | currency}}
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<a href="/agent/student/detail/{{registration.student}}" class="btn btn-default">Back</a>
+		</div>
+	</div>
+
+</div>

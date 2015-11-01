@@ -1,22 +1,19 @@
 'use strict';
 angular.module('AgentApp')
 
-.controller('AgentDetail', function AgentDetail($scope, $http, Agents,$window){
+.controller('AgentDetail', function AgentDetail($scope, $http, Agents,AgentTokens,$window){
 	loading();
 
 	function loading() {
 		var token = sessionStorage.token;
 
-		$http.post('/api/agent/token',{token:token})
-			.success(function(data,status,headers,config){
+		AgentTokens.post({token:token},function(data){
 				if(data.status == "successed"){
 					$scope.agent = data.data;
 				}
 				else {
 					console.log("error");
 				}
-			})
-			.error(function(data,status){
 			});
 	}
 
@@ -38,21 +35,63 @@ angular.module('AgentApp')
 		var val = $("#oldpassword").val();
 		var token = sessionStorage.token;
 		$scope.resetObj.token = token;
-		// $http.post('/api/agent/resetpassword', $scope.resetObj)
-		// .success(function(data){
-		// 	if(data.status === "ok"){
-		// 		$scope.returnMessage = "success to reset password";
-	 // 		    $("#messageReturn").delay(2000).fadeOut('slow');
-	 // 		    setInterval(function(){
-  // 					 $window.location='/agent/login';
-		// 		}, 2000);
-		// 	}
-		// })
+		$http.post('/api/agent/resetpasswordInProfile', $scope.resetObj)
+		.success(function(data){
+			if(data.status === "ok"){
+	 		    ShowGritterCenter('System Notification','Password has successfully been reset, Please login again');
+				delete sessionStorage.token;
+	 		    setInterval(function(){
+  					 $window.location='/agent/login';
+				}, 2000);
+			}
+			else {
+				$scope.returnMessage = 'old password is incorrect';
+				$("#messageReturn").delay(2000).fadeOut('slow');
+			}
+		})
 	}	
 })
 
 .controller('Dashboard', function ($scope, Students){
 
+})
+
+.directive('passwordVerify', function(){
+	return {
+		require : "ngModel",
+		scope : {
+			passwordVerify: '='
+		},
+		link: function(scope,element,attrs,ctrl){
+			scope.$watch(function(){
+				var combined;
+				if(scope.passwordVerify || ctrl.$viewValue) {   //$viewValue is the value of element in controller
+					combined = scope.passwordVerify + "_" + ctrl.$viewValue;
+				}
+				return combined;
+			},function(value){
+
+				if (value) {
+				/**
+			     * This function is added to the list of the $parsers.
+			     * It will be executed the DOM (the view value) change.
+			     * Array.unshift() put it in the beginning of the list, so
+			     * it will be executed before all the other
+			     */
+			     ctrl.$parsers.unshift(function(viewValue) {
+			     	var origin = scope.passwordVerify;
+			     	if (origin !== viewValue) {
+			     		ctrl.$setValidity("passwordVerify", false);
+			     		return undefined;
+			     	} else {
+			     		ctrl.$setValidity("passwordVerify", true);
+			     		return viewValue;
+			     	}
+			     });
+			 }
+			});
+		}
+	}
 });
 
 

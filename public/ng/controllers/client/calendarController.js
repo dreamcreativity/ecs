@@ -9,9 +9,7 @@ angular.module('ClientApp')
 	
 	var insertStartDate = function(startDateList, course, eventDataList){
 
-		// if(course.title == 'English for Health Care')
-		// 	console.log(startDateList);
-
+	
 		for( var i in startDateList){
 			var eventDate = new Date(startDateList[i]);
 			var dateString = numberFormat(eventDate.getMonth()+1) + '-' + numberFormat(eventDate.getDate()) + '-' + eventDate.getFullYear();

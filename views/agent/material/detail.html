@@ -3,7 +3,7 @@
 <div class="portlet"  ng-controller='MaterialDetail'>
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
-			<h4>Edit Material</h4>
+			<h4>{{material.name}}</h4>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -14,31 +14,32 @@
 			<div class="tab-content">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Name:</label>
-					<div class="col-sm-7">
+					<div class="col-sm-2">
 						<div class="clearfix">
-							<input type="text" name="heading" ng-model="material.name" class="form-control">
+							<input type="text" name="heading" ng-model="material.name" class="form-control" readonly="">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label" for="password">Description:</label>
-					<div class="col-sm-7">
+					<div class="col-sm-2">
 						<div class="clearfix">
-							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control">
+							<input type="text" name="sub_heading"  ng-model="material.description"  class="form-control" readonly="">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label" for="password2">Region:</label>
-					<div class="col-sm-3">
-						<div class="clearfix">{{region.name}}
+					<div class="col-sm-2">
+						<div class="clearfix">
+							<input type="text" name="sub_heading"  ng-model="material.region.name"  class="form-control" readonly="">
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-3 control-label" for="password2">Created:</label>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<label class="label label-default label-xlg">{{material.created | date:'MMMM d, yyyy' : 'UTC'}}</label>
 					</div>
 				</div>
@@ -53,7 +54,7 @@
 				<hr class="separator" />
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Media:</label>
-					<div class="col-sm-9">
+					<div class="col-sm-2">
 						<div class="media-display-seaction">
 							<div ng-click="changeMeida()" ng-if="material.media == null" class="cover-empty"><label>Clic to change</label></div>
 
@@ -81,9 +82,11 @@
 
 				<div class="form-group">
 					<div class="col-sm-3"></div>	
-					<div class="col-sm-3">											
-						<a type="button" class="btn btn-info" target="_blank" href="{{material.media.path}}" >View</a>
-						<button type="button" class="btn btn-default" onclick='location="/agent/material"'>Cancel</button>
+					<div class="col-sm-1">											
+						<a type="button" class="btn btn-info btn-block" target="_blank" href="{{material.media.path}}" >View</a>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" class="btn btn-default btn-block" onclick='location="/agent/materials/all"'>Cancel</button>
 					</div>
 				</div>
 		

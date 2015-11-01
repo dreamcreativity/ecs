@@ -1,78 +1,42 @@
 <style type="text/css">
-	.activity-banner{
-		position: relative;
-		height: 300px;
-		overflow: hidden;
-		margin-bottom: 20px;
-	}
-
-	.activity-banner .title{
-		position: absolute;
-		top: 200px; left: 10%;
-		z-index: 2;
-	}
-
-	.activity-banner .banner-img{
-		position: absolute;
-		top: 0; left: 0;
-	}
-
-	.activity-banner .banner-list{
-		position: absolute;
-		top: 200px; right: 100px;
-		list-style: none;
-
-	}
-	.activity-banner .banner-list li{
-		list-style: none;
-		float: left;
-		margin-right: 10px;
-	}
-	.activity-banner .banner-list li img{
-		height: 50px;
-	}
 </style>
 <section >
 	<div class="content-wrap">
-		<section>
-			<div class="activity-banner">
-
-				<h2 class="title"><%- activity.title %></h2>
-
-
-				<img class="banner-img" src="<%- activity.cover.path %>">
-
-				<ul class="banner-list">
-					<% for(var j=0; j < activityList.length; j++) { %>
-					<li> <a href="/activity/<%- activityList[j]._id %>"><img src="<%- activityList[j].cover.thumbnail %>"></a></li>
-					<% } %>
-				</ul>
-			</div>
-			
-			
-		</section>
-
-
 		 <section id="section-course" class="page-section " style="clear:both">
-		 	<div class="container clearfix">
-
-		 		
-
-		 		<!-- <div class="row hidden-sm hidden-xs">
-			 		<div class='col-xs-12 '>
-			 			<img  src="<%- activity.cover.path %>">
-			 		</div>
-		 		</div> -->
-
+		 	<div class="heading-block center">
+                <h2>Our Student Activity</h2>
+                <span>Some of the Awesome Monment we've worked on.</span>
+            </div>
+		 	<!-- <div class="container clearfix">
 		 		<div class="row">
-				<% for(var i=0; i< activity.album.length; i++) {%>
-					<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-3 activity-img"><img style="width:100%" src="<%- activity.album[i].path %>"></div>
-				<% } %>
-
+		 			<% for(var j=0; j < activitys.length; j++) { %>
+		 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+		 				<a href="/activity/detail/<%- activitys[j]._id %>" style="background-image:url(<%- activitys[j].cover.thumbnail %>)" class="activity-img">
+		 					<div></div>
+		 				</a>
+		 			</div>
+                    <% } %>
 		 		</div>
-
-		 	</div>
-		 </div>
+		 	</div> -->
+		 </div>	
 	</div>
+
+	<div class="container clearfix center">
+        <div id="portfolio" class="portfolio-nomargin clearfix">
+            <% for(i in activitys){ %>
+            <article class="portfolio-item pf-media pf-icons">
+                <div class="portfolio-image">
+                    <a href="/activity/detail/<%- activitys[i]._id %>">
+                        <img src="<%- activitys[i].cover.path %>" alt="Open Imagination">
+                    </a>
+ 
+                    <a href="/activity/detail/<%- activitys[i]._id %>" class="portfolio-desc">
+                        <h3><%- activitys[i].title %></h3>
+                        <span><%- activitys[i].subtitle %></span>
+                    </a>
+                </div>
+            </article>
+            <% } %>
+    </div>
 </div>
 <div style="margin-bottom:100px"></div>

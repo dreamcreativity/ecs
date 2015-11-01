@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('loginApp', ['ngRoute','esc.auth'])
+angular.module('loginApp', ['ngRoute','esc.auth','ngAnimate','angular-loading-bar'])
 
 
 .controller('LoginController',function LoginController($scope,$http,$window,$location){
@@ -10,7 +10,7 @@ angular.module('loginApp', ['ngRoute','esc.auth'])
 	 	$("#messageReturn").fadeIn('slow');
 
 
-		$http.post('/api/staffs/login',$scope.staff)
+		$http.post('/api/staff/login',$scope.staff)
 		.success(function(data,status,headers,config){
 			if(data.status === "ok"){
 				console.log(data.data);
