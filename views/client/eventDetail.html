@@ -1,0 +1,115 @@
+<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+
+<!-- Page Title
+============================================= -->
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1><%- event.title %></h1>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/events">Events</a></li>
+           
+        </ol>
+    </div>
+
+</section>
+
+<section id="school-calendar" >
+	<div class="content-wrap">
+
+		<div class="single-event">
+			<div class="container clearfix">
+
+		        <div class="col_three_fourth">
+		            <div class="entry-image nobottommargin">
+		                <a href="#"><img src="<%- event.cover.path %>" alt="Event Single"></a>
+		                <div class="entry-overlay">
+		                    <span class="hidden-xs">Starts in: </span><div id="event-countdown" class="countdown"></div>
+		                </div>
+		                <script>
+		                    jQuery(document).ready( function($){
+		                        var eventStartDate = new Date();
+		                        eventStartDate = new Date(
+		                        	<%- event.date.getFullYear() %>, 
+		                        	<%- event.date.getMonth() %>, 
+		                        	<%- event.date.getDate() %>,
+		                        	<%- event.date.getHours() %>,
+		                        	<%- event.date.getMinutes()%>
+		                        	);
+		                        $('#event-countdown').countdown({until: eventStartDate});
+		                    });
+		                </script>
+		            </div>
+		        </div>
+		        <div class="col_one_fourth col_last">
+		            <div class="panel panel-default events-meta">
+		                <div class="panel-heading">
+		                    <h3 class="panel-title">Event Info:</h3>
+		                </div>
+		                <div class="panel-body">
+		                    <ul class="iconlist nobottommargin">
+		                        <li><i class="icon-calendar3"></i> <%- startDate %></li>
+		                        <li><i class="icon-time"></i> <%- startTime %></li>
+		                        <li><i class="icon-map-marker2"></i> <%- event.location %></li>
+		                        <!-- <li><i class="icon-euro"></i> <strong>99.99</strong></li> -->
+		                    </ul>
+		                </div>
+		            </div>
+		         
+		        </div>
+
+		        <div class="col_one_fourth col_last">
+                    <h4>Location</h4>
+                    <section id="event-location" class="gmap" style="height: 200px;"></section>
+                    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                    <script type="text/javascript" src="/assets/js/jquery.gmap.js"></script>
+                    <script type="text/javascript">
+                        jQuery('#event-location').gMap({
+                            address: '<%- event.location %>',
+                            maptype: 'ROADMAP',
+                            zoom: 15,
+                            markers: [
+                                {
+                                    address: "<%- event.location %>"
+                                }
+                            ],
+                            doubleclickzoom: false,
+                            controls: {
+                                panControl: true,
+                                zoomControl: true,
+                                mapTypeControl: true,
+                                scaleControl: true,
+                                streetViewControl: false,
+                                overviewMapControl: false
+                            }
+                        });
+                    </script>
+                </div>
+
+
+		        <div class="clear"></div>
+
+		        <div class="col_three_fourth">
+
+		            <h3>Details</h3>
+
+		            <p><%- event.description %></p>
+		          
+		        </div>
+
+
+		        
+                <div class="clear"></div>
+
+			</div>
+		</div>
+       
+		 <!-- <section id="section-course" class="page-section">
+		 	<div class="container clearfix">
+                
+               	<div style="height:300px;background-image:url(<%- event.cover.path %>)"></div>
+		 	</div>
+		 </div> -->
+	</div>
+</div>

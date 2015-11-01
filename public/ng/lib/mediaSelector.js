@@ -31,7 +31,7 @@ mediaSelector.controller('ModalMediaInstanceCtrl', function ($scope, $modalInsta
 	}
 
 	$scope.$watch('selectedDate', function(newValue, oldValue) {
-	  	console.log($scope.selectedDate );
+	  	
 	  	if(newValue != oldValue){
 	  		$scope.dateFilter.setDate(today.getDate() - $scope.selectedDate );	
 	  		console.log($scope.dateFilter);

@@ -1,33 +1,40 @@
+
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1><%- course.title %></h1>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#events">Courses</a></li>
+           
+        </ol>
+    </div>
+
+</section>
+
 <section >
+	<div class='program-banner hidden-sm hidden-xs' style="background-image:url(<%- course.banner.path %>)">
+    </div>
+    
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
 
-		 		<h2><%- course.title %></h2>
-
-		 		<div class="row hidden-sm hidden-xs">
-			 		<div class='col-xs-12 banner'>
-			 			<img  src="<%- course.banner.path %>">
-			 		</div>
-		 		</div>
-
+		 		
 		 		<div class="row">
-			 		<div class='col-xs-12'>
-			 			<div class='col-md-6 float-seaction'>
-			 				<div>
-			 					<ul>
-			 						<% for( var x = 0; x < course.links.length; x++){ %>
-			 						<li><a target="_blank" href="<%- course.links[x].href %>"><%- course.links[x].title %></a></li>
-			 						<% } %>
-			 					</ul>
-			 				</div>
-				 			<img src="<%- course.cover.path %>">
-				 		</div>
-				 		<p class='desc'><%- course.description %></p>
-			 			
+                    <div class='col-md-8'>
+                    	<div class='desc'><%- course.content %></div>
+                    </div>
+					<div class='col-md-4'>
+                        <img src="<%- course.cover.path %>">
+                    	<div class="desc">
+                            <ul style="padding-top:30px;list-style:none">
+                                <% for( var x = 0; x < course.links.length; x++){ %>
+                                <li><a target="_blank" href="<%- course.links[x].href %>"><%- course.links[x].title %></a></li>
+                                <% } %>
+                            </ul>
+                        </div>
 			 		</div>
-
-			 		
 		 		</div>
 
 		 	</div>

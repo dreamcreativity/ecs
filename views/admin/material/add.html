@@ -6,36 +6,43 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="portlet-body">
-	<form name="createForm" ng-controller='MaterialController' class="form-horizontal" id="validate-form" ng-submit="create(createForm.$valid)" novalidate>
+	<form name="createForm" ng-controller='MaterialController' class="form-horizontal" id="validate-form" novalidate>
 		<div id="bwizard">
 			
 			<div class="tab-content">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Name:</label>
-					<div class="col-sm-7">
+					<div class="col-sm-5">
 						<div class="clearfix">
+							<div class="input-group">
 							<input type="text" class="form-control" name="materialname" ng-model="material.name"  required>
-						<p ng-show="createForm.name.$invalid && !createForm.name.$pristine" class="help-block text-danger">name is required</p>	
+						<span ng-show="createForm.materialname.$error.required" class="input-group-addon">Required</span>
+						<span ng-show="!createForm.materialname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
 						</div>
+					</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label" for="description">Description:</label>
-					<div class="col-sm-7">
+					<div class="col-sm-5">
 						<div class="clearfix">
 							<input type="text" name="description"  ng-model="material.description"  class="form-control">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label" for="description">Region:</label>
-					<div class="col-sm-3">
+					<label class="col-sm-3 control-label">Region</label>
+				<div class="col-sm-3">
 						<div class="clearfix">
-							<select class="form-control" ng-model='material.region' >
-								<option value="{{region._id}}" ng-repeat="region in regions.data">{{region.name}}</option>
-							</select>
+							<div class="input-group">
+							<select name="region" class="form-control" ng-model="material.region" required>
+									<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
+								</select>
+								<span ng-show="createForm.region.$error.required" class="input-group-addon">Required</span>
+								<span ng-show="!createForm.region.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+							</div>
 						</div>
-					</div>
+				</div>
 				</div>
 				
 				<hr class="separator" />
@@ -44,9 +51,9 @@
 
 				<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-4">
-				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
-		<!-- 		<a href="/admin/agent/all" type="submit" class="btn">Cancel</a> -->
+			<div class="col-sm-offset-4 col-sm-3">
+				<button type="button" class="btn btn-primary" ng-disabled="!createForm.$valid" ng-click="create()">Create</button>
+				<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
 			</div>
 		</div>
 		<div class="form-group">

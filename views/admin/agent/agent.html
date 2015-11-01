@@ -14,6 +14,7 @@
 							<tr>
 								<tr>
 								<th class="hidden-xs">Company</th>
+								<th class="hidden-xs">Username</th>
 								<th class="hidden-xs">Name</th>
 								<th class="hidden-xs">Email</th>
 								<th class="hidden-xs">Work Phone</th>
@@ -26,6 +27,7 @@
 						<tbody>
 							<tr ng-repeat="agent in agents.data | filter:query">
 							<td class="hidden-xs">{{agent.company}}</td>
+							<td class="hidden-xs">{{agent.username}}</td>
 								<td class="hidden-xs"><a href="/admin/agent/detail/{{agent._id}}">{{agent.firstname}} {{agent.lastname}}</a></td>
 								<td class="hidden-xs">{{agent.email}}</td>
 								<td class="hidden-xs">{{agent.workphone}}</td>
@@ -45,17 +47,39 @@
 				</div>
 			</div>					 
 		</div>
-		<button class="btn btn-sm btn-primary"
-					ng-bootbox-title="A new agent"
-					ng-bootbox-custom-dialog
-					ng-bootbox-custom-dialog-template="create">   <!-- Note /admin/agent/create -->
-					Create
-		</button>
-<!-- 		<a href="/admin" class="btn btn-sm btn-primary">Back</a> -->
-		
 	</div>
 
 </div>	 			
+
+<!-- core JavaScript -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/datatables/datatables.init.js"></script>
+<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+	
+	var form = null;
+	$.get( "/admin/staff/create", function( data ) {
+	  form = data
+	});
+
+});
+
+//for tables checkbox demo
+jQuery(function($) {
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox')
+		.each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+		
+	});
+});
+</script>
 
 
 

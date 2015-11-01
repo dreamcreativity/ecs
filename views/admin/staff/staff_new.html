@@ -1,79 +1,133 @@
 
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Create New Staff</h4>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+		<div id="bwizard">
+			<div class="tab-content">
+		<form name="createForm" class="form-horizontal" ng-controller='StaffCtrl' role="form" novalidate>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Role</label>
+				<div class="col-sm-3">
+					<div class="clearfix">
+							<div class="input-group">
+					<select name="role" ng-model="staff.role" class="form-control" required>
+						<option value="Administrator">Administrator</option>
+						<option value="Supervise">Supervise</option>
+						<option value="Staff" selected>Staff</option>
+					</select>
+					<span ng-show="!createForm.role.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.role.$error.required" class="input-group-addon">Required</span>
+					</div>
+				</div>
+				</div>
+			</div>
 
-<form name="createForm" class="form-horizontal" ng-controller='StaffCtrl' role="form" ng-submit="create(createForm.$valid)" novalidate>
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Role</label>
-		<div class="col-sm-9">
-			<select name="role" ng-model="staff.role" class="form-control" required>
-				<option value="Administrator">Administrator</option>
-				<option value="Supervise">Supervise</option>
-				<option value="Staff" selected>Staff</option>
-			</select>
-			<p ng-show="createForm.role.$invalid && !createForm.role.$pristine" class="help-block text-danger">role is required</p>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Regions</label>
+				<div class="col-sm-3">
+					<tags-input ng-model="region_tags" placeholder="Add a Region" add-from-autocomplete-only="true" display-property="name" addFromAutocompleteOnly="true">
+					<auto-complete source="loadCountries($query)"
+					min-length="0"
+					max-results-to-show="32">
+				</auto-complete>
+			</tags-input>
 		</div>
 	</div>
-
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Regions</label>
-		<div class="col-sm-9">
-			<select ng-model="staff.region" >
-				<option ng-selected="value.name==staff.region" value="{{value.name}}" ng-repeat="value in region_tags">{{value.name}}</option>
-			</select>
-		</div>
-	</div>
-<div class="form-group">
 		<label class="col-sm-3 control-label">Position</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="position" ng-model="staff.position" required>
-			<p ng-show="createForm.position.$invalid && !createForm.position.$pristine" class="help-block text-danger">position is required</p>	
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
+					<input type="text" class="form-control" name="position" ng-model="staff.position" required>
+					<span ng-show="!createForm.position.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.position.$error.required" class="input-group-addon">Required</span>	
+				</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Username</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="username" ng-model="staff.username" ng-minlength="4" ng-maxlength="10" required>						
-			<p ng-show="createForm.username.$invalid && !createForm.username.$pristine" class="help-block text-danger">username is required</p>	
-			<p ng-show="createForm.username.$error.minlength || createForm.username.$error.maxlength" class="help-block text-danger">username is should be 4-10 characters</p>										
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
+					<input type="text" class="form-control" name="username" ng-model="staff.username" ng-minlength="4" ng-maxlength="10" required>						
+					<span ng-show="!createForm.username.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.username.$error.required" class="input-group-addon">Required</span>	
+				</div>
+			</div>	
 		</div>
-
 	</div>
 	<div class="form-group">
+		<label class="col-sm-3 control-label">Password</label>
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
+					<input type="password" id="staff_pwd" class="form-control" name="password" ng-model="staff.password" value="{{staff.password}}" required>
+					<span class="input-group-addon btn" ng-click="generate()">Generate</span>
+				</div>
+			</div>
+		</div>
+
+	</div>							
+	<div class="form-group">
 		<label class="col-sm-3 control-label">First Name</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" required>
-			<p ng-show="createForm.firstname.$invalid && !createForm.firstname.$pristine" class="help-block text-danger">first name is required</p>	
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
+					<input type="text" class="form-control" name="firstname" ng-model="staff.firstname" required>
+					<span ng-show="!createForm.firstname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.firstname.$error.required" class="input-group-addon">Required</span>
+				</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Last Name</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
-			<p ng-show="createForm.lastname.$invalid && !createForm.lastname.$pristine" class="help-block text-danger">last name is required</p>	
+		<div class="col-sm-3">
+			<div class="clearfix">
+				<div class="input-group">
+					<input type="text" class="form-control" name="lastname" ng-model="staff.lastname" required>
+					<span ng-show="!createForm.lastname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+					<span ng-show="createForm.lastname.$error.required" class="input-group-addon">Required</span>
+				</div>
+			</div>	
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-3 control-label" ng-model="staff.workphone">Work phone</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="workphone" ng-pattern="ph_numbr" ng-model="staff.workphone" required>
-			<p ng-show="createForm.workphone.$invalid && !createForm.workphone.$pristine" class="help-block text-danger">work phone is required</p>	
-			<p ng-show="createForm.workphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
+		<div class="col-sm-3">
+		<div class="clearfix">
+				<div class="input-group">
+			<input type="number" class="form-control" name="workphone" ng-model="staff.workphone" required>
+			<span ng-show="!createForm.workphone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+			<span ng-show="createForm.workphone.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>
 		</div>
 	</div>
-
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Cell phone</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="cellphone" ng-pattern="ph_numbr" ng-model="staff.cellphone" required>
-			<p ng-show="createForm.cellphone.$invalid && !createForm.cellphone.$pristine" class="help-block text-danger">cellphone is required</p>	
-			<p ng-show="createForm.cellphone.$error.pattern" class="help-block text-danger" >eg. 647-921-1234</p>
+		<div class="col-sm-3">
+		<div class="clearfix">
+				<div class="input-group">
+			<input type="number" class="form-control" name="cellphone" ng-model="staff.cellphone" required>
+			<span ng-show="!createForm.cellphone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+			<span ng-show="createForm.cellphone.$error.required" class="input-group-addon">Required</span>
+			</div>
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-3 control-label" ng-model="staff.email">Email</label>
-		<div class="col-sm-9">
+		<div class="col-sm-3">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 				<input type="email" class="form-control" name="email" ng-model="staff.email" required>
@@ -81,20 +135,16 @@
 			<p ng-show="createForm.email.$invalid && !createForm.email.$pristine" class="help-block text-danger">email is invalid</p>
 		</div>
 	</div>
-
-	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-4">
-				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="createForm.$invalid">
-				<!-- <a href="/admin/staff/all" type="submit" class="btn">Cancel</a> -->
+			<div class="col-sm-offset-3 col-sm-3">
+				<button type="button" class="btn btn-primary" ng-disabled="createForm.$invalid" ng-click="create()">Create</button>
+				<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
 			</div>
 		</div>
-		<div class="form-group">
-			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
-				{{returnMessage}}
-			</div>
-		</div>
-	</div>
-
-
 </form>
+</div>
+</div>
+
+</div>
+</div>
+

@@ -1,40 +1,63 @@
 <script type="text/javascript">
 var url_params = <%- JSON.stringify(url_params) %>
 </script>
-
-<form name="editForm" class="form-horizontal" ng-controller='EventEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Title</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="title" ng-model="event.title" ng-minlength="4" ng-maxlength="100" required>
-			<p ng-show="editForm.title.$invalid && !editForm.title.$pristine" class="help-block text-danger">title is required</p>
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Edit Event</h4>
 		</div>
+		<div class="clearfix"></div>
 	</div>
+	<div class="portlet-body">
+		<form name="editForm" class="form-horizontal" ng-controller='EventEditCtrl' role="form" ng-submit="update(editForm.$valid)" novalidate>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Title</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" name="title" ng-model="event.title" ng-minlength="4" ng-maxlength="100" required>
+					<p ng-show="editForm.title.$invalid && !editForm.title.$pristine" class="help-block text-danger">title is required</p>
+				</div>
+			</div>
 
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Description</label>
-		<div class="col-sm-9">
-			<textarea class="form-control" id="maxL-3" maxlength="225" rows="5x" name="description" ng-model="event.description" placeholder="This textarea has a limit of 225 chars."></textarea>
-		</div>
-	</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Description</label>
+				<div class="col-sm-9">
+					<textarea class="form-control" id="event-desc" rows="5x" name="description" ng-model="event.description" placeholder="This textarea has a limit of 225 chars."></textarea>
+				</div>
+			</div>
 
-	<div class="form-group">
-		<label class="col-sm-3 control-label">Time</label>
-		<div class="col-sm-9">
-			 <input id="datetimepicker" type="text" ng-model="event.date" value="{{event.date}}" required>
-		</div>
-	</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Loaction</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" name="location" ng-model="event.location"  ng-maxlength="100" required>
+					<p ng-show="editForm.location.$invalid && !editForm.location.$pristine" class="help-block text-danger">location is required</p>
+				</div>
+			</div>
 
-	<div class="form-group">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Date & Time</label>
+				<div class="col-sm-4">
+					<div class="input-group date form_datetime">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-time"></i>
+						</span>														
+						<input type="date" ng-model="event.date"  class="form-control">
+						<input type="time" ng-model="event.date"  class="form-control">											
+					</div>
+
+				</div>
+			</div>
+
+
+	<!-- <div class="form-group">
 		<label class="col-sm-3 control-label"></label>
 		<div class="col-sm-2">
 			<select name="region" ng-model="dateAfter" class="form-control" ng-options="range.name for range in dateRanges">
 			</select>
 		</div>
-	</div>
+	</div> -->
 	
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Image:</label>
+		<label class="col-sm-2 control-label">Image:</label>
 		<div class="col-sm-9">
 			<div ng-click="changeCover()" ng-if="event.cover == null" class="cover-empty"><label>Clic to change</label></div>
 
@@ -84,9 +107,9 @@ var url_params = <%- JSON.stringify(url_params) %>
 		</div>
 	</div> -->
 
-	<hr class="separator">
+	
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Active</label>
+		<label class="col-sm-2 control-label">Active</label>
 		<div class="col-sm-3">
 			<div class="tcb">
 				<label>
@@ -99,10 +122,11 @@ var url_params = <%- JSON.stringify(url_params) %>
 
 	<div class="form-actions">
 		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-3">
-				<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editForm.$invalid">
+			<div class="col-sm-offset-2 col-sm-3">
+				<button type="sumit" class="btn btn-primary" ng-disabled="editForm.$invalid" >Save</button>
+				<!-- <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="editForm.$invalid"> -->
+				<a href="/admin/event/all" type="submit" class="btn btn-default">Cancel</a>
 			</div>
-			<a href="/admin/event/all" type="submit" class="btn btn-primary">Cancel</a>
 		</div>
 		<div class="form-group">
 			<div id="messageReturn" class="col-sm-offset-3 col-sm-5 text-success">
@@ -112,16 +136,18 @@ var url_params = <%- JSON.stringify(url_params) %>
 	</div>
 
 	<!-- include the media selector mockup -->
-   	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+	<div ng-include="'/ng/html/MediaSelector.html'"></div>
 
 </form>
+</div>
+</div>
 
-<script type="text/javascript">
-	
-	$(document).ready(function(){
 
-		jQuery('#datetimepicker').datetimepicker();
 
-});
+<style type="text/css">
+	textarea, .wysihtml5-sandbox{
+		height: 250px!important;
+	}
+</style>
 
-</script>
+

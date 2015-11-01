@@ -1,0 +1,57 @@
+
+<div  class="paddingTop20" ng-controller="CommissionHistoryController">
+
+
+
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Commission History </h4>
+			</div>
+			<div class="portlet-widgets">
+				<!-- <a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
+				<span class="divider"></span>
+				<a href="#" class="box-close"><i class="fa fa-times"></i></a> -->
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="basic" class="panel-collapse collapse in">
+			<div class="portlet-body no-padding">
+				<table class="table table-bordered table-hover tc-table">
+					<thead>
+						<tr>
+							<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
+							<th>Issue Date</th>
+							<th class="hidden-xs">Student</th>
+							<th class="hidden-xs">Registration</th>
+							<th class="hidden-xs"><i class="fa fa-dollar"></i>Commistion</th>
+							<th class="hidden-xs">Payment Type</th>
+							<th class="hidden-xs">Payment Method</th>
+							<th class="col-medium center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="record in records">
+							<td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>
+							<td>{{ record.payment.created | date : 'MMM dd, yyyy  hh:mm'}}</td>
+							<td><a href="/agent/student/detail/{{record.student._id}}">{{ record.student.firstname + ' ' +  record.student.lastname }}</a></td>
+							<td class="hidden-xs">Show Reg</td>
+							<td class="hidden-xs">{{ record.payment.amount * record.registration.commissionRate | currency }}</td>
+							<td class="hidden-xs"><span class="label label-paid arrowed-in-right arrowed-in">{{ record.payment.paymentType}}</span></td>
+							<td class="hidden-xs"><span class="label label-paid arrowed-in-right arrowed-in">{{ record.payment.paymentMethod}}</span></td>
+							<td class="col-medium center">
+								<div class="btn-group btn-group-xs ">
+									<a href="" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+									<!-- <a href="" class="btn btn-danger"><i class="fa fa-times icon-only"></i></a> -->
+								</div>	
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>												
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var StudentSchema = new mongoose.Schema({
 	//basic info
 	studentID: {type: String},
+	referenceID : {type: String},
 	agent: {type: mongoose.Schema.ObjectId, ref:'Agent', default: null},
 	programRegistration : [{type : mongoose.Schema.ObjectId, ref:'ProgramRegistration', default:null}],
 	accommodation: {type: mongoose.Schema.ObjectId, ref:'Accommodation', default: null},
@@ -14,6 +15,7 @@ var StudentSchema = new mongoose.Schema({
 	birthday : {type: Date, required: true},
 	age : {type: Number, required: true},
 	citizenship : {type: String, required: true},
+	region : {type:String,required:true},
 	//address
 	address : {type: String, required: true},
 	postcode : {type: String, required: true},
@@ -23,7 +25,7 @@ var StudentSchema = new mongoose.Schema({
 	isHomeCountryAddress: {type:Boolean, default:false},
 	//contact info
 	telephone : {type: String, required: true},
-	fax : {type: String},
+	fax : {type: String,default: null},
 	email : {type: String, required: true},
 	emergency :{type: String, required: true},
 	//additional info
@@ -33,8 +35,8 @@ var StudentSchema = new mongoose.Schema({
 	healthInsuranceEndDate :{type: Date},
 	healthInsuranceStartingDate :{type: Date},
 	//commission info
-	commissionRate: {type: String},
-	pomotionRate: {type: String},
+	commissionRate: {type: Number,default :0},
+	pomotionRate: {type: Number, default :0},
 	note: {type: String},
 	registerDate: {type: Date,default: Date.now },
 	isQuit : {type : Boolean, default : false },

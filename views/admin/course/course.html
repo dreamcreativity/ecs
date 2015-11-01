@@ -14,8 +14,11 @@
 							<tr>
 								<tr>
 								<th class="hidden-xs">Course name</th>
-								<th class="hidden-xs">Description</th>
+								<!-- <th class="hidden-xs">Description</th> -->
+								<th class="hidden-xs">Type</th>
+								<th class="hidden-xs">Level</th>
 								<th class="hidden-xs">Status</th>
+								<th class="hidden-xs">Modified</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 							</tr>
@@ -23,10 +26,13 @@
 						<tbody>
 							<tr ng-repeat="course in courses.data | filter:query">
 								<td class="hidden-xs"><a href="#">{{course.title}}</a></td>
-								<td class="hidden-xs">{{course.description}}</td>
+								<!-- <td class="hidden-xs">{{course.description}}</td> -->
+								<td class="hidden-xs"><a href="#">{{course.type}}</a></td>
+								<td class="hidden-xs"><a href="#">{{course.level}}</a></td>
 								<td><span ng-if="course.isActive == 0" class="label label-danger">Not Active</span>
 								<span ng-if="course.isActive == 1" class="label label-active">Active</span>
 								</td>
+								<td class="hidden-xs"><a href="#">{{course.lastModify | date: 'MMM dd, yyyy  hh:mm '}}</a></td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
 										<a href="/admin/course/edit/{{course._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
@@ -39,13 +45,6 @@
 				</div>
 			</div>					 
 		</div>
-		<button class="btn btn-sm btn-primary"
-					ng-bootbox-title="A new course"
-					ng-bootbox-custom-dialog
-					ng-bootbox-custom-dialog-template="create">
-					Create
-		</button>
-<!-- 		<a href="/admin" class="btn btn-sm btn-primary">Back</a> -->
 		
 	</div>
 

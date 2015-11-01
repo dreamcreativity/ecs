@@ -7,7 +7,7 @@ angular.module('AdminApp')
 			heading: '',
 			sub_heading : '',
 			color: '#ffffff',
-			direction : 'bottom',
+			direction : 'fadeInDown',
 			position : 'CENTER',
 			resource : null
 		};
@@ -66,10 +66,12 @@ angular.module('AdminApp')
 		Sliders.create($scope.slider,function(result){
 
 			if(result.status == 'ok'){
-				location = '/admin/slider/edit/'+ result.data._id;
+				ShowGritterCenter('System Notification','Slider has been created..' +  result.messages);
+				setInterval(function(){
+  					 $window.location='/admin/slider/edit/'+ result.data._id;
+				}, 2000); 
 			}else{
 				ShowGritterCenter('System Notification','Slider can not be created..' +  result.messages);
-				console.log(result.messages);
 			}
 				
 		});

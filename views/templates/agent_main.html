@@ -2,7 +2,7 @@
 <html lang="en" ng-app='AgentApp'>
   <head>
     <meta charset="utf-8">
-    <title> <%- parms.title %> - ECS Staff</title>
+    <title> <%- parms.title %> - ECS Agent</title>
 	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="/css/admin/core.css">
 	<link rel="stylesheet" href="/css/agent/core.css">
 	<!-- End custom CSS here -->
+
+	<link rel='stylesheet' href='/css/angular-loading-bar/loading-bar.css' type='text/css' media='all' />
 	
     <!--[if lt IE 9]>
     <script src="/assets/js/html5shiv.js"></script>
@@ -39,6 +41,12 @@
 	<!--[if lte IE 8]>
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
+	<!--  HTML 5 Datetime type -->
+	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+	<script>
+	    webshims.setOptions('forms-ext', {types: 'date'});
+	webshims.polyfill('forms forms-ext');
+	</script>
 
 
 	 <!-- Angular JS -->
@@ -47,25 +55,31 @@
     <script src="/js/client/angular-resource.js"></script>
     <script src="/js/client/angular-cookies.js"></script>
     <script src="/js/client/angular-route.js"></script>
+    <script src="/js/client/angular-animate.min.js"></script>
     <script src="/js/client/ngBootbox.min.js"></script>
     <script src="/js/admin/moment.js"></script>
     <script src="/js/admin/ng-tags-input.min.js"></script>
+    <script src="/js/agent/datetimepicker.js"></script>
 
     	<!-- include ng common use modual -->
 	<script src="/ng/lib/auth.js"></script>
 	<script src="/ng/lib/filters.js"></script>
 	<script src="/ng/lib/resources.js"></script>
 	<script src="/ng/lib/directives.js"></script>
+	<script src='/js/angular-loading-bar/loading-bar.min.js'></script>
 
 	<!-- include ng App here -->
 	<script src="/ng/apps/AgentApp.js"></script>
 
 
 	<!-- include ag controller -->
+	<script src="/ng/controllers/agent/navBarController.js"></script>
     <script src="/ng/controllers/agent/registerFormController.js"></script>
     <script src="/ng/controllers/agent/agentController.js"></script>
     <script src="/ng/controllers/agent/materialController.js"></script>
     <script src="/ng/controllers/agent/dashboardController.js"></script>
+    <script src="/ng/controllers/agent/commissionController.js"></script>
+    <script src="/ng/controllers/agent/historyController.js"></script>
 
 
   </head>
@@ -74,7 +88,7 @@
 	<div id="wrapper">
 		<div id="main-container">		
 			<!-- BEGIN TOP NAVIGATION -->
-				<nav class="navbar-top" role="navigation">
+				<nav class="navbar-top" role="navigation" ng-controller='NavBarController'>
 					<!-- BEGIN BRAND HEADING -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".top-collapse">
@@ -83,7 +97,7 @@
 						<div class="navbar-brand">
 							<a href="/agent">
 								<!--img src="/assets/images/logo.png" alt="logo" class="img-responsive"-->
-								ESC LOGO
+								ESC Agent
 							</a>
 						</div>
 					</div>
@@ -100,23 +114,23 @@
 								<!--Speech Icon-->
 								<li class="dropdown user-box">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">Administrator</span> <b class="caret"></b>
+										<!-- <img class="img-circle" src="/assets/images/user.jpg" alt="">  --><span class="user-info">{{agent.firstname}} {{agent.lastname}}</span> <b class="caret"></b>
 									</a>
 										<ul class="dropdown-menu dropdown-user">
 											<li>
-												<a href="profile">
+												<a href="/agent/profile">
 													<i class="fa fa-user"></i> My Profile
 												</a>
 											</li>										
 											<li>
-												<a href="login.html">
+												<a href="javascript:void(0);" ng-click='logout()'>
 													<i class="fa fa-power-off"></i> Logout
 												</a>
 											</li>
 										</ul>
 								</li>
 								<!--Search Box-->
-								<li class="dropdown nav-search-icon">
+								<!-- <li class="dropdown nav-search-icon">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 										<span class="glyphicon glyphicon-search"></span>
 									</a>
@@ -129,7 +143,7 @@
 											</div>
 										</li>
 									</ul>
-								</li>
+								</li> -->
 								<!--Search Box-->
 							</ul>
 						<!-- END RIGHT SIDE DROPDOWN BUTTONS -->
@@ -156,23 +170,6 @@
 				<nav class="navbar-side" role="navigation">							
 					<div class="navbar-collapse sidebar-collapse collapse">
 					
-						<!-- BEGIN SHORTCUT BUTTONS -->
-						<div class="media">							
-							<ul class="sidebar-shortcuts">
-								<li><a class="btn"><i class="fa fa-user icon-only"></i></a></li>
-								<li><a class="btn"><i class="fa fa-envelope icon-only"></i></a></li>
-								<li><a class="btn"><i class="fa fa-th icon-only"></i></a></li>
-								<li><a class="btn"><i class="fa fa-gear icon-only"></i></a></li>
-							</ul>	
-						</div>
-						<!-- END SHORTCUT BUTTONS -->	
-							
-						<!-- BEGIN FIND MENU ITEM INPUT -->
-						<div class="media-search">	
-							<input type="text" class="input-menu" id="input-items" placeholder="Find...">
-						</div>						
-						<!-- END FIND MENU ITEM INPUT -->
-					
 						<ul id="side" class="nav navbar-nav side-nav">
 							<!-- BEGIN SIDE NAV MENU -->
 							
@@ -186,20 +183,21 @@
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentStudent">
 									<i class="fa fa-user"></i> Student <span class="fa arrow"></span>
 								</a>
-								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentStudent">
+								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="AgentStudent">		
 									<li>
-										<a href="/agent/students" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
-											<i class="fa fa-angle-double-right"></i>Students
+										<a href="/agent/create" class="<%if(parms.cur_selected=='Create'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Create
 										</a>
-									</li>		
+									</li>
 									<li>
-										<a href="/agent/register" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
-											<i class="fa fa-angle-double-right"></i>New Student
+										<a href="/agent/student/all" class="<%if(parms.cur_selected=='Edit' ||
+										parms.cur_selected=='All'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Edit
 										</a>
 									</li>			
 									<li>
-										<a href="/agent/students/invitation" class="<%if(parms.cur_selected=='IN'){ %>active<%}%>">
-											<i class="fa fa-angle-double-right"></i>Send Inventaion
+										<a href="/agent/invitation/all" class="<%if(parms.cur_selected=='Send'){ %>active<%}%>">
+											<i class="fa fa-angle-double-right"></i>Invitation
 										</a>
 									</li>										
 								</ul>
@@ -209,26 +207,26 @@
 
 						
 
-							<li class="panel <%if(parms.cur_tap=='Course'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='History'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentHistory">
 									<i class="fa fa-users"></i> History<span class="fa arrow"></span>
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="AgentHistory">
 										<li>
-											<a href="/admin/course/all" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Student Records
+											<a href="/agent/history/student" class="<%if(parms.cur_selected==''){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Students
 											</a>
 										</li>			
-										<li>
-											<a href="/admin/promotion/all" class="<%if(parms.cur_selected=='Promotion'){ %>active<%}%>">
+									    <li>
+											<a href="/agent/history/commission" class="<%if(parms.cur_selected==''){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Commissions
 											</a>
-										</li>										
+										</li>								
 									</ul>
 							</li>
 							
-							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">
-								<a href="/agent/profile" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
+							<li class="panel <%if(parms.cur_tap=='Profile'){ %>open<% } %>">
+								<a href="/agent/profile" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#ProfileManagement">
 									<i class="fa fa-sliders"></i> Profile <span class="fa arrow"></span>
 								</a>
 								<!-- <ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
@@ -254,17 +252,17 @@
 								<h4>Marketing</h4> 								
 							</li>
 							<li class="panel">
-								<a href="/agent/material/"  >
+								<a href="/agent/materials/all"  >
 									<i class="fa fa-upload"></i> Materials
 								</a>
 						
 							</li>
 
-							<li class="panel">
+							<!-- <li class="panel">
 								<a href="/agent" >
 									<i class="fa fa-film"></i> More.. 
 								</a>
-							</li>
+							</li> -->
 							
 							<!-- Navigation category -->
 
@@ -291,14 +289,16 @@
 											<a href="/admin">Home</a>
 										</li>
 										<li class="active"><%- parms.category %></li>
+										<li class="<%if(parms.cur_tap==''){ %>hide<% } %>"><a href='/agent/<%- parms.cur_tap.toLowerCase() %>/all'><%- parms.cur_tap %></a></li>
+										<li class="active <%if(parms.cur_selected==''){ %>hide<% } %>"><%- parms.cur_selected %></li>
 									</ul>									
 								</div>
 								<!-- END BREADCRUMB -->	
 								
-								<div class="page-header title">
-								<!-- PAGE TITLE ROW -->
+								<!-- <div class="page-header title">
+							
 									<h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>									
-								</div>							
+								</div>	 -->						
 							</div><!-- /.col-lg-12 -->
 						</div><!-- /.row -->
 					<!-- END PAGE HEADING ROW -->					

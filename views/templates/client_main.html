@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="en-US" ng-app="ClientApp">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
@@ -15,14 +15,24 @@
     <link rel="stylesheet" href="/css/client/animate.css" type="text/css" />
     <link rel="stylesheet" href="/css/client/magnific-popup.css" type="text/css" />
 
+    <link rel='stylesheet' href='/css/angular-loading-bar/loading-bar.min.css' type='text/css' media='all' />
+
     <link rel="stylesheet" href="/css/client/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
 
+    <!--  HTML 5 Datetime type -->
+    <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+    <script>
+        webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
+    </script>
+
     <!-- External JavaScripts
     ============================================= -->
+
 	<script type="text/javascript" src="js/client/jquery.js"></script>
 	<script type="text/javascript" src="js/client/plugins.js"></script>
 
@@ -30,6 +40,20 @@
     <script src="/js/client/angular.min.js"></script>
     <script src="/js/client/angular-resource.js"></script>
     <script src="/js/client/angular-route.js"></script>
+    <script src="/js/client/angular-animate.min.js"></script>
+    <script src="/js/core/async.js"></script>
+    <script src='/js/angular-loading-bar/loading-bar.min.js'></script>
+
+    <!-- include ng common use modual -->
+    <!-- <script src="/ng/lib/auth.js"></script> -->
+    <script src="/ng/lib/filters.js"></script>
+    <script src="/ng/lib/resources.js"></script>
+    <script src="/ng/lib/directives.js"></script>
+
+    <!-- include ng App here -->
+    <script src="/ng/apps/clientApp.js"></script>
+
+    <script src="/ng/controllers/client/registerController.js"></script>
 
 
     <!-- Document Title

@@ -3,8 +3,10 @@ var mongoose = require('mongoose');
 var CourseSchema = new mongoose.Schema({
 	title: {type: String},
 	tag: {type: String, default: ''},
+	category: {type: String, default: 'Adult Programs'},
 	level: {type: String, required: true },
 	description : {type: String},
+	content : {type: String, default: ''},
 	cover: {type:  mongoose.Schema.ObjectId, ref:'Media', default:null},
 	banner: {type:  mongoose.Schema.ObjectId, ref:'Media', default: null},
 	durations : [{type : mongoose.Schema.ObjectId, ref:'Duration'}],

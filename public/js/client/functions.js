@@ -1068,14 +1068,47 @@ var SEMICOLON = SEMICOLON || {};
             $slider.find('.slider-caption').each(function(){
                 var scapHeight = $(this).outerHeight();
                 var scapSliderHeight = $slider.outerHeight();
+                var scapSliderWidth = $slider.outerWidth();
+                var slideCaptionWidth = $($(this)[0]).outerWidth();
+                var position = $($(this)[0]).attr('postion');
+
+                var currentCaption = $(this);
+       
+
+
+                // console.log(scapSliderWidth);
+                // console.log(slideCaptionWidth);
+                // console.log(postion);
+
                 if( $(this).parents('#slider').prev('#header').hasClass('transparent-header') && ( $body.hasClass('device-lg') || $body.hasClass('device-md') ) ) {
                     if( $(this).parents('#slider').prev('#header').hasClass('floating-header') ) {
+                        
+
                         $(this).css({ top: ( scapSliderHeight + 160 - scapHeight ) / 2 + 'px' });
+
+
                     } else {
                         $(this).css({ top: ( scapSliderHeight + 100 - scapHeight ) / 2 + 'px' });
                     }
-                } else {
-                    $(this).css({ top: ( scapSliderHeight - scapHeight ) / 2 + 'px' });
+                } else {                  
+                    setTimeout(function(){
+                        if( position == 'LT' || position == 'MT' || position == 'RT' )
+                            currentCaption.css({ top: 30 + 'px' });
+                        if( position == 'LB' || position == 'MB' || position == 'RB' )
+                            currentCaption.css({ top: ( scapSliderHeight  - scapHeight -100 )  + 'px' });
+
+                        if( position == 'RT' || position == 'RM' || position == 'RB' )
+                            currentCaption.css({ left: (scapSliderWidth - slideCaptionWidth - 20 ) / 2 + 'px' });
+
+                        if( position == 'LT' || position == 'LM' || position == 'LB' )
+                            currentCaption.css({ left: -(scapSliderWidth - slideCaptionWidth - 20 ) / 2 + 'px' });
+
+                        if( position == 'CENTER' || position == 'LM' || position == 'RM' )
+                            currentCaption.css({ top: ( scapSliderHeight - scapHeight ) / 2 + 'px' });
+
+                    }, 50);
+                    
+                    //$(this).css({ left: (scapSliderWidth - slideCaptionWidth -20 ) / 2 + 'px' });
                 }
             });
         },

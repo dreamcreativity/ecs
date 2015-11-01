@@ -104,6 +104,8 @@ exports.edit = function(req,res){
 				callback();
 			}, function done() {
 				req.body.agents = agentList;
+				console.log('-------------');
+				console.log(req.body.agents);
 				next();
 			});
 
@@ -172,7 +174,7 @@ exports.delete = function(req,res){
 //GET by AgentId
 exports.getByAgentId = function(req,res){
 	var agent_id = req.params.id;
-	Material.find({agents : agent_id}).populate('media').populate('region').exec(function(err, result){
+	Material.find({agents : agent_id, isDelete: false}).populate('media').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',

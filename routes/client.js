@@ -6,9 +6,10 @@ var Media = require('../models/media');
 var Course = require('../models/course');
 var Staff = require('../models/staff');
 var Activity = require('../models/activity');
+var Event = require('../models/event');
 var async = require("async");
 var constants = require("../constants");
-
+var random = require('mongoose-random');
 
 
 /* GET home page. */
@@ -26,50 +27,61 @@ router.get('/', function(req, res) {
 		function(next){
 			Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
 				staffs = result;
-				console.log('-----------------');
-				console.log(staffs);
 				next();
 			});
 	    },
 	    function(next){
-			Course.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+			Course.find({cover: { $ne: null }, isActive: true}).populate('cover').exec(function(err,result){
 				courses = result;
-				console.log('-----------------');
-				console.log(courses);
 				next();
 			});
 	    },
 	    function(next){
-			Activity.find({cover: { $ne: null }, isActive: true }).populate('cover').exec(function(err,result){
+			Activity.find({cover: { $ne: null }, isActive: true }).populate('cover').sort({'displayOrder': -1}).limit(9).exec(function(err,result){
 				activities = result;
-				console.log('-----------------');
-				console.log(activities);
+				next();
+			});
+	    },
+	    function(next){
+			Slider.find({ resource: { $ne: null }, is_active: true }).populate('resource').sort({'order': 1}).exec(function(err,result){
+				console.log(result);
+				sliders = result;
 				next();
 			});
 	    },
 
 	], function(){
-		Slider.find({is_active:true}, function(err, result){
-			sliders = result;
+		// Slider.find({is_active:true}, function(err, result){
+		// 	sliders = result;
 
-			async.each(sliders, function( slider, next) {
-				slider.media = Media.findOne({_id: slider.resource}, function(err,result){
-					if(err)
-						throw err;
-					slider.media = result; 
-					next();
-				});
-			}, function(err){
+		// 	async.each(sliders, function( slider, next) {
+		// 		slider.media = Media.findOne({_id: slider.resource}, function(err,result){
+		// 			if(err)
+		// 				throw err;
+		// 			slider.media = result; 
+		// 			next();
+		// 		});
+		// 	}, function(err){
 			
-				template(req,res,'client_main','client/main.html',{ 
-					title: 'ESC - Englist School of Canada',
-					sliders : sliders ,
-					staffs: staffs,
-					courses: courses,
-					activities: activities,
-				});		
-			});
-		});
+		// 		template(req,res,'client_main','client/main.html',{ 
+		// 			title: 'ESC - Englist School of Canada',
+		// 			sliders : sliders ,
+		// 			staffs: staffs,
+		// 			courses: courses,
+		// 			activities: activities,
+		// 		});		
+		// 	});
+		// });
+
+		template(req,res,'client_main','client/main.html',{ 
+			title: 'ESC - Englist School of Canada',
+			sliders : sliders ,
+			staffs: staffs,
+			courses: courses,
+			activities: activities,
+		});	
+
+
 	});
 
 
@@ -79,12 +91,12 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/activity/:id', function(req, res){
+router.get('/activity/detail/:id', function(req, res){
 	var id = req.params.id;
 	var activityList = [];
 	async.series([
 		function(next){
-			Activity.find({'isActive': true}).populate('cover').exec(function(err,result){	
+			Activity.find({'isActive': true, _id: { $ne: id } }).populate('cover').sort({'displayOrder': -1}).limit(8).exec(function(err,result){	
 				activityList = result;
 
 				next();
@@ -94,21 +106,27 @@ router.get('/activity/:id', function(req, res){
 	], function(){
 		console.log(activityList);
 		Activity.find({'_id':id}).populate('album').populate('cover').exec(function(err,result){
-			template(req,res,'client_normal','client/activity.html',{ 
+			template(req,res,'client_normal','client/activityDetail.html',{ 
 				activity : result[0],
 				activityList : activityList,
 			});
 		});
 	});
 
-
-
-
-		
-
-
-	//template(req,res,'client_normal','client/activity.html',{});
 });
+
+
+router.get('/activity', function(req, res){
+
+
+	Activity.find({'isActive': true}).populate('cover').sort({'displayOrder': -1}).limit(9).exec(function(err,result){
+		template(req,res,'client_normal','client/activity.html',{ 
+			activitys : result
+		});
+	});
+
+});
+
 
 router.get('/calculator', function(req, res){
 	var constants = require("../constants")
@@ -124,7 +142,7 @@ router.get('/course/:id', function(req, res){
 
 	var id = req.params.id;
 
-	Course.find({_id:id, isActive:true })
+	Course.findOne({_id:id})
 					.populate('links')
 					.populate('banner')
 					.populate('cover')
@@ -133,32 +151,60 @@ router.get('/course/:id', function(req, res){
 			console.log(err);
 			res.redirect('/');
 		}
+			console.log(result);
+
+		if(result.isActive == false ){
+			res.redirect('/');
+		}else{
+			template(req,res,'client_normal','client/course.html',{'course' :  result});	
+		}
 			
 
 
-		console.log(result);
-		template(req,res,'client_normal','client/course.html',{'course' :  result[0]});	
+
+		//console.log(result);
+		
 	});
 	
 });
 
 
 
+router.get('/event/:id', function(req, res){
+	var moment = require('moment');
+	var id = req.params.id;
+
+	Event.find({_id:id}).populate('cover').exec(function(err, result){
+		var eventInfo = result[0];
+
+		var startDate = moment(eventInfo.date).format('MMM Do YYYY');
+		var startTime = moment(eventInfo.date).format('h : mm : ss a');
+
+	
+
+		template(req,res,'client_normal','client/eventDetail.html',{
+			title: 'Event Detail',
+			event: eventInfo,
+			startDate: startDate,
+			startTime: startTime
+		});
+
+	});
+	
+});
+
+
+router.get('/welcome', function(req, res){
+
+	template(req,res,'client_normal','client/welcome.html',{});
+
+});
+
 
 
 router.get('/events', function(req, res){
 
-
-
-	Activity.find(function(err,result){
-
-		// find media
-		Media.find({'_id':{$in:result[0].mediaIds}} , function(er, imgs){
-			console.log(imgs);
-			template(req,res,'client_normal','client/event.html',{ a : result[0], images:imgs});
-		});
-		
-	});
+	template(req,res,'client_normal','client/event.html',{});
 
 });
 
@@ -171,6 +217,22 @@ router.get('/calendar', function(req, res){
 	//template(req,res,'client_normal','client/activity.html',{});
 });
 
+router.get('/register/', function(req,res){
+	template(req,res, 'client_normal', 'client/register.html', {url_params : null});
+})
+
+router.get('/register/:token', function(req,res){
+	template(req,res, 'client_normal', 'client/register.html', {url_params : req.params});
+});
+
+
+router.get('/page/:page_name', function(req, res) {
+	var pageName = req.params.page_name;
+	pageName = pageName.replace('-','_');
+	template(req,res,'client_normal','client/static/'+ pageName + '.html' ,{ 
+		title: pageName
+	});
+});
 
 
 

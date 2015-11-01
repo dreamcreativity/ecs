@@ -30,9 +30,21 @@
 	<link rel="stylesheet" href="/css/admin/core.css">
 	<link rel="stylesheet" href="/css/admin/ng-tags-input.min.css">
 	<link rel="stylesheet" href="/css/admin/ng-tags-input.bootstrap.min.css">
+
+	<link rel='stylesheet' href='/css/angular-loading-bar/loading-bar.css' type='text/css' media='all' />
+
+	<!--
 	<link rel="stylesheet" type="text/css" href="/css/admin/jquery.datetimepicker.css">
 	<link rel="stylesheet" href="/assets/css/plugins/datetime/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" href="/assets/css/plugins/bootstrap-datepicker/datepicker.css"> 
+	-->
+
+
+	<link rel="stylesheet" href="/assets/css/plugins/bootstrap-wysihtml/bootstrap-wysihtml5.css">
+
+	
+
+
 	
 	<!-- End custom CSS here -->
 	
@@ -44,6 +56,12 @@
 	<!--[if lte IE 8]>
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
+	<!--  HTML 5 Datetime type -->
+	<script src="//cdn.jsdelivr.net/webshim/1.15.10/polyfiller.js"></script>
+	<script>
+	    webshims.setOptions('forms-ext', {types: 'date'});
+	webshims.polyfill('forms forms-ext');
+	</script>
 
 	 <!-- Angular JS -->
 	<script src="/assets/js/jquery.min.js"></script>
@@ -51,9 +69,11 @@
     <script src="/js/client/angular-resource.js"></script>
     <script src="/js/client/angular-cookies.js"></script>
     <script src="/js/client/angular-route.js"></script>
+    <script src="/js/client/angular-animate.min.js"></script>
     <script src="/js/client/ngBootbox.min.js"></script>
     <script src="/js/admin/moment.js"></script>
     <script src="/js/admin/ng-tags-input.min.js"></script>
+    <script src='/js/angular-loading-bar/loading-bar.min.js'></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
 	
 	<!-- include ng common use modual -->
@@ -69,6 +89,7 @@
 
 
 	<!-- include ag controller -->
+	<script src="/ng/controllers/admin/profileController.js"></script>
 	<script src="/ng/controllers/admin/sliderController.js"></script>
 	<script src="/ng/controllers/admin/navBarController.js"></script>
 	<script src="/ng/controllers/admin/staffController.js"></script>
@@ -80,6 +101,11 @@
 	<script src="/ng/controllers/admin/materialController.js"></script>
 	<script src="/ng/controllers/admin/activityController.js"></script>
 	<script src="/ng/controllers/admin/eventController.js"></script>
+	<script src="/ng/controllers/admin/promotionController.js"></script>
+	<script src="/ng/controllers/admin/paymentController.js"></script>
+	<script src="/ng/controllers/admin/dashboardController.js"></script>
+
+
   </head>
 
   <body ng-cloak>
@@ -95,7 +121,7 @@
 						<div class="navbar-brand">
 							<a href="/admin">
 								<!--img src="/assets/images/logo.png" alt="logo" class="img-responsive"-->
-								ESC LOGO
+								ESC STAFF
 							</a>
 						</div>
 					</div>
@@ -112,27 +138,20 @@
 								<!--Speech Icon-->
 								<li class="dropdown user-box">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										<img class="img-circle" src="/assets/images/user.jpg" alt=""> <span class="user-info">{{info.data.firstname}} {{info.data.lastname}}</span> <b class="caret"></b>
+										<img class="img-circle" src="{{info.data.cover.thumbnail}}" alt=""> <span class="user-info">{{info.data.firstname}} {{info.data.lastname}}</span> <b class="caret"></b>
 									</a>
 										<ul class="dropdown-menu dropdown-user">
 											<li>
-												<a href="profile.html">
+												<a href="/admin/profile">
 													<i class="fa fa-user"></i> My Profile
 												</a>
 											</li>
-											<li>
-												<a href="#">
-													<i class="fa fa-gear"></i> Settings
-												</a>
-											</li>											
+																					
 											<li>
 
 												<a href="javascript:void(0);" ng-click='logout()'>
 													<i class="fa fa-power-off"></i> Logout
 												</a>
-												<!-- <a href="/admin/logout">
-													<i class="fa fa-power-off"></i> Logout
-												</a> -->
 											</li>
 										</ul>
 								</li>
@@ -176,23 +195,7 @@
 				<!-- BEGIN SIDE NAVIGATION -->				
 				<nav class="navbar-side" role="navigation">							
 					<div class="navbar-collapse sidebar-collapse collapse">
-					
-						<!-- BEGIN SHORTCUT BUTTONS -->
-						<div class="media">							
-							<ul class="sidebar-shortcuts">
-								<li><a class="btn"><i class="fa fa-user icon-only"></i></a></li>
-								<li><a class="btn"><i class="fa fa-envelope icon-only"></i></a></li>
-								<li><a class="btn"><i class="fa fa-th icon-only"></i></a></li>
-								<li><a class="btn"><i class="fa fa-gear icon-only"></i></a></li>
-							</ul>	
-						</div>
-						<!-- END SHORTCUT BUTTONS -->	
-							
-						<!-- BEGIN FIND MENU ITEM INPUT -->
-						<div class="media-search">	
-							<input type="text" class="input-menu" id="input-items" placeholder="Find...">
-						</div>						
-						<!-- END FIND MENU ITEM INPUT -->
+				
 					
 						<ul id="side" class="nav navbar-nav side-nav">
 							<!-- BEGIN SIDE NAV MENU -->
@@ -208,12 +211,12 @@
 								</a>
 									<ul class="collapse <%if(parms.cur_tap=='Slider'){ %>in<%}%> nav" id="SliderManagement">
 										<li>
-											<a href="/admin/slider/new" class="<%if(parms.cur_selected=='New Slider'){ %>active<%}%>">
+											<a href="/admin/slider/new" class="<%if(parms.cur_tap=='Slider' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/slider/all" class="<%if(parms.cur_selected=='Edit Slider'){ %>active<%}%>">
+											<a href="/admin/slider/all" class="<%if(parms.cur_tap=='Slider' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
@@ -221,36 +224,57 @@
 							</li>
 							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>">
 								<a href="/admin/staff/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StaffManagement">
-									<i class="fa fa-user"></i> Staff <span class="arrow"></span>
+									<i class="fa fa-users"></i> Staff <span class="arrow"></span>
 								</a>
-									<!-- <ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
+									<ul class="collapse <%if(parms.cur_tap=='Staff'){ %>in<%}%> nav" id="StaffManagement">
 										<li>
-											<a href="/admin/staff/all" class="<%if(parms.cur_selected=='Staffs'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Staffs
+											<a href="/admin/staff/create" class="<%if(parms.cur_tap=='Staff' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
 											</a>
-										</li>											
-									</ul> -->
+										</li>
+										<li>
+											<a href="/admin/staff/all" class="<%if(parms.cur_tap=='Staff' && (parms.cur_selected=='Edit'|| parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>										
+									</ul>
 							</li>
 
 
-							<li class="panel <%if(parms.cur_tap=='Agents'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='Agent'){ %>open<% } %>">
 								<a href="/admin/agent/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#AgentManagement">
-									<i class="fa fa-shield"></i> Agents <span class="arrow"></span>
-								</a>							
+									<i class="fa fa-users"></i> Agents <span class="arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Agent'){ %>in<%}%> nav" id="AgentManagement">
+										<li>
+											<a href="/admin/agent/create" class="<%if(parms.cur_tap=='Agent' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>
+										<li>
+											<a href="/admin/agent/all" class="<%if(parms.cur_tap=='Agent' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>										
+									</ul>							
 							</li>
 
-							<li class="panel <%if(parms.cur_tap=='Students'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='Student'){ %>open<% } %>">
 								<a href="/admin/student/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StudentManagement">
 									<i class="fa fa-users"></i> Students <span class="arrow"></span>
 								</a>
-								<!-- <ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="StudentManagement">
-										<li>
-											<a href="/admin/student/all" class="<%if(parms.cur_selected=='Student'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Students
+								<ul class="collapse <%if(parms.cur_tap=='Student'){ %>in<%}%> nav" id="AgentManagement">
+										<li> 
+											<a href="/admin/student/create" class="<%if(parms.cur_tap=='Student' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
 											</a>
-										</li>			
-																		
-									</ul> -->
+										</li>
+										<li>
+											<a href="/admin/student/all" class="<%if(parms.cur_tap=='Student' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>										
+									</ul>					
 							</li>
 
 							<li class="panel <%if(parms.cur_tap=='Course'){ %>open<% } %>">
@@ -259,13 +283,31 @@
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Course'){ %>in<%}%> nav" id="CourseManagement">
 										<li>
-											<a href="/admin/course/all" class="<%if(parms.cur_selected=='Course'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Course
+											<a href="/admin/course/create" class="<%if(parms.cur_tap=='Course' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>			
 										<li>
-											<a href="/admin/promotion/all" class="<%if(parms.cur_selected=='Promotion'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Promotions
+											<a href="/admin/course/all" class="<%if(parms.cur_tap=='Course' &&  (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>										
+									</ul>
+							</li>
+
+							<li class="panel <%if(parms.cur_tap=='Promotion'){ %>open<% } %>">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#PromotionManagement">
+									<i class="fa fa-users"></i> Promotion <span class="fa arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Promotion'){ %>in<%}%> nav" id="PromotionManagement">
+										<li>
+											<a href="/admin/promotion/create" class="<%if(parms.cur_tap=='Promotion' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>			
+										<li>
+											<a href="/admin/promotion/all" class="<%if(parms.cur_tap=='Promotion' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>										
 									</ul>
@@ -273,17 +315,17 @@
 							
 							<li class="panel <%if(parms.cur_tap=='Materials'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#MaterialManagement">
-									<i class="fa fa-book"></i> Materials <span class="fa arrow"></span>
+									<i class="fa fa-file"></i> Materials <span class="fa arrow"></span>
 								</a>
 								<ul class="collapse <%if(parms.cur_tap=='Material'){ %>in<%}%> nav" id="MaterialManagement">
 										<li>
-											<a href="/admin/material/new" class="<%if(parms.cur_selected=='Material'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Add New
+											<a href="/admin/material/new" class="<%if(parms.cur_tap=='Material' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/material" class="<%if(parms.cur_selected=='Material'){ %>active<%}%>">
-												<i class="fa fa-angle-double-right"></i> Materials
+											<a href="/admin/material/all" class="<%if(parms.cur_tap=='Material' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>			
 																		
@@ -292,20 +334,38 @@
 
 							<li class="panel <%if(parms.cur_tap=='Activity'){ %>open<% } %>">
 								<a href="/admin/activity/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#ActivityManagement">
-									<i class="fa fa-shield"></i> Activity <span class="arrow"></span>
-								</a>							
+									<i class="fa fa-picture-o"></i> Activity <span class="arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Activity'){ %>in<%}%> nav" id="ActivityManagement">
+										<li>
+											<a href="/admin/activity/create" class="<%if(parms.cur_tap=='Activity' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>
+										<li>
+											<a href="/admin/activity/all" class="<%if(parms.cur_tap=='Activity' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>																	
+								</ul>							
 							</li>
 
-							<li class="panel <%if(parms.cur_tap=='Region'){ %>open<% } %>">
-								<a href="/admin/region/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#RegionManagement">
-									<i class="fa fa-shield"></i> Region <span class="arrow"></span>
-								</a>							
-							</li>
-
-							<li class="panel <%if(parms.cur_tap=='Events'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='Event'){ %>open<% } %>">
 								<a href="/admin/event/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#EventManagement">
-									<i class="fa fa-shield"></i> Events <span class="arrow"></span>
-								</a>							
+									<i class="fa fa-rss"></i> Events <span class="arrow"></span>
+								</a>	
+								<ul class="collapse <%if(parms.cur_tap=='Event'){ %>in<%}%> nav" id="EventManagement">
+										<li>
+											<a href="/admin/event/create" class="<%if(parms.cur_tap=='Event' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>
+										<li>
+											<a href="/admin/event/all" class="<%if(parms.cur_tap=='Event' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>																	
+								</ul>						
 							</li>
 
 					
@@ -322,7 +382,7 @@
 							</li>
 
 							<li class="panel">
-								<a href="/admin/media/" >
+								<a href="/admin/media/all" >
 									<i class="fa fa-film"></i> Medias 
 								</a>
 							</li>
@@ -351,14 +411,16 @@
 										<li>
 											<a href="/admin">Home</a>
 										</li>
-										<li class="active"><%- parms.category %></li>
+										<li><%- parms.category %></li>
+										<li class="<%if(parms.cur_tap==''){ %>hide<% } %>"><a href='/admin/<%- parms.cur_tap.toLowerCase() %>/all'><%- parms.cur_tap %></a></li>
+										<li class="active <%if(parms.cur_selected==''){ %>hide<% } %>"><%- parms.cur_selected %></li>
 									</ul>									
 								</div>
 								<!-- END BREADCRUMB -->	
 								
 								<div class="page-header title">
 								<!-- PAGE TITLE ROW -->
-									<h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>									
+									<!-- <h1><%- parms.cur_tap %> <span class="sub-title"><%- parms.cur_selected %></span></h1>	 -->								
 								</div>
 								
 								<!-- /#ek-layout-button -->	
@@ -463,6 +525,19 @@
     <script src="/assets/js/plugins/morris/raphael-min.js"></script>
     <script src="/assets/js/plugins/morris/morris.min.js"></script>
     -->
+	<script src="/assets/js/plugins/datetime/bootstrap-datetimepicker.min.js"></script>
+
+
+	<!--
+	<script src="/assets/js/plugins/bootstrap-wysiwyg/bootstrap-wysiwyg.js"></script>
+	<script src="/assets/js/plugins/bootstrap-wysiwyg/ek-wysiwyg.js"></script>
+	-->
+	
+	<script src="/assets/js/plugins/bootstrap-wysihtml/wysihtml.min.js"></script>
+	<script src="/assets/js/plugins/bootstrap-wysihtml/bootstrap-wysihtml.js"></script>
+
+
+
 
 	<script src="/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 	<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
@@ -500,7 +575,7 @@
 	<script src="/assets/js/plugins/bootbox/bootbox.min.js"></script>
 
 	<!-- Customer js -->
-     <script src="/js/admin/jquery.datetimepicker.js"></script>
+     
 
 
 	<!-- initial Custom Functions -->
@@ -558,5 +633,15 @@
 		}
 
 	</script>
+
+	<style type="text/css">
+		.img-circle{
+
+			width: auto!important;
+			max-width: 300px!important;
+			border: 1px solid #A79292!important;
+			border-radius: 0!important;
+		}
+	</style>
   </body>
 </html>

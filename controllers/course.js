@@ -378,21 +378,27 @@ exports.edit = function(req,res){
 				});
 			}else{
 
-				console.log('---------- update course reuslt -----------');
-				console.log(result[0]);
-				if(result == 1){
-					res.json({
-						status: 'ok',
-						messages: 'successed',
-						data: result[0]
-					});	
-				}else{
-					res.json({
-						status: 'fail',
-						messages: "multipulte result",
-						data: null
-					});
-				}
+				console.log('---------- update course reuslts -----------');
+				console.log(result);
+
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+				// if(result == 1){
+				// 	res.json({
+				// 		status: 'ok',
+				// 		messages: 'successed',
+				// 		data: result[0]
+				// 	});	
+				// }else{
+				// 	res.json({
+				// 		status: 'fail',
+				// 		messages: "multipulte result",
+				// 		data: null
+				// 	});
+				// }
 			}
 		});
 	});

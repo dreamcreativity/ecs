@@ -36,7 +36,7 @@ exports.upload = function(req,res){
     			)
     	{
     		newMedia.type = 'Document';
-    	}else if( ext == 'mp4' ){
+    	}else if( ext == 'mp4' || ext == 'ogv' || ext == 'm4v'){
     		newMedia.type = 'Video';
     	}else{
     		newMedia.type = 'Other';

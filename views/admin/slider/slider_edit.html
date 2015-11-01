@@ -1,122 +1,135 @@
-	<div class="portlet" ng-controller='SliderController'>
-		<div class="portlet-heading dark">
-			<div class="portlet-title">
-				<h4>Create New Slide</h4>
-			</div>
-			<div class="clearfix"></div>
+<div class="portlet" ng-controller='SliderController'>
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Edit Slide</h4>
 		</div>
-		<div class="portlet-body">
-		<form class="form-horizontal" id="validate-form" method="get">
-			<div id="bwizard">
-				
-				<div class="tab-content">
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Main Heading:</label>
-						<div class="col-sm-7">
-							<div class="clearfix">
-								<input type="text" name="heading" ng-model="slider.heading" class="form-control">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label" for="password">Sub Heading:</label>
-						<div class="col-sm-7">
-							<div class="clearfix">
-								<input type="text" name="sub_heading"  ng-model="slider.sub_heading"  class="form-control">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label" for="password2">Text Color:</label>
-						<div class="col-sm-4">
-							<div class="clearfix">
-								<input type="text" name="color"  id="textColor" ng-model="slider.color" class="form-control">
-
-								<div class="color-picker" ng-repeat="c in colors">
-									<div class="col-xs-4 picker"><p color-Picker style="background-color:{{ c.code }}">{{ c.name }}</p></div>	
-								</div>
-							</div>
-
-						</div>
-						<div class="col-sm-1 color-picked" style="background-color:{{slider.color}}"></div>
-					</div>
-					
-					<hr class="separator" />
-
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Text Postion:</label>
-						<div class="col-sm-4">
-							<div class="clearfix">
-		
-								<div class="slider-position">
-									<div ng-class="{select:  slider.position=='LT'}" class="col-xs-4 tap"><p position-Picker>LT</p></div>
-									<div ng-class="{select:  slider.position=='MT'}" class="col-xs-4 tap"><p position-Picker>MT</p></div>
-									<div ng-class="{select:  slider.position=='RT'}" class="col-xs-4 tap"><p position-Picker>RT</p></div>
-									<div ng-class="{select:  slider.position=='LM'}" class="col-xs-4 tap"><p position-Picker>LM</p></div>
-									<div ng-class="{select:  slider.position=='CENTER'}" class="col-xs-4 tap"><p position-Picker>CENTER</p></div>
-									<div ng-class="{select:  slider.position=='RM'}" class="col-xs-4 tap"><p position-Picker>RM</p></div>
-									<div ng-class="{select:  slider.position=='LB'}" class="col-xs-4 tap"><p position-Picker>LB</p></div>
-									<div ng-class="{select:  slider.position=='MB'}" class="col-xs-4 tap"><p position-Picker>MB</p></div>
-									<div ng-class="{select:  slider.position=='RB'}" class="col-xs-4 tap"><p position-Picker>RB</p></div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Direction:</label>
-						<div class="col-sm-2">
-			
-							<select class="form-control " ng-model="slider.direction"  >
-								<option value="{{d.class}}" ng-repeat="d in directionOption">{{d.label}}</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Is Active:</label>
-						<div class="col-sm-2">
-							<label>
-								<input name="is_active" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="slider.is_active" />
-								<span class="labels"></span>
-							</label>												
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Media:</label>
-						<div class="col-sm-9">
-							<div ng-click="changeSource()" ng-if="slider.resource == null" class="cover-empty"><label>Clic to change</label></div>
-
-							<img ng-click="changeSource()" class="preview-media"  ng-click="changeSource()"  ng-if="slider.resource != null && slider.resource.type=='Image'" src="{{slider.resource.thumbnail}}" >
-
-							<video ng-click="changeSource()" src="{{slider.resource.path}}" controls ng-if="slider.resource.type=='Video'">Your browser does not support the <code>video</code> element.</video>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-3"></div>	
-						<div class="col-sm-3">
-							<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
-							<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
-							<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
-						</div>
-					</div>
-			
-				</div>
-			</div>
-		</form>
-
-
-		</div>
-
-		<!-- include the media selector mockup -->
-    	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+		<div class="clearfix"></div>
 	</div>
-	<script type="text/javascript">
-		var url_params = <%- JSON.stringify(url_params) %>
+	<div class="portlet-body">
+	<form class="form-horizontal" name="validateForm" >
+		<div id="bwizard">
+			
+			<div class="tab-content">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Main Heading:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<input type="text" name="heading" ng-model="slider.heading" class="form-control" required>
+								<span ng-show="!validateForm.heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<span ng-show="validateForm.heading.$error.required" class="input-group-addon">Required</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password">Sub Heading:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<input type="text" name="sub_heading"  ng-model="slider.sub_heading"  class="form-control" required>
+								<span ng-show="!validateForm.sub_heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<span ng-show="validateForm.sub_heading.$error.required" class="input-group-addon">Required</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="password2">Text Color:</label>
+					<div class="col-sm-4">
+						<div class="clearfix">
+							<input type="text" name="color"  id="textColor" ng-model="slider.color" class="form-control">
+
+							<div class="color-picker" ng-repeat="c in colors">
+								<div class="col-xs-4 picker"><p color-Picker style="background-color:{{ c.code }}">{{ c.name }}</p></div>	
+							</div>
+						</div>
+
+					</div>
+					<div class="col-sm-1 color-picked" style="background-color:{{slider.color}}"></div>
+				</div>
+				
+				<hr class="separator" />
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Text Postion:</label>
+					<div class="col-sm-4">
+						<div class="clearfix">
+	
+							<div class="slider-position">
+								<div ng-class="{select:  slider.position=='LT'}" class="col-xs-4 tap"><p position-Picker>LT</p></div>
+								<div ng-class="{select:  slider.position=='MT'}" class="col-xs-4 tap"><p position-Picker>MT</p></div>
+								<div ng-class="{select:  slider.position=='RT'}" class="col-xs-4 tap"><p position-Picker>RT</p></div>
+								<div ng-class="{select:  slider.position=='LM'}" class="col-xs-4 tap"><p position-Picker>LM</p></div>
+								<div ng-class="{select:  slider.position=='CENTER'}" class="col-xs-4 tap"><p position-Picker>CENTER</p></div>
+								<div ng-class="{select:  slider.position=='RM'}" class="col-xs-4 tap"><p position-Picker>RM</p></div>
+								<div ng-class="{select:  slider.position=='LB'}" class="col-xs-4 tap"><p position-Picker>LB</p></div>
+								<div ng-class="{select:  slider.position=='MB'}" class="col-xs-4 tap"><p position-Picker>MB</p></div>
+								<div ng-class="{select:  slider.position=='RB'}" class="col-xs-4 tap"><p position-Picker>RB</p></div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Direction:</label>
+					<div class="col-sm-2">
 		
-	</script>
+						<select class="form-control " ng-model="slider.direction"  >
+							<option value="{{d.class}}" ng-repeat="d in directionOption">{{d.label}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Display Order:</label>
+					<div class="col-sm-2">
+						<input type="text" name="color"  id="textColor" ng-model="slider.order" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Is Active:</label>
+					<div class="col-sm-2">
+						<label>
+							<input name="is_active" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="slider.is_active" />
+							<span class="labels"></span>
+						</label>												
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Media:</label>
+					<div class="col-sm-9">
+						<div ng-click="changeSource()" ng-if="slider.resource == null" class="cover-empty"><label>Clic to change</label></div>
+
+						<img ng-click="changeSource()" class="preview-media"  ng-click="changeSource()"  ng-if="slider.resource != null && slider.resource.type=='Image'" src="{{slider.resource.thumbnail}}" >
+
+						<video ng-click="changeSource()" src="{{slider.resource.path}}" controls ng-if="slider.resource.type=='Video'">Your browser does not support the <code>video</code> element.</video>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
+						<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</form>
+
+
+	</div>
+
+	<!-- include the media selector mockup -->
+	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+</div>
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+	
+</script>
 
 
 

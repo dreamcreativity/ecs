@@ -30,7 +30,11 @@ var _event = new Event(req.body);
 		function(next){
 			if (req.body.cover != null)
 	    		req.body.cover =  req.body.cover._id;
+	    	console.log(req.body);
 
+	    	//req.body.date = new Date();
+
+	    	
 	    	next();
 	    	
 	    },
@@ -57,7 +61,7 @@ var _event = new Event(req.body);
 
 //GET all events
 exports.get = function(req,res){
-Event.find({},function(err,results){
+Event.find({}).populate('cover').exec(function(err,results){
 	if(err){
 		res.json(
 			{

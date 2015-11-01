@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="/css/client/responsive.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/calendar.css" type="text/css" />
     <link rel="stylesheet" href="/css/client/core.css" type="text/css" />
+
+    <link rel='stylesheet' href='/css/angular-loading-bar/loading-bar.css' type='text/css' media='all' />
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -27,11 +30,19 @@
     <script type="text/javascript" src="/js/client/jquery.js"></script>
     <script type="text/javascript" src="/js/client/plugins.js"></script>
 
+
+    
+
+
     <!-- Angular JS -->
     <script src="/js/client/angular.min.js"></script>
     <script src="/js/client/angular-resource.js"></script>
     <script src="/js/client/angular-route.js"></script>
+    <script src="/js/client/angular-animate.min.js"></script>
     <script src="/js/core/async.js"></script>
+    <script src='/js/angular-loading-bar/loading-bar.min.js'></script>
+
+
 
     <!-- include ng common use modual -->
     <!-- <script src="/ng/lib/auth.js"></script> -->
@@ -45,6 +56,12 @@
     <!-- include ag controller -->
     <script src="/ng/controllers/client/courseController.js"></script>
     <script src="/ng/controllers/client/calendarController.js"></script>
+    <script src="/ng/controllers/client/eventController.js"></script>
+    <script src="/ng/controllers/client/registerController.js"></script>
+
+
+
+
 
     <!-- Document Title
     ============================================= -->
@@ -71,9 +88,10 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo">
-                        <a href="/" class="standard-logo" data-dark-logo="/images/esc_logo.png"><img src="/images/esc_logo.png" alt="ESC Logo"></a>
-                        <a href="/" class="retina-logo" data-dark-logo="/images/esc_logo.png"><img src="/images/esc_logo.png" alt="ESC Logo"></a>
-                    </div><!-- #logo end -->
+                        <a href="/" class="standard-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/esc-logo.svg" alt="ESC Logo"></a>
+                        <a href="/" class="retina-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/esc-logo.svg" alt="ESC Logo"></a>
+                    </div>
+                    <!-- #logo end -->
 
                     <!-- Primary Navigation
                     ============================================= -->
@@ -85,18 +103,33 @@
                             <li><a href="/#section-activity" data-href="#section-activity"><div>Activity</div></a></li>
                             <li><a href="/#section-team" data-href="#section-team"><div>Team</div></a></li>
                             <li><a href="/#section-programs" data-href="#section-programs"><div>Programs</div></a></li>
-                            <li><a href="/#section-testimonials" data-href="#section-testimonials"><div>Testimonials</div></a></li>
+                            <li>
+                                <a href="#" data-href="#section-tools"><div>Tools</div></a>
+                                <ul class="width200">
+                                    <li><a href="/Calculator" ><div>Calculator</div></a></li>
+                                    <li><a href="/events" ><div>Events Calendar</div></a></li>
+                                    <li><a href="/calendar" ><div>Course Calendar</div></a></li>
+                                    <li><a href="/register"><div>Register</div></a></li>
+                                </ul>
+                            </li>
                             <li><a href="/#section-contact" data-href="#section-contact"><div>Contact</div></a></li>
+                            <li>
+                                <a href="#" ><div>Resources</div></a>
+                                <ul class="width200">
+                                    <li><a href="/Calculator" ><div>Terms & Conditions</div></a></li>
+                                </ul>
+                            </li>
                         </ul>
 
                         <!-- Top Search
                         ============================================= -->
-                        <div id="top-search">
+                       <!--  <div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                             <form action="search.html" method="get">
                                 <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
                             </form>
-                        </div><!-- #top-search end -->
+                        </div> -->
+                        <!-- #top-search end -->
 
                     </nav><!-- #primary-menu end -->
 

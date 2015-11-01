@@ -11,11 +11,13 @@ angular.module('AdminApp')
 
  	$scope.create = function(isValid){
 	 	Courses.save($scope.course,function(result){
-	 		    var message = result.messages;	    
+   				if(result.status == 'ok') {
+	 		    ShowGritterCenter('System Notification','Course has been created');
 	 		     $scope.returnMessage = "successfully";
 	 			setInterval(function(){
-  					 $window.location='/admin/course/all';
-				}, 1000); 
+  					 $window.location='/admin/course/edit/' + result.data._id;
+				}, 2000); 
+	 		}
  		})
 	 }
 
@@ -26,6 +28,10 @@ angular.module('AdminApp')
 
 	Constants.get({name: 'CourseType'}, function(result){
 		$scope.types = result.data;		
+	});
+	
+	Constants.get({name: 'CourseCategory'}, function(result){
+		$scope.categories = result.data;		
 	});
 })
 
@@ -39,7 +45,12 @@ angular.module('AdminApp')
 	 		$scope.course = result.data;
 	 		$scope.course.durations.sort(SortByOrder);
 	 		$scope.course.startPoint =  new Date($scope.course.startPoint);
-	 		console.log($scope.course)
+	 		
+
+	 		// init text editor
+	 		$('#page-content').wysihtml5();
+
+
 	 		$scope.newDuration = {
 			 	'title': '',
 			 	'price': 0.0,
@@ -56,7 +67,8 @@ angular.module('AdminApp')
 			// load meida image
 			Medias.getCategoryTargetMedia({target:'Course',type:'Image'}, function(result){
 			 	$scope.meidas = result.data;
-			 	console.log($scope.meidas);
+			 	//console.log($scope.meidas);
+			 	
 				// create media seleoct click buttons
 				$scope.changeCover = createMediaSelectorFunction($modal, $scope.meidas,function( selectedMedia){ 
 					$scope.course.cover = selectedMedia;
@@ -88,6 +100,10 @@ angular.module('AdminApp')
 		$scope.types = result.data;		
 	});
 
+	Constants.get({name: 'CourseCategory'}, function(result){
+		$scope.categories = result.data;		
+	});
+
 	// function for duration control
 	$scope.selectedDuration = null;
 	$scope.removeDuration = function(object) {
@@ -95,7 +111,40 @@ angular.module('AdminApp')
 		$scope.course.durations.splice(index, 1);
 	}
 
-	 $scope.editDuration = function(object) {
+	$scope.createDuration = function() {
+	 	
+	 	console.log($modal);
+		var obj = $scope.newDuration;
+		var modalInstance = $modal.open({
+		  templateUrl: 'addNewDurationModalContent.html',
+		  controller: 'NewDurationModalInstanceCtrl',
+		  resolve: {
+		    newDuration: function () {
+		      return obj;
+		    }
+		  }
+		});
+
+		modalInstance.result.then(function (newDuration) {
+
+		 	Duration.create(newDuration, function(result){
+		 		 var newDuration = result.data;
+		 		 newDuration.order = $scope.course.durations.length;
+
+		 		$scope.course.durations.push(newDuration);
+		 		$scope.newDuration.title = '';
+		 		$scope.newDuration.price = 0.0;
+		 		$scope.newDuration.week = 1;
+		 		$scope.newDuration.order = $scope.newDuration.length + 1;
+		 		
+		 	});
+		}, function () {
+		  	// done
+		});
+	 	
+	}
+
+	$scope.editDuration = function(object) {
 	 	
 	 	$scope.selectedDuration = object;
 
@@ -112,7 +161,7 @@ angular.module('AdminApp')
 
 		modalInstance.result.then(function (duration) {
 		  //$scope.user.name = user.name;
-		  console.log(duration);
+		  //console.log(duration);
 		  var result = $.grep($scope.course.durations, function(e){ return e._id == duration._id; });
 		  console.log(result[0]);
 		  result[0].title = duration.title;
@@ -123,32 +172,48 @@ angular.module('AdminApp')
 		  	// done
 		});
 	 	
-	 }
+	}
 
-	 $scope.createDuration = function() {
-	 	Duration.create($scope.newDuration, function(result){
-	 		 var newDuration = result.data;
-	 		 newDuration.order = $scope.course.durations.length;
 
-	 		$scope.course.durations.push(newDuration);
-	 		$scope.newDuration.title = '';
-	 		$scope.newDuration.price = 0.0;
-	 		$scope.newDuration.week = 1;
-	 		$scope.newDuration.order = $scope.newDuration.length + 1;
-	 		$('#addNewDuration').modal('hide');
-	 	});
-	 }
+	// function for course Link control
 
+	// $scope.createLink = function() {
+	// 	CourseLink.create($scope.newCourseLink, function(result){
+	// 		$scope.course.links.push(result.data);
+	// 		$scope.newCourseLink.title = '';
+	// 		$scope.newCourseLink.href = '';
+	// 		$scope.newCourseLink.order = $scope.course.links.length+1;
+	// 		$('#addNewLink').modal('hide');
+	// 	});
+	// }
 
 	$scope.createLink = function() {
-		CourseLink.create($scope.newCourseLink, function(result){
-			$scope.course.links.push(result.data);
-			$scope.newCourseLink.title = '';
-			$scope.newCourseLink.href = '';
-			$scope.newCourseLink.order = $scope.course.links.length+1;
-			$('#addNewLink').modal('hide');
+
+		var modalInstance = $modal.open({
+		  templateUrl: 'NewLinkModalContent.html',
+		  controller: 'NewLinkModalInstanceCtrl',
+		  windowClass: 'app-modal-lg',
+		  resolve: {
+		  	newCourseLink: function(){
+		  		return $scope.newCourseLink;
+		  	}
+		  }
+		});
+
+		modalInstance.result.then(function (editCourseLink) {
+	
+			CourseLink.create(editCourseLink, function(result){
+				$scope.course.links.push(result.data);
+				$scope.newCourseLink.title = '';
+				$scope.newCourseLink.href = '';
+				$scope.newCourseLink.order = $scope.course.links.length+1;
+			
+			});
+		}, function () {
+		  	// done
 		});
 	}
+
 
 	$scope.removeLink = function(object) {
 		var index = $scope.course.links.indexOf(object);
@@ -204,17 +269,30 @@ angular.module('AdminApp')
 
 	// update course
 	$scope.update = function(isValid) {
-	$scope.returnMessage="";
-		$("#messageReturn").fadeIn('slow');
-		Courses.update($scope.course, function(result){
-				var message = result.messages;	   
-				console.log(message); 
 
-				ShowGritterCenter('System Notification','Couse info has been updated');
-			    // $scope.returnMessage = message;
-			    // $("#messageReturn").delay(2000).fadeOut('slow');
-				// $window.location='/admin/staff/detail/'+ staff_id;
-		})
+
+		//console.log($($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html());
+
+		$scope.course.content = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
+		
+
+		$scope.returnMessage="";
+		$("#messageReturn").fadeIn('slow');
+
+		setTimeout(function(){
+			Courses.update($scope.course, function(result){
+
+				console.log(result);
+					var message = result.messages;	   
+					if(result.status == 'ok')
+						ShowGritterCenter('System Notification','Couse info has been updated');
+					else
+						ShowGritterCenter('System Notification',message);
+	
+			})
+
+		},200);
+
 	}
 
 
@@ -223,6 +301,19 @@ angular.module('AdminApp')
 })
 
 
+
+
+.controller('NewLinkModalInstanceCtrl', function ($scope, $modalInstance, newCourseLink) {
+	$scope.link = newCourseLink;
+	
+	$scope.ok = function () {
+		$modalInstance.close($scope.link );
+	};
+
+	$scope.cancel = function () {
+	$modalInstance.dismiss('cancel');
+	};
+})
 
 .controller('EditLinkModalInstanceCtrl', function ($scope, $modalInstance, editCourseLink) {
 
@@ -236,6 +327,21 @@ angular.module('AdminApp')
 	$modalInstance.dismiss('cancel');
 	};
 })
+
+.controller('NewDurationModalInstanceCtrl', function ($scope, $modalInstance, newDuration) {
+
+
+	$scope.newDuration = newDuration;
+
+	$scope.ok = function () {
+		$modalInstance.close($scope.newDuration );
+	};
+
+	$scope.cancel = function () {
+		$modalInstance.dismiss('cancel');
+	};
+})
+
 
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, editDuration) {
 

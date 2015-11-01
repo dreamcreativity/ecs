@@ -8,6 +8,8 @@ angular.module(
 		'esc.resources',
 		'esc.filters',
 		'esc.directives',
+		'ngAnimate',
+		'angular-loading-bar'
 		// //'esc.auth',
 		// 'ui.bootstrap'
 	]

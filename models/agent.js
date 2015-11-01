@@ -10,7 +10,7 @@ var AgentSchema = new mongoose.Schema({
 	email: {type: String, required: true },
 	workphone: {type: String, required: true },
 	cellphone: {type: String, required: true },
-	region : {type: String, required:true },
+	region : {type: String, default : null },
 	students : [{type: mongoose.Schema.ObjectId, ref : 'Student'}],
 	commission : {type: Number, default : 0},
 	isDelete : {type : Boolean, default : false },
