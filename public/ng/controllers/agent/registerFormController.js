@@ -144,6 +144,55 @@ angular.module('AgentApp')
 	
 })
 
+.controller('StudentExtending', function ($rootScope,$scope,$http,Students,Courses,Constants,$window){
+	var student_id = url_params.id;
+	loading();
+
+	if(student_id !=null){
+	 	Students.get({id:student_id}, function(result){
+	 		$scope.student = result.data;
+	 	});	
+	 }
+
+	 function loading() {
+	 	$scope.courseList =[];
+	 	$scope.displayCourses = [];
+	 	var today = new Date();
+		$scope.availableYears = [today.getFullYear(),today.getFullYear()+1,today.getFullYear()+2];
+		$scope.isDisabled = false;
+		$scope.corseLevel = [];
+
+		Courses.getSimpleList(function(data){
+			$scope.courses = data.data;
+		});
+
+		Constants.get({name : "CourseLevel"}, function(result){
+			if(result.status =="ok"){
+				$scope.corseLevel = result.data;
+			}
+		});
+	 }
+
+
+	 $scope.extendingCourse =function() {
+	 	if(!$scope.courseList.length){
+	 		ShowGritterCenter('System Notification','Courses cannot be empty');
+	 	}
+	 	else {
+	 		Students.createExtendingCourse({student_id: student_id, courseList : $scope.courseList, agent : $scope.student.agent}, function(result){
+	 			if(result.status == 'ok' && result.messages =='successed'){
+	 				ShowGritterCenter('System Notification','Courses has been successfully registered');
+	 				setInterval(function(){
+	 					$window.location='/agent/student/detail/'+ student_id;
+	 				}, 2000); 
+	 			}
+	 		});
+	 	}
+	 }
+
+})
+
+
 .controller("InvitationCtrl", function InvitationCtrl($rootScope,$scope,AgentTokens,$http,$window){
 	var currentAgent_id = null;
 	var token = sessionStorage.token;

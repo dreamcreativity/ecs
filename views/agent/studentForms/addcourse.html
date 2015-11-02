@@ -1,0 +1,136 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+
+<div class="row" ng-controller='StudentExtending'>
+	<div class="col-lg-12">									
+		<div class="portlet">
+			<div id="f-3" class="panel-collapse collapse in">
+				<div class="portlet-body">
+
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">First Name :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="firstname" ng-model="student.firstname" readonly="">
+							</div>
+							<label class="col-sm-2 control-label">Last Name :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="lastname" ng-model="student.lastname" readonly="">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Gender :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="gender" ng-model="student.gender" readonly="">
+							</div>
+							<label class="col-sm-2 control-label">Birthday :</label>
+							<div class="col-sm-2">
+								<div class="form-control">{{student.birthday | date : 'MMM dd yyyy'}}</div>
+							</div>
+							<label class="col-sm-1 control-label">Age :</label>
+							<div class="col-sm-1">
+								<input type="text" class="form-control" name="age" ng-model="student.age" readonly="">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Address :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="address" ng-model="student.address" readonly="">
+							</div>
+							<label class="col-sm-2 control-label">Postcode :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="postcode" ng-model="student.postcode" readonly="">
+							</div>
+							<label class="col-sm-1 control-label">City :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="city" ng-model="student.city" readonly="">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Province :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="province" ng-model="student.province" readonly="">
+							</div>
+							<label class="col-sm-2 control-label">Country :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="country" ng-model="student.country" readonly="">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Telephone :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="telephone" ng-model="student.telephone" readonly="">
+							</div>
+							<label class="col-sm-2 control-label">Email :</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" name="email" ng-model="student.email" readonly="">
+							</div>
+						</div>
+
+						<div ng-if="student.agent !=null">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Agent :</label>
+								<div class="col-sm-2">
+									<div class="form-control">{{student.agent.lastname}} {{student.agent.firstname}}</div>
+								</div>
+								<label class="col-sm-2 control-label">Agent's Company :</label>
+								<div class="col-sm-2">
+									<div class="form-control">{{student.agent.company}}</div>
+								</div>
+								<label class="col-sm-1 control-label">Agent's Email :</label>
+								<div class="col-sm-2">
+									<div class="form-control">{{student.agent.email}}</div>
+								</div>
+							</div>
+						</div>
+
+						<div ng-if="student.agent == null">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Agent :</label>
+								<div class="col-sm-2">
+									<div class="form-control">N/A</div>
+								</div>
+								<label class="col-sm-2 control-label">Agent's Company :</label>
+								<div class="col-sm-2">
+									<div class="form-control">N/A</div>
+								</div>
+								<label class="col-sm-2 control-label">Agent's Email :</label>
+								<div class="col-sm-2">
+									<div class="form-control">N/A</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">First registration Date :</label>
+							<div class="col-sm-2">
+								<label class="label label-success">{{ student.registerDate  | date:'MMMM d, yyyy'}}</label>
+							</div>
+						</div>
+
+						<div course-register></div>
+
+						<div class="form-group">
+							<div class="col-sm-1">
+								<button type="submit" class="btn btn-primary btn-block" ng-click="extendingCourse()">Submit</button>
+							</div>
+							<div class="col-sm-1">
+								<a href="/agent/student/detail/{{student._id}}" type="submit" class="btn btn-primary btn-block">Cancel</a>
+							</div>
+						</div>
+
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
