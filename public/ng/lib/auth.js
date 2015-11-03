@@ -17,6 +17,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
 
 
   			config.headers['api_token'] = $window.sessionStorage.token ;
+        config.headers['Authorization'] = 'Token token="' + $window.sessionStorage.token  + '"';
   	    console.log(config.headers );
         //debugger;
   		}
@@ -42,7 +43,8 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
 
 
 .config(function ($httpProvider) {
-  $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  $httpProvider.defaults.headers.post['XSRF-AUTH'] = 
+        "some accessToken to be generated later";
   $httpProvider.interceptors.push('authInterceptor');
 });
 
