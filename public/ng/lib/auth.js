@@ -11,15 +11,9 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
     request: function (config) {
 	    config.headers = config.headers || {};
 
-      console.log('999999999999999');
-      console.log($window.sessionStorage.token);
+
   		if ($window.sessionStorage.token) {
-
-
-  			config.headers['api_token'] = $window.sessionStorage.token ;
         config.headers['Authorization'] =  $window.sessionStorage.token;
-  	    console.log(config.headers );
-        //debugger;
   		}
   		return config;
     },
@@ -29,10 +23,10 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
         // handle the case where the user is not authenticated
       }
       if (response.status === 403) {
-        //console.log('please log in ');
+
         var pathname = $window.location.pathname.substr($window.location.pathname.indexOf("/")+1).split(/\//)[0];
         if(pathname == 'admin'){
-          //window.location = '/admin/login';
+          window.location = '/admin/login';
         }
         else window.location = '/agent/login';
       }
