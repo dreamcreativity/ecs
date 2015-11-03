@@ -13,9 +13,9 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
       console.log($window.sessionStorage.token);
   		if ($window.sessionStorage.token) {
 
-        
+
   			config.headers.api_token = $window.sessionStorage.token ;
-  	    //console.log($window.sessionStorage.token );
+  	    console.log(config.headers.api_token );
   		}
   		return config;
     },
