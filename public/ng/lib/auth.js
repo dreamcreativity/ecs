@@ -17,7 +17,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
 
 
   			config.headers['api_token'] = $window.sessionStorage.token ;
-        config.headers['Authorization'] = 'Token token="' + $window.sessionStorage.token  + '"';
+        config.headers['Authorization'] =  $window.sessionStorage.token;
   	    console.log(config.headers );
         //debugger;
   		}
