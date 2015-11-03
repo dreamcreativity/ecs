@@ -8,6 +8,9 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {
 	    config.headers = config.headers || {};
+
+      console.log('999999999999999');
+      console.log($window.sessionStorage.token);
   		if ($window.sessionStorage.token) {
   			config.headers.api_token = sessionStorage.token ;
   	    //console.log($window.sessionStorage.token );
