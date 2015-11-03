@@ -85,6 +85,13 @@ app.use('/agent', agent);
 app.use('/api', api);
 
 
+app.all('/*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
+    next();
+});
+
+
 
 //---------------------------------------------
 // catch 404 and forward to error handler

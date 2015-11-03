@@ -84,6 +84,7 @@ router.use(function(req,res,next){
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
 
+	
 	if(IsAuthException(path, method)){
 		next();
 	}else{
