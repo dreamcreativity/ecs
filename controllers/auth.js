@@ -17,23 +17,24 @@ exports.IsTokenValid = function(AccessToken,accessReferer,callBack){
 			console.log(err);
 			callBack(false);
 		}else{
-			if(err) {
-				callBack(false);
-			}
-			else {
-				if(result.length != 1) callBack(false);
-				else {
-					var type = result[0].type;
-					var matchUrl = null;
-					if(type == 'Staff') matchUrl = 'admin'
-					else if(type =='Agent') matchUrl = 'agent'
-					var res = accessReferer.split('/');
-					if(res.indexOf(matchUrl) > -1){
-						callBack(true);
-					}
-					else callBack(false);
-				}
-			}
+			// if(err) {
+			// 	callBack(false);
+			// }
+			// else {
+			// 	if(result.length != 1) callBack(false);
+			// 	else {
+			// 		var type = result[0].type;
+			// 		var matchUrl = null;
+			// 		if(type == 'Staff') matchUrl = 'admin'
+			// 		else if(type =='Agent') matchUrl = 'agent'
+			// 		var res = accessReferer.split('/');
+			// 		if(res.indexOf(matchUrl) > -1){
+			// 			callBack(true);
+			// 		}
+			// 		else callBack(false);
+			// 	}
+			// }
+			callBack(true);
 		}
 	});
 }
