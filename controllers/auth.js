@@ -17,14 +17,12 @@ exports.IsTokenValid = function(AccessToken,accessReferer,callBack){
 			console.log(err);
 			callBack(false);
 		}else{
-			console.log('--------  IsTokenValid()  Error ---------');
+
 			if(err) {
 				console.log(err)
 				callBack(false);
 			}
 			else {
-
-				console.log(result);
 				if(result.length != 1) callBack(false);
 				else {
 					var type = result[0].type;
