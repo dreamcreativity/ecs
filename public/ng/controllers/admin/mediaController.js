@@ -154,7 +154,7 @@ angular.module('AdminApp')
 	    url: uploadURL,
 	    type: "POST",
 	    beforeSend: function (request){
-                request.setRequestHeader("api_token", sessionStorage.token);
+                request.setRequestHeader("Authorization", sessionStorage.token);
             },
 	    contentType:false,
 	    processData: false,
