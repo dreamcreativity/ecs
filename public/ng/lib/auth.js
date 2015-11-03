@@ -4,11 +4,7 @@
 
 var app = angular.module('esc.auth', []);
 
-app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }
-]);
+
 
 app.factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
@@ -46,6 +42,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
 
 
 .config(function ($httpProvider) {
+  $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   $httpProvider.interceptors.push('authInterceptor');
 });
 
