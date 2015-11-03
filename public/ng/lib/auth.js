@@ -23,7 +23,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
         //console.log('please log in ');
         var pathname = $window.location.pathname.substr($window.location.pathname.indexOf("/")+1).split(/\//)[0];
         if(pathname == 'admin'){
-          window.location = '/admin/login';
+          //window.location = '/admin/login';
         }
         else window.location = '/agent/login';
       }
