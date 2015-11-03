@@ -88,7 +88,8 @@ router.use(function(req,res,next){
 		next();
 	}else{
 		// check token from header
-
+		console.log('**************');
+		console.log(req.headers);
 		if( typeof req.headers.api_token === 'undefined'){
 			res.send(403,'403 auth error token');
 		}else{
