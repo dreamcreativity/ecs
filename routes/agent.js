@@ -109,6 +109,18 @@ router.get('/student/detail/:id', function(req, res) {
 		);
 });
 
+router.get('/student/extending/:id', function(req, res) {
+	template(req,res,'agent_main','agent/studentForms/addcourse.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Extending course',
+				url_params : req.params
+			}
+		);
+});
+
 router.get('/student/commission/:id', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/commission.html',
 			{ 

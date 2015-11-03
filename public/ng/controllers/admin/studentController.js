@@ -105,6 +105,7 @@ angular.module('AdminApp')
 .controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,Students,Accommodations,Courses,Constants,$window) {
 	var student_id = url_params.id;
 	$scope.havingAccommdation = false;
+	$scope.createAccommdation = true;
 
 	 if(student_id !=null){
 	 	Students.get({id:student_id}, function(result){
@@ -118,6 +119,7 @@ angular.module('AdminApp')
 				$scope.accommodation.endDate = new Date($scope.accommodation.endDate);
 				$scope.accommodation.departureDateFromToronto = new Date($scope.accommodation.departureDateFromToronto);
 	 			$scope.havingAccommdation = true;
+	 			$scope.createAccommdation = false;
 	 		}
 	 		$scope.flightInfo = $scope.student.flightInfo;
 	 		if($scope.flightInfo !=null){
@@ -149,7 +151,21 @@ angular.module('AdminApp')
 	 	var acc = $scope.accommodation;
 	 		Accommodations.update(acc, function(result){
 				if(result.status == 'ok' && result.messages == 'successed'){
-	 				ShowGritterCenter('System Notification','Student has been updated');
+	 				ShowGritterCenter('System Notification','Accommodation has been updated');
+		 			setInterval(function(){
+	  					 $window.location='/admin/student/edit/' +student_id;
+					}, 2000); 	
+	 			}
+	 			else{
+	 				ShowGritterCenter('System Notification','Fail');
+	 			}
+	 		});
+	 }
+
+	 $scope.createNewAccommdation = function(isValid){
+	 	Accommodations.create({accommodation :$scope.accommodation, flightInfo : $scope.flightInfo, studentId : student_id}, function(result){
+				if(result.status == 'ok' && result.messages == 'successed'){
+	 				ShowGritterCenter('System Notification','Accommodation has been created');
 		 			setInterval(function(){
 	  					 $window.location='/admin/student/edit/' +student_id;
 					}, 2000); 	

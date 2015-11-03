@@ -15,9 +15,8 @@ angular.module('AdminApp')
 		return StaffAccount.query({});
 	}
 
+
 	$scope.info = getAccountInfo();
-
-
 
 });
 

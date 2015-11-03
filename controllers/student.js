@@ -449,23 +449,40 @@ exports.quit = function(req,res){
 
 //Create a accommodation for student
 exports.createAccommodation = function(req,res){
-	var accommodation = new Accommodation(req.body);
-	accommodation.save(function(err, result){
-		if(err){
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
-		else {
-			res.json({
-				status: 'ok',
-				messages: 'successed',
-				data: result
-			});
-		}
-	});
+	var accommodation = new Accommodation(req.body.accommodation);
+	var flightInfo = new FlightInfo(req.body.flightInfo);
+	var studentId = req.body.studentId;
+	var accommodation_id = null;
+	var flightInfo_id = null;
+	if(accommodation){
+		accommodation.save(function(err, result){
+			if(!err){
+				accommodation_id = result._id;
+				if(flightInfo){
+					flightInfo.save(function(err, result1){
+						if(!err){
+							flightInfo_id =result1._id;
+							Student.findOne({_id:studentId}).exec(function(err, result2){
+								if(!err){
+									result2.accommodation = accommodation_id;
+									result2.flightInfo = flightInfo_id;
+									result2.save(function(err, result3){
+										if(!err){
+											res.json({
+												status: 'ok',
+												messages: 'successed',
+												data: result3
+											});
+										}
+									});
+								}
+							});
+						}
+					});
+				}
+			}
+		});
+}
 }
 
 exports.updateAccommdation = function(req,res){

@@ -84,17 +84,18 @@ router.use(function(req,res,next){
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
 
+
 	if(IsAuthException(path, method)){
 		next();
 	}else{
 		// check token from header
 
-		if( typeof req.headers.api_token === 'undefined'){
+		if( typeof req.headers.authorization === 'undefined'){
 			res.send(403,'403 auth error token');
 		}else{
 
-			console.log(req.headers.api_token);
-			var accessToken = req.headers.api_token;
+			console.log(req.headers.authorization);
+			var accessToken = req.headers.authorization;
 			var accessReferer = req.headers.referer;
 
 			auth.IsTokenValid(accessToken, accessReferer, function(isValid){
