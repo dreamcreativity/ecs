@@ -2,8 +2,14 @@ var nodemailer = require('nodemailer');
 var Email = require('../models/email');
 var fs = require("fs");
 
-var email = 'esc@dreamcwc.com';
+//var email = 'esc@dreamcwc.com';
+var email = 'esc.mailsys@gmail.com';
 var transporter = nodemailer.createTransport({
+	service: 'Gmail',
+	auth : {
+		user: email,
+		pass: 'Asdf_1234'
+	}
 	//  domains: [
  //            "gmail.com",
  //            "googlemail.com"
@@ -14,16 +20,16 @@ var transporter = nodemailer.createTransport({
 	// 	user: email,
 	// 	pass: 'Asdf_1234'
 	// }
-	domains: [
-            "exmail.qq.com"
-        ],
-        host: "smtp.exmail.qq.com",
-        port: 465,
-        secure: true,
-	auth : {
-		user: email,
-		pass: 'Asdf_1234'
-	}
+	// domains: [
+ //            "exmail.qq.com"
+ //        ],
+ //        host: "smtp.exmail.qq.com",
+ //        port: 465,
+ //        secure: true,
+	// auth : {
+	// 	user: email,
+	// 	pass: 'Asdf_1234'
+	// }
 });
 
 
