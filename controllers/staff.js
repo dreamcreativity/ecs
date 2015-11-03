@@ -422,7 +422,7 @@ exports.getStaffAccount = function(req,res){
 
 exports.changePassword = function(req,res){
 
-	Token.find({type:'Staff', _id: req.headers.api_token, isActived:true } ,function(err, result){
+	Token.find({type:'Staff', _id: req.headers.authorization, isActived:true } ,function(err, result){
 
 		if(result.length > 1){
 			res.json({
