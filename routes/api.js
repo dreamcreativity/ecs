@@ -84,13 +84,13 @@ router.use(function(req,res,next){
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
 
-	
+
 	if(IsAuthException(path, method)){
 		next();
 	}else{
 		// check token from header
 		console.log('**************');
-		console.log(req);
+		console.log(req.headers);
 		if( typeof req.headers.api_token === 'undefined'){
 			res.send(403,'403 auth error token');
 		}else{
