@@ -345,7 +345,7 @@ exports.delete = function(req,res){
 //GET: staff  by session
 exports.getStaffAccount = function(req,res){
 
-	Token.find({type:'Staff', _id: req.headers.api_token } ,function(err, result){
+	Token.find({type:'Staff', _id: req.headers.authorization } ,function(err, result){
 
 		// res.json({
 
