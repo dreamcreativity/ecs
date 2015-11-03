@@ -89,11 +89,12 @@ angular.module('AgentApp')
 	}
  })
 
-.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,Constants,AgentTokens,$window){
+.controller('StudentRegisterDetail',function StudentRegisterDetail($rootScope,$scope,$http,Students,Constants,AgentTokens,Accommodations,$window){
 	var obj_id = url_params.id;
 	var currentAgent_id = null;
 	var token = sessionStorage.token;
 	$scope.havingAccommdation = false;
+	$scope.createAccommdation = true;
 	loading();
 
 	function loading() {
@@ -107,13 +108,15 @@ angular.module('AgentApp')
 				$scope.programs = result.data.programRegistration;
 				$scope.accommodation = result.data.accommodation;
 				if($scope.student.birthday) $scope.student.birthday = new Date($scope.student.birthday);
-	 		if($scope.student.healthInsuranceEndDate) $scope.student.healthInsuranceEndDate = new Date($scope.student.healthInsuranceEndDate);
-	 		if($scope.student.healthInsuranceStartingDate) $scope.student.healthInsuranceStartingDate = new Date($scope.student.healthInsuranceStartingDate);
+		 		if($scope.student.healthInsuranceEndDate) $scope.student.healthInsuranceEndDate = new Date($scope.student.healthInsuranceEndDate);
+		 		if($scope.student.healthInsuranceStartingDate) $scope.student.healthInsuranceStartingDate = new Date($scope.student.healthInsuranceStartingDate);
+		 		if($scope.student.healthInsuranceStartingDate) $scope.student.healthInsuranceStartingDate = new Date($scope.student.healthInsuranceStartingDate);
 				if($scope.accommodation !=null){
 					$scope.accommodation.startDate = new Date($scope.accommodation.startDate);
 					$scope.accommodation.endDate = new Date($scope.accommodation.endDate);
 					$scope.accommodation.departureDateFromToronto = new Date($scope.accommodation.departureDateFromTorontos);
 	 				$scope.havingAccommdation = true;
+	 				$scope.createAccommdation = false;
 	 				}
 			});
 
@@ -140,6 +143,36 @@ angular.module('AgentApp')
   					 $window.location='/agent/student/detail/' + $scope.student._id;
 				}, 2000); 
 	 	})
+	 }
+
+
+	  $scope.submitAccommdation = function(isValid){
+	 	var acc = $scope.accommodation;
+	 		Accommodations.update(acc, function(result){
+				if(result.status == 'ok' && result.messages == 'successed'){
+	 				ShowGritterCenter('System Notification','Accommodation has been updated');
+		 			setInterval(function(){
+	  					 $window.location='/agent/student/detail/' +obj_id;
+					}, 2000); 	
+	 			}
+	 			else{
+	 				ShowGritterCenter('System Notification','Fail');
+	 			}
+	 		});
+	 }
+
+	 $scope.createNewAccommdation = function(isValid){
+	 	Accommodations.create({accommodation :$scope.accommodation, flightInfo : $scope.flightInfo, studentId : obj_id}, function(result){
+				if(result.status == 'ok' && result.messages == 'successed'){
+	 				ShowGritterCenter('System Notification','Accommodation has been created');
+		 			setInterval(function(){
+	  					 $window.location='/agent/student/detail/' +obj_id;
+					}, 2000); 	
+	 			}
+	 			else{
+	 				ShowGritterCenter('System Notification','Fail');
+	 			}
+	 		});
 	 }
 	
 })

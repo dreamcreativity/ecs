@@ -151,7 +151,7 @@ angular.module('AdminApp')
 	 	var acc = $scope.accommodation;
 	 		Accommodations.update(acc, function(result){
 				if(result.status == 'ok' && result.messages == 'successed'){
-	 				ShowGritterCenter('System Notification','Student has been updated');
+	 				ShowGritterCenter('System Notification','Accommodation has been updated');
 		 			setInterval(function(){
 	  					 $window.location='/admin/student/edit/' +student_id;
 					}, 2000); 	
@@ -165,9 +165,9 @@ angular.module('AdminApp')
 	 $scope.createNewAccommdation = function(isValid){
 	 	Accommodations.create({accommodation :$scope.accommodation, flightInfo : $scope.flightInfo, studentId : student_id}, function(result){
 				if(result.status == 'ok' && result.messages == 'successed'){
-	 				ShowGritterCenter('System Notification','Student has been updated');
+	 				ShowGritterCenter('System Notification','Accommodation has been created');
 		 			setInterval(function(){
-	  					 $window.location='/admin/student/detail/' +student_id;
+	  					 $window.location='/admin/student/edit/' +student_id;
 					}, 2000); 	
 	 			}
 	 			else{
