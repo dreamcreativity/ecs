@@ -1,15 +1,19 @@
 var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 var Email = require('../models/email');
 var fs = require("fs");
 
 //var email = 'esc@dreamcwc.com';
 var email = 'esc.mailsys@gmail.com';
-var transporter = nodemailer.createTransport({
-	service: 'Gmail',
-	auth : {
-		user: email,
-		pass: 'Asdf_1234'
-	}
+var transporter = nodemailer.createTransport(smtpTransport({
+	host: "smtp.gmail.com", // hostname
+    secure: true, // use SSL
+    port: 465, // port for secure SMTP
+    auth: {
+        user: email,
+        pass: 'Asdf_1234'
+    }
+}));
 	//  domains: [
  //            "gmail.com",
  //            "googlemail.com"
@@ -30,7 +34,7 @@ var transporter = nodemailer.createTransport({
 	// 	user: email,
 	// 	pass: 'Asdf_1234'
 	// }
-});
+//});
 
 
 exports.getEmailTemplate = function(templateName, callback){
