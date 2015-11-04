@@ -19,7 +19,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
 
 exports.getEmailTemplate = function(templateName, callback){
 
-	fs.readFile('./EmailTemplates/' + templateName, 'utf8', function (err,data) {
+	fs.readFile('/EmailTemplates/' + templateName, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
 		}
