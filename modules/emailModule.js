@@ -15,27 +15,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
         timeout: 3600
     }
 }));
-	//  domains: [
- //            "gmail.com",
- //            "googlemail.com"
- //        ],
- //        host: "smtp.gmail.com",
- //        port: 465,
-	// auth : {
-	// 	user: email,
-	// 	pass: 'Asdf_1234'
-	// }
-	// domains: [
- //            "exmail.qq.com"
- //        ],
- //        host: "smtp.exmail.qq.com",
- //        port: 465,
- //        secure: true,
-	// auth : {
-	// 	user: email,
-	// 	pass: 'Asdf_1234'
-	// }
-//});
+
 
 
 exports.getEmailTemplate = function(templateName, callback){
@@ -72,20 +52,22 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 		for (var i = 0; i < attachments.length; i++) {
 			message["attachments"].push({filename: "attachment_" + i +".pdf", path:attachments[i]});
 		};
-				transporter.sendMail(message,function(err, success){
-					if(err) message ="Fail";
-					else message = "Success";
-					for (var i = 0; i < attachments.length; i++) {
-						fs.unlinkSync(attachments[i]);
-					};
-					callback(message);
-				})
+				// transporter.sendMail(message,function(err, success){
+				// 	if(err) message ="Fail";
+				// 	else message = "Success";
+				// 	for (var i = 0; i < attachments.length; i++) {
+				// 		fs.unlinkSync(attachments[i]);
+				// 	};
+				// 	callback(message);
+				// })
+				callback("Success");
 	}
 	else {
-		transporter.sendMail(message, function(err, result){
-			if(err) message ="Fail";
-			else message = "Success";
-			callback(message);
-		});
+		// transporter.sendMail(message, function(err, result){
+		// 	if(err) message ="Fail";
+		// 	else message = "Success";
+		// 	callback(message);
+		// });
+		callback("Success");
 	}
 }
