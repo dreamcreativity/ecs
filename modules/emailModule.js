@@ -2,6 +2,9 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var Email = require('../models/email');
 var fs = require("fs");
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+
 
 //var email = 'esc@dreamcwc.com';
 var email = 'esc.mailsys@gmail.com';
@@ -19,7 +22,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
 
 exports.getEmailTemplate = function(templateName, callback){
 
-	fs.readFile('/EmailTemplates/' + templateName, 'utf8', function (err,data) {
+	fs.readFile( appDir + '/EmailTemplates/' + templateName, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
 		}
