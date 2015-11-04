@@ -11,7 +11,8 @@ var transporter = nodemailer.createTransport(smtpTransport({
     port: 465, // port for secure SMTP
     auth: {
         user: email,
-        pass: 'Asdf_1234'
+        pass: 'Asdf_1234',
+        timeout: 3600
     }
 }));
 	//  domains: [
