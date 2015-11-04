@@ -46,33 +46,36 @@ exports.replaceEmailTemplate = function(templateName, info){
 
 
 exports.sendEmail = function(to,subject,context,attachments,callback){
-	var message = {
-		from : email,
-		to : to,
-		subject : subject,
-		html : context,
-		attachments : []
-		};
-	if(attachments !=null){
-		for (var i = 0; i < attachments.length; i++) {
-			message["attachments"].push({filename: "attachment_" + i +".pdf", path:attachments[i]});
-		};
-				// transporter.sendMail(message,function(err, success){
-				// 	if(err) message ="Fail";
-				// 	else message = "Success";
-				// 	for (var i = 0; i < attachments.length; i++) {
-				// 		fs.unlinkSync(attachments[i]);
-				// 	};
-				// 	callback(message);
-				// })
-				callback("Success");
-	}
-	else {
-		// transporter.sendMail(message, function(err, result){
-		// 	if(err) message ="Fail";
-		// 	else message = "Success";
-		// 	callback(message);
-		// });
-		callback("Success");
-	}
+	// var message = {
+	// 	from : email,
+	// 	to : to,
+	// 	subject : subject,
+	// 	html : context,
+	// 	attachments : []
+	// 	};
+	// if(attachments !=null){
+	// 	for (var i = 0; i < attachments.length; i++) {
+	// 		message["attachments"].push({filename: "attachment_" + i +".pdf", path:attachments[i]});
+	// 	};
+	// 			transporter.sendMail(message,function(err, success){
+	// 				if(err) message ="Fail";
+	// 				else message = "Success";
+	// 				for (var i = 0; i < attachments.length; i++) {
+	// 					fs.unlinkSync(attachments[i]);
+	// 				};
+	// 				callback(message);
+	// 			})
+	// 			callback("Success");
+	// }
+	// else {
+	// 	transporter.sendMail(message, function(err, result){
+	// 		if(err) message ="Fail";
+	// 		else message = "Success";
+	// 		callback(message);
+	// 	});
+	// 	callback("Success");
+	// }
+
+
+	callback("Success");
 }
