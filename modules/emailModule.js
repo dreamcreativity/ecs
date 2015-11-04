@@ -7,12 +7,11 @@ var fs = require("fs");
 var email = 'esc.mailsys@gmail.com';
 var transporter = nodemailer.createTransport(smtpTransport({
 	host: "smtp.gmail.com", // hostname
-    secure: true, // use SSL
-    port: 465, // port for secure SMTP
+    secure: false, // use SSL
+    port: 587, // port for secure SMTP
     auth: {
         user: email,
-        pass: 'Asdf_1234',
-        timeout: 3600
+        pass: 'Asdf_1234'
     }
 }));
 	//  domains: [
