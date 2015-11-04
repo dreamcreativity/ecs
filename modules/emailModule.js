@@ -3,7 +3,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 var Email = require('../models/email');
 var fs = require("fs");
 var path = require('path');
-var appDir = path.dirname(require.main.filename);
+//var appDir = path.dirname(require.main.filename);
 
 
 //var email = 'esc@dreamcwc.com';
@@ -22,7 +22,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
 
 exports.getEmailTemplate = function(templateName, callback){
 
-	fs.readFile( appDir + '/EmailTemplates/' + templateName, 'utf8', function (err,data) {
+	fs.readFile( './emailTemplates/'  + templateName, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
 		}
@@ -55,7 +55,7 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 		html : context,
 		attachments : []
 	};
-	
+
 	if(attachments !=null){
 		for (var i = 0; i < attachments.length; i++) {
 			message["attachments"].push({filename: "attachment_" + i +".pdf", path:attachments[i]});
