@@ -22,22 +22,25 @@ var transporter = nodemailer.createTransport(smtpTransport({
 
 exports.getEmailTemplate = function(templateName, callback){
 
-	fs.readFile( appDir + '/EmailTemplates/' + templateName, 'utf8', function (err,data) {
-		if (err) {
-			return console.log(err);
-		}
-		callback(data);
-	});
+	// fs.readFile( appDir + '/EmailTemplates/' + templateName, 'utf8', function (err,data) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
+	// 	callback(data);
+	// });
 
+	callback('');
 }
 
 exports.replaceEmailTemplate = function(templateName, info){
-	var template = templateName;
-	for(var key in info){
-		var replaceValue =info[key];
-		template = template.replace('@' + key + '@', replaceValue);
-	}
-	return template;
+	// var template = templateName;
+	// for(var key in info){
+	// 	var replaceValue =info[key];
+	// 	template = template.replace('@' + key + '@', replaceValue);
+	// }
+	// return template;
+
+	return '';
 }
 
 
