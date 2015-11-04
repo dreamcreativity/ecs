@@ -7,7 +7,7 @@ var path = require('path');
 
 
 //var email = 'esc@dreamcwc.com';
-var email = 'esc.mailsys@gmail.com';
+var email = 'esc.mailsystem@gmail.com';
 var transporter = nodemailer.createTransport(smtpTransport({
 	host: "smtp.gmail.com", // hostname
     secure: false, // use SSL
