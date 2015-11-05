@@ -2,8 +2,6 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var Email = require('../models/email');
 var fs = require("fs");
-var path = require('path');
-
 
 
 
