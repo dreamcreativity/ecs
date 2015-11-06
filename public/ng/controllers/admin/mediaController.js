@@ -12,6 +12,8 @@ angular.module('AdminApp')
 
 	$scope.startAll = function(){
 
+		console.log($scope.uploadList);
+
 		for (var x in $scope.uploadList) {
 
 			var file = $scope.uploadList[x];
@@ -169,7 +171,7 @@ angular.module('AdminApp')
 	 
 	    //status.setAbort(jqXHR);
 	    fileObj.jqXHR = jqXHR;
-	    $scope.$apply(); 
+	    //$scope.$apply(); 
 
 	}
 
