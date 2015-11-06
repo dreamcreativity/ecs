@@ -49,7 +49,7 @@ exports.upload = function(req,res){
 		// new filename
 		var newFileName = uuid.v4() + '.' +req.files.file.extension;
     	// new file location in server
-   		var newPath =  'public/' + subPath + newFileName;
+   		var newPath =  'public' + subPath + newFileName;
    		var thumbnail_path = 'public/docs/thumbnails/'+ newFileName;
     	// doucment record path for http access
     	newMedia.path = subPath +  newFileName;
@@ -157,8 +157,13 @@ exports.upload = function(req,res){
 		        //---------------------------------------
 
 		    	mv(req.files.file.path, newPath,{mkdirp: true},function(err){
-		    		console.log('error form moving file');
-		    		console.log(err);
+		    		console.log(req.files.file.path);
+		    		console.log(newPath);
+		    		if(err){
+		    			console.log('error form moving file');
+		    			console.log(err);
+		    		}
+		    		
 		    		next();
 		    	});      
 		       
