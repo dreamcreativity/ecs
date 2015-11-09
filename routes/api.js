@@ -193,6 +193,9 @@ router.get('/registration/top', student.getRegistrations);
 //GET registration by Id 
 router.get('/registration/:id', student.getRegistrationById);
 
+//PUT registration by Id
+router.put('/registration/:id', student.updateRegistration);
+
 //GET students registration by Agent ID
 router.get('/registration/agent/:id',student.getRegistrationByAgent);
 

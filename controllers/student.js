@@ -215,7 +215,6 @@ exports.getStudents = function(req,res){
 				data: results
 			});
 		}
-
 	});
 }
 
@@ -238,7 +237,6 @@ exports.getStudentbyStudentId = function(req,res){
 exports.getStudentbyId = function(req,res){
 	var id = req.params.id;
 	Student.findOne({_id:id}).populate('agent').populate('accommodation').populate('programRegistration').populate('flightInfo').exec(function(err, result){
-
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -253,14 +251,12 @@ exports.getStudentbyId = function(req,res){
 				data: result
 			});
 		}
-		
 	});
 }
 
 
 //GET: Student rows by student ID
 exports.getStudentbyAgentId = function(req,res){
-
 	var id = req.params.id;
 	Student.find({agent:id}, function(err, result){
 		if(err) {
@@ -281,43 +277,55 @@ exports.getRegistrationById = function(req,res){
 		if(err) {
 			res.json('Error occured: ' + err);
 		}
-
-		//async.each(result[0].payments, function(item, callback){
-
-		// 	Staff.findOne({_id:item.createBy}, function(err, result1){
-		// 		console.log(result1);
-		// 		item.createByName = result1.lastname + ' ' + result1.firstname;
-		// 		payments.push(item);
-		// 		callback();
-
-		// 	})
-		// },function(err){
-		// 	result[0].payments = payments;
-		// 	res.json({
-
-		// 	type: true,
-		// 	data: result[0]
-		// });
-		//});
-
-
 		Payment.populate(result, {
-		    path: 'payments.createBy',
-		    model: 'Staff'
-		  },
-		  function(err, staff) {
-		    if(err) return callback(err);
-		    	console.log(staff[0]);
-				res.json({
-					status : 'ok',
-					messages : 'successed',
-					data : staff[0]
-					});
+			path: 'payments.createBy',
+			model: 'Staff'
+		},
+		function(err, staff) {
+			if(err) return callback(err);
+			console.log(staff[0]);
+			res.json({
+				status : 'ok',
+				messages : 'successed',
+				data : staff[0]
+			});
 		});
+	});
+}
 
-
-	
-	});}
+//Update: Registeration record 
+exports.updateRegistration = function(req,res){
+	var id = req.params.id;
+	var programs = req.body.courseList; 
+	var programRegistration_ids = [];
+	async.each(programs, function(item,callback){
+		var obj = new ProgramRegistration(item);
+		obj.price = item.duration.price;
+		obj.coursePeriod = item.duration.title;
+		if(agentId) {
+			obj.commissionRate = agent.commission;
+		}
+		obj.save(function(err,result){
+			if(err){
+				callback2
+			}
+			else {
+				programRegistration_ids.push(result._id);
+				callback()
+			}
+		});
+	},function(err){
+			ProgramRegistration.update({_id:id}, {programRegistration : programRegistration_ids},function(err, result){
+				if(!err){
+					res.json({
+						status : 'ok',
+						messages : 'successed',
+						data : result
+					});
+				}
+			});
+		});		
+}
 
 
 //GET: Recent 10 Registration records for staff site
@@ -325,17 +333,17 @@ exports.getRegistrations = function(req,res){
 	Registration.find().sort({'createDate' : -1}).limit(10).populate('student').exec(function(err, result){
 		if(err){
 			res.json({
-					status : 'fail',
-					messages : err,
-					data : null
-					});
+				status : 'fail',
+				messages : err,
+				data : null
+			});
 		}
 		else {
 			res.json({
-					status : 'ok',
-					messages : 'successed',
-					data : result
-					});
+				status : 'ok',
+				messages : 'successed',
+				data : result
+			});
 		}
 	});
 }
@@ -390,7 +398,7 @@ exports.edit = function(req,res){
 				status: 'fail',
 				messages: err,
 				data: null
-				});
+			});
 		}
 		else {
 			res.json({
@@ -407,27 +415,27 @@ exports.editByAgent = function(req,res){
 	var id = req.params.id;
 	var student = new Student(req.body);
 	Student.update({_id:id}, 
-		{
-			firstname : student.firstname,
-			lastname : student.lastname,
-			region : student.region,
-			address : student.address,
-			postcode : student.postcode,
-			city : student.city,
-			province : student.province,
-			country : student.country,
-			telephone : student.telephone,
-			fax : student.fax,
-			email : student.email,
-			emergency : student.emergency,
-			country : student.country
-		}, function(err, result){
+	{
+		firstname : student.firstname,
+		lastname : student.lastname,
+		region : student.region,
+		address : student.address,
+		postcode : student.postcode,
+		city : student.city,
+		province : student.province,
+		country : student.country,
+		telephone : student.telephone,
+		fax : student.fax,
+		email : student.email,
+		emergency : student.emergency,
+		country : student.country
+	}, function(err, result){
 		if(err){
 			res.json({
 				status: 'fail',
 				messages: err,
 				data: null
-				});
+			});
 		}
 		else {
 			res.json({
@@ -441,9 +449,7 @@ exports.editByAgent = function(req,res){
 
 
 //Set Student is Quit
-
 exports.quit = function(req,res){
-	
 } 
 
 
@@ -482,7 +488,7 @@ exports.createAccommodation = function(req,res){
 				}
 			}
 		});
-}
+	}
 }
 
 exports.updateAccommdation = function(req,res){
@@ -585,7 +591,6 @@ exports.createExtendingCourse = function(req,res){
 					});
 				}
 			});
-
 }
 
 exports.generatePDF = function (req,res){
@@ -707,8 +712,6 @@ exports.generatePDF = function (req,res){
 	});
 }
 
-
-
 exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
 	var agent = req.body.agent;
@@ -738,9 +741,7 @@ exports.sendEmail = function(req,res){
 				});		
 		});
 	})
-
 }
-
 
 //Send Email form in client site
 exports.client_sendEmail = function(req,res){
@@ -764,7 +765,6 @@ exports.client_sendEmail = function(req,res){
 }
 
 //Helper function 
-
 function pad(n, width, z) {
   z = z || '0';
   n = n + '';
