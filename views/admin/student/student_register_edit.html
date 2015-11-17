@@ -1,0 +1,17 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<div ng-controller='ProgramEditCtrl'>
+
+	<div class="portlet"><!-- /Portlet -->
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4><strong>Name</strong> : {{student.firstname}} {{student.lastname}} <strong>Student ID</strong> : {{student.studentID}} </h4>
+			</div>
+		</div>
+	</div>
+
+	<div course-registeredit></div>
+
+</div>

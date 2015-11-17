@@ -334,6 +334,18 @@ router.get('/student/edit/:id', function(req, res) {
 		);
 });
 
+router.get('/student/register/edit/:studentid/:id', function(req,res){
+	template(req,res,'admin_main', 'admin/student/student_register_edit.html',
+				{
+					title: 'Student',
+					category: 'Management',
+					cur_tap: 'Student',
+					cur_selected : 'EditProgram',
+					url_params : req.params
+				}
+		);
+});
+
 //-----------------------Agent--------------------------------------
 
 router.get('/agent/all', function(req, res) {
@@ -468,38 +480,6 @@ router.get('/activity/edit/:id', function(req, res) {
 		});
 });
 
-//-------------------------Region-------------------------------------------
-// router.get('/region/all', function(req,res){
-// 	template(req,res,'admin_main','admin/region/region.html',
-// 	{
-// 		title: 'Region',
-// 		category : 'Management',
-// 		cur_tap : 'Region',
-// 		cur_selected : 'Region'
-// 	});
-// });
-
-// router.get('/region/create', function(req, res) {
-// 	template(req,res,'admin_main','admin/region/region_new.html',
-// 	{
-// 		title: 'Create Region',
-// 		category : 'Management',
-// 		cur_tap : 'Region',
-// 		cur_selected : 'Create'
-// 	});
-// });
-
-// router.get('/region/edit/:id', function(req, res) {
-// 	template(req,res,'admin_main', 'admin/region/region_edit.html', 
-// 		{
-// 			title : 'Edit Region',
-// 			category : 'Management',
-// 			cur_tap : 'Region',
-// 			cur_selected : 'Edit',
-// 			url_params : req.params
-// 		});
-// });
-
 //--------------------------Event--------------------------------------------
 
 router.get('/event/all', function(req,res){
@@ -531,6 +511,14 @@ router.get('/event/detail/:id', function(req, res) {
 			cur_selected : 'Edit',
 			url_params : req.params
 		});
+});
+
+router.get('/courseRegisterTemplate', function(req,res){
+	res.render('templates/courseRegister.html');
+});
+
+router.get('/courseRegisterEditTemplate', function(req,res){
+	res.render('templates/courseRegisterEdit.html');
 });
 
 

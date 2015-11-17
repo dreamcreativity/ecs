@@ -226,6 +226,12 @@ router.put('/student/agent/:id', student.editByAgent);
 //PUT : Update Accomdation info
 router.put('/student/accommodation/:id', student.updateAccommdation);
 
+//GET : ProgramRegister
+router.get('/student/programregister/:id',student.getProgramRegister);
+
+//POST : ProgramRegister
+router.post('/student/programregister/:id', student.updateProgramRegister);
+
 
 //---------------------- Commissions ---------------------------------------
 router.post('/commission/byAgentId', commission.getCommissionByAgentId);

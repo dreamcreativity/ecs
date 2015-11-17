@@ -259,6 +259,14 @@ resources.factory('Registrations',['$resource',
     });
 }]);
 
+resources.factory('ProgramRegister',['$resource',
+    function($resource){
+         return $resource('/api/student/programregister/:id', {}, {
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{ method: 'POST', params: {id:'@_id',course : '@course'} }
+    });
+}]);
+
 resources.factory('Payments',['$resource',
     function($resource){
         return $resource('/api/student/payment/:id', {}, {

@@ -225,6 +225,25 @@ angular.module('AdminApp')
 	 	}
 	 }
 
+})
+
+.controller('ProgramEditCtrl', function ($rootScope,$scope,$http,Students,Courses,Constants,ProgramRegister,$window){
+	var program_id = url_params.id;
+	var student_id = url_params.studentid;
+		loading();
+
+	function loading() {
+		ProgramRegister.get({id:program_id}, function(result){
+			$scope.studentid = student_id;
+			$scope.course = result.data;
+			$scope.duration = $scope.course.duration;
+			$scope.course.year = new Date($scope.course.startDate).getFullYear();
+			$scope.course.startDate = new Date($scope.course.startDate);
+			$scope.updateCourse = result.data;
+		});
+	}
+
+
 });
 
 

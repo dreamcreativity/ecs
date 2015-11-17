@@ -764,6 +764,60 @@ exports.client_sendEmail = function(req,res){
 	})
 }
 
+
+
+//Get Program by program id 
+exports.getProgramRegister = function(req,res){
+	var id = req.params.id;
+	ProgramRegistration.find({_id:id}, function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		res.json({
+			status: 'ok',
+			messages: 'successed',
+			data: result[0]
+		});
+	});
+}
+
+//Update Program Register 
+exports.updateProgramRegister = function(req,res){
+	 var id = req.params.id;
+	 var course = req.body.course;
+	 ProgramRegistration.findOne({_id:id},function(err, result){
+	 	if(!err){
+	 		result.tag = course.tag;
+			result.title = course.title;
+			result.course = course._id;
+			result.level = course.level;
+			result.startDate = course.startDate;
+			result.duration = course.duration._id;
+			result.isDelete = course.isDelete;
+			ProgramRegistration.update({_id:id}, result, function(err, result){
+			if(err){
+				res.json({
+					status: 'fail',
+					messages: err,
+					data: null
+				});
+			}else{
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result[0]
+				});	
+			}
+		});
+
+	 	}
+	 });
+}
+
 //Helper function 
 function pad(n, width, z) {
   z = z || '0';

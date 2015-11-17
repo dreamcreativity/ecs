@@ -540,10 +540,11 @@
 									<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
 								</div>
 								<div class="portlet-widgets">
-									<!-- <a data-toggle="collapse" data-parent="#accordion" href="#record"><i class="fa fa-chevron-down"></i></a> -->
+									<!-- <a data-toggle="collapse" data-parent="#accordion" href="#accordion"><i class="fa fa-chevron-down"></i></a> -->
 									<a href="/admin/student/payment/{{registration._id}}"><i class="fa fa-usd icon-only"></i></a>
-									<span class="divider"></span>
-									<a data-toggle="collapse" data-parent="#accordion" href="#{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a>
+									
+									<!-- <a href="/admin/student/register/edit/{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a> -->
+<!-- 									<a data-toggle="collapse" data-parent="#accordion" href="#{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a> -->
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -558,6 +559,7 @@
 												<th class="hidden-xs center">Start Date</th>
 												<th class="hidden-xs center">Duration</th>
 												<th class="col-medium center">Status</th>
+												<th class="col-medium center">Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -568,14 +570,24 @@
 												<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
 												<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
 												<td class="hidden-xs center">{{c.coursePeriod}}</td>
-												<td class="hidden-xs center">confirm</td>
+												<td class="hidden-xs center">
+													<span ng-if="c.isDelete == 1" class="label label-danger">Deleted</span>
+													<span ng-if="c.isDelete == 0" class="label label-active">Active</span>
+												</td>
+												<td class="hidden-xs center">
+													<div class="btn-group btn-group-xs ">
+														<a href="/admin/student/register/edit/{{student._id}}/{{c._id}}" class="btn"><i class="fa fa-pencil icon-only"></i></a>
+														<!-- <a href="" class="btn btn-info"><i class="fa fa-arrow-up"></i></a>
+														<a href="" class="btn btn-info"><i class="fa fa-arrow-down"></i></i></a> -->
+													</div>					
+												</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
-								<div id="{{registration._id}}" class="panel-collapse collapse">
-									<div course-register></div>
-								</div>
+								<!-- <div id="{{registration._id}}" class="panel-collapse collapse">
+									<div course-registeredit></div>
+								</div> -->
 						</div>
 						<form class="form-horizontal" ng-controller='StudentExtending'>
 							<div class="form-group">

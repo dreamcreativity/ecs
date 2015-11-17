@@ -223,6 +223,11 @@ router.get('/courseRegisterTemplate', function(req,res){
 	res.render('templates/courseRegister.html');
 });
 
+router.get('/courseRegisterEditTemplate', function(req,res){
+	res.render('templates/courseRegisterEdit.html');
+});
+
+
 
 
 
