@@ -13,15 +13,15 @@
 		<div class="portlet-body">
 			<div class="tc-tabs"><!-- Nav tabs style 1 -->
 				<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
-					<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
-					<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+					<li id="tab1"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+					<li id="tab2"><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
 					<!-- 	<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register Course</a></li> -->
-					<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration History</a></li>
+					<li id="tab3"><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration History</a></li>
 				</ul>
 
 
 				<div class="tab-content">
-					<div class="tab-pane fade in portlet-body active" id="p1">
+					<div class="tab-pane fade in portlet-body" id="p1">
 						<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
 							<div class="form-group">
 								<label class="label label-xlg label-pending arrowed-right">Student Information</label>
@@ -533,7 +533,7 @@
 						</div>
 					</div>
 
-					<div class="tab-pane fade in portlet-body" id="p4">
+					<div class="tab-pane fade in portlet-body" id="p3">
 						<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
 							<div class="portlet-heading dark">
 								<div class="portlet-title">
@@ -736,6 +736,13 @@
 	$(document).on("keypress", "form", function(event) { 
 		return event.keyCode != 13;
 	});
+
+	$("form").on("submit", function () {
+		debugger
+    	$(this).find(":submit").prop("disabled", true);
+	});
+
+
 </script>
 
 

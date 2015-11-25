@@ -122,8 +122,9 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 						ProgramRegister.update({_id:$scope.updateCourse._id, course : $scope.course}, function(result){
 				 			var message = result.messages;	    
 				 			 ShowGritterCenter('System Notification','Register course has been updated');
-				 			setInterval(function(){
-			  					 $window.location='/admin/student/edit/'+ $scope.studentid+'#/p4';
+				 			setTimeout(function(){
+			  					 //$window.location='/admin/student/edit/'+ $scope.studentid+'#/p3';
+			  					 $window.location.reload();
 							}, 2000); 
 				 	});
 				}
