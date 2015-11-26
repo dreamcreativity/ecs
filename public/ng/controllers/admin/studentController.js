@@ -11,6 +11,13 @@ angular.module('AdminApp')
 	loading();
 	$scope.students = getAllStudents();
 
+
+    setTimeout(function(){
+
+    	console.log($rootScope.accountInfo);	
+    },1000);
+	
+
 	function loading() {
 		$scope.courseList =[];
 		$scope.displayCourses = [];

@@ -190,7 +190,7 @@
 
 				
 				<!-- BEGIN SIDE NAVIGATION -->				
-				<nav class="navbar-side" role="navigation">							
+				<nav class="navbar-side" role="navigation" ng-controller="NavSideMenuController">							
 					<div class="navbar-collapse sidebar-collapse collapse">
 				
 					
@@ -200,7 +200,7 @@
 
 							<!-- Management category -->
 							<li>
-								<h4>Management</h4> 								
+								<h4>Management </h4> 								
 							</li>
 							<li class="panel <%if(parms.cur_tap=='Slider'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#SliderManagement">
@@ -219,7 +219,7 @@
 										</li>										
 									</ul>
 							</li>
-							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>" ng-show="accountInfo.role=='Administrator'">
 								<a href="/admin/staff/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StaffManagement">
 									<i class="fa fa-users"></i> Staff <span class="arrow"></span>
 								</a>
