@@ -53,9 +53,8 @@
 							<td class="hidden-xs center">
 								<div class="clearfix">
 									<div class="input-group">
-										<select class="form-control" name="year" ng-model="course.year" ng-change="changeStartYear(course,year)" ng-disabled="editable">
-											<option value="" selected>--Select--</option>
-											<option ng-repeat="year in course.availableYears">{{year}}</option>
+										<select class="form-control" name="year" ng-model="course.year" ng-change="changeStartYear(course,year)">										
+											<option ng-repeat="year in availableYears">{{year}}</option>
 										</select>
 										<span ng-show="courseForm.year.$error.required" class="input-group-addon">Required</span>
 										<span ng-show="!courseForm.year.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -65,9 +64,9 @@
 						<td class="hidden-xs center">
 							<div class="clearfix">
 								<div class="input-group">
-									<select class="form-control" name="startDate" ng-model="course.startDate" ng-disabled="editable">
-										<option value="" selected>--Select--</option>
-										<option ng-repeat="sd in course.startDates", value="{{sd}}">{{sd | date:"MMMM d"}}</option>
+									<select class="form-control" name="startDate" ng-model="course.startDate"
+									ng-options="sd as sd | date: 'MMMM d' for sd in course.startDates">
+										<!-- <option ng-repeat="sd in course.startDates" value="{{sd}}">{{sd | date:"MMMM d"}}</option> -->
 									</select>
 									<span ng-show="courseForm.startDate.$error.required" class="input-group-addon">Required</span>
 									<span ng-show="!courseForm.startDate.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -77,9 +76,8 @@
 						<td class="hidden-xs center">
 							<div class="clearfix">
 								<div class="input-group">
-									<select class="form-control" name="durationTitle" ng-model="course.duration" ng-disabled="editable">
-										<option value="" selected>--Select--</option>
-										<option ng-repeat="duration in course.durations" value="{{duration}}">{{duration.title}}</option>
+									<select class="form-control" name="durationTitle" ng-model="course.duration" 
+										ng-options="dur._id as dur.title for dur in durations">
 									</select>
 									<span ng-show="courseForm.durationTitle.$error.required" class="input-group-addon">Required</span>
 									<span ng-show="!courseForm.durationTitle.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -93,7 +91,7 @@
 									</label>
 						</td>
 						<td class="col-medium center">
-							<button type="button" class="btn btn-danger btn-xs" ng-click="modifyCourse(course)" ng-disabled="editable && !course.isDelete">
+							<button type="button" class="btn btn-danger btn-xs" ng-click="modifyCourse(course)" >
 									<i class="fa fa-check icon-only"></i>
 							</button>
 							<!-- <button type="button" class="btn btn-info btn-xs" ng-click="removeRow()">

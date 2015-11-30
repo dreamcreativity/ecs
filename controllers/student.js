@@ -793,10 +793,10 @@ exports.updateProgramRegister = function(req,res){
 	 	if(!err){
 	 		result.tag = course.tag;
 			result.title = course.title;
-			result.course = course._id;
+			result.course = course.course;
 			result.level = course.level;
 			result.startDate = course.startDate;
-			result.duration = course.duration._id;
+			result.duration = course.duration;
 			result.isDelete = course.isDelete;
 			ProgramRegistration.update({_id:id}, result, function(err, result){
 			if(err){

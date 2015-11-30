@@ -101,7 +101,6 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 				$scope.corseLevel = result.data;
 			}
 			});
-			$scope.editable =true;
 		 }
 
 
@@ -116,9 +115,6 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 					ShowGritterCenter('System Notification','Please enter complete course information');
 				}
 				else{
-						if($scope.duration != $scope.course.duration){
-							$scope.course.duration = angular.fromJson(course.duration);
-						} 
 						ProgramRegister.update({_id:$scope.updateCourse._id, course : $scope.course}, function(result){
 				 			var message = result.messages;	    
 				 			 ShowGritterCenter('System Notification','Register course has been updated');
@@ -185,7 +181,6 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 			Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
 				$scope.course.availableYears = $scope.availableYears;
 				$scope.course.startDates = data.data
-				$scope.editable =false;
 			});
 		}
 
