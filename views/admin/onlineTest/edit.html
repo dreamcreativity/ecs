@@ -1,0 +1,94 @@
+<div class="portlet" ng-controller='EditOnlineTestController'>
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Edit Online Question</h4>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+	<form class="form-horizontal" name="validateForm" >
+		<div id="bwizard">
+			
+			<div class="tab-content">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Question Title:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<input type="text" name="heading" ng-model="question.title" class="form-control" required>
+								<span ng-show="!validateForm.heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<span ng-show="validateForm.heading.$error.required" class="input-group-addon">Required</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Question Sub Title:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<input type="text" name="heading" ng-model="question.subTitle" class="form-control" required>
+								<span ng-show="!validateForm.heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<span ng-show="validateForm.heading.$error.required" class="input-group-addon">Required</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Question Type:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<select name="region" ng-model="question.type" class="form-control" ng-options="type for type in questionType">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Is Active:</label>
+					<div class="col-sm-2">
+						<label>
+							<input name="isActived" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="question.isActived" />
+							<span class="labels"></span>
+						</label>												
+					</div>
+				</div>
+
+				
+				
+				<hr class="separator" />
+
+				
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" ng-click="update()">Save</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
+						<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</form>
+
+
+	</div>
+
+	<!-- include the media selector mockup -->
+	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+</div>
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+	
+</script>
+
+
+

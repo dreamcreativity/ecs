@@ -524,11 +524,33 @@ router.get('/courseRegisterEditTemplate', function(req,res){
 
 
 
+//-------------------------- online test  --------------------------------------
 
 
 
+router.get('/onlineTest/', function(req,res){
+	template(req,res,'admin_main', 'admin/onlineTest/list.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Online Test',
+			cur_selected : 'list',
+			url_params : req.params
+		});
 
+});
 
+router.get('/onlineTest/edit/:id', function(req,res){
+	template(req,res,'admin_main', 'admin/onlineTest/edit.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Edit',
+			cur_selected : 'Edit',
+			url_params : req.params
+		});
+
+});
 
 module.exports = router;
 

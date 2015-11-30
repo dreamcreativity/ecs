@@ -12,6 +12,7 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
 var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
@@ -397,6 +398,12 @@ router.put('/events/:id',events.edit);
 
 //GET a course
 router.get('/events/:id', events.getEventbyId);
+
+
+
+//--------------------------Online Test-------------------------------------------
+//GET all empty online test question record
+router.get('/onlineTest/getNew', onlineTest.getNew);
 
 
 

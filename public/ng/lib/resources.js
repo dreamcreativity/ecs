@@ -307,6 +307,18 @@ resources.factory('Promotions',['$resource',
     });
 }]);
 
+resources.factory('OnlineTest',['$resource',
+    function($resource){
+        return $resource('/api/onlineTest/getNew/:id', {}, {
+        
+        getNew: {
+            url: '/api/onlineTest/getNew',
+            method : 'GET', 
+            params: {}
+        },
+    });
+}]);
+
 
 
 // resources.factory('SendEmail', ['$resource',function($resource){

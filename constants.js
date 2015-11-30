@@ -46,6 +46,10 @@ module.exports = {
 		'Junior Programs'
 	],
 
+	OnlineTestQuestionType: [
+		'Multiple Choice',
+		'Sentence Completion'
+	],
 
 	// template seaction
 
