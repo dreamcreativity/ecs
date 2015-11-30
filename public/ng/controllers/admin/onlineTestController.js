@@ -16,5 +16,22 @@ angular.module('AdminApp')
 		$scope.question = result.data;
 	});
 
+	$scope.addAnswer =  function(){
+
+		if($scope.question.type.id == 1){
+			var newAnswer = {
+				title: 'add you answer here ...'
+			};
+		}else{
+			var newAnswer = {
+				title: ''
+			};
+		}
+		
+		$scope.question.answers.push(newAnswer);
+
+		console.log($scope.question);
+	}
+
 
 });

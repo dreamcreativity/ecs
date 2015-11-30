@@ -41,7 +41,7 @@
 					<div class="col-sm-6">
 						<div class="clearfix">
 							<div class="input-group">
-								<select name="region" ng-model="question.type" class="form-control" ng-options="type for type in questionType">
+								<select name="type" ng-model="question.type" class="form-control" ng-options="type.title for type in questionType">
 								</select>
 							</div>
 						</div>
@@ -52,7 +52,7 @@
 
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Is Active:</label>
-					<div class="col-sm-2">
+					<div class="col-sm-6">
 						<label>
 							<input name="isActived" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="question.isActived" />
 							<span class="labels"></span>
@@ -64,7 +64,23 @@
 				
 				<hr class="separator" />
 
-				
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Answer(s):</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<button ng-show="question.type != null" ng-click="addAnswer()">Add Answer</button>
+
+
+							<div>
+								<div ng-repeat="answer in question.answers">
+									<input type="text"  ng-model="answer.title" class="form-control" >
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="separator" />
 
 				<div class="form-group">
 					<div class="col-sm-3"></div>	
