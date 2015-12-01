@@ -41,7 +41,7 @@
 					<div class="col-sm-6">
 						<div class="clearfix">
 							<div class="input-group">
-								<select name="type" ng-model="question.type" class="form-control" ng-options="type.title for type in questionType">
+								<select name="type" ng-model="question.type" class="form-control" ng-options="type.title for type in questionType" ng-change="onTypeChanged()">
 								</select>
 							</div>
 						</div>
@@ -68,12 +68,32 @@
 					<label class="col-sm-3 control-label">Answer(s):</label>
 					<div class="col-sm-6">
 						<div class="clearfix">
-							<button ng-show="question.type != null" ng-click="addAnswer()">Add Answer</button>
-
+						
+							<div  ng-show="question.type != null"  >
+						
+									Add Answer <button ng-click="addAnswer()" type="button" class="btn btn-info btn-xs btn-circle"><i class="fa fa-plus"></i></button>
+							
+								
+							</div>
+							
 
 							<div>
-								<div ng-repeat="answer in question.answers">
-									<input type="text"  ng-model="answer.title" class="form-control" >
+
+								<div ng-repeat="answer in question.answers" class="input-group testAnswerInput">
+									<input type="text" class="form-control" ng-model="answer.title" placeholder="Input Answer Here ...">
+									<div class="input-group-btn">
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
+										<ul class="dropdown-menu dropdown-default dropdown-menu-right">
+											<li><a href="javascript:void(0)" ng-click="setCorrectAnswer(answer)">Set as correct answer</a></li>
+											<li><a href="javascript:void(0)" ng-click="removeAnswer(answer)">Remove</a></li>
+											
+										</ul>
+									</div>												
+								</div>
+
+								<div ng-show="question.correctAnswer != '' ">
+									Correct Answer : <br>
+									{{question.correctAnswer}}
 								</div>
 							</div>
 						</div>

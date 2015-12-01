@@ -16,6 +16,12 @@ angular.module('AdminApp')
 		$scope.question = result.data;
 	});
 
+	$scope.onTypeChanged =  function(){
+		$scope.question.answers = [];
+		$scope.question.correctAnswer = '';
+	}
+
+
 	$scope.addAnswer =  function(){
 
 		if($scope.question.type.id == 1){
@@ -33,5 +39,16 @@ angular.module('AdminApp')
 		console.log($scope.question);
 	}
 
+	$scope.removeAnswer =  function(target){
+		
+		$scope.question.answers = $scope.question.answers.filter(function(obj) {
+			return obj !== target;
+		});
+	}
+
+	$scope.setCorrectAnswer =  function(target){
+		
+		$scope.question.correctAnswer = target.title;
+	}
 
 });
