@@ -247,7 +247,54 @@ angular.module('AgentApp')
 			$scope.returnMessage = "fail to sent invitation"
 		});
 	}
+})
+
+
+
+.controller('ProgramEditCtrl', function ($rootScope,$scope,$http,Students,Courses,Constants,ProgramRegister,$window){
+	var program_id = url_params.id;
+	var student_id = url_params.studentid;
+	loading();
+
+	function loading() {
+		ProgramRegister.get({id:program_id}, function(result){
+			$scope.studentid = student_id;
+			$scope.course = result.data;
+			$scope.duration = $scope.course.duration;
+			$scope.course.year = String(new Date($scope.course.startDate).getFullYear());
+			var startDate = fomateDate(new Date($scope.course.startDate));
+   			var month = startDate.toLocaleString("en-us", { month: "long" });
+   			var date = startDate.getUTCDate();
+   			$scope.course.startDate = month + " " + date;
+			$scope.updateCourse = result.data;
+
+			Courses.getCourstStartDateList({id:$scope.course.course,year:$scope.course.year},function(data){
+				var listOfdates = data.data;
+				for (var i = listOfdates.length - 1; i >= 0; i--) {
+					listOfdates[i] = fomateDate(listOfdates[i])
+				};
+				$scope.course.startDates = listOfdates;
+			});
+
+			Courses.get({id:$scope.course.course}, function(data){
+				$scope.durations = data.data.durations;
+			});
+		});
+	}
+
+	function fomateDate(datetime) {
+		var datetime = new Date(datetime);
+		var date = datetime.getDate();
+		var month = datetime.getMonth()+1;
+		var year = datetime.getFullYear();
+		datetime = year + "-" + month + "-" +date;
+		datetime = new Date(datetime)
+		return datetime
+	}
+
+
 });
+
 
 
 

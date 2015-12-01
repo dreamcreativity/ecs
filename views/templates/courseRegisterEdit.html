@@ -65,8 +65,9 @@
 							<div class="clearfix">
 								<div class="input-group">
 									<select class="form-control" name="startDate" ng-model="course.startDate"
-									ng-options="sd as sd | date: 'MMMM d' for sd in course.startDates">
-										<!-- <option ng-repeat="sd in course.startDates" value="{{sd}}">{{sd | date:"MMMM d"}}</option> -->
+									>
+									<!-- ng-options="sd as sd | date: 'MMMM d' for sd in course.startDates" -->
+									  <option ng-repeat="sd in course.startDates">{{sd | date:'MMMM d'}}</option>
 									</select>
 									<span ng-show="courseForm.startDate.$error.required" class="input-group-addon">Required</span>
 									<span ng-show="!courseForm.startDate.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>

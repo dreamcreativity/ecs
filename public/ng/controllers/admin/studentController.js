@@ -271,7 +271,10 @@ $scope.createNewAccommdation = function(isValid){
 			$scope.course = result.data;
 			$scope.duration = $scope.course.duration;
 			$scope.course.year = String(new Date($scope.course.startDate).getFullYear());
-			$scope.course.startDate = fomateDate(new Date($scope.course.startDate));
+			var startDate = fomateDate(new Date($scope.course.startDate));
+   			var month = startDate.toLocaleString("en-us", { month: "long" });
+   			var date = startDate.getUTCDate();
+   			$scope.course.startDate = month + " " + date;
 			$scope.updateCourse = result.data;
 
 			Courses.getCourstStartDateList({id:$scope.course.course,year:$scope.course.year},function(data){

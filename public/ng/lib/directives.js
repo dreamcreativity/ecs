@@ -115,6 +115,7 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 					ShowGritterCenter('System Notification','Please enter complete course information');
 				}
 				else{
+					$scope.course.startDate = new Date($scope.course.startDate + " " + $scope.course.year);
 						ProgramRegister.update({_id:$scope.updateCourse._id, course : $scope.course}, function(result){
 				 			var message = result.messages;	    
 				 			 ShowGritterCenter('System Notification','Register course has been updated');
@@ -190,8 +191,8 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 
 		$scope.changeStartYear =  function(course){
 			if(typeof course != "undefined"){
-				Courses.getCourstStartDateList({id:course._id, year:course.year}, function(data){
-					course.startDate = data.data[0];
+				var courseid = (course.course != null) ? course.course : course._id
+				Courses.getCourstStartDateList({id:courseid, year:course.year}, function(data){
 					course.startDates = data.data;
 			//closeAllSelectList();
 		});
