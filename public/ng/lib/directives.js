@@ -120,7 +120,6 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 				 			var message = result.messages;	    
 				 			 ShowGritterCenter('System Notification','Register course has been updated');
 				 			setTimeout(function(){
-			  					 //$window.location='/admin/student/edit/'+ $scope.studentid+'#/p3';
 			  					 $window.location.reload();
 							}, 2000); 
 				 	});

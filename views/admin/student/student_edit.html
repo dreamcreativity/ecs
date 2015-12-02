@@ -540,11 +540,7 @@
 									<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
 								</div>
 								<div class="portlet-widgets">
-									<!-- <a data-toggle="collapse" data-parent="#accordion" href="#accordion"><i class="fa fa-chevron-down"></i></a> -->
 									<a href="/admin/student/payment/{{registration._id}}"><i class="fa fa-usd icon-only"></i></a>
-									
-									<!-- <a href="/admin/student/register/edit/{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a> -->
-<!-- 									<a data-toggle="collapse" data-parent="#accordion" href="#{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a> -->
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -590,7 +586,6 @@
 						<form class="form-horizontal" ng-controller='StudentExtending'>
 							<div class="form-group">
 							<div class="col-sm-1">
-									<!-- <a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block" data-parent="#accordion" href="#record">New register</a> -->
 									<a data-toggle="collapse" class="btn btn-primary btn-block" data-parent="#accordion" href="#register">New register</a>
 								</div>
 							</div>
@@ -735,10 +730,9 @@
 		return event.keyCode != 13;
 	});
 
-	$("form").on("submit", function () {
-		debugger
-    	$(this).find(":submit").prop("disabled", true);
-	});
+	// $("form").on("submit", function () {
+ //    	$(this).find(":submit").prop("disabled", true);
+	// });
 
 
 </script>

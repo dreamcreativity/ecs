@@ -162,7 +162,12 @@ resources.factory('Agents',['$resource',
 .factory('FlightInfos',['$resource',
     function($resource){
         return $resource('/api/flightInfo', {}, {
-        create:{ method: 'POST'}
+        create:{ method: 'POST'},
+        update :{
+            url: '/api/student/flightInfo/:id',
+            method : 'PUT',
+            params : {id : '@_id'}
+        }
     });
 }])
 

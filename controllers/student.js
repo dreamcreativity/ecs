@@ -533,6 +533,26 @@ exports.createFlightInfo = function(req,res){
 	});
 }
 
+exports.updateFlightInfo = function(req,res){
+	var id = req.params.id;
+	FlightInfo.update({_id:id}, req.body, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+				});
+		}
+		else {
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+}
+
 
 //Extending courses for student
 exports.createExtendingCourse = function(req,res){

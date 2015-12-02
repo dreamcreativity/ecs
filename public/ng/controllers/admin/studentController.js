@@ -83,7 +83,7 @@ angular.module('AdminApp')
 							attachments : [data.data]})
 						.success(function(data,status,headers,config){
 							ShowGritterCenter('System Notification','Success to registration');
-							setInterval(function(){
+							setTimeout(function(){
 								$window.location='/admin/student/all';
 							}, 2000); 
 						})
@@ -109,7 +109,7 @@ angular.module('AdminApp')
 	
 })
 
-.controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,$location,Students,Accommodations,Courses,Constants,$window) {
+.controller('StudentEditCtrl', function StudentEditCtrl($rootScope,$scope,$http,$location,Students,Accommodations,FlightInfos,Courses,Constants,$window) {
 	var tabNum = $location.absUrl().split("#/")[1];
 
 	if (typeof(tabNum) !== 'undefined') {
@@ -182,12 +182,20 @@ $scope.update = function(isValid) {
 
 $scope.submitAccommdation = function(isValid){
 	var acc = $scope.accommodation;
+	var flightInfo = $scope.flightInfo;
 	Accommodations.update(acc, function(result){
 		if(result.status == 'ok' && result.messages == 'successed'){
-			ShowGritterCenter('System Notification','Accommodation has been updated');
-			setTimeout(function(){
-				$window.location.reload();
-			}, 2000); 	
+			FlightInfos.update(flightInfo, function(result){
+				if(result.status == 'ok' && result.messages == 'successed'){
+					ShowGritterCenter('System Notification','Accommodation has been updated');
+						setTimeout(function(){
+							$window.location.reload();
+						}, 2000); 	
+				}
+				else{
+					ShowGritterCenter('System Notification','Fail');
+				}
+			});
 		}
 		else{
 			ShowGritterCenter('System Notification','Fail');
@@ -250,8 +258,9 @@ $scope.createNewAccommdation = function(isValid){
 			Students.createExtendingCourse({student_id: student_id, courseList : $scope.courseList, agent : $scope.student.agent}, function(result){
 				if(result.status == 'ok' && result.messages =='successed'){
 					ShowGritterCenter('System Notification','Courses has been successfully registered');
-					setInterval(function(){
-						$window.location='/admin/student/edit/'+ student_id + "#/p3";
+					setTimeout(function(){
+						// $window.location='/admin/student/edit/'+ student_id + "#/p3";
+						$window.location.reload();
 					}, 2000); 
 				}
 			});

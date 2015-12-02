@@ -13,13 +13,13 @@
 		<div class="portlet-body">
 			<div class="tc-tabs"><!-- Nav tabs style 1 -->
 				<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
-					<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
-					<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-					<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration Record</a></li>
+					<li id="tab1"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+					<li id="tab2"><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+					<li id="tab3"><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration Record</a></li>
 				</ul>
 
 				<div class="tab-content">
-					<div class="tab-pane fade in portlet-body active" id="p1">
+					<div class="tab-pane fade in portlet-body" id="p1">
 						<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
 							<div class="form-group">
 							<label class="label label-xlg label-pending arrowed-right">Student Information</label>
@@ -442,15 +442,14 @@
 					</div>
 
 					<!-- Tab 3 -->
-					<div class="tab-pane fade" id="p3">
+					<div class="tab-pane fade in portlet-body" id="p3">
 						<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
 							<div class="portlet-heading dark">
 								<div class="portlet-title">
 									<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
 								</div>
 								<div class="portlet-widgets">
-									<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
-									<span class="divider"></span>
+
 									<a href="/agent/student/commission/{{registration._id}}"><i class="fa fa-search icon-only"></i></a>
 								</div>
 								<div class="clearfix"></div>
@@ -637,6 +636,10 @@
 $(document).on("keypress", "form", function(event) { 
     return event.keyCode != 13;
 });
+
+// $("form").on("submit", function () {
+//     	$(this).find(":submit").prop("disabled", true);
+// 	});
 </script>
 
 

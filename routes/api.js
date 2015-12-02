@@ -227,6 +227,9 @@ router.put('/student/agent/:id', student.editByAgent);
 //PUT : Update Accomdation info
 router.put('/student/accommodation/:id', student.updateAccommdation);
 
+//PUT : Update Flight info
+router.put('/student/flightInfo/:id', student.updateFlightInfo);
+
 //GET : ProgramRegister
 router.get('/student/programregister/:id',student.getProgramRegister);
 
