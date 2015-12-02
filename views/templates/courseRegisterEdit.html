@@ -53,7 +53,7 @@
 							<td class="hidden-xs center">
 								<div class="clearfix">
 									<div class="input-group">
-										<select class="form-control" name="year" ng-model="course.year" ng-change="changeStartYear(course,year)">										
+										<select class="form-control" name="year" ng-model="course.year" ng-change="changeStartYear(course,year)">					<option value="" selected>--Select--</option>					
 											<option ng-repeat="year in availableYears">{{year}}</option>
 										</select>
 										<span ng-show="courseForm.year.$error.required" class="input-group-addon">Required</span>
@@ -66,7 +66,7 @@
 								<div class="input-group">
 									<select class="form-control" name="startDate" ng-model="course.startDate"
 									>
-									<!-- ng-options="sd as sd | date: 'MMMM d' for sd in course.startDates" -->
+									 <option value="" selected>--Select--</option>
 									  <option ng-repeat="sd in course.startDates">{{sd | date:'MMMM d'}}</option>
 									</select>
 									<span ng-show="courseForm.startDate.$error.required" class="input-group-addon">Required</span>
@@ -79,6 +79,7 @@
 								<div class="input-group">
 									<select class="form-control" name="durationTitle" ng-model="course.duration" 
 										ng-options="dur._id as dur.title for dur in durations">
+										<option value="" selected>--Select--</option>
 									</select>
 									<span ng-show="courseForm.durationTitle.$error.required" class="input-group-addon">Required</span>
 									<span ng-show="!courseForm.durationTitle.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>

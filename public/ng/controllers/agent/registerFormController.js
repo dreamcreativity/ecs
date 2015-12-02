@@ -301,7 +301,7 @@ $scope.createNewAccommdation = function(isValid){
 			$scope.course = result.data;
 			$scope.duration = $scope.course.duration;
 			$scope.course.year = String(new Date($scope.course.startDate).getFullYear());
-			var startDate = fomateDate(new Date($scope.course.startDate));
+			var startDate = new Date($scope.course.startDate);
 			var month = startDate.toLocaleString("en-us", { month: "long" });
 			var date = startDate.getUTCDate();
 			$scope.course.startDate = month + " " + date;
@@ -310,7 +310,7 @@ $scope.createNewAccommdation = function(isValid){
 			Courses.getCourstStartDateList({id:$scope.course.course,year:$scope.course.year},function(data){
 				var listOfdates = data.data;
 				for (var i = listOfdates.length - 1; i >= 0; i--) {
-					listOfdates[i] = fomateDate(listOfdates[i])
+					listOfdates[i] = new Date(listOfdates[i]);
 				};
 				$scope.course.startDates = listOfdates;
 			});
@@ -319,16 +319,6 @@ $scope.createNewAccommdation = function(isValid){
 				$scope.durations = data.data.durations;
 			});
 		});
-	}
-
-	function fomateDate(datetime) {
-		var datetime = new Date(datetime);
-		var date = datetime.getDate();
-		var month = datetime.getMonth()+1;
-		var year = datetime.getFullYear();
-		datetime = year + "-" + month + "-" +date;
-		datetime = new Date(datetime)
-		return datetime
 	}
 
 

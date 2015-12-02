@@ -180,7 +180,7 @@ directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegiste
 		$scope.changeCourse = function(targetCourse){
 			Courses.getCourstStartDateList({id:targetCourse._id,year:$scope.availableYears[0]},function(data){
 				$scope.course.availableYears = $scope.availableYears;
-				$scope.course.startDates = data.data
+				//$scope.course.startDates = data.data
 			});
 		}
 
