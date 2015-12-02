@@ -7,7 +7,7 @@ var TestQuestionSchema = new mongoose.Schema({
 	type: {type: String},
 	created : {type : Date, default: Date.now },
 	isActived: {type: Boolean, default: true },
-	answers: [],
+	answers: [ ],
 	correctAnswer: {type: String, default: ''},
 	//TestQuestion : [{type: mongoose.Schema.ObjectId, ref: 'TestQuestionAnswer'}]
 });

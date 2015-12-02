@@ -26,15 +26,23 @@ angular.module('AdminApp')
 
 		if($scope.question.type.id == 1){
 			var newAnswer = {
-				title: 'add you answer here ...'
-			};
-		}else{
-			var newAnswer = {
 				title: ''
 			};
+			$scope.question.answers.push(newAnswer);
+		}else{
+
+			if($scope.question.answers.length < 1){
+				var newAnswer = {
+					title: ''
+				};
+				$scope.question.answers.push(newAnswer);
+			}else{
+				ShowGritterCenter('System Notification','Only one answer for Sentence Completion');
+			}
+			
 		}
 		
-		$scope.question.answers.push(newAnswer);
+		
 
 		console.log($scope.question);
 	}
@@ -48,7 +56,16 @@ angular.module('AdminApp')
 
 	$scope.setCorrectAnswer =  function(target){
 		
-		$scope.question.correctAnswer = target.title;
+		$scope.question.correctAnswer = target.title.replace('@', '');
 	}
+
+
+	$scope.create =  function(){
+		console.log($scope.question);
+		OnlineTest.create({question: $scope.question}, function(result){
+			console.log(result);
+		});
+	}
+
 
 });

@@ -321,6 +321,12 @@ resources.factory('OnlineTest',['$resource',
             method : 'GET', 
             params: {}
         },
+
+        create: {
+            url: '/api/onlineTest/create',
+            method : 'POST', 
+            params: {question:'@question'}
+        },
     });
 }]);
 

@@ -407,8 +407,7 @@ router.get('/events/:id', events.getEventbyId);
 //--------------------------Online Test-------------------------------------------
 //GET all empty online test question record
 router.get('/onlineTest/getNew', onlineTest.getNew);
-
-
+router.post('/onlineTest/create', onlineTest.create);
 
 //-------------------------- Constants ---------------------------------------
  router.get('/constants/:name', constants.get);
