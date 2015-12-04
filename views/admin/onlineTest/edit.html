@@ -41,7 +41,7 @@
 					<div class="col-sm-6">
 						<div class="clearfix">
 							<div class="input-group">
-								<select name="type" ng-model="question.type" class="form-control" ng-options="type.title for type in questionType" ng-change="onTypeChanged()">
+								<select name="type" ng-model="question.type" class="form-control" ng-options="type for type in questionType" ng-change="onTypeChanged()">
 								</select>
 							</div>
 						</div>
@@ -108,7 +108,7 @@
 					<div class="col-sm-3"></div>	
 					<div class="col-sm-3">
 						<button type="button" class="btn btn-primary" ng-click="create()">Save</button>
-						<button type="button" class="btn btn-default" onclick='location="/admin/"'>Back</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/"'>back</button>
 						<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
 					</div>
 				</div>

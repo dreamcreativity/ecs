@@ -47,8 +47,8 @@ module.exports = {
 	],
 
 	OnlineTestQuestionType: [
-		{ id: 1, title: 'Multiple Choice' },
-		{ id: 2, title: 'Sentence Completion'}
+		'Multiple Choice',
+		'Sentence Completion'
 	],
 
 	// template seaction

@@ -24,18 +24,14 @@ angular.module('AdminApp')
 
 	$scope.addAnswer =  function(){
 
-		if($scope.question.type.id == 1){
-			var newAnswer = {
-				title: ''
-			};
-			$scope.question.answers.push(newAnswer);
+		if($scope.question.type== 'Multiple Choice'){
+			
+			$scope.question.answers.push({title:''});
 		}else{
 
 			if($scope.question.answers.length < 1){
-				var newAnswer = {
-					title: ''
-				};
-				$scope.question.answers.push(newAnswer);
+				
+				$scope.question.answers.push({title:''});
 			}else{
 				ShowGritterCenter('System Notification','Only one answer for Sentence Completion');
 			}
@@ -50,7 +46,7 @@ angular.module('AdminApp')
 	$scope.removeAnswer =  function(target){
 		
 		$scope.question.answers = $scope.question.answers.filter(function(obj) {
-			return obj !== target;
+			return obj != target;
 		});
 	}
 
@@ -61,8 +57,8 @@ angular.module('AdminApp')
 
 
 	$scope.create =  function(){
-		console.log($scope.question);
-		OnlineTest.create({question: $scope.question}, function(result){
+		console.log( angular.toJson($scope.question));
+		OnlineTest.create({question:$scope.question}, function(result){
 			console.log(result);
 		});
 	}
