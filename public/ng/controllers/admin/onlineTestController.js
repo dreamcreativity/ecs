@@ -3,7 +3,7 @@
 angular.module('AdminApp')
 
 
-.controller('EditOnlineTestController',  function($scope,$rootScope, Constants, OnlineTest){
+.controller('EditOnlineTestController',  function($scope,$rootScope, $window, Constants, OnlineTest){
 
 
 
@@ -11,10 +11,22 @@ angular.module('AdminApp')
 		$scope.questionType = result.data;		
 	});
 
-	OnlineTest.getNew({},function(result){
-		console.log(result.data);
-		$scope.question = result.data;
-	});
+
+
+	if(mode == 'new'){
+
+		OnlineTest.getNew({},function(result){
+			console.log(result.data);
+			$scope.question = result.data;
+		});
+
+	}else{
+
+		OnlineTest.get({id: url_params.id},function(result){
+			console.log(result.data);
+			$scope.question = result.data;
+		});
+	}
 
 	$scope.onTypeChanged =  function(){
 		$scope.question.answers = [];
@@ -60,8 +72,20 @@ angular.module('AdminApp')
 		console.log( angular.toJson($scope.question));
 		OnlineTest.create({question:$scope.question}, function(result){
 			console.log(result);
+
+			$window.location = '/admin/OnlineTest/edit/' + result.data._id;
+			
 		});
 	}
 
+	$scope.save =  function(){
+		console.log( angular.toJson($scope.question));
+		OnlineTest.save($scope.question, function(result){
+			console.log(result);
+
+			//$window.location = '/admin/OnlineTest/edit/' + result.data._id;
+			
+		});
+	}
 
 });

@@ -17,14 +17,59 @@ exports.getNew = function(req,res){
 	
 }
 
+exports.get= function(req,res){
+
+	
+	var id = req.params.id;
+	TestQuestion.findOne({_id:id}, function(err, result){
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+
+	});
+
+	
+	
+}
+
+exports.save= function(req,res){
+
+	var id = req.params.id;
+
+	console.log('*****************');
+	console.log(req.body);
+	TestQuestion.update({_id: id}, req.body, function(err, result){
+		if(err){
+			res.json({
+				type: false,
+				data: 'Error occured: ' + err}
+				);
+		}
+		res.json({
+			type:true,
+			data: result
+		});	
+	});
+	
+}
+
+
 exports.create = function(req,res){
 
 
-	console.log('-----------------');
-	console.log(req.body);
-
 	var newTestQuestion = new TestQuestion(req.body.question);
-	//newTestQuestion.answers = req.body.answers;
+
 	console.log(newTestQuestion);
 	newTestQuestion.save(function(err ,result){
 		if(err){

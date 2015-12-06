@@ -322,10 +322,23 @@ resources.factory('OnlineTest',['$resource',
             params: {}
         },
 
+        get: {
+            url: '/api/onlineTest/get/:id',
+            method : 'GET', 
+            params: {id:'@_id'}
+        },
+
+
         create: {
             url: '/api/onlineTest/create',
             method : 'POST', 
             params: {question:'@question'}
+        },
+
+        save: {
+            url: '/api/onlineTest/save/:id',
+            method : 'PUT', 
+            params: {id:'@_id'}
         },
     });
 }]);
