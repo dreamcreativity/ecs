@@ -17,6 +17,31 @@ exports.getNew = function(req,res){
 	
 }
 
+
+exports.getAll= function(req,res){
+
+	
+	TestQuestion.find({}, function(err, results){
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: results
+			});
+		}
+
+	});
+}
+
+
+
 exports.get= function(req,res){
 
 	

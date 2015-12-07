@@ -322,6 +322,12 @@ resources.factory('OnlineTest',['$resource',
             params: {}
         },
 
+        getAll: {
+            url: '/api/onlineTest/getAll',
+            method : 'GET', 
+            params: {}
+        },
+
         get: {
             url: '/api/onlineTest/get/:id',
             method : 'GET', 

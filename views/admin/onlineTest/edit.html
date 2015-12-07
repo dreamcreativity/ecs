@@ -20,9 +20,9 @@
 					<div class="col-sm-6">
 						<div class="clearfix">
 							<div class="input-group">
-								<input type="text" name="heading" ng-model="question.title" class="form-control" required>
-								<span ng-show="!validateForm.heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-								<span ng-show="validateForm.heading.$error.required" class="input-group-addon">Required</span>
+								<input type="text" name="title" ng-model="question.title" class="form-control" required>
+								<span ng-show="!validateForm.title.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<span ng-show="validateForm.title.$error.required" class="input-group-addon">Required</span>
 							</div>
 						</div>
 					</div>
@@ -33,9 +33,9 @@
 					<div class="col-sm-6">
 						<div class="clearfix">
 							<div class="input-group">
-								<input type="text" name="heading" ng-model="question.subTitle" class="form-control" required>
-								<span ng-show="!validateForm.heading.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-								<span ng-show="validateForm.heading.$error.required" class="input-group-addon">Required</span>
+								<input type="text" name="subTitle" ng-model="question.subTitle" class="form-control">
+								<!-- <span ng-show="!validateForm.subTitle.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span> -->
+								<span class="input-group-addon">Option</span>
 							</div>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
 					<div class="col-sm-6">
 						<div class="clearfix">
 						
-							<div  ng-show="question.type != null"  >
+							<div  ng-show="question.type != null && question.type == 'Multiple Choice'"  >
 						
 									Add Answer <button ng-click="addAnswer()" type="button" class="btn btn-info btn-xs btn-circle"><i class="fa fa-plus"></i></button>
 							
@@ -96,9 +96,13 @@
 									</div>												
 								</div>
 
-								<div class="note"  ng-show="question.correctAnswer != '' ">
+								<div class="note"  ng-show="question.correctAnswer != '' && question.type == 'Multiple Choice' ">
 									<h4>Correct Answer :</h4>
 									{{question.correctAnswer}} 
+								</div>
+
+								<div ng-show="question.type == 'Sentence Completion' ">
+									<input type="text" class="form-control" ng-model="question.correctAnswer" placeholder="Input Correct Answer Here ...">
 								</div>
 
 								
@@ -118,7 +122,7 @@
 						<% }else{ %>
 						<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
 						<% } %>
-						<button type="button" class="btn btn-default" onclick='location="/admin/"'>back</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/onlineTest"'>Back</button>
 						<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
 					</div>
 				</div>

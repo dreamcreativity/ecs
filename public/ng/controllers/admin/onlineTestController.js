@@ -2,6 +2,12 @@
 
 angular.module('AdminApp')
 
+.controller('ListOnlineTestController',  function($scope,$rootScope, OnlineTest){
+
+	OnlineTest.getAll({}, function(result){
+		$scope.questions = result.data;
+	});
+})
 
 .controller('EditOnlineTestController',  function($scope,$rootScope, $window, Constants, OnlineTest){
 
@@ -82,7 +88,7 @@ angular.module('AdminApp')
 		console.log( angular.toJson($scope.question));
 		OnlineTest.save($scope.question, function(result){
 			console.log(result);
-
+			ShowGritterCenter('System Notification','Question has been updated');
 			//$window.location = '/admin/OnlineTest/edit/' + result.data._id;
 			
 		});

@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 
 var TestQuestionSchema = new mongoose.Schema({
-	title : {type: String, default: 'hello'},
-	subTitle: {type: String, default: 'world'},
+	title : {type: String, default: ''},
+	subTitle: {type: String, default: ''},
 	type: {type: String},
 	created : {type : Date, default: Date.now },
 	isActived: {type: Boolean, default: true },
