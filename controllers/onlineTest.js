@@ -68,6 +68,34 @@ exports.get= function(req,res){
 	
 }
 
+
+exports.getTestQuestions= function(req,res){
+
+	
+	var id = req.params.id;
+	TestQuestion.find({}, function(err, result){
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+
+	});
+
+	
+	
+}
+
+
 exports.save= function(req,res){
 
 	var id = req.params.id;

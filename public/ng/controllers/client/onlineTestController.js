@@ -1,21 +1,41 @@
 'use strict';
 angular.module('ClientApp')
-.controller('OnlineTestCtrl',function RegisterCtrl($rootScope,$scope,Constants,Students,$window){
+.controller('OnlineTestCtrl',function RegisterCtrl($rootScope,$scope,Constants,OnlineTest,$window){
 	
 	$scope.firstName = '';
 	$scope.lastName = '';
 	$scope.email = '';
 	$scope.country = '';
 
+	$scope.started = false;
+
+	$scope.index = 1;
+
 	Constants.get({name: 'Country'}, function(result){
 		$scope.countries = result.data;		
-
-		console.log($scope.countries);
 	});
 
 
 	$scope.start = function(){
-
 		
+		OnlineTest.getTestQuestions({}, function(result){
+
+			$scope.index = 0;
+			$scope.questions = result.data;
+			$scope.started = true;
+			$scope.answers = {}; 
+		});
 	};
+
+	$scope.next = function(){
+		if( $scope.index < $scope.questions.length -1 )
+			$scope.index++;
+	};
+
+	$scope.selectAnswer = function(index, answer){
+		$scope.answers[index] = answer
+		console.log($scope.answers);
+	};
+
+
 });

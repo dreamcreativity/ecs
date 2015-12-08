@@ -334,6 +334,10 @@ resources.factory('OnlineTest',['$resource',
             params: {id:'@_id'}
         },
 
+        getTestQuestions: {
+            url: '/api/onlineTest/getTestQuestions',
+            method : 'GET',
+        },
 
         create: {
             url: '/api/onlineTest/create',

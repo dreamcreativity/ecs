@@ -21,9 +21,12 @@
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
-                <div class="row">
-                    <div class="container clearfix">
-                        
+                <div class="row"> 
+                    <div class="container clearfix" ng-show="started == false ">
+                        <div class="fancy-title title-dotted-border title-center">
+                            <h4>Note: You have <span>30</span> minutes to complete the test.</h4>
+                        </div>
+
                         <div>
 
                             <div class="col_one_third">
@@ -51,9 +54,32 @@
                             </div>
                         </div>
                         <div class="col_full">
-                            <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="submit" value="submit">Start Test</button>
-                            <button id="sendingEmail" class="hidden" ng-click="start()"></button>
+                            <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="submit" value="submit" ng-click="start()">Start Test</button>
+                          
                         </div>
+
+                        <!-- <div class="divider"><i class="icon-circle"></i></div> -->
+                        
+
+                    </div>
+
+                    <div class="container clearfix" ng-show="started==true">
+
+                        
+                        
+                            <div class="divider divider-rounded"><i class="icon-connection-empty"></i></div>
+
+                            <h4>{{questions[index].title}}</h4>
+
+                            <div ng-if="questions[index].type = 'Multiple Choice'">
+                                <p ng-repeat="answer in questions[index].answers " >
+                                    <label ng-click="selectAnswer(index,answer.title)" > <input name="m" type="radio" >  {{answer.title}}</label> 
+                                </p>
+                            </div>
+
+                            <div><a href="javascript:void(0)" ng-click="next()" class="button button-3d button-rounded button-brown right"><i class="icon-play-circle"></i>Brown</a></div>
+                    
+                        
                     </div>
                 </div>
                 </div>
