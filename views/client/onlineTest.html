@@ -17,7 +17,7 @@
 
 
 <!-- <script type="text/javascript" src="assets/js/functions.js"></script> -->
-<section ng-controller="OnlineTestCtrl" id="event-calendar" >
+<section ng-controller="OnlineTestCtrl" id="online-test" >
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
@@ -63,15 +63,29 @@
 
                     </div>
 
-                    <div class="container clearfix" ng-show="started==true">
+                    <div class="container clearfix online-test-seaction" ng-show="started==true">
 
                         
                         
                             <div class="divider divider-rounded"><i class="icon-connection-empty"></i></div>
 
-                            <h4>{{questions[index].title}}</h4>
+                            <div class="test-question" ng-if="questions[index].type == 'Multiple Choice'">
+                                {{getFirstPartOfQuestion(questions[index])}} 
+                                ______ 
+                                {{getLastPartOfQuestion(questions[index])}} 
+                            </div>
 
-                            <div ng-if="questions[index].type = 'Multiple Choice'">
+                            <div class="test-question" ng-if="questions[index].type == 'Sentence Completion'">
+                                {{getFirstPartOfQuestion(questions[index])}} 
+                                <input class="answer-input" ng-model='questions[index].answer' placeholder="Input here..." >
+                                {{getLastPartOfQuestion(questions[index])}} 
+                            </div>
+
+                            <div>
+
+                            </div>
+
+                            <div ng-if="questions[index].type == 'Multiple Choice'">
                                 <p ng-repeat="answer in questions[index].answers " >
                                     <label ng-click="selectAnswer(index,answer.title)" > <input name="m" type="radio" >  {{answer.title}}</label> 
                                 </p>

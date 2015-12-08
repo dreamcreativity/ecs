@@ -24,6 +24,7 @@ angular.module('ClientApp')
 			$scope.questions = result.data;
 			$scope.started = true;
 			$scope.answers = {}; 
+			console.log($scope.questions);
 		});
 	};
 
@@ -35,6 +36,17 @@ angular.module('ClientApp')
 	$scope.selectAnswer = function(index, answer){
 		$scope.answers[index] = answer
 		console.log($scope.answers);
+	};
+
+
+	$scope.getFirstPartOfQuestion = function(question){
+		var list = question.title.split('###');
+		return list[0].trim();
+	};
+
+	$scope.getLastPartOfQuestion = function(question){
+		var list = question.title.split('###');
+		return list[1].trim();
 	};
 
 
