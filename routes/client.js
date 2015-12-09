@@ -200,7 +200,11 @@ router.get('/welcome', function(req, res){
 
 });
 
+router.get('/onlineTest', function(req, res){
 
+	template(req,res,'client_normal','client/onlineTest.html',{});
+
+});
 
 router.get('/events', function(req, res){
 

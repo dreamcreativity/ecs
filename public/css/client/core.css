@@ -406,3 +406,21 @@
 
 
 
+/*online test css */
+.online-test-seaction{}
+
+.online-test-seaction .test-question{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+.online-test-seaction .answer-input{
+	width: 160px;
+    margin: 0 5px;
+    height: 28px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 10px;
+    color: orange;
+}

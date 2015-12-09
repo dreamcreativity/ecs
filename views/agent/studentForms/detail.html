@@ -13,13 +13,13 @@
 		<div class="portlet-body">
 			<div class="tc-tabs"><!-- Nav tabs style 1 -->
 				<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
-					<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
-					<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-					<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration Record</a></li>
+					<li id="tab1"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+					<li id="tab2"><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+					<li id="tab3"><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration Record</a></li>
 				</ul>
 
 				<div class="tab-content">
-					<div class="tab-pane fade in portlet-body active" id="p1">
+					<div class="tab-pane fade in portlet-body" id="p1">
 						<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
 							<div class="form-group">
 							<label class="label label-xlg label-pending arrowed-right">Student Information</label>
@@ -226,99 +226,14 @@
 
 						<hr class="separator">
 
-						<!-- <div class="form-group">
-							<label class="label label-xlg label-pending arrowed-right">English Level</label>
-						</div>
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">English Level : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<select name="englishlevel" class="form-control full" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
-											<option value="beginner">Beginner</option> 
-											<option value="low_Intermediate">Low Intermediate</option>
-											<option value="high_Intermediate">High Intermediate</option>
-											<option value="advance">Advanced</option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label">TOEFL :  </label>
-							<div class="col-sm-2">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="number" class="form-control full" name="TOEFL" ng-model="student.TOEFL">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label">IELTS :  </label>
-							<div class="col-sm-2">
-								<div class="clearfix">
-									<div class="input-group">
-								<input type="number" step="0.5" class="form-control full" name="IELTS" ng-model="student.IELTS">
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<hr class="separator" />
-
-
-
-						<div class="form-group">
-							<label class="label label-xlg label-pending arrowed-right">Health Insurance</label>
-						</div>
-
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">From Date:</label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
-									</div>
-								</div>
-							</div>
-						</div> 
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">To Date:</label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
-									</div>
-								</div>
-							</div>
-
-						</div> -->
-
-
-							<!-- <div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label"></label>
-								<div class="col-sm-1 col-md-3">
-									<div class="tcb">
-										<label>
-											<input type="checkbox" ng-model="student.isQuit" class="tc">
-											<span class="labels"> Delete</span>
-										</label>
-									</div>
-								</div>
-							</div> -->
-
 							<div class="form-group">
-								<div class="col-sm-offset-3 col-sm-1">
+								<!-- <div class="col-sm-offset-3 col-sm-1">
 									<a href="/agent/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block">Add course</a>
-								</div>
+								</div> -->
 								<!-- <div class="col-sm-1">
 									<button type="button" download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
 								</div> -->
-								<div class="col-sm-1">
+								<div class="col-sm-offset-3 col-sm-1">
 									<input type="submit" class="btn btn-primary btn-block" value="Update" ng-disabled="studentForm.$invalid">
 								</div>
 								<div class="col-sm-1">
@@ -526,16 +441,15 @@
 						</div>
 					</div>
 
-					<!-- Tab4 -->
-					<div class="tab-pane fade" id="p3">
+					<!-- Tab 3 -->
+					<div class="tab-pane fade in portlet-body" id="p3">
 						<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
 							<div class="portlet-heading dark">
 								<div class="portlet-title">
 									<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
 								</div>
 								<div class="portlet-widgets">
-									<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
-									<span class="divider"></span>
+
 									<a href="/agent/student/commission/{{registration._id}}"><i class="fa fa-search icon-only"></i></a>
 								</div>
 								<div class="clearfix"></div>
@@ -552,6 +466,7 @@
 												<th class="hidden-xs center">Start Date</th>
 												<th class="hidden-xs center">Duration</th>
 												<th class="col-medium center">Status</th>
+												<th class="col-medium center">Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -562,13 +477,153 @@
 												<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
 												<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
 												<td class="hidden-xs center">{{c.coursePeriod}}</td>
-												<td class="hidden-xs center">confirm</td>
+												<td class="hidden-xs center">
+													<span ng-if="c.isDelete == 1" class="label label-danger">Deleted</span>
+													<span ng-if="c.isDelete == 0" class="label label-active">Active</span>
+												</td>
+												<td class="hidden-xs center">
+													<div class="btn-group btn-group-xs ">
+														<a href="/agent/student/register/edit/{{student._id}}/{{c._id}}" class="btn"><i class="fa fa-pencil icon-only"></i></a>
+													</div>					
+												</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
+						<form class="form-horizontal" ng-controller='StudentExtending'>
+							<div class="form-group">
+							<div class="col-sm-1">
+									<!-- <a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block" data-parent="#accordion" href="#record">New register</a> -->
+									<a data-toggle="collapse" class="btn btn-primary btn-block" data-parent="#accordion" href="#register">New register</a>
+								</div>
+							</div>
+							<div id="register" class="panel-collapse collapse">							
+								<div class="portlet">
+									<div class="portlet-heading dark">
+										<div class="portlet-title">
+											<h4>Existing Student ( <strong>Student ID</strong> : {{student.studentID}} )</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+
+									<div class="portlet-body">
+											<div class="form-group">
+												<label class="col-sm-2 control-label">First Name :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="firstname" ng-model="student.firstname" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Last Name :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="lastname" ng-model="student.lastname" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Gender :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="gender" ng-model="student.gender" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Birthday :</label>
+												<div class="col-sm-2">
+													<div class="form-control">{{student.birthday | date : 'MMM dd yyyy'}}</div>
+												</div>
+												<label class="col-sm-1 control-label">Age :</label>
+												<div class="col-sm-1">
+													<input type="text" class="form-control" name="age" ng-model="student.age" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Address :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="address" ng-model="student.address" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Postcode :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="postcode" ng-model="student.postcode" readonly="">
+												</div>
+												<label class="col-sm-1 control-label">City :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="city" ng-model="student.city" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Province :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="province" ng-model="student.province" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Country :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="country" ng-model="student.country" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Telephone :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="telephone" ng-model="student.telephone" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Email :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="email" ng-model="student.email" readonly="">
+												</div>
+											</div>
+
+											<div ng-if="student.agent !=null">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Agent :</label>
+													<div class="col-sm-2">
+														<div class="form-control">{{student.agent.lastname}} {{student.agent.firstname}}</div>
+													</div>
+													<label class="col-sm-2 control-label">Agent's Company :</label>
+													<div class="col-sm-2">
+														<div class="form-control">{{student.agent.company}}</div>
+													</div>
+													<label class="col-sm-1 control-label">Agent's Email :</label>
+													<div class="col-sm-2">
+														<div class="form-control">{{student.agent.email}}</div>
+													</div>
+												</div>
+											</div>
+
+											<div ng-if="student.agent == null">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Agent :</label>
+													<div class="col-sm-2">
+														<div class="form-control">N/A</div>
+													</div>
+													<label class="col-sm-2 control-label">Agent's Company :</label>
+													<div class="col-sm-2">
+														<div class="form-control">N/A</div>
+													</div>
+													<label class="col-sm-1 control-label">Agent's Email :</label>
+													<div class="col-sm-2">
+														<div class="form-control">N/A</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">First registration Date :</label>
+												<div class="col-sm-2">
+													<label class="label label-success">{{ student.registerDate  | date:'MMMM d, yyyy'}}</label>
+												</div>
+											</div>
+
+											<div course-register></div>
+
+											<div class="form-group">
+												<div class="col-sm-1">
+													<button type="submit" class="btn btn-primary btn-block" ng-click="extendingCourse()">Submit</button>
+												</div>
+											</div>		
+									</div>		
+								</div>
+							</div>
+						</form>
 					</div>
 
 				</div>
@@ -581,6 +636,10 @@
 $(document).on("keypress", "form", function(event) { 
     return event.keyCode != 13;
 });
+
+// $("form").on("submit", function () {
+//     	$(this).find(":submit").prop("disabled", true);
+// 	});
 </script>
 
 

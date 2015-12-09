@@ -58,7 +58,8 @@
     <script src="/ng/controllers/client/calendarController.js"></script>
     <script src="/ng/controllers/client/eventController.js"></script>
     <script src="/ng/controllers/client/registerController.js"></script>
-
+    <script src="/ng/controllers/client/onlineTestController.js"></script>
+    <script src="/ng/controllers/client/menuController.js"></script>
 
 
 
@@ -95,9 +96,89 @@
 
                     <!-- Primary Navigation
                     ============================================= -->
-                    <nav id="primary-menu">
-
+                    <nav id="primary-menu" ng-controller='MenuCtrl'>
                         <ul class="one-page-menu">
+                            <li><a href="/" data-href="#home"><div>Home</div></a></li>
+                            <li>
+                                <a href="/" data-href="#section-about"><div>About</div></a>
+                                <ul class="width200">
+                                    <li><a  href="/" data-href="#section-about"><div>Why ESC</div></a></li>
+                                    <li><a  href="/" data-href="#section-about"><div>Our Goal</div></a></li>
+                                    <li><a  href="/" data-href="#section-about"><div>Our Team</div></a></li>
+                                    <li><a  href="/" data-href="#section-about"><div>Our City</div></a></li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="#"  data-href="#section-adult"><div>Adult Programs</div></a>
+                                <div class="mega-menu-content style-2 col-5 clearfix">
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL</div></a>
+                                            <ul>
+                                                <li ng-repeat="course in courses" ng-if="course.category=='General ESL'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Focus Programs</div></a>
+                                            <ul>
+                                                 <li ng-repeat="course in courses" ng-if="course.category=='Focus Programs'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Test Prep Programs</div></a>
+                                            <ul>
+                                                 <li ng-repeat="course in courses" ng-if="course.category=='Test Prep Programs'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Pathway Programs</div></a>
+                                            <ul>
+                                                 <li ng-repeat="course in courses" ng-if="course.category=='Pathway Programs'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Class Chart</div></a>
+                                           
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" data-href="#section-programs"><div>Junior Programs</div></a>
+                                <ul class="width200">
+                                    <li><a href="/Calculator" ><div>Summer Kids Program</div></a></li>
+                                    <li><a href="/events" ><div>Summer Teen Program</div></a></li>
+                                    <li><a href="/calendar" ><div>Family Program</div></a></li>
+                                    <li><a href="/register"><div>Year Round Programs</div></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-href="#section-programs"><div>Registration</div></a>
+                                <ul class="width200">
+                                    <li><a href="/register" ><div>Register Now</div></a></li>
+                                    <li><a href="/Calculator" ><div>Fee Calculator</div></a></li>
+                                    <li><a href="/calendar" ><div>Calendars</div></a></li>
+                                    <li><a href="/onlineTest"><div>Online Test</div></a></li>
+                                    <li><a href="/onlineTest"><div>Student Guidelines</div></a></li>
+                                    <li><a href="/onlineTest"><div>Procedures</div></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" ><div>Services</div></a>
+                                <ul class="width200">
+                                    <li><a href="/" ><div>Pre-arrival</div></a></li>
+                                    <li><a href="/" ><div>Accommodation</div></a></li>
+                                    <li><a href="/" ><div>Activites & Events</div></a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="/" data-href="#section-contact"><div>Contact</div></a></li>
+                            
+                        </ul>
+                        <!-- <ul class="one-page-menu">
                             <li><a href="/" data-href="#home"><div>Home</div></a></li>
                             <li><a href="/#section-about" data-href="#section-about"><div>About</div></a></li>
                             <li><a href="/#section-activity" data-href="#section-activity"><div>Activity</div></a></li>
@@ -119,7 +200,7 @@
                                     <li><a href="/Calculator" ><div>Terms & Conditions</div></a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> -->
 
                         <!-- Top Search
                         ============================================= -->

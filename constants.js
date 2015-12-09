@@ -42,10 +42,17 @@ module.exports = {
 	],
 
 	CourseCategory: [
-		'Adult Programs',
-		'Junior Programs'
+		'General ESL',
+		'Focus Programs',
+		'Test Prep Programs',
+		'Pathway Programs',
+		
 	],
 
+	OnlineTestQuestionType: [
+		'Multiple Choice',
+		'Sentence Completion'
+	],
 
 	// template seaction
 

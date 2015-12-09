@@ -188,7 +188,7 @@
 //POST: create new Agent
 exports.create = function(req,res){
 	var newAgent = new Agent(req.body);
-	Agent.find({'username' : newAgent.username, 'email' : newAgent.email}, function(err, result){
+	Agent.find({'username' : newAgent.username}, function(err, result){
 		if (err) {
 			res.json({
 				status: 'fail',

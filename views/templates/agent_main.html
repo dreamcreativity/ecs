@@ -42,11 +42,6 @@
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
 	<!--  HTML 5 Datetime type -->
-	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-	<script>
-	    webshims.setOptions('forms-ext', {types: 'date'});
-	webshims.polyfill('forms forms-ext');
-	</script>
 	<script src='/js/classList/classList.min.js'></script>
 
 
@@ -332,9 +327,14 @@
 			<!-- END MAIN PAGE CONTENT -->
 		</div>  
 	</div>
+
+	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+	<script>
+	    webshims.setOptions('forms-ext', {types: 'date'});
+	webshims.polyfill('forms forms-ext');
+	</script>
 	 
     <!-- core JavaScript -->
-    <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
 	<script src="/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="/assets/js/plugins/pace/pace.min.js"></script>

@@ -1,0 +1,146 @@
+<div class="portlet" ng-controller='EditOnlineTestController'>
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<% if(mode == 'new'){ %>
+			<h4>Create Online Question</h4>
+			<% }else{ %>
+			<h4>Edit Online Question</h4>
+			<% } %>
+			
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+	<form class="form-horizontal" name="validateForm" >
+		<div id="bwizard">
+			
+			<div class="tab-content">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Question Title:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<input type="text" name="title" ng-model="question.title" class="form-control" required>
+								<span ng-show="!validateForm.title.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<span ng-show="validateForm.title.$error.required" class="input-group-addon">Required</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Question Sub Title:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<input type="text" name="subTitle" ng-model="question.subTitle" class="form-control">
+								<!-- <span ng-show="!validateForm.subTitle.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span> -->
+								<span class="input-group-addon">Option</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Question Type:</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<div class="input-group">
+								<select name="type" ng-model="question.type" class="form-control" ng-options="type for type in questionType" ng-change="onTypeChanged()">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Is Active:</label>
+					<div class="col-sm-6">
+						<label>
+							<input name="isActived" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="question.isActived" />
+							<span class="labels"></span>
+						</label>												
+					</div>
+				</div>
+
+				
+				
+				<hr class="separator" />
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Answer(s):</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+						
+							<div  ng-show="question.type != null && question.type == 'Multiple Choice'"  >
+						
+									Add Answer <button ng-click="addAnswer()" type="button" class="btn btn-info btn-xs btn-circle"><i class="fa fa-plus"></i></button>
+							
+								
+							</div>
+							
+
+							<div>
+
+								<div ng-repeat="answer in question.answers" class="input-group testAnswerInput">
+									<input type="text" class="form-control" ng-model="answer.title" placeholder="Input Answer Here ...">
+									<div class="input-group-btn">
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
+										<ul class="dropdown-menu dropdown-default dropdown-menu-right">
+											<li><a href="javascript:void(0)" ng-click="setCorrectAnswer(answer)">Set as correct answer</a></li>
+											<li><a href="javascript:void(0)" ng-click="removeAnswer(answer)">Remove</a></li>
+											
+										</ul>
+									</div>												
+								</div>
+
+								<div class="note"  ng-show="question.correctAnswer != '' && question.type == 'Multiple Choice' ">
+									<h4>Correct Answer :</h4>
+									{{question.correctAnswer}} 
+								</div>
+
+								<div ng-show="question.type == 'Sentence Completion' ">
+									<input type="text" class="form-control" ng-model="question.correctAnswer" placeholder="Input Correct Answer Here ...">
+								</div>
+
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="separator" />
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3">
+
+						<% if(mode == 'new'){ %>
+						<button type="button" class="btn btn-primary" ng-click="create()">Create</button>
+						<% }else{ %>
+						<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+						<% } %>
+						<button type="button" class="btn btn-default" onclick='location="/admin/onlineTest"'>Back</button>
+						<button type="button" class="btn btn-dangaur" ng-click='delete()'>Delete</button>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</form>
+
+
+	</div>
+
+	<!-- include the media selector mockup -->
+	<div ng-include="'/ng/html/MediaSelector.html'"></div>
+</div>
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>;
+	var mode  = '<%- mode %>';
+</script>
+
+
+

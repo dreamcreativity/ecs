@@ -334,6 +334,18 @@ router.get('/student/edit/:id', function(req, res) {
 		);
 });
 
+router.get('/student/register/edit/:studentid/:id', function(req,res){
+	template(req,res,'admin_main', 'admin/student/student_register_edit.html',
+				{
+					title: 'Student',
+					category: 'Management',
+					cur_tap: 'Student',
+					cur_selected : 'EditProgram',
+					url_params : req.params
+				}
+		);
+});
+
 //-----------------------Agent--------------------------------------
 
 router.get('/agent/all', function(req, res) {
@@ -468,38 +480,6 @@ router.get('/activity/edit/:id', function(req, res) {
 		});
 });
 
-//-------------------------Region-------------------------------------------
-// router.get('/region/all', function(req,res){
-// 	template(req,res,'admin_main','admin/region/region.html',
-// 	{
-// 		title: 'Region',
-// 		category : 'Management',
-// 		cur_tap : 'Region',
-// 		cur_selected : 'Region'
-// 	});
-// });
-
-// router.get('/region/create', function(req, res) {
-// 	template(req,res,'admin_main','admin/region/region_new.html',
-// 	{
-// 		title: 'Create Region',
-// 		category : 'Management',
-// 		cur_tap : 'Region',
-// 		cur_selected : 'Create'
-// 	});
-// });
-
-// router.get('/region/edit/:id', function(req, res) {
-// 	template(req,res,'admin_main', 'admin/region/region_edit.html', 
-// 		{
-// 			title : 'Edit Region',
-// 			category : 'Management',
-// 			cur_tap : 'Region',
-// 			cur_selected : 'Edit',
-// 			url_params : req.params
-// 		});
-// });
-
 //--------------------------Event--------------------------------------------
 
 router.get('/event/all', function(req,res){
@@ -533,14 +513,63 @@ router.get('/event/detail/:id', function(req, res) {
 		});
 });
 
+router.get('/courseRegisterTemplate', function(req,res){
+	res.render('templates/courseRegister.html');
+});
+
+router.get('/courseRegisterEditTemplate', function(req,res){
+	res.render('templates/courseRegisterEdit.html');
+});
 
 
 
 
+//-------------------------- online test  --------------------------------------
 
 
 
+router.get('/onlineTest/', function(req,res){
+	template(req,res,'admin_main', 'admin/onlineTest/list.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Online Test',
+			cur_selected : 'list',
+			url_params : req.params
+		});
 
+});
+
+
+router.get('/onlineTest/create', function(req,res){
+	
+	template(req,res,'admin_main', 'admin/onlineTest/edit.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Edit',
+			cur_selected : 'Edit',
+			mode : 'new',
+			url_params : req.params
+		});
+
+});
+
+router.get('/onlineTest/edit/:id', function(req,res){
+	console.log('---------------');
+	console.log(req.params);
+	template(req,res,'admin_main', 'admin/onlineTest/edit.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Edit',
+			cur_selected : 'Edit',
+			mode: 'edit',
+
+			url_params : req.params
+		});
+
+});
 
 module.exports = router;
 

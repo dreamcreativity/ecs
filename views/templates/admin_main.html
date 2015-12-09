@@ -57,11 +57,7 @@
 	<script src="/assets/js/plugins/easypiechart/easypiechart.ie-fix.js"></script>
 	<![endif]-->
 	<!--  HTML 5 Datetime type -->
-	<script src="//cdn.jsdelivr.net/webshim/1.15.10/polyfiller.js"></script>
-	<script>
-	    webshims.setOptions('forms-ext', {types: 'date'});
-	webshims.polyfill('forms forms-ext');
-	</script>
+	
 
 	 <!-- Angular JS -->
 	<script src="/assets/js/jquery.min.js"></script>
@@ -70,7 +66,6 @@
     <script src="/js/client/angular-cookies.js"></script>
     <script src="/js/client/angular-route.js"></script>
     <script src="/js/client/angular-animate.min.js"></script>
-    <script src="/js/client/angular-animate.min.js.map"></script>
     <script src="/js/client/ngBootbox.min.js"></script>
     <script src="/js/admin/moment.js"></script>
     <script src="/js/admin/ng-tags-input.min.js"></script>
@@ -105,6 +100,7 @@
 	<script src="/ng/controllers/admin/eventController.js"></script>
 	<script src="/ng/controllers/admin/promotionController.js"></script>
 	<script src="/ng/controllers/admin/paymentController.js"></script>
+	<script src="/ng/controllers/admin/onlineTestController.js"></script>
 	<script src="/ng/controllers/admin/dashboardController.js"></script>
 
 
@@ -195,7 +191,7 @@
 
 				
 				<!-- BEGIN SIDE NAVIGATION -->				
-				<nav class="navbar-side" role="navigation">							
+				<nav class="navbar-side" role="navigation" ng-controller="NavSideMenuController">							
 					<div class="navbar-collapse sidebar-collapse collapse">
 				
 					
@@ -205,7 +201,7 @@
 
 							<!-- Management category -->
 							<li>
-								<h4>Management</h4> 								
+								<h4>Management </h4> 								
 							</li>
 							<li class="panel <%if(parms.cur_tap=='Slider'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#SliderManagement">
@@ -224,7 +220,7 @@
 										</li>										
 									</ul>
 							</li>
-							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='Staff'){ %>open<% } %>" ng-show="accountInfo.role=='Administrator'">
 								<a href="/admin/staff/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#StaffManagement">
 									<i class="fa fa-users"></i> Staff <span class="arrow"></span>
 								</a>
@@ -370,7 +366,24 @@
 								</ul>						
 							</li>
 
-					
+							<li class="panel <%if(parms.cur_tap=='Event'){ %>open<% } %>">
+								<a href="/admin/event/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#EventManagement">
+									<i class="fa fa-rss"></i> Online Test <span class="arrow"></span>
+								</a>	
+								<ul class="collapse <%if(parms.cur_tap=='Event'){ %>in<%}%> nav" id="EventManagement">
+										<li>
+											<a href="/admin/onlineTest/create" class="<%if(parms.cur_tap=='Event' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>
+										<li>
+											<a href="/admin/onlineTest" class="<%if(parms.cur_tap=='Event' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>
+																											
+								</ul>						
+							</li>
 
 							<!-- Management category -->
 							<li>
@@ -510,8 +523,14 @@
 		</div>  
 	</div>
 	 
+	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+	<script>
+	    webshims.setOptions('forms-ext', {types: 'date'});
+	webshims.polyfill('forms forms-ext');
+	</script>
+
     <!-- core JavaScript -->
-    <script src="/assets/js/jquery.min.js"></script>
+    
     <script src="/assets/js/bootstrap.min.js"></script>
 	<script src="/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="/assets/js/plugins/pace/pace.min.js"></script>

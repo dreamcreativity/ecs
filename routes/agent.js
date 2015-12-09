@@ -133,6 +133,19 @@ router.get('/student/commission/:id', function(req, res) {
 		);
 });
 
+
+router.get('/student/register/edit/:studentid/:id', function(req,res){
+	template(req,res,'agent_main', 'agent/studentForms/student_register_edit.html',
+				{
+					title: 'Student',
+					category: 'Management',
+					cur_tap: 'Student',
+					cur_selected : 'EditProgram',
+					url_params : req.params
+				}
+		);
+});
+
 router.get('/invitation/all', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/invitation.html',
 			{ 
@@ -222,6 +235,11 @@ router.get('/edit', function(req,res){
 router.get('/courseRegisterTemplate', function(req,res){
 	res.render('templates/courseRegister.html');
 });
+
+router.get('/courseRegisterEditTemplate', function(req,res){
+	res.render('templates/courseRegisterEdit.html');
+});
+
 
 
 

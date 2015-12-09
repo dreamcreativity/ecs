@@ -399,7 +399,8 @@ exports.getStaffAccount = function(req,res){
 								regions: users[0].regions,
 								email: users[0].email,
 								createDate: users[0].createDate,
-								cover: users[0].cover
+								cover: users[0].cover,
+								role: users[0].role
 								
 
 							}
