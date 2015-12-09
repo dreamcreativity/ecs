@@ -861,7 +861,7 @@ html[xmlns] .slider-wrap {display: block;}
 
 body.stretched #header.full-header .container {
 	width: 100%;
-	padding: 0 30px;
+	padding: 0 5px;
 }
 
 #header.transparent-header.full-header #header-wrap { border-bottom: 1px solid rgba(0,0,0,0.1); }
@@ -994,7 +994,8 @@ body.stretched #header.full-header .container {
 #primary-menu ul li {
 	position: relative;
 	float: left;
-	margin-left: 2px;
+	/*margin-left: 2px;*/
+	margin-left: -8px;
 }
 
 #primary-menu ul li.mega-menu { position: inherit; }
