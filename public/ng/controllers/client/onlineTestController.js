@@ -7,6 +7,8 @@ angular.module('ClientApp')
 	$scope.email = '';
 	$scope.country = '';
 
+	$scope.currentAnswer = '';
+
 	$scope.started = false;
 
 	$scope.index = 1;
@@ -29,8 +31,19 @@ angular.module('ClientApp')
 	};
 
 	$scope.next = function(){
+
+		if($scope.questions[$scope.index].type == 'Sentence Completion'){
+			// $scope.answers[index] = answer.
+		}
+
+
 		if( $scope.index < $scope.questions.length -1 )
 			$scope.index++;
+	};
+
+	$scope.done = function(){
+		
+		console.log()
 	};
 
 	$scope.selectAnswer = function(index, answer){
@@ -48,6 +61,7 @@ angular.module('ClientApp')
 		var list = question.title.split('###');
 		return list[1].trim();
 	};
+
 
 
 });
