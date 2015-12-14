@@ -16,6 +16,7 @@
 								<tr>
 								<th class="hidden-xs">Title</th>
 								<th class="col-large hidden-xs">Type</th>
+								<th class="col-large hidden-xs">Has Answer</th>
 								<th class="col-medium hidden-xs">Created Date</th>
 								
 								<th class="col-medium hidden-xs">Active</th>
@@ -30,6 +31,10 @@
 									<div class="subtitle">{{question.subTitle}}</div>
 								</td>
 								<td class="hidden-xs">{{question.type}}</td>
+								<td class="hidden-xs">
+									<span ng-if="question.correctAnswer != '' " class="label label-active">Yes</span>
+									<span ng-if="question.correctAnswer == '' " class="label label-danger">No</span>
+								</td>
 								<td class="hidden-xs">{{question.created | date:'MMM dd yyyy'}}</td>
 								
 								<td class="center ">
