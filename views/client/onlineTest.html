@@ -4,7 +4,7 @@
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Onlie Test</h1>
+        <h1>Online Test</h1>
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
             <li><a href="/events">Event Calendar</a></li>
@@ -44,7 +44,7 @@
 
                             <div class="col_one_third">
                                 <label for="template-contactform-name">Email <small>*</small></label>
-                                <input type="text" id="template-contactform-name" name="name" ng-model="email" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
+                                <input type="text" id="template-contactform-name" name="email" ng-model="email" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
                             </div>
 
                             <div class="col_one_third">
@@ -63,21 +63,26 @@
 
                     </div>
 
-                    <div class="container clearfix online-test-seaction" ng-show="started==true">
+                    <div class="container clearfix online-test-seaction" ng-show="started==true&&done!=true">
 
                         
                         
-                            <div class="divider divider-rounded"><i class="icon-connection-empty"></i></div>
-
-                            <div class="test-question" ng-if="questions[index].type == 'Multiple Choice'">
+                            <!-- <div class="divider divider-rounded"><i class="icon-connection-empty"></i></div> -->
+                            <div class="style-msg successmsg">
+                                <div class="sb-msg">
+                                    <i class="icon-info-sign"></i>
+                                    {{questions[index].subTitle}}
+                                </div>
+                            </div>
+                            <div class="test-question" ng-show="questions[index].type == 'Multiple Choice'">
                                 {{getFirstPartOfQuestion(questions[index])}} 
                                 ______ 
                                 {{getLastPartOfQuestion(questions[index])}} 
                             </div>
 
-                            <div class="test-question" ng-if="questions[index].type == 'Sentence Completion'">
+                            <div class="test-question" ng-show="questions[index].type == 'Sentence Completion'">
                                 {{getFirstPartOfQuestion(questions[index])}} 
-                                <input class="answer-input" ng-model='questions[index].answer' placeholder="Input here..." >
+                                <input type="text" class="answer-input" ng-model="currentAnswer" placeholder="Input here..." >
                                 {{getLastPartOfQuestion(questions[index])}} 
                             </div>
 
@@ -85,19 +90,31 @@
 
                             </div>
 
-                            <div ng-if="questions[index].type == 'Multiple Choice'">
+                            <div ng-show="questions[index].type == 'Multiple Choice'">
                                 <p ng-repeat="answer in questions[index].answers " >
                                     <label ng-click="selectAnswer(index,answer.title)" > <input name="m" type="radio" >  {{answer.title}}</label> 
                                 </p>
                             </div>
 
                             <div>
-                                <a href="javascript:void(0)" ng-click="next()" class="button button-3d button-rounded button-brown right"><i class="icon-play-circle"></i>Brown</a>
+                               
 
-                                <a href="javascript:void(0)" ng-click="done()" class="button button-3d button-rounded button-brown right"><i class="icon-play-circle"></i>Finish</a>
+                                <a href="javascript:void(0)" ng-class="{ 'button-white  button-light': currentAnswer == '', 'button-brown' : currentAnswer != ''}" ng-click="next()"  class="button button-3d button-rounded  "><i class="icon-play-circle"></i>Next Question</a>
+
+                                <!-- <a href="javascript:void(0)" ng-click="done()" class="button button-3d button-rounded button-brown right"><i class="icon-play-circle"></i>Finish</a> -->
                             </div>
                     
                         
+                    </div>
+
+                    <div class="container clearfix online-test-seaction" ng-show="done==true">
+
+                        <h2>Thank you very much. All questions has been filled.</h2>
+                        <P>please click the submit button to subite your test to us.</P>
+
+                        <div>
+                              <a href="javascript:void(0)" ng-click="submitTest()"  class="button button-3d button-rounded button-brown "><i class="icon-play-circle"></i>Submit</a>
+                        </div>
                     </div>
                 </div>
                 </div>

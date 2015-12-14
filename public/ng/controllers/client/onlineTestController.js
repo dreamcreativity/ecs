@@ -10,6 +10,7 @@ angular.module('ClientApp')
 	$scope.currentAnswer = '';
 
 	$scope.started = false;
+	$scope.done = false;
 
 	$scope.index = 1;
 
@@ -25,6 +26,7 @@ angular.module('ClientApp')
 			$scope.index = 0;
 			$scope.questions = result.data;
 			$scope.started = true;
+			$scope.done = false;
 			$scope.answers = {}; 
 			console.log($scope.questions);
 		});
@@ -32,35 +34,81 @@ angular.module('ClientApp')
 
 	$scope.next = function(){
 
+		if($scope.currentAnswer == '')
+			return;
+
 		if($scope.questions[$scope.index].type == 'Sentence Completion'){
 			// $scope.answers[index] = answer.
 		}
 
 
-		if( $scope.index < $scope.questions.length -1 )
+		//console.log($scope.index);
+
+		if( $scope.index < $scope.questions.length -1 ){
 			$scope.index++;
+			$scope.currentAnswer = '';
+		}else{
+
+			$scope.testFinish();
+		}
+		//console.log($scope.index);
+		
 	};
 
-	$scope.done = function(){
+	$scope.testFinish = function(){
+		$scope.done = true;
+
+		// OnlineTest.getNewRecord({}, function(result){
+		// 	console.log(result);
+		// });
+
+	
+	};
+
+	$scope.submitTest = function(){
 		
-		console.log()
+		OnlineTest.getNewRecord({}, function(result){
+
+			var newRecord = result.data;
+
+			newRecord.questions = $scope.questions;
+			newRecord.answers = $scope.answers;
+
+			console.log(newRecord);
+		});
+	
 	};
 
 	$scope.selectAnswer = function(index, answer){
+		$scope.currentAnswer = answer;
+
+
 		$scope.answers[index] = answer
-		console.log($scope.answers);
+		//console.log($scope.answers);
 	};
 
 
 	$scope.getFirstPartOfQuestion = function(question){
-		var list = question.title.split('###');
-		return list[0].trim();
+
+		if ( typeof question !== 'undefined'){
+			var list = question.title.split('###');
+			return list[0].trim();
+		}else{
+			return '';
+		}
+		
 	};
 
 	$scope.getLastPartOfQuestion = function(question){
-		var list = question.title.split('###');
-		return list[1].trim();
+		if ( typeof question !== 'undefined'){
+			var list = question.title.split('###');
+			return list[1].trim();
+		}else{
+			return '';
+		}
 	};
+
+
 
 
 

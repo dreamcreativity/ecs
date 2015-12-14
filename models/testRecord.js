@@ -1,16 +1,18 @@
 var mongoose = require('mongoose');
-
+var random = require('mongoose-random');
 
 var TestRecordSchema = new mongoose.Schema({
-	firstName : {type: String},
-	lastName: {type: String},
-	email: {type: String},
-	country: {type: String},
+	firstName : {type: String, default: ''},
+	lastName: {type: String, default: ''},
+	email: {type: String, default: ''},
+	country: {type: String, default: ''},
 	created : {type : Date, default: Date.now },
 	answers: [],
 	questions: []
 
 });
+
+TestRecordSchema.plugin(random, { path: 'r' }); 
 
 var TestRecord = mongoose.model('TestRecord', TestRecordSchema);
 

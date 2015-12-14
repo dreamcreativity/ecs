@@ -45,7 +45,8 @@ function IsAuthException(path, method){
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
 		{	path : '/api/constants/Country', method:'GET', type:'contain'},
-		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'}
+		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
+		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'}
 
 	];
 	
@@ -416,6 +417,10 @@ router.put('/onlineTest/save/:id', onlineTest.save);
 router.post('/onlineTest/create', onlineTest.create);
 
 router.get('/onlineTest/getTestQuestions', onlineTest.getTestQuestions);
+
+
+router.get('/onlineTest/getNewTestRecord', onlineTest.getNewRecord);
+router.post('/onlineTest/submitTestRecord', onlineTest.createTestRecord);
 
 //-------------------------- Constants ---------------------------------------
  router.get('/constants/:name', constants.get);

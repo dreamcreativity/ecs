@@ -350,6 +350,14 @@ resources.factory('OnlineTest',['$resource',
             method : 'PUT', 
             params: {id:'@_id'}
         },
+
+
+        getNewRecord: {
+            url: '/api/onlineTest/getNewTestRecord',
+            method : 'GET', 
+            params: {}
+        },
+
     });
 }]);
 
