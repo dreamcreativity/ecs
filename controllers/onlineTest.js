@@ -151,11 +151,9 @@ exports.save= function(req,res){
 
 
 exports.create = function(req,res){
-
-
+	
 	var newTestQuestion = new TestQuestion(req.body.question);
 
-	console.log(newTestQuestion);
 	newTestQuestion.save(function(err ,result){
 		if(err){
 			
@@ -180,11 +178,9 @@ exports.create = function(req,res){
 
 exports.createTestRecord = function(req,res){
 
+	var newTestRecord= new TestRecord(req.body.testRecord);
 
-	var newTestQuestion = new TestQuestion(req.body.question);
-
-	console.log(newTestQuestion);
-	newTestQuestion.save(function(err ,result){
+	newTestRecord.save(function(err ,result){
 		if(err){
 			
 			res.json({

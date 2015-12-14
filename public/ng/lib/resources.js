@@ -358,6 +358,12 @@ resources.factory('OnlineTest',['$resource',
             params: {}
         },
 
+        createTestRecord: {
+            url: '/api/onlineTest/submitTestRecord',
+            method : 'POST', 
+            
+        },
+
     });
 }]);
 

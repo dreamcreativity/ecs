@@ -7,7 +7,6 @@ var TestRecordSchema = new mongoose.Schema({
 	email: {type: String, default: ''},
 	country: {type: String, default: ''},
 	created : {type : Date, default: Date.now },
-	answers: [],
 	questions: []
 
 });

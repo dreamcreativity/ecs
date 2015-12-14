@@ -571,5 +571,39 @@ router.get('/onlineTest/edit/:id', function(req,res){
 
 });
 
+router.get('/onlineTest/records', function(req,res){
+	template(req,res,'admin_main', 'admin/onlineTest/records.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Records',
+			cur_selected : 'Records',
+			url_params : req.params
+		});
+
+});
+
+router.get('/onlineTest/records/:id', function(req,res){
+	console.log('---------------');
+	console.log(req.params);
+	template(req,res,'admin_main', 'admin/onlineTest/record.html', 
+		{
+			title : 'Online Test',
+			category : 'Management',
+			cur_tap : 'Edit',
+			cur_selected : 'Edit',
+			mode: 'edit',
+
+			url_params : req.params
+		});
+
+});
+
+
+
+
+
+
+
 module.exports = router;
 

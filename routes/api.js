@@ -46,7 +46,8 @@ function IsAuthException(path, method){
 		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
 		{	path : '/api/constants/Country', method:'GET', type:'contain'},
 		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
-		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'}
+		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'},
+		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'}
 
 	];
 	

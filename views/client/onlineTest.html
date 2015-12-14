@@ -92,7 +92,7 @@
 
                             <div ng-show="questions[index].type == 'Multiple Choice'">
                                 <p ng-repeat="answer in questions[index].answers " >
-                                    <label ng-click="selectAnswer(index,answer.title)" > <input name="m" type="radio" >  {{answer.title}}</label> 
+                                    <label ng-click="selectAnswer(answer)" > <input name="m" type="radio" >  {{answer.title}}</label> 
                                 </p>
                             </div>
 
