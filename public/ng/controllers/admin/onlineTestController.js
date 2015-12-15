@@ -9,6 +9,14 @@ angular.module('AdminApp')
 	});
 })
 
+.controller('ListOnlineTestRecordController',  function($scope,$rootScope, OnlineTest){
+
+	OnlineTest.getTestRecords({}, function(result){
+		$scope.records = result.data;
+		//console.log($scope.records);
+	});
+})
+
 .controller('EditOnlineTestController',  function($scope,$rootScope, $window, Constants, OnlineTest){
 
 

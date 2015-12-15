@@ -11,7 +11,7 @@ angular.module('ClientApp')
 
 	$scope.started = false;
 	$scope.done = false;
-
+	$scope.submited = false;
 	$scope.index = 1;
 
 	Constants.get({name: 'Country'}, function(result){
@@ -27,6 +27,7 @@ angular.module('ClientApp')
 			$scope.questions = result.data;
 			$scope.started = true;
 			$scope.done = false;
+			$scope.submited = false;
 			$scope.answers = {}; 
 			console.log($scope.questions);
 		});
@@ -103,9 +104,10 @@ angular.module('ClientApp')
 
 			OnlineTest.createTestRecord({testRecord:newRecord}, function(result){
 
-			
 				console.log(result);
+				$scope.submited = true;	
 			
+				
 			});
 
 

@@ -576,7 +576,7 @@ router.get('/onlineTest/records', function(req,res){
 		{
 			title : 'Online Test',
 			category : 'Management',
-			cur_tap : 'Records',
+			cur_tap : 'Online Test',
 			cur_selected : 'Records',
 			url_params : req.params
 		});

@@ -31,12 +31,12 @@
 
                             <div class="col_one_third">
                                 <label for="template-contactform-name">First Name <small>*</small></label>
-                                <input type="text" id="template-contactform-name" name="name" ng-model="firstname" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
+                                <input type="text" id="template-contactform-name" name="name" ng-model="firstName" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
                             </div>
 
                             <div class="col_one_third">
                                 <label for="template-contactform-name">Last Name <small>*</small></label>
-                                <input type="text" id="template-contactform-name" name="name" ng-model="lastname" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
+                                <input type="text" id="template-contactform-name" name="name" ng-model="lastName" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
                             </div>
                         </div>
 
@@ -49,7 +49,7 @@
 
                             <div class="col_one_third">
                                 <label for="template-contactform-name">Country<small>*</small></label>
-                                <select name="type" ng-model="question.type" class="sm-form-control" ng-options="country for country in countries" >
+                                <select name="type" ng-model="country" class="sm-form-control" ng-options="country for country in countries" >
                                 </select>
                             </div>
                         </div>
@@ -107,15 +107,27 @@
                         
                     </div>
 
-                    <div class="container clearfix online-test-seaction" ng-show="done==true">
+                    <div class="container clearfix online-test-seaction" ng-show="done==true && submited!=true">
 
-                        <h2>Thank you very much. All questions has been filled.</h2>
+                        <h2>All questions has been filled.</h2>
                         <P>please click the submit button to subite your test to us.</P>
 
                         <div>
                               <a href="javascript:void(0)" ng-click="submitTest()"  class="button button-3d button-rounded button-brown "><i class="icon-play-circle"></i>Submit</a>
                         </div>
                     </div>
+
+
+                    <div class="container clearfix online-test-seaction" ng-show="submited==true">
+
+                        <h2>Thank you very much.</h2>
+                       
+
+                       
+                    </div>
+
+
+                    
                 </div>
                 </div>
 		 	</div>

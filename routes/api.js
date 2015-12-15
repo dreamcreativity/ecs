@@ -423,6 +423,10 @@ router.get('/onlineTest/getTestQuestions', onlineTest.getTestQuestions);
 router.get('/onlineTest/getNewTestRecord', onlineTest.getNewRecord);
 router.post('/onlineTest/submitTestRecord', onlineTest.createTestRecord);
 
+
+router.get('/onlineTest/records', onlineTest.getAllRecords);
+
+
 //-------------------------- Constants ---------------------------------------
  router.get('/constants/:name', constants.get);
 

@@ -180,6 +180,23 @@ exports.createTestRecord = function(req,res){
 
 	var newTestRecord= new TestRecord(req.body.testRecord);
 
+
+	// calculate the correct answer
+	var correctCount = 0;
+	for (var i = 0; i < newTestRecord.questions.length; i++) {
+
+
+	  	var question = newTestRecord.questions[i];
+	  	console.log(question);
+		if(question.answer == question.correctAnswer)
+			correctCount++;
+	}
+	
+
+	newTestRecord.correctCount = correctCount;
+	newTestRecord.rate = Math.round(correctCount / newTestRecord.questions.length * 100);
+
+
 	newTestRecord.save(function(err ,result){
 		if(err){
 			
@@ -200,6 +217,39 @@ exports.createTestRecord = function(req,res){
 	
 	
 }
+
+
+exports.getAllRecords = function(req,res){
+
+
+
+	TestRecord.find(function(err ,result){
+		if(err){
+			
+			res.json({
+				status: 'false',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				rstatus: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+		
+	});
+	
+	
+}
+
+
+
+
+
+
+
 
 
 
