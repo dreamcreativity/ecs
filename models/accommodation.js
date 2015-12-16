@@ -5,7 +5,7 @@ var AccommodationSchema = new mongoose.Schema({
 	option : {type: String},
 	startDate : {type : Date},
 	endDate : {type : Date},
-	numOfWeeks : {type : Number},
+	numOfWeeks : {type : Number,default:0},
 	isSmoke : {type: Boolean, default:false},
 	isSpecialFood : {type: Boolean, default:false},
 	isAllergies : {type: Boolean, default:false},

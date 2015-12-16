@@ -102,10 +102,10 @@ angular.module('AgentApp')
 			angular.element("#tab2").addClass("active");
 			angular.element("#p2").addClass("active");
 			break;
-			case "p3":
-			angular.element("#tab3").addClass("active");
-			angular.element("#p3").addClass("active");
-			break;
+			// case "p3":
+			// angular.element("#tab3").addClass("active");
+			// angular.element("#p3").addClass("active");
+			// break;
 			default:
 			angular.element("#tab1").addClass("active");
 			angular.element("#p1").addClass("active");

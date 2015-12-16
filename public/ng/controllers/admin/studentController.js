@@ -67,7 +67,13 @@ angular.module('AdminApp')
 		if($scope.agent) {
 			$scope.student.agent = $scope.agent._id;
 		}
+
+		var agent_id = null;
+		if(url_params.id){
+			var agent_id = url_params.id;
+		}
 		$http.post('/api/student/register',{student : $scope.student, 
+			agentId : agent_id,
 			accommodation : $scope.accommodation, 
 			flightInfo : $scope.flightInfo, 
 			courseList : $scope.courseList})
@@ -122,10 +128,10 @@ angular.module('AdminApp')
 			angular.element("#tab2").addClass("active");
 			angular.element("#p2").addClass("active");
 			break;
-			case "p3":
-			angular.element("#tab3").addClass("active");
-			angular.element("#p3").addClass("active");
-			break;
+			// case "p3":
+			// angular.element("#tab3").addClass("active");
+			// angular.element("#p3").addClass("active");
+			// break;
 			default:
 			angular.element("#tab1").addClass("active");
 			angular.element("#p1").addClass("active");
