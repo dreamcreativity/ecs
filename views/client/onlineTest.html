@@ -27,6 +27,8 @@
                             <h4>Note: You have <span>30</span> minutes to complete the test.</h4>
                         </div>
 
+
+
                         <div>
 
                             <div class="col_one_third">
@@ -65,7 +67,9 @@
 
                     <div class="container clearfix online-test-seaction" ng-show="started==true&&done!=true">
 
-                        
+                            <div>
+                                {{ time| toCountTime }} 
+                            </div>
                         
                             <!-- <div class="divider divider-rounded"><i class="icon-connection-empty"></i></div> -->
                             <div class="style-msg successmsg">
