@@ -17,6 +17,19 @@ angular.module('AdminApp')
 	});
 })
 
+
+.controller('OnlineTestRecordController',  function($scope,$rootScope, OnlineTest){
+
+	OnlineTest.getTestRecord({id: url_params.id}, function(result){
+		$scope.record = result.data;
+		console.log($scope.record);
+	});
+
+	
+	
+})
+
+
 .controller('EditOnlineTestController',  function($scope,$rootScope, $window, Constants, OnlineTest){
 
 

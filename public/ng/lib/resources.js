@@ -369,6 +369,11 @@ resources.factory('OnlineTest',['$resource',
             method : 'GET',        
         },
 
+        getTestRecord: {
+            url: '/api/onlineTest/record/:id',
+            method : 'GET', 
+            params: {id:'@_id'}
+        },
 
     });
 }]);

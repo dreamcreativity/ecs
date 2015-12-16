@@ -425,7 +425,7 @@ router.post('/onlineTest/submitTestRecord', onlineTest.createTestRecord);
 
 
 router.get('/onlineTest/records', onlineTest.getAllRecords);
-
+router.get('/onlineTest/record/:id', onlineTest.getRecord);
 
 //-------------------------- Constants ---------------------------------------
  router.get('/constants/:name', constants.get);

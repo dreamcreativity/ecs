@@ -246,6 +246,39 @@ exports.getAllRecords = function(req,res){
 
 
 
+exports.getRecord= function(req,res){
+
+	
+	var id = req.params.id;
+
+	TestRecord.findOne({_id:id}, function(err, result){
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+
+	});
+
+	
+	
+}
+
+
+
+
+
+
+
 
 
 
