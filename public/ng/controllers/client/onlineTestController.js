@@ -12,11 +12,14 @@ angular.module('ClientApp')
 	$scope.started = false;
 	$scope.done = false;
 	$scope.submited = false;
+	$scope.trySubmit = false;
+	$scope.timeout = false;
 	$scope.index = 1;
 
 
 	// time limit for test
-	var timeLimit = 60 * 30;
+	// var timeLimit = 60 * 30;
+	var timeLimit = 10;
 	$scope.time = timeLimit;
 
 	Constants.get({name: 'Country'}, function(result){
@@ -26,18 +29,28 @@ angular.module('ClientApp')
 
 	$scope.start = function(){
 		
-		OnlineTest.getTestQuestions({}, function(result){
-			$scope.time = timeLimit;
-			$scope.index = 0;
-			$scope.questions = result.data;
-			$scope.started = true;
-			$scope.done = false;
-			$scope.submited = false;
-			$scope.answers = {}; 
+		$scope.trySubmit = true;
+		console.log(validateForm.$valid);
+		if(validateForm.$valid){
+	
+			OnlineTest.getTestQuestions({}, function(result){
+				$scope.time = timeLimit;
+				$scope.index = 0;
+				$scope.questions = result.data;
+				$scope.started = true;
 
-			$scope.timeStart();
-			console.log($scope.questions);
-		});
+				$scope.done = false;
+				$scope.submited = false;
+				$scope.timeout = false;
+				$scope.answers = {}; 
+
+				$scope.timeStart();
+				console.log($scope.questions);
+			});
+
+		}
+
+
 	};
 
 	$scope.timeStart = function(){
@@ -45,7 +58,7 @@ angular.module('ClientApp')
 			$scope.time--;
 			if($scope.time <= 0){
 				$interval.cancel($scope.stopTime);
-
+				$scope.timeout = true;
 				// do some handling when times up
 
 			}
@@ -163,27 +176,25 @@ angular.module('ClientApp')
 
 })
 
-.filter('toCountTime', function() {
+.filter('toMin', function() {
   return function(input) {
-    // input = input || '';
-    // var out = "";
-    // for (var i = 0; i < input.length; i++) {
-    //   out = input.charAt(i) + out;
-    // }
     var min = Math.floor(input/60);
-    var second = input % 60;
-    var min_str = '';
-    var second_str = '';
-    if(min < 10)
-    	min_str = '0'+ min;
-    else
-    	min_str = ''+ min;
-    if(second < 10)
-    	second_str = '0'+ second;
-    else
-    	second_str = ''+ second;
+    return min;
+  };
+})
 
-    var output = min_str + ' : ' + second_str;
-    return output;
+.filter('toMin', function() {
+  return function(input) {
+    var min = Math.floor(input/60);
+    return min;
+  };
+})
+
+.filter('toSec', function() {
+  return function(input) {
+
+    var second = input % 60;
+
+    return second;
   };
 });

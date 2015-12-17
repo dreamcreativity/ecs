@@ -7,7 +7,7 @@
         <h1>Online Test</h1>
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a href="/events">Event Calendar</a></li>
+            <li><a href="/onlineTest">Online Test</a></li>
            
         </ol>
     </div>
@@ -28,47 +28,79 @@
                         </div>
 
 
+                        <form name="validateForm" >
 
-                        <div>
+                            <div>
 
-                            <div class="col_one_third">
-                                <label for="template-contactform-name">First Name <small>*</small></label>
-                                <input type="text" id="template-contactform-name" name="name" ng-model="firstName" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
+                                <div class="col_one_third">
+                                    <label for="template-contactform-name">First Name <small>*</small></label>
+                                    <input type="text" id="template-contactform-name" name="firstname" ng-model="firstName" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" required >
+                                </div>
+
+                                <div class="col_one_third">
+                                    <label for="template-contactform-name">Last Name <small>*</small></label>
+                                    <input type="text" id="template-contactform-name" name="lastname" ng-model="lastName" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" required>
+                                </div>
                             </div>
 
-                            <div class="col_one_third">
-                                <label for="template-contactform-name">Last Name <small>*</small></label>
-                                <input type="text" id="template-contactform-name" name="name" ng-model="lastName" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
-                            </div>
-                        </div>
+                            <div>
 
-                        <div>
+                                <div class="col_one_third">
+                                    <label for="template-contactform-name">Email <small>*</small></label>
+                                    <input type="text" id="template-contactform-name" name="email" ng-model="email" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" required>
+                                </div>
 
-                            <div class="col_one_third">
-                                <label for="template-contactform-name">Email <small>*</small></label>
-                                <input type="text" id="template-contactform-name" name="email" ng-model="email" class="sm-form-control required ng-pristine ng-valid ng-touched user-success" style="">
+                                <div class="col_one_third">
+                                    <label for="template-contactform-name">Country<small>*</small></label>
+                                    <select name="country" ng-model="country" class="sm-form-control" ng-options="country for country in countries" required>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col_full">
+                                <button class="button button-3d nomargin disabled" type="submit" id="template-contactform-submit" name="submit" value="submit" ng-click="start()">Start Test</button>
+                              
                             </div>
 
-                            <div class="col_one_third">
-                                <label for="template-contactform-name">Country<small>*</small></label>
-                                <select name="type" ng-model="country" class="sm-form-control" ng-options="country for country in countries" >
-                                </select>
+
+                            <div ng-if="!validateForm.$valid && trySubmit" class="style-msg alertmsg">
+                                <div class="sb-msg">
+                                    <i class="icon-warning-sign"></i>
+                                    <strong>Warning!</strong> Please input all the fields to start test.
+                                </div>
                             </div>
-                        </div>
-                        <div class="col_full">
-                            <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="submit" value="submit" ng-click="start()">Start Test</button>
-                          
-                        </div>
+
+                        </form>
+                        
 
                         <!-- <div class="divider"><i class="icon-circle"></i></div> -->
                         
 
                     </div>
 
-                    <div class="container clearfix online-test-seaction" ng-show="started==true&&done!=true">
+                    <div class="container clearfix online-test-seaction" ng-show="started==true&&done!=true&&timeout==false">
 
-                            <div>
-                                {{ time| toCountTime }} 
+                            <div class="entry-image parallax header-stick">
+                                <!-- {{ time| toCountTime }}  -->
+                                
+                                <div id="event-countdown" class="countdown is-countdown">
+
+                                    <span class="countdown-row countdown-show3">
+                                        <h3>Time Remain</h3>
+                                        <span class="countdown-section">
+                                            <span class="countdown-amount">0</span>
+                                            <span class="countdown-period">Hours</span>
+                                        </span>
+                                        <span class="countdown-section">
+                                            <span class="countdown-amount">{{time | toMin}}</span>
+                                            <span class="countdown-period">Minutes</span>
+                                        </span>
+                                        <span class="countdown-section">
+                                            <span class="countdown-amount">{{time | toSec}}</span>
+                                            <span class="countdown-period">Seconds</span>
+                                        </span>
+                                    </span>
+                                </div>
+
                             </div>
                         
                             <!-- <div class="divider divider-rounded"><i class="icon-connection-empty"></i></div> -->
@@ -121,6 +153,15 @@
                         </div>
                     </div>
 
+                    <div class="container clearfix online-test-seaction" ng-show="timeout">
+
+                        <h2>Sorry ! 30 mins passed.</h2>
+                        <P>......</P>
+
+                        <div>
+                              <a href="javascript:void(0)" ng-click="start()"  class="button button-3d button-rounded button-brown "><i class="icon-play-circle"></i>Test Again ?</a>
+                        </div>
+                    </div>
 
                     <div class="container clearfix online-test-seaction" ng-show="submited==true">
 
