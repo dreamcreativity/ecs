@@ -18,8 +18,8 @@ angular.module('ClientApp')
 
 
 	// time limit for test
-	// var timeLimit = 60 * 30;
-	var timeLimit = 10;
+	var timeLimit = 60 * 30;
+	//var timeLimit = 10;
 	$scope.time = timeLimit;
 
 	Constants.get({name: 'Country'}, function(result){
@@ -30,8 +30,7 @@ angular.module('ClientApp')
 	$scope.start = function(){
 		
 		$scope.trySubmit = true;
-		console.log(validateForm.$valid);
-		if(validateForm.$valid){
+		if($scope.validateForm.$valid){
 	
 			OnlineTest.getTestQuestions({}, function(result){
 				$scope.time = timeLimit;
@@ -45,7 +44,7 @@ angular.module('ClientApp')
 				$scope.answers = {}; 
 
 				$scope.timeStart();
-				console.log($scope.questions);
+				
 			});
 
 		}
@@ -85,9 +84,6 @@ angular.module('ClientApp')
 
 			$scope.testFinish();
 		}
-		
-		//console.log($scope.answers);
-		
 	};
 
 	$scope.testFinish = function(){
@@ -110,7 +106,6 @@ angular.module('ClientApp')
 
 		});
 				
-		console.log(recordQuestions);
 
 		// get empty test record
 		OnlineTest.getNewRecord({}, function(result){
@@ -124,18 +119,10 @@ angular.module('ClientApp')
 			newRecord.questions = recordQuestions;
 			
 
-			console.log(newRecord);
-
 			// submit the test and store as a record
-
 			OnlineTest.createTestRecord({testRecord:newRecord}, function(result){
-
-				console.log(result);
 				$scope.submited = true;	
-			
-				
 			});
-
 
 		});
 	
@@ -143,10 +130,6 @@ angular.module('ClientApp')
 
 	$scope.selectAnswer = function(answer){
 		$scope.currentAnswer = answer.title;
-
-		//$scope.answers[question._id] = answer.title;
-		
-		//console.log($scope.answers);
 	};
 
 
