@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var random = require('mongoose-random');
 
 var TestQuestionSchema = new mongoose.Schema({
 	title : {type: String, default: ''},
@@ -11,6 +11,8 @@ var TestQuestionSchema = new mongoose.Schema({
 	correctAnswer: {type: String, default: ''},
 	//TestQuestion : [{type: mongoose.Schema.ObjectId, ref: 'TestQuestionAnswer'}]
 });
+
+TestQuestionSchema.plugin(random, { path: 'r' }); 
 
 var TestQuestion = mongoose.model('TestQuestion', TestQuestionSchema);
 

@@ -1,0 +1,138 @@
+<div class="portlet" ng-controller='OnlineTestRecordController'>
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			Online Test Result
+			
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+	<form class="form-horizontal" name="validateForm" >
+		<div id="bwizard">
+			
+			<div class="tab-content">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Name :</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<input type="text" name="subTitle" value="{{record.firstName}} {{record.lastName}}" readonly class="form-control">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Email :</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<input type="text" name="subTitle" value="{{record.email}}" readonly class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Country :</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<input type="text" name="subTitle" value="{{record.country}}" readonly class="form-control">
+						</div>
+					</div>
+				</div>
+
+
+		
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Correct Rate :</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<input type="text" name="subTitle" value="{{record.rate}} %" readonly class="form-control">
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Date :</label>
+					<div class="col-sm-6">
+						<div class="clearfix">
+							<input type="text" name="subTitle" value="{{record.created | date:'MMM dd, yyyy h:mm a'}}" readonly class="form-control">
+						</div>
+					</div>
+				</div>
+				
+				<hr class="separator" />
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3"><button type="button" class="btn btn-default" onclick='location="/admin/onlineTest/records"'>Back</button></div>
+				</div>
+				<hr class="separator" />
+				<div class="form-group">
+				
+					
+					<label class="col-sm-3 control-label"></label>
+					<div class="col-sm-6">
+						<h4>Test Detail</h4>
+
+						<div ng-repeat="question in record.questions">
+							<div class="note">
+
+								<div class="testResultQuestionSaction">
+									<h4 class="title">Q.{{$index+1}} of total {{record.questions.length}} </h4>
+								</div>
+
+								<div class="testResultQuestionSaction">
+									<div>Question : </div>
+									<p>{{question.title.replace('###', '___________')}}</p>
+								</div>
+
+								<div class="testResultQuestionSaction">
+									<div>Note : </div>
+									<p>{{question.subTitle}}</p>
+								</div>
+
+								<div class="testResultQuestionSaction">
+									<div>Answer : </div>
+									<p>{{question.answer}}</p>
+								</div>
+
+								<div class="testResultQuestionSaction">
+									<div>Correct Answer : </div>
+									<p>{{question.correctAnswer}}</p>
+								</div>
+
+								<div>
+									<span ng-if="question.answer == question.correctAnswer" class="label label-active ng-scope">Correct</span>
+									<span ng-if="question.answer != question.correctAnswer" class="label label-danger ng-scope">Wrong</span>
+								</div>
+							</div>
+						
+
+
+						</div>										
+					</div>
+				</div>
+
+
+				<hr class="separator" />
+
+				<div class="form-group">
+					<div class="col-sm-3"></div>	
+					<div class="col-sm-3"><button type="button" class="btn btn-default" onclick='location="/admin/onlineTest/records"'>Back</button></div>
+				</div>
+		
+			</div>
+		</div>
+	</form>
+
+
+	</div>
+
+	
+</div>
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>;
+	
+</script>
+
+
+

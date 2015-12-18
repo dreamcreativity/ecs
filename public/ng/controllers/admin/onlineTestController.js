@@ -9,6 +9,27 @@ angular.module('AdminApp')
 	});
 })
 
+.controller('ListOnlineTestRecordController',  function($scope,$rootScope, OnlineTest){
+
+	OnlineTest.getTestRecords({}, function(result){
+		$scope.records = result.data;
+		//console.log($scope.records);
+	});
+})
+
+
+.controller('OnlineTestRecordController',  function($scope,$rootScope, OnlineTest){
+
+	OnlineTest.getTestRecord({id: url_params.id}, function(result){
+		$scope.record = result.data;
+		console.log($scope.record);
+	});
+
+	
+	
+})
+
+
 .controller('EditOnlineTestController',  function($scope,$rootScope, $window, Constants, OnlineTest){
 
 
@@ -75,7 +96,7 @@ angular.module('AdminApp')
 
 
 	$scope.create =  function(){
-		console.log( angular.toJson($scope.question));
+		//console.log( angular.toJson($scope.question));
 		OnlineTest.create({question:$scope.question}, function(result){
 			console.log(result);
 
@@ -88,6 +109,7 @@ angular.module('AdminApp')
 		console.log( angular.toJson($scope.question));
 		OnlineTest.save($scope.question, function(result){
 			console.log(result);
+			i
 			ShowGritterCenter('System Notification','Question has been updated');
 			//$window.location = '/admin/OnlineTest/edit/' + result.data._id;
 			
