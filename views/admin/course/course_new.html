@@ -47,14 +47,24 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Category</label>
 		<div class="col-sm-6">
-			<select class="form-control" name="category" ng-model="course.category" required>
-				<option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+			<select class="form-control" ng-change="onMainCategoryChanged()" name="category" ng-model="course.category" required>
+				<option ng-repeat="category in categories" value="{{category.category}}">{{category.category}}</option>
 			</select>
 			<p ng-show="createForm.category.$invalid && !createForm.category.$pristine" class="help-block text-danger">Category is required</p>	
 		</div>
 	</div>
 
-
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Second Category</label>
+		<div class="col-sm-6">
+			<select class="form-control" name="subCategory" ng-model="course.subCategory" required>
+				<option value="None">None</option>
+				<option ng-repeat="category in selectedCategory.subCategory" value="{{category}}">{{category}}</option>
+			</select>
+			<p ng-show="createForm.subCategory.$invalid && !createForm.subCategory.$pristine" class="help-block text-danger">Second Category is required</p>	
+		</div>
+	</div>
+	
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Description</label>
 		<div class="col-sm-6">

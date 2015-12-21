@@ -41,7 +41,22 @@ module.exports = {
 		'Part-time'
 	],
 
+
+	// CourseCategory: [
+	// 	{'category': 'General ESL', 'subCategory': [ 'Core Courses', 'Elective Courses'] },
+	// 	{'category': 'Focus Programs', 'subCategory': [ 'FOW', 'FOS', 'Health Care', 'Business English'] },
+	// 	{'category': 'Test Prep Programs', 'subCategory': [ 'IELTS', 'TOEFL'] },
+	// 	{'category': 'Pathway Programs', 'subCategory': [ 'UCTP', 'UCTP Prep.'] }	
+	// ],
+
 	CourseCategory: [
+		{'category': 'General ESL', 'subCategory': [ 'Core Courses', 'Elective Courses'] },
+		{'category': 'Focus Programs', 'subCategory': [] },
+		{'category': 'Test Prep Programs', 'subCategory': [] },
+		{'category': 'Pathway Programs', 'subCategory': [] }	
+	],
+
+	CourseSubCategory: [
 		'General ESL',
 		'Focus Programs',
 		'Test Prep Programs',
