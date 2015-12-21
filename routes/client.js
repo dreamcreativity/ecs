@@ -213,6 +213,30 @@ router.get('/events', function(req, res){
 });
 
 
+router.get('/city', function(req, res){
+
+	template(req,res,'client_normal','client/city.html',{});
+
+});
+
+router.get('/procedures', function(req, res){
+
+	template(req,res,'client_normal','client/procedures.html',{});
+
+});
+
+router.get('/guidelines', function(req, res){
+	template(req,res,'client_normal','client/guidelines.html',{});
+});
+
+router.get('/junior-programs', function(req, res){
+	template(req,res,'client_normal','client/junior-programs.html',{});
+});
+
+
+
+
+
 router.get('/calendar', function(req, res){
 
 	template(req,res,'client_normal','client/calendar.html',{});

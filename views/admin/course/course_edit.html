@@ -38,14 +38,31 @@
 									</div>
 								</div>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label class="col-sm-3 control-label">Level</label>
 									<div class="col-sm-6">
-										<select ng-model="course.level">
-											<option ng-repeat="level in levels" value="{{level}}">{{level}}</option>
-										</select>
+							
+										<div id="slider-range-2" class="ui-slider-primary"></div>
+
+									</div>
+								</div> -->
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Start Level</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="startLevel" ng-model="course.startLevel" required>
+										<p ng-show="createForm.startLevel.$invalid && !createForm.startLevel.$pristine" class="help-block text-danger">Start Level is required</p>
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">End Level</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="endLevel" ng-model="course.endLevel" required>
+										<p ng-show="createForm.endLevel.$invalid && !createForm.endLevel.$pristine" class="help-block text-danger">End Level is required</p>
+									</div>
+								</div>
+
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Type</label>
@@ -58,24 +75,28 @@
 									</div>
 								</div>
 
-								<!-- <div class="form-group">
-									<label class="col-sm-3 control-label">Category</label>
-									<div class="col-sm-6">
-										<select ng-model="course.category">
-											<option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
-			
-										</select>
-									</div>
-								</div> -->
+					
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Category</label>
 									<div class="col-sm-6">
-										<select class="form-control" name="category" ng-model="course.category" required>
-											<option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+										<select class="form-control" ng-change="onMainCategoryChanged()" name="category" ng-model="course.category" required>
+											<option ng-repeat="category in categories" value="{{category.category}}">{{category.category}}</option>
 										</select>
 										<p ng-show="createForm.category.$invalid && !createForm.category.$pristine" class="help-block text-danger">Category is required</p>	
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Second Category</label>
+									<div class="col-sm-6">
+										<select class="form-control" name="subCategory" ng-model="course.subCategory" required>
+											<option value="None">None</option>
+											<option ng-repeat="category in selectedCategory.subCategory" value="{{category}}">{{category}}</option>
+										</select>
+										<p ng-show="createForm.subCategory.$invalid && !createForm.subCategory.$pristine" class="help-block text-danger">Second Category is required</p>	
+									</div>
+								</div>
+
 
 								<div class="form-group" ng-if="course.type=='Fixed Period'">
 									<label class="col-sm-3 control-label">Start Point</label>
@@ -93,7 +114,7 @@
 										</div>
 										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
 											<li data-toggle="modal" ng-repeat="duration in course.durations | orderBy:'order' " class="list-group-item">
-												{{ duration.title}}
+												{{ duration.title}} - ({{duration.level}})
 
 												<button type="button" ng-click="moveListItemDown(course.durations, $index)" class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-down"></i></button>
 												<button type="button" ng-click="moveListItemUp(course.durations, $index)"  class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-up"></i></button>
@@ -264,6 +285,15 @@
 		      		</div>
 		      	</div>
 		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label"> Level</label>
+		      		<div class="col-sm-10">
+		      			<select ng-model="newDuration.level">
+		      
+							<option ng-repeat="level in levels" value="{{level}}">{{level}}</option>
+						</select>
+		      		</div>
+		      	</div>
+		      	<div class="form-group">
 		      		<label class="col-sm-2 control-label">Price</label>
 		      		<div class="col-sm-10">
 		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.price">
@@ -297,6 +327,15 @@
 		      		<label class="col-sm-2 control-label"> Week(s)</label>
 		      		<div class="col-sm-10">
 		      			<input type="text"  class="form-control  input-small" ng-model="duration.week">
+		      		</div>
+		      	</div>
+		      	<div class="form-group">
+		      		<label class="col-sm-2 control-label"> Level</label>
+		      		<div class="col-sm-10">
+		      			<select ng-model="duration.level">
+		      			
+							<option ng-repeat="level in levels" value="{{level}}">{{level}}</option>
+						</select>
 		      		</div>
 		      	</div>
 		      	<div class="form-group">
@@ -350,7 +389,7 @@
 
 
 </div>			
-
+<link rel="stylesheet" href="/assets/css/plugins/jqueryui/jquery-ui.min.css" />
 
 
 
