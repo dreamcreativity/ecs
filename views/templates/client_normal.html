@@ -110,11 +110,18 @@
                             </li>
                             <li class="mega-menu">
                                 <a href="#"  data-href="#section-adult"><div>Adult Programs</div></a>
-                                <div class="mega-menu-content style-2 col-5 clearfix">
+                                <div class="mega-menu-content style-2 col-4 clearfix">
                                     <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>General ESL</div></a>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
                                             <ul>
-                                                <li ng-repeat="course in courses" ng-if="course.category=='General ESL'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                                <li ng-repeat="course in courses" ng-if="course.category=='General ESL'  && course.subCategory == 'Core Courses'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL (Elective Courses)</div></a>
+                                            <ul>
+                                                <li ng-repeat="course in courses" ng-if="course.category=='General ESL'  && course.subCategory == 'Elective Courses' "><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -139,20 +146,20 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                    <ul>
+                                    <!-- <ul>
                                         <li class="mega-menu-title"><a href="#"><div>Class Chart</div></a>
                                            
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </div>
                             </li>
                             <li>
                                 <a href="#" data-href="#section-programs"><div>Junior Programs</div></a>
                                 <ul class="width200">
-                                    <li><a href="/junior-programs" ><div>Summer Kids Program</div></a></li>
-                                    <li><a href="/events" ><div>Summer Teen Program</div></a></li>
-                                    <li><a href="/calendar" ><div>Family Program</div></a></li>
-                                    <li><a href="/register"><div>Year Round Programs</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content1" ><div>Summer Kids Program</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content2" ><div>Summer Teen Program</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content3" ><div>Family Program</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content4"><div>Year Round Programs</div></a></li>
                                 </ul>
                             </li>
                             <li>
