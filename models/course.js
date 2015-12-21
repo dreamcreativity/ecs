@@ -5,7 +5,7 @@ var CourseSchema = new mongoose.Schema({
 	tag: {type: String, default: ''},
 	category: {type: String},
 	subCategory: {type: String},
-	level: {type: String, required: true },
+
 	startLevel: {type: Number, default: 1},
 	endLevel: {type: Number, default: 10},
 	description : {type: String},

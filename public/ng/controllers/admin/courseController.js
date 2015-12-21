@@ -102,6 +102,44 @@ angular.module('AdminApp')
 				$scope.course.subCategory = currentSubCategory;
 			});
 
+	
+
+			// $( "#slider-range-2" ).css({width:'250px', margin:'30px 5px'}).slider({
+			// 	range: true,
+			// 	min: 1,
+			// 	max: 10,
+			// 	values: [$scope.course.startLevel, $scope.course.endLevel],
+			// 	slide: function( event, ui ) {
+			// 		var val = ui.values[$(ui.handle).index()-1]+"";
+					
+			// 		var newVal = ui.values[$(ui.handle).index()-1];
+
+
+					
+
+			// 		if(newVal-$scope.course.startLevel > $scope.course.endLevel-newVal){
+			// 			$scope.course.endLevel = newVal;
+			// 		}else if(newVal-$scope.course.startLevel < $scope.course.endLevel-newVal){
+			// 			$scope.course.startLevel = newVal;
+			// 		}else{
+
+			// 		}
+
+			// 		console.log($scope.course);
+
+			
+
+					
+
+
+			// 		if(! ui.handle.firstChild ) {
+			// 			$(ui.handle).append("<div class='tooltip top in' style='display:none;left:-10px;top:-35px;'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>");
+			// 		}
+			// 		$(ui.handle.firstChild).show().children().eq(1).text(val);
+			// 	}
+			// 	}).find('a').on('blur', function(){
+			// 		$(this.firstChild).hide();
+			// });
 
 	 	});	 	
 	 }
