@@ -31,7 +31,8 @@ exports.create = function(req,res){
 
 //GET: all courses
 exports.getAllCourses = function (req,res){
-	Course.find({},function(err,results){
+	//Course.find({},function(err,results){
+	Course.find({ isActive:true }).sort({order: 1}).exec(function(err, results){
 		if(err){
 			res.json(
 			{
