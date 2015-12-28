@@ -206,6 +206,11 @@
 	color: white;
 }
 
+.video iframe{
+	width: 100%!important;
+	height: auto!important;
+	min-height: 350px;
+}
 
 /*----------------------------------*/
 

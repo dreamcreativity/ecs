@@ -15,6 +15,7 @@ var CourseSchema = new mongoose.Schema({
 	durations : [{type : mongoose.Schema.ObjectId, ref:'Duration'}],
 	links : [{type : mongoose.Schema.ObjectId, ref:'CourseLink'}],
 	type: {type: String, default: 'Weekly'},
+	youtube: {type: String, default: ''},
 	startPoint : {type : Date},
 	lastModify : {type : Date},
 	isActive : {type : Boolean, default : true }
