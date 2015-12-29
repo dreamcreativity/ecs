@@ -5,7 +5,7 @@ var CourseSchema = new mongoose.Schema({
 	tag: {type: String, default: ''},
 	category: {type: String},
 	subCategory: {type: String},
-
+	order: {type: Number, default: 0 },
 	startLevel: {type: Number, default: 1},
 	endLevel: {type: Number, default: 10},
 	description : {type: String},
@@ -15,6 +15,7 @@ var CourseSchema = new mongoose.Schema({
 	durations : [{type : mongoose.Schema.ObjectId, ref:'Duration'}],
 	links : [{type : mongoose.Schema.ObjectId, ref:'CourseLink'}],
 	type: {type: String, default: 'Weekly'},
+	youtube: {type: String, default: ''},
 	startPoint : {type : Date},
 	lastModify : {type : Date},
 	isActive : {type : Boolean, default : true }

@@ -17,6 +17,22 @@
 	padding-bottom: 50px!important;
 }
 
+
+
+
+
+
+/*main menu sub-menu itme*/
+
+#primary-menu ul li ul li a {
+	text-transform: capitalize;
+}
+
+
+
+
+
+
 /*calendar client site styling*/
 
 .calendar{
@@ -190,6 +206,11 @@
 	color: white;
 }
 
+.video iframe{
+	width: 100%!important;
+	height: auto!important;
+	min-height: 350px;
+}
 
 /*----------------------------------*/
 
