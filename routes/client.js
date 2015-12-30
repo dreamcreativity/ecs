@@ -213,6 +213,19 @@ router.get('/events', function(req, res){
 });
 
 
+router.get('/classChart', function(req, res){
+	template(req,res,'client_normal','client/class-chart.html',{});
+});
+router.get('/preArrical', function(req, res){
+	template(req,res,'client_normal','client/pre-arrival.html',{});
+});
+router.get('/accommodation', function(req, res){
+	template(req,res,'client_normal','client/accommodation.html',{});
+});
+
+
+
+
 router.get('/city', function(req, res){
 
 	template(req,res,'client_normal','client/city.html',{});
