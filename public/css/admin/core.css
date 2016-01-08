@@ -637,6 +637,25 @@ label.heading{
 
 
 
+/*------------ for online test question ------------*/
+.testAnswerInput{
+	margin: 10px 0;
+}
+
+
+.testResultQuestionSaction{
+	margin: 15px 0;
+}
+.testResultQuestionSaction .title{
+	margin-bottom: 15px;
+	text-decoration: underline;
+	color: #511616;
+}
+.testResultQuestionSaction p{
+	font-size: 12px;
+}
+
+
 
 
 

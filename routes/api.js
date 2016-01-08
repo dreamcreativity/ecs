@@ -12,6 +12,7 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
 var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
@@ -35,6 +36,7 @@ function IsAuthException(path, method){
 		{	path : '/api/activity', method: 'GET', type: 'direct' },
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
 		// {	path : '/api/constants', method: 'GET', type: 'contain'},
+		{	path : '/api/courses', method: 'GET', type: 'direct' }, 
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
@@ -42,7 +44,11 @@ function IsAuthException(path, method){
 		{	path : '/api/registration/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
-		{	path : '/api/constants/Country', method:'GET', type:'contain'}
+		{	path : '/api/constants/Country', method:'GET', type:'contain'},
+		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
+		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'},
+		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'}
+
 	];
 	
 
@@ -84,17 +90,18 @@ router.use(function(req,res,next){
 	var path = req._parsedOriginalUrl.path;
 	var method = req.method;
 
+
 	if(IsAuthException(path, method)){
 		next();
 	}else{
 		// check token from header
 
-		if( typeof req.headers.api_token === 'undefined'){
+		if( typeof req.headers.authorization === 'undefined'){
 			res.send(403,'403 auth error token');
 		}else{
 
-			console.log(req.headers.api_token);
-			var accessToken = req.headers.api_token;
+			console.log(req.headers.authorization);
+			var accessToken = req.headers.authorization;
 			var accessReferer = req.headers.referer;
 
 			auth.IsTokenValid(accessToken, accessReferer, function(isValid){
@@ -192,6 +199,9 @@ router.get('/registration/top', student.getRegistrations);
 //GET registration by Id 
 router.get('/registration/:id', student.getRegistrationById);
 
+//PUT registration by Id
+router.put('/registration/:id', student.updateRegistration);
+
 //GET students registration by Agent ID
 router.get('/registration/agent/:id',student.getRegistrationByAgent);
 
@@ -221,6 +231,15 @@ router.put('/student/agent/:id', student.editByAgent);
 
 //PUT : Update Accomdation info
 router.put('/student/accommodation/:id', student.updateAccommdation);
+
+//PUT : Update Flight info
+router.put('/student/flightInfo/:id', student.updateFlightInfo);
+
+//GET : ProgramRegister
+router.get('/student/programregister/:id',student.getProgramRegister);
+
+//POST : ProgramRegister
+router.post('/student/programregister/:id', student.updateProgramRegister);
 
 
 //---------------------- Commissions ---------------------------------------
@@ -389,6 +408,24 @@ router.put('/events/:id',events.edit);
 router.get('/events/:id', events.getEventbyId);
 
 
+
+//--------------------------Online Test-------------------------------------------
+//GET all empty online test question record
+router.get('/onlineTest/getNew', onlineTest.getNew);
+router.get('/onlineTest/getAll', onlineTest.getAll);
+router.get('/onlineTest/get/:id', onlineTest.get);
+router.put('/onlineTest/save/:id', onlineTest.save);
+router.post('/onlineTest/create', onlineTest.create);
+
+router.get('/onlineTest/getTestQuestions', onlineTest.getTestQuestions);
+
+
+router.get('/onlineTest/getNewTestRecord', onlineTest.getNewRecord);
+router.post('/onlineTest/submitTestRecord', onlineTest.createTestRecord);
+
+
+router.get('/onlineTest/records', onlineTest.getAllRecords);
+router.get('/onlineTest/record/:id', onlineTest.getRecord);
 
 //-------------------------- Constants ---------------------------------------
  router.get('/constants/:name', constants.get);

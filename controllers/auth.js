@@ -17,7 +17,9 @@ exports.IsTokenValid = function(AccessToken,accessReferer,callBack){
 			console.log(err);
 			callBack(false);
 		}else{
+
 			if(err) {
+				console.log(err)
 				callBack(false);
 			}
 			else {

@@ -162,7 +162,12 @@ resources.factory('Agents',['$resource',
 .factory('FlightInfos',['$resource',
     function($resource){
         return $resource('/api/flightInfo', {}, {
-        create:{ method: 'POST'}
+        create:{ method: 'POST'},
+        update :{
+            url: '/api/student/flightInfo/:id',
+            method : 'PUT',
+            params : {id : '@_id'}
+        }
     });
 }])
 
@@ -259,6 +264,14 @@ resources.factory('Registrations',['$resource',
     });
 }]);
 
+resources.factory('ProgramRegister',['$resource',
+    function($resource){
+         return $resource('/api/student/programregister/:id', {}, {
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{ method: 'POST', params: {id:'@_id',course : '@course'} }
+    });
+}]);
+
 resources.factory('Payments',['$resource',
     function($resource){
         return $resource('/api/student/payment/:id', {}, {
@@ -296,6 +309,72 @@ resources.factory('Promotions',['$resource',
             method : 'GET', 
             params: {region:'@region'}
         },
+    });
+}]);
+
+resources.factory('OnlineTest',['$resource',
+    function($resource){
+        return $resource('/api/onlineTest/getNew/:id', {}, {
+        
+        getNew: {
+            url: '/api/onlineTest/getNew',
+            method : 'GET', 
+            params: {}
+        },
+
+        getAll: {
+            url: '/api/onlineTest/getAll',
+            method : 'GET', 
+            params: {}
+        },
+
+        get: {
+            url: '/api/onlineTest/get/:id',
+            method : 'GET', 
+            params: {id:'@_id'}
+        },
+
+        getTestQuestions: {
+            url: '/api/onlineTest/getTestQuestions',
+            method : 'GET',
+        },
+
+        create: {
+            url: '/api/onlineTest/create',
+            method : 'POST', 
+            params: {question:'@question'}
+        },
+
+        save: {
+            url: '/api/onlineTest/save/:id',
+            method : 'PUT', 
+            params: {id:'@_id'}
+        },
+
+
+        getNewRecord: {
+            url: '/api/onlineTest/getNewTestRecord',
+            method : 'GET', 
+            params: {}
+        },
+
+        createTestRecord: {
+            url: '/api/onlineTest/submitTestRecord',
+            method : 'POST', 
+            
+        },
+
+        getTestRecords: {
+            url: '/api/onlineTest/records',
+            method : 'GET',        
+        },
+
+        getTestRecord: {
+            url: '/api/onlineTest/record/:id',
+            method : 'GET', 
+            params: {id:'@_id'}
+        },
+
     });
 }]);
 

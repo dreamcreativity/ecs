@@ -12,6 +12,8 @@ angular.module('AdminApp')
 
 	$scope.startAll = function(){
 
+		console.log($scope.uploadList);
+
 		for (var x in $scope.uploadList) {
 
 			var file = $scope.uploadList[x];
@@ -154,7 +156,7 @@ angular.module('AdminApp')
 	    url: uploadURL,
 	    type: "POST",
 	    beforeSend: function (request){
-                request.setRequestHeader("api_token", sessionStorage.token);
+                request.setRequestHeader("Authorization", sessionStorage.token);
             },
 	    contentType:false,
 	    processData: false,
@@ -169,7 +171,7 @@ angular.module('AdminApp')
 	 
 	    //status.setAbort(jqXHR);
 	    fileObj.jqXHR = jqXHR;
-	    $scope.$apply(); 
+	    //$scope.$apply(); 
 
 	}
 

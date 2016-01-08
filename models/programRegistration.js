@@ -10,7 +10,9 @@ var ProgramRegistrationSchema = new mongoose.Schema({
 	commissionRate : {type: Number, default : 0},
 	promotionRate : {type : Number, default : 0},
 	startDate : {type : Date},
-	createDate : {type : Date, default : Date.now }
+	createDate : {type : Date, default : Date.now },
+	updateDate : {type : Date, default :Date.now },
+	isDelete : {type : Boolean, default : false }
 });
 
 var ProgramRegistrationSchema = mongoose.model('ProgramRegistration', ProgramRegistrationSchema);

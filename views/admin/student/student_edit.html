@@ -1,5 +1,5 @@
 <script type="text/javascript">
-var url_params = <%- JSON.stringify(url_params) %>
+	var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
 <div class="row" ng-controller='StudentEditCtrl'>
@@ -13,62 +13,61 @@ var url_params = <%- JSON.stringify(url_params) %>
 		<div class="portlet-body">
 			<div class="tc-tabs"><!-- Nav tabs style 1 -->
 				<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
-					<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
-					<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
-					<!-- 	<li><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Register Course</a></li> -->
-					<li><a href="#p4" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration History</a></li>
+					<li id="tab1"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Basic Information</a></li>
+					<li id="tab2"><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Accommdation</a></li>
+					<!-- <li id="tab3"><a href="#p3" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Registration History</a></li> -->
 				</ul>
 
 
 				<div class="tab-content">
-					<div class="tab-pane fade in portlet-body active" id="p1">
+					<div class="tab-pane fade in portlet-body" id="p1">
 						<form name="studentForm" class="form-horizontal" role="form" ng-submit="update(studentForm.$valid)" novalidate>
 							<div class="form-group">
-							<label class="label label-xlg label-pending arrowed-right">Student Information</label>
-						</div>
-
-
-						<div class="form-group">
-							<label class="col-sm-2  control-label">Reference ID : </label>
-							<div class="col-sm-4">
-								<input  type="text" class="form-control" name="referenceID" ng-model="student.referenceID">
+								<label class="label label-xlg label-pending arrowed-right">Student Information</label>
 							</div>
 
-							<label class="col-sm-2 control-label">Gender : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<select name="gender" class="form-control" ng-model="student.gender" ng-init="student.gender = 'Male'">
-											<option value="Male">Male</option>
-											<option value="Female">Female</option> 
-										</select>
+
+							<div class="form-group">
+								<label class="col-sm-2  control-label">Reference ID : </label>
+								<div class="col-sm-4">
+									<input  type="text" class="form-control" name="referenceID" ng-model="student.referenceID">
+								</div>
+
+								<label class="col-sm-2 control-label">Gender : </label>
+								<div class="col-sm-4">
+									<div class="clearfix">
+										<div class="input-group">
+											<select name="gender" class="form-control" ng-model="student.gender" ng-init="student.gender = 'Male'">
+												<option value="Male">Male</option>
+												<option value="Female">Female</option> 
+											</select>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="form-group">
-							<label class="col-sm-2 control-label">First Name : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
-										<span ng-show="!registerForm.firstname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.firstname.$error.required" class="input-group-addon">Required</span>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">First Name : </label>
+								<div class="col-sm-4">
+									<div class="clearfix">
+										<div class="input-group">
+											<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+											<span ng-show="!registerForm.firstname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											<span ng-show="registerForm.firstname.$error.required" class="input-group-addon">Required</span>
+										</div>
+									</div>
+								</div>
+								<label class="col-sm-2 control-label">Last Name :  </label>
+								<div class="col-sm-4">
+									<div class="clearfix">
+										<div class="input-group">
+											<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
+											<span ng-show="!registerForm.lastname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											<span ng-show="registerForm.lastname.$error.required" class="input-group-addon">Required</span>
+										</div>
 									</div>
 								</div>
 							</div>
-							<label class="col-sm-2 control-label">Last Name :  </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-										<span ng-show="!registerForm.lastname.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.lastname.$error.required" class="input-group-addon">Required</span>
-									</div>
-								</div>
-							</div>
-						</div>
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Agent</label>
@@ -79,30 +78,30 @@ var url_params = <%- JSON.stringify(url_params) %>
 							</div>
 
 							<div class="form-group">
-							
-							<label class="col-sm-2 control-label">Birth Date : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type='date' class="form-control" name="birthday" ng-model="student.birthday" required>
-										<span ng-show="!registerForm.birthday.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.birthday.$error.required" class="input-group-addon">Required</span>
+
+								<label class="col-sm-2 control-label">Birth Date : </label>
+								<div class="col-sm-4">
+									<div class="clearfix">
+										<div class="input-group">
+											<input type='date' class="form-control" name="birthday" ng-model="student.birthday" required>
+											<span ng-show="!registerForm.birthday.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											<span ng-show="registerForm.birthday.$error.required" class="input-group-addon">Required</span>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<label class="col-sm-2 control-label">Age : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="number" class="form-control" name="age" ng-model="student.age" required>
-										<span ng-show="registerForm.age.$error.required" class="input-group-addon">Required</span>
-										<span ng-show="!registerForm.age.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<label class="col-sm-2 control-label">Age : </label>
+								<div class="col-sm-4">
+									<div class="clearfix">
+										<div class="input-group">
+											<input type="number" class="form-control" name="age" ng-model="student.age" required>
+											<span ng-show="registerForm.age.$error.required" class="input-group-addon">Required</span>
+											<span ng-show="!registerForm.age.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+										</div>
 									</div>
 								</div>
-							</div>
 
-						</div>
+							</div>
 
 
 							<div class="form-group">
@@ -112,225 +111,220 @@ var url_params = <%- JSON.stringify(url_params) %>
 										<input type="number" step='0.1' min='0' class="form-control" name="commissionRate" ng-model="student.commissionRate">
 										<!-- <label class="label label-info">
 												{{(student.commissionRate == 0) ? 'N/A' : (student.commissionRate | percentage:2)}}
-												</label> -->
+											</label> -->
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">Pomotion Rate</label>
+									<div class="col-sm-4">
+										<div class="input-group">
+											<input id="touchspin-demo2" type="number" step='0.1' min='0' class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
+										</div>
 									</div>
 								</div>
-								<label class="col-sm-2 control-label">Pomotion Rate</label>
-								<div class="col-sm-4">
-									<div class="input-group">
-										<input id="touchspin-demo2" type="number" step='0.1' min='0' class="form-control" name="pomotionRate" ng-model="student.pomotionRate">
+
+								<div class="form-group">
+
+									<label class="col-sm-2 control-label">Address : </label>
+									<div class="col-sm-10">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type='text' class="form-control" name="address" ng-model="student.address" required>
+												<span ng-show="!registerForm.address.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+												<span ng-show="registerForm.address.$error.required" class="input-group-addon">Required</span>
+											</div>
+										</div>
+									</div>	
+
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">City : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="text" class="form-control" name="city" ng-model="student.city" required>
+												<span ng-show="registerForm.city.$error.required" class="input-group-addon">Required</span>
+												<span ng-show="!registerForm.city.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											</div>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">Province : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type='text' class="form-control" name="province" ng-model="student.province" required>
+												<span ng-show="!registerForm.province.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+												<span ng-show="registerForm.province.$error.required" class="input-group-addon">Required</span>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+								<div class="form-group">
+
+									<label class="col-sm-2 control-label">Postal Code : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
+												<span ng-show="registerForm.postcode.$error.required" class="input-group-addon">Required</span>
+												<span ng-show="!registerForm.postcode.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											</div>
+										</div>
+									</div>
+
+									<label class="col-sm-2 control-label">Country : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="text" class="form-control" name="country" ng-model="student.country" required>
+												<span ng-show="registerForm.country.$error.required" class="input-group-addon">Required</span>
+												<span ng-show="!registerForm.country.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Telephone : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type='text' class="form-control" name="telephone" ng-model="student.telephone" required>
+												<span ng-show="!registerForm.telephone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+												<span ng-show="registerForm.telephone.$error.required" class="input-group-addon">Required</span>
+											</div>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">Emergency call : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="text" class="form-control" name="emergency" ng-model="student.emergency" required>
+												<span ng-show="registerForm.emergency.$error.required" class="input-group-addon">Required</span>
+												<span ng-show="!registerForm.emergency.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
 
-						<div class="form-group">
-							
-							<label class="col-sm-2 control-label">Address : </label>
-							<div class="col-sm-10">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type='text' class="form-control" name="address" ng-model="student.address" required>
-										<span ng-show="!registerForm.address.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.address.$error.required" class="input-group-addon">Required</span>
+								<div class="form-group">
+
+									<label class="col-sm-2 control-label">Fax : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group" style="width:100%">
+												<input type="number" class="form-control" name="fax" ng-model="student.fax">
+											</div>
+										</div>
+									</div>
+
+									<label class="col-sm-2 control-label">Email : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type='text' class="form-control" name="email" ng-model="student.email" required>
+												<span ng-show="!registerForm.email.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+												<span ng-show="registerForm.email.$error.required" class="input-group-addon">Required</span>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>	
-							
-						</div>
 
-						<div class="form-group">
-							<label class="col-sm-2 control-label">City : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="text" class="form-control" name="city" ng-model="student.city" required>
-										<span ng-show="registerForm.city.$error.required" class="input-group-addon">Required</span>
-										<span ng-show="!registerForm.city.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<hr class="separator">
+
+								<div class="form-group">
+									<label class="label label-xlg label-pending arrowed-right">English Level</label>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">English Level : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<select name="englishlevel" class="form-control full" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
+													<option value="beginner">Beginner</option> 
+													<option value="low_Intermediate">Low Intermediate</option>
+													<option value="high_Intermediate">High Intermediate</option>
+													<option value="advance">Advanced</option>
+												</select>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-							<label class="col-sm-2 control-label">Province : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type='text' class="form-control" name="province" ng-model="student.province" required>
-										<span ng-show="!registerForm.province.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.province.$error.required" class="input-group-addon">Required</span>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">TOEFL :  </label>
+									<div class="col-sm-2">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="number" class="form-control full" name="TOEFL" ng-model="student.TOEFL">
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-
-							
-						</div>
-						<div class="form-group">
-							
-							<label class="col-sm-2 control-label">Postal Code : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
-										<span ng-show="registerForm.postcode.$error.required" class="input-group-addon">Required</span>
-										<span ng-show="!registerForm.postcode.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">IELTS :  </label>
+									<div class="col-sm-2">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="number" step="0.5" class="form-control full" name="IELTS" ng-model="student.IELTS">
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<label class="col-sm-2 control-label">Country : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="text" class="form-control" name="country" ng-model="student.country" required>
-										<span ng-show="registerForm.country.$error.required" class="input-group-addon">Required</span>
-										<span ng-show="!registerForm.country.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								<hr class="separator" />
+
+
+
+								<div class="form-group">
+									<label class="label label-xlg label-pending arrowed-right">Health Insurance</label>
+								</div>
+
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">From Date:</label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
+											</div>
+										</div>
+									</div>
+								</div> 
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">To Date:</label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="form-group">
+									<label class="col-sm-1 col-md-3 control-label"></label>
+									<div class="col-sm-1 col-md-3">
+										<div class="tcb">
+											<label>
+												<input type="checkbox" ng-model="student.isQuit" class="tc">
+												<span class="labels"> Delete</span>
+											</label>
+										</div>
 									</div>
 								</div>
-							</div>
-							
-						</div>
 
-	
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Telephone : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type='text' class="form-control" name="telephone" ng-model="student.telephone" required>
-										<span ng-show="!registerForm.telephone.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.telephone.$error.required" class="input-group-addon">Required</span>
-									</div>
-								</div>
-							</div>
-							<label class="col-sm-2 control-label">Emergency call : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="text" class="form-control" name="emergency" ng-model="student.emergency" required>
-										<span ng-show="registerForm.emergency.$error.required" class="input-group-addon">Required</span>
-										<span ng-show="!registerForm.emergency.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							
-							<label class="col-sm-2 control-label">Fax : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group" style="width:100%">
-										<input type="number" class="form-control" name="fax" ng-model="student.fax">
-									</div>
-								</div>
-							</div>
-
-							<label class="col-sm-2 control-label">Email : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type='text' class="form-control" name="email" ng-model="student.email" required>
-										<span ng-show="!registerForm.email.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
-										<span ng-show="registerForm.email.$error.required" class="input-group-addon">Required</span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<hr class="separator">
-
-						<div class="form-group">
-							<label class="label label-xlg label-pending arrowed-right">English Level</label>
-						</div>
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">English Level : </label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<select name="englishlevel" class="form-control full" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
-											<option value="beginner">Beginner</option> 
-											<option value="low_Intermediate">Low Intermediate</option>
-											<option value="high_Intermediate">High Intermediate</option>
-											<option value="advance">Advanced</option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label">TOEFL :  </label>
-							<div class="col-sm-2">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="number" class="form-control full" name="TOEFL" ng-model="student.TOEFL">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label">IELTS :  </label>
-							<div class="col-sm-2">
-								<div class="clearfix">
-									<div class="input-group">
-								<input type="number" step="0.5" class="form-control full" name="IELTS" ng-model="student.IELTS">
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<hr class="separator" />
-
-
-
-						<div class="form-group">
-							<label class="label label-xlg label-pending arrowed-right">Health Insurance</label>
-						</div>
-
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">From Date:</label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="date" class="form-control" name="healthInsuranceEndDate" ng-model="student.healthInsuranceEndDate">
-									</div>
-								</div>
-							</div>
-						</div> 
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">To Date:</label>
-							<div class="col-sm-4">
-								<div class="clearfix">
-									<div class="input-group">
-										<input type="date" class="form-control" name="healthInsuranceStartingDate" ng-model="student.healthInsuranceStartingDate">
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-
-							<div class="form-group">
-								<label class="col-sm-1 col-md-3 control-label"></label>
-								<div class="col-sm-1 col-md-3">
-									<div class="tcb">
-										<label>
-											<input type="checkbox" ng-model="student.isQuit" class="tc">
-											<span class="labels"> Delete</span>
-										</label>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
+								<div class="form-group">
+								
 								<div class="col-sm-offset-3 col-sm-1">
-									<a href="/admin/student/extending/{{student._id}}" type="submit" class="btn btn-primary btn-block">Add course</a>
-								</div>
-								<!-- <div class="col-sm-1">
-									<button type="button" download-form01 class="btn btn-primary btn-block" ng-click="download_student()">Download</button>
-								</div> -->
-								<div class="col-sm-1">
 									<input type="submit" class="btn btn-primary btn-block" value="Update" ng-disabled="studentForm.$invalid">
 								</div>
 								<div class="col-sm-1">
@@ -341,7 +335,7 @@ var url_params = <%- JSON.stringify(url_params) %>
 					</div>
 
 					<div class="tab-pane fade in portlet-body" id="p2">
-						<form name="accommdationForm" class="form-horizontal" role="form" ng-submit="submitAccommdation(accommdationForm.$valid)" ng-show="havingAccommdation" novalidate>
+						<form name="accommdationForm" class="form-horizontal" role="form" ng-show="havingAccommdation" novalidate>
 							<div class="form-group ">
 								<label class="label label-xlg label-pending arrowed-right">Flight Information : </label>
 							</div>
@@ -366,11 +360,11 @@ var url_params = <%- JSON.stringify(url_params) %>
 									</label>
 
 
-								
+
 								</div>
 
 								<div class="col-sm-offset-2 col-sm-5">
-								
+
 									<div class="form-group">
 										<label class="heading">Departure from Toronto</label>
 									</div>
@@ -399,18 +393,30 @@ var url_params = <%- JSON.stringify(url_params) %>
 									</div> -->
 									<div class="form-group">
 										<label>Starting Date</label>
-										<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" >
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="date" class="form-control" name="startDate" ng-model="accommodation.startDate" required>
+												<span ng-show="!accommdationForm.startDate.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+												<span ng-show="accommdationForm.startDate.$error.required" class="input-group-addon">Required</span>	
+											</div>
+										</div>
 									</div>
 									<div class="form-group">
 										<label>Finishing Date </label>
-										<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" >
+										<div class="clearfix">
+											<div class="input-group">
+												<input type="date" class="form-control" name="endDate" ng-model="accommodation.endDate" required>
+												<span ng-show="!accommdationForm.endDate.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+												<span ng-show="accommdationForm.endDate.$error.required" class="input-group-addon">Required</span>
+											</div>
+										</div>
 									</div>
 									<div class="form-group">
 										<label>Departure date from Toronto</label>
 										<input type="date" class="form-control" name="departDate" ng-model="accommodation.departureDateFromToronto" >
 									</div>
 									
-								
+
 								</div>
 							</div>
 
@@ -465,20 +471,20 @@ var url_params = <%- JSON.stringify(url_params) %>
 
 							<div class="form-group">
 								<label>Additional Comments : </label>
-						
-									<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
-							
+
+								<textarea class="form-control" name="comments" ng-model="accommodation.comments"></textarea>
+
 							</div>
 							<div class="form-group">
 								<label>Do you have any special diet or food preference ?</label>
-					
-									<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
-						
+
+								<textarea class="form-control" name="specialFood" ng-model="accommodation.specialFood"></textarea>
+
 							</div>
 							<div class="form-group">
 								<label>Do you have any allergies or medical concerns ?</label>
-						
-									<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
+
+								<textarea class="form-control" name="allergiesMedical" ng-model="accommodation.allergiesMedical"></textarea>
 								
 							</div>
 
@@ -496,118 +502,238 @@ var url_params = <%- JSON.stringify(url_params) %>
 							</div>
 
 							
-							<div class="form-group">
+							<div class="form-group" ng-show="!createAccommdation">
 								<div class="col-sm-offset-2 col-sm-1">
 									<button type="button" download-form02 class="btn btn-primary btn-block" ng-click="download_accommdation()">Download</button>
 								</div>
 								<div class="col-sm-1">
-									<input type="submit" class="btn btn-primary btn-block" value="Update">
+									<input type="submit" class="btn btn-primary btn-block" ng-click="submitAccommdation()" value="Update">
 								</div>
 								<div class="col-sm-1">
 									<a href="/admin/student/all" type="submit" class="btn btn-primary btn-block">Cancel</a>
+
 								</div>
 							</div>
+
+							<div class="form-group" ng-show="createAccommdation">
+								<div class="col-sm-offset-2 col-sm-1">
+									<input type="submit" class="btn btn-primary btn-block" ng-click="createNewAccommdation()" value="Create" ng-disabled="accommdationForm.$invalid">
+								</div>
+								<div class="col-sm-1">
+									<a href="#" ng-click="havingAccommdation=false" class="btn btn-primary btn-block">Cancel</a>
+								</div>
+							</div>
+
 						</form>
 						<div class="row">
 							<div class="col-sm-1">
-								<!-- <button class="btn btn-primary btn-block" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button> -->
+								<button class="btn btn-primary btn-block" ng-click="havingAccommdation=true" ng-hide="havingAccommdation">Create</button>
 							</div>
 						</div>
 					</div>
 
-			<!-- <div class="tab-pane fade in portlet-body" id="p3">
-				<label class="col-sm-1 col-md-3 control-label">History</label>
-				<table class="table table-bordered table-striped table-hover tc-table table-primary">
-					<thead>
-						<tr>
-							<tr>
-								<th class="hidden-xs center">Register Date</th>
-								<th class="hidden-xs center">Course</th>
-								<th class="hidden-xs center">Description</th>
-								<th class="hidden-xs center">Level</th>
-								<th class="hidden-xs center">Year</th>
-								<th class="hidden-xs center">Start Date</th>
-								<th class="hidden-xs center">Duration</th>
-								<th class="col-medium center">Action</th>
-							</tr>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="c in student.programRegistration">
-							<td class="hidden-xs center"><label class="label label-success">{{ c.createDate  | date:'MMMM d, yyyy'}}</label></td>
-							<td class="hidden-xs center">{{c.title}}</td>
-							<td class="hidden-xs center">{{c.tag}}</td>
-							<td class="hidden-xs center">{{c.level}}</td>
-							<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
-							<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
-							<td class="hidden-xs center">{{c.duration}}</td>
-							<td class="col-medium center">
-								<button type="button" class="btn btn-info btn-xs btn-circle" ng-click="removeCourse(c)" disabled="disabled">
-									<i class="fa fa-times icon-only"></i>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div> -->
+					<div class="tab-pane fade in portlet-body" id="p3">
+						<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
+							<div class="portlet-heading dark">
+								<div class="portlet-title">
+									<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
+								</div>
+								<div class="portlet-widgets">
+									<a href="/admin/student/payment/{{registration._id}}"><i class="fa fa-usd icon-only"></i></a>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+								<div class="portlet-body no-padding">
+									<table class="table table-bordered table-hover tc-table">
+										<thead>
+											<tr>
+												<th class="hidden-xs center">Course</th>
+												<th class="hidden-xs center">Description</th>
+												<th class="hidden-xs center">Level</th>
+												<th class="hidden-xs center">Year</th>
+												<th class="hidden-xs center">Start Date</th>
+												<th class="hidden-xs center">Duration</th>
+												<th class="col-medium center">Status</th>
+												<th class="col-medium center">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="c in registration.programRegistration">
+												<td class="hidden-xs center">{{c.title}}</td>
+												<td class="hidden-xs center">{{c.tag}}</td>
+												<td class="hidden-xs center">{{c.level}}</td>
+												<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
+												<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
+												<td class="hidden-xs center">{{c.coursePeriod}}</td>
+												<td class="hidden-xs center">
+													<span ng-if="c.isDelete == 1" class="label label-danger">Deleted</span>
+													<span ng-if="c.isDelete == 0" class="label label-active">Active</span>
+												</td>
+												<td class="hidden-xs center">
+													<div class="btn-group btn-group-xs ">
+														<a href="/admin/student/register/edit/{{student._id}}/{{c._id}}" class="btn"><i class="fa fa-pencil icon-only"></i></a>
+													</div>					
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- <div id="{{registration._id}}" class="panel-collapse collapse">
+									<div course-registeredit></div>
+								</div> -->
+						</div>
+						<form class="form-horizontal" ng-controller='StudentExtending'>
+							<div class="form-group">
+							<div class="col-sm-1">
+									<a data-toggle="collapse" class="btn btn-primary btn-block" data-parent="#accordion" href="#register">New register</a>
+								</div>
+							</div>
+							<div id="register" class="panel-collapse collapse">							
+								<div class="portlet">
+									<div class="portlet-heading dark">
+										<div class="portlet-title">
+											<h4>Existing Student ( <strong>Student ID</strong> : {{student.studentID}} )</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
 
-			<div class="tab-pane fade in portlet-body" id="p4">
-				<div class="portlet" ng-repeat="registration in registrations"><!-- /Portlet -->
-					<div class="portlet-heading dark">
-						<div class="portlet-title">
-							<h4>{{registration.createDate | date:'MMMM d yyyy'}}</h4>
-						</div>
-						<div class="portlet-widgets">
-							<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
-							<span class="divider"></span>
-							<a href="/admin/student/payment/{{registration._id}}"><i class="fa fa-pencil icon-only"></i></a>
-						</div>
-						<div class="clearfix"></div>
+									<div class="portlet-body">
+											<div class="form-group">
+												<label class="col-sm-2 control-label">First Name :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="firstname" ng-model="student.firstname" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Last Name :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="lastname" ng-model="student.lastname" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Gender :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="gender" ng-model="student.gender" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Birthday :</label>
+												<div class="col-sm-2">
+													<div class="form-control">{{student.birthday | date : 'MMM dd yyyy'}}</div>
+												</div>
+												<label class="col-sm-1 control-label">Age :</label>
+												<div class="col-sm-1">
+													<input type="text" class="form-control" name="age" ng-model="student.age" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Address :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="address" ng-model="student.address" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Postcode :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="postcode" ng-model="student.postcode" readonly="">
+												</div>
+												<label class="col-sm-1 control-label">City :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="city" ng-model="student.city" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Province :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="province" ng-model="student.province" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Country :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="country" ng-model="student.country" readonly="">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Telephone :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="telephone" ng-model="student.telephone" readonly="">
+												</div>
+												<label class="col-sm-2 control-label">Email :</label>
+												<div class="col-sm-2">
+													<input type="text" class="form-control" name="email" ng-model="student.email" readonly="">
+												</div>
+											</div>
+
+											<div ng-if="student.agent !=null">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Agent :</label>
+													<div class="col-sm-2">
+														<div class="form-control">{{student.agent.lastname}} {{student.agent.firstname}}</div>
+													</div>
+													<label class="col-sm-2 control-label">Agent's Company :</label>
+													<div class="col-sm-2">
+														<div class="form-control">{{student.agent.company}}</div>
+													</div>
+													<label class="col-sm-1 control-label">Agent's Email :</label>
+													<div class="col-sm-2">
+														<div class="form-control">{{student.agent.email}}</div>
+													</div>
+												</div>
+											</div>
+
+											<div ng-if="student.agent == null">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Agent :</label>
+													<div class="col-sm-2">
+														<div class="form-control">N/A</div>
+													</div>
+													<label class="col-sm-2 control-label">Agent's Company :</label>
+													<div class="col-sm-2">
+														<div class="form-control">N/A</div>
+													</div>
+													<label class="col-sm-1 control-label">Agent's Email :</label>
+													<div class="col-sm-2">
+														<div class="form-control">N/A</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-2 control-label">First registration Date :</label>
+												<div class="col-sm-2">
+													<label class="label label-success">{{ student.registerDate  | date:'MMMM d, yyyy'}}</label>
+												</div>
+											</div>
+
+											<div course-register></div>
+
+											<div class="form-group">
+												<div class="col-sm-1">
+													<button type="submit" class="btn btn-primary btn-block" ng-click="extendingCourse()">Submit</button>
+												</div>
+											</div>		
+									</div>		
+								</div>
+							</div>
+						</form>
 					</div>
-					<div id="basic" class="panel-collapse collapse in">
-						<div class="portlet-body no-padding">
-							<table class="table table-bordered table-hover tc-table">
-								<thead>
-									<tr>
-										<th class="hidden-xs center">Course</th>
-										<th class="hidden-xs center">Description</th>
-										<th class="hidden-xs center">Level</th>
-										<th class="hidden-xs center">Year</th>
-										<th class="hidden-xs center">Start Date</th>
-										<th class="hidden-xs center">Duration</th>
-										<th class="col-medium center">Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="c in registration.programRegistration">
-										<td class="hidden-xs center">{{c.title}}</td>
-										<td class="hidden-xs center">{{c.tag}}</td>
-										<td class="hidden-xs center">{{c.level}}</td>
-										<td class="hidden-xs center">{{c.startDate | date : 'yyyy'}}</td>
-										<td class="hidden-xs center">{{c.startDate | date:'MMMM d'}}</td>
-										<td class="hidden-xs center">{{c.coursePeriod}}</td>
-										<td class="hidden-xs center">confirm</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
+
+
 				</div>
+
 			</div>
-
-
 		</div>
-
 	</div>
-</div>
-</div>
 </div>
 
 
 <script>
-$(document).on("keypress", "form", function(event) { 
-	return event.keyCode != 13;
-});
+	$(document).on("keypress", "form", function(event) { 
+		return event.keyCode != 13;
+	});
+
+	// $("form").on("submit", function () {
+ //    	$(this).find(":submit").prop("disabled", true);
+	// });
+
+
 </script>
 
 

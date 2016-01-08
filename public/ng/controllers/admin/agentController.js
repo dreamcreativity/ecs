@@ -35,15 +35,9 @@ angular.module('AdminApp')
 	 		}
 	 		else if(result.status == 'exist'){
 	 			ShowGritterCenter('System Notification',result.messages);
-		 			setInterval(function(){
-		 				$window.location='/admin/agent/detail/' + result.data._id;
-		 			}, 2000);
 	 		}
 	 		else {
 	 			ShowGritterCenter('System Notification','Agent create fail');
-		 			setInterval(function(){
-		 				$window.location='/admin/agent/detail/' + result.data._id;
-		 			}, 2000);
 	 		}
  		})
 	 }

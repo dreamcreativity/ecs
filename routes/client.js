@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
 			});
 	    },
 	    function(next){
-			Course.find({cover: { $ne: null }, isActive: true}).populate('cover').exec(function(err,result){
+			Course.find({cover: { $ne: null }, isActive: true}).sort({order: 1}).populate('cover').exec(function(err,result){
 				courses = result;
 				next();
 			});
@@ -200,13 +200,56 @@ router.get('/welcome', function(req, res){
 
 });
 
+router.get('/onlineTest', function(req, res){
 
+	template(req,res,'client_normal','client/onlineTest.html',{});
+
+});
 
 router.get('/events', function(req, res){
 
 	template(req,res,'client_normal','client/event.html',{});
 
 });
+
+
+router.get('/classChart', function(req, res){
+	template(req,res,'client_normal','client/class-chart.html',{});
+});
+router.get('/preArrical', function(req, res){
+	template(req,res,'client_normal','client/pre-arrival.html',{});
+});
+router.get('/accommodation', function(req, res){
+	template(req,res,'client_normal','client/accommodation.html',{});
+});
+
+
+
+
+router.get('/city', function(req, res){
+
+	template(req,res,'client_normal','client/city.html',{});
+
+});
+
+router.get('/procedures', function(req, res){
+
+	template(req,res,'client_normal','client/procedures.html',{});
+
+});
+
+router.get('/guidelines', function(req, res){
+	template(req,res,'client_normal','client/guidelines.html',{});
+});
+
+router.get('/junior-programs', function(req, res){
+	template(req,res,'client_normal','client/junior-programs.html',{});
+});
+
+router.get('/campus-pictures', function(req, res){
+	template(req,res,'client_normal','client/campus-pictures.html',{});
+});
+
 
 
 router.get('/calendar', function(req, res){

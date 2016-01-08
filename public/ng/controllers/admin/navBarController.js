@@ -2,7 +2,16 @@
 
 angular.module('AdminApp')
 
-.controller('NavBarController',  function($scope,$http,$window,$location,StaffAccount){
+
+.controller('NavSideMenuController',  function($scope,$rootScope){
+
+
+
+
+})
+
+
+.controller('NavBarController',  function($scope,$rootScope,$http,$window,$location,StaffAccount){
 
 
 	$scope.logout = function(){
@@ -15,9 +24,20 @@ angular.module('AdminApp')
 		return StaffAccount.query({});
 	}
 
-	$scope.info = getAccountInfo();
 
 
+
+	// $scope.info = getAccountInfo();
+	// $rootScope.accountInfo = $scope.info.data;
+	// console.log($rootScope.accountInfo);
+
+	StaffAccount.query({},function(result){
+
+		$scope.info = result;
+
+		$rootScope.accountInfo = $scope.info.data;
+
+	});
 
 });
 

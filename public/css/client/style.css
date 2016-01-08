@@ -26,19 +26,19 @@ dl, dt, dd, ol, ul, li {
 }
 
 ::selection {
-	background: #10a7f5;
+	background: #1ABC9C;
 	color: #FFF;
 	text-shadow: none;
 }
 
 ::-moz-selection {
-	background: #1abc9c; /* Firefox */
+	background: #1ABC9C; /* Firefox */
 	color: #FFF;
 	text-shadow: none;
 }
 
 ::-webkit-selection {
-	background: #1abc9c; /* Safari */
+	background: #1ABC9C; /* Safari */
 	color: #FFF;
 	text-shadow: none;
 }
@@ -279,11 +279,11 @@ span.middot {
 }
 
 .bgcolor,
-.bgcolor #header-wrap { background-color: #10a7f5 !important; }
+.bgcolor #header-wrap { background-color: #1ABC9C !important; }
 
-.color { color: #10a7f5 !important; }
+.color { color: #1ABC9C !important; }
 
-.border-color { border-color: #10a7f5 !important; }
+.border-color { border-color: #1ABC9C !important; }
 
 .nobg { background: none !important; }
 
@@ -670,7 +670,7 @@ html[xmlns] .slider-wrap {display: block;}
 	left: 0;
 	width: 140px;
 	margin: 0;
-	border-top: 1px solid #10a7f5;
+	border-top: 1px solid #1ABC9C;
 	border-bottom: 1px solid #EEE;
 	box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
@@ -861,7 +861,7 @@ html[xmlns] .slider-wrap {display: block;}
 
 body.stretched #header.full-header .container {
 	width: 100%;
-	padding: 0 30px;
+	padding: 0 5px;
 }
 
 #header.transparent-header.full-header #header-wrap { border-bottom: 1px solid rgba(0,0,0,0.1); }
@@ -994,7 +994,8 @@ body.stretched #header.full-header .container {
 #primary-menu ul li {
 	position: relative;
 	float: left;
-	margin-left: 2px;
+	/*margin-left: 2px;*/
+	margin-left: -8px;
 }
 
 #primary-menu ul li.mega-menu { position: inherit; }
@@ -8818,7 +8819,7 @@ ul.tab-nav li a i {
 	border-color: rgba(0,0,0,0.1) !important;
 	color: #FFF !important;
 	font-weight: 600;
-	background-color: #10a7f5 !important;
+	background-color: #1ABC9C !important;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
@@ -10347,14 +10348,14 @@ label.error { display: none !important; }
 
 .title-block {
 	padding: 2px 0 3px 20px;
-	border-left: 7px solid #10a7f5;
+	border-left: 7px solid #1ABC9C;
 	margin-bottom: 30px;
 }
 
 .title-block-right {
 	padding: 2px 20px 3px 0;
 	border-left: 0;
-	border-right: 7px solid #10a7f5;
+	border-right: 7px solid #1ABC9C;
 	text-align: right;
 }
 
@@ -10567,7 +10568,7 @@ label.error { display: none !important; }
 	display: block;
 	background: transparent;
 	padding: 0 0 10px;
-	border-bottom: 2px solid #10a7f5;
+	border-bottom: 2px solid #1ABC9C;
 }
 
 
@@ -11588,8 +11589,8 @@ body:not(.device-touch) .tagcloud a {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
 	color: #FFF !important;
-	background-color: #10a7f5 !important;
-	border-color: #10a7f5 !important;
+	background-color: #1ABC9C !important;
+	border-color: #1ABC9C !important;
 }
 
 label.radio,

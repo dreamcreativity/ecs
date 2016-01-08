@@ -109,6 +109,18 @@ router.get('/student/detail/:id', function(req, res) {
 		);
 });
 
+router.get('/student/extending/:id', function(req, res) {
+	template(req,res,'agent_main','agent/studentForms/addcourse.html',
+			{ 
+				title: 'Student',
+				category: 'Management',
+				cur_tap: 'Student',
+				cur_selected : 'Extending course',
+				url_params : req.params
+			}
+		);
+});
+
 router.get('/student/commission/:id', function(req, res) {
 	template(req,res,'agent_main','agent/studentForms/commission.html',
 			{ 
@@ -118,6 +130,19 @@ router.get('/student/commission/:id', function(req, res) {
 				cur_selected : 'Commission',
 				url_params : req.params
 			}
+		);
+});
+
+
+router.get('/student/register/edit/:studentid/:id', function(req,res){
+	template(req,res,'agent_main', 'agent/studentForms/student_register_edit.html',
+				{
+					title: 'Student',
+					category: 'Management',
+					cur_tap: 'Student',
+					cur_selected : 'EditProgram',
+					url_params : req.params
+				}
 		);
 });
 
@@ -210,6 +235,11 @@ router.get('/edit', function(req,res){
 router.get('/courseRegisterTemplate', function(req,res){
 	res.render('templates/courseRegister.html');
 });
+
+router.get('/courseRegisterEditTemplate', function(req,res){
+	res.render('templates/courseRegisterEdit.html');
+});
+
 
 
 

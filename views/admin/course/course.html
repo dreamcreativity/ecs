@@ -14,7 +14,7 @@
 							<tr>
 								<tr>
 								<th class="hidden-xs">Course name</th>
-								<!-- <th class="hidden-xs">Description</th> -->
+								<th class="hidden-xs">Category</th>
 								<th class="hidden-xs">Type</th>
 								<th class="hidden-xs">Level</th>
 								<th class="hidden-xs">Status</th>
@@ -26,9 +26,16 @@
 						<tbody>
 							<tr ng-repeat="course in courses.data | filter:query">
 								<td class="hidden-xs"><a href="#">{{course.title}}</a></td>
-								<!-- <td class="hidden-xs">{{course.description}}</td> -->
+								<td class="hidden-xs">
+									{{course.category}}  <small  ng-if="!(course.subCategory != null && ( course.subCategory != '' && course.subCategory != 'None' ) )" > (Order: {{course.order}})</small>
+									<div ng-if="course.subCategory != null && ( course.subCategory != '' && course.subCategory != 'None'  )">
+										{{ '- ' + course.subCategory}}
+
+										<small> (Order: {{course.order}})</small>
+									</div>
+								</td>
 								<td class="hidden-xs"><a href="#">{{course.type}}</a></td>
-								<td class="hidden-xs"><a href="#">{{course.level}}</a></td>
+								<td class="hidden-xs"><a href="#">{{course.startLevel + ' to ' + course.endLevel }}</a></td>
 								<td><span ng-if="course.isActive == 0" class="label label-danger">Not Active</span>
 								<span ng-if="course.isActive == 1" class="label label-active">Active</span>
 								</td>

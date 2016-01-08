@@ -101,11 +101,14 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 	for (var key in studentinfo) {
 		var replaceValue = studentinfo[key]
 		if(typeof studentinfo[key] == "undefined") replaceValue ='N/A';
+		if(studentinfo[key] == null) replaceValue ='N/A';
 		result = result.replace("@" + key + "@", replaceValue);
 	};
 
 	//replace value in student template 
 	for (var key in studentinfo){
+
+		if(studentinfo[key] == null) replaceValue ='N/A';
 		if(studentinfo[key] instanceof Date){
 			studentTemplate = studentTemplate.replace("@" + key + "@", dateFormat(studentinfo[key],"mmm dd, yyyy"));
 		}
@@ -164,6 +167,7 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 			else {
 				var replaceValue = accommodation[key]
 				if(typeof accommodation[key] == "undefined") replaceValue = 'N/A';
+				if(replaceValue == null) replaceValue = "N/A";
 				if(replaceValue == true) replaceValue = "Yes";
 				else if(replaceValue == false) replaceValue = "No";
 				accommodationTempate = accommodationTempate.replace("@" + key + "@", replaceValue);

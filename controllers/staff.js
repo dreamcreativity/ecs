@@ -345,7 +345,7 @@ exports.delete = function(req,res){
 //GET: staff  by session
 exports.getStaffAccount = function(req,res){
 
-	Token.find({type:'Staff', _id: req.headers.api_token } ,function(err, result){
+	Token.find({type:'Staff', _id: req.headers.authorization } ,function(err, result){
 
 		// res.json({
 
@@ -399,7 +399,8 @@ exports.getStaffAccount = function(req,res){
 								regions: users[0].regions,
 								email: users[0].email,
 								createDate: users[0].createDate,
-								cover: users[0].cover
+								cover: users[0].cover,
+								role: users[0].role
 								
 
 							}
@@ -422,7 +423,7 @@ exports.getStaffAccount = function(req,res){
 
 exports.changePassword = function(req,res){
 
-	Token.find({type:'Staff', _id: req.headers.api_token, isActived:true } ,function(err, result){
+	Token.find({type:'Staff', _id: req.headers.authorization, isActived:true } ,function(err, result){
 
 		if(result.length > 1){
 			res.json({

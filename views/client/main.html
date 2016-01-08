@@ -190,35 +190,113 @@
                     <nav id="primary-menu">
                         <ul class="one-page-menu">
                             <li><a href="#" data-href="#home"><div>Home</div></a></li>
-                            <li><a href="#" data-href="#section-about"><div>About</div></a></li>
                             <li>
-                                <a href="#" data-href="#section-programs"><div>Programs</div></a>
+                                <a href="#" data-href="#section-about"><div>About</div></a>
+                                <ul class="width200">
+                                    <li><a  href="#" data-href="#section-about"><div>Why ESC</div></a></li>
+                                    <li><a  href="#" data-href="#section-about"><div>Our Philosophy</div></a></li>
+                                    <li><a  href="#" data-href="#section-about"><div>Our Team</div></a></li>
+                                    <li><a  href="/city"><div>Our City</div></a></li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="#"  data-href="#section-adult"><div>Adult Programs</div></a>
+                                <div class="mega-menu-content style-2 col-4 ">
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'General ESL' && courses[i].subCategory == 'Core Courses' ){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL (Elective Courses)</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'General ESL' && courses[i].subCategory == 'Elective Courses' ){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Focus Programs</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'Focus Programs'){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Test Prep Programs</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'Test Prep Programs'){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Pathway Programs</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'Pathway Programs'){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <!-- <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Class Chart</div></a>
+                                           
+                                        </li>
+                                    </ul> -->
+                                </div>
+                              
+                            </li>
+                            <li>
+                                <a href="#" data-href="#section-programs"><div>Junior Programs</div></a>
                                 <ul class="width300">
+                                    <li><a href="/junior-programs#snav-content1" ><div>Toronto Summer Kids Programs</div></a></li>
+                                    <li><a href="/junior-programs#snav-content2" ><div>Toronto Summer Teens Program</div></a></li>
+                                    <li><a href="/junior-programs#snav-content3" ><div>Kingston Summer Teens Programs</div></a></li>
+                                    <li><a href="/junior-programs#snav-content4"><div>Family Programs</div></a></li>
+                                    <li><a href="/junior-programs#snav-content5"><div>Year Round Programs</div></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-href="#section-programs"><div>Registration</div></a>
+                                <ul class="width200">
+                                    <li><a href="/register" ><div>Register Now</div></a></li>
+                                    <li><a href="/Calculator" ><div>Fee Calculator</div></a></li>
+                                    <li><a href="/calendar" ><div>Calendars</div></a></li>
+                                    <li><a href="/onlineTest"><div>Online Test</div></a></li>
+                                    <li><a href="/guidelines"><div>Student Guidelines</div></a></li>
+                                    <li><a href="/procedures"><div>Procedures</div></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" ><div>Services</div></a>
+                                <ul class="width200">
+                                    <li><a href="/preArrical" ><div>Pre-arrival</div></a></li>
+                                    <li><a href="/accommodation" ><div>Accommodation</div></a></li>
+                                    <li><a href="/activity" ><div>Activites</div></a></li>
+                                    <li><a href="/events" ><div>Events</div></a></li>
+                                    <li><a href="/classChart" ><div>Class Chart</div></a></li>
+                                </ul>
+                            </li>
 
-                                    <% for(var i=0; i < courses.length; i++){ %>
-                                    <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
-                                    <% } %>
-                                </ul>
-                            </li>
-                            <li><a href="#" data-href="#section-activity"><div>Activity</div></a></li>
-                            <li><a href="#" data-href="#section-team"><div>Team</div></a></li>
-                            
-                            <li>
-                                <a href="#" data-href="#section-tools"><div>Tools</div></a>
-                                <ul class="width200">
-                                    <li><a href="/Calculator" ><div>Calculator</div></a></li>
-                                    <li><a href="/events" ><div>Events Calendar</div></a></li>
-                                    <li><a href="/calendar" ><div>Course Calendar</div></a></li>
-                                    <li><a href="/register"><div>Register</div></a></li>
-                                </ul>
-                            </li>
                             <li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>
-                            <li>
-                                <a href="#" ><div>Resources</div></a>
-                                <ul class="width200">
-                                    <li><a href="/Calculator" ><div>Terms & Conditions</div></a></li>
-                                </ul>
-                            </li>
+                            
                         </ul>
 
                         <!-- Top Search
@@ -274,7 +352,7 @@
                                     <img src="images/clients/school/zoom-27352044-3.jpg" alt="Why choose Us?">
                                 </div>
                                 <div class="fbox-desc">
-                                    <h3>Our Goal.<span class="subtitle">Aenean tincidunt lectus eu massa.</span></h3>
+                                    <h3>Our Philosophy.<span class="subtitle">Aenean tincidunt lectus eu massa.</span></h3>
                                     <p class="program-home-des">Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
                                 </div>
                             </div>
@@ -767,7 +845,7 @@
                                     <div class="fbox-icon">
                                         <a href="#"><i class="icon-map-marker2"></i></a>
                                     </div>
-                                    <h3>Our Location<span class="subtitle">79 St. Clair Ave. East<br>Toronto, ON,M4T 1M6</span></h3>
+                                    <h3>Our Location<span class="subtitle">79 St. Clair Ave. East, Suite 202<br>Toronto, ON,M4T 1M6</span></h3>
                                 </div>
                             </div>
 
@@ -867,12 +945,15 @@
 
                                 <address>
                                     
-                                    79 St. Clair Ave. East<br>
+                                    79 St. Clair Ave. East, Suite 202<br>
                                     Toronto, Ontario,M4T 1M6<br>
                                 </address>
                                 <abbr title="Phone Number"><strong>Phone:</strong></abbr> +1 (416) 686- 1596<br>
                                 <abbr title="Fax"><strong>Fax:</strong></abbr> +1 (416) 686-7960<br>
                                 <abbr title="Email Address"><strong>Email:</strong></abbr>info@esc-toronto.com 
+
+
+                                <p><strong>DLI: </strong> O19350421222</p>
                             </div>
 
                         </div>
@@ -898,17 +979,17 @@
 
                     <div class="col_half col_last tright">
                         <div class="fright clearfix">
-                            <a href="#" class="social-icon si-small si-borderless si-facebook">
+                            <a href="https://www.facebook.com/EnglishSchoolofCanada/" class="social-icon si-small si-borderless si-facebook">
                                 <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>
                             </a>
 
-                            <a href="#" class="social-icon si-small si-borderless si-twitter">
+                            <a href="https://twitter.com/ESCToronto" class="social-icon si-small si-borderless si-twitter">
                                 <i class="icon-twitter"></i>
                                 <i class="icon-twitter"></i>
                             </a>
 
-                            <a href="#" class="social-icon si-small si-borderless si-gplus">
+                            <!-- <a href="#" class="social-icon si-small si-borderless si-gplus">
                                 <i class="icon-gplus"></i>
                                 <i class="icon-gplus"></i>
                             </a>
@@ -937,7 +1018,7 @@
                                 <i class="icon-linkedin"></i>
                                 <i class="icon-linkedin"></i>
                             </a>
-                        </div>
+ -->                        </div>
 
                         <div class="clear"></div>
 

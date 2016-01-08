@@ -1,0 +1,109 @@
+<div class="portlet"><!-- /Portlet -->
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Edit</h4>
+		</div>
+		<div class="portlet-widgets">
+			<!-- <a data-toggle="collapse" data-parent="#accordion" href="#course"><i class="fa fa-chevron-down"></i></a>
+			<span class="divider"></span> -->
+			<!-- <a href="" id="addrow_button" ng-click="addNewRow()"><i class="fa fa-plus icon-only"></i></a> -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div id="course" class="panel-collapse collapse in">
+		<div class="portlet-body no-padding">
+			<form name="courseForm" class="form-horizontal" role="form" novalidate>
+				<table class="table table-bordered table-hover tc-table">
+					<thead>
+						<th class="hidden-xs center">Course</th>
+						<th class="hidden-xs center">Description</th>
+						<th class="hidden-xs center">Level</th>
+						<th class="hidden-xs center">Year</th>
+						<th class="hidden-xs center">Start Date</th>
+						<th class="hidden-xs center">Duration</th>
+						<th class="col-medium center">Delete</th>
+						<th class="col-medium center">Action</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="hidden-xs center">
+								<div class="clearfix">
+									<div class="input-group">
+										<select class="form-control" name="course" ng-model="course" ng-options="course as course.title for course in courses track by course.title" ng-change="changeCourse(course)">
+										</select>
+										<span ng-show="courseForm.course.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!courseForm.course.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</td>
+ 							<td class="hidden-xs center">
+								<label class="label label-lg arrowed">{{course.tag}}</label>
+							</td>
+							<td class="hidden-xs center">
+								<div class="clearfix">
+									<div class="input-group">
+										<select class="form-control"  name="level" ng-model="course.level">
+											<option ng-repeat="item in corseLevel">{{item}}</option>
+										</select>
+										<span ng-show="courseForm.level.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!courseForm.level.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</td>
+							<td class="hidden-xs center">
+								<div class="clearfix">
+									<div class="input-group">
+										<select class="form-control" name="year" ng-model="course.year" ng-change="changeStartYear(course,year)">					<option value="" selected>--Select--</option>					
+											<option ng-repeat="year in availableYears">{{year}}</option>
+										</select>
+										<span ng-show="courseForm.year.$error.required" class="input-group-addon">Required</span>
+										<span ng-show="!courseForm.year.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+									</div>
+								</div>
+							</td>
+						<td class="hidden-xs center">
+							<div class="clearfix">
+								<div class="input-group">
+									<select class="form-control" name="startDate" ng-model="course.startDate"
+									>
+									 <option value="" selected>--Select--</option>
+									  <option ng-repeat="sd in course.startDates">{{sd | date:'MMMM d'}}</option>
+									</select>
+									<span ng-show="courseForm.startDate.$error.required" class="input-group-addon">Required</span>
+									<span ng-show="!courseForm.startDate.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								</div>
+							</div>
+						</td>
+						<td class="hidden-xs center">
+							<div class="clearfix">
+								<div class="input-group">
+									<select class="form-control" name="durationTitle" ng-model="course.duration" 
+										ng-options="dur._id as dur.title for dur in durations">
+										<option value="" selected>--Select--</option>
+									</select>
+									<span ng-show="courseForm.durationTitle.$error.required" class="input-group-addon">Required</span>
+									<span ng-show="!courseForm.durationTitle.$error.required" class="input-group-addon"><i class="fa fa-check"></i></span>
+								</div>
+							</div>
+						</td>
+						<td class="hidden-xs center">
+									<label>
+										<input class="tc tc-switch tc-switch-6 readonly" type="checkbox" ng-model="course.isDelete" />
+										<span class="labels"></span>
+									</label>
+						</td>
+						<td class="col-medium center">
+							<button type="button" class="btn btn-danger btn-xs" ng-click="modifyCourse(course)" >
+									<i class="fa fa-check icon-only"></i>
+							</button>
+							<!-- <button type="button" class="btn btn-info btn-xs" ng-click="removeRow()">
+								<i class="fa fa-times icon-only"></i>
+							</button> -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>
+</div>
