@@ -500,7 +500,7 @@ exports.sendNotificationForResetPassword = function(req,res){
 		constant.ResetPasswordTemplateVars[key] = staff[key];
 	};
 	constant.ResetPasswordTemplateVars['type'] = 'Staff';
-
+	constant.ResetPasswordTemplateVars['url'] = "http://" + req.headers.host + "/admin/login";
 	EmailSender.getEmailTemplate('resetpassword.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
 

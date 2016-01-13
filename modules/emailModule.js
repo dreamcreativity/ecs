@@ -20,17 +20,13 @@ var transporter = nodemailer.createTransport(smtpTransport({
 }));
 
 
-
 exports.getEmailTemplate = function(templateName, callback){
-
 	fs.readFile( './emailTemplates/'  + templateName, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
 		}
 		callback(data);
 	});
-
-
 }
 
 exports.replaceEmailTemplate = function(templateName, info){
@@ -42,11 +38,6 @@ exports.replaceEmailTemplate = function(templateName, info){
 	return template;
 
 }
-
-
-
-
-
 
 exports.sendEmail = function(to,subject,context,attachments,callback){
 	var message = {
