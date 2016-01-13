@@ -430,6 +430,7 @@ exports.sendNotificationForResetPassword = function(req,res){
 		constant.ResetPasswordTemplateVars[key] = agent[key];
 	};
 	constant.ResetPasswordTemplateVars['type'] = 'Agent';
+	constant.ResetPasswordTemplateVars['url'] = "http://" + req.headers.host + "/agent/login";
 	EmailSender.getEmailTemplate('resetpassword.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
 
@@ -456,6 +457,7 @@ exports.sendEmailForRegister = function(req,res){
 		constant.EmailAgentTempaleVars[key] = agent[key];
 	};
 	constant.EmailAgentTempaleVars['password'] = agent.password;
+	constant.EmailAgentTempaleVars['url'] = "http://" + req.headers.host + "/agent/login";
 	EmailSender.getEmailTemplate('registerSuccessForAgent.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.EmailAgentTempaleVars);
 
