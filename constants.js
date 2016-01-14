@@ -149,6 +149,21 @@ module.exports = {
 	EmailStudentTempaleVars : {
 		firstname : null,
 		lastname : null,
+		studentID : null,
+		url : null
+	},
+
+	EmailStudentTempaleNotifyStaffVars : {
+		firstname : null,
+		lastname : null,
+		studentID : null,
+		url : null
+	},
+
+	EmailStudentTempaleNotifyAgentVars : {
+		firstname : null,
+		lastname : null,
+		studentID : null,
 		url : null
 	},
 

@@ -47,7 +47,7 @@ exports.create = function(req,res){
 exports.register = function(req,res){
 	var student = new Student(req.body.student);
 	var token = req.body.token
-
+	var studentNumber = null;
 	var agentId =req.body.agent;
 	var accommodation = new Accommodation(req.body.accommodation);
 	var flightInfo = new FlightInfo(req.body.flightInfo);
@@ -157,6 +157,7 @@ exports.register = function(req,res){
 						}
 						else {
 							registration.student = result._id
+							studentNumber = result.studentID;
 							callback()
 						}
 					});
@@ -193,7 +194,8 @@ exports.register = function(req,res){
 					res.json({
 						status: 'ok',
 						messages: 'successed',
-						data: result
+						data: result,
+						studentId : studentNumber
 					});	
 				}
 			}
@@ -734,33 +736,90 @@ exports.generatePDF = function (req,res){
 
 exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
+	var studentNumber = req.body.studentNumber;
 	var agent = req.body.agent;
-	var send_list =[];
+	var attachments = req.body.attachments;
+	var send_staff_list =[];
+	var send_agent_list =[];
 	if(agent) {
-		send_list.push(agent.email);
+		send_agent_list.push(agent.email);
 	}
-	send_list.push(student_obj.email);
-	send_list.push('esc.mailsys@gmail.com');
+	//send_list.push(student_obj.email);
+	send_staff_list.push('esc.mailsys@gmail.com');
 	for (var key in constant.EmailStudentTempaleVars) {
 		constant.EmailStudentTempaleVars[key] = student_obj[key];
 	};
+	constant.EmailStudentTempaleVars["studentID"] = studentNumber;
 
-	EmailSender.getEmailTemplate('registerSuccess.html',function(data){
-		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
+	// EmailSender.getEmailTemplate('registerSuccess.html',function(data){
+	// 	var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
 
-		var message = "";
-		var to = send_list;
-		var subject = req.body.subject;
-		var context = context;
-		var attachments = req.body.attachments;
-		EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
+	// 	var message = "";
+	// 	var to = send_list;
+	// 	var subject = req.body.subject;
+	// 	var context = context;
+	// 	var attachments = req.body.attachments;
+	// 	EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
 			
-			res.json(
-				{
-					returnmessage : message
-				});		
+	// 		res.json(
+	// 			{
+	// 				returnmessage : message
+	// 			});		
+	// 	});
+	// })
+
+	async.waterfall([
+		function(callback){
+			EmailSender.getEmailTemplate('registerSuccess.html',function(data){
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
+
+			var message = "";
+			var to = student_obj.email;
+			var subject = req.body.subject;
+			var context = context;
+			var attachments = req.body.attachments;
+			EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
+				callback();
+			});
+		})
+		},
+		function(callback){
+			EmailSender.getEmailTemplate('registerSuccessNotifyStaff.html',function(data){
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
+
+			var message = "";
+			var to = send_staff_list;
+			var subject = req.body.subject;
+			var context = context;
+			var attachments = req.body.attachments;
+			EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
+				callback();
+			});
+		})
+		},
+		function(callback){
+			EmailSender.getEmailTemplate('registerSuccessNotifyAgent.html',function(data){
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
+
+			var message = "";
+			var to = send_agent_list;
+			var subject = req.body.subject;
+			var context = context;
+			var attachments = req.body.attachments;
+			EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
+				callback();
+			});
+		})
+		}
+		],function(err, result){
+			EmailSender.deleteAttachments(attachments[0]);
+			if(!err){
+				res.json(
+	 			{
+	 				returnmessage : "successed"
+	 			});		
+			}
 		});
-	})
 }
 
 //Send Email form in client site
