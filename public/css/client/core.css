@@ -417,7 +417,7 @@
 	.activity-img:hover>div{opacity:0.25;-moz-opacity:0.25;filter:alpha(opacity:25)}
 
 	.program-home-des{height:5.5em;overflow:hidden;text-overflow:ellipsis;display:block}
-
+#section-programs .feature-box h3{display:block;height:1.5em;overflow:hidden;text-overflow:ellipsis;display:block}
 
 
 	.fc-calendar .fc-row > div > div {
@@ -556,34 +556,17 @@
     	display: table-cell;
     	vertical-align: middle;
     }
+	
+/*home registration*/
+.register-index{background-image:url('/images/clients/backgrounds/10.jpg');background-repeat:no-repeat;background-size:cover;padding:60px 0}
+.register-index h2{margin-bottom:50px}
+.register-index .icon-cell{margin:0;text-align:center;height:180px}
+.register-index .icon-cell i{font-size:37px}
+.register-index .icon-cell h5{font-size:15px}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*home service*/
+#section-services{margin-top:90px;margin-bottom:90px}
+.service-cell{padding-bottom:70px;text-align:center;display:block}
+.service-cell>.sign{border:2px solid transparent;display:block;margin:0 auto 10px;width:200px;height:200px;-moz-border-radius:100px;-webkit-border-radius:100px;border-radius:100px;overflow:hidden;transition:all 0.3s;-moz-transition:all 0.3s;-o-transition:all 0.3s;-webkit-transition:all 0.3s}
+.service-cell:hover>.sign{border:2px solid #1abc9c;width:208px;height:208px;margin:-8px auto 10px}
+.service-cell:hover>h4{color:#1abc9c}
