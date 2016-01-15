@@ -20,17 +20,13 @@ var transporter = nodemailer.createTransport(smtpTransport({
 }));
 
 
-
 exports.getEmailTemplate = function(templateName, callback){
-
 	fs.readFile( './emailTemplates/'  + templateName, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
 		}
 		callback(data);
 	});
-
-
 }
 
 exports.replaceEmailTemplate = function(templateName, info){
@@ -42,11 +38,6 @@ exports.replaceEmailTemplate = function(templateName, info){
 	return template;
 
 }
-
-
-
-
-
 
 exports.sendEmail = function(to,subject,context,attachments,callback){
 	var message = {
@@ -65,9 +56,9 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 		transporter.sendMail(message,function(err, success){
 			if(err) message ="Fail";
 			else message = "Success";
-			for (var i = 0; i < attachments.length; i++) {
-				fs.unlinkSync(attachments[i]);
-			};
+			// for (var i = 0; i < attachments.length; i++) {
+			// 	fs.unlinkSync(attachments[i]);
+			// };
 			callback(message);
 		})
 				//callback("Success");
@@ -80,8 +71,12 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 		});
 		//callback("Success");
 	}
-
-
-
 	// callback("Success");
 }
+
+exports.deleteAttachments = function(attachments){
+	for (var i = 0; i < attachments.length; i++) {
+				fs.unlinkSync(attachments[i]);
+			};
+}
+

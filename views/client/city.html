@@ -15,162 +15,173 @@
 
         <section id="content">
 
-            <div class="content-wrap">
+            <div class="container clearfix center">
 
-                <div class="container clearfix">
-
-                    <div class="col_full">
-
-                        <div class="heading-block center nobottomborder">
-                            <h2>Neque porro quisquam est qui dolorem </h2>
-                            <span>Toronto is the perfect place to study English and have the experience of a lifetime.</span>
-                        </div>
-
-                        <div class="fslider" data-pagi="false" data-animation="fade">
-                            <div class="flexslider">
-                                <div class="slider-wrap">
-                                    <div class="slide"><a href="#"><img src="images/about/4.jpg" alt="About Image"></a></div>
-                                    <div class="slide"><a href="#"><img src="images/about/5.jpg" alt="About Image"></a></div>
-                                    <div class="slide"><a href="#"><img src="images/about/6.jpg" alt="About Image"></a></div>
-                                    <div class="slide"><a href="#"><img src="images/about/7.jpg" alt="About Image"></a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
+                <div id="portfolio" class="portfolio-nomargin clearfix sink">
                     
 
+                    <article class="portfolio-item pf-media pf-icons">
+                        <div class="portfolio-vertical" style="background-image:url('/images/city/toronto1.jpg')">
+                            <div class="portfolio-sematic">
+                                <a href="/activity/detail/5624662f3ae4cbc925be59f0" class="centered">
+                                    <h3>Ski Lapland</h3>
+                                    <div class="toggle">
+                                        <p>The round fells of Finland’s main ski area, Lapland, offer varying terrain for skiers and snowboarders of all skill levels.</p>
+                                        <div class="pseudo-link"><span>Read more</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item pf-media pf-icons">
+                        <div class="portfolio-vertical" style="background-image:url('/images/city/toronto2.jpg')">
+                            <div class="portfolio-sematic">
+                                <a href="/activity/detail/5624662f3ae4cbc925be59f0" class="centered">
+                                    <h3>Polar Night Magic – winter’s many faces </h3>
+                                    <div class="toggle">
+                                        <p> In Finland, that magical Christmas experience is not just something you see on television, it is something you truly experience. </p>
+                                        <div class="pseudo-link"><span>Read more</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item pf-media pf-icons">
+                        <div class="portfolio-vertical" style="background-image:url('/images/city/toronto1.jpg')">
+                            <div class="portfolio-sematic">
+                                <a href="/activity/detail/5624662f3ae4cbc925be59f0" class="centered">
+                                    <h3>Ski Lapland</h3>
+                                    <div class="toggle">
+                                        <p>The round fells of Finland’s main ski area, Lapland, offer varying terrain for skiers and snowboarders of all skill levels.</p>
+                                        <div class="pseudo-link"><span>Read more</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item pf-media pf-icons">
+                        <div class="portfolio-vertical" style="background-image:url('/images/city/toronto2.jpg')">
+                            <div class="portfolio-sematic">
+                                <a href="/activity/detail/5624662f3ae4cbc925be59f0" class="centered">
+                                    <h3>Polar Night Magic – winter’s many faces </h3>
+                                    <div class="toggle">
+                                        <p>In Finland, that magical Christmas experience is not just something you see on television, it is something you truly experience. </p>
+                                        <div class="pseudo-link"><span>Read more</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    
+
+                </div>
+
+                <div>
                    
-                    <div class="heading-block center">
-                        <h2>Nullam eu lorem sagittis</h2>
-                        <span>Praesent ut gravida arcu. Mauris lobortis blandit augue, eget pellentesque lectus imperdiet in.</span>
-                    </div>
 
-             
-                </div>
+                    <div class="container clearfix">
 
-     
-            </div>
+                        <div class="col_two_fifth topmargin nobottommargin" id="radarChart" style="opacity: 0;">
+
+                            <div class="clear"></div><div class="line"></div>
+
+                            <div class="col_three_fifth">
+
+                                <div class="heading-block">
+                                    <h5>Advanced store statistics.</h5>
+                                    <span>Benchmarking your website's performance helps you make great choices for your business.</span>
+                                </div>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
+
+                                <a href="#">Learn more &rarr;</a>
+
+                            </div>
+
+                            <div class="col_two_fifth topmargin col_last" id="doughnutChart" style="opacity: 0;">
+                                <canvas id="doughnutChartCanvas" width="430" height="300"></canvas>
+                            </div>
+
+                            <script type="text/javascript">
+
+                                jQuery(window).load( function(){
+
+                                    var radarChartData = {
+                                        labels : ["A","B","C","D","E","F","G"],
+                                        datasets : [
+                                        {
+                                            fillColor : "rgba(220,220,220,0.5)",
+                                            strokeColor : "rgba(220,220,220,1)",
+                                            pointColor : "rgba(220,220,220,1)",
+                                            pointStrokeColor : "#fff",
+                                            data : [65,59,90,81,56,55,40]
+                                        },
+                                        {
+                                            fillColor : "rgba(151,187,205,0.5)",
+                                            strokeColor : "rgba(151,187,205,1)",
+                                            pointColor : "rgba(151,187,205,1)",
+                                            pointStrokeColor : "#fff",
+                                            data : [28,48,40,19,96,27,100]
+                                        }
+                                        ]
+
+                                    };
+
+                                    var doughnutChartData = [
+                                    {
+                                        value: 30,
+                                        color:"#F7464A"
+                                    },
+                                    {
+                                        value : 50,
+                                        color : "#46BFBD"
+                                    },
+                                    {
+                                        value : 100,
+                                        color : "#FDB45C"
+                                    },
+                                    {
+                                        value : 40,
+                                        color : "#949FB1"
+                                    },
+                                    {
+                                        value : 120,
+                                        color : "#4D5360"
+                                    }
+                                    ];
+
+                                    var globalGraphSettings = {animation : Modernizr.canvas};
+
+                                    function showRadarChart(){
+                                        var ctx = document.getElementById("radarChartCanvas").getContext("2d");
+                                        new Chart(ctx).Radar(radarChartData,globalGraphSettings);
+                                    }
+
+                                    function showDoughnutChart(){
+                                        var ctx = document.getElementById("doughnutChartCanvas").getContext("2d");
+                                        new Chart(ctx).Doughnut(doughnutChartData,globalGraphSettings);
+                                    }
+
+                                    $('#radarChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart,300); },{accX: 0, accY: -155},'easeInCubic');
+
+                                    $('#doughnutChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showDoughnutChart,300); },{accX: 0, accY: -155},'easeInCubic');
+
+                                });
+
+    </script>
+
+</div>
 
 
-            <div class="container clearfix">
 
-                <div class="col_two_fifth topmargin nobottommargin" id="radarChart" style="opacity: 0;">
-                    <canvas id="radarChartCanvas" width="430" height="300"></canvas>
-                </div>
-
-                <div class="col_three_fifth nobottommargin col_last">
-
-                    <div class="heading-block">
-                        <h3>Powerful insights to help grow your business.</h3>
-                        <span>Reports let you easily track and analyze your product sales, orders, and payments.</span>
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
-
-                    <a href="#">Learn more &rarr;</a>
-
-                </div>
-
-                <div class="clear"></div><div class="line"></div>
-
-                <div class="col_three_fifth">
-
-                    <div class="heading-block">
-                        <h3>Advanced store statistics.</h3>
-                        <span>Benchmarking your website's performance helps you make great choices for your business.</span>
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
-
-                    <a href="#">Learn more &rarr;</a>
-
-                </div>
-
-                <div class="col_two_fifth topmargin col_last" id="doughnutChart" style="opacity: 0;">
-                    <canvas id="doughnutChartCanvas" width="430" height="300"></canvas>
-                </div>
-
-                <script type="text/javascript">
-
-                jQuery(window).load( function(){
-
-                    var radarChartData = {
-                        labels : ["A","B","C","D","E","F","G"],
-                        datasets : [
-                            {
-                                fillColor : "rgba(220,220,220,0.5)",
-                                strokeColor : "rgba(220,220,220,1)",
-                                pointColor : "rgba(220,220,220,1)",
-                                pointStrokeColor : "#fff",
-                                data : [65,59,90,81,56,55,40]
-                            },
-                            {
-                                fillColor : "rgba(151,187,205,0.5)",
-                                strokeColor : "rgba(151,187,205,1)",
-                                pointColor : "rgba(151,187,205,1)",
-                                pointStrokeColor : "#fff",
-                                data : [28,48,40,19,96,27,100]
-                            }
-                        ]
-
-                    };
-
-                    var doughnutChartData = [
-                        {
-                            value: 30,
-                            color:"#F7464A"
-                        },
-                        {
-                            value : 50,
-                            color : "#46BFBD"
-                        },
-                        {
-                            value : 100,
-                            color : "#FDB45C"
-                        },
-                        {
-                            value : 40,
-                            color : "#949FB1"
-                        },
-                        {
-                            value : 120,
-                            color : "#4D5360"
-                        }
-                    ];
-
-                    var globalGraphSettings = {animation : Modernizr.canvas};
-
-                    function showRadarChart(){
-                        var ctx = document.getElementById("radarChartCanvas").getContext("2d");
-                        new Chart(ctx).Radar(radarChartData,globalGraphSettings);
-                    }
-
-                    function showDoughnutChart(){
-                        var ctx = document.getElementById("doughnutChartCanvas").getContext("2d");
-                        new Chart(ctx).Doughnut(doughnutChartData,globalGraphSettings);
-                    }
-
-                    $('#radarChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                    $('#doughnutChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showDoughnutChart,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                });
-
-                </script>
-
-            </div>
-
-    
-
-        </div>
+</div>
 
 
 
 
-        </section>
+</section>

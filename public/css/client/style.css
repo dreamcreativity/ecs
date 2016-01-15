@@ -360,6 +360,7 @@ span.middot {
 	background-attachment: fixed;
 	background-position: 50% 0;
 	background-repeat: no-repeat;
+	background-size: cover;
 	overflow: hidden;
 }
 
@@ -2635,7 +2636,7 @@ body.side-push-panel.side-panel-open:not(.device-xxs):not(.device-xs):not(.devic
 	background-size: cover;
 	overflow: hidden;
 }
-.swiper_wrapper .swiper-slide .curtain{background: url('/images/black_through.png') no-repeat 50% 50%;background-size:100% 100%;height:100%;width:100%}
+.swiper_wrapper .swiper-slide .curtain{background: url('/images/black_through_half.png') no-repeat 50% 50%;background-size:100% 100%;height:100%;width:100%}
 
 .swiper-slide [data-caption-animate] { -webkit-backface-visibility: hidden; }
 
@@ -3415,10 +3416,9 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-desc { display: none 
 /* Portfolio - No Margin
 -----------------------------------------------------------------*/
 
-#portfolio.portfolio-nomargin,
-#portfolio.portfolio-full { margin: 0 !important; }
+#portfolio.portfolio-nomargin,#portfolio.portfolio-full{margin:0!important}
 
-.portfolio-nomargin .portfolio-item{position:relative;min-height:1px;padding-right:10px;padding-left:10px;float:left;width:33.33333333%;margin:0 0 20px}
+.portfolio-nomargin .portfolio-item{position:relative;min-height:1px;padding-right:10px;padding-left:10px;float:left;width:33.33333333%;margin:0 0 20px;overflow:hidden}
 .portfolio-nomargin .portfolio-item .portfolio-image{position:relative;width:100%;height:200px;text-align:center;overflow:hidden}
 .portfolio-nomargin .portfolio-item .portfolio-image a{display:block;width:100%;height:100%}
 .portfolio-nomargin .portfolio-item .portfolio-image a img{width:100%}
@@ -3428,6 +3428,20 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-desc { display: none 
 .portfolio-nomargin .portfolio-desc h3{color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:30px;display:block}
 .portfolio-nomargin .portfolio-desc span{height:1.9em;overflow:hidden;margin-bottom:30px;margin-top:10px;color:rgba(255,255,255,0.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .portfolio-nomargin .portfolio-desc:hover span{margin-top:2px}
+
+.portfolio-nomargin.sink{padding-top:30px}
+.portfolio-nomargin .portfolio-item .portfolio-vertical{height:250px;background-size:cover;background-position:50% 50%;transition:all 0.3s;-moz-transition:all 0.3s;-o-transition:all 0.3s;-webkit-transition:all 0.3s}
+	.portfolio-nomargin .portfolio-item:hover .portfolio-vertical{transform:scaleY(1.05)}
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic{display:table;width:100%;height:250px;}
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered{display:table-cell;text-align:center;vertical-align:middle}
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered h3,.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered p{color:#fff}
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered h3{margin-bottom:0;line-height:1.2em}
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered .toggle{position:absolute;top:100%;transition:all 0.3s;-moz-transition:all 0.3s;-o-transition:all 0.3s;-webkit-transition:all 0.3s}
+.portfolio-nomargin .portfolio-item:hover .portfolio-vertical .portfolio-sematic .centered .toggle{display:block;padding:10px 15px;top:auto;bottom:-14px;background-color:#000;background-color:rgba(0,0,0,0.8)}
+
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered .toggle p{font-style:italic;font-family:Georgia,"Times New Roman",Times,serif;font-size:14px;line-height:1.35em!important;color:#999;margin-bottom:0.35em}
+.portfolio-nomargin .portfolio-item .portfolio-vertical .portfolio-sematic .centered .toggle .pseudo-link span{color:#fff;display:line-block;padding-right:26px;background:url('/images/icon-plus.svg') no-repeat 100% 50%}
+
 
 
 /* Portfolio - 100% Full Width
