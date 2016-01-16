@@ -48,6 +48,7 @@ exports.register = function(req,res){
 	var student = new Student(req.body.student);
 	var token = req.body.token
 	var studentNumber = null;
+	var agentEmail = null;
 	var agentId =req.body.agent;
 	var accommodation = new Accommodation(req.body.accommodation);
 	var flightInfo = new FlightInfo(req.body.flightInfo);
@@ -61,6 +62,7 @@ exports.register = function(req,res){
 				AgentInvitation.findOne({_id:token}, function(err, result){
 						if(!err){				 					
 							student.agent = result.agent;
+							agentId = result.agent;
 				 			callback();
 				 		}
 				 		else callback();
@@ -73,6 +75,7 @@ exports.register = function(req,res){
 				Agent.find({_id:agentId}, function(err,res){
 					if(!err){
 						agent = res[0];
+						agentEmail = agent.email;
 					}
 					callback();
 				});
@@ -195,7 +198,8 @@ exports.register = function(req,res){
 						status: 'ok',
 						messages: 'successed',
 						data: result,
-						studentId : studentNumber
+						studentId : studentNumber,
+						agentEmail : agentEmail
 					});	
 				}
 			}
@@ -742,7 +746,7 @@ exports.sendEmail = function(req,res){
 	var send_staff_list =[];
 	var send_agent_list =[];
 	if(agent) {
-		send_agent_list.push(agent.email);
+		send_agent_list.push(agent);
 	}
 	//send_list.push(student_obj.email);
 	send_staff_list.push('esc.mailsys@gmail.com');
@@ -750,23 +754,6 @@ exports.sendEmail = function(req,res){
 		constant.EmailStudentTempaleVars[key] = student_obj[key];
 	};
 	constant.EmailStudentTempaleVars["studentID"] = studentNumber;
-
-	// EmailSender.getEmailTemplate('registerSuccess.html',function(data){
-	// 	var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
-	// 	var message = "";
-	// 	var to = send_list;
-	// 	var subject = req.body.subject;
-	// 	var context = context;
-	// 	var attachments = req.body.attachments;
-	// 	EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
-			
-	// 		res.json(
-	// 			{
-	// 				returnmessage : message
-	// 			});		
-	// 	});
-	// })
 
 	async.waterfall([
 		function(callback){
