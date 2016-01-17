@@ -85,7 +85,7 @@ angular.module('AdminApp')
 				.success(function(data,status,headers,config){
 					if(data.status == "successed"){
 						$http.post('/api/registration/sendEmail',{student:$scope.student,
-							agent: $scope.agent,
+							agent: $scope.agent.email,
 							region : $scope.student.region,
 							studentNumber : studentNumber,
 							subject:"success registration", 
