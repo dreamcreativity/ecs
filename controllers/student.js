@@ -193,13 +193,24 @@ exports.register = function(req,res){
 					});
 				}
 				else {
-					res.json({
+					if(typeof(agent) !== 'undefined'){
+						res.json({
 						status: 'ok',
 						messages: 'successed',
 						data: result,
 						studentId : studentNumber,
 						agentEmail : agent.email
 					});	
+					}
+					else {
+						res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result,
+						studentId : studentNumber,
+						agentEmail : null
+					});	
+					}
 				}
 			}
 
@@ -758,7 +769,7 @@ exports.sendEmail = function(req,res){
 	constant.EmailStudentTempaleVars["studentID"] = studentNumber;
 	constant.EmailStudentTempaleNotifyStaffVars["studentID"] = studentNumber;
 	constant.EmailStudentTempaleNotifyAgentVars["studentID"] = studentNumber;
-	constant.EmailStudentTempaleNotifyStaffVars['url'] = "http://" + req.headers.host + "/staff/login";
+	constant.EmailStudentTempaleNotifyStaffVars['url'] = "http://" + req.headers.host + "/admin/login";
 	constant.EmailStudentTempaleNotifyAgentVars['url'] = "http://" + req.headers.host + "/agent/login";
 
 	async.waterfall([
