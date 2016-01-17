@@ -200,7 +200,7 @@
                                 </ul>
                             </li>
                             <li class="mega-menu">
-                                <a href="#"  data-href="#section-adult"><div>Adult Programs</div></a>
+                                <a href="#"  data-href="#section-programs"><div>Adult Programs</div></a>
                                 <div class="mega-menu-content style-2 col-4 ">
                                     <ul>
                                         <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
@@ -400,7 +400,8 @@
                     <div class="container clearfix">
                         <% for(var i=0; i < courses.length; i++){ %>
                         <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
+                            <!-- <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>"> -->
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
                                 <div class="fbox-photo">
                                     <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.thumbnail %>" alt="<%- courses[i].title %>"/></a>
                                 </div>
@@ -422,7 +423,7 @@
 
                 
 
-                <section id="section-activity" class="page-section topmargin-lg">
+                <!-- <section id="section-activity" class="page-section topmargin-lg">
 
                     <div class="heading-block center">
                         <h2>Our Student Activity</h2>
@@ -437,10 +438,10 @@
                                     <a href="/activity/detail/<%- activities[i]._id %>">
                                         <img src="<%- activities[i].cover.thumbnail %>" alt="Open Imagination">
                                     </a>
-                                    <!-- <div class="portfolio-overlay">
+                                    <div class="portfolio-overlay">
                                         <a href="images/clients/activity/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
                                         <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div> -->
+                                    </div>
                                     
                                     <a href="/activity/detail/<%- activities[i]._id %>" class="portfolio-desc">
                                         <h3><%- activities[i].title %></h3>
@@ -452,7 +453,7 @@
                         </div>
                     </div>
 
-                </section>
+                </section> -->
 
                 <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
                     <div class="heading-block dark center nobottomborder nobottommargin">
@@ -460,7 +461,7 @@
                     </div>
                 </div>
 
-                <section id="section-team" class="page-section topmargin-lg">
+                <!-- <section id="section-team" class="page-section topmargin-lg">
 
                     <div class="heading-block center">
                         <h2>Our Team</h2>
@@ -506,7 +507,7 @@
                    
 
                 </section>
-
+ -->
                 
                 <div id="section-tools" class="container clearfix">
 
@@ -697,7 +698,7 @@
                         <div class="col-md-4 col-sm-6 bottommargin">
                         	<div data-delay="200" data-animate="fadeIn" class="feature-box fbox-effect fbox-right topmargin fadeIn animated">
                                 <div class="fbox-icon">
-                                    <a href="/junior-programs"><i class="icon-screen"></i></a>
+                                    <a href="/junior-programs/#snav-content1"><i class="icon-screen"></i></a>
                                 </div>
                                 <h3>Toronto Summer Kids Program</h3>
                                 <p>This program is dedicated to children around the world who are from 9 to 13 years old age only and are looking for a high quality English summer camp in the city of Toronto. </p>
@@ -705,7 +706,7 @@
                             
                             <div data-delay="200" data-animate="fadeIn" class="feature-box fbox-effect fbox-right topmargin fadeIn animated">
                                 <div class="fbox-icon">
-                                    <a href="/junior-programs"><i class="icon-magic"></i></a>
+                                    <a href="/junior-programs/#snav-content2"><i class="icon-magic"></i></a>
                                 </div>
                                 <h3>Toronto Summer Teen Program </h3>
                                 <p>This program is dedicated to teenagers around the world who are from 14 to 17 years old age only and are looking for a high quality English summer camp in the city of Toronto. </p>
@@ -713,7 +714,7 @@
                             
                             <div data-delay="200" data-animate="fadeIn" class="feature-box fbox-effect fbox-right topmargin fadeIn animated">
                                 <div class="fbox-icon">
-                                    <a href="/junior-programs"><i class="icon-tint"></i></a>
+                                    <a href="/junior-programs/#snav-content3"><i class="icon-tint"></i></a>
                                 </div>
                                 <h3>Kingston Summer Teen Program</h3>
                                 <p>The summer camp is an amazing opportunity for students from 14 to 17 years old to get to know Canada, its education system and learn useful knowledge. </p>
@@ -727,7 +728,7 @@
                         <div class="col-md-4 col-sm-6 bottommargin">
                         	<div data-delay="200" data-animate="fadeIn" class="feature-box fbox-effect  topmargin fadeIn animated">
                                 <div class="fbox-icon">
-                                    <a href="/calendar"><i class="icon-gift i-alt"></i></a>
+                                    <a href="/junior-programs/#snav-content4"><i class="icon-gift i-alt"></i></a>
                                 </div>
 
                               
@@ -736,7 +737,7 @@
                             </div>
                         	<div data-delay="200" data-animate="fadeIn" class="feature-box fbox-effect  topmargin fadeIn animated">
                                 <div class="fbox-icon">
-                                    <a href="/calendar"><i class="icon-gift i-alt"></i></a>
+                                    <a href="/junior-programs/#snav-content5"><i class="icon-gift i-alt"></i></a>
                                 </div>
 
                               

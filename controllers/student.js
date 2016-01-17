@@ -48,6 +48,7 @@ exports.register = function(req,res){
 	var student = new Student(req.body.student);
 	var token = req.body.token
 	var studentNumber = null;
+	var agentEmail = null;
 	var agentId =req.body.agent;
 	var accommodation = new Accommodation(req.body.accommodation);
 	var flightInfo = new FlightInfo(req.body.flightInfo);
@@ -61,6 +62,7 @@ exports.register = function(req,res){
 				AgentInvitation.findOne({_id:token}, function(err, result){
 						if(!err){				 					
 							student.agent = result.agent;
+							agentId = result.agent;
 				 			callback();
 				 		}
 				 		else callback();
@@ -191,12 +193,24 @@ exports.register = function(req,res){
 					});
 				}
 				else {
-					res.json({
+					if(typeof(agent) !== 'undefined'){
+						res.json({
 						status: 'ok',
 						messages: 'successed',
 						data: result,
-						studentId : studentNumber
+						studentId : studentNumber,
+						agentEmail : agent.email
 					});	
+					}
+					else {
+						res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result,
+						studentId : studentNumber,
+						agentEmail : null
+					});	
+					}
 				}
 			}
 
@@ -738,41 +752,43 @@ exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
 	var studentNumber = req.body.studentNumber;
 	var agent = req.body.agent;
+	var region = req.body.region;
 	var attachments = req.body.attachments;
 	var send_staff_list =[];
 	var send_agent_list =[];
 	if(agent) {
-		send_agent_list.push(agent.email);
+		send_agent_list.push(agent);
 	}
 	//send_list.push(student_obj.email);
-	send_staff_list.push('esc.mailsys@gmail.com');
+	//send_staff_list.push('esc.mailsys@gmail.com');
 	for (var key in constant.EmailStudentTempaleVars) {
 		constant.EmailStudentTempaleVars[key] = student_obj[key];
+		constant.EmailStudentTempaleNotifyStaffVars[key] = student_obj[key];
+		constant.EmailStudentTempaleNotifyAgentVars[key] = student_obj[key];
 	};
 	constant.EmailStudentTempaleVars["studentID"] = studentNumber;
-
-	// EmailSender.getEmailTemplate('registerSuccess.html',function(data){
-	// 	var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
-	// 	var message = "";
-	// 	var to = send_list;
-	// 	var subject = req.body.subject;
-	// 	var context = context;
-	// 	var attachments = req.body.attachments;
-	// 	EmailSender.sendEmail(to,subject,context,attachments[0], function(message){
-			
-	// 		res.json(
-	// 			{
-	// 				returnmessage : message
-	// 			});		
-	// 	});
-	// })
+	constant.EmailStudentTempaleNotifyStaffVars["studentID"] = studentNumber;
+	constant.EmailStudentTempaleNotifyAgentVars["studentID"] = studentNumber;
+	constant.EmailStudentTempaleNotifyStaffVars['url'] = "http://" + req.headers.host + "/admin/login";
+	constant.EmailStudentTempaleNotifyAgentVars['url'] = "http://" + req.headers.host + "/agent/login";
 
 	async.waterfall([
 		function(callback){
+			if(region){
+				Staff.find({regions : region},function(err, result){
+					if(!err && result.length > 0){
+						for (var i = 0; i < result.length; i++) {
+							send_staff_list.push(result[i].email);
+						};
+						callback();
+					}
+				});
+			}
+			else callback();
+		},
+		function(callback){
 			EmailSender.getEmailTemplate('registerSuccess.html',function(data){
 			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
 			var message = "";
 			var to = student_obj.email;
 			var subject = req.body.subject;
@@ -785,8 +801,7 @@ exports.sendEmail = function(req,res){
 		},
 		function(callback){
 			EmailSender.getEmailTemplate('registerSuccessNotifyStaff.html',function(data){
-			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleNotifyStaffVars);
 			var message = "";
 			var to = send_staff_list;
 			var subject = req.body.subject;
@@ -799,8 +814,7 @@ exports.sendEmail = function(req,res){
 		},
 		function(callback){
 			EmailSender.getEmailTemplate('registerSuccessNotifyAgent.html',function(data){
-			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleNotifyAgentVars);
 			var message = "";
 			var to = send_agent_list;
 			var subject = req.body.subject;

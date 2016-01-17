@@ -20,17 +20,20 @@ angular.module('ClientApp')
 	$scope.register = function(isValid){
 		var studentId = null;
 		var studentNumber = null;
+		var agentEmail = null;
 		$http.post('/api/student/register',{student:$scope.student, token:token ,courseList:[],accommodation:[]})
 		.success(function(data,status,headers,config){
 			if(data.messages == 'successed'){
 				studentId = data.data;
 				studentNumber = data.studentId;
+				agentEmail = data.agentEmail;
 				$http.post('/api/pdf',{registerId:null, studentId: data.data,type:'New Student'})
 				.success(function(data,status,headers,config){
 					if(data.status == "successed"){
 						$http.post('/api/registration/sendEmail',{student:$scope.student,
 								studentNumber : studentNumber,
-								agent: $scope.currentAgent,
+								agent: agentEmail,
+								region : $scope.student.region,
 								subject:"success registration", 
 								context: "Welcome", 
 								attachments : [data.data]})
