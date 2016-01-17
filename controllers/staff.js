@@ -12,7 +12,7 @@ var async = require("async");
 //POST : Create a Staff
 exports.create = function(req,res){
 	var newStaff = new Staff(req.body);	
-	Staff.find({'username' : newStaff.username, 'email' : newStaff.email}, function(err, user){
+	Staff.find( {$or: [{'username' : newStaff.username}, {'email' : newStaff.email}]}, function(err, user){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -24,7 +24,7 @@ exports.create = function(req,res){
 			if(user[0].username){
 				res.json({
 					status: 'exist',
-					messages:"Username already exists",
+					messages:"Username or email has already existed",
 					data: null
 				});
 			}
