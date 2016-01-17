@@ -33,6 +33,7 @@ angular.module('ClientApp')
 						$http.post('/api/registration/sendEmail',{student:$scope.student,
 								studentNumber : studentNumber,
 								agent: agentEmail,
+								region : $scope.student.region,
 								subject:"success registration", 
 								context: "Welcome", 
 								attachments : [data.data]})

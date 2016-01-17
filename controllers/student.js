@@ -75,7 +75,6 @@ exports.register = function(req,res){
 				Agent.find({_id:agentId}, function(err,res){
 					if(!err){
 						agent = res[0];
-						agentEmail = agent.email;
 					}
 					callback();
 				});
@@ -199,7 +198,7 @@ exports.register = function(req,res){
 						messages: 'successed',
 						data: result,
 						studentId : studentNumber,
-						agentEmail : agentEmail
+						agentEmail : agent.email
 					});	
 				}
 			}
@@ -742,6 +741,7 @@ exports.sendEmail = function(req,res){
 	var student_obj = req.body.student;
 	var studentNumber = req.body.studentNumber;
 	var agent = req.body.agent;
+	var region = req.body.region;
 	var attachments = req.body.attachments;
 	var send_staff_list =[];
 	var send_agent_list =[];
@@ -749,17 +749,35 @@ exports.sendEmail = function(req,res){
 		send_agent_list.push(agent);
 	}
 	//send_list.push(student_obj.email);
-	send_staff_list.push('esc.mailsys@gmail.com');
+	//send_staff_list.push('esc.mailsys@gmail.com');
 	for (var key in constant.EmailStudentTempaleVars) {
 		constant.EmailStudentTempaleVars[key] = student_obj[key];
+		constant.EmailStudentTempaleNotifyStaffVars[key] = student_obj[key];
+		constant.EmailStudentTempaleNotifyAgentVars[key] = student_obj[key];
 	};
 	constant.EmailStudentTempaleVars["studentID"] = studentNumber;
+	constant.EmailStudentTempaleNotifyStaffVars["studentID"] = studentNumber;
+	constant.EmailStudentTempaleNotifyAgentVars["studentID"] = studentNumber;
+	constant.EmailStudentTempaleNotifyStaffVars['url'] = "http://" + req.headers.host + "/staff/login";
+	constant.EmailStudentTempaleNotifyAgentVars['url'] = "http://" + req.headers.host + "/agent/login";
 
 	async.waterfall([
 		function(callback){
+			if(region){
+				Staff.find({regions : region},function(err, result){
+					if(!err && result.length > 0){
+						for (var i = 0; i < result.length; i++) {
+							send_staff_list.push(result[i].email);
+						};
+						callback();
+					}
+				});
+			}
+			else callback();
+		},
+		function(callback){
 			EmailSender.getEmailTemplate('registerSuccess.html',function(data){
 			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
 			var message = "";
 			var to = student_obj.email;
 			var subject = req.body.subject;
@@ -772,8 +790,7 @@ exports.sendEmail = function(req,res){
 		},
 		function(callback){
 			EmailSender.getEmailTemplate('registerSuccessNotifyStaff.html',function(data){
-			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleNotifyStaffVars);
 			var message = "";
 			var to = send_staff_list;
 			var subject = req.body.subject;
@@ -786,8 +803,7 @@ exports.sendEmail = function(req,res){
 		},
 		function(callback){
 			EmailSender.getEmailTemplate('registerSuccessNotifyAgent.html',function(data){
-			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleVars);
-
+			var context = EmailSender.replaceEmailTemplate(data, constant.EmailStudentTempaleNotifyAgentVars);
 			var message = "";
 			var to = send_agent_list;
 			var subject = req.body.subject;
