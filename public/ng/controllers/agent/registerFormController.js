@@ -51,6 +51,7 @@ angular.module('AgentApp')
 
 	//register 3
 	$scope.register = function(isValid){
+		var studentNumber = null;
 		$scope.student.agent = $scope.currentAgent._id;
 		$http.post('/api/student/register',{student : $scope.student,  
 			agent : $scope.currentAgent._id,
@@ -59,11 +60,14 @@ angular.module('AgentApp')
 			courseList : $scope.courseList})
 		.success(function(data,status,headers,config){
 			if(data.messages == "successed"){
+				studentNumber = data.studentId
 				$http.post('/api/pdf',{registerId:null, studentId:data.data, type:"New Student"})
 				.success(function(data,status,headers,config){
 					if(data.status == "successed"){
 						$http.post('/api/registration/sendEmail',{student:$scope.student, 
-							agent: $scope.currentAgent,
+							studentNumber : studentNumber,
+							agent: $scope.currentAgent.email,
+							region : $scope.student.region,
 							subject:"success registration", 
 							context: "Welcome", 
 							attachments : [data.data]})

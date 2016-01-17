@@ -86,7 +86,7 @@ exports.register = function(req,res){
 			if(accommodation.isHomestay){
 				accommodation.numOfWeeks = Math.round((accommodation.endDate-accommodation.startDate)/ 604800000);
 				accommodation.save(function(err,result){
-					if(err){}
+					if(err){callback();}
 						else {
 							accommodation_id = result._id;
 							student.accommodation = accommodation_id; //Delete later
@@ -101,7 +101,7 @@ exports.register = function(req,res){
 			var flightInfo_id = null;
 			if(accommodation.isHomestay){
 				flightInfo.save(function(err,result){
-					if(err){}
+					if(err){callback();}
 						else {
 							flightInfo_id = result._id;
 							student.flightInfo = flightInfo_id; //Delete later
