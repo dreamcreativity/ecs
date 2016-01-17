@@ -102,19 +102,19 @@ angular.module('AdminApp')
 			if(staff_id !=null){
 				Staffs.get({id:staff_id}, function(result){
 					$scope.staff = result.data;
-					// if($scope.staff.regions !=null){
-					// 	for(var i=0; i<$scope.staff.regions.length; i++){
-					// 		$scope.region_tags.push({"name" : $scope.staff.regions[i]});
-					// 	}
-					// 	var prom =[];
-					// 	var list =[];
-					// 	$scope.agents=[];
-					// 	$scope.staff.regions.forEach(function (obj, i) {
-					// 		prom.push($scope.getAgentbyRegion(obj, function(result){
-					// 			list.push(result);
-					// 		}));
-					// 	});
-					// }
+					if($scope.staff.regions !=null){
+						for(var i=0; i<$scope.staff.regions.length; i++){
+							$scope.region_tags.push({"name" : $scope.staff.regions[i]});
+						}
+						var prom =[];
+						var list =[];
+						$scope.agents=[];
+						$scope.staff.regions.forEach(function (obj, i) {
+							prom.push($scope.getAgentbyRegion(obj, function(result){
+								list.push(result);
+							}));
+						});
+					}
 
 
 				});
