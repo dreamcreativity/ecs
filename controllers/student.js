@@ -782,6 +782,7 @@ exports.sendEmail = function(req,res){
 						};
 						callback();
 					}
+					else callback();
 				});
 			}
 			else callback();
