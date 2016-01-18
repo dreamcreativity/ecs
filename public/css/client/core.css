@@ -1,5 +1,19 @@
 /*Disable search button*/
 
+
+/*Fix SVG in <img> tags not scaling in IE9, IE10, IE11*/
+.ie9 img[src*=".svg"] {
+  width: 100%; 
+}
+/* 2 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  img[src*=".svg"] {
+    width: 100%; 
+  }
+}
+
+
+
 .standard-logo{
 	width: 130px;
 }
