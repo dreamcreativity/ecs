@@ -56,9 +56,9 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 		transporter.sendMail(message,function(err, success){
 			if(err) message ="Fail";
 			else message = "Success";
-			for (var i = 0; i < attachments.length; i++) {
-				fs.unlinkSync(attachments[i]);
-			};
+			// for (var i = 0; i < attachments.length; i++) {
+			// 	fs.unlinkSync(attachments[i]);
+			// };
 			callback(message);
 		})
 				//callback("Success");
@@ -71,8 +71,12 @@ exports.sendEmail = function(to,subject,context,attachments,callback){
 		});
 		//callback("Success");
 	}
-
-
-
 	// callback("Success");
 }
+
+exports.deleteAttachments = function(attachments){
+	for (var i = 0; i < attachments.length; i++) {
+				fs.unlinkSync(attachments[i]);
+			};
+}
+

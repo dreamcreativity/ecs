@@ -32,8 +32,8 @@
 								<td class="hidden-xs">{{agent.email}}</td>
 								<td class="hidden-xs">{{agent.workphone}}</td>
 								<td class="hidden-xs">{{agent.cellphone}}</td>
-								<td><span ng-if="agent.isDelete == 1" class="label label-danger">Deleted</span>
-								<span ng-if="agent.isDelete == 0" class="label label-active">Active</span>
+								<td><span ng-if="agent.isActive == 1" class="label label-active">Active</span>
+								<span ng-if="agent.isActive == 0" class="label label-danger">Inactive</span>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">

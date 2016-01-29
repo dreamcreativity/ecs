@@ -103,6 +103,13 @@
 	<script src="/ng/controllers/admin/onlineTestController.js"></script>
 	<script src="/ng/controllers/admin/dashboardController.js"></script>
 
+	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+	<script>
+	    webshims.setOptions('waitReady', false);
+  		webshims.setOptions('forms-ext', {types: 'date'});
+  		webshims.polyfill('forms forms-ext');
+	</script>
+
 
   </head>
 
@@ -204,6 +211,7 @@
 								<h4>Management </h4> 								
 							</li>
 							<li class="panel <%if(parms.cur_tap=='Slider'){ %>open<% } %>">
+								{{accountInfo.role}}
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#SliderManagement">
 									<i class="fa fa-sliders"></i> Slider <span class="fa arrow"></span>
 								</a>
@@ -529,11 +537,6 @@
 		</div>  
 	</div>
 	 
-	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-	<script>
-	    webshims.setOptions('forms-ext', {types: 'date'});
-	webshims.polyfill('forms forms-ext');
-	</script>
 
     <!-- core JavaScript -->
     

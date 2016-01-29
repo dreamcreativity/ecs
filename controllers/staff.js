@@ -11,10 +11,8 @@ var async = require("async");
 
 //POST : Create a Staff
 exports.create = function(req,res){
-	var newStaff = new Staff(req.body);
-
-	
-	Staff.find({'username' : newStaff.username, 'email' : newStaff.email}, function(err, user){
+	var newStaff = new Staff(req.body);	
+	Staff.find( {$or: [{'username' : newStaff.username}, {'email' : newStaff.email}]}, function(err, user){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -26,7 +24,7 @@ exports.create = function(req,res){
 			if(user[0].username){
 				res.json({
 					status: 'exist',
-					messages:"Username already exists",
+					messages:"Username or email has already existed",
 					data: null
 				});
 			}
@@ -63,14 +61,11 @@ exports.create = function(req,res){
 
 //POST : Login
 exports.logout = function (req,res){
-
 	if(sessionStorage.token){
 		//console.log(sessionStorage.token);
 	}else{
-
 		res.redirect('/admin/login');
 	}
-
 	// remove old token data for the current found user
 	Token.find({user:sessionStorage.token}, function(err, result){
 		
@@ -366,9 +361,6 @@ exports.getStaffAccount = function(req,res){
 			});
 		}else{
 			tokenRecord = result[0];
-
-
-
 			Staff.find({ _id: mongoose.Types.ObjectId(tokenRecord.user)}).populate('cover').exec(function(err, users){
 
 
@@ -527,6 +519,7 @@ exports.sendEmailForRegister = function(req,res){
 		constant.EmailStaffTempaleVars[key] = staff[key];
 	};
 	constant.EmailStaffTempaleVars['password'] = staff.password;
+	constant.EmailStaffTempaleVars['url'] = "http://" + req.headers.host + "/admin/login";
 	EmailSender.getEmailTemplate('registerSuccessForStaff.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.EmailStaffTempaleVars);
 
