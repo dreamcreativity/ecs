@@ -1,0 +1,61 @@
+        <section id="page-title" class="page-title-mini">
+
+            <div class="container clearfix">
+                <h1>Our Team</h1>
+                <span>Everything you need to know about our School</span>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    
+                    <li class="active">Our Team</li>
+                </ol>
+            </div>
+
+        </section>    
+
+                <section id="section-team" class="page-section topmargin-lg">
+
+                    <div class="heading-block center">
+                        <h2>Our Team</h2>
+                        <span>People who have contributed enormously to our Company.</span>
+                    </div>
+
+                    <div class="container clearfix">
+
+                        
+                        <% for(var i=0; i < staffs.length; i++){ 
+                            if(staffs[i].cover != null){ 
+                        %>
+                      
+                        <div class="col-md-6 bottommargin" >
+
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="<%- staffs[i].cover.thumbnail %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4><%- staffs[i].firstname + ' ' + staffs[i].lastname %></h4><span><%- staffs[i].position %></span></div>
+                                    <div class="team-email"><%- staffs[i].email %></div>
+                                    <div class="team-phone"><%- staffs[i].workphone %></div>    
+                                    <!-- <a href="#" class="social-icon si-rounded si-small si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a> -->
+                                </div>
+                            </div>
+
+                        </div>
+                        <% }} %>
+                    
+                    </div>
+
+                   
+
+                </section>
