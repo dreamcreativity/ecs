@@ -200,7 +200,7 @@
                                 </ul>
                             </li>
                             <li class="mega-menu">
-                                <a href="#"  data-href="#section-adult"><div>Adult Programs</div></a>
+                                <a href="#"  data-href="#section-programs"><div>Adult Programs</div></a>
                                 <div class="mega-menu-content style-2 col-4 ">
                                     <ul>
                                         <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
@@ -264,7 +264,7 @@
                               
                             </li>
                             <li>
-                                <a href="#" data-href="#section-programs"><div>Junior Programs</div></a>
+                                <a href="#" data-href="#section-junior"><div>Junior Programs</div></a>
                                 <ul class="width300">
                                     <li><a href="/junior-programs#snav-content1" ><div>Toronto Summer Kids Programs</div></a></li>
                                     <li><a href="/junior-programs#snav-content2" ><div>Toronto Summer Teens Program</div></a></li>
@@ -274,7 +274,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" data-href="#section-programs"><div>Registration</div></a>
+                                <a href="#" data-href="#section-registration"><div>Registration</div></a>
                                 <ul class="width200">
                                     <li><a href="/register" ><div>Register Now</div></a></li>
                                     <li><a href="/Calculator" ><div>Fee Calculator</div></a></li>
@@ -285,7 +285,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" ><div>Services</div></a>
+                                <a href="#" data-href="#section-services"><div>Services</div></a>
                                 <ul class="width200">
                                     <li><a href="/preArrical" ><div>Pre-arrival</div></a></li>
                                     <li><a href="/accommodation" ><div>Accommodation</div></a></li>
@@ -328,44 +328,56 @@
 
                         <div class="heading-block center">
                             <h2>English School of Canada</h2>
-                            <span>One of the most Biggest Lanague School in Toronto Canada</span>
+                            <span>Voted by students Best English school in Toronto</span>
                         </div>
 
 
 
 
-                        <div class="col_one_third nobottommargin">
+                        <div class="col_half nobottommargin">
                             <div class="feature-box media-box">
                                 <div class="fbox-media">
-                                    <img src="images/clients/school/zoom-28398566-3.jpg" alt="Why choose Us?">
+                                    <a href="/why-esc"><img src="images/clients/school/zoom-28398566-3.jpg" alt="Why choose Us?"></a>
                                 </div>
                                 <div class="fbox-desc">
-                                    <h3>Why choose Us.<span class="subtitle">Because we are Experience & Reliable.</span></h3>
+                                    <h3>Why ESC<span class="subtitle">Because we are Experience & Reliable.</span></h3>
                                     <p class="program-home-des">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col_one_third nobottommargin">
+                        <div class="col_half nobottommargin col_last">
                             <div class="feature-box media-box">
                                 <div class="fbox-media">
-                                    <img src="images/clients/school/zoom-27352044-3.jpg" alt="Why choose Us?">
+                                    <a href="/philosophy"><img src="images/clients/school/zoom-27352044-3.jpg" alt="Why choose Us?"></a> 
                                 </div>
                                 <div class="fbox-desc">
-                                    <h3>Our Philosophy.<span class="subtitle">Aenean tincidunt lectus eu massa.</span></h3>
+                                    <h3>Our Philosophy<span class="subtitle">Aenean tincidunt lectus eu massa.</span></h3>
                                     <p class="program-home-des">Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col_one_third nobottommargin col_last">
+                        <div class="col_half nobottommargin ">
                             <div class="feature-box media-box">
                                 <div class="fbox-media">
-                                    <img src="images/clients/school/zoom-41710588-1.jpg" alt="Why choose Us?">
+                                    <a href="/team"><img src="images/clients/school/zoom-41710588-1.jpg" alt="Why choose Us?"></a>
                                 </div>
                                 <div class="fbox-desc">
-                                    <h3>What we Do.<span class="subtitle">Provide high quality education service.</span></h3>
+                                    <h3>Our Team<span class="subtitle">Provide high quality education service.</span></h3>
                                     <p class="program-home-des">Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col_half nobottommargin col_last">
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <a href="/city"><img src="images/clients/school/zoom-28398566-3.jpg" alt="Why choose Us?"></a>
+                                </div>
+                                <div class="fbox-desc">
+                                    <h3>Our City<span class="subtitle">Because we are Experience & Reliable.</span></h3>
+                                    <p class="program-home-des">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
                                 </div>
                             </div>
                         </div>
@@ -391,7 +403,7 @@
                 <section id="section-programs" class="page-section topmargin-lg">
 
                     <div class="heading-block center bottommargin-lg">
-                        <h2>ESC Programs</h2>
+                        <h2>ADULT Programs</h2>
                         <span>List of our main programs.</span>
                     </div>
 
@@ -400,7 +412,8 @@
                     <div class="container clearfix">
                         <% for(var i=0; i < courses.length; i++){ %>
                         <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
-                            <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>">
+                            <!-- <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>"> -->
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
                                 <div class="fbox-photo">
                                     <a href="/course/<%- courses[i]._id %>"><img src="<%- courses[i].cover.thumbnail %>" alt="<%- courses[i].title %>"/></a>
                                 </div>
@@ -422,7 +435,7 @@
 
                 
 
-                <section id="section-activity" class="page-section topmargin-lg">
+                <!-- <section id="section-activity" class="page-section topmargin-lg">
 
                     <div class="heading-block center">
                         <h2>Our Student Activity</h2>
@@ -437,10 +450,10 @@
                                     <a href="/activity/detail/<%- activities[i]._id %>">
                                         <img src="<%- activities[i].cover.thumbnail %>" alt="Open Imagination">
                                     </a>
-                                    <!-- <div class="portfolio-overlay">
+                                    <div class="portfolio-overlay">
                                         <a href="images/clients/activity/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
                                         <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                                    </div> -->
+                                    </div>
                                     
                                     <a href="/activity/detail/<%- activities[i]._id %>" class="portfolio-desc">
                                         <h3><%- activities[i].title %></h3>
@@ -452,15 +465,15 @@
                         </div>
                     </div>
 
-                </section>
+                </section> -->
 
-                 <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
-                        <div class="heading-block dark center nobottomborder nobottommargin">
-                            <h2>The key to learning how to speak English.</h2>
-                        </div>
+                <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+                    <div class="heading-block dark center nobottomborder nobottommargin">
+                        <h2>The key to learning how to speak English.</h2>
                     </div>
+                </div>
 
-                <section id="section-team" class="page-section topmargin-lg">
+                <!-- <section id="section-team" class="page-section topmargin-lg">
 
                     <div class="heading-block center">
                         <h2>Our Team</h2>
@@ -505,7 +518,7 @@
 
                    
 
-                </section>
+                </section> -->
 
                 
                 <div id="section-tools" class="container clearfix">
@@ -686,7 +699,189 @@
                     </div>
 
                 </section>
-
+				
+                
+                
+                <div class="container clearfix center">
+                    <div id="section-junior" class="portfolio-nomargin clearfix">
+                    	<div class="heading-block center">
+                            <h2>Junior Programs</h2>
+                            <span class="divcenter">For students from 9 to 17 years of age inclusive</span>
+                        </div>
+                        
+                        <div class="col_one_third">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs#snav-content1"><img alt="Toronto Summer Kids Program" src="/images/junior/thumb-summer-kids.jpg"></a>
+                                </div>
+                                <h3>Toronto Summer Kids Program</h3>
+                                <p class="program-home-des">This program is dedicated to children around the world who are from 9 to 13 years old age only and are looking for a high quality English summer camp in the city of Toronto.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col_one_third">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs#snav-content2"><img alt="Toronto Summer Teen Program" src="/images/junior/thumb-summer-teen.jpg"></a>
+                                </div>
+                                <h3>Toronto Summer Teen Program</h3>
+                                <p class="program-home-des">This program is dedicated to teenagers around the world who are from 14 to 17 years old age only and are looking for a high quality English summer camp in the city of Toronto.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col_one_third col_last">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs#snav-content3"><img alt="Kingston Summer Teen Program" src="/images/junior/thumb-summer-teen-k.jpg"></a>
+                                </div>
+                                <h3>Kingston Summer Teen Program</h3>
+                                <p class="program-home-des">The summer camp is an amazing opportunity for students from 14 to 17 years old to get to know Canada, its education system and learn useful knowledge. </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col_one_third">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs#snav-content4"><img alt="Family Programs" src="/images/junior/thumb-family-program.jpg"></a>
+                                </div>
+                                <h3>Family Programs</h3>
+                                <p class="program-home-des">Our family programs are an amazing opportunity for families around the world to spend some great time in the city of Toronto during the summer and have an amazing vacation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col_one_third">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs#snav-content5"><img alt="Toronto Year Round Programs" src="/images/junior/thumb-year-round.jpg"></a>
+                                </div>
+                                <h3>Toronto Year Round Programs</h3>
+                                <p class="program-home-des">The programs throughout the year are intended for students or groups that are willing to come to Toronto and experience a great vacation study program. The programs are most of the time customized and are built as per group wish.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="section-registration" class="paage-seation register-index">
+                	<div class="container">
+                        <div class="row dark">
+                            <div class="heading-block dark center nobottomborder nobottommargin">
+                                <h2>Registration</h2>
+                            </div>
+                            
+                            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+                            	<a href="/register">
+                                <i class="icon-ok-sign"></i>
+                                <h5>Online Registration Form</h5>
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+                            	<a href="/Calculator">
+                                <i class="icon-credit"></i>
+                                <h5>Program Course Calculator</h5>
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+                            	<a href="/calendar">
+                                <i class="icon-calendar3"></i>
+                                <h5>School Course Calendar</h5>
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+                            	<a href="/onlineTest">
+                                <i class="icon-trophy"></i>
+                                <h5>Online Test</h5>
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+                            	<a href="/guidelines">
+                                <i class="icon-lightbulb"></i>
+                                <h5>Student Guidelines</h5>
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+                            	<a href="/procedures">
+                                <i class="icon-legal"></i>
+                                <h5>Procedures</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container clearfix center" id="section-services">
+                    <div id="portfolio" class="portfolio-nomargin clearfix">
+                    	<div class="heading-block center">
+                            <h2>Services</h2>
+                        </div>
+                        
+                        <article class="portfolio-item pf-media pf-icons">
+                            <div class="portfolio-image">
+                                <a href="/preArrical">
+                                    <img alt="Pre Arrival" src="/images/services/thumb-pre-arrival.jpg">
+                                </a>
+             
+                                <a href="/preArrical" class="portfolio-desc">
+                                    <h3>Pre Arrival</h3>
+                                </a>
+                            </div>
+                        </article>
+                        
+                        <article class="portfolio-item pf-media pf-icons">
+                            <div class="portfolio-image">
+                                <a href="/events">
+                                    <img alt="Event Calendar" src="/images/services/thumb-event.jpg">
+                                </a>
+             
+                                <a href="/events" class="portfolio-desc">
+                                    <h3>Event Calendar</h3>
+                                </a>
+                            </div>
+                        </article>
+                        
+                        <article class="portfolio-item pf-media pf-icons">
+                            <div class="portfolio-image">
+                                <a href="/accommodation">
+                                    <img alt="Accommodation" src="/images/services/thumb-accommodation.jpg">
+                                </a>
+             
+                                <a href="/accommodation" class="portfolio-desc">
+                                    <h3>Accommodation</h3>
+                                </a>
+                            </div>
+                        </article>
+                        
+                        <article class="portfolio-item pf-media pf-icons">
+                            <div class="portfolio-image">
+                                <a href="/classChart">
+                                    <img alt="Class Chart" src="/images/services/thumb-chart.jpg">
+                                </a>
+             
+                                <a href="/classChart" class="portfolio-desc">
+                                    <h3>Class Chart</h3>
+                                </a>
+                            </div>
+                        </article>
+                        
+                        <article class="portfolio-item pf-media pf-icons">
+                            <div class="portfolio-image">
+                                <a href="/activity">
+                                    <img alt="Student Activity" src="/images/services/thumb-activity.jpg">
+                                </a>
+             
+                                <a href="/activity" class="portfolio-desc">
+                                    <h3>Student Activity</h3>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                
                 <section id="section-contact" class="page-section">
 
                     <div class="heading-block title-center">
@@ -843,36 +1038,36 @@
                             <div class="col_one_fourth">
                                 <div class="feature-box fbox-center fbox-bg fbox-plain">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-map-marker2"></i></a>
+                                        <a href="https://www.google.ca/maps/place/79+St+Clair+Ave+E+%23202,+Toronto,+ON+M4T+1M5/@43.6884344,-79.3931246,17z/data=!3m1!4b1!4m2!3m1!1s0x882b334ffac8dbc1:0x9ef9f133fc0452e1" target="_blank"><i class="icon-map-marker2"></i></a>
                                     </div>
                                     <h3>Our Location<span class="subtitle">79 St. Clair Ave. East, Suite 202<br>Toronto, ON,M4T 1M6</span></h3>
                                 </div>
                             </div>
 
                             <div class="col_one_fourth">
-                                <div class="feature-box fbox-center fbox-bg fbox-plain">
+                                <div class="feature-box fbox-center fbox-bg fbox-plain" style="height:221px">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-phone3"></i></a>
+                                        <a href="tel:416-686-1596"><i class="icon-phone3"></i></a>
                                     </div>
                                     <h3>Speak to Us<span class="subtitle">(416) 686 1596</span></h3>
                                 </div>
                             </div>
 
                             <div class="col_one_fourth">
-                                <div class="feature-box fbox-center fbox-bg fbox-plain">
+                                <div class="feature-box fbox-center fbox-bg fbox-plain" style="height:221px">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-facebook2"></i></a>
+                                        <a href="https://www.facebook.com/EnglishSchoolofCanada" target="_blank"><i class="icon-facebook2"></i></a>
                                     </div>
-                                    <h3>Chat with us<span class="subtitle">Coming soon..</span></h3>
+                                    <h3>Chat with us<span class="subtitle">Connect</span></h3>
                                 </div>
                             </div>
 
                             <div class="col_one_fourth col_last">
-                                <div class="feature-box fbox-center fbox-bg fbox-plain">
+                                <div class="feature-box fbox-center fbox-bg fbox-plain" style="height:221px">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-twitter2"></i></a>
+                                        <a href="https://twitter.com/ESCToronto" target="_blank"><i class="icon-twitter2"></i></a>
                                     </div>
-                                    <h3>Follow on Twitter<span class="subtitle">coming soon..</span></h3>
+                                    <h3>Follow on Twitter<span class="subtitle">Connect</span></h3>
                                 </div>
                             </div>
 

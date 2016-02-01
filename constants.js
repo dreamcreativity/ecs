@@ -149,6 +149,21 @@ module.exports = {
 	EmailStudentTempaleVars : {
 		firstname : null,
 		lastname : null,
+		studentID : null,
+		url : null
+	},
+
+	EmailStudentTempaleNotifyStaffVars : {
+		firstname : null,
+		lastname : null,
+		studentID : null,
+		url : null
+	},
+
+	EmailStudentTempaleNotifyAgentVars : {
+		firstname : null,
+		lastname : null,
+		studentID : null,
 		url : null
 	},
 
@@ -156,14 +171,16 @@ module.exports = {
 		firstname : null,
 		lastname : null,
 		username : null,
-		password : null
+		password : null,
+		url : null
 	},
 
 	EmailStaffTempaleVars : {
 		firstname : null,
 		lastname : null,
 		username : null,
-		password : null
+		password : null,
+		url : null
 	},
 
 	AgentInvitationTemplateVars : {
@@ -177,7 +194,8 @@ module.exports = {
 		lastname : null,
 		type :null,
 		username : null,
-		password : null
+		password : null,
+		url : null
 	},
 
 	ClientMessageFormVars : {

@@ -64,6 +64,8 @@ angular.module('AdminApp')
 	}
 
 	$scope.create = function(isValid){
+		var studentNumber = null;
+		var agentEmail =null;
 		if($scope.agent) {
 			$scope.student.agent = $scope.agent._id;
 		}
@@ -79,11 +81,17 @@ angular.module('AdminApp')
 			courseList : $scope.courseList})
 		.success(function(data,status,headers,config){
 			if(data.messages == "successed"){
+				studentNumber = data.studentId;
+				if(typeof($scope.agent) !== 'undefined'){
+					agentEmail = $scope.agent.email;
+				}
 				$http.post('/api/pdf',{registerId:null,studentId:data.data, type:"New Student"})
 				.success(function(data,status,headers,config){
 					if(data.status == "successed"){
 						$http.post('/api/registration/sendEmail',{student:$scope.student,
-							agent: $scope.agent,
+							agent: agentEmail,
+							region : $scope.student.region,
+							studentNumber : studentNumber,
 							subject:"success registration", 
 							context: "Welcome", 
 							attachments : [data.data]})

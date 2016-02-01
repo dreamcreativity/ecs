@@ -56,7 +56,7 @@ angular.module('AdminApp')
 	 }
 
 	 function randomPassword(length) {
-	 	var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+	 	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP1234567890";
 	 	var pass = "";
 	 	for (var x = 0; x < length; x++) {
 	 		var i = Math.floor(Math.random() * chars.length);
@@ -102,19 +102,19 @@ angular.module('AdminApp')
 			if(staff_id !=null){
 				Staffs.get({id:staff_id}, function(result){
 					$scope.staff = result.data;
-					// if($scope.staff.regions !=null){
-					// 	for(var i=0; i<$scope.staff.regions.length; i++){
-					// 		$scope.region_tags.push({"name" : $scope.staff.regions[i]});
-					// 	}
-					// 	var prom =[];
-					// 	var list =[];
-					// 	$scope.agents=[];
-					// 	$scope.staff.regions.forEach(function (obj, i) {
-					// 		prom.push($scope.getAgentbyRegion(obj, function(result){
-					// 			list.push(result);
-					// 		}));
-					// 	});
-					// }
+					if($scope.staff.regions !=null){
+						for(var i=0; i<$scope.staff.regions.length; i++){
+							$scope.region_tags.push({"name" : $scope.staff.regions[i]});
+						}
+						var prom =[];
+						var list =[];
+						$scope.agents=[];
+						$scope.staff.regions.forEach(function (obj, i) {
+							prom.push($scope.getAgentbyRegion(obj, function(result){
+								list.push(result);
+							}));
+						});
+					}
 
 
 				});
@@ -153,7 +153,7 @@ angular.module('AdminApp')
 	}
 
 	function randomPassword(length) {
-		var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+		var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP1234567890";
 		var pass = "";
 		for (var x = 0; x < length; x++) {
 			var i = Math.floor(Math.random() * chars.length);

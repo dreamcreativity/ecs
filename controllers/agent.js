@@ -200,7 +200,7 @@ exports.create = function(req,res){
 			if(result[0].username){
 				res.json({
 					status: 'exist',
-					messages: 'Username already exists',
+					messages: 'Username or email has already existed',
 					data:null
 				});
 			}
@@ -367,54 +367,58 @@ exports.delete = function(req,res){
 
 //Send Agent Invitation to student
 exports.sendInvitation = function(req,res){
-	var email = req.body.email;
-	var agentId = req.body.agentId;
+var email = req.body.email;
+var agentId = req.body.agentId;
 
-	AgentInvitation.find({agent : agentId}).populate('agent').exec(function(err, result){
-		if(!err && result.length>0){
-			for (var key in constant.AgentInvitationTemplateVars) {
-				constant.AgentInvitationTemplateVars[key] = result[0].agent[key];
-			};
-			constant.AgentInvitationTemplateVars['url'] = "http://" + req.headers.host + "/register/" + result[0]._id
-			EmailSender.getEmailTemplate('invitation.html',function(data){
-				var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
-				var to = email;
-				var subject = "Register Invitation";
-				var context = context;
-				EmailSender.sendEmail(to,subject,context,null, function(message){		
-					res.json(
-					{
-						returnmessage : message
-					});		
-				});
+AgentInvitation.find({agent : agentId}).populate('agent').exec(function(err, result){
+	if(!err && result.length>0){
+		for (var key in constant.AgentInvitationTemplateVars) {
+			constant.AgentInvitationTemplateVars[key] = result[0].agent[key];
+		};
+		constant.AgentInvitationTemplateVars['url'] = "http://" + req.headers.host + "/register/" + result[0]._id
+		EmailSender.getEmailTemplate('invitation.html',function(data){
+			var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
+			var to = email;
+			var subject = "Register Invitation";
+			var context = context;
+			EmailSender.sendEmail(to,subject,context,null, function(message){		
+				res.json(
+				{
+					returnmessage : message
+				});		
 			});
-		}
-		else {
-			var agentInvitation = new AgentInvitation();
-			agentInvitation.agent = agentId;
-			agentInvitation.save(function(err, result){
-				if(!err){
-					for (var key in constant.AgentInvitationTemplateVars) {
-						constant.AgentInvitationTemplateVars[key] = result[key];
-					};
-					constant.AgentInvitationTemplateVars['url'] = "http://" + req.headers.host + "/register/" + result._id;
-					EmailSender.getEmailTemplate('invitation.html',function(data){
-						var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
-						var to = email;
-						var subject = "Register Invitation";
-						var context = context;
-						EmailSender.sendEmail(to,subject,context,null, function(message){		
-							res.json(
-							{
-								returnmessage : message
-							});		
+		});
+	}
+	else {
+		var agentInvitation = new AgentInvitation();
+		agentInvitation.agent = agentId;
+		agentInvitation.save(function(err, result){
+			if(!err){
+				AgentInvitation.find({agent:result.agent}).populate('agent').exec(function(err, result1){
+					if(!err){
+						for (var key in constant.AgentInvitationTemplateVars) {
+							constant.AgentInvitationTemplateVars[key] = result1[0].agent[key];
+						};
+						constant.AgentInvitationTemplateVars['url'] = "http://" + req.headers.host + "/register/" + result1[0]._id;
+						EmailSender.getEmailTemplate('invitation.html',function(data){
+							var context = EmailSender.replaceEmailTemplate(data, constant.AgentInvitationTemplateVars);
+							var to = email;
+							var subject = "Register Invitation";
+							var context = context;
+							EmailSender.sendEmail(to,subject,context,null, function(message){		
+								res.json(
+								{
+									returnmessage : message
+								});		
+							});
 						});
-					});
-				}
-			})
-		}
+					}
+				});
+			}
+		})
+	}
 
-	})
+})
 
 }
 
@@ -430,6 +434,7 @@ exports.sendNotificationForResetPassword = function(req,res){
 		constant.ResetPasswordTemplateVars[key] = agent[key];
 	};
 	constant.ResetPasswordTemplateVars['type'] = 'Agent';
+	constant.ResetPasswordTemplateVars['url'] = "http://" + req.headers.host + "/agent/login";
 	EmailSender.getEmailTemplate('resetpassword.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.ResetPasswordTemplateVars);
 
@@ -456,6 +461,7 @@ exports.sendEmailForRegister = function(req,res){
 		constant.EmailAgentTempaleVars[key] = agent[key];
 	};
 	constant.EmailAgentTempaleVars['password'] = agent.password;
+	constant.EmailAgentTempaleVars['url'] = "http://" + req.headers.host + "/agent/login";
 	EmailSender.getEmailTemplate('registerSuccessForAgent.html',function(data){
 		var context = EmailSender.replaceEmailTemplate(data, constant.EmailAgentTempaleVars);
 

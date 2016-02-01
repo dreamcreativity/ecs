@@ -225,12 +225,36 @@ router.get('/accommodation', function(req, res){
 
 
 
+router.get('/team', function(req, res){
+
+	Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+	
+		template(req,res,'client_normal','client/team.html',{
+			staffs : result
+		});
+	});
+
+
+});
 
 router.get('/city', function(req, res){
 
 	template(req,res,'client_normal','client/city.html',{});
 
 });
+
+router.get('/why-esc', function(req, res){
+
+	template(req,res,'client_normal','client/why.html',{});
+
+});
+
+router.get('/philosophy', function(req, res){
+
+	template(req,res,'client_normal','client/philosophy.html',{});
+
+});
+
 
 router.get('/procedures', function(req, res){
 
