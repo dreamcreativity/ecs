@@ -307,6 +307,10 @@ router.get('/login', function(req, res) {
 	template(req,res,'client_main','client/login.html',{ });
 });
 
+router.get('/junior-programs/create', function(req, res){
+	template(req,res,'client_normal','client/junior-programs-create.html',{});
+});
+
 
 
 

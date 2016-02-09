@@ -20,6 +20,7 @@ var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 var emailSender = require('../modules/emailModule');
 var pdf = require('../modules/pdfModule');
+var juniorprogram = require('../controllers/juniorprogram');
 
 
 function IsAuthException(path, method){
@@ -449,6 +450,10 @@ router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPass
 
 //------------------------Send Email in client site--------------------------------
 router.post('/client/sendEmail', student.client_sendEmail);
+
+
+//------------------------Junior Program ---------------------------------------
+router.post('/juniorprogram/create', juniorprogram.create);
 
 
 
