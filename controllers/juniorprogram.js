@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 //POST: create new Junior Program
 exports.create = function(req,res){
-	var newJuniorProgram = new JuniorProgram(req.body);
+	var newJuniorProgram = new JuniorProgram(req.body.student);
 	newJuniorProgram.save(function(err ,result){
 		if(err){
 			res.json({

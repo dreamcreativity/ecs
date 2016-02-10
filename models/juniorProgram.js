@@ -12,24 +12,36 @@ var JuniorProgramSchema = new mongoose.Schema({
 	city : {type: String, required: true},
 	province : {type: String, required: true},
 	country : {type : String, required: true},
-	phone : {type: String, required: true},
+	telephone : {type: String, required: true},
 	email : {type: String, required: true},
 	nationality : {type: String, required: true},
 	nativeLanguage : {type: String, required: true},
 
-	emergencyContactName :{type: String, required: true},
-	emergencyContactPhone :{type: String, required: true},
-	emergencyContactEmail :{type: String, required: true},
+	emergencyContactname :{type: String, required: true},
+	emergencyPhone :{type: String, required: true},
+	emergencyContactemail :{type: String, required: true},
 
-	isMedication : {type : Boolean, default: false },
-	isAllergies : {type : Boolean, default: false },
-	isDietary : {type : Boolean, default: false },
+	ismedical : {type : Boolean, default: false },
+	medicalComment : {type:String},
+	isallergies : {type : Boolean, default: false },
+	allergiesComment: {type:String},
+	isdietary : {type : Boolean, default: false },
+	dietaryComment: {type:String},
+	iselse : {type : Boolean, default: false },
+	elseComment : {type:String},
 	note: {type: String},
 	registerDate: {type: Date,default: Date.now },
 
-	startDate : {type: Date, default: Date.now },
-	endDate : {type: Date, default: Date.now },
-	duration : {type: String},
+	durationSummerKidsProgram : {type:String},
+	durationSummerTeensProgram : {type:String},
+	durationSummerTeensProgramKingston : {type:String},
+
+    startdateSummerKidsProgram : {type:String},
+    startdateSummerTeensProgramKingston : {type:String},
+    startdateSummerTeensProgramTonronto : {type:String},
+
+    year_roundPrograms: {type:String},
+
 
 	arrivalDateTime:{type: Date},
 	arrivalAirline : {type:String},
@@ -38,11 +50,10 @@ var JuniorProgramSchema = new mongoose.Schema({
 	departureAirline : {type:String},
 	isDropoff : {type:Boolean, default:false},
 
-	AgentCompany : {type: String},
-	AgentName : {type: String},
-	AgentEmail : {type: String},
-	AgentPhone : {type: String},
-	AgentWebsite : {type: String}
+	agency : {type: String},
+	agent : {type: String},
+	agent_phone : {type: String},
+	agent_email : {type: String}
 
 
 });
