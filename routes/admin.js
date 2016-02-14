@@ -597,6 +597,30 @@ router.get('/onlineTest/record/:id', function(req,res){
 });
 
 
+//-----------------------Junior--------------------------------------
+
+router.get('/junior-Program/all', function(req, res) {
+	template(req,res,'admin_main','admin/junior/juniorStudents.html',
+			{ 
+				title: 'Junior',
+				category: 'Management',
+				cur_tap: 'Junior',
+				cur_selected : 'All'
+			}
+		);
+});
+
+router.get('/junior-Program/edit/:id', function(req, res) {
+	template(req,res,'admin_main','admin/junior/juniorStudentEdit.html',
+			{ 
+				title: 'Junior',
+				category: 'Management',
+				cur_tap: 'Edit',
+				cur_selected : 'Edit',
+				url_params : req.params
+			}
+		);
+});
 
 
 

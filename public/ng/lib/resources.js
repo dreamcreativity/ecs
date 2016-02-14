@@ -94,13 +94,10 @@ resources.factory('JuniorPrograms',['$resource',
     function($resource){
         return $resource('/api/juniorprograms/:id', {}, {
             query:{ method: 'GET'},
-            create:{
-                url: '/api/juniorprograms',
-                method: 'POST'
-            }
-
+            update : { method : 'PUT', params: {id:'@_id'}}
         });
     }])
+
 
 // resources.factory('Students',['$resource',
 //     function($resource){

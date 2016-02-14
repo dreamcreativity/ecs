@@ -1,0 +1,259 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<div class="row"  ng-controller='JuniorStudentEditCtrl'>
+	<div class="col-lg-12 col-md-12">
+		<div class="tc-tabs"><!-- Nav tabs style 1 -->
+			<ul class="nav nav-tabs tab-lg-button tab-color-dark background-dark white">
+				<li class="active"><a href="#p1" data-toggle="tab"><i class="fa fa-desktop bigger-130"></i>Overview</a></li>
+				<li><a href="#p2" data-toggle="tab"><i class="fa fa-edit bigger-130"></i>Edit Junior Program student</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="p1">
+					<div class="portlet">
+						<div class="portlet-heading dark">
+							<div class="portlet-title">
+								<h4>{{student.firstname}} {{student.lastname}}</h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">			
+								<label class="label label-xlg label-pending arrowed-right">Student Information</label>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											
+											<div class="row">
+												<div class="col-lg-2 right"><strong>First Name :</strong></div>
+												<div class="col-lg-2" >{{student.firstname}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Last Name :</strong></div>
+												<div class="col-lg-2" >{{student.lastname}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Cell :</strong></div>
+												<div class="col-lg-2" >{{student.telephone}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Email :</strong></div>
+												<div class="col-lg-2" >{{student.email}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Nationality :</strong></div>
+												<div class="col-lg-2" >{{student.nationality}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Native Language :</strong></div>
+												<div class="col-lg-2" >{{student.nativeLanguage}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Address :</strong></div>
+												<div class="col-lg-6" >{{student.address}}, {{student.city}}, {{student.province}}, {{student.country}}, {{student.postcode}}</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">			
+								<label class="label label-xlg label-pending arrowed-right">Emergency Contact Information</label>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Contact's Name :</strong></div>
+												<div class="col-lg-2" >{{student.emergencyContactname}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Contact's Phone :</strong></div>
+												<div class="col-lg-2" >{{student.emergencyPhone}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Contact's Email :</strong></div>
+												<div class="col-lg-2" >{{student.emergencyContactemail}}</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">			
+								<label class="label label-xlg label-pending arrowed-right">Program Information</label>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											<div class="row">
+												<div class="col-lg-4 right"><strong>Summer Kid's Program :</strong></div>
+												<div class="col-lg-3" >{{student.startdateSummerKidsProgram}}</div>
+												<div class="col-lg-2 right"><strong>Duration :</strong></div>
+												<div class="col-lg-2" >{{student.durationSummerKidsProgram}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-4 right"><strong>Summer Teen's Program (Toronto) :</strong></div>
+												<div class="col-lg-3" >{{student.startdateSummerTeensProgramTonronto}}</div>
+												<div class="col-lg-2 right"><strong>Duration :</strong></div>
+												<div class="col-lg-2" >{{student.durationSummerTeensProgram}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-4 right"><strong>Summer Teen's Program (Kingston) :</strong></div>
+												<div class="col-lg-3" >{{student.startdateSummerTeensProgramKingston}}</div>
+												<div class="col-lg-2 right"><strong>Duration :</strong></div>
+												<div class="col-lg-2" >{{student.durationSummerTeensProgramKingston}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-4 right"><strong>Year-round programs :</strong></div>
+												<div class="col-lg-8" >{{student.year_roundPrograms}}</div>
+											</div>
+											<div class="space-4"></div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">			
+								<label class="label label-xlg label-pending arrowed-right">Medical Information</label>
+							</div>
+							<div class="row">
+								<div class="col-lg-4 right"><strong>Are you on any medication?</strong></div>
+								<div class="col-lg-1 tcb" >
+									<label>
+										<input type="checkbox" ng-model="student.ismedical">
+									</label>
+								</div>
+								<div class="col-lg-7">{{student.medicalComment}}</div>
+							</div>
+							<div class="space-4"></div>
+							<div class="row">
+								<div class="col-lg-4 right"><strong>Do you have any allergies?</strong></div>
+								<div class="col-lg-1 tcb" >
+									<label>
+										<input type="checkbox" ng-model="student.isallergies">
+									</label>
+								</div>
+								<div class="col-lg-7">{{student.allergiesComment}}</div>
+							</div>
+							<div class="space-4"></div>
+							<div class="row">
+								<div class="col-lg-4 right"><strong>Do you have special dietary needs?</strong></div>
+								<div class="col-lg-1 tcb" >
+									<label>
+										<input type="checkbox" ng-model="student.isdietary">
+									</label>
+								</div>
+								<div class="col-lg-7">{{student.dietaryComment}}</div>
+							</div>
+							<div class="space-4"></div>
+							<div class="row">
+								<div class="col-lg-4 right"><strong>Is there anything else we should know?</strong></div>
+								<div class="col-lg-1 tcb" >
+									<label>
+										<input type="checkbox" ng-model="student.iselse">
+									</label>
+								</div>
+								<div class="col-lg-7">{{student.elseComment}}</div>
+							</div>
+							<div class="space-4"></div>
+						</div>
+
+
+					</div>
+				</div>
+				
+				<div class="tab-pane fade" id="p2">
+					<div class="portlet">
+						<div class="portlet-heading dark">
+							<div class="portlet-title">
+								<h4>Edit Student</h4>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="portlet-body">
+							<form name="updateForm" class="form-horizontal" role="form" novalidate>
+
+								<div class="form-group">
+									<label class="label label-xlg label-pending arrowed-right">Student Information</label>
+								</div>
+
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">First name</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="firstname" ng-model="student.firstname" value="{{student.firstname}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Last name</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="lastname" ng-model="student.lastname" value="{{student.lastname}}"required>
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-3">
+									<button type="button" class="btn btn-primary" ng-disabled="!updateForm.$valid" ng-click="update()">Update</button>
+									<button type="button" class="btn btn-default" onclick='location="/admin/Junior-Program/all"'>Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div><!--nav-tabs style 1-->
+</div>
+
+<!-- include the media selector mockup -->
+<div ng-include="'/ng/html/MediaSelector.html'"></div>
+</div>	
+
+<script>
+	$(document).on("keypress", "form", function(event) { 
+		return event.keyCode != 13;
+	});
+</script>
+

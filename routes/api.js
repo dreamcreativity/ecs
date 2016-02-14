@@ -460,6 +460,15 @@ router.post('/client/sendEmail', student.client_sendEmail);
 //------------------------Junior Program ---------------------------------------
 router.post('/juniorprogram/create', juniorprogram.create);
 
+//GET students 
+router.get('/juniorprograms',juniorprogram.getStudents);
+
+//GET a student by ID
+router.get('/juniorprograms/:id', juniorprogram.getStudentbyId);
+
+//PUT : Edit a student info
+router.put('/juniorprograms/:id', juniorprogram.edit);
+
 
 
 
