@@ -207,6 +207,64 @@ module.exports = {
 		message : null
 	},
 
+	SummerProgramTorontoStartDate : [
+		"June 18 2015 (Overnight)",
+		"June 19 2015 (Overnight)",
+		"June 25 2015 (Overnight)",
+		"June 26 2015 (Overnight)",
+		"July 02 2015 (Overnight)",
+		"July 03 2015 (Overnight)",
+		"July 09 2015 (Overnight)",
+		"July 10 2015 (Overnight)",
+		"July 16 2015 (Overnight)",
+		"July 17 2015 (Overnight)",
+		"July 21 2015 (Overnight)",
+		"July 23 2015 (Overnight)",
+		"July 24 2015 (Overnight)",
+		"July 30 2015 (Overnight)",
+		"August 06 2015 (Overnight)",
+		"August 07 2015 (Overnight)",
+		"June 20 2015 (Self-arranged)",
+		"June 27 2015 (Self-arranged)",
+		"July 04 2015 (Self-arranged)",
+		"July 11 2015 (Self-arranged)",
+		"July 18 2015 (Self-arranged)",
+		"July 25 2015 (Self-arranged)",            
+		"August 01 2015 (Self-arranged)",		                                  
+		"August 08 2015 (Self-arranged)"                                                                                                                  
+		],
+
+
+	SummerProgramTorontoDuration : [
+		"1 Week",
+		"2 Weeks",
+		"3 Weeks",
+		"4 Weeks",
+		"5 Weeks",
+		"6 Weeks",
+		"7 Weeks",
+		"8 Weeks"
+	],
+
+	SummerProgramKingstonStartDate : [
+		"July 16 2015 (Overnight)",
+		"July 17 2015 (Overnight)",
+		"July 21 2015 (Overnight)",
+		"July 23 2015 (Overnight)",
+		"July 24 2015 (Overnight)",
+		"July 30 2015 (Overnight)",
+		"August 06 2015 (Overnight)",
+		"August 07 2015 (Overnight)",
+		],
+
+	SummerProgramKingstonDuration : [
+		"1 Week",
+		"2 Weeks",
+		"3 Weeks",
+		"4 Weeks"
+	],
+
+
 	Country : [
 		"Afghanistan",
 		"Albania",

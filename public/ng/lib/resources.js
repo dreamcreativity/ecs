@@ -90,6 +90,15 @@ resources.factory('Agents',['$resource',
     });
 }])
 
+resources.factory('JuniorPrograms',['$resource',
+    function($resource){
+        return $resource('/api/juniorprograms/:id', {}, {
+            query:{ method: 'GET'},
+            update : { method : 'PUT', params: {id:'@_id'}}
+        });
+    }])
+
+
 // resources.factory('Students',['$resource',
 //     function($resource){
 //         return $resource('/api/student/agent/:agent_id', {}, {
@@ -122,7 +131,7 @@ resources.factory('Agents',['$resource',
             method : 'GET',
             params : {id : '@_id'}
         },
-        createExtendingCourse : {
+        ExtendingCourse : {
             url : '/api/student/extending',
             method : 'POST',
             params : {student_id : '@student_id', courseList : '@courseList'}
@@ -223,6 +232,11 @@ resources.factory('Courses',['$resource',
         update : { method : 'PUT', params: {id:'@_id'}},
         getSimpleList: {
             url: '/api/infocourses/',
+            method : 'GET', 
+            params: {}
+        },
+        getCalendarCourseList: {
+            url: '/api/courses-calendar',
             method : 'GET', 
             params: {}
         },

@@ -91,7 +91,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/activity/detail/:id', function(req, res){
+router.get('/gallery/detail/:id', function(req, res){
 	var id = req.params.id;
 	var activityList = [];
 	async.series([
@@ -106,7 +106,7 @@ router.get('/activity/detail/:id', function(req, res){
 	], function(){
 		console.log(activityList);
 		Activity.find({'_id':id}).populate('album').populate('cover').exec(function(err,result){
-			template(req,res,'client_normal','client/activityDetail.html',{ 
+			template(req,res,'client_normal','client/galleryDetail.html',{ 
 				activity : result[0],
 				activityList : activityList,
 			});
@@ -116,11 +116,11 @@ router.get('/activity/detail/:id', function(req, res){
 });
 
 
-router.get('/activity', function(req, res){
+router.get('/gallery', function(req, res){
 
 
 	Activity.find({'isActive': true}).populate('cover').sort({'displayOrder': -1}).limit(9).exec(function(err,result){
-		template(req,res,'client_normal','client/activity.html',{ 
+		template(req,res,'client_normal','client/gallery.html',{ 
 			activitys : result
 		});
 	});
@@ -225,12 +225,36 @@ router.get('/accommodation', function(req, res){
 
 
 
+router.get('/team', function(req, res){
+
+	Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+	
+		template(req,res,'client_normal','client/team.html',{
+			staffs : result
+		});
+	});
+
+
+});
 
 router.get('/city', function(req, res){
 
 	template(req,res,'client_normal','client/city.html',{});
 
 });
+
+router.get('/why-esc', function(req, res){
+
+	template(req,res,'client_normal','client/why.html',{});
+
+});
+
+router.get('/philosophy', function(req, res){
+
+	template(req,res,'client_normal','client/philosophy.html',{});
+
+});
+
 
 router.get('/procedures', function(req, res){
 
@@ -281,6 +305,10 @@ router.get('/page/:page_name', function(req, res) {
 
 router.get('/login', function(req, res) {
 	template(req,res,'client_main','client/login.html',{ });
+});
+
+router.get('/junior-programs/create', function(req, res){
+	template(req,res,'client_normal','client/junior-programs-create.html',{});
 });
 
 

@@ -3,6 +3,83 @@
 <script type="text/javascript" src="assets/js/events-data.js"></script>
 <script type="text/javascript" src="assets/js/plugins.js"></script>
 
+<script type="text/javascript" src="http://zabuto.com/dev/calendar/zabuto_calendar.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://zabuto.com/dev/calendar/zabuto_calendar.min.css">
+
+
+<script type="application/javascript">
+  $(document).ready(function () {
+
+
+    for (var i = 1; i <= 12; i++) {    
+        $("#month-" + i).zabuto_calendar({
+          cell_border: false,
+          today: true,
+          show_days: false,
+          weekstartson: 0,
+          show_previous: false,
+          show_next: false,
+          month: i,
+        
+          data: [
+            {"date":"2016-01-01","badge":false,"title":"Example 1",classname:"grade-2"},
+            {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
+            
+            {"date":"2016-04-12","badge":false,"title":"Example 2",classname:"purple", "body":"<div>hello<div>",},
+          ]
+          // ,
+          // legend: [
+          //           {type: "text", label: "Special event", badge: "00"},
+          //           {type: "block", label: "Regular event", classname: "purple"},
+          //           {type: "spacer"},
+          //           {type: "text", label: "Bad"},
+          //           {type: "list", list: ["grade-1", "grade-2", "grade-3", "grade-4"]},
+          //           {type: "text", label: "Good"}
+          //         ]
+        });
+    }
+
+
+
+  });
+</script>
+
+<style type="text/css">
+    
+    .calendar-cell{
+        min-height: 350px;
+    }
+
+    .grade-1 {
+                    background-color: #FA2601;
+                }
+
+                .grade-2 {
+                    background-color: #FA8A00;
+                }
+
+                .grade-3 {
+                    background-color: #FFEB00;
+                     content: <span class="dot"><span>
+                }
+                .grade-3::after {
+                    content: <span class="dot"><span>
+                }
+                .grade-4 {
+                    background-color: #27AB00;
+                }
+
+                .purple {
+                    background-color: purple;
+                }
+
+                .dot{
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 15px;
+                }
+</style>
 
 
 <section id="page-title">
@@ -21,9 +98,41 @@
 
 
 
+<section ng-controller="NewCalendarCtrl">
+    <div class="content-wrap">
+         <section id="section-course" class="page-section">
+            <div class="container clearfix">
+                <div class="row">
+               
+                        <div class="col-md-3">
+                            fdsf
+                        </div>
+                        <div class="col-md-9">
+                            <div class="col-md-4 calendar-cell" id="month-1"></div>
+                            <div class="col-md-4 calendar-cell" id="month-2"></div>
+                            <div class="col-md-4 calendar-cell" id="month-3"></div>
+                            <div class="col-md-4 calendar-cell" id="month-4"></div>
+                            <div class="col-md-4 calendar-cell" id="month-5"></div>
+                            <div class="col-md-4 calendar-cell" id="month-6"></div>
+                            <div class="col-md-4 calendar-cell" id="month-7"></div>
+                            <div class="col-md-4 calendar-cell" id="month-8"></div>
+                            <div class="col-md-4 calendar-cell" id="month-9"></div>
+                            <div class="col-md-4 calendar-cell" id="month-10"></div>
+                            <div class="col-md-4 calendar-cell" id="month-11"></div>
+                            <div class="col-md-4 calendar-cell" id="month-12"></div>  
+                        </div>
+
+
+                </div>
+                
+            </div>
+         </div>
+    </div>
+</div>
 
 <!-- <script type="text/javascript" src="assets/js/functions.js"></script> -->
-<section ng-controller="CalendarCtrl" id="school-calendar" >
+<!-- <section ng-controller="CalendarCtrl" id="school-calendar" > -->
+<section  id="school-calendar" >
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
