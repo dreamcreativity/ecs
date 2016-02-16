@@ -38,6 +38,7 @@ function IsAuthException(path, method){
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
 		// {	path : '/api/constants', method: 'GET', type: 'contain'},
 		{	path : '/api/courses', method: 'GET', type: 'direct' }, 
+		{	path : '/api/courses-calendar', method: 'GET', type: 'direct' }, 
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
@@ -351,6 +352,8 @@ router.get('/courses/:id', course.getCoursebyId);
 router.put('/courses/:id', course.edit);
 
 router.get('/infocourses', course.getAllSimpleCourses);
+
+router.get('/courses-calendar', course.getCalendarCourses);
 
 router.get('/courses/startdate/:id/:year', course.getCourseStartDate);
 

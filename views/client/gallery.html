@@ -4,7 +4,7 @@
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section " style="clear:both">
 		 	<div class="heading-block center">
-                <h2>Our Student Activity</h2>
+                <h2>Our Student Photo Gallery</h2>
                 <span>Some of the Awesome Monment we've worked on.</span>
             </div>
 		 	<!-- <div class="container clearfix">
@@ -26,11 +26,11 @@
             <% for(i in activitys){ %>
             <article class="portfolio-item pf-media pf-icons">
                 <div class="portfolio-image">
-                    <a href="/activity/detail/<%- activitys[i]._id %>">
+                    <a href="/gallery/detail/<%- activitys[i]._id %>">
                         <img src="<%- activitys[i].cover.path %>" alt="Open Imagination">
                     </a>
  
-                    <a href="/activity/detail/<%- activitys[i]._id %>" class="portfolio-desc">
+                    <a href="/gallery/detail/<%- activitys[i]._id %>" class="portfolio-desc">
                         <h3><%- activitys[i].title %></h3>
                         <span><%- activitys[i].subtitle %></span>
                     </a>
@@ -40,3 +40,4 @@
     </div>
 </div>
 <div style="margin-bottom:100px"></div>
+

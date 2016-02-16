@@ -90,16 +90,60 @@
                 <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
                 <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
                 <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
-            </div>
+                <div class="swiper-pagination"><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span></div>
 
+            </div>
+            <style type="text/css">
+                    .swiper-pagination {
+                        position: absolute;
+                        width: 100%;
+                        z-index: 20;
+                        margin: 0;
+                        top: auto;
+                        bottom: 20px;
+                        text-align: center;
+                        line-height: 1;
+                    }
+
+                    .swiper-pagination span {
+                        display: inline-block;
+                        cursor: pointer;
+                        width: 10px;
+                        height: 10px;
+                        margin: 0 4px;
+                        opacity: 1;
+                        background-color: transparent;
+                        border: 1px solid #FFF;
+                        border-radius: 50%;
+                        -webkit-transition: all .3s ease;
+                        -o-transition: all .3s ease;
+                        transition: all .3s ease;
+                    }
+
+                    .swiper-pagination span:hover,
+                    .swiper-pagination span.swiper-active-switch { background-color: #FFF !important; }
+
+            </style>
             <script>
                 jQuery(document).ready(function($){
                   
 
                     var swiperSlider = new Swiper('.swiper-parent',{
+                        // paginationClickable: false,
+                        // slidesPerView: 1,
+                        // grabCursor: true,
+                        // autoplay: true,
+                        // pagination: '.swiper-pagination',
+
                         paginationClickable: false,
                         slidesPerView: 1,
                         grabCursor: true,
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true,
+                        createPagination: true,
+                        autoplay: 7000,
+
+
                         onSwiperCreated: function(swiper){
                             $('[data-caption-animate]').each(function(){
                                 var $toAnimateElement = $(this);
@@ -289,7 +333,7 @@
                                 <ul class="width200">
                                     <li><a href="/preArrical" ><div>Pre-arrival</div></a></li>
                                     <li><a href="/accommodation" ><div>Accommodation</div></a></li>
-                                    <li><a href="/activity" ><div>Activites</div></a></li>
+                                    <li><a href="/gallery" ><div>Photo Gallery</div></a></li>
                                     <li><a href="/events" ><div>Events</div></a></li>
                                     <li><a href="/classChart" ><div>Class Chart</div></a></li>
                                 </ul>
@@ -703,7 +747,7 @@
                 
                 
                 <div class="container clearfix center">
-                    <div id="section-junior" class="portfolio-nomargin clearfix">
+                    <div id="section-junior" class="portfolio-nomargin  page-section clearfix">
                     	<div class="heading-block center">
                             <h2>Junior Programs</h2>
                             <span class="divcenter">For students from 9 to 17 years of age inclusive</span>
@@ -758,10 +802,21 @@
                                 <p class="program-home-des">The programs throughout the year are intended for students or groups that are willing to come to Toronto and experience a great vacation study program. The programs are most of the time customized and are built as per group wish.</p>
                             </div>
                         </div>
+
+                        <div class="col_one_third col_last">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs#snav-content5"><img alt="Toronto Year Round Programs" src="/images/junior/thumb-family-program.jpg"></a>
+                                </div>
+                                <h3>Junior Program Staff</h3>
+                                <p class="program-home-des">The programs throughout the year are intended for students or groups that are willing to come to Toronto and experience a great vacation study program. The programs are most of the time customized and are built as per group wish.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 
-                <div id="section-registration" class="paage-seation register-index">
+                <div id="section-registration" class=" page-section  register-index">
                 	<div class="container">
                         <div class="row dark">
                             <div class="heading-block dark center nobottomborder nobottommargin">
@@ -813,7 +868,7 @@
                     </div>
                 </div>
                 
-                <div class="container clearfix center" id="section-services">
+                <div class="container page-section clearfix center" id="section-services">
                     <div id="portfolio" class="portfolio-nomargin clearfix">
                     	<div class="heading-block center">
                             <h2>Services</h2>

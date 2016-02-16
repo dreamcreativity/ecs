@@ -454,7 +454,7 @@ router.get('/activity/all', function(req,res) {
 		{
 			title : 'Activity',
 			category : 'Management',
-			cur_tap : 'Activity',
+			cur_tap : 'Photo Gallery',
 			cur_selected : 'All'
 		});
 });
@@ -464,7 +464,7 @@ router.get('/activity/create', function(req, res) {
 		{
 			title : 'Create Activity',
 			category : 'Management',
-			cur_tap : 'Activity',
+			cur_tap : 'Photo Gallery',
 			cur_selected : 'Create'
 		});
 });
@@ -474,7 +474,7 @@ router.get('/activity/edit/:id', function(req, res) {
 		{
 			title : 'Edit Activity',
 			category : 'Management',
-			cur_tap : 'Activity',
+			cur_tap : 'Photo Gallery',
 			cur_selected : 'Edit',
 			url_params : req.params
 		});
