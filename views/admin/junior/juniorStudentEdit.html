@@ -154,47 +154,81 @@
 							<div class="row">			
 								<label class="label label-xlg label-pending arrowed-right">Medical Information</label>
 							</div>
+						</div>
+
+						<div class="portlet-body">
 							<div class="row">
 								<div class="col-lg-4 right"><strong>Are you on any medication?</strong></div>
-								<div class="col-lg-1 tcb" >
-									<label>
+								<div class="col-lg-1" >
 										<input type="checkbox" ng-model="student.ismedical">
-									</label>
 								</div>
 								<div class="col-lg-7">{{student.medicalComment}}</div>
 							</div>
 							<div class="space-4"></div>
 							<div class="row">
 								<div class="col-lg-4 right"><strong>Do you have any allergies?</strong></div>
-								<div class="col-lg-1 tcb" >
-									<label>
+								<div class="col-lg-1" >
 										<input type="checkbox" ng-model="student.isallergies">
-									</label>
 								</div>
 								<div class="col-lg-7">{{student.allergiesComment}}</div>
 							</div>
 							<div class="space-4"></div>
 							<div class="row">
 								<div class="col-lg-4 right"><strong>Do you have special dietary needs?</strong></div>
-								<div class="col-lg-1 tcb" >
-									<label>
+								<div class="col-lg-1" >
 										<input type="checkbox" ng-model="student.isdietary">
-									</label>
 								</div>
 								<div class="col-lg-7">{{student.dietaryComment}}</div>
 							</div>
 							<div class="space-4"></div>
 							<div class="row">
 								<div class="col-lg-4 right"><strong>Is there anything else we should know?</strong></div>
-								<div class="col-lg-1 tcb" >
-									<label>
+								<div class="col-lg-1" >
 										<input type="checkbox" ng-model="student.iselse">
-									</label>
 								</div>
 								<div class="col-lg-7">{{student.elseComment}}</div>
 							</div>
 							<div class="space-4"></div>
 						</div>
+
+						<div class="portlet-body">
+							<div class="row">			
+								<label class="label label-xlg label-pending arrowed-right">Agent Information</label>
+							</div>
+						</div>
+
+						<div class="portlet-body">
+							<div class="row">													
+								<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+									<div class="portlet no-border">
+										<div class="portlet-body">
+											
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Agency :</strong></div>
+												<div class="col-lg-2" >{{student.agency}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Agent Name :</strong></div>
+												<div class="col-lg-2" >{{student.agent}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Agent's Phone :</strong></div>
+												<div class="col-lg-2" >{{student.agent_phone}}</div>
+											</div>
+											<div class="space-4"></div>
+											<div class="row">
+												<div class="col-lg-2 right"><strong>Agent'sEmail :</strong></div>
+												<div class="col-lg-2" >{{student.agent_email}}</div>
+											</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						
 
 
 					</div>
@@ -228,7 +262,213 @@
 									<input type="text" class="form-control" name="lastname" ng-model="student.lastname" value="{{student.lastname}}"required>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Cell phone</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="telephone" ng-model="student.telephone" value="{{student.telephone}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Email</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="email" ng-model="student.email" value="{{student.email}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Address</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="address" ng-model="student.address" value="{{student.address}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">City</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="city" ng-model="student.city" value="{{student.city}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Province</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="province" ng-model="student.province" value="{{student.province}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Country</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="country" ng-model="student.country" value="{{student.country}}"required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Post code</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="postcode" ng-model="student.postcode" value="{{student.postcode}}"required>
+								</div>
+							</div>
 
+							<div class="portlet-body">
+								<div class="row">			
+									<label class="label label-xlg label-pending arrowed-right">Emergency Contact Information</label>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Emergency Contact name</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="emergencyContactname" ng-model="student.emergencyContactname" value="{{student.emergencyContactname}}"required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Emergency Phone</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="emergencyPhone" ng-model="student.emergencyPhone" value="{{student.emergencyPhone}}"required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Emergency Contact email</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="emergencyContactemail" ng-model="student.emergencyContactemail" value="{{student.emergencyContactemail}}"required>
+								</div>
+							</div>
+
+							<div class="portlet-body">
+								<div class="row">			
+									<label class="label label-xlg label-pending arrowed-right">Program Information</label>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Summer Kid's Program</label>
+								<div class="col-sm-3">
+									<select name="startdateSummerKidsProgram" class="form-control" ng-model="student.startdateSummerKidsProgram">
+										<option ng-repeat="option in SummerProgramTorontoStartDateList" value="{{option.name}}">{{option.name}}</option>
+									</select>
+								</div>
+								<label class="col-sm-1 control-label">Duration</label>
+								<div class="col-sm-3">
+									<select name="durationSummerKidsProgram" class="form-control" ng-model="student.durationSummerKidsProgram">
+										<option ng-repeat="option in SummerProgramTorontoDurationList" value="{{option.name}}">{{option.name}}</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Summer Teen Program(Toronto)</label>
+								<div class="col-sm-3">
+									<select name="startdateSummerTeensProgramTonronto" class="form-control" ng-model="student.startdateSummerTeensProgramTonronto">
+										<option ng-repeat="option in SummerProgramTorontoStartDateList" value="{{option.name}}">{{option.name}}</option>
+									</select>
+								</div>
+								<label class="col-sm-1 control-label">Duration</label>
+								<div class="col-sm-3">
+									<select name="durationSummerTeensProgram" class="form-control" ng-model="student.durationSummerTeensProgram">
+										<option ng-repeat="option in SummerProgramTorontoDurationList" value="{{option.name}}">{{option.name}}</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Summer Teen Program(Kingston)</label>
+								<div class="col-sm-3">
+									<select name="startdateSummerTeensProgramKingston" class="form-control" ng-model="student.startdateSummerTeensProgramKingston">
+										<option ng-repeat="option in SummerProgramKingstonStartDateList" value="{{option.name}}">{{option.name}}</option>
+									</select>
+								</div>
+								<label class="col-sm-1 control-label">Duration</label>
+								<div class="col-sm-3">
+									<select name="durationSummerTeensProgramKingston" class="form-control" ng-model="student.durationSummerTeensProgramKingston">
+										<option ng-repeat="option in SummerProgramKingstonDurationList" value="{{option.name}}">{{option.name}}</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Year-round programs</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="year_roundPrograms" ng-model="student.year_roundPrograms" placeholder='Dates planning to come / Number of students / Comments'>
+								</div>
+							</div>
+
+							<div class="portlet-body">
+								<div class="row">			
+									<label class="label label-xlg label-pending arrowed-right">Medical Information</label>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Are you on any medication?</label>
+								<div class="col-sm-1">
+									<input type="checkbox" name="ismedical" ng-model="student.ismedical" value="{{student.ismedical}}">
+								</div>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="medicalComment" ng-model="student.medicalComment">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Do you have any allergies?</label>
+								<div class="col-sm-1">
+									<input type="checkbox" name="isallergies" ng-model="student.isallergies" value="{{student.isallergies}}">
+								</div>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="allergiesComment" ng-model="student.allergiesComment">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Do you have special dietary needs?</label>
+								<div class="col-sm-1">
+									<input type="checkbox" name="isdietary" ng-model="student.isdietary" value="{{student.isdietary}}">
+								</div>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="dietaryComment" ng-model="student.dietaryComment">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Is there anything else we should know?</label>
+								<div class="col-sm-1">
+									<input type="checkbox" name="iselse" ng-model="student.iselse" value="{{student.iselse}}">
+								</div>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="elseComment" ng-model="student.elseComment">
+								</div>
+							</div>
+
+							<div class="portlet-body">
+							<div class="row">			
+								<label class="label label-xlg label-pending arrowed-right">Agent Information</label>
+							</div>
+						</div>
+
+						<div class="form-group">
+								<label class="col-sm-3 control-label">Agency</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="agency" ng-model="student.agency" value="{{student.agency}}" >
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Agent's Name</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="agent" ng-model="student.agent" value="{{student.agent}}" >
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Agent's Phone</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="agent_phone" ng-model="student.agent_phone" value="{{student.agent_phone}}" >
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Agent's Email</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" name="agent_email" ng-model="student.agent_email" value="{{student.agent_email}}" >
+								</div>
+							</div>
 
 
 							<div class="form-group">
