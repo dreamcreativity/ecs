@@ -20,6 +20,7 @@ var auth = require('../controllers/auth');
 var SHA256 = require("crypto-js/sha256");
 var emailSender = require('../modules/emailModule');
 var pdf = require('../modules/pdfModule');
+var juniorprogram = require('../controllers/juniorprogram');
 
 
 function IsAuthException(path, method){
@@ -37,14 +38,20 @@ function IsAuthException(path, method){
 		{	path : '/api/pdf', method: 'POST', type: 'direct'},
 		// {	path : '/api/constants', method: 'GET', type: 'contain'},
 		{	path : '/api/courses', method: 'GET', type: 'direct' }, 
+		{	path : '/api/courses-calendar', method: 'GET', type: 'direct' }, 
 		{	path : '/api/courses/startdate/', method: 'GET', type: 'contain' }, 
 		{   path : '/api/infocourses', method: 'GET', type: 'direct' },
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
-		{	path : '/api/registration/sendEmail', method:'POST', type:'direct'},
+		{	path : '/api/student/register', method:'POST', type:'direct'},
+		{	path : '/api/juniorprogram/create', method:'POST', type:'direct'},
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
 		{	path : '/api/constants/Country', method:'GET', type:'contain'},
+		{	path : '/api/constants/SummerProgramTorontoStartDate', method:'GET', type:'contain'},
+		{	path : '/api/constants/SummerProgramTorontoDuration', method:'GET', type:'contain'},
+		{	path : '/api/constants/SummerProgramKingstonStartDate', method:'GET', type:'contain'},
+		{	path : '/api/constants/SummerProgramKingstonDuration', method:'GET', type:'contain'},
 		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'}
@@ -346,6 +353,8 @@ router.put('/courses/:id', course.edit);
 
 router.get('/infocourses', course.getAllSimpleCourses);
 
+router.get('/courses-calendar', course.getCalendarCourses);
+
 router.get('/courses/startdate/:id/:year', course.getCourseStartDate);
 
 //------------------------Duration----------------------------------------
@@ -449,6 +458,19 @@ router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPass
 
 //------------------------Send Email in client site--------------------------------
 router.post('/client/sendEmail', student.client_sendEmail);
+
+
+//------------------------Junior Program ---------------------------------------
+router.post('/juniorprogram/create', juniorprogram.create);
+
+//GET students 
+router.get('/juniorprograms',juniorprogram.getStudents);
+
+//GET a student by ID
+router.get('/juniorprograms/:id', juniorprogram.getStudentbyId);
+
+//PUT : Edit a student info
+router.put('/juniorprograms/:id', juniorprogram.edit);
 
 
 

@@ -102,6 +102,7 @@
 	<script src="/ng/controllers/admin/paymentController.js"></script>
 	<script src="/ng/controllers/admin/onlineTestController.js"></script>
 	<script src="/ng/controllers/admin/dashboardController.js"></script>
+	<script src="/ng/controllers/admin/juniorController.js"></script>
 
 	<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 	<script>
@@ -211,7 +212,7 @@
 								<h4>Management </h4> 								
 							</li>
 							<li class="panel <%if(parms.cur_tap=='Slider'){ %>open<% } %>">
-								{{accountInfo.role}}
+								<!-- {{accountInfo.role}} -->
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#SliderManagement">
 									<i class="fa fa-sliders"></i> Slider <span class="fa arrow"></span>
 								</a>
@@ -283,6 +284,24 @@
 									</ul>					
 							</li>
 
+							<li class="panel <%if(parms.cur_tap=='Junior'){ %>open<% } %>">
+								<a href="/admin/junior-Program/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#JuniorManagement">
+									<i class="fa fa-users"></i> Junior Programs <span class="arrow"></span>
+								</a>
+								<ul class="collapse <%if(parms.cur_tap=='Junior'){ %>in<%}%> nav" id="AgentManagement">
+										<li> 
+											<a href="/admin/junior-Program/create" class="<%if(parms.cur_tap=='Junior' && parms.cur_selected=='Create'){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Create
+											</a>
+										</li>
+										<li>
+											<a href="/admin/junior-Program/all" class="<%if(parms.cur_tap=='Junior' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Edit
+											</a>
+										</li>										
+									</ul>					
+							</li>
+
 							<li class="panel <%if(parms.cur_tap=='Course'){ %>open<% } %>">
 								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#CourseManagement">
 									<i class="fa fa-users"></i> Courses <span class="fa arrow"></span>
@@ -338,18 +357,18 @@
 									</ul>
 							</li>
 
-							<li class="panel <%if(parms.cur_tap=='Activity'){ %>open<% } %>">
+							<li class="panel <%if(parms.cur_tap=='Photo Gallery'){ %>open<% } %>">
 								<a href="/admin/activity/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#ActivityManagement">
-									<i class="fa fa-picture-o"></i> Activity <span class="arrow"></span>
+									<i class="fa fa-picture-o"></i> Photo Gallery <span class="arrow"></span>
 								</a>
-								<ul class="collapse <%if(parms.cur_tap=='Activity'){ %>in<%}%> nav" id="ActivityManagement">
+								<ul class="collapse <%if(parms.cur_tap=='Create'){ %>in<%}%> nav" id="ActivityManagement">
 										<li>
-											<a href="/admin/activity/create" class="<%if(parms.cur_tap=='Activity' && parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/activity/create" class="<%if(parms.cur_tap=='Photo Gallery' && parms.cur_selected=='Create'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/activity/all" class="<%if(parms.cur_tap=='Activity' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+											<a href="/admin/activity/all" class="<%if(parms.cur_tap=='Photo Gallery' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>																	
@@ -441,7 +460,10 @@
 											<a href="/admin">Home</a>
 										</li>
 										<li><%- parms.category %></li>
-										<li class="<%if(parms.cur_tap==''){ %>hide<% } %>"><a href='/admin/<%- parms.cur_tap.toLowerCase() %>/all'><%- parms.cur_tap %></a></li>
+										<li class="<%if(parms.cur_tap==''){ %>hide<% } %>">
+											<!-- <a href='/admin/<%- parms.cur_tap.toLowerCase() %>/all'><%- parms.cur_tap %></a> -->
+											<%- parms.cur_tap %>
+										</li>
 										<li class="active <%if(parms.cur_selected==''){ %>hide<% } %>"><%- parms.cur_selected %></li>
 									</ul>									
 								</div>
