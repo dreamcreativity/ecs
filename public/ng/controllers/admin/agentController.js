@@ -62,7 +62,7 @@ angular.module('AdminApp')
 
 
 
-.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,Constants,$window,$document){
+.controller('AgentDetailCtrl',function AgentDetailCtrl($rootScope,$scope,$http,Agents,Students,StudentByAgent,Meterials, Constants,$window,$document){
 	 var agent_id = url_params.id;
 	 loading(); 
 	 $scope.ph_numbr = /^(\d{3})[- ](\d{3})[- ](\d{4})$/;
@@ -84,6 +84,13 @@ angular.module('AdminApp')
 			 		}
 			 		$scope.regionsList = list;
 			 	});
+
+			 	Meterials.getMaterialByAgentId({id:agent_id},function(result){
+					if(result.status ="ok"){
+						$scope.materials = result.data;
+						console.log($scope.materials );
+					}	
+				});
 	 		}
 	 }
 
