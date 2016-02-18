@@ -45,6 +45,7 @@ function IsAuthException(path, method){
 		{	path : '/api/student/register', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
 		{	path : '/api/juniorprogram/create', method:'POST', type:'direct'},
+		{	path : '/api/juniorprogram/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
 		{	path : '/api/constants/Country', method:'GET', type:'contain'},
@@ -471,6 +472,9 @@ router.get('/juniorprograms/:id', juniorprogram.getStudentbyId);
 
 //PUT : Edit a student info
 router.put('/juniorprograms/:id', juniorprogram.edit);
+
+//Send Email 
+router.post('/juniorprograms/sendEmail', juniorprogram.sendEmail);
 
 
 

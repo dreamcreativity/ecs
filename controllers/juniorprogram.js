@@ -1,4 +1,5 @@
 var JuniorProgram = require('../models/juniorProgram');
+var EmailSender = require('../modules/emailModule');
 var mongoose = require('mongoose');
 
 //POST: create new Junior Program
@@ -78,6 +79,25 @@ exports.edit = function(req,res){
 			});
 		}
 	});
+}
+
+
+exports.sendEmail = function(req,res){
+	// var firstname = req.body.firstName;
+	// var lastname = req.body.lastName;
+	var toEmail = req.body.toemail;
+	EmailSender.getEmailTemplate('juniorProgramRegisterSuccess.html', function(data){
+		var context = "";
+		var to = toEmail;
+		var subject = 'Junior Program register email';
+		var attachment = [];
+		EmailSender.sendEmail(to,subject,context,attachment, function(message){
+			res.json(
+				{
+					returnmessage : message
+				});		
+		});
+	})
 }
 
 

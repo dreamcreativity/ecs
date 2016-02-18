@@ -41,14 +41,18 @@ angular.module('ClientApp')
 		var studentId = null;
 		var studentNumber = null;
 		var agentEmail = null;
+		var email = $scope.email;
 		$http.post('/api/juniorprogram/create',{student:$scope.student})
 		.success(function(data,status,headers,config){
 			if(data.messages == 'successed'){
-				setInterval(function(){
+				$http.post('/api/registration/sendEmail',{toemail:$scope.email})
+				.success(function(data,status,headers,config){
+					setInterval(function(){
 					$window.location='/welcome';
-				}, 2000); 
+						}, 2000); 
+				});
 			}
-		})
+		});
 
 	}
 });
