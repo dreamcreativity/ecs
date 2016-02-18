@@ -86,6 +86,42 @@ exports.getAllSimpleCourses = function (req,res){
 
 }
 
+exports.getCalendarCourses = function (req,res){
+	console.log('in');
+	Course.find({ isActive:true, isShowInCalendar: true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
+		if(err) {
+			console.log(err);
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else{
+
+			console.log(result);
+			async.each(result, function(val, callback) {
+				if(val.type == 'Fixed Period' ){
+					val.durations = [ val.durations[0] ];
+				}
+				
+				callback();
+			}, function(err){
+
+				res.json({
+					status: 'ok',
+					messages: 'successed',
+					data: result
+				});
+			});
+
+
+		}
+	});
+
+}
+
+
 exports.getCourseStartDate = function (req,res){
 
 	var course_id = req.params.id;

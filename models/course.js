@@ -18,6 +18,7 @@ var CourseSchema = new mongoose.Schema({
 	youtube: {type: String, default: ''},
 	startPoint : {type : Date},
 	lastModify : {type : Date},
+	isShowInCalendar : {type : Boolean, default : false },
 	isActive : {type : Boolean, default : true }
 });
 
