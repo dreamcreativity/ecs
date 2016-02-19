@@ -7,42 +7,7 @@
 <link rel="stylesheet" type="text/css" href="http://zabuto.com/dev/calendar/zabuto_calendar.min.css">
 
 
-<script type="application/javascript">
-  $(document).ready(function () {
 
-
-    for (var i = 1; i <= 12; i++) {    
-        $("#month-" + i).zabuto_calendar({
-          cell_border: false,
-          today: true,
-          show_days: false,
-          weekstartson: 0,
-          show_previous: false,
-          show_next: false,
-          month: i,
-        
-          data: [
-            {"date":"2016-01-01","badge":false,"title":"Example 1",classname:"grade-2"},
-            {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
-            
-            {"date":"2016-04-12","badge":false,"title":"Example 2",classname:"purple", "body":"<div>hello<div>",},
-          ]
-          // ,
-          // legend: [
-          //           {type: "text", label: "Special event", badge: "00"},
-          //           {type: "block", label: "Regular event", classname: "purple"},
-          //           {type: "spacer"},
-          //           {type: "text", label: "Bad"},
-          //           {type: "list", list: ["grade-1", "grade-2", "grade-3", "grade-4"]},
-          //           {type: "text", label: "Good"}
-          //         ]
-        });
-    }
-
-
-
-  });
-</script>
 
 <style type="text/css">
     
@@ -71,6 +36,7 @@
 
                 .purple {
                     background-color: purple;
+                    color: white;
                 }
 
                 .dot{

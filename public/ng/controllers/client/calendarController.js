@@ -157,14 +157,18 @@ angular.module('ClientApp')
 			var eventDate = new Date(startDateList[i]);
 			var dateString = eventDate.getFullYear() + '-' + numberFormat(eventDate.getMonth()+1)  + '-' +  numberFormat(eventDate.getDate());
 			// console.log(eventDate );
-			console.log(dateString );
+			//console.log(dateString );
 
-		if( typeof eventDataList[dateString] === 'undefined')
-			eventDataList[dateString] = '';
+			if( typeof eventDataList[dateString] === 'undefined')
+				eventDataList[dateString] = [];
 
-
+			eventDataList[dateString].push(course.title);
 
 		}
+
+		console.log(eventDataList );
+
+		
 	}
 
 
@@ -221,6 +225,33 @@ angular.module('ClientApp')
 		}, function done() {
 			// init calendar object
 
+			    for (var i = 1; i <= 12; i++) {    
+			        $("#month-" + i).zabuto_calendar({
+			          cell_border: false,
+			          today: true,
+			          show_days: false,
+			          weekstartson: 0,
+			          show_previous: false,
+			          show_next: false,
+			          month: i,
+			        
+			          data: [
+			            {"date":"2016-01-01","badge":false,"title":"Example 1",classname:"grade-2"},
+			            {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
+			            
+			            {"date":"2016-04-12","badge":false,"title":"Example 2",classname:"purple",},
+			          ]
+			          // ,
+			          // legend: [
+			          //           {type: "text", label: "Special event", badge: "00"},
+			          //           {type: "block", label: "Regular event", classname: "purple"},
+			          //           {type: "spacer"},
+			          //           {type: "text", label: "Bad"},
+			          //           {type: "list", list: ["grade-1", "grade-2", "grade-3", "grade-4"]},
+			          //           {type: "text", label: "Good"}
+			          //         ]
+			        });
+			    }
 
 
 			// var cal = $( '#calendar' ).calendario( {
