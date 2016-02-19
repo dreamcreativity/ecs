@@ -41,11 +41,11 @@ angular.module('ClientApp')
 		var studentId = null;
 		var studentNumber = null;
 		var agentEmail = null;
-		var email = $scope.email;
+		var email = $scope.student.email;
 		$http.post('/api/juniorprogram/create',{student:$scope.student})
 		.success(function(data,status,headers,config){
 			if(data.messages == 'successed'){
-				$http.post('/api/registration/sendEmail',{toemail:$scope.email})
+				$http.post('/api/juniorprograms/sendEmail',{toemail: email})
 				.success(function(data,status,headers,config){
 					setInterval(function(){
 					$window.location='/welcome';
