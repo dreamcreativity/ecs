@@ -149,6 +149,12 @@ angular.module('ClientApp')
 
     var eventDataList = {};
     
+    var classMapping = {};
+    classMapping['Business Communication'] = 'classOne';
+    classMapping['English for Health Care'] = 'classTwo';
+
+
+
     var insertStartDate = function(startDateList, course, eventDataList){
 
 
@@ -162,11 +168,12 @@ angular.module('ClientApp')
 			if( typeof eventDataList[dateString] === 'undefined')
 				eventDataList[dateString] = [];
 
+			//console.log(course.title);
 			eventDataList[dateString].push(course.title);
 
 		}
 
-		console.log(eventDataList );
+		//console.log(eventDataList );
 
 		
 	}
@@ -238,6 +245,7 @@ angular.module('ClientApp')
 			          data: [
 			            {"date":"2016-01-01","badge":false,"title":"Example 1",classname:"grade-2"},
 			            {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
+			            {"date":"2016-04-11","badge":false,"title":"Example 22",classname:"someclass"},
 			            
 			            {"date":"2016-04-12","badge":false,"title":"Example 2",classname:"purple",},
 			          ]
@@ -252,6 +260,10 @@ angular.module('ClientApp')
 			          //         ]
 			        });
 			    }
+
+
+			    $('.someclass').append( '<div class="cl1"></div>' );
+			    $('.grade-3').append( '<div class="cl2"></div>' );
 
 
 			// var cal = $( '#calendar' ).calendario( {
