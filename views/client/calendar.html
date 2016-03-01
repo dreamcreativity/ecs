@@ -12,69 +12,73 @@
 <style type="text/css">
     
     .calendar-cell{
-        min-height: 350px;
+        min-height: 400px;
     }
 
+    .event-bar{
+        /*background-color: red;*/
+        margin-top: 3px;
+        height: 12px;
+        width: 100%;
+        position: relative;
+    }
     .grade-1 {
-                    background-color: #FA2601;
-                }
+        background-color: #FA2601;
+    }
 
-                .grade-2 {
-                    background-color: #FA8A00;
-                }
+/*    .grade-2 {
+        background-color: #FA8A00;
+    }*/
 
-               /* .grade-3 {
-                    background-color: #FFEB00;
-                     content: <span class="dot"><span>
-                }*/
-               
-                .grade-4 {
-                    background-color: #27AB00;
-                }
+   /* .grade-3 {
+        background-color: #FFEB00;
+         content: <span class="dot"><span>
+    }*/
+   
+    .grade-4 {
+        background-color: #27AB00;
+    }
 
-                .purple {
-                    background-color: purple;
-                    color: white;
-                }
+    .purple {
+        background-color: purple;
+        color: white;
+    }
 
-                .dot{
-                    display: inline-block;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 15px;
-                }
+    .dot{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+    }
 
-                .day{
-                    position: relative;
-                }
-                .cl1{
-                    display: inline-block;
-                    width: 6px;
-                    height: 6px;
-                    /*border-radius: 3px;*/
-                    background-color: red;
-                    /*position: absolute;
-                    bottom: 2px;
-                    left:0;
-                    right:0;
-                    margin-left:auto;
-                    margin-right:auto;*/
+    .day{
+        position: relative;
+    }
 
-                }
-                /*.cl2{
-                    display: inline-block;
-                    width: 6px;
-                    height: 6px;
-                    /*border-radius: 3px;*/
-                    background-color: blue;
-                    position: absolute;
-                    bottom: 2px;
-                    left:0;
-                    right:0;
-                    margin-left:auto;
-                    margin-right:auto;
+    .course-event{
 
-                }*/
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 1px;
+    }
+
+    .course-event.classOne{
+        background-color: red;
+    }
+    .course-event.classTwo{
+        background-color: blue;
+    }
+
+    .course-event.cl1{
+        background-color: red;
+    }
+    .course-event.cl2{
+        background-color: blue;
+    }
+    .course-event.cl3{
+        background-color: #9C9C8E;
+    }
 </style>
 
 
@@ -100,10 +104,10 @@
             <div class="container clearfix">
                 <div class="row">
                
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             fdsf
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <div class="col-md-4 calendar-cell" id="month-1"></div>
                             <div class="col-md-4 calendar-cell" id="month-2"></div>
                             <div class="col-md-4 calendar-cell" id="month-3"></div>

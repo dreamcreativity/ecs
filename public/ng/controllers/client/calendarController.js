@@ -116,27 +116,6 @@ angular.module('ClientApp')
 
 	var eventData = {};
 	
-	// var insertStartDate = function(startDateList, course, eventDataList){
-
-	
-	// 	for( var i in startDateList){
-	// 		var eventDate = new Date(startDateList[i]);
-	// 		var dateString = numberFormat(eventDate.getMonth()+1) + '-' + numberFormat(eventDate.getDate()) + '-' + eventDate.getFullYear();
-	// 		// console.log(eventDate );
-	// 		// console.log(dateString );
-
-
-	// 		if( typeof eventDataList[dateString] === 'undefined')
-	// 			eventDataList[dateString] = '';
-
-	// 		eventDataList[dateString] += '<a>' +  course.title +
-	// 									' - (' + course.durations[0].title + ')'
-	// 									+ '</a>';
-
-
-	// 	}
-	// }
-
 
 
     var numberFormat =  function(num){
@@ -149,6 +128,8 @@ angular.module('ClientApp')
 
     var eventDataList = {};
     
+
+    // course to 
     var classMapping = {};
     classMapping['Business Communication'] = 'classOne';
     classMapping['English for Health Care'] = 'classTwo';
@@ -169,11 +150,11 @@ angular.module('ClientApp')
 				eventDataList[dateString] = [];
 
 			//console.log(course.title);
-			eventDataList[dateString].push(course.title);
+			eventDataList[dateString].push(classMapping[course.title]);
 
 		}
 
-		//console.log(eventDataList );
+		console.log(eventDataList );
 
 		
 	}
@@ -191,9 +172,6 @@ angular.module('ClientApp')
 
 		async.eachSeries($scope.courses, function iterator(course, next) {
 
-
-
-
 			Courses.getCourstStartDateList({id: course._id, year: currentYear},function(result){
 				var startDateList = result.data;
 				console.log(startDateList);
@@ -201,36 +179,35 @@ angular.module('ClientApp')
 				next();
 			});
 
-			// async.series([
-			//     function(nextYear){
-			// 		Courses.getCourstStartDateList({id: course._id, year: currentYear},function(result){
-			// 			var startDateList = result.data;
-			// 			insertStartDate(startDateList, course,eventData);
-			// 			nextYear();
-			// 		});
-			//     },
-			//     function(nextYear){
-			// 		Courses.getCourstStartDateList({id: course._id, year: currentYear+1},function(result){
-			// 			var startDateList = result.data;
-			// 			insertStartDate(startDateList, course,eventData);
-			// 			nextYear();
-			// 		});
-			//     },
-			//     function(nextYear){
-			// 		Courses.getCourstStartDateList({id: course._id, year: currentYear+2},function(result){
-			// 			var startDateList = result.data;
-			// 			insertStartDate(startDateList, course,eventData);
-			// 			nextYear();
-			// 		});
-			//     },
 
-			// ], function(){
-			// 	next();
-			// });
 
 
 		}, function done() {
 			// init calendar object
+
+				var calendarData = [];
+
+
+				angular.forEach(eventData, function(value, key) {
+
+					console.log(key + ': ' + value);
+
+					angular.forEach(value, function(val, k) {
+						console.log(key + ': ' + value);
+
+						
+						calendarData.push({
+							date: key,
+							badge: false,
+							title : '',
+							classname: val
+						});
+					});
+
+				
+				});
+
+				console.log(calendarData);
 
 			    for (var i = 1; i <= 12; i++) {    
 			        $("#month-" + i).zabuto_calendar({
@@ -241,30 +218,25 @@ angular.module('ClientApp')
 			          show_previous: false,
 			          show_next: false,
 			          month: i,
-			        
-			          data: [
-			            {"date":"2016-01-01","badge":false,"title":"Example 1",classname:"grade-2"},
-			            {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
-			            {"date":"2016-04-11","badge":false,"title":"Example 22",classname:"someclass"},
-			            
-			            {"date":"2016-04-12","badge":false,"title":"Example 2",classname:"purple",},
-			          ]
-			          // ,
-			          // legend: [
-			          //           {type: "text", label: "Special event", badge: "00"},
-			          //           {type: "block", label: "Regular event", classname: "purple"},
-			          //           {type: "spacer"},
-			          //           {type: "text", label: "Bad"},
-			          //           {type: "list", list: ["grade-1", "grade-2", "grade-3", "grade-4"]},
-			          //           {type: "text", label: "Good"}
-			          //         ]
+			          data: calendarData
+			          // data: [
+			          //   {"date":"2016-04-11","badge":false,"title":"Example 1",classname:"grade-2"},
+			          //   {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
+			          //   {"date":"2016-04-11","badge":false,"title":"Example 22",classname:"someclass"},
+			          // ]
+
 			        });
 			    }
 
+			    $('.day').append( '<div class="event-bar"></div>' );
 
-			    $('.someclass').append( '<div class="cl1"></div>' );
-			    $('.grade-3').append( '<div class="cl2"></div>' );
 
+			    $('.classOne .event-bar').append( '<div class="course-event cl1"></div>' );
+			    $('.classTwo .event-bar').append( '<div class="course-event cl2"></div>' );
+
+			    // $('.someclass .event-bar').append( '<div class="course-event cl1"></div>' );
+			    // $('.grade-2 .event-bar').append( '<div class="course-event cl2"></div>' );
+			    // $('.grade-3 .event-bar').append( '<div class="course-event cl3"></div>' );
 
 			// var cal = $( '#calendar' ).calendario( {
 			//         onDayClick : function( $el, $contentEl, dateProperties ) {
