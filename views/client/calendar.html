@@ -79,6 +79,12 @@
     .course-event.cl3{
         background-color: #9C9C8E;
     }
+
+    <% for(var i=0; i < courses.length; i++) {%>
+    .<%= courses[i].title.replace(' ','_') %>{
+        
+    }
+    <% } %>
 </style>
 
 
@@ -105,7 +111,7 @@
                 <div class="row">
                
                         <div class="col-md-2">
-                            fdsf
+
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-4 calendar-cell" id="month-1"></div>

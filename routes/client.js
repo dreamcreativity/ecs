@@ -278,7 +278,14 @@ router.get('/campus-pictures', function(req, res){
 
 router.get('/calendar', function(req, res){
 
-	template(req,res,'client_normal','client/calendar.html',{});
+	Course.find({isShowInCalendar: true}, function(err,result){
+
+		console.log(result);
+		template(req,res,'client_normal','client/calendar.html',{ courses: result} );
+	});
+
+
+	
 	
 
 	//template(req,res,'client_normal','client/activity.html',{});

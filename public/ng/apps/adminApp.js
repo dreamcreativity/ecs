@@ -13,6 +13,7 @@ angular.module(
 		'esc.mediaSelector',
 		'ui.bootstrap',
 		'ngAnimate',
-		'angular-loading-bar'		
+		'angular-loading-bar',
+		// 'color.picker'		
 	]
 );
