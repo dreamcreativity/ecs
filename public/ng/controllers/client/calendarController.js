@@ -150,7 +150,7 @@ angular.module('ClientApp')
 				eventDataList[dateString] = [];
 
 			//console.log(course.title);
-			eventDataList[dateString].push(classMapping[course.title]);
+			eventDataList[dateString].push(course.title.replace(/ /g, '_'));
 
 		}
 
@@ -231,12 +231,17 @@ angular.module('ClientApp')
 			    $('.day').append( '<div class="event-bar"></div>' );
 
 
-			    $('.classOne .event-bar').append( '<div class="course-event cl1"></div>' );
-			    $('.classTwo .event-bar').append( '<div class="course-event cl2"></div>' );
+			    angular.forEach($scope.courses, function(course, key) {
 
-			    // $('.someclass .event-bar').append( '<div class="course-event cl1"></div>' );
-			    // $('.grade-2 .event-bar').append( '<div class="course-event cl2"></div>' );
-			    // $('.grade-3 .event-bar').append( '<div class="course-event cl3"></div>' );
+					var courseClassName = course.title.replace(/ /g, '_');
+					$('.' + courseClassName + ' .event-bar').append( '<div class="course-event ' + courseClassName + '"></div>' );
+				});
+
+
+			    // $('.classOne .event-bar').append( '<div class="course-event cl1"></div>' );
+			    // $('.classTwo .event-bar').append( '<div class="course-event cl2"></div>' );
+
+
 
 
 

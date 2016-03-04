@@ -63,7 +63,7 @@
         margin-right: 1px;
     }
 
-    .course-event.classOne{
+    /*.course-event.classOne{
         background-color: red;
     }
     .course-event.classTwo{
@@ -78,11 +78,11 @@
     }
     .course-event.cl3{
         background-color: #9C9C8E;
-    }
+    }*/
 
     <% for(var i=0; i < courses.length; i++) {%>
-    .<%= courses[i].title.replace(' ','_') %>{
-        
+    .course-event.<%= courses[i].title.replace(/ /g, '_') %>{
+        background-color: <%= courses[i].calendarColor %>;
     }
     <% } %>
 </style>
@@ -111,7 +111,9 @@
                 <div class="row">
                
                         <div class="col-md-2">
-
+                            <% for(var i=0; i < courses.length; i++) {%>
+                                <div style="background-color: <%= courses[i].calendarColor %>" class="course-color-box"><%= courses[i].title %></div>
+                            <% } %>
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-4 calendar-cell" id="month-1"></div>
