@@ -1,6 +1,7 @@
 var TestQuestion = require('../models/testQuestion');
 var TestRecord = require('../models/testRecord');
 var mongoose = require('mongoose');
+var EmailSender = require('../modules/emailModule');
 var async = require("async");
 
 
@@ -269,9 +270,42 @@ exports.getRecord= function(req,res){
 
 	});
 
-	
-	
 }
+
+exports.sendEmail = function(req,res){
+	var student_email = req.body.email;
+	var test_result =req.body.test_result;
+
+	if(!test_result){
+	EmailSender.getEmailTemplate('onlineTestFail.html', function(data){
+		var context = data;
+		var to = student_email;
+		var subject = 'Online Test Time out';
+		var attachment = [];
+		EmailSender.sendEmail(to,subject,context,attachment,function(message){
+			res.json({
+				returnmessage : message
+			});
+		});
+	})
+	}
+	else {
+		EmailSender.getEmailTemplate('onlineTestSuccess.html', function(data){
+		var context = data;
+		var to = student_email;
+		var subject = 'Online Test Finish';
+		var attachment = [];
+		EmailSender.sendEmail(to,subject,context,attachment,function(message){
+			res.json({
+				returnmessage : message
+			});
+		});
+	})
+	}
+
+}
+
+
 
 
 

@@ -45,6 +45,7 @@ function IsAuthException(path, method){
 		{	path : '/api/student/register', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
 		{	path : '/api/juniorprogram/create', method:'POST', type:'direct'},
+		{	path : '/api/juniorprograms/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/agent/token/56219b80aeb7ca651025961a', method:'POST', type:'contain'},
 		{	path : '/api/constants/Country', method:'GET', type:'contain'},
@@ -54,7 +55,8 @@ function IsAuthException(path, method){
 		{	path : '/api/constants/SummerProgramKingstonDuration', method:'GET', type:'contain'},
 		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'},
-		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'}
+		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'},
+		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'}
 
 	];
 	
@@ -436,6 +438,8 @@ router.post('/onlineTest/submitTestRecord', onlineTest.createTestRecord);
 router.get('/onlineTest/records', onlineTest.getAllRecords);
 router.get('/onlineTest/record/:id', onlineTest.getRecord);
 
+router.post('/onlineTest/sendEmail',onlineTest.sendEmail);
+
 //-------------------------- Constants ---------------------------------------
  router.get('/constants/:name', constants.get);
 
@@ -471,6 +475,9 @@ router.get('/juniorprograms/:id', juniorprogram.getStudentbyId);
 
 //PUT : Edit a student info
 router.put('/juniorprograms/:id', juniorprogram.edit);
+
+//Send Email 
+router.post('/juniorprograms/sendEmail', juniorprogram.sendEmail);
 
 
 

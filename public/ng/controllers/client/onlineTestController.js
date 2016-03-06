@@ -1,6 +1,6 @@
 'use strict';
 angular.module('ClientApp')
-.controller('OnlineTestCtrl',function RegisterCtrl($rootScope,$scope,$interval,Constants,OnlineTest,$window){
+.controller('OnlineTestCtrl',function RegisterCtrl($rootScope,$scope,$http,$interval,Constants,OnlineTest,$window){
 	
 	$scope.firstName = '';
 	$scope.lastName = '';
@@ -18,8 +18,8 @@ angular.module('ClientApp')
 
 
 	// time limit for test
-	var timeLimit = 60 * 30;
-	//var timeLimit = 10;
+	//var timeLimit = 60 * 30;
+	var timeLimit = 10;
 	$scope.time = timeLimit;
 
 	Constants.get({name: 'Country'}, function(result){
@@ -59,6 +59,12 @@ angular.module('ClientApp')
 				$interval.cancel($scope.stopTime);
 				$scope.timeout = true;
 				// do some handling when times up
+				$http.post('/api/onlineTest/sendEmail',{test_result: false,email:$scope.email})
+						.success(function(data,status,headers,config){
+							setInterval(function(){
+									$window.location='/onlineTest';
+								}, 2000); 
+						})
 
 			}
 		}, 1000);
@@ -122,6 +128,12 @@ angular.module('ClientApp')
 			// submit the test and store as a record
 			OnlineTest.createTestRecord({testRecord:newRecord}, function(result){
 				$scope.submited = true;	
+				$http.post('/api/onlineTest/sendEmail',{test_result: true, email:$scope.email})
+						.success(function(data,status,headers,config){
+							setInterval(function(){
+									$window.location='/onlineTest';
+								}, 2000); 
+						})
 			});
 
 		});

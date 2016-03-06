@@ -19,6 +19,7 @@ var CourseSchema = new mongoose.Schema({
 	startPoint : {type : Date},
 	lastModify : {type : Date},
 	isShowInCalendar : {type : Boolean, default : false },
+	calendarColor : {type: String, default: '#eeeeee'},
 	isActive : {type : Boolean, default : true }
 });
 

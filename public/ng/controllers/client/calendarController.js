@@ -116,27 +116,6 @@ angular.module('ClientApp')
 
 	var eventData = {};
 	
-	// var insertStartDate = function(startDateList, course, eventDataList){
-
-	
-	// 	for( var i in startDateList){
-	// 		var eventDate = new Date(startDateList[i]);
-	// 		var dateString = numberFormat(eventDate.getMonth()+1) + '-' + numberFormat(eventDate.getDate()) + '-' + eventDate.getFullYear();
-	// 		// console.log(eventDate );
-	// 		// console.log(dateString );
-
-
-	// 		if( typeof eventDataList[dateString] === 'undefined')
-	// 			eventDataList[dateString] = '';
-
-	// 		eventDataList[dateString] += '<a>' +  course.title +
-	// 									' - (' + course.durations[0].title + ')'
-	// 									+ '</a>';
-
-
-	// 	}
-	// }
-
 
 
     var numberFormat =  function(num){
@@ -149,6 +128,14 @@ angular.module('ClientApp')
 
     var eventDataList = {};
     
+
+    // course to 
+    var classMapping = {};
+    classMapping['Business Communication'] = 'classOne';
+    classMapping['English for Health Care'] = 'classTwo';
+
+
+
     var insertStartDate = function(startDateList, course, eventDataList){
 
 
@@ -157,14 +144,19 @@ angular.module('ClientApp')
 			var eventDate = new Date(startDateList[i]);
 			var dateString = eventDate.getFullYear() + '-' + numberFormat(eventDate.getMonth()+1)  + '-' +  numberFormat(eventDate.getDate());
 			// console.log(eventDate );
-			console.log(dateString );
+			//console.log(dateString );
 
-		if( typeof eventDataList[dateString] === 'undefined')
-			eventDataList[dateString] = '';
+			if( typeof eventDataList[dateString] === 'undefined')
+				eventDataList[dateString] = [];
 
-
+			//console.log(course.title);
+			eventDataList[dateString].push(course.title.replace(/ /g, '_'));
 
 		}
+
+		console.log(eventDataList );
+
+		
 	}
 
 
@@ -180,9 +172,6 @@ angular.module('ClientApp')
 
 		async.eachSeries($scope.courses, function iterator(course, next) {
 
-
-
-
 			Courses.getCourstStartDateList({id: course._id, year: currentYear},function(result){
 				var startDateList = result.data;
 				console.log(startDateList);
@@ -190,68 +179,71 @@ angular.module('ClientApp')
 				next();
 			});
 
-			// async.series([
-			//     function(nextYear){
-			// 		Courses.getCourstStartDateList({id: course._id, year: currentYear},function(result){
-			// 			var startDateList = result.data;
-			// 			insertStartDate(startDateList, course,eventData);
-			// 			nextYear();
-			// 		});
-			//     },
-			//     function(nextYear){
-			// 		Courses.getCourstStartDateList({id: course._id, year: currentYear+1},function(result){
-			// 			var startDateList = result.data;
-			// 			insertStartDate(startDateList, course,eventData);
-			// 			nextYear();
-			// 		});
-			//     },
-			//     function(nextYear){
-			// 		Courses.getCourstStartDateList({id: course._id, year: currentYear+2},function(result){
-			// 			var startDateList = result.data;
-			// 			insertStartDate(startDateList, course,eventData);
-			// 			nextYear();
-			// 		});
-			//     },
 
-			// ], function(){
-			// 	next();
-			// });
 
 
 		}, function done() {
 			// init calendar object
 
+				var calendarData = [];
 
 
-			// var cal = $( '#calendar' ).calendario( {
-			//         onDayClick : function( $el, $contentEl, dateProperties ) {
+				angular.forEach(eventData, function(value, key) {
 
-			//             for( var key in dateProperties ) {
-			//                 console.log( key + ' = ' + dateProperties[ key ] );
-			//             }
+					console.log(key + ': ' + value);
 
-			//         },
-			//         	caldata : eventData
-			//         } ),
-			//         $month = $( '#calendar-month' ).html( cal.getMonthName() ),
-			//         $year = $( '#calendar-year' ).html( cal.getYear() 
-			//     );
+					angular.forEach(value, function(val, k) {
+						console.log(key + ': ' + value);
 
-			// $( '#calendar-next' ).on( 'click', function() {
-			//     cal.gotoNextMonth( updateMonthYear );
-			// } );
-			// $( '#calendar-prev' ).on( 'click', function() {
-			//     cal.gotoPreviousMonth( updateMonthYear );
-			// } );
-			// $( '#calendar-current' ).on( 'click', function() {
-			//     cal.gotoNow( updateMonthYear );
-			// } );
+						
+						calendarData.push({
+							date: key,
+							badge: false,
+							title : '',
+							classname: val
+						});
+					});
 
-			// function updateMonthYear() {
-		 //        $month.html( cal.getMonthName() );
-		 //        $year.html( cal.getYear() );
+				
+				});
 
-		 //    }
+				console.log(calendarData);
+
+			    for (var i = 1; i <= 12; i++) {    
+			        $("#month-" + i).zabuto_calendar({
+			          cell_border: false,
+			          today: true,
+			          show_days: false,
+			          weekstartson: 0,
+			          show_previous: false,
+			          show_next: false,
+			          month: i,
+			          data: calendarData
+			          // data: [
+			          //   {"date":"2016-04-11","badge":false,"title":"Example 1",classname:"grade-2"},
+			          //   {"date":"2016-04-11","badge":false,"title":"Example 2",classname:"grade-3"},
+			          //   {"date":"2016-04-11","badge":false,"title":"Example 22",classname:"someclass"},
+			          // ]
+
+			        });
+			    }
+
+			    $('.day').append( '<div class="event-bar"></div>' );
+
+
+			    angular.forEach($scope.courses, function(course, key) {
+
+					var courseClassName = course.title.replace(/ /g, '_');
+					$('.' + courseClassName + ' .event-bar').append( '<div class="course-event ' + courseClassName + '"></div>' );
+				});
+
+
+			    // $('.classOne .event-bar').append( '<div class="course-event cl1"></div>' );
+			    // $('.classTwo .event-bar').append( '<div class="course-event cl2"></div>' );
+
+
+
+
 
 		});
 

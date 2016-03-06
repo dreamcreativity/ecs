@@ -309,6 +309,17 @@
 		width: 200px!important;
 	}
 	/*------- overwirte calendar sytling ----------*/
+
+
+	.course-color-box{
+		/*border: 1px solid #eee;*/
+		padding: 8px;
+		font-size: 10px;
+		margin: 5px 0;
+		color: #fff;
+		font-weight: bold;
+	}
+
 	#school-calendar .fc-calendar .fc-body {
 		height: 1800px;
 	}
