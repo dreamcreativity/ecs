@@ -94,6 +94,7 @@
 					<div class="col-sm-7 row">
 						<div class="bootstrap-duallistbox-container row moveonselect"> 
 							<div class="box1 col-md-6">   
+								<h5>Assigned</h5>
 								<label for="bootstrap-duallistbox-nonselected-list_duallistbox_demo1[]" style="display: none;"></label>   
 								<span class="info-container">     
 									<!-- <span class="info">Showing all 9</span>    
@@ -113,7 +114,8 @@
 										<option value="{{agent._id}}" ng-repeat="agent in selectedAgents" ng-click="removeAgentPremission(agent)">{{agent.firstname + ' ' + agent.lastname}}</option>
 									</select> 
 								</div> 
-								<div class="box2 col-md-6">   
+								<div class="box2 col-md-6">  
+									<h5>Unassigned</h5> 
 									<label for="bootstrap-duallistbox-selected-list_duallistbox_demo1[]" style="display: none;"></label>   
 									<!-- <span class="info-container">     
 										<span class="info">Showing all 1</span>     
