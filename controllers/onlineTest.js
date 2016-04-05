@@ -290,8 +290,12 @@ exports.sendEmail = function(req,res){
 	})
 	}
 	else {
+
+	for (var key in constant.OnlineTestResult) {
+			constant.OnlineTestResult[key] = result_obj[key];
+		};
 		EmailSender.getEmailTemplate('onlineTestSuccess.html', function(data){
-		var context = data;
+		var context = EmailSender.replaceEmailTemplate(data, constant.OnlineTestResult);
 		var to = student_email;
 		var subject = 'Online Test Finish';
 		var attachment = [];

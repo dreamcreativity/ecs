@@ -19,7 +19,7 @@ angular.module('ClientApp')
 
 	// time limit for test
 	//var timeLimit = 60 * 30;
-	var timeLimit = 10;
+	var timeLimit = 60;
 	$scope.time = timeLimit;
 
 	Constants.get({name: 'Country'}, function(result){
