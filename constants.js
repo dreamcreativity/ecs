@@ -207,6 +207,15 @@ module.exports = {
 		message : null
 	},
 
+	OnlineTestResult :{
+		firstName : null,
+		lastName : null,
+		country : null,
+		email : null,
+		created : null,
+		rate : null
+	},
+
 	SummerProgramTorontoStartDate : [
 		"June 18 2015 (Overnight)",
 		"June 19 2015 (Overnight)",

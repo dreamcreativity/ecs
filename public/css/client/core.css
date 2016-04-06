@@ -609,3 +609,122 @@ body:not(.device-touch) #section-services,body:not(.device-touch) #section-junio
 
 #section-services .portfolio-item .portfolio-image img,#section-junior .portfolio-item .portfolio-image img{height:auto}
 #section-junior .portfolio-item .portfolio-desc span{height:3em!important;white-space:normal!important}
+
+
+
+.clearFixed{
+	clear: both;
+}
+
+.hiddenRow{
+	clear: both;
+	margin-bottom: 43px;
+}
+
+#class-chart .emptyRow{
+	clear: both;
+	height: 38px;
+	/*background-color: gray;*/
+}
+#class-chart .cell{
+	padding: 0 2px;
+}
+
+#class-chart .cell.ten{
+	width: 10%;
+	display: inline-block;
+	float: left;
+}
+
+
+
+#class-chart .cell .header{
+	background-color: #95b4d8;
+	color: #000;
+	border: 1px solid #000;
+    padding: 5px 3px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#class-chart .cell .header.sub{
+	background-color: #d3e0ee;
+}
+
+#class-chart .cell .normal{
+	background-color: #fff;
+	color: #000;
+	border: 1px solid #000;
+    padding: 5px 3px;
+    margin-top: 5px;
+}
+
+
+
+#class-chart .cell .white-bg{
+	background-color: #fff;
+
+}
+
+#class-chart .cell .gary-bg{
+	background-color: #d3e0ee;
+
+}
+
+#class-chart .cell .cap{
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

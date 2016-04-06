@@ -3,6 +3,7 @@ var TestRecord = require('../models/testRecord');
 var mongoose = require('mongoose');
 var EmailSender = require('../modules/emailModule');
 var async = require("async");
+var constants = require('../constants.js');
 
 
 exports.getNew = function(req,res){
@@ -87,7 +88,7 @@ exports.get= function(req,res){
 exports.getTestQuestions= function(req,res){
 
 	TestQuestion.findRandom().limit(4).exec(function (err, result) {
-	  
+
 
 		if(err){
 			res.json({
@@ -187,8 +188,8 @@ exports.createTestRecord = function(req,res){
 	for (var i = 0; i < newTestRecord.questions.length; i++) {
 
 
-	  	var question = newTestRecord.questions[i];
-	  	console.log(question);
+		var question = newTestRecord.questions[i];
+		console.log(question);
 		if(question.answer == question.correctAnswer)
 			correctCount++;
 	}
@@ -275,32 +276,60 @@ exports.getRecord= function(req,res){
 exports.sendEmail = function(req,res){
 	var student_email = req.body.email;
 	var test_result =req.body.test_result;
+	var result_obj = req.body.result_obj;
 
 	if(!test_result){
-	EmailSender.getEmailTemplate('onlineTestFail.html', function(data){
-		var context = data;
-		var to = student_email;
-		var subject = 'Online Test Time out';
-		var attachment = [];
-		EmailSender.sendEmail(to,subject,context,attachment,function(message){
-			res.json({
-				returnmessage : message
+		EmailSender.getEmailTemplate('onlineTestFail.html', function(data){
+			var context = data;
+			var to = student_email;
+			var subject = 'Online Test Time out';
+			var attachment = [];
+			EmailSender.sendEmail(to,subject,context,attachment,function(message){
+				res.json({
+					returnmessage : message
+				});
 			});
-		});
-	})
+		})
 	}
 	else {
-		EmailSender.getEmailTemplate('onlineTestSuccess.html', function(data){
-		var context = data;
-		var to = student_email;
-		var subject = 'Online Test Finish';
-		var attachment = [];
-		EmailSender.sendEmail(to,subject,context,attachment,function(message){
-			res.json({
-				returnmessage : message
+
+		for (var key in constants.OnlineTestResult) {
+			constants.OnlineTestResult[key] = result_obj[key];
+		};
+		async.waterfall([
+		function(callback){
+			EmailSender.getEmailTemplate('onlineTestSuccess.html', function(data){
+			var context = EmailSender.replaceEmailTemplate(data, constants.OnlineTestResult);
+			var to = student_email;
+			var subject = 'Online Test Finish';
+			var attachment = [];
+			EmailSender.sendEmail(to,subject,context,attachment,function(message){
+				res.json({
+					returnmessage : message
+				});
 			});
 		});
-	})
+		},
+		function(callback){
+			EmailSender.getEmailTemplate('onlineTestNotifyStaff.html', function(data){
+			var context = EmailSender.replaceEmailTemplate(data, constants.OnlineTestResult);
+			var to = student_email;
+			var subject = 'Online Test Finish';
+			var attachment = [];
+			EmailSender.sendEmail(to,subject,context,attachment,function(message){
+				res.json({
+					returnmessage : message
+				});
+			});
+		});
+		}],function(err, result){
+			if(!err){
+				res.json(
+	 			{
+	 				returnmessage : message
+	 			});		
+			}
+		});
 	}
 
 }
