@@ -208,11 +208,12 @@ module.exports = {
 	},
 
 	OnlineTestResult :{
-		customerName : null,
+		firstName : null,
+		lastName : null,
 		country : null,
 		email : null,
-		date : null,
-		score : null
+		created : null,
+		rate : null
 	},
 
 	SummerProgramTorontoStartDate : [

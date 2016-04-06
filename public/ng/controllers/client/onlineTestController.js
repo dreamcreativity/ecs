@@ -128,7 +128,7 @@ angular.module('ClientApp')
 			// submit the test and store as a record
 			OnlineTest.createTestRecord({testRecord:newRecord}, function(result){
 				$scope.submited = true;	
-				$http.post('/api/onlineTest/sendEmail',{test_result: true, email:$scope.email})
+				$http.post('/api/onlineTest/sendEmail',{result_obj:result.data, test_result: true, email:$scope.email})
 						.success(function(data,status,headers,config){
 							setInterval(function(){
 									$window.location='/onlineTest';
