@@ -17,9 +17,11 @@ angular.module('ClientApp')
 	$scope.index = 1;
 
 
+
+
 	// time limit for test
-	//var timeLimit = 60 * 30;
-	var timeLimit = 60;
+	var timeLimit = 60 * 30;
+	// var timeLimit = 60;
 	$scope.time = timeLimit;
 
 	Constants.get({name: 'Country'}, function(result){
@@ -67,6 +69,8 @@ angular.module('ClientApp')
 						})
 
 			}
+
+			//console.log($scope.time);
 		}, 1000);
 	}
 
@@ -93,6 +97,7 @@ angular.module('ClientApp')
 	};
 
 	$scope.testFinish = function(){
+		$interval.cancel($scope.stopTime);
 		$scope.done = true;
 	};
 

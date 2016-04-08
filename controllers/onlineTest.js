@@ -87,7 +87,7 @@ exports.get= function(req,res){
 
 exports.getTestQuestions= function(req,res){
 
-	TestQuestion.findRandom().limit(4).exec(function (err, result) {
+	TestQuestion.findRandom().limit(50).exec(function (err, result) {
 
 
 		if(err){
@@ -178,6 +178,12 @@ exports.create = function(req,res){
 }
 
 
+var  enhanceString = function(str){
+	var result =  str.replace( /\s\s+/g, ' ' );
+	result = result.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+	return result.toLowerCase();
+}
+
 exports.createTestRecord = function(req,res){
 
 	var newTestRecord= new TestRecord(req.body.testRecord);
@@ -187,9 +193,11 @@ exports.createTestRecord = function(req,res){
 	var correctCount = 0;
 	for (var i = 0; i < newTestRecord.questions.length; i++) {
 
+		newTestRecord.questions[i].answer = enhanceString(newTestRecord.questions[i].answer);
+		newTestRecord.questions[i].correctAnswer = enhanceString(newTestRecord.questions[i].correctAnswer);
 
 		var question = newTestRecord.questions[i];
-		console.log(question);
+
 		if(question.answer == question.correctAnswer)
 			correctCount++;
 	}
