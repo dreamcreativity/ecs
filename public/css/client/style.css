@@ -3085,6 +3085,7 @@ body.stretched .container-fullwidth .breadcrumb { right: 60px !important; }
 #page-title.page-title-right .breadcrumb {
 	left: 15px !important;
 	right: auto !important;
+	
 }
 
 /* Page Title - Center Aligned

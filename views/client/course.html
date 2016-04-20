@@ -1,11 +1,11 @@
 
-<section id="page-title">
+<section id="page-title" class="page-title-mini page-title-right">
 
     <div class="container clearfix">
-        <h1><%- course.title %></h1>
+        <!-- <h1><%- course.title %></h1> -->
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a href="/#events">Courses</a></li>
+            <li><a href="/#section-programs">Courses</a></li>
            
         </ol>
     </div>
@@ -13,9 +13,17 @@
 </section>
 
 <section >
+
+
 	<div class='program-banner hidden-sm hidden-xs' style="background-image:url(<%- course.banner.path %>)">
     </div>
-    
+
+
+    <div class="heading-block center bottommargin-lg" style="margin-top: 50px;margin-bottom: 0px!important">
+        <h2></h2>
+        <span><%- course.title %></span>
+    </div>
+
 	<div class="content-wrap">
 		 <section id="section-course" class="page-section">
 		 	<div class="container clearfix">
@@ -34,8 +42,6 @@
                                 <% } %>
                             </ul>
                         </div>
-
-
                         <!-- youtube video -->
                         <% if(course.youtube != '' ){ %>
                         <div class="video">
