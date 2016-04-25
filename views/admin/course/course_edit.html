@@ -155,6 +155,8 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Cover Image</label>
 									<div class="col-sm-6">
+
+
 										<div ng-click="changeCover()" ng-if="course.cover == null" class="cover-empty"><label>200 X 100</label></div>
 
 										<img class="preview-media"  ng-click="changeCover()"  ng-if="course.cover != null" src="{{course.cover.thumbnail}}">
@@ -228,13 +230,17 @@
 											<label>
 												<input type="checkbox" ng-model="course.isShowInCalendar" class="tc">
 												<span class="labels">Show In Calendar</span>
-
-
-												
 											</label>
+											<br>
+											Background Color: 
 											<input type="color" ng-model="course.calendarColor" style="height: 50px; width: 50px; margin-left: 30px;" >
+
+											Font Color: 
+											<input type="color" ng-model="course.calendarFontColor" style="height: 50px; width: 50px; margin-left: 30px;" >
 										</div>
 									</div>
+
+
 								</div>
 
 
@@ -394,7 +400,7 @@
     <script type="text/ng-template" id="EditLinkModalContent.html">
         <div class="modal-header">
             <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Edit Link Inof</h4>
+	        <h4 class="modal-title" id="myModalLabel">Edit Link Info</h4>
         </div>
         <div class="modal-body">
             <div class="form-horizontal">
