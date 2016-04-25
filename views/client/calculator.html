@@ -20,10 +20,14 @@
                 	<div class="heading-block center bottommargin-lg">
                         <h2>Fee Calculator</h2>
                     </div>
+
+                     <h4>Add Course</h4>
+
+
                     <div class="col-md-8 calculator-edit-seacsion" >
                         
                         <!-- add course -->
-                        <h4>Add Course</h4>
+                       
     
     
                         <div class="course-seaction"  ng-repeat="c in courseList">
@@ -62,7 +66,7 @@
                                     <div class="col-md-4 nopadding">
             
                                         <div class="styling-dropdown  col-md-4">
-                                            2015
+                                            {{ c.startDate | date:'yyyy' }}
                                             <div class="right-arrow"><i class="icon-download2"></i></div>
                                             <div class="select-list hidden">
                                                 <div class="list-item" ng-repeat="y in availableYears" ng-click="changeStartYear(c,y)" >{{ y }}</div>
@@ -114,7 +118,7 @@
                     </div>
     
                     <div class="col-md-4">
-                        <h4><label>Currency</label></h4>
+                        <!-- <h4><label>Currency</label></h4>
                         <div class="styling-dropdown">
                             {{selectedCurrency.description}}
                             <div class="right-arrow"><i class="icon-download2"></i></div>
@@ -123,8 +127,7 @@
                                 <div  class="list-item" ng-click="changeCurrency(currency)" ng-repeat="currency in currencyList">{{currency.description}}</div>
                         
                             </div>	
-                        </div>
-    
+                        </div> -->
     
                         <div class="selected-course-display-seaction" ng-repeat="course in displayCourses">
                             <div class="title" >{{course.title}}</div>
