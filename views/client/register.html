@@ -84,10 +84,11 @@
 	<div class="container clearfix">
 		<div class="row clearfix" >
 			<form name="registerForm" class="form-horizontal" ng-controller='RegisterCtrl' role="form" ng-submit="register(registerForm.$valid)" novalidate>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">First Name </label>
 					<div class="col-sm-4  " ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
-						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
+						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" 
+						required>
 						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
 					</div>
 					<label class="col-sm-2 control-label">Last Name </label>
@@ -98,7 +99,7 @@
 				</div>
 
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Gender </label>
 					<div class="col-sm-4">
 						<select class="form-control" name="gender" ng-model="student.gender" ng-init="student.gender = 'Male'">
@@ -116,7 +117,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Birth Date</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
 						<input type='date' class="form-control" name="birthday" ng-model="student.birthday" placeholder='eg. 1987-01-01' required>
@@ -130,7 +131,7 @@
 					</div>
 
 				</div>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Citizenship</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
 						<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
@@ -138,7 +139,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Address</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
@@ -146,7 +147,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">City</label>
 					<div class="col-sm-4" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
 						<input type="text" class="form-control" name="city" ng-model="student.city" required>
@@ -158,7 +159,7 @@
 						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">post code is required</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2  control-label">Province</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
@@ -170,7 +171,7 @@
 						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group required">
 						<label class="col-sm-2 control-label">Telephone</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
 							<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
@@ -183,18 +184,20 @@
 						</div>
 					</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 						<label class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
 							<input type="email" class="form-control" name="email" ng-model="student.email" required>
 							<p ng-show="registerForm.email.$error.required && !registerForm.email.$pristine" class="help-block text-danger">email is required</p>
 							<p ng-show="registerForm.email.$invalid && !registerForm.email.$error.required" class="help-block text-danger">email is invalid</p>
 						</div>
-						<label class="col-sm-2 control-label">Fax</label>
+					</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Fax</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" name="fax" ng-model="student.fax">
 						</div>
-					</div>
+				</div>
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label">English Level : </label>
@@ -264,7 +267,7 @@
 	<div class="container clearfix">
 		<div class="row clearfix" >
 			<form name="registerForm" class="form-horizontal" ng-controller='JuniorProgramCtrl' role="form" ng-submit="register(registerForm.$valid)" novalidate>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">First Name </label>
 					<div class="col-sm-4  " ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
@@ -278,7 +281,7 @@
 				</div>
 
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Gender </label>
 					<div class="col-sm-4">
 						<select class="form-control" name="gender" ng-model="student.gender" ng-init="student.gender = 'Male'">
@@ -288,7 +291,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Birth Date</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
 						<input type='date' class="form-control" name="birthday" ng-model="student.birthday" placeholder='eg. 1987-01-01' required>
@@ -296,7 +299,7 @@
 					</div>
 
 				</div>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Nationality</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.nationality.$invalid && !registerForm.nationality.$pristine}"}>
 						<input type="text" class="form-control" name="nationality" ng-model="student.nationality" required>
@@ -313,7 +316,7 @@
 					<label class="col-sm-12 control-label center">Contact Information</label>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">Address</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
@@ -321,7 +324,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2 control-label">City</label>
 					<div class="col-sm-4" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
 						<input type="text" class="form-control" name="city" ng-model="student.city" required>
@@ -333,7 +336,7 @@
 						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">post code is required</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-sm-2  control-label">Province</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
@@ -345,7 +348,7 @@
 						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group required">
 						<label class="col-sm-2 control-label">Telephone</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
 							<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
@@ -363,7 +366,7 @@
 					<label class="col-sm-12 control-label center">Emergency Information</label>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 						<label class="col-sm-2 control-label">Contact name</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergencyContactname.$invalid && !registerForm.emergencyContactname.$pristine}"}>
 							<input type="string" class="form-control" name="emergencyContactname" ng-model="student.emergencyContactname" required>
@@ -377,7 +380,7 @@
 						</div>
 					</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 						<label class="col-sm-2 control-label">Phone</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergencyPhone.$invalid && !registerForm.emergencyPhone.$pristine}"}>
 							<input type="number" class="form-control" name="emergencyPhone" ng-model="student.emergencyPhone" required>
