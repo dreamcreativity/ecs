@@ -1796,6 +1796,15 @@ input[type="search"] {
 .form-group {
   margin-bottom: 15px;
 }
+
+.form-group.required .control-label:after {
+  color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:9px;
+}
+
 .radio,
 .checkbox {
   position: relative;
