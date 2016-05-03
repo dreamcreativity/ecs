@@ -66,9 +66,11 @@ exports.getAllSimpleCourses = function (req,res){
 
 
 			async.each(result, function(val, callback) {
-				if(val.type == 'Fixed Period' ){
-					val.durations = [ val.durations[0] ];
-				}
+
+				
+				// if(val.type == 'Fixed Period' ){
+				// 	val.durations = [ val.durations[0] ];
+				// }
 				
 				callback();
 			}, function(err){
