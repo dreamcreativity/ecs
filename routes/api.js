@@ -44,6 +44,7 @@ function IsAuthException(path, method){
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
+		{	path : '/api/registration/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/juniorprogram/create', method:'POST', type:'direct'},
 		{	path : '/api/juniorprograms/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
