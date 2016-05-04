@@ -455,6 +455,7 @@ router.post('/pdf',student.generatePDF);
 router.get('/pdf/Download_01',pdf.downloadPDF01);
 
 router.get('/pdf/Download_02',pdf.downloadPDF02);
+router.get('/pdf/Download_03',pdf.downloadPDF03);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 

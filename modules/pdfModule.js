@@ -62,6 +62,18 @@ exports.downloadPDF02 = function(req,res){
 	  filestream.pipe(res);
 }
 
+exports.downloadPDF03 = function(req,res){
+	 var file1 = "./temp/register_01.pdf";
+	  res.setHeader('Content-disposition', 'attachment; filename=' + "register_02");
+	  res.setHeader('Content-type', 'application/pdf');
+
+	  var filestream = fs.createReadStream(file1);
+	  fs.exists(file1, function(exists){
+	  	if(exists) fs.unlinkSync(file1)
+	  })
+	  filestream.pipe(res);
+}
+
 
 
 exports.getPdfTemplate = function(templateName, callback){

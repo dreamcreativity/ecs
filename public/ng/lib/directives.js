@@ -82,6 +82,39 @@ directives.directive('downloadForm02', [function(){
 	}
 }]);
 
+directives.directive('downloadForm03', [function(){
+	var controller = ['$scope','$http', function($scope,$http){
+		$scope.download_studentInfo = function() {
+			var htmlContext = angular.element('#formPrint');
+			$http.post('/api/pdf',{registerId:null, studentId: $scope.student._id})
+			.success(function(data,status,headers,config){
+				if(data.status == "successed"){
+					$http.get('/api/pdf/Download_03',{responseType:'arraybuffer'})
+					.success(function(data,status,headers,config){
+						var blob = new Blob([data], {type: 'application/pdf' });
+						var objectUrl = URL.createObjectURL(blob);
+						var element = angular.element('<a/>');
+						element.attr({
+							href: objectUrl,
+							target: '_self',
+							download:'Register Form 02.pdf'
+						})[0].click();
+					//window.open(objectUrl);
+				})
+					.error(function(data, status, headers, config) {
+					});
+				}})
+			.error(function(data,status,headers,config){
+			});
+		}
+
+	}];
+	return{
+		restrict : 'A',
+		controller : controller
+	}
+}]);
+
 directives.directive('courseRegisteredit',['Courses','Constants','ProgramRegister', function(Courses,Constants,ProgramRegister){
 	var controller = ['$scope','$window', function($scope,$window){
 		loading();
