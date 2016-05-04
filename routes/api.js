@@ -44,6 +44,7 @@ function IsAuthException(path, method){
 		{	path : '/api/invitation/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
 		{	path : '/api/student/register', method:'POST', type:'direct'},
+		{	path : '/api/registration/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/juniorprogram/create', method:'POST', type:'direct'},
 		{	path : '/api/juniorprograms/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/client/sendEmail', method:'POST', type:'direct'},
@@ -454,6 +455,7 @@ router.post('/pdf',student.generatePDF);
 router.get('/pdf/Download_01',pdf.downloadPDF01);
 
 router.get('/pdf/Download_02',pdf.downloadPDF02);
+router.get('/pdf/Download_03',pdf.downloadPDF03);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 
