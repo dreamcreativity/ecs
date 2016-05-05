@@ -19,6 +19,7 @@ var CourseSchema = new mongoose.Schema({
 	startPoint : {type : Date},
 	lastModify : {type : Date},
 	isShowInCalendar : {type : Boolean, default : false },
+	isShowInCalculator : {type : Boolean, default : true },
 	calendarColor : {type: String, default: '#eeeeee'},
 	calendarFontColor : {type: String, default: '#000000'},
 	isActive : {type : Boolean, default : true }
@@ -26,4 +27,4 @@ var CourseSchema = new mongoose.Schema({
 
 var Course = mongoose.model('Course', CourseSchema);
 
-module.exports =Course;
+module.exports = Course;

@@ -54,7 +54,7 @@ exports.getAllCourses = function (req,res){
 
 exports.getAllSimpleCourses = function (req,res){
 
-	Course.find({ isActive:true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
+	Course.find({ isActive:true, isShowInCalculator: true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',

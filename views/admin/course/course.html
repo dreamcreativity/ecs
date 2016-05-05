@@ -42,9 +42,9 @@
 								<span ng-if="course.isActive == 1" class="label label-active">Active</span>
 								</td>
 								<td>
-									<span ng-if="course.isShowInCalendar == 0" class="label label-danger">No</span>
-									<span ng-if="course.isShowInCalendar == 1" class="label label-active">Yes</span>
-									<div ng-style="{'background-color': course.calendarColor }"   style="height: 20px; width: 20px; display: inline-block;"></div>
+									<span ng-if="course.isShowInCalendar == 0" class="label label-danger" style="width: 40px">No</span>
+									<span ng-if="course.isShowInCalendar == 1" class="label label-active" style="width: 40px">Yes</span>
+									<div ng-style="{'background-color': course.calendarColor }"   style="height: 20px; width: 20px; display: inline-block; vertical-align: bottom;"></div>
 								</td>
 								<td class="hidden-xs"><a href="#">{{course.lastModify | date: 'MMM dd, yyyy  hh:mm '}}</a></td>
 								<td class="col-medium center">
