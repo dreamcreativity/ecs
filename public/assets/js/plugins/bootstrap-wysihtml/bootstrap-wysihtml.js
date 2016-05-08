@@ -459,7 +459,7 @@
                 "pre": 1
             }
         },
-        stylesheets: ["assets/css/plugins/bootstrap-wysihtml/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
+        stylesheets: ["/assets/css/plugins/bootstrap-wysihtml/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
         locale: "en"
     };
 

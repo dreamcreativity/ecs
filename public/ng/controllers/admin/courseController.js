@@ -62,7 +62,7 @@ angular.module('AdminApp')
 	 		
 
 	 		// init text editor
-	 		$('#page-content').wysihtml5();
+	 		$('#page-content').wysihtml5({'color': true });
 
 
 	 		$scope.newDuration = {
