@@ -116,4 +116,44 @@
 	        });
 	    }
 	}
-});
+})
+
+	.controller('EventStaticCtrl', function ActivityEditCtrl($scope,$http,Events,$modal,Medias,$window,DateRanges){
+		var event_id = url_params.id;
+		$scope.dateRanges = DateRanges;
+		$scope.dateAfter = $scope.dateRanges[0];
+		$scope.array = [];
+
+		if(event_id !=null){
+			Events.get({id:event_id}, function(result){
+				$scope.event = result.data;
+				$scope.event.date = new Date($scope.event.date);
+			});	
+		}
+
+		Medias.getCategoryTargetMedia({target : 'Event', type:'Document'},function(result){
+			$scope.medias=result.data;
+			//console.log($scope.medias);
+
+
+			$scope.changeCover = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				//$scope.event.cover = selectedMedia;
+			});
+
+		})
+
+		$scope.update = function(isValid) {
+
+			$scope.event.description = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
+
+			console.log($scope.event);
+			Events.update($scope.event, function(result){
+	 		 if(result.type == true){
+	 		 	ShowGritterCenter('System Notification','Event document has been updated');
+	 
+	 		 }else{
+	 		 	ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
+	 		 }
+	 		})
+		}
+	});
