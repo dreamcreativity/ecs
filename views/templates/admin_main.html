@@ -394,28 +394,33 @@
 											<a href="/admin/event/all" class="<%if(parms.cur_tap=='Event' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
-										</li>																	
+										</li>
+										<li>
+											<a href="/admin/event/static" class="<%if(parms.cur_tap=='Event' && (parms.cur_selected=='Static')){ %>active<%}%>">
+												<i class="fa fa-angle-double-right"></i> Static Page
+											</a>
+										</li>																
 								</ul>						
 							</li>
 
-							<li class="panel <%if(parms.cur_tap=='Event'){ %>open<% } %>">
-								<a href="/admin/event/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#EventManagement">
+							<li class="panel <%if(parms.cur_tap=='Online Test'){ %>open<% } %>">
+								<a href="/admin/event/all" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#OnlineTestManagement">
 									<i class="fa fa-rss"></i> Online Test <span class="arrow"></span>
 								</a>	
-								<ul class="collapse <%if(parms.cur_tap=='Event'){ %>in<%}%> nav" id="EventManagement">
+								<ul class="collapse <%if(parms.cur_tap=='Online Test'){ %>in<%}%> nav" id="OnlineTestManagement">
 										<li>
-											<a href="/admin/onlineTest/create" class="<%if(parms.cur_tap=='Event' && (parms.cur_selected=='Edit' || parms.cur_selected=='All')){ %>active<%}%>">
+											<a href="/admin/onlineTest/create" class="<%if(parms.cur_tap=='Online Test' && (parms.cur_selected=='Create' || parms.cur_selected=='All')){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Create
 											</a>
 										</li>
 										<li>
-											<a href="/admin/onlineTest" class="<%if(parms.cur_tap=='Event' && parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/onlineTest" class="<%if(parms.cur_tap=='Online Test' && parms.cur_selected=='Edit'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Edit
 											</a>
 										</li>
 
 										<li>
-											<a href="/admin/onlineTest/records" class="<%if(parms.cur_tap=='Event' && parms.cur_selected=='Create'){ %>active<%}%>">
+											<a href="/admin/onlineTest/records" class="<%if(parms.cur_tap=='Online Test' && parms.cur_selected=='Records'){ %>active<%}%>">
 												<i class="fa fa-angle-double-right"></i> Record
 											</a>
 										</li>
