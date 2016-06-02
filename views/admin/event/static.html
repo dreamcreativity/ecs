@@ -31,11 +31,15 @@ var url_params = <%- JSON.stringify(url_params) %>
 
 					<img class="preview-media"  ng-click="changeCover()"  ng-if="event.cover != null" src="{{event.cover.thumbnail}}">
 				</div>
+
+				<div>
+					<object data="http://localhost:2000/docs/Document/Event/39fbd113-3b23-46ec-aa30-271bdac3f395.pdf" type="application/pdf" width="100%" height="100%">
+				   <p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>.</p>
+				</object>
+
+				</div>
 			</div>
 
-			
-			
-			
 
 			<div class="form-actions">
 				<div class="form-group">

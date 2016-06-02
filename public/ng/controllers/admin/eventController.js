@@ -91,45 +91,40 @@
 	// 	])
 
 	.directive("checkboxSelectEvent", function () {
-		return {
-			restrict: "A",
-			link: function (scope, elem, attrs) {
-	        // Update array on click
-	        elem.bind('click', function () {
-	        	scope.array[0] = scope.item._id;
-	        	scope.$apply();
-	        });
+			return {
+				restrict: "A",
+				link: function (scope, elem, attrs) {
+		        // Update array on click
+		        elem.bind('click', function () {
+		        	scope.array[0] = scope.item._id;
+		        	scope.$apply();
+		        });
 
-	    }
-	}
-})
+		    }
+		}
+	})
 
 	.directive("checkboxUnselectEvent", function () {
-		return {
-			restrict: "A",
-			link: function (scope, elem, attrs) {
-	        // Update array on click
-	        elem.bind('click', function () {
-	        	var index = scope.array.indexOf(scope.item._id);
-				scope.array.splice(index, 1);     
-                scope.$apply();
-	        });
-	    }
-	}
-})
+			return {
+				restrict: "A",
+				link: function (scope, elem, attrs) {
+		        // Update array on click
+		        elem.bind('click', function () {
+		        	var index = scope.array.indexOf(scope.item._id);
+					scope.array.splice(index, 1);     
+	                scope.$apply();
+		        });
+		    }
+		}
+	})
 
 	.controller('EventStaticCtrl', function ActivityEditCtrl($scope,$http,Events,$modal,Medias,$window,DateRanges){
-		var event_id = url_params.id;
-		$scope.dateRanges = DateRanges;
-		$scope.dateAfter = $scope.dateRanges[0];
-		$scope.array = [];
 
-		if(event_id !=null){
-			Events.get({id:event_id}, function(result){
-				$scope.event = result.data;
-				$scope.event.date = new Date($scope.event.date);
-			});	
-		}
+		Events.getStaticEvent({},function(result){
+			console.log(result.data.media);
+			$scope.staticEvent = result.data;
+			//$scope.staticEvent.modified = new Date($scope.event.date);
+		});	
 
 		Medias.getCategoryTargetMedia({target : 'Event', type:'Document'},function(result){
 			$scope.medias=result.data;
@@ -138,22 +133,45 @@
 
 			$scope.changeCover = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
 				//$scope.event.cover = selectedMedia;
+				console.log(selectedMedia);
+				$scope.staticEvent.media = selectedMedia;
 			});
 
 		})
 
 		$scope.update = function(isValid) {
 
-			$scope.event.description = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
+			// $scope.event.description = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
 
-			console.log($scope.event);
-			Events.update($scope.event, function(result){
-	 		 if(result.type == true){
-	 		 	ShowGritterCenter('System Notification','Event document has been updated');
+			// console.log($scope.event);
+			// Events.update($scope.event, function(result){
+	 	// 	 if(result.type == true){
+	 	// 	 	ShowGritterCenter('System Notification','Event document has been updated');
 	 
-	 		 }else{
-	 		 	ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
-	 		 }
-	 		})
+	 	// 	 }else{
+	 	// 	 	ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
+	 	// 	 }
+	 	// 	})
 		}
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

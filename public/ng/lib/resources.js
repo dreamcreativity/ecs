@@ -194,8 +194,8 @@ resources.factory('StudentByAgent',['$resource',
         return $resource('/api/events/:id', {}, {
         query:{ method: 'GET'},
         update : { method : 'PUT', params: {id:'@_id'}},
-        getStaticEvent : { url: '/api/events/static', method: 'GET'},
-        updateStaticEvent: { url: '/api/events/static', method: 'PUT'}
+        getStaticEvent : { url: '/api/events-static', method: 'GET'},
+        updateStaticEvent: { url: '/api/events-static', method: 'PUT'}
     });
 }])
 

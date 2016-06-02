@@ -1,4 +1,5 @@
 var Event = require('../models/event');
+var StaticEvent = require('../models/staticEvent');
 var mongoose = require('mongoose');
 var async = require("async");
 
@@ -79,6 +80,7 @@ Event.find({}).populate('cover').exec(function(err,results){
 //GET: Activity by Id
 exports.getEventbyId = function(req,res){
 	var id = req.params.id;
+
 	Event.find({_id:id}).populate('cover').exec(function(err, results){
 		if(err) {
 			res.json({
@@ -94,3 +96,26 @@ exports.getEventbyId = function(req,res){
 			});
 	});
 }
+
+
+
+
+
+			res.json({
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

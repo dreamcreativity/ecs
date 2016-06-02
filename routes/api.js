@@ -419,6 +419,8 @@ router.put('/events/:id',events.edit);
 //GET a course
 router.get('/events/:id', events.getEventbyId);
 
+router.get('/events-static', events.getEventStatic);
+router.put('/events-static', events.updateEventStatic);
 
 
 //--------------------------Online Test-------------------------------------------
@@ -459,8 +461,8 @@ router.get('/pdf/Download_03',pdf.downloadPDF03);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 
-router.post('/agent/resetpassword/sendEmail', agent.sendNotificationForResetPassword)
-router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPassword)
+router.post('/agent/resetpassword/sendEmail', agent.sendNotificationForResetPassword);
+router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPassword);
 
 //------------------------Send Email in client site--------------------------------
 router.post('/client/sendEmail', student.client_sendEmail);

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var StaticEventSchema = new mongoose.Schema({
 	media: { type: Schema.Types.ObjectId, ref: 'Media', default: null },
@@ -9,7 +10,7 @@ var StaticEventSchema = new mongoose.Schema({
 
 var StaticEvent = mongoose.model('StaticEvent', StaticEventSchema);
 
-module.exports =StaticEvent;	
+module.exports = StaticEvent;	
 
 
 
