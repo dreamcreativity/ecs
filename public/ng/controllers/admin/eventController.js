@@ -121,37 +121,33 @@
 	.controller('EventStaticCtrl', function ActivityEditCtrl($scope,$http,Events,$modal,Medias,$window,DateRanges){
 
 		Events.getStaticEvent({},function(result){
-			console.log(result.data.media);
+			
 			$scope.staticEvent = result.data;
-			//$scope.staticEvent.modified = new Date($scope.event.date);
+			
+			//$scope.staticEvent.modified = new Date();
+			console.log($scope.staticEvent);
 		});	
 
 		Medias.getCategoryTargetMedia({target : 'Event', type:'Document'},function(result){
 			$scope.medias=result.data;
 			//console.log($scope.medias);
 
-
-			$scope.changeCover = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+  
+			$scope.changeEvent = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
 				//$scope.event.cover = selectedMedia;
-				console.log(selectedMedia);
+				//console.log(selectedMedia);
 				$scope.staticEvent.media = selectedMedia;
 			});
 
 		})
 
-		$scope.update = function(isValid) {
+		$scope.update = function() {
 
-			// $scope.event.description = $($('.wysihtml5-sandbox')[0].contentDocument).find('body').first().html();
+	 		console.log('do save');
 
-			// console.log($scope.event);
-			// Events.update($scope.event, function(result){
-	 	// 	 if(result.type == true){
-	 	// 	 	ShowGritterCenter('System Notification','Event document has been updated');
-	 
-	 	// 	 }else{
-	 	// 	 	ShowGritterCenter('System Notification','Event document update fail : ' + result.messages.err);
-	 	// 	 }
-	 	// 	})
+	 		Events.updateStaticEvent($scope.staticEvent,function(result){
+				console.log(result);
+			});	
 		}
 	});
 

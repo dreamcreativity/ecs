@@ -23,12 +23,16 @@ var pdf = require('../modules/pdfModule');
 var juniorprogram = require('../controllers/juniorprogram');
 
 
+http://localhost:2000/api/events-static 
+
+
 function IsAuthException(path, method){
 	//--------------------------------------------------
 	// auth exception list , put urls into this array
 	//--------------------------------------------------
 	var list = [
 		{	path : '/api/events', method: 'GET', type: 'direct'},
+		{	path : '/api/events-static', method: 'GET', type: 'direct'},
 		{	path : '/api/slider', method: 'GET', type: 'direct'},
 		{	path : '/api/activities', method: 'GET', type: 'direct' },
 		{	path : '/api/staff/login', method: 'POST', type: 'direct' },

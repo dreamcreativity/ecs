@@ -444,7 +444,8 @@ p.small-content{
 	.activity-img:hover>div{opacity:0.25;-moz-opacity:0.25;filter:alpha(opacity:25)}
 
 	.program-home-des{height:5.5em;overflow:hidden;text-overflow:ellipsis;display:block}
-#section-programs .feature-box h3{display:block;height:1.5em;overflow:hidden;text-overflow:ellipsis;display:block}
+	p.program-home-des{ font-size: 15px!important;  }	
+	#section-programs .feature-box h3{display:block;height:1.5em;overflow:hidden;text-overflow:ellipsis;display:block}
 
 
 	.fc-calendar .fc-row > div > div {

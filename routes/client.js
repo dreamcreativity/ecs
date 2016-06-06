@@ -7,6 +7,7 @@ var Course = require('../models/course');
 var Staff = require('../models/staff');
 var Activity = require('../models/activity');
 var Event = require('../models/event');
+var StaticEvent = require('../models/staticEvent');
 var async = require("async");
 var constants = require("../constants");
 var random = require('mongoose-random');
@@ -208,7 +209,19 @@ router.get('/onlineTest', function(req, res){
 
 router.get('/events', function(req, res){
 
-	template(req,res,'client_normal','client/event.html',{});
+
+	StaticEvent.findOne({_id:'574b25acc9ae5f3b22f53b85'}).populate('media').exec(function(err, result){
+		
+		var staticEventInfo = result;
+
+		template(req,res,'client_normal','client/event.html',{
+
+			StaticEventInfo : result
+		});
+
+	});
+
+	//template(req,res,'client_normal','client/event.html',{});
 
 });
 
@@ -216,7 +229,7 @@ router.get('/events', function(req, res){
 router.get('/classChart', function(req, res){
 	template(req,res,'client_normal','client/class-chart.html',{});
 });
-router.get('/preArrical', function(req, res){
+router.get('/preArrival', function(req, res){
 	template(req,res,'client_normal','client/pre-arrival.html',{});
 });
 router.get('/accommodation', function(req, res){

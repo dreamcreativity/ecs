@@ -105,10 +105,7 @@ exports.getEventStatic = function(req,res){
 	
 	var id = '574b25acc9ae5f3b22f53b85';
 
-
-
-
-	StaticEvent.findOne({_id:id}).exec(function(err, result){
+	StaticEvent.findOne({_id:id}).populate('media').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -156,21 +153,42 @@ exports.getEventStatic = function(req,res){
 
 
 exports.updateEventStatic = function(req,res){
+
+	console.log('update event static');
 	var id = '574b25acc9ae5f3b22f53b85';
-	StaticEvent.find({_id:id}).populate('cover').exec(function(err, results){
-		if(err) {
+	console.log(req.body);
+
+
+	StaticEvent.update({_id:id}, req.body, function(err, result){
+		if(err){
 			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
+				type: false,
+				data: 'Error occured: ' + err}
+				);
 		}
+
 		res.json({
-				status: 'ok',
-				messages: 'successed',
-		 		data: results[0]
-			});
+			status: 'ok',
+			messages: 'successed',
+			data: result
+		});	
 	});
+
+
+	// StaticEvent.find({_id:id}).exec(function(err, results){
+	// 	if(err) {
+	// 		res.json({
+	// 			status: 'fail',
+	// 			messages: err,
+	// 			data: null
+	// 		});
+	// 	}
+	// 	res.json({
+	// 			status: 'ok',
+	// 			messages: 'successed',
+	// 	 		data: results[0]
+	// 		});
+	// });
 }
 
 
