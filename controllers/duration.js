@@ -31,7 +31,7 @@ exports.edit = function(req,res){
 	var id = req.params.id;
 	req.body.lastModify = Date.now();
 	//console.log(req.body);
-
+	console.log('update duration');
 	res.json({
 		status: 'fail',
 		messages: "multipulte result",

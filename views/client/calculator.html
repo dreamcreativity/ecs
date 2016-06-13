@@ -49,35 +49,32 @@
     
                             <div class="row">
     
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div class=""><label>Start Date</label></div>
-    
-                                    <div class="col-md-8 nopadding">
-                                        <div class="styling-dropdown col-md-8">
-                                            {{ c.startDate | date:'MMMM d' }}
-                                            <div class="right-arrow"><i class="icon-download2"></i></div>
-    
-                                            <div class="select-list hidden">
-                                                <div ng-click="changeStartDate(c,sd)" class="list-item" ng-repeat="sd in c.startDates" >{{ sd | date:'MMMM d' }}</div>
-                                            </div>	
-                                        </div>
+                                    <div class="styling-dropdown col-md-8">
+                                        {{ c.startDate | date:'MMMM d' }}
+                                        <div class="right-arrow"><i class="icon-download2"></i></div>
+
+                                        <div class="select-list hidden">
+                                            <div ng-click="changeStartDate(c,sd)" class="list-item" ng-repeat="sd in c.startDates" >{{ sd | date:'MMMM d' }}</div>
+                                        </div>	
                                     </div>
     
-                                    <div class="col-md-4 nopadding">
-            
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class=""><label>Year</label></div>
+
                                         <div class="styling-dropdown  col-md-4">
                                             {{ c.startDate | date:'yyyy' }}
                                             <div class="right-arrow"><i class="icon-download2"></i></div>
                                             <div class="select-list hidden">
                                                 <div class="list-item" ng-repeat="y in availableYears" ng-click="changeStartYear(c,y)" >{{ y }}</div>
-                                            </div>	
+                                            </div>  
                                         </div>
-                                    </div>
-    
                                 </div>
     
-    
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class=""><label>Duration</label></div>
                                     <div class="styling-dropdown">
                                         {{c.selectDuration.title}}
@@ -88,7 +85,23 @@
                                         </div>	
                                     </div>
                                 </div>
+                                
+
+                                <div class="col-md-3">
+                                    <div class=""><label>Level</label></div>
+                                    <div class="styling-dropdown">
+                                        {{c.level}} 
+                                        <div class="right-arrow"><i class="icon-download2"></i></div>
     
+                                        <div class="select-list hidden">
+                                            <!-- <div ng-click="changeDuration(c.selectDuration, duration)" class="list-item" ng-repeat="duration in c.durations" >{{duration.title}}</div> -->
+                                            <div class="list-item" ng-click="changeLevel(c, 'PartTime')">PartTime</div>
+                                            <div class="list-item" ng-click="changeLevel(c, 'Standard')">Standard</div>
+                                            <div class="list-item" ng-click="changeLevel(c, 'Intensive')">Invensive</div>
+
+                                        </div>  
+                                    </div>
+                                </div>
                             </div>
     
     
@@ -135,6 +148,7 @@
                             <div class="date" >Start Date: {{course.startDate | date:'MMMM d , yyyy' }}</div>
                             <div class="date" >End Date: {{course.endDate | date:'MMMM d , yyyy' }}</div>
                             <div class="date" >Durations: {{course.duration.week }}</div>
+                            <div class="date" >Level: {{course.level }}</div>
     
                             <div class="row price">
                                 <div class="col-sm-6">Price:</div>
@@ -145,7 +159,7 @@
                         <div class="selected-course-total-seaction"  ng-if="displayCourses.length > 0">
                             <div class="row">
                                 <div class="col-sm-6">Total*</div>
-                                <div class="col-sm-6  text-right">{{calculatedTotal | currency:"USD $":2}}</div>
+                                <div class="col-sm-6  text-right">{{calculatedTotal | currency:"CAD $":2}}</div>
                             </div>
                         </div>
     

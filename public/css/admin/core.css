@@ -418,10 +418,28 @@
 	margin: -6px 7px;
 	cursor: pointer;
 }
+
 .duration-list .badge{
     font-size: 17px;
     margin-right: 7px;
     margin-top: -2px;
+}
+.duration-list .price-tag{
+	display: inline-block;
+	margin-left: 20px;
+	margin-bottom: 10px;
+
+}
+
+.duration-list .price-tag label{
+	font-size: 12px;
+}
+
+.duration-list .price-tag span{
+	background-color: #cca6a6;
+	padding: 5px;
+	border-radius: 5px;
+	color: #f3f3f3;
 }
 
 .preview-media{

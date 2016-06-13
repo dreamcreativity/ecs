@@ -35,10 +35,17 @@ angular.module('ClientApp')
 		angular.forEach($scope.courseList, function(course, key) {
 			
 			if(course.selectDuration.week > 0){
-
 				// deep copy dreation course object
 				var tempCourse= jQuery.extend(true, {}, course);
 				tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
+
+				if(tempCourse.level == 'PartTime')
+					tempCourse.selectDuration.price = tempCourse.selectDuration.pricePartTime;
+				if(tempCourse.level == 'Standard')
+					tempCourse.selectDuration.price = tempCourse.selectDuration.priceStandard;
+				if(tempCourse.level == 'Intensive')
+					tempCourse.selectDuration.price = tempCourse.selectDuration.priceIntensive;
+
 
 				total += tempCourse.selectDuration.price;
 				var courseStartDate = new Date(tempCourse.startDate);
@@ -49,11 +56,10 @@ angular.module('ClientApp')
 					title: tempCourse.title,
 					startDate: tempCourse.startDate,
 					endDate: courseEndDate.toJSON(),
-					duration: tempCourse.selectDuration
+					duration: tempCourse.selectDuration,
+					level: tempCourse.level
 				});			
 			}
-
-
 		}, function(){
 
 		});
@@ -108,6 +114,7 @@ angular.module('ClientApp')
 				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
 				startDate: data.data[0],
 				durations: course.durations,
+				level: 'Standard',
 				startDates: data.data,
 			});
 			closeAllSelectList();
@@ -135,10 +142,21 @@ angular.module('ClientApp')
 		currentDuration.title = targetDuration.title;
 		currentDuration.price = targetDuration.price;
 		currentDuration.week = targetDuration.week;
-
+		currentDuration.priceIntensive = targetDuration.priceIntensive;
+		currentDuration.priceStandard = targetDuration.priceStandard;
+		currentDuration.pricePartTime = targetDuration.pricePartTime;
 		closeAllSelectList();
 
 	}
+
+	$scope.changeLevel = function(currentCourse, targetLevel){
+
+		currentCourse.level = targetLevel;
+		closeAllSelectList();
+
+	}
+
+
 
 
 
