@@ -108,20 +108,29 @@
     
     
                         </div>
-    
-                        <div class="col-md-8 nopadding">
-                            <div class="styling-dropdown">
-                                Add Course
-                                <div class="right-arrow"><i class="icon-download2"></i></div>
-    
-                                <div class="select-list hidden">
-                                    <div class="list-item" ng-repeat="course in courses" ng-click="addCourse(course)">
-                                        {{course.title}}
-                                    </div>
-                                </div>	
+
+
+                        <div class="row">
+                            <div class="col-md-8 ">
+                                <div class="styling-dropdown">
+                                    Add Course
+                                    <div class="right-arrow"><i class="icon-download2"></i></div>
+        
+                                    <div class="select-list hidden">
+                                        <div class="list-item" ng-repeat="course in courses" ng-click="addCourse(course)">
+                                            {{course.title}}
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <button class="btn btn-default"  ng-click="clearAllSelectCourse()">Clear All</button>
+
                             </div>
                         </div>
-    
+
+           
     
     
     

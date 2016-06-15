@@ -636,6 +636,19 @@ router.get('/junior-Program/edit/:id', function(req, res) {
 });
 
 
+//----------------------- Calendar ----------------------------------
+
+router.get('/calendar', function(req, res) {
+	template(req,res,'admin_main','admin/calendar/static.html',
+			{ 
+				title: 'Calendar Edit',
+				category: 'Management',
+				cur_tap: 'Calendar',
+				cur_selected : 'Edit'
+			}
+		);
+});
+
 
 
 

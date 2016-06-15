@@ -427,6 +427,11 @@ router.get('/events-static', events.getEventStatic);
 router.put('/events-static', events.updateEventStatic);
 
 
+router.get('/calendar-static', events.getCalendarStatic);
+router.put('/calendar-static', events.updateCalendarStatic);
+
+
+
 //--------------------------Online Test-------------------------------------------
 //GET all empty online test question record
 router.get('/onlineTest/getNew', onlineTest.getNew);

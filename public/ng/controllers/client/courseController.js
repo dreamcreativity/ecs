@@ -126,6 +126,11 @@ angular.module('ClientApp')
 
 	}
 
+	$scope.clearAllSelectCourse = function(){
+		$scope.courseList = [];
+	}
+
+
 	$scope.changeCourse = function(currentCourse, targetCourse){
 
 		currentCourse.id = targetCourse._id;

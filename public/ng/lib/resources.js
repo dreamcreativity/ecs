@@ -201,6 +201,17 @@ resources.factory('StudentByAgent',['$resource',
 
 
 
+.factory('Calendar',['$resource',
+    function($resource){
+        return $resource('/api/calendar-static', {}, {
+        getCalendarEvent : { url: '/api/calendar-static', method: 'GET'},
+        updateCalendarEvent: { url: '/api/calendar-static', method: 'PUT'}
+    });
+}])
+
+
+
+
 resources.factory('Meterials',['$resource',
     function($resource){
         return $resource('/api/materials/:id', {}, {
