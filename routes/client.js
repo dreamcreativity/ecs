@@ -291,11 +291,28 @@ router.get('/campus-pictures', function(req, res){
 
 router.get('/calendar', function(req, res){
 
-	Course.find({isShowInCalendar: true}, function(err,result){
 
-		console.log(result);
-		template(req,res,'client_normal','client/calendar.html',{ courses: result} );
+
+	StaticEvent.findOne({_id:'56c2a6db96c5e72979b79338'}).populate('media').exec(function(err, result){
+		
+		var staticEventInfo = result;
+
+		console.log(staticEventInfo);
+
+
+		Course.find({isShowInCalendar: true}, function(err,result){
+			template(req,res,'client_normal','client/calendar.html',{ 
+				eventInfo: staticEventInfo, 
+				courses: result
+			} );
+		});
+
+
 	});
+
+
+
+
 
 
 	
