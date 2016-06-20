@@ -444,7 +444,7 @@ p.small-content{
 	.activity-img:hover>div{opacity:0.25;-moz-opacity:0.25;filter:alpha(opacity:25)}
 
 	.program-home-des{height:5.5em;overflow:hidden;text-overflow:ellipsis;display:block}
-	p.program-home-des{ font-size: 15px!important;  }	
+	p.program-home-des{ font-size: 15px!important;  text-align: left; }	
 	#section-programs .feature-box h3{display:block;height:1.5em;overflow:hidden;text-overflow:ellipsis;display:block}
 
 

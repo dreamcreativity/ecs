@@ -1,5 +1,12 @@
 module.exports = {
 
+	StaticMediaId : [
+		{ CurrentAcademyCalendar: '56c2a6db96c5e72979b79338' },
+		{ FutureAcademyCalendar: ' ' }
+	],
+
+
+
 	MediaTypes : [
 		'Image',
 		'Document',
