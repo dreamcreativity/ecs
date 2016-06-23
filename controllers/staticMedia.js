@@ -1,6 +1,6 @@
 
-var StaticEvent = require('../models/staticEvent');
 var constant = require('../constants.js');
+var StaticEvent = require('../models/staticEvent');
 var StaticMedia = require('../models/staticMedia');
 var mongoose = require('mongoose');
 var async = require("async");
@@ -8,12 +8,8 @@ var async = require("async");
 
 
 
-
-exports.getEventStatic = function(req,res){
-	
-	var id = '574b25acc9ae5f3b22f53b85';
-
-	StaticEvent.findOne({_id:id}).populate('media').exec(function(err, result){
+var getStaticMediaRecord = function (req,res,recordId){
+	StaticMedia.findOne({_id:recordId}).populate('media').exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
@@ -25,11 +21,13 @@ exports.getEventStatic = function(req,res){
 		if(!result){
 			console.log('record not found');
 
-			var newStaticEvent = new StaticEvent({
-				_id: id
+			// create record if not exit
+			var newStaticMedia = new StaticMedia({
+				_id: id,
+				type: 'Calendar'
 			});
 
-			newStaticEvent.save(function(err ,newStaticEvent){
+			newStaticMedia.save(function(err ,newdata){
 				if(err){
 					res.json({
 						type:false,
@@ -42,7 +40,7 @@ exports.getEventStatic = function(req,res){
 				res.json({
 						status: 'ok',
 						messages: 'successed',
-				 		data: newStaticEvent
+				 		data: newdata
 					});
 			});
 
@@ -57,17 +55,13 @@ exports.getEventStatic = function(req,res){
 
 
 	});
+
 }
 
 
-exports.updateEventStatic = function(req,res){
+var updateStaticMediaRecord = function (req, res, recordId){
 
-
-	var id = '574b25acc9ae5f3b22f53b85';
-
-
-
-	StaticEvent.update({_id:id}, req.body, function(err, result){
+	StaticMedia.update({_id:recordId}, req.body, function(err, result){
 		if(err){
 			res.json({
 				type: false,
@@ -84,90 +78,32 @@ exports.updateEventStatic = function(req,res){
 
 }
 
-
-
-
-
-
-
-
-// speical case, put calendar code here ..
-
-
-exports.getCalendarStatic = function(req,res){
-	
-	var id = '56c2a6db96c5e72979b79338';
-
-	StaticEvent.findOne({_id:id}).populate('media').exec(function(err, result){
-		if(err) {
-			res.json({
-				status: 'fail',
-				messages: err,
-				data: null
-			});
-		}
-
-		if(!result){
-			console.log('record not found');
-
-			var newStaticEvent = new StaticEvent({
-				_id: id
-			});
-
-			newStaticEvent.save(function(err ,newStaticEvent){
-				if(err){
-					res.json({
-						type:false,
-						data:"Error occured: " +err
-					});
-				}
-
-
-
-				res.json({
-						status: 'ok',
-						messages: 'successed',
-				 		data: newStaticEvent
-					});
-			});
-
-		}else{
-
-			res.json({
-					status: 'ok',
-					messages: 'successed',
-			 		data: result
-				});
-		}
-
-
-	});
+exports.getCurrentAcademyCalendar = function(req,res){
+	var id = constant.StaticMediaId.CurrentAcademyCalendar;
+	getStaticMediaRecord(req,res, id);
 }
 
 
-exports.updateCalendarStatic = function(req,res){
+exports.updateCurrentAcademyCalendar = function(req,res){
+	var id = constant.StaticMediaId.CurrentAcademyCalendar;
+	updateStaticMediaRecord(req,res,id);
+}
 
 
-	var id = '56c2a6db96c5e72979b79338';
+exports.getFutureAcademyCalendar = function(req,res){
+	var id = constant.StaticMediaId.FutureAcademyCalendar;
+	getStaticMediaRecord(req,res, id);
+}
 
 
-
-	StaticEvent.update({_id:id}, req.body, function(err, result){
-		if(err){
-			res.json({
-				type: false,
-				data: 'Error occured: ' + err}
-				);
-		}
-
-		res.json({
-			status: 'ok',
-			messages: 'successed',
-			data: result
-		});	
-	});
+exports.updateFutureAcademyCalendar = function(req,res){
+	var id = constant.StaticMediaId.FutureAcademyCalendar;
+	updateStaticMediaRecord(req,res,id);
 
 }
+
+
+
 
 
 

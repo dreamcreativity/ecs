@@ -23,11 +23,23 @@
 
 			<div class="form-group">
 
-				<label class="col-sm-2 control-label">Image:</label>
+				<label class="col-sm-2 control-label">Current Year:</label>
 				<div class="col-sm-9">
-					<div style="padding-bottom: 20px;"><button class="btn btn-primary" ng-click="changeEvent()">Change Event PDF File</button></div>
+					<div style="padding-bottom: 20px;"><button class="btn btn-primary" ng-click="changeCurrentCalendar()">Select Current Year Calendar</button></div>
 					
 					<iframe src="{{staticCalendar.media.path}}" style="border:0; width: 350px; height: 515px " >
+					This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
+					</iframe>
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label class="col-sm-2 control-label">Next Year:</label>
+				<div class="col-sm-9">
+					<div style="padding-bottom: 20px;"><button class="btn btn-primary" ng-click="changeFetureCalendar()">Select Next Year Calendar</button></div>
+					
+					<iframe src="{{staticFutureCalendar.media.path}}" style="border:0; width: 350px; height: 515px " >
 					This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
 					</iframe>
 				</div>

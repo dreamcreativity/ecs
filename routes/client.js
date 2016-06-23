@@ -8,6 +8,7 @@ var Staff = require('../models/staff');
 var Activity = require('../models/activity');
 var Event = require('../models/event');
 var StaticEvent = require('../models/staticEvent');
+var StatiMedia = require('../models/staticMedia');
 var async = require("async");
 var constants = require("../constants");
 var random = require('mongoose-random');
@@ -291,34 +292,43 @@ router.get('/campus-pictures', function(req, res){
 
 router.get('/calendar', function(req, res){
 
+	var CurrentAcademyCalendar = null;
+	var FutureAcademyCalendar = null;
+
+	async.series([
+		function(next){
 
 
-	StaticEvent.findOne({_id:'56c2a6db96c5e72979b79338'}).populate('media').exec(function(err, result){
-		
-		var staticEventInfo = result;
+			var calendarId = constants.StaticMediaId.CurrentAcademyCalendar;
 
-		console.log(staticEventInfo);
+			StatiMedia.findOne({_id:calendarId}).populate('media').exec(function(err, result){
+				CurrentAcademyCalendar = result;
+				next();
+			});
 
+	    },
+	    function(next){
+	    	var futureCalendarId = constants.StaticMediaId.FutureAcademyCalendar;
+	    	StatiMedia.findOne({_id:futureCalendarId}).populate('media').exec(function(err, result){
+				FutureAcademyCalendar = result;
+				next();
+			});
+	    }
+	    
+
+	], function(){
 
 		Course.find({isShowInCalendar: true}, function(err,result){
 			template(req,res,'client_normal','client/calendar.html',{ 
-				eventInfo: staticEventInfo, 
+				CurrentAcademyCalendar: CurrentAcademyCalendar, 
+				FutureAcademyCalendar: FutureAcademyCalendar, 
 				courses: result
 			} );
 		});
 
-
 	});
 
 
-
-
-
-
-	
-	
-
-	//template(req,res,'client_normal','client/activity.html',{});
 });
 
 router.get('/register/', function(req,res){

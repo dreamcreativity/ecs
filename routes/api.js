@@ -12,6 +12,7 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var staticMedia = require('../controllers/staticMedia');
 var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
 var commission = require('../controllers/commission');
@@ -61,7 +62,9 @@ function IsAuthException(path, method){
 		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'},
-		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'}
+		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'},
+		{	path : '/api/static-media/CurrentAcademyCalendar', method:'GET', type:'direct'},
+		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'}
 
 	];
 	
@@ -430,6 +433,12 @@ router.put('/events-static', events.updateEventStatic);
 router.get('/calendar-static', events.getCalendarStatic);
 router.put('/calendar-static', events.updateCalendarStatic);
 
+//-------------------------- Static Media ----------------------------------------
+
+router.get('/static-media/CurrentAcademyCalendar', staticMedia.getCurrentAcademyCalendar);
+router.put('/static-media/CurrentAcademyCalendar', staticMedia.updateCurrentAcademyCalendar);
+router.get('/static-media/FutureAcademyCalendar', staticMedia.getFutureAcademyCalendar);
+router.put('/static-media/FutureAcademyCalendar', staticMedia.updateFutureAcademyCalendar);
 
 
 //--------------------------Online Test-------------------------------------------

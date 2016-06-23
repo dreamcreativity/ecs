@@ -1,23 +1,29 @@
 	'use strict';
 	angular.module('AdminApp')
 
-	.controller('CalendarStaticCtrl', function CalendarStaticCtrl($scope,$http,Calendar,$modal,Medias,$window){
+	.controller('CalendarStaticCtrl', function CalendarStaticCtrl($scope,$http,StaticMedia,$modal,Medias,$window){
 
-		Calendar.getCalendarEvent({},function(result){
-			
+		StaticMedia.getCurrentYearAcademyCalendar({},function(result){
 			$scope.staticCalendar = result.data;
-			
 		});	
 
-		Medias.getCategoryTargetMedia({target : 'Calendar', type:'Document'},function(result){
-			$scope.medias=result.data;
-			//console.log($scope.medias);
 
+		StaticMedia.getFutureAcademyCalendar({},function(result){
+			$scope.staticFutureCalendar = result.data;
+		});	
+
+
+		Medias.getCategoryTargetMedia({target : 'Calendar', type:'Document'},function(result){
+
+			$scope.medias=result.data;
   
-			$scope.changeEvent = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
-				//$scope.event.cover = selectedMedia;
-				//console.log(selectedMedia);
+			$scope.changeCurrentCalendar = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
 				$scope.staticCalendar.media = selectedMedia;
+			});
+
+
+			$scope.changeFetureCalendar = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.staticFutureCalendar.media = selectedMedia;
 			});
 
 		})
@@ -26,9 +32,15 @@
 
 	 		console.log('do save');
 
-	 		Calendar.updateCalendarEvent($scope.staticCalendar,function(result){
+	 		StaticMedia.updateCurrentYearAcademyCalendar($scope.staticCalendar,function(result){
+				console.log(result);
+				
+			});
+
+			StaticMedia.updateFutureAcademyCalendar($scope.staticFutureCalendar,function(result){
 				console.log(result);
 				
 			});	
 		}
 	});
+

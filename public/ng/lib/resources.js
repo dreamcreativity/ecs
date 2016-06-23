@@ -200,7 +200,6 @@ resources.factory('StudentByAgent',['$resource',
 }])
 
 
-
 .factory('Calendar',['$resource',
     function($resource){
         return $resource('/api/calendar-static', {}, {
@@ -209,6 +208,16 @@ resources.factory('StudentByAgent',['$resource',
     });
 }])
 
+
+.factory('StaticMedia',['$resource',
+    function($resource){
+        return $resource('/api/static-media/', {}, {
+        getCurrentYearAcademyCalendar : { url: '/api/static-media/CurrentAcademyCalendar', method: 'GET'},
+        updateCurrentYearAcademyCalendar: { url: '/api/static-media/CurrentAcademyCalendar', method: 'PUT'},
+        getFutureAcademyCalendar : { url: '/api/static-media/FutureAcademyCalendar', method: 'GET'},
+        updateFutureAcademyCalendar: { url: '/api/static-media/FutureAcademyCalendar', method: 'PUT'}
+    });
+}])
 
 
 

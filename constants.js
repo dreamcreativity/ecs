@@ -1,9 +1,9 @@
 module.exports = {
 
-	StaticMediaId : [
-		{ CurrentAcademyCalendar: '56c2a6db96c5e72979b79338' },
-		{ FutureAcademyCalendar: ' ' }
-	],
+	StaticMediaId : {
+		CurrentAcademyCalendar: '56c2a6db96c5e72979b79338' ,
+		FutureAcademyCalendar: '576b4ed034605cb2179d0130'
+	},
 
 
 
