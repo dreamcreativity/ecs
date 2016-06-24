@@ -202,9 +202,45 @@ exports.getActivityCalendar = function(req,res){
 
 
 exports.updateActivityCalendar = function(req,res){
-	var index = 1;
-	var id = constant.StaticMediaId.FutureAcademyCalendar;
-	updateStaticMediaRecordByType(req,res,id,index);
+	console.log(req.body);
+	async.each(req.body.calenders, function(staticMediaObject, callback) {
+
+		if(staticMediaObject != null){
+
+			console.log('----------------------------');
+			console.log(staticMediaObject);
+			StaticMedia.update({_id:staticMediaObject._id}, staticMediaObject, function(err, result){
+				callback();
+			});
+			// staticMediaObject.newAgent.save(function(err ,result){
+
+			// 	callback();	
+			// });
+			
+		}else{
+			callback();
+		}
+
+
+	}, function(err){
+
+
+	    if (err) {
+	      console.log('a static media record update fail');
+			res.json({
+				status: 'fail',
+				messages: 'error when create new static media records',
+				data: null
+			});
+	    } else {
+
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: null
+			});
+	    }
+	});
 
 }
 

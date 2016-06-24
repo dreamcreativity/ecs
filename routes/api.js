@@ -443,7 +443,8 @@ router.put('/static-media/FutureAcademyCalendar', staticMedia.updateFutureAcadem
 
 
 router.get('/static-media/ActivityCalendar', staticMedia.getActivityCalendar);
-router.put('/static-media/ActivityCalendar/:monthNumber', staticMedia.updateActivityCalendar);
+router.put('/static-media/ActivityCalendar', staticMedia.updateActivityCalendar);
+
 //--------------------------Online Test-------------------------------------------
 //GET all empty online test question record
 router.get('/onlineTest/getNew', onlineTest.getNew);

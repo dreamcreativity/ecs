@@ -25,20 +25,21 @@ var url_params = <%- JSON.stringify(url_params) %>
 			</div>
 
 			<div class="form-group">
-				<!-- <label class="col-sm-2 control-label">Image:</label>
-				<div class="col-sm-9">
-					<div ng-click="changeCover()" ng-if="event.cover == null" class="cover-empty"><label>Clic to change</label></div>
-
-					<img class="preview-media"  ng-click="changeCover()"  ng-if="event.cover != null" src="{{event.cover.thumbnail}}">
-				</div> -->
-
 				<label class="col-sm-2 control-label">Image:</label>
+
+
 				<div class="col-sm-9">
-					<div style="padding-bottom: 20px;"><button class="btn btn-primary" ng-click="changeEvent()">Change Event PDF File</button></div>
-					
-					<iframe src="{{staticEvent.media.path}}" style="border:0; width: 350px; height: 515px " >
-					This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
-					</iframe>
+
+					<div class="col-md-4" ng-repeat="index in calendarIndex">
+						<div style="padding-bottom: 20px;"><button class="btn btn-primary" ng-click="changeCalendar[index]()">Change Month {{index}}</button></div>
+
+
+						<iframe src="{{calendars[index].media.path}}" style="border:0; width: 100%; height: 300px " >
+						This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
+						</iframe>
+					</div>
+
+
 				</div>
 			</div>
 
