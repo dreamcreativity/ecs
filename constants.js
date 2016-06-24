@@ -5,6 +5,9 @@ module.exports = {
 		FutureAcademyCalendar: '576b4ed034605cb2179d0130'
 	},
 
+	StaticMediaTypeIndex : {
+		ActivityCalendar: 12
+	},
 
 
 	MediaTypes : [

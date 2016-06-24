@@ -6,7 +6,8 @@ var StaticMediaSchema = new mongoose.Schema({
 	created : {type : Date, default : Date.now },
 	modified : {type : Date, default : Date.now },
 	isActived : {type : Boolean, default : false },
-	type: {type: String}
+	type: {type: String},
+	typeIndex: {type: Number}
 });
 
 var StaticMedia = mongoose.model('StaticMedia', StaticMediaSchema);

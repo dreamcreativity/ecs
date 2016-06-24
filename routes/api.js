@@ -64,7 +64,8 @@ function IsAuthException(path, method){
 		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'},
 		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/static-media/CurrentAcademyCalendar', method:'GET', type:'direct'},
-		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'}
+		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'},
+		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'}
 
 	];
 	
@@ -441,6 +442,8 @@ router.get('/static-media/FutureAcademyCalendar', staticMedia.getFutureAcademyCa
 router.put('/static-media/FutureAcademyCalendar', staticMedia.updateFutureAcademyCalendar);
 
 
+router.get('/static-media/ActivityCalendar', staticMedia.getActivityCalendar);
+router.put('/static-media/ActivityCalendar/:monthNumber', staticMedia.updateActivityCalendar);
 //--------------------------Online Test-------------------------------------------
 //GET all empty online test question record
 router.get('/onlineTest/getNew', onlineTest.getNew);

@@ -215,7 +215,8 @@ resources.factory('StudentByAgent',['$resource',
         getCurrentYearAcademyCalendar : { url: '/api/static-media/CurrentAcademyCalendar', method: 'GET'},
         updateCurrentYearAcademyCalendar: { url: '/api/static-media/CurrentAcademyCalendar', method: 'PUT'},
         getFutureAcademyCalendar : { url: '/api/static-media/FutureAcademyCalendar', method: 'GET'},
-        updateFutureAcademyCalendar: { url: '/api/static-media/FutureAcademyCalendar', method: 'PUT'}
+        updateFutureAcademyCalendar: { url: '/api/static-media/FutureAcademyCalendar', method: 'PUT'},
+        getActivityCalendars: { url: '/api/static-media/ActivityCalendar', method: 'GET'}
     });
 }])
 
