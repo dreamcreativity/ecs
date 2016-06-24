@@ -177,6 +177,7 @@
 
 		$scope.update = function() {
 
+	 		StaticMedia.updateActivityCalendars( { calenders: $scope.calendars},function(result){
 				console.log(result);
 			});	
 		}
