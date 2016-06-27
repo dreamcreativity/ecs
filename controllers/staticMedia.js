@@ -99,6 +99,8 @@ var updateStaticMediaRecordByType = function (req, res, type, typeIndex){
 
 
 var getStaticMediaRecord = function (req,res,recordId,type){
+
+	
 	StaticMedia.findOne({_id:recordId}).populate('media').exec(function(err, result){
 		if(err) {
 			res.json({
@@ -113,7 +115,7 @@ var getStaticMediaRecord = function (req,res,recordId,type){
 
 			// create record if not exit
 			var newStaticMedia = new StaticMedia({
-				_id: id,
+				_id: recordId,
 				type: type
 			});
 
