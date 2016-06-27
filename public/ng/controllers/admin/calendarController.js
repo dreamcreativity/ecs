@@ -22,9 +22,9 @@
 			});
 
 
-			$scope.changeFetureCalendar = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
-				$scope.staticFutureCalendar.media = selectedMedia;
-			});
+			// $scope.changeFetureCalendar = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+			// 	$scope.staticFutureCalendar.media = selectedMedia;
+			// });
 
 		})
 
