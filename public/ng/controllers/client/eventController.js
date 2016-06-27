@@ -1,32 +1,45 @@
 'use strict';
 angular.module('ClientApp')
-.controller('EventCtrl',function EventCtrl($rootScope,$scope,$filter,$interpolate ,$http,Events,StaticMedia){
-
+.controller('EventCtrl',function EventCtrl($rootScope,$scope,$timeout,$filter,$interpolate ,$http,Events,StaticMedia){
+		
 
 	// create calendar event data
 
 	var eventData = {};
 	var eventRawData={};
+	var d = new Date();
 
 	StaticMedia.getActivityCalendars({}, function(result){
 
 		$scope.calendarList = [];
+		$scope.calendarIndex = [1,2,3,4,5,6,7,8,9,10,11,12];
 
 		//$scope.calendarList = result.data;
 
 		result.data.forEach(function(element, index, array){
-			console.log(element);
-			if(element == null){}
-				
-			else
+
+			if(typeof element.typeIndex === 'undefined'){
+
+			}else{
 				$scope.calendarList[element.typeIndex] = element;
+			}
+			
 		});
-		console.log($scope.calendarList );
+
+		$timeout(function(){
+
+			$scope.changeMonth(d.getMonth()+1);
+		});
+		
+		
+		//console.log($scope.calendarList );
 	});
 
 
 	$scope.changeMonth = function(month){
-		$scope.selectedCalendar = $scope.calendarList[month-1];
+		$scope.selectedCalendar = $scope.calendarList[month];
+		$('.month-tab').removeClass('selected');
+		$('.month-tab.tab_' + month).addClass('selected');
 	}
 
 	// Events.getStaticEvent(function(result){

@@ -27,21 +27,20 @@
     <div class="content-wrap" >
          <section id="section-course" class="page-section">
             <div class="heading-block center">
-                <h2>Event Calendar</h2>
+                <h2>Activity Calendar</h2>
             </div>
-
 
             <div class="container clearfix">
                 <div class="row center">
-                    <div ng-repeat="calendar in calendarList | orderBy: 'typeIndex' " class="col-sm-2 month-tab">
-                        <div ng-click="changeMonth(calendar.typeIndex)">{{calendar.typeIndex}}</div>
+                    <div ng-repeat="i in calendarIndex" class="col-xs-2 month-tab tab_{{i}}">
+                        <div ng-click="changeMonth(i)">{{i}}</div>
                     </div>
 
                 </div>
 
 
                 <div class="row">
-                    <iframe src="{{selectedCalendar.media.path}}" style="border:0; width: 100%; height: 1000px " >
+                    <iframe  content-disposition='test' src="{{selectedCalendar.media.path}}" style="border:0; width: 100%; height: 1100px " >
                         This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
                     </iframe>
                 </div>
