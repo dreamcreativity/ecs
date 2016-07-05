@@ -34,31 +34,39 @@ angular.module('ClientApp')
 
 		angular.forEach($scope.courseList, function(course, key) {
 			
-			if(course.selectDuration.week > 0){
+			if(course.selectDuration.week > 0 ){
 				// deep copy dreation course object
 				var tempCourse= jQuery.extend(true, {}, course);
-				tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
 
-				if(tempCourse.level == 'PartTime')
-					tempCourse.selectDuration.price = tempCourse.selectDuration.pricePartTime;
-				if(tempCourse.level == 'Standard')
-					tempCourse.selectDuration.price = tempCourse.selectDuration.priceStandard;
-				if(tempCourse.level == 'Intensive')
-					tempCourse.selectDuration.price = tempCourse.selectDuration.priceIntensive;
+				if(tempCourse.level == 'PartTime' || tempCourse.level == 'Standard' || tempCourse.level == 'Intensive' ){
+
+					tempCourse.selectDuration.price *= $scope.selectedCurrency.rate;
+
+					if(tempCourse.level == 'PartTime')
+						tempCourse.selectDuration.price = tempCourse.selectDuration.pricePartTime;
+					if(tempCourse.level == 'Standard')
+						tempCourse.selectDuration.price = tempCourse.selectDuration.priceStandard;
+					if(tempCourse.level == 'Intensive')
+						tempCourse.selectDuration.price = tempCourse.selectDuration.priceIntensive;
 
 
-				total += tempCourse.selectDuration.price;
-				var courseStartDate = new Date(tempCourse.startDate);
-				var courseEndDate = new Date(courseStartDate.valueOf());
-				courseEndDate.setDate( courseEndDate.getDate() + 7 * tempCourse.selectDuration.week);
-			
-				$scope.displayCourses.push({
-					title: tempCourse.title,
-					startDate: tempCourse.startDate,
-					endDate: courseEndDate.toJSON(),
-					duration: tempCourse.selectDuration,
-					level: tempCourse.level
-				});			
+					total += tempCourse.selectDuration.price;
+					var courseStartDate = new Date(tempCourse.startDate);
+					var courseEndDate = new Date(courseStartDate.valueOf());
+					courseEndDate.setDate( courseEndDate.getDate() + 7 * tempCourse.selectDuration.week);
+				
+					$scope.displayCourses.push({
+						title: tempCourse.title,
+						startDate: tempCourse.startDate,
+						endDate: courseEndDate.toJSON(),
+						duration: tempCourse.selectDuration,
+						level: tempCourse.level
+					});	
+
+				}
+
+
+		
 			}
 		}, function(){
 
@@ -114,7 +122,7 @@ angular.module('ClientApp')
 				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
 				startDate: data.data[0],
 				durations: course.durations,
-				level: 'Standard',
+				level: 'Select a level',
 				startDates: data.data,
 			});
 			closeAllSelectList();
@@ -139,17 +147,20 @@ angular.module('ClientApp')
 		currentCourse.durations = targetCourse.durations;
 		closeAllSelectList();
 
+		$scope.changeStartYear(currentCourse,$scope.availableYears[0]);
+
 	}
 
-	$scope.changeDuration = function(currentDuration, targetDuration){
+	$scope.changeDuration = function(currentCourse, targetDuration){
 
-		currentDuration._id = targetDuration._id;
-		currentDuration.title = targetDuration.title;
-		currentDuration.price = targetDuration.price;
-		currentDuration.week = targetDuration.week;
-		currentDuration.priceIntensive = targetDuration.priceIntensive;
-		currentDuration.priceStandard = targetDuration.priceStandard;
-		currentDuration.pricePartTime = targetDuration.pricePartTime;
+		currentCourse.selectDuration._id = targetDuration._id;
+		currentCourse.selectDuration.title = targetDuration.title;
+		currentCourse.selectDuration.price = targetDuration.price;
+		currentCourse.selectDuration.week = targetDuration.week;
+		currentCourse.selectDuration.priceIntensive = targetDuration.priceIntensive;
+		currentCourse.selectDuration.priceStandard = targetDuration.priceStandard;
+		currentCourse.selectDuration.pricePartTime = targetDuration.pricePartTime;
+		currentCourse.level = 'Select a level';
 		closeAllSelectList();
 
 	}
