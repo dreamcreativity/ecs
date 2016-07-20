@@ -68,6 +68,9 @@ angular.module('AdminApp')
 	 		$scope.newDuration = {
 			 	'title': '',
 			 	'price': 0.0,
+			 	'pricePartTime': 0.0,
+			 	'priceStandard': 0.0,
+			 	'priceIntensive': 0.0,
 			 	'week': 1,
 			 	'level': 'Standard',
 			 	'course': $scope.course._id
@@ -218,6 +221,9 @@ angular.module('AdminApp')
 		 		$scope.newDuration.price = 0.0;
 		 		$scope.newDuration.week = 1;
 		 		$scope.newDuration.level = 'Standard';
+		 		$scope.newDuration.pricePartTime = 0;
+				$scope.newDuration.priceStandard = 0;
+				$scope.newDuration.priceIntensive = 0;
 		 		$scope.newDuration.order = $scope.newDuration.length + 1;
 		 		
 		 	});
@@ -254,6 +260,9 @@ angular.module('AdminApp')
 		  result[0].price = duration.price;
 		  result[0].week = duration.week;
 		  result[0].level = duration.level;
+		  result[0].pricePartTime = duration.pricePartTime;
+		  result[0].priceStandard = duration.priceStandard;
+		  result[0].priceIntensive = duration.priceIntensive;
 		  //$scope.selectedDuration = duration;
 		}, function () {
 		  	// done

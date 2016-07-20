@@ -7,6 +7,8 @@ var Course = require('../models/course');
 var Staff = require('../models/staff');
 var Activity = require('../models/activity');
 var Event = require('../models/event');
+var StaticEvent = require('../models/staticEvent');
+var StatiMedia = require('../models/staticMedia');
 var async = require("async");
 var constants = require("../constants");
 var random = require('mongoose-random');
@@ -208,7 +210,19 @@ router.get('/onlineTest', function(req, res){
 
 router.get('/events', function(req, res){
 
-	template(req,res,'client_normal','client/event.html',{});
+
+	StaticEvent.findOne({_id:'574b25acc9ae5f3b22f53b85'}).populate('media').exec(function(err, result){
+		
+		var staticEventInfo = result;
+
+		template(req,res,'client_normal','client/event.html',{
+
+			StaticEventInfo : result
+		});
+
+	});
+
+	//template(req,res,'client_normal','client/event.html',{});
 
 });
 
@@ -216,7 +230,7 @@ router.get('/events', function(req, res){
 router.get('/classChart', function(req, res){
 	template(req,res,'client_normal','client/class-chart.html',{});
 });
-router.get('/preArrical', function(req, res){
+router.get('/preArrival', function(req, res){
 	template(req,res,'client_normal','client/pre-arrival.html',{});
 });
 router.get('/accommodation', function(req, res){
@@ -278,17 +292,43 @@ router.get('/campus-pictures', function(req, res){
 
 router.get('/calendar', function(req, res){
 
-	Course.find({isShowInCalendar: true}, function(err,result){
+	var CurrentAcademyCalendar = null;
+	var FutureAcademyCalendar = null;
 
-		console.log(result);
-		template(req,res,'client_normal','client/calendar.html',{ courses: result} );
+	async.series([
+		function(next){
+
+
+			var calendarId = constants.StaticMediaId.CurrentAcademyCalendar;
+
+			StatiMedia.findOne({_id:calendarId}).populate('media').exec(function(err, result){
+				CurrentAcademyCalendar = result;
+				next();
+			});
+
+	    },
+	    function(next){
+	    	var futureCalendarId = constants.StaticMediaId.FutureAcademyCalendar;
+	    	StatiMedia.findOne({_id:futureCalendarId}).populate('media').exec(function(err, result){
+				FutureAcademyCalendar = result;
+				next();
+			});
+	    }
+	    
+
+	], function(){
+
+		Course.find({isShowInCalendar: true}, function(err,result){
+			template(req,res,'client_normal','client/calendar.html',{ 
+				CurrentAcademyCalendar: CurrentAcademyCalendar, 
+				FutureAcademyCalendar: FutureAcademyCalendar, 
+				courses: result
+			} );
+		});
+
 	});
 
 
-	
-	
-
-	//template(req,res,'client_normal','client/activity.html',{});
 });
 
 router.get('/register/', function(req,res){

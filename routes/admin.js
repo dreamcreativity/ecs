@@ -513,6 +513,19 @@ router.get('/event/detail/:id', function(req, res) {
 		});
 });
 
+
+router.get('/event/static', function(req, res) {
+	template(req,res,'admin_main', 'admin/event/static.html', 
+		{
+			title : 'Edit Event',
+			category : 'Management',
+			cur_tap : 'Event',
+			cur_selected : 'Static',
+			url_params : req.params
+		});
+});
+
+
 router.get('/courseRegisterTemplate', function(req,res){
 	res.render('templates/courseRegister.html');
 });
@@ -534,7 +547,7 @@ router.get('/onlineTest/', function(req,res){
 			title : 'Online Test',
 			category : 'Management',
 			cur_tap : 'Online Test',
-			cur_selected : 'list',
+			cur_selected : 'Edit',
 			url_params : req.params
 		});
 
@@ -547,8 +560,8 @@ router.get('/onlineTest/create', function(req,res){
 		{
 			title : 'Online Test',
 			category : 'Management',
-			cur_tap : 'Edit',
-			cur_selected : 'Edit',
+			cur_tap : 'Online Test',
+			cur_selected : 'Create',
 			mode : 'new',
 			url_params : req.params
 		});
@@ -561,7 +574,7 @@ router.get('/onlineTest/edit/:id', function(req,res){
 		{
 			title : 'Online Test',
 			category : 'Management',
-			cur_tap : 'Edit',
+			cur_tap : 'Online Test',
 			cur_selected : 'Edit',
 			mode: 'edit',
 
@@ -622,6 +635,19 @@ router.get('/junior-Program/edit/:id', function(req, res) {
 		);
 });
 
+
+//----------------------- Calendar ----------------------------------
+
+router.get('/calendar', function(req, res) {
+	template(req,res,'admin_main','admin/calendar/static.html',
+			{ 
+				title: 'Calendar Edit',
+				category: 'Management',
+				cur_tap: 'Calendar',
+				cur_selected : 'Edit'
+			}
+		);
+});
 
 
 

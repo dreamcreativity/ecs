@@ -12,23 +12,56 @@
         <!-- <h1>Event Calendar</h1> -->
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a href="#">Event Calendar</a></li>
+            <li><a href="#">Activity Calendar</a></li>
            
         </ol>
     </div>
 
 </section>
 
-
+<div class="program-banner hidden-sm hidden-xs " style="background-image:url(/images/clients/event/eventBanner.jpg)">
+    <div class="banner-mask"> </div>
+</div>
+<div class="banner-bottom-frame">
+    
+</div>
 
 <!-- <script type="text/javascript" src="assets/js/functions.js"></script> -->
 <section ng-controller="EventCtrl" id="event-calendar" >
-	<div class="content-wrap">
+
+    <div class="content-wrap" >
+         <section id="section-course" class="page-section">
+            <div class="heading-block center">
+                <h2>Activity Calendar</h2>
+            </div>
+
+            <div class="container clearfix">
+                <div class="row center">
+                    <div ng-repeat="i in calendarIndex" class="col-xs-2 month-tab tab_{{i}}">
+                        <div ng-click="changeMonth(i)">{{i}}</div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <iframe  content-disposition='test' src="{{selectedCalendar.media.path}}" style="border:0; width: 100%; height: 1100px " >
+                        This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
+                    </iframe>
+                </div>
+            </div>
+        </session>
+    </div>
+
+</session>
+    <!--
+
+    <% if(!StaticEventInfo.isActived){ %>
+	<div class="content-wrap" >
 		 <section id="section-course" class="page-section">
 
             <div class="heading-block center">
                 <h2>Event Calendar</h2>
-                <!-- <span>Some of the Awesome Monment we've worked on.</span> -->
             </div>
 		 	<div class="container clearfix">
                 <div class="row">
@@ -54,6 +87,29 @@
 		 	</div>
 		 </div>
 	</div>
+    <% }else{  %>
+
+    <div class="content-wrap" >
+         <section id="section-course" class="page-section">
+
+            <div class="heading-block center">
+                <h2>Event Calendar</h2>
+            </div>
+            <div class="container clearfix">
+                
+                <row>
+                    <iframe src="" style="border:0; width: 100%; height: 1150px" >
+                    This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
+                    </iframe>
+                </row>
+            </div>
+         </div>
+    </div>
+
+
+
+
+    <% }  %>
 </div>
 <div style="margin-bottom:100px"></div>
 
@@ -80,7 +136,7 @@
 </div>
 
 
-
+-->
 
 
 

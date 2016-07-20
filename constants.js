@@ -1,5 +1,15 @@
 module.exports = {
 
+	StaticMediaId : {
+		CurrentAcademyCalendar: '56c2a6db96c5e72979b79338' ,
+		FutureAcademyCalendar: '576b4ed034605cb2179d0130'
+	},
+
+	StaticMediaTypeIndex : {
+		ActivityCalendar: 12
+	},
+
+
 	MediaTypes : [
 		'Image',
 		'Document',
@@ -9,7 +19,7 @@ module.exports = {
 
 	MediaTarget : [
 		'Slider',
-		// 'Gallery',
+		'Calendar',
 		'Material',
 		'Course',
 		'Student',

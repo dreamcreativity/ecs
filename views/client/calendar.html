@@ -9,6 +9,96 @@
 
 
 
+
+
+<section id="page-title"  class="page-title-mini page-title-right">
+
+    <div class="container clearfix">
+      <!--   <h1>School Course Calendar</h1> -->
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Calendar</a></li>
+           
+        </ol>
+    </div>
+
+</section>
+
+
+
+
+
+<% if(CurrentAcademyCalendar.isActived){ %>
+
+
+<section ng-controller="NewCalendarCtrl">
+    <div class="content-wrap">
+        <div class="heading-block center bottommargin-lg">
+            <h2>Academy Calendar</h2>
+        </div>
+         <section id="section-course" class="page-section">
+            <div class="container clearfix">
+               <row>
+                    <iframe src="<%- CurrentAcademyCalendar.media.path %>#view=FitV" style="border:0; width: 100%; height: 1150px" >
+                    This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
+                    </iframe>
+                </row>
+                
+            </div>
+         </div>
+
+         <section>
+            <div class="container clearfix center">
+               <a target="_blank" href="<%- FutureAcademyCalendar.media.path %>">
+                    <h2>Download Next Year Caldendar</h2>
+               </a>
+            </div>
+             
+         </section>
+    </div>
+</div>
+
+
+
+<% }else{ %>
+<section ng-controller="NewCalendarCtrl">
+    <div class="content-wrap">
+        <div class="heading-block center bottommargin-lg">
+            <h2>Calendar</h2>
+        </div>
+         <section id="section-course" class="page-section">
+            <div class="container clearfix">
+                <div class="row">
+               
+                        <div class="col-md-2">
+                            <% for(var i=0; i < courses.length; i++) {%>
+                                <div style="background-color: <%= courses[i].calendarColor %>; color: <%= courses[i].calendarFontColor %>" class="course-color-box"><%= courses[i].title %></div>
+                            <% } %>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-4 calendar-cell" id="month-1"></div>
+                            <div class="col-md-4 calendar-cell" id="month-2"></div>
+                            <div class="col-md-4 calendar-cell" id="month-3"></div>
+                            <div class="col-md-4 calendar-cell" id="month-4"></div>
+                            <div class="col-md-4 calendar-cell" id="month-5"></div>
+                            <div class="col-md-4 calendar-cell" id="month-6"></div>
+                            <div class="col-md-4 calendar-cell" id="month-7"></div>
+                            <div class="col-md-4 calendar-cell" id="month-8"></div>
+                            <div class="col-md-4 calendar-cell" id="month-9"></div>
+                            <div class="col-md-4 calendar-cell" id="month-10"></div>
+                            <div class="col-md-4 calendar-cell" id="month-11"></div>
+                            <div class="col-md-4 calendar-cell" id="month-12"></div>  
+                        </div>
+
+
+                </div>
+                
+            </div>
+         </div>
+    </div>
+</div>
+
+
 <style type="text/css">
     
     .calendar-cell{
@@ -26,7 +116,7 @@
         background-color: #FA2601;
     }
 
-/*    .grade-2 {
+    /*    .grade-2 {
         background-color: #FA8A00;
     }*/
 
@@ -88,90 +178,4 @@
 </style>
 
 
-<section id="page-title"  class="page-title-mini page-title-right">
-
-    <div class="container clearfix">
-      <!--   <h1>School Course Calendar</h1> -->
-        <ol class="breadcrumb">
-            <li><a href="/">Home</a></li>
-            <li><a href="#">Calendar</a></li>
-           
-        </ol>
-    </div>
-
-</section>
-
-
-
-
-<section ng-controller="NewCalendarCtrl">
-    <div class="content-wrap">
-        <div class="heading-block center bottommargin-lg">
-            <h2>Calendar</h2>
-        </div>
-         <section id="section-course" class="page-section">
-            <div class="container clearfix">
-                <div class="row">
-               
-                        <div class="col-md-2">
-                            <% for(var i=0; i < courses.length; i++) {%>
-                                <div style="background-color: <%= courses[i].calendarColor %>; color: <%= courses[i].calendarFontColor %>" class="course-color-box"><%= courses[i].title %></div>
-                            <% } %>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="col-md-4 calendar-cell" id="month-1"></div>
-                            <div class="col-md-4 calendar-cell" id="month-2"></div>
-                            <div class="col-md-4 calendar-cell" id="month-3"></div>
-                            <div class="col-md-4 calendar-cell" id="month-4"></div>
-                            <div class="col-md-4 calendar-cell" id="month-5"></div>
-                            <div class="col-md-4 calendar-cell" id="month-6"></div>
-                            <div class="col-md-4 calendar-cell" id="month-7"></div>
-                            <div class="col-md-4 calendar-cell" id="month-8"></div>
-                            <div class="col-md-4 calendar-cell" id="month-9"></div>
-                            <div class="col-md-4 calendar-cell" id="month-10"></div>
-                            <div class="col-md-4 calendar-cell" id="month-11"></div>
-                            <div class="col-md-4 calendar-cell" id="month-12"></div>  
-                        </div>
-
-
-                </div>
-                
-            </div>
-         </div>
-    </div>
-</div>
-
-<!-- <script type="text/javascript" src="assets/js/functions.js"></script> -->
-<!-- <section ng-controller="CalendarCtrl" id="school-calendar" > -->
-<!-- <section  id="school-calendar" >
-	<div class="content-wrap">
-		 <section id="section-course" class="page-section">
-		 	<div class="container clearfix">
-                <div class="row">
-                    <div class="container clearfix">
-                        <div class="events-calendar">
-                            <div class="events-calendar-header clearfix">
-                                <h2>&nbsp;</h2>
-                                <h3 class="calendar-month-year">
-                                    <span id="calendar-month" class="calendar-month"></span>
-                                    <span id="calendar-year" class="calendar-year"></span>
-                                    <nav>
-                                        <span id="calendar-prev" class="calendar-prev"><i class="icon-chevron-left"></i></span>
-                                        <span id="calendar-next" class="calendar-next"><i class="icon-chevron-right"></i></span>
-                                        <span id="calendar-current" class="calendar-current" title="Got to current date"><i class="icon-reload"></i></span>
-                                    </nav>
-                                </h3>
-                            </div>
-                            <div id="calendar" class="fc-calendar-container"></div>
-                        </div>
-                    </div>
-                </div>
-                
-		 	</div>
-		 </div>
-	</div>
-</div>
-<div style="margin-bottom:100px"></div> -->
-
-
-
+<% } %>

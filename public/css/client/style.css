@@ -10440,7 +10440,8 @@ label.error { display: none !important; }
 	display: block;
 	margin-top: 10px;
 	font-weight: 300;
-	color: #777;
+	/*color: #777;*/
+	color: #555;
 }
 
 .heading-block .before-heading { margin-bottom: 7px; }

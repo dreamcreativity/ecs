@@ -91,29 +91,115 @@
 	// 	])
 
 	.directive("checkboxSelectEvent", function () {
-		return {
-			restrict: "A",
-			link: function (scope, elem, attrs) {
-	        // Update array on click
-	        elem.bind('click', function () {
-	        	scope.array[0] = scope.item._id;
-	        	scope.$apply();
-	        });
+			return {
+				restrict: "A",
+				link: function (scope, elem, attrs) {
+		        // Update array on click
+		        elem.bind('click', function () {
+		        	scope.array[0] = scope.item._id;
+		        	scope.$apply();
+		        });
 
-	    }
-	}
-})
+		    }
+		}
+	})
 
 	.directive("checkboxUnselectEvent", function () {
-		return {
-			restrict: "A",
-			link: function (scope, elem, attrs) {
-	        // Update array on click
-	        elem.bind('click', function () {
-	        	var index = scope.array.indexOf(scope.item._id);
-				scope.array.splice(index, 1);     
-                scope.$apply();
-	        });
-	    }
-	}
-});
+			return {
+				restrict: "A",
+				link: function (scope, elem, attrs) {
+		        // Update array on click
+		        elem.bind('click', function () {
+		        	var index = scope.array.indexOf(scope.item._id);
+					scope.array.splice(index, 1);     
+	                scope.$apply();
+		        });
+		    }
+		}
+	})
+
+	.controller('EventStaticCtrl', function ActivityEditCtrl($scope,$http,Events,StaticMedia,$modal,Medias,$window,DateRanges){
+
+		$scope.calendarIndex = [1,2,3,4,5,6,7,8,9,10,11,12];
+		$scope.calendars = [];
+
+		StaticMedia.getActivityCalendars({}, function(result){
+			result.data.forEach(function(element, index, array){
+				console.log(element);
+				$scope.calendars[element.typeIndex] = element;
+			});
+		});
+
+
+		$scope.changeCalendar = [];
+
+		Medias.getCategoryTargetMedia({target : 'Event', type:'Document'},function(result){
+			$scope.medias=result.data;
+
+			$scope.changeCalendar[1]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[1].media = selectedMedia;
+			});
+			$scope.changeCalendar[2]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[2].media = selectedMedia;
+			});
+			$scope.changeCalendar[3]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[3].media = selectedMedia;
+			});
+			$scope.changeCalendar[4]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[4].media = selectedMedia;
+			});
+			$scope.changeCalendar[5]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[5].media = selectedMedia;
+			});
+			$scope.changeCalendar[6]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[6].media = selectedMedia;
+			});
+			$scope.changeCalendar[7]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[7].media = selectedMedia;
+			});
+			$scope.changeCalendar[8]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[8].media = selectedMedia;
+			});
+			$scope.changeCalendar[9]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[9].media = selectedMedia;
+			});
+			$scope.changeCalendar[10]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[10].media = selectedMedia;
+			});
+			$scope.changeCalendar[11]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[11].media = selectedMedia;
+			});
+			$scope.changeCalendar[12]=createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+				$scope.calendars[12].media = selectedMedia;
+			});
+
+		})
+
+		$scope.update = function() {
+
+	 		StaticMedia.updateActivityCalendars( { calenders: $scope.calendars},function(result){
+				console.log(result);
+			});	
+		}
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

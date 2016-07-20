@@ -10,8 +10,7 @@ var RegistrationSchema = new mongoose.Schema({
 	commissionRate : {type: Number, default : 0},
 	createDate: {type: Date,default: Date.now },
 	isActive: {type: Boolean, default: true},
-	payments: [{ type: mongoose.Schema.ObjectId, ref: 'Payment'}],
-
+	payments: [{ type: mongoose.Schema.ObjectId, ref: 'Payment'}]
 });
 
 var Registration = mongoose.model('Registration', RegistrationSchema);

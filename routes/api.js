@@ -12,6 +12,7 @@ var course = require('../controllers/course');
 var duration = require('../controllers/duration');
 var activity = require('../controllers/activity');
 var events = require('../controllers/event');
+var staticMedia = require('../controllers/staticMedia');
 var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
 var commission = require('../controllers/commission');
@@ -23,12 +24,16 @@ var pdf = require('../modules/pdfModule');
 var juniorprogram = require('../controllers/juniorprogram');
 
 
+http://localhost:2000/api/events-static 
+
+
 function IsAuthException(path, method){
 	//--------------------------------------------------
 	// auth exception list , put urls into this array
 	//--------------------------------------------------
 	var list = [
 		{	path : '/api/events', method: 'GET', type: 'direct'},
+		{	path : '/api/events-static', method: 'GET', type: 'direct'},
 		{	path : '/api/slider', method: 'GET', type: 'direct'},
 		{	path : '/api/activities', method: 'GET', type: 'direct' },
 		{	path : '/api/staff/login', method: 'POST', type: 'direct' },
@@ -57,7 +62,10 @@ function IsAuthException(path, method){
 		{	path : '/api/onlineTest/getTestQuestions', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/getNewTestRecord', method:'GET', type:'direct'},
 		{	path : '/api/onlineTest/submitTestRecord', method:'POST', type:'direct'},
-		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'}
+		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'},
+		{	path : '/api/static-media/CurrentAcademyCalendar', method:'GET', type:'direct'},
+		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'},
+		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'}
 
 	];
 	
@@ -419,7 +427,23 @@ router.put('/events/:id',events.edit);
 //GET a course
 router.get('/events/:id', events.getEventbyId);
 
+router.get('/events-static', events.getEventStatic);
+router.put('/events-static', events.updateEventStatic);
 
+
+router.get('/calendar-static', events.getCalendarStatic);
+router.put('/calendar-static', events.updateCalendarStatic);
+
+//-------------------------- Static Media ----------------------------------------
+
+router.get('/static-media/CurrentAcademyCalendar', staticMedia.getCurrentAcademyCalendar);
+router.put('/static-media/CurrentAcademyCalendar', staticMedia.updateCurrentAcademyCalendar);
+router.get('/static-media/FutureAcademyCalendar', staticMedia.getFutureAcademyCalendar);
+router.put('/static-media/FutureAcademyCalendar', staticMedia.updateFutureAcademyCalendar);
+
+
+router.get('/static-media/ActivityCalendar', staticMedia.getActivityCalendar);
+router.put('/static-media/ActivityCalendar', staticMedia.updateActivityCalendar);
 
 //--------------------------Online Test-------------------------------------------
 //GET all empty online test question record
@@ -459,8 +483,8 @@ router.get('/pdf/Download_03',pdf.downloadPDF03);
 //-------------------------Invitation Send Email-----------------------------------
 router.post('/invitation/sendEmail',agent.sendInvitation);
 
-router.post('/agent/resetpassword/sendEmail', agent.sendNotificationForResetPassword)
-router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPassword)
+router.post('/agent/resetpassword/sendEmail', agent.sendNotificationForResetPassword);
+router.post('/staff/resetpassword/sendEmail', staff.sendNotificationForResetPassword);
 
 //------------------------Send Email in client site--------------------------------
 router.post('/client/sendEmail', student.client_sendEmail);

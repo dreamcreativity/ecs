@@ -125,15 +125,36 @@
 										</div>
 										<ul class="list-group no-margin-bottom duration-list col-sm-12 col-md-12">
 											<li data-toggle="modal" ng-repeat="duration in course.durations | orderBy:'order' " class="list-group-item">
-												{{ duration.title}} - ({{duration.level}})
+												<div>
+													<!-- {{ duration.title}} - ({{duration.level}}) -->
+													{{ duration.title}}
 
-												<button type="button" ng-click="moveListItemDown(course.durations, $index)" class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-down"></i></button>
-												<button type="button" ng-click="moveListItemUp(course.durations, $index)"  class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-up"></i></button>
+													<button type="button" ng-click="moveListItemDown(course.durations, $index)" class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-down"></i></button>
+													<button type="button" ng-click="moveListItemUp(course.durations, $index)"  class="btn btn-inverse btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-arrow-up"></i></button>
 
-												<button type="button" ng-click="removeDuration(duration)" class="btn btn-danger btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-trash-o icon-only"></i></button>
-												<button type="button" ng-click="editDuration(duration)"  class="btn btn-primary btn-xs btn-circle duration-list-operate-icon"><i class="glyphicon glyphicon-cog icon-only"></i></button>
-												<span class="badge badge-success">$ {{ duration.price | number:2 }}</span>
-												
+													<button type="button" ng-click="removeDuration(duration)" class="btn btn-danger btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-trash-o icon-only"></i></button>
+													<button type="button" ng-click="editDuration(duration)"  class="btn btn-primary btn-xs btn-circle duration-list-operate-icon"><i class="glyphicon glyphicon-cog icon-only"></i></button>
+											
+													<!-- <span class="badge badge-success">$ {{ duration.price | number:2 }}</span> -->
+												</div>
+
+												<div style="margin-top: 25px; font-size: 12px; text-align: right">
+													<div class="price-tag">
+														<label>Part Time</label>
+														<span class="">$ {{ duration.pricePartTime | number:2 }}</span>
+													</div>
+
+													<div class="price-tag">
+														<label>Standard</label>
+														<span class="">$ {{ duration.priceStandard | number:2 }}</span>
+													</div>
+
+													<div class="price-tag">
+														<label>Intensive</label>
+														<span class="">$ {{ duration.priceIntensive | number:2 }}</span>
+													</div>
+								
+												</div>
 											</li>
 										</ul>
 									</div>
@@ -332,20 +353,22 @@
         <div class="modal-body">
             <div class="form-horizontal">
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Title</label>
-		      		<div class="col-sm-10">
+		      		<label class="col-sm-3 control-label">Title</label>
+		      		<div class="col-sm-9">
 		      			<input type="text"  class="form-control  input-large" ng-model="newDuration.title" >
 		      		</div>
 		      	</div>
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Week(s)</label>
-		      		<div class="col-sm-10">
+		      		<label class="col-sm-3 control-label">Week(s)</label>
+		      		<div class="col-sm-9">
 		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.week">
 		      		</div>
 		      	</div>
+
+		      	<!--
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label"> Level</label>
-		      		<div class="col-sm-10">
+		      		<label class="col-sm-3 control-label"> Level</label>
+		      		<div class="col-sm-9">
 		      			<select ng-model="newDuration.level">
 		      
 							<option ng-repeat="level in levels" value="{{level}}">{{level}}</option>
@@ -353,11 +376,33 @@
 		      		</div>
 		      	</div>
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Price</label>
-		      		<div class="col-sm-10">
+		      		<label class="col-sm-3 control-label">Price</label>
+		      		<div class="col-sm-9">
 		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.price">
 		      		</div>
 		      	</div>
+		      	-->
+		      	<div class="form-group">
+		      		<label class="col-sm-3 control-label">Part-Time Price</label>
+		      		<div class="col-sm-9">
+		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.pricePartTime">
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-3 control-label">Standard Price</label>
+		      		<div class="col-sm-9">
+		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.priceStandard">
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-3 control-label">Intensive Price</label>
+		      		<div class="col-sm-9">
+		      			<input type="text"  class="form-control  input-small" ng-model="newDuration.priceIntensive">
+		      		</div>
+		      	</div>
+
 
 	      	</div>
 
@@ -377,30 +422,50 @@
         <div class="modal-body">
             <div class="form-horizontal">
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label">Title</label>
-		      		<div class="col-sm-10">
+		      		<label class="col-sm-3 control-label">Title</label>
+		      		<div class="col-sm-9">
 		      			<input type="text"  class="form-control  input-large" ng-model="duration.title" >
 		      		</div>
 		      	</div>
 		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label"> Week(s)</label>
-		      		<div class="col-sm-10">
+		      		<label class="col-sm-3 control-label"> Week(s)</label>
+		      		<div class="col-sm-9">
 		      			<input type="text"  class="form-control  input-small" ng-model="duration.week">
 		      		</div>
 		      	</div>
-		      	<div class="form-group">
-		      		<label class="col-sm-2 control-label"> Level</label>
-		      		<div class="col-sm-10">
+		      	<!-- <div class="form-group">
+		      		<label class="col-sm-3 control-label"> Level</label>
+		      		<div class="col-sm-9">
 		      			<select ng-model="duration.level">
 		      			
 							<option ng-repeat="level in levels" value="{{level}}">{{level}}</option>
 						</select>
 		      		</div>
-		      	</div>
-		      	<div class="form-group">
+		      	</div> -->
+		      	<!-- <div class="form-group">
 		      		<label class="col-sm-2 control-label">Price</label>
 		      		<div class="col-sm-10">
 		      			<input type="text"  class="form-control  input-small" ng-model="duration.price">
+		      		</div>
+		      	</div> -->
+		      	<div class="form-group">
+		      		<label class="col-sm-3 control-label">Part-Time Price</label>
+		      		<div class="col-sm-9">
+		      			<input type="text"  class="form-control  input-small" ng-model="duration.pricePartTime">
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-3 control-label">Standard Price</label>
+		      		<div class="col-sm-9">
+		      			<input type="text"  class="form-control  input-small" ng-model="duration.priceStandard">
+		      		</div>
+		      	</div>
+
+		      	<div class="form-group">
+		      		<label class="col-sm-3 control-label">Intensive Price</label>
+		      		<div class="col-sm-9">
+		      			<input type="text"  class="form-control  input-small" ng-model="duration.priceIntensive">
 		      		</div>
 		      	</div>
 

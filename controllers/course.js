@@ -306,6 +306,8 @@ exports.edit = function(req,res){
 		// save each duration object in the list
 		function(next){
 			async.each(req.body.durations, function( val, callback) {
+				console.log('---------------');
+				console.log(val);
 				Duration.update({_id:val._id}, val, function(err,result){
 					callback();
 					});

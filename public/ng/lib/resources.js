@@ -193,7 +193,31 @@ resources.factory('StudentByAgent',['$resource',
     function($resource){
         return $resource('/api/events/:id', {}, {
         query:{ method: 'GET'},
-        update : { method : 'PUT', params: {id:'@_id'}}
+        update : { method : 'PUT', params: {id:'@_id'}},
+        getStaticEvent : { url: '/api/events-static', method: 'GET'},
+        updateStaticEvent: { url: '/api/events-static', method: 'PUT'}
+    });
+}])
+
+
+.factory('Calendar',['$resource',
+    function($resource){
+        return $resource('/api/calendar-static', {}, {
+        getCalendarEvent : { url: '/api/calendar-static', method: 'GET'},
+        updateCalendarEvent: { url: '/api/calendar-static', method: 'PUT'}
+    });
+}])
+
+
+.factory('StaticMedia',['$resource',
+    function($resource){
+        return $resource('/api/static-media/', {}, {
+        getCurrentYearAcademyCalendar : { url: '/api/static-media/CurrentAcademyCalendar', method: 'GET'},
+        updateCurrentYearAcademyCalendar: { url: '/api/static-media/CurrentAcademyCalendar', method: 'PUT'},
+        getFutureAcademyCalendar : { url: '/api/static-media/FutureAcademyCalendar', method: 'GET'},
+        updateFutureAcademyCalendar: { url: '/api/static-media/FutureAcademyCalendar', method: 'PUT'},
+        getActivityCalendars: { url: '/api/static-media/ActivityCalendar', method: 'GET'},
+        updateActivityCalendars: { url: '/api/static-media/ActivityCalendar', method: 'PUT'}
     });
 }])
 
