@@ -20,6 +20,7 @@
 								<th class="hidden-xs">Cell Phone</th>
 								<th class="hidden-xs">Email</th>
 								<th class="hidden-xs">Status</th>
+								<th class="hidden-xs">Rank</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 						</thead>
@@ -34,6 +35,7 @@
 								<td><span ng-if="staff.isDelete == 1" class="label label-danger">Deleted</span>
 									<span ng-if="staff.isDelete == 0" class="label label-active">Active</span>
 								</td>
+								<td class="hidden-xs">{{staff.rank}}</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
 										<a href="/admin/staff/detail/{{staff._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>

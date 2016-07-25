@@ -241,7 +241,7 @@ router.get('/accommodation', function(req, res){
 
 router.get('/team', function(req, res){
 
-	Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+	Staff.find({cover: { $ne: null }}).populate('cover').sort('-rank').exec(function(err,result){
 	
 		template(req,res,'client_normal','client/team.html',{
 			staffs : result

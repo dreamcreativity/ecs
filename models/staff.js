@@ -22,7 +22,8 @@ var StaffSchema = new mongoose.Schema({
 	createDate : {type : Date, default : Date.now },
     updateDate : {type : Date, default : Date.now },
     lastLoginDateTime : {type : Date, default : Date.now },
-    lastLoginIP : {type:String, default:null}
+    lastLoginIP : {type:String, default:null},
+    rank: { type: Number , default: 0 }
 
 });
 
