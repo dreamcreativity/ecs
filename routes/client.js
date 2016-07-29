@@ -76,7 +76,7 @@ router.get('/', function(req, res) {
 		// });
 
 		template(req,res,'client_main','client/main.html',{ 
-			title: 'ESC - Englist School of Canada',
+			title: 'ESC - English School of Canada',
 			sliders : sliders ,
 			staffs: staffs,
 			courses: courses,

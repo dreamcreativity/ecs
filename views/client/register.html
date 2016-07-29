@@ -33,7 +33,7 @@
                 <div class="fbox-icon" onclick="showAudlt()">
                     <a href="#"><i>A</i></a>
                 </div>
-                <h3>Adult Program<span class="subtitle">description one</span></h3>
+                <h3>Adult Programs<span class="subtitle">description one</span></h3>
             </div>
         </div>
 
@@ -64,9 +64,9 @@
 
 	        <div class="col-md-offset-1 col-md-7">
 	            <div class="heading-block topmargin center">
-	                <h1>Student Register Online Form</h1>
+	                <h1>Online Student Registration Form</h1>
 	            </div>
-	            <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p>
+	           <!--  <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
 	        </div>
 
 	        <div class="col-md-4">
@@ -89,12 +89,12 @@
 					<div class="col-sm-4  " ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
 						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" 
 						required>
-						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
+						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">First name is required.</p>
 					</div>
 					<label class="col-sm-2 control-label">Last Name </label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
 						<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
+						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">Last name is required.</p>
 					</div>
 				</div>
 
@@ -113,21 +113,21 @@
 						<select name="region" class="form-control" ng-model="student.region" required>
 								<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
 						</select>
-						<p ng-show="registerForm.region.$invalid && !registerForm.region.$pristine" class="help-block text-danger">Region is required</p>
+						<p ng-show="registerForm.region.$invalid && !registerForm.region.$pristine" class="help-block text-danger">Region is required.</p>
 					</div>
 				</div>
 
 				<div class="form-group required">
-					<label class="col-sm-2 control-label">Birth Date</label>
+					<label class="col-sm-2 control-label">Date of Birth</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
 						<input type='date' class="form-control" name="birthday" ng-model="student.birthday" placeholder='eg. 1987-01-01' required>
-						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
+						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">Birthday is required.</p>
 					</div>
 					<label class="col-sm-2 control-label">Age</label>
 					<div class="col-sm-2" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
 						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
-						<p ng-show="registerForm.age.$error.required && !registerForm.age.$pristine" class="help-block text-danger">age is required</p>
-						<p ng-show="registerForm.age.$invalid && !registerForm.age.$error.required" class="help-block text-danger">age is invalid</p>
+						<p ng-show="registerForm.age.$error.required && !registerForm.age.$pristine" class="help-block text-danger">Age is required.</p>
+						<p ng-show="registerForm.age.$invalid && !registerForm.age.$error.required" class="help-block text-danger">Age is invalid.</p>
 					</div>
 
 				</div>
@@ -135,7 +135,7 @@
 					<label class="col-sm-2 control-label">Citizenship</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
 						<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
-						<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">citizenship is required</p>
+						<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">Citizenship is required.</p>
 					</div>
 				</div>
 
@@ -143,7 +143,7 @@
 					<label class="col-sm-2 control-label">Address</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
 						<input type="text" class="form-control" name="address" ng-model="student.address" required>
-						<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
+						<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">Address is required.</p>
 					</div>
 				</div>
 
@@ -156,31 +156,31 @@
 					<label class="col-sm-2 control-label">Postal Code</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
 						<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
-						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">post code is required</p>
+						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">Post code is required.</p>
 					</div>
 				</div>
 				<div class="form-group required">
 					<label class="col-sm-2  control-label">Province</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
-						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
+						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">Province is required.</p>
 					</div>
 					<label class="col-sm-2 control-label">Country</label>
 					<div class="col-sm-4" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
 						<input type="text" class="form-control" name="country" ng-model="student.country" required>
-						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
+						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">Country is required.</p>
 					</div>
 				</div>
 				<div class="form-group required">
 						<label class="col-sm-2 control-label">Telephone</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
 							<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
-							<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is required</p>
+							<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">Phone is required.</p>
 						</div>
-						<label class="col-sm-2 control-label">Emergency call</label>
+						<label class="col-sm-2 control-label">Emergency Contact</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergency.$invalid && !registerForm.emergency.$pristine}"}>
 							<input type="number" class="form-control" name="emergency" ng-model="student.emergency" required>
-							<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">emergency contact is required</p>
+							<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">Emergency contact is required.</p>
 						</div>
 					</div>
 
@@ -188,8 +188,8 @@
 						<label class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-4" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
 							<input type="email" class="form-control" name="email" ng-model="student.email" required>
-							<p ng-show="registerForm.email.$error.required && !registerForm.email.$pristine" class="help-block text-danger">email is required</p>
-							<p ng-show="registerForm.email.$invalid && !registerForm.email.$error.required" class="help-block text-danger">email is invalid</p>
+							<p ng-show="registerForm.email.$error.required && !registerForm.email.$pristine" class="help-block text-danger">Email is required.</p>
+							<p ng-show="registerForm.email.$invalid && !registerForm.email.$error.required" class="help-block text-danger">Email is invalid.</p>
 						</div>
 					</div>
 				<div class="form-group">
@@ -214,12 +214,12 @@
 			 	<label class="col-sm-2 control-label">TOEFL </label>
 					<div class="col-sm-4">
 						<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 max=120>
-						<p ng-show="registerForm.TOEFL.$invalid && !registerForm.TOEFL.$error.required" class="help-block text-danger">TOEFL is invalid</p>
+						<p ng-show="registerForm.TOEFL.$invalid && !registerForm.TOEFL.$error.required" class="help-block text-danger">TOEFL is invalid.</p>
 					</div>
 					<label class="col-sm-2 control-label">IELTS </label>
 					<div class="col-sm-4">
 						<input type="number" step="0.5" class="form-control" name="IELTS" ng-model="student.IELTS" min=0 max = 9>
-						<p ng-show="registerForm.IELTS.$invalid && !registerForm.IELTS.$error.required" class="help-block text-danger">IELTS is invalid</p>
+						<p ng-show="registerForm.IELTS.$invalid && !registerForm.IELTS.$error.required" class="help-block text-danger">IELTS is invalid.</p>
 					</div>
 			 	</div>
 			 	<div class="form-group">
@@ -249,7 +249,7 @@
 	            <div class="heading-block topmargin center">
 	                <h1>Junior Program Register</h1>
 	            </div>
-	            <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p>
+	            <!-- <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
 	        </div>
 
 	        <div class="col-md-4">
