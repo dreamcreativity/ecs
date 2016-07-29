@@ -115,6 +115,13 @@
                                 <a href="/#section-programs" ><div>Adult Programs</div></a>
                                 <div class="mega-menu-content style-2 col-4 clearfix">
                                     <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL</div></a>
+                                            <ul>
+                                                <li ng-repeat="course in courses" ng-if="course.category=='General ESL'  "><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <!-- <ul>
                                         <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
                                             <ul>
                                                 <li ng-repeat="course in courses" ng-if="course.category=='General ESL'  && course.subCategory == 'Core Courses'"><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
@@ -127,7 +134,7 @@
                                                 <li ng-repeat="course in courses" ng-if="course.category=='General ESL'  && course.subCategory == 'Elective Courses' "><a href="/course/{{course._id}}"><div>{{course.title}}</div></a></li>
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <ul>
                                         <li class="mega-menu-title"><a href="#"><div>Focus Programs</div></a>
                                             <ul>

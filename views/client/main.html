@@ -247,6 +247,17 @@
                                 <a href="#"  data-href="#section-programs"><div>Adult Programs</div></a>
                                 <div class="mega-menu-content style-2 col-4 ">
                                     <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'General ESL' ){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <!-- <ul>
                                         <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
                                             <ul>
                                                 <% for(var i=0; i < courses.length; i++){ %>
@@ -267,7 +278,7 @@
                                                 
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <ul>
                                         <li class="mega-menu-title"><a href="#"><div>Focus Programs</div></a>
                                             <ul>
