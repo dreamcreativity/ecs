@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
 			});
 	    },
 	    function(next){
-			Course.find({cover: { $ne: null }, isActive: true}).sort({order: 1}).populate('cover').exec(function(err,result){
+			Course.find({cover: { $ne: null }, isActive: true, isDelete: false}).sort({order: 1}).populate('cover').exec(function(err,result){
 				courses = result;
 				next();
 			});

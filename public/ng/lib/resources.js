@@ -254,6 +254,11 @@ resources.factory('Courses',['$resource',
         query:{ method: 'GET'},
         get:{ method: 'GET', params: {id:'@_id'}},
         update : { method : 'PUT', params: {id:'@_id'}},
+        getMenuCourseList: {
+            url: '/api/menucourses/',
+            method : 'GET', 
+            params: {}
+        },
         getSimpleList: {
             url: '/api/infocourses/',
             method : 'GET', 

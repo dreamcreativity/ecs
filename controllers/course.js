@@ -51,10 +51,33 @@ exports.getAllCourses = function (req,res){
 	});
 }
 
+exports.getMenuCourses = function (req,res){
+
+	Course.find({ isActive:true, isDelete:false }).exec(function(err, result){
+		if(err) {
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+		else{
+
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+
+}
+
+
 
 exports.getAllSimpleCourses = function (req,res){
 
-	Course.find({ isActive:true, isShowInCalculator: true }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
+	Course.find({ isActive:true, isShowInCalculator: true, isDelete: false }).populate({path: 'durations', options: { sort: { 'order': +1 } } }).exec(function(err, result){
 		if(err) {
 			res.json({
 				status: 'fail',
