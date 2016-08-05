@@ -216,7 +216,8 @@ exports.getCourseStartDate = function (req,res){
 								newStartDateItem.setDate(newStartDateItem.getDate()+1);
 
 							startDateList.push(new Date(newStartDateItem));
-							startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
+							//startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
+							startPoint.setDate(startPoint.getDate()+ 28);
 						}
 
 					}else{
