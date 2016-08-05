@@ -21,23 +21,15 @@
                 <h2>Our Student Photo Gallery</h2>
                 <span>Some of the Awesome Monment we've worked on.</span>
             </div>
-		 	<!-- <div class="container clearfix">
-		 		<div class="row">
-		 			<% for(var j=0; j < activitys.length; j++) { %>
-		 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-		 				<a href="/activity/detail/<%- activitys[j]._id %>" style="background-image:url(<%- activitys[j].cover.thumbnail %>)" class="activity-img">
-		 					<div></div>
-		 				</a>
-		 			</div>
-                    <% } %>
-		 		</div>
-		 	</div> -->
+
 		 </div>	
 	</div>
 
 	<div class="container clearfix center">
         <div id="portfolio" class="portfolio-nomargin clearfix">
+
             <% for(i in activitys){ %>
+            <% if( activitys[i].cover != null ){ %>
             <article class="portfolio-item pf-media pf-icons">
                 <div class="portfolio-image">
                     <a href="/gallery/detail/<%- activitys[i]._id %>">
@@ -50,6 +42,7 @@
                     </a>
                 </div>
             </article>
+            <% } %>
             <% } %>
     </div>
 </div>

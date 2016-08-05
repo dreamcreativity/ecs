@@ -1,173 +1,142 @@
-        <section id="page-title"   class="page-title-mini page-title-right">
+<style type="text/css">
+    #content ul{
+        margin-left: 40px;
+    }
+    #content ul li{
+        margin: 8px 0;
+    }
+</style>
 
-            <div class="container clearfix">
-                <ol class="breadcrumb">
-                    <li><a href="/">Home</a></li>
-                    <li class="active">Procedures</li>
-                </ol>
+
+
+
+<section id="page-title"   class="page-title-mini page-title-right">
+
+    <div class="container clearfix">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">Procedures</li>
+        </ol>
+    </div>
+
+</section>    
+
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            <div class="heading-block center">
+                <h2>Procedures</h2>
+                <!-- <span>Praesent ut gravida arcu. Mauris lobortis blandit augue, eget pellentesque lectus imperdiet in.</span> -->
             </div>
-
-        </section>    
-
-
-        <section id="content">
-
-            <div class="content-wrap">
-
-                <div class="container clearfix">
-
-                    <div class="col_full">
-
-                        <div class="heading-block center nobottomborder">
-                            <h2>Neque porro quisquam est qui dolorem </h2>
-                            <span>Toronto is the perfect place to study English and have the experience of a lifetime.</span>
-                        </div>
-
-                        <div class="fslider" data-pagi="false" data-animation="fade">
-                            <div class="flexslider">
-                                <div class="slider-wrap">
-                                    <div class="slide"><a href="#"><img src="images/about/4.jpg" alt="About Image"></a></div>
-                                    <div class="slide"><a href="#"><img src="images/about/5.jpg" alt="About Image"></a></div>
-                                    <div class="slide"><a href="#"><img src="images/about/6.jpg" alt="About Image"></a></div>
-                                    <div class="slide"><a href="#"><img src="images/about/7.jpg" alt="About Image"></a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    
-
-                   
-                    <div class="heading-block center">
-                        <h2>Nullam eu lorem sagittis</h2>
-                        <span>Praesent ut gravida arcu. Mauris lobortis blandit augue, eget pellentesque lectus imperdiet in.</span>
-                    </div>
-
-             
-                </div>
-
-     
-            </div>
-
-
-            <div class="container clearfix">
-
-                <div class="col_two_fifth topmargin nobottommargin" id="radarChart" style="opacity: 0;">
-                    <canvas id="radarChartCanvas" width="430" height="300"></canvas>
-                </div>
-
-                <div class="col_three_fifth nobottommargin col_last">
-
-                    <div class="heading-block">
-                        <h3>Powerful insights to help grow your business.</h3>
-                        <span>Reports let you easily track and analyze your product sales, orders, and payments.</span>
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
-
-                    <a href="#">Learn more &rarr;</a>
-
-                </div>
-
-                <div class="clear"></div><div class="line"></div>
-
-                <div class="col_three_fifth">
-
-                    <div class="heading-block">
-                        <h3>Advanced store statistics.</h3>
-                        <span>Benchmarking your website's performance helps you make great choices for your business.</span>
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
-
-                    <a href="#">Learn more &rarr;</a>
-
-                </div>
-
-                <div class="col_two_fifth topmargin col_last" id="doughnutChart" style="opacity: 0;">
-                    <canvas id="doughnutChartCanvas" width="430" height="300"></canvas>
-                </div>
-
-                <script type="text/javascript">
-
-                jQuery(window).load( function(){
-
-                    var radarChartData = {
-                        labels : ["A","B","C","D","E","F","G"],
-                        datasets : [
-                            {
-                                fillColor : "rgba(220,220,220,0.5)",
-                                strokeColor : "rgba(220,220,220,1)",
-                                pointColor : "rgba(220,220,220,1)",
-                                pointStrokeColor : "#fff",
-                                data : [65,59,90,81,56,55,40]
-                            },
-                            {
-                                fillColor : "rgba(151,187,205,0.5)",
-                                strokeColor : "rgba(151,187,205,1)",
-                                pointColor : "rgba(151,187,205,1)",
-                                pointStrokeColor : "#fff",
-                                data : [28,48,40,19,96,27,100]
-                            }
-                        ]
-
-                    };
-
-                    var doughnutChartData = [
-                        {
-                            value: 30,
-                            color:"#F7464A"
-                        },
-                        {
-                            value : 50,
-                            color : "#46BFBD"
-                        },
-                        {
-                            value : 100,
-                            color : "#FDB45C"
-                        },
-                        {
-                            value : 40,
-                            color : "#949FB1"
-                        },
-                        {
-                            value : 120,
-                            color : "#4D5360"
-                        }
-                    ];
-
-                    var globalGraphSettings = {animation : Modernizr.canvas};
-
-                    function showRadarChart(){
-                        var ctx = document.getElementById("radarChartCanvas").getContext("2d");
-                        new Chart(ctx).Radar(radarChartData,globalGraphSettings);
-                    }
-
-                    function showDoughnutChart(){
-                        var ctx = document.getElementById("doughnutChartCanvas").getContext("2d");
-                        new Chart(ctx).Doughnut(doughnutChartData,globalGraphSettings);
-                    }
-
-                    $('#radarChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                    $('#doughnutChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showDoughnutChart,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                });
-
-                </script>
-
-            </div>
-
-    
-
         </div>
+    </div>
+
+    <div class="container clearfix ">
+
+    <p><strong>The Accessibility for Ontarians with Disabilities Act (AODA) was passed in 2005. The goal of the act is to make Ontario accessible for people with disabilities by 2025. Ontario’s first standard under the act –customer service- is now law. All organizations must comply with the AODA customer service standard staring January 1, 2014. </strong></p>
+
+    <!-- <div class="clear"></div><div class="line"></div> -->
+
+    <p><strong>The English School of Canada</strong> is committed to excellence in serving all customers including people with disabilities.</p>
+
+
+    <div class="title-block">
+        <h4>Assistive devices </h4>
+    </div>
+    <p>We will ensure that our staff is trained and familiar with various assistive devices we have on site or that we provide that may be used by customers with disabilities while accessing our goods or services.</p>
+
+
+    <div class="title-block">
+        <h4>Communication</h4>
+    </div>
+    <p>We will communicate with people with disabilities in ways that take into account their disability.</p>        
 
 
 
+    <div class="title-block">
+        <h4>Service animals</h4>
+    </div>
+    <p>We welcome people with disabilities and their service animals. Service animals are allowed on the parts of our premises that are open to the public.</p>        
 
-        </section>
+
+    <div class="title-block">
+        <h4>Support persons</h4>
+    </div>
+    <p>
+        A person with a disability who is accompanied by a support person will be allowed to have that person accompany them on our premises.
+
+        <ul>
+            <li>Fees will not be charged for support persons</li>
+        </ul>
+
+        We will notify customers of this through a notice posted on our premises and <strong>on our website at www.esc-toronto.com ; social media as well as our community board</strong>.
+    </p>
+
+
+    <div class="title-block">
+        <h4>Notice of temporary disruption</h4>
+    </div>
+    <p>
+        In the event of a planned or unexpected disruption to services or facilities for customers with disabilities <strong>[Elevator services, washrooms, classroom space], English School of Canada</strong> will notify customers promptly. This clearly posted notice will include information about the reason for the disruption, its anticipated length of time, and a description of alternative facilities or services, if available. <br>
+        The notice will be placed in the staff room, Community board, Academic board, hallways.
+
+    </p>
+
+    <div class="title-block">
+        <h4>Training</h4>
+    </div>
+    <p>
+        <strong>The English School of Canada</strong> will provide training to employees, volunteers and others who deal with the public or other third parties on our behalf. Training will also be provided to people involved in the development of policies, plans, practices and procedures related to the provision of our goods and services.
+    </p>
+    <p>
+        Individuals in the following positions will be trained: Instructors, Administrative personnel, Management, Volunteers.
+    </p>
+
+    <p>
+        This training will be provided to staff during first day of orientation<br>
+        Training will include:
+
+        <ul>
+            <li>An overview of the Accessibility for Ontarians with Disabilities Act, 2005 and the requirements of the customer service standard</li>
+            <li><strong>The English School of Canada</strong>’s plan related to the customer service standard.</li>
+            <li>How to interact and communicate with people with various types of disabilities</li>
+            <li>How to interact with people with disabilities who use an assistive device or require the assistance of a service animal or a support person. </li>
+            <li>What to do if a person with a disability is having difficulty in accessing <strong>The English School of Canada</strong>’s goods and services (in the case that a person with a disability should be in the premises prior to unforeseen disruption to services or facilities, emergency supportive services will be contacted).</li>
+        </ul>
+
+    </p>
+
+    <p>
+        Staff will also be trained when changes are made to <strong>The English School of Canada’s</strong> accessible customer service plan.
+    </p>
+
+
+
+    <div class="title-block">
+        <h4>Feedback process</h4>
+    </div>
+    <p>
+        Customers who wish to provide feedback on the way <strong>The English School of Canada</strong> provides goods and services to people with disabilities can <strong>follow “Student Complaint Procedure” which can be found in the orientation booklet</strong>. Individuals may also e-mail feedback at <a href="mailto:info@esc-toronto.com">info@esc-toronto.com</a> as well as provide feedback <strong>verbally to management</strong>. All feedback, including complaints, will be reviewed and acted upon by the School Director.
+    </p>
+    <p>
+        Customers can expect to hear back in <strong>2 working days</strong>.
+    </p>
+
+
+    <div class="title-block">
+        <h4>Notice of availability</h4>
+    </div>
+    <p>
+        The English School of Canada will notify the public that our policies are available upon request by posting them on The English School of Canada website.
+    </p>
+
+
+    <div class="title-block">
+        <h4>Modifications to this or other policies</h4>
+    </div>
+    <p>
+        Any policy of The English School of Canada that does not respect and promote the dignity and independence of people with disabilities will be modified or removed.
+    </p>
+    <p>&nbsp;</p><p>&nbsp;</p>
+</section>

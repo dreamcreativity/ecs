@@ -224,8 +224,8 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo">
-                        <a href="/" class="standard-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/esc-logo.svg" alt="ESC Logo"></a>
-                        <a href="/" class="retina-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/esc-logo.svg" alt="ESC Logo"></a>
+                        <a href="/" class="standard-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/school-logo.svg" alt="ESC Logo"></a>
+                        <a href="/" class="retina-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/school-logo.svg" alt="ESC Logo"></a>
                     </div>
                     <!-- #logo end -->
 
@@ -247,6 +247,17 @@
                                 <a href="#"  data-href="#section-programs"><div>Adult Programs</div></a>
                                 <div class="mega-menu-content style-2 col-4 ">
                                     <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'General ESL' ){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <!-- <ul>
                                         <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
                                             <ul>
                                                 <% for(var i=0; i < courses.length; i++){ %>
@@ -267,7 +278,7 @@
                                                 
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <ul>
                                         <li class="mega-menu-title"><a href="#"><div>Focus Programs</div></a>
                                             <ul>
@@ -311,10 +322,10 @@
                                 <a href="#" data-href="#section-junior"><div>Junior Programs</div></a>
                                 <ul class="width300">
                                     <li><a href="/junior-programs/#snav-content1" ><div>Toronto Summer Kids Programs</div></a></li>
-                                    <li><a href="/junior-programs/#snav-content2" ><div>Toronto Summer Teens Program</div></a></li>
-                                    <li><a href="/junior-programs/#snav-content3" ><div>Kingston Summer Teens Programs</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content2" ><div>Toronto Summer Teen Program</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content3" ><div>Kingston Summer Teen Programs</div></a></li>
                                     <li><a href="/junior-programs/#snav-content4"><div>Family Programs</div></a></li>
-                                    <li><a href="/junior-programs/#snav-content5"><div>Year Round Programs</div></a></li>
+                                    <li><a href="/junior-programs/#snav-content5"><div>Year-Round Programs</div></a></li>
                                 </ul>
                             </li>
                             <li>
@@ -322,7 +333,7 @@
                                 <ul class="width200">
                                     <li><a href="/register" ><div>Register Now</div></a></li>
                                     <li><a href="/Calculator" ><div>Fee Calculator</div></a></li>
-                                    <li><a href="/calendar" ><div>Academy Calendars</div></a></li>
+                                    <li><a href="/calendar" ><div>Academic Calendar</div></a></li>
                                     <li><a href="/onlineTest"><div>Online Test</div></a></li>
                                     <li><a href="/guidelines"><div>Student Guidelines</div></a></li>
                                     <li><a href="/procedures"><div>Procedures</div></a></li>
@@ -334,7 +345,7 @@
                                     <li><a href="/preArrival" ><div>Pre-arrival</div></a></li>
                                     <li><a href="/accommodation" ><div>Accommodation</div></a></li>
                                     <li><a href="/gallery" ><div>Photo Gallery</div></a></li>
-                                    <li><a href="/events" ><div>Events</div></a></li>
+                                    <li><a href="/events" ><div>Activities Calendar</div></a></li>
                                     <li><a href="/classChart" ><div>Class Chart</div></a></li>
                                 </ul>
                             </li>
@@ -372,7 +383,7 @@
 
                         <div class="heading-block center">
                             <h2>English School of Canada</h2>
-                            <span>Award-winning provider of English language education</span>
+                            <span>Award-winning provider of English-language education</span>
                         </div>
 
 
@@ -386,8 +397,8 @@
                                     <a href="/philosophy"><img src="images/clients/school/zoom-27352044-3.jpg" alt="Our Philosophy<"></a> 
                                 </div>
                                 <div class="fbox-desc">
-                                    <a href="/philosophy"><h3>Our Philosophy<span class="subtitle">Ensuring/Achieving student success in reaching their goals</span></h3></a>
-                                    <p class="program-home-des">English School of Canada aims to develop both fluency and confidence in international students in order to boost their success in personal, academic and professional applications. This is accomplished through genuine and dedicated care from teachers and support staff who understand the needs of foreign students, going above and beyond to create both valuable and memorable experiences for them in Toronto.</p>
+                                    <a href="/philosophy"><h3>Our Philosophy<span class="subtitle">Ensuring student success</span></h3></a>
+                                    <p class="program-home-des">English School of Canada aims to  help international students develop both fluency and confidence in order to achieve success in personal, academic and professional goals. This is accomplished through genuine and dedicated care from teachers and support staff who understand the needs of foreign students, going above and beyond to create both valuable and memorable experiences for them in Toronto.</p>
                                 </div>
                             </div>
                         </div>
@@ -398,7 +409,7 @@
                                     <a href="/team"><img src="images/clients/school/zoom-41710588-1.jpg" alt="Our team"></a>
                                 </div>
                                 <div class="fbox-desc">
-                                    <a href="/team"><h3>Our Team<span class="subtitle">Trained and qualified teachers and support staff.</span></h3></a>
+                                    <a href="/team"><h3>Our Team<span class="subtitle">Trained and qualified teachers and support staff</span></h3></a>
                                     <p class="program-home-des">Established by teachers, ESC brings together current teaching methods and techniques with a fully accredited and award-winning teaching team.  Our support staff are qualified to help in a variety of ways from academic counselors to activity coordinators to administrative support.  We are here to help and are dedicated to your needs.</p>
                                 </div>
                             </div>
@@ -410,8 +421,8 @@
                                     <a href="/city"><img src="images/clients/school/city-toronto.jpg" alt="Our City"></a>
                                 </div>
                                 <div class="fbox-desc">
-                                    <a href="/city"><h3>Our City<span class="subtitle">Consistently voted one of the best cities in the world to live in and visit.</span></h3></a>
-                                    <p class="program-home-des">Culturally diverse, progressive and welcoming city.  As Canada’s largest city, Toronto is close to many experiences you’ll enjoy – from shopping, sports and entertainment to a thriving arts scene, beautiful natural wonders and world-renowned cultural events.  It’s also conveniently close to Niagara Falls, French Canada, New York, Chicago and Boston.</p>
+                                    <a href="/city"><h3>Our City<span class="subtitle">Consistently voted one of the best cities in the world to live in and visit</span></h3></a>
+                                    <p class="program-home-des">A culturally diverse, progressive and welcoming city.  As Canada’s largest city, Toronto is near many experiences you will enjoy from shopping, sports and entertainment to a thriving arts scene, beautiful natural wonders and world-renowned cultural events.  It is also conveniently close to Niagara Falls, French Canada, New York, Chicago and Boston.</p>
                                 </div>
                             </div>
                         </div>
@@ -422,8 +433,8 @@
                                     <a href="/why-esc"><img src="images/clients/school/zoom-28398566-3.jpg" alt="Why choose Us?"></a>
                                 </div>
                                 <div class="fbox-desc">
-                                    <a href="/why-esc"><h3>Why ESC ?<span class="subtitle">Providing quality education and a memorable Canadian experience.</span></h3></a>
-                                    <p class="program-home-des">Running for nearly 20 years, English School of Canada has educated over 30,000 students from more than 50 countries.  Students appreciate and are engaged by the multicultural student body they find at our fully accredited school.  At English School of Canada, we focus on teaching with our award-winning teachers and programs and activities to give our vibrant and dynamic students a true Canadian experience.</p>
+                                    <a href="/why-esc"><h3>Why ESC?<span class="subtitle">Providing quality education and a memorable Canadian experience</span></h3></a>
+                                    <p class="program-home-des">Running for nearly 20 years, English School of Canada has educated over 30,000 students from more than 50 countries.  Students appreciate and are engaged with the multicultural student body they study with at our fully accredited school.  At English School of Canada, we focus on teaching with our award-winning teachers and programs and activities to give our vibrant and dynamic students a true Canadian experience.</p>
                                 </div>
                             </div>
                         </div>
@@ -451,7 +462,7 @@
 
                     <div class="heading-block center bottommargin-lg">
                         <h2>ADULT Programs</h2>
-                        <span>List of our main programs.</span>
+                        <span>A list of our main programs</span>
                     </div>
 
 
@@ -638,8 +649,8 @@
                         <div class="">
 
                             <div class="heading-block center">
-                                <h4>What Students say?</h4>
-                                <span>Some of our Students love to share with !</span>
+                                <h4>What our Students say</h4>
+                                <span>Hear about their experiences</span>
                             </div>
 
                             <div class="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding" data-arrows="false">
@@ -647,14 +658,14 @@
                                     <div class="slider-wrap">
                                         <div class="slide">
                                             <div class="testi-content">
-                                                <p>ESC has excellent teachers who have supported me with my English skills. The school offers daily activities after school which helps us know more about the culture in Canada, the best places to visit and most importantly, the activities give us a chance to use the English that we have learnt. ESC is a great school!</p>
+                                                <p>I love studying at ESC! All the teachers and staff members are very friendly and kind! My experience in Canada has been absolutely perfect, thanks to everybody at ESC. I will go back in the future for sure! </p>
                                                 <div class="testi-meta">
                                                     <div class="profile">
-                                                        <div class="img" style="background-image:url('http://zblogged.com/wp-content/uploads/2015/11/5.png')">
+                                                        <div class="img" style="background-image:url('/images/testimonials/profile_1.jpg')">
                                                                                                            </div>
                                                         <div class="message">
-                                                            Laura Fontana
-                                                            <span>Brazil</span>
+                                                            Jocken Stange
+                                                            <span>Camila</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -662,14 +673,15 @@
                                         </div>
                                         <div class="slide">
                                             <div class="testi-content">
-                                                <p> had such a great experience at ESC! I took the ESL program followed by the UCTP program. ESL helped me a lot to improve my English skills for UCTP. UCTP was very challenging. We had to write many essays and give presentations. After I finished the UCTP, I felt a lot more confident in using English. ESC is the best school I\'ve ever been to. I love ESC!! Thank you so much for the wonderful experience!</p>
+                                                <p> Studying at ESC has been the best experience of my life. I have met people from around the world.
+                                                The classes are dynamic, the teachers are very well-trained and the counsellors give us great support about our classes and life in Toronto.</p>
                                                 <div class="testi-meta">
                                                     <div class="profile">
-                                                        <div class="img" style="background-image:url('http://2.bp.blogspot.com/-1DuYpg-MCrQ/T_OmSlct4lI/AAAAAAAAAn4/AKCvi-QEt5c/s1600/beautiful-kid-picture.jpg)">
+                                                        <div class="img" style="background-image:url('/images/testimonials/profile_2.jpg')">
                                                         </div>
                                                         <div class="message">
                                                             Mao Egami
-                                                            <span>Japan</span>
+                                                            <span>Carlos</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -677,7 +689,7 @@
                                         </div>
                                         <div class="slide">
                                             <div class="testi-content">
-                                                <p>My name is Olesya and I am from Russia. I came to Canada to learn English. The reason why I chose Canada is to improve my English in order to communicate with my Canadian born family. I really like the English School of Canada because the teachers are great, I’ve met so many good friends, and I’ve improved my English a lot here. I would like to thank all of the teachers at ESC</p>
+                                                <p>My name is Olesya and I am from Russia. I came to Canada to learn English. The reason why I chose Canada is to improve my English in order to communicate with my Canadian born family. I really like the English School of Canada because the teachers are great, I’ve met so many good friends, and I’ve improved my English a lot here. I would like to thank all of the teachers at ESC.</p>
                                                 <div class="testi-meta">
                                                     <div class="profile">
                                                         <div class="img" style="background-image:url('http://www.inspirefirst.com/wp-content/uploads/2012/09/0223.jpg')">
@@ -708,7 +720,7 @@
                     <div id="section-junior" class="portfolio-nomargin  page-section clearfix">
                     	<div class="heading-block center">
                             <h2>Junior Programs</h2>
-                            <span class="divcenter">For students from 9 to 17 years of age inclusive</span>
+                            <span class="divcenter">For students from 9 to 17 years of age</span>
                         </div>
                         
                         <div class="col_one_third">
@@ -717,7 +729,7 @@
                                     <a href="/junior-programs/#snav-content1"><img alt="Toronto Summer Kids Program" src="/images/junior/thumb-summer-kids.jpg"></a>
                                 </div>
                                 <a href="/junior-programs/#snav-content1"><h3>Toronto Summer Kids Program</h3></a>
-                                <p class="program-home-des">This program is dedicated to children around the world who are from 9 to 13 years old age only and are looking for a high quality English summer camp in the city of Toronto.</p>
+                                <p class="program-home-des">This program is dedicated to children from around the world who are from 9 to 13 years old and who are looking for a high-quality English summer camp in the city of Toronto.</p>
                             </div>
                         </div>
                         
@@ -727,7 +739,7 @@
                                     <a href="/junior-programs/#snav-content2"><img alt="Toronto Summer Teen Program" src="/images/junior/thumb-summer-teen.jpg"></a>
                                 </div>
                                 <a href="/junior-programs/#snav-content2"><h3>Toronto Summer Teen Program</h3></a>
-                                <p class="program-home-des">This program is dedicated to teenagers around the world who are from 14 to 17 years old age only and are looking for a high quality English summer camp in the city of Toronto.</p>
+                                <p class="program-home-des">This program is dedicated to teenagers from around the world who are from 14 to 17 years old and are looking for a high-quality English summer camp in the city of Toronto.</p>
                             </div>
                         </div>
                         
@@ -737,7 +749,7 @@
                                     <a href="/junior-programs/#snav-content3"><img alt="Kingston Summer Teen Program" src="/images/junior/thumb-summer-teen-k.jpg"></a>
                                 </div>
                                 <a href="/junior-programs/#snav-content3"><h3>Kingston Summer Teen Program</h3></a>
-                                <p class="program-home-des">The summer camp is an amazing opportunity for students from 14 to 17 years old to get to know Canada, its education system and learn useful knowledge. </p>
+                                <p class="program-home-des">The summer camp is an amazing opportunity for students from 14 to 17 years old to learn about and experience Canada as well as its education system. </p>
                             </div>
                         </div>
                         
@@ -747,7 +759,7 @@
                                     <a href="/junior-programs/#snav-content4"><img alt="Family Programs" src="/images/junior/thumb-family-program.jpg"></a>
                                 </div>
                                 <a href="/junior-programs/#snav-content4"><h3>Family Programs</h3></a>
-                                <p class="program-home-des">Our family programs are an amazing opportunity for families around the world to spend some great time in the city of Toronto during the summer and have an amazing vacation.</p>
+                                <p class="program-home-des">Our family programs are an amazing opportunity for families from around the world to have a great time in the city of Toronto during the summer and enjoy an amazing vacation.</p>
                             </div>
                         </div>
                         
@@ -756,8 +768,8 @@
                                 <div class="fbox-photo">
                                     <a href="/junior-programs/#snav-content5"><img alt="Toronto Year Round Programs" src="/images/junior/thumb-year-round.jpg"></a>
                                 </div>
-                                <a href="/junior-programs/#snav-content5"><h3>Toronto Year Round Programs</h3></a>
-                                <p class="program-home-des">The programs throughout the year are intended for students or groups that are willing to come to Toronto and experience a great vacation study program. The programs are most of the time customized and are built as per group wish.</p>
+                                <a href="/junior-programs/#snav-content5"><h3>Toronto Year-Round Programs</h3></a>
+                                <p class="program-home-des">The programs throughout the year are intended for students or groups that wish to come to Toronto and experience a great vacation study program. The programs can usually be customized to suit your needs.</p>
                             </div>
                         </div>
 
@@ -791,14 +803,14 @@
                             <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
                             	<a href="/Calculator">
                                 <i class="icon-credit"></i>
-                                <h5>Program Course Calculator</h5>
+                                <h5>Program Calculator</h5>
                                 </a>
                             </div>
                             
                             <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
                             	<a href="/calendar">
                                 <i class="icon-calendar3"></i>
-                                <h5>School Course Calendar</h5>
+                                <h5>School Calendar</h5>
                                 </a>
                             </div>
                             
@@ -839,7 +851,7 @@
                                 </a>
              
                                 <a href="/preArrival" class="portfolio-desc">
-                                    <h3>Pre Arrival</h3>
+                                    <h3>Pre-Arrival</h3>
                                 </a>
                             </div>
                         </article>
@@ -863,7 +875,7 @@
                                 </a>
              
                                 <a href="/accommodation" class="portfolio-desc">
-                                    <h3>Accommodation</h3>
+                                    <h3>Accommodations</h3>
                                 </a>
                             </div>
                         </article>
@@ -899,7 +911,7 @@
 
                     <div class="heading-block title-center">
                         <h2>Get in Touch with us</h2>
-                        <span>Have Questions? Contact Us .</span>
+                        <span>Have Questions? Contact Us</span>
                     </div>
 
                     <div class="container clearfix">
@@ -1053,7 +1065,7 @@
                                     <div class="fbox-icon">
                                         <a href="https://www.google.ca/maps/place/79+St+Clair+Ave+E+%23202,+Toronto,+ON+M4T+1M5/@43.6884344,-79.3931246,17z/data=!3m1!4b1!4m2!3m1!1s0x882b334ffac8dbc1:0x9ef9f133fc0452e1" target="_blank"><i class="icon-map-marker2"></i></a>
                                     </div>
-                                    <h3>Our Location<span class="subtitle">79 St. Clair Ave. East, Suite 202<br>Toronto, ON,M4T 1M6</span></h3>
+                                    <h3>Our Location<span class="subtitle">79 St. Clair Ave. East, Suite 202<br>Toronto, ON, M4T 1M6</span></h3>
                                 </div>
                             </div>
 
@@ -1158,7 +1170,7 @@
                                 </address>
                                 <abbr title="Phone Number"><strong>Phone:</strong></abbr> +1 (416) 686- 1596<br>
                                 <abbr title="Fax"><strong>Fax:</strong></abbr> +1 (416) 686-7960<br>
-                                <abbr title="Email Address"><strong>Email:</strong></abbr>info@esc-toronto.com 
+                                <abbr title="Email Address"><strong>Email:</strong></abbr> info@esc-toronto.com 
 
 
                                 <p><strong>DLI: </strong> O19350421222</p>

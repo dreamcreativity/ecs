@@ -119,7 +119,7 @@ angular.module('ClientApp')
 			$scope.courseList.push({
 				id : course._id,
 				title: course.title,
-				selectDuration: { _id: '', title:'Select a Duration', price: 0, week : 0},
+				selectDuration: { _id: '', title:'Select a duration', price: 0, week : 0},
 				startDate: data.data[0],
 				durations: course.durations,
 				level: 'Select a level',

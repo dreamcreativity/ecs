@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
 			});
 	    },
 	    function(next){
-			Course.find({cover: { $ne: null }, isActive: true}).sort({order: 1}).populate('cover').exec(function(err,result){
+			Course.find({cover: { $ne: null }, isActive: true, isDelete: false}).sort({order: 1}).populate('cover').exec(function(err,result){
 				courses = result;
 				next();
 			});
@@ -76,7 +76,7 @@ router.get('/', function(req, res) {
 		// });
 
 		template(req,res,'client_main','client/main.html',{ 
-			title: 'ESC - Englist School of Canada',
+			title: 'ESC - English School of Canada',
 			sliders : sliders ,
 			staffs: staffs,
 			courses: courses,
@@ -241,7 +241,7 @@ router.get('/accommodation', function(req, res){
 
 router.get('/team', function(req, res){
 
-	Staff.find({cover: { $ne: null }}).populate('cover').exec(function(err,result){
+	Staff.find({cover: { $ne: null }}).populate('cover').sort('-rank').exec(function(err,result){
 	
 		template(req,res,'client_normal','client/team.html',{
 			staffs : result

@@ -22,7 +22,8 @@ var CourseSchema = new mongoose.Schema({
 	isShowInCalculator : {type : Boolean, default : true },
 	calendarColor : {type: String, default: '#eeeeee'},
 	calendarFontColor : {type: String, default: '#000000'},
-	isActive : {type : Boolean, default : true }
+	isActive : {type : Boolean, default : true },
+	isDelete : {type : Boolean, default : false }
 });
 
 var Course = mongoose.model('Course', CourseSchema);
