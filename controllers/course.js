@@ -202,7 +202,8 @@ exports.getCourseStartDate = function (req,res){
 						// loop from start point to today
 						while(true){
 							// add week for start date
-							startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
+							//startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
+							startPoint.setDate(startPoint.getDate()+ 28);
 							if( startPoint > startCalculateDate)
 								break;
 						}	
@@ -217,7 +218,7 @@ exports.getCourseStartDate = function (req,res){
 
 							startDateList.push(new Date(newStartDateItem));
 							//startPoint.setDate(startPoint.getDate()+ 7*durationWeek);
-							startPoint.setDate(startPoint.getDate()+ 28);
+							startPoint.setDate(startPoint.getDate()+ 28 );
 						}
 
 					}else{
