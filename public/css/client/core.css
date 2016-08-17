@@ -740,6 +740,10 @@ body:not(.device-touch) #section-services,body:not(.device-touch) #section-junio
 
 
 
+.panel .panel-body ul{
+	margin-left: 35px;
+}
+
 
 
 

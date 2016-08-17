@@ -289,6 +289,11 @@ router.get('/campus-pictures', function(req, res){
 });
 
 
+router.get('/qa', function(req, res){
+	template(req,res,'client_normal','client/qa.html',{});
+});
+
+
 
 router.get('/calendar', function(req, res){
 
