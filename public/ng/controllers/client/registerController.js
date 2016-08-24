@@ -21,6 +21,8 @@ angular.module('ClientApp')
 		var studentId = null;
 		var studentNumber = null;
 		var agentEmail = null;
+		$scope.student.country = $scope.student.region;
+		$scope.student.fax = "N/A";
 		$http.post('/api/student/register',{student:$scope.student, token:token ,courseList:[],accommodation:[]})
 		.success(function(data,status,headers,config){
 			if(data.messages == 'successed'){

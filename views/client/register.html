@@ -107,14 +107,14 @@
 							<option value="Female">Female</option> 
 						</select>
 					</div>
-
-					<label class="col-sm-2 control-label">Region </label>
-					<div class="col-sm-4">
-						<select name="region" class="form-control" ng-model="student.region" required>
-								<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-						<p ng-show="registerForm.region.$invalid && !registerForm.region.$pristine" class="help-block text-danger">Region is required.</p>
+					<label class="col-sm-2 control-label">Age</label>
+					<div class="col-sm-2" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
+						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
+						<p ng-show="registerForm.age.$error.required && !registerForm.age.$pristine" class="help-block text-danger">Age is required.</p>
+						<p ng-show="registerForm.age.$invalid && !registerForm.age.$error.required" class="help-block text-danger">Age is invalid.</p>
 					</div>
+
+					
 				</div>
 
 				<div class="form-group required">
@@ -123,12 +123,7 @@
 						<input type='date' class="form-control" name="birthday" ng-model="student.birthday" placeholder='eg. 1987-01-01' required>
 						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">Birthday is required.</p>
 					</div>
-					<label class="col-sm-2 control-label">Age</label>
-					<div class="col-sm-2" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
-						<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
-						<p ng-show="registerForm.age.$error.required && !registerForm.age.$pristine" class="help-block text-danger">Age is required.</p>
-						<p ng-show="registerForm.age.$invalid && !registerForm.age.$error.required" class="help-block text-danger">Age is invalid.</p>
-					</div>
+					
 
 				</div>
 				<div class="form-group required">
@@ -165,10 +160,12 @@
 						<input type="text" class="form-control" name="province" ng-model="student.province" required>
 						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">Province is required.</p>
 					</div>
-					<label class="col-sm-2 control-label">Country</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
-						<input type="text" class="form-control" name="country" ng-model="student.country" required>
-						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">Country is required.</p>
+					<label class="col-sm-2 control-label">Country </label>
+					<div class="col-sm-4">
+						<select name="region" class="form-control" ng-model="student.region" required>
+								<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
+						</select>
+						<p ng-show="registerForm.region.$invalid && !registerForm.region.$pristine" class="help-block text-danger">Region is required.</p>
 					</div>
 				</div>
 				<div class="form-group required">
@@ -193,13 +190,6 @@
 						</div>
 					</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Fax</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" name="fax" ng-model="student.fax">
-						</div>
-				</div>
-
-				<div class="form-group">
 					<label class="col-sm-2 control-label">English Level : </label>
 					<div class="col-sm-4">
 						<select name="englishlevel" class="form-control" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
@@ -222,6 +212,35 @@
 						<p ng-show="registerForm.IELTS.$invalid && !registerForm.IELTS.$error.required" class="help-block text-danger">IELTS is invalid.</p>
 					</div>
 			 	</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Program </label>
+					<div class="col-sm-4">
+						<select class="form-control" name="programName" ng-model="student.programName">
+							<option value="Communication">Communication</option>
+							<option value="Communicative Grammar">Communicative Grammar</option>
+							<option value="Conversation">Conversation</option>
+							<option value="Integrated Skills">Integrated Skills</option> 
+							<option value="Intermediate Functional Writing">Intermediate Functional Writing</option> 
+							<option value="Introduction to Writing">Introduction to Writing</option> 
+							<option value="Pronunciation">Pronunciation</option> 
+							<option value="English for Health Care">English for Health Care</option> 
+							<option value="Focus on Writing">Focus on Writing</option> 
+							<option value="Focus on Speaking">Focus on Speaking</option> 
+							<option value="iBT-TOEFL Preparation Course">iBT-TOEFL Preparation Course</option> 
+							<option value="IELTS Preparation Course">IELTS Preparation Course</option> 
+							<option value="UCTP">UCTP</option> 
+							<option value="UCTP Prep">UCTP Prep.</option> 
+						</select>
+					</div>
+
+					<label class="col-sm-2 control-label">Start Date</label>
+					<div class="col-sm-4">
+						<input type='date' class="form-control" name="programStartDate" ng-model="student.programStartDate">
+					</div>
+					
+				</div>
+
 			 	<div class="form-group">
 			 		<div class="col-sm-offset-2 col-sm-2">
 			 			<input type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" value="Submit"> 
