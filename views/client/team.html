@@ -9,55 +9,75 @@
 
         </section>    
 
-                <section id="section-team" class="page-section topmargin-lg">
 
-                    <div class="heading-block center">
-                        <h2>Our Team</h2>
-                        <span>Here for you</span>
-                    </div>
+        <section id="content">
 
+            <div class="content-wrap" style="padding:0;margin-bottom: 100px">
+                <div class="section dark parallax nobottommargin" style="padding:430px 0; background-image: url('images/team/our-team.jpg'); background-position: 50% 51.7312px; text-shadow: rgb(0, 0, 0) 2px 2px; margin:0 0 0 0" data-stellar-background-ratio="0.3">
                     <div class="container clearfix">
-                        <p class="small-content">
-                            <span class="dropcap">E</span>stablished by teachers, ESC brings together current teaching methods and techniques with a fully accredited and award-winning teaching team.  Our support staff are qualified to help students in a variety of roles from academic counselors to activity coordinators to administrative support.  We are here to help and are dedicated to your needs.
-                        </p>
-                    </div>
-                    <div class="container clearfix">
-
-                        
-                        <% for(var i=0; i < staffs.length; i++){ 
-                            if(staffs[i].cover != null){ 
-                        %>
-                      
-                        <div class="col-md-6 bottommargin" >
-
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="<%- staffs[i].cover.thumbnail %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4><%- staffs[i].firstname + ' ' + staffs[i].lastname %></h4><span><%- staffs[i].position %></span></div>
-                                    <div class="team-email"><%- staffs[i].email %></div>
-                                    <div class="team-phone"><%- staffs[i].workphone %></div>    
-                                    <!-- <a href="#" class="social-icon si-rounded si-small si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a> -->
-                                </div>
-                            </div>
-
+                        <div class="heading-block center">
+                            <h1 style="text-shadow: rgb(0, 0, 0) 2px 2px; ">Our Team</h1>
+                        <!-- <span>Here for you</span> -->
                         </div>
-                        <% }} %>
-                    
+               <!--          <p style="text-align: left;font-size:20px;">
+                            <span class="dropcap">E</span>stablished by teachers, ESC brings together current teaching methods and techniques with a fully accredited and award-winning teaching team.  Our support staff are qualified to help students in a variety of roles from academic counselors to activity coordinators to administrative support.  We are here to help and are dedicated to your needs.
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="section-team" class="page-section topmargin-lg">
+
+           <!-- <div class="heading-block center">
+                <h2>Our Team</h2>
+                <span>Here for you</span>
+            </div> -->
+
+            <div class="container clearfix">
+                <p class="small-content">
+                    <span class="dropcap">E</span>stablished by teachers, ESC brings together current teaching methods and techniques with a fully accredited and award-winning teaching team.  Our support staff are qualified to help students in a variety of roles from academic counselors to activity coordinators to administrative support.  We are here to help and are dedicated to your needs.
+                </p>
+            </div>
+
+            <div class="container clearfix">
+
+                
+                <% for(var i=0; i < staffs.length; i++){ 
+                    if(staffs[i].cover != null){ 
+                %>
+              
+                <div class="col-md-6 bottommargin" >
+
+                    <div class="team team-list clearfix">
+                        <div class="team-image">
+                            <img src="<%- staffs[i].cover.thumbnail %>" alt="<%- staffs[i].firstname + ' ' + staffs[i].lastname %>">
+                        </div>
+                        <div class="team-desc">
+                            <div class="team-title"><h4><%- staffs[i].firstname + ' ' + staffs[i].lastname %></h4><span><%- staffs[i].position %></span></div>
+                            <div class="team-email"><%- staffs[i].email %></div>
+                            <div class="team-phone"><%- staffs[i].workphone %></div>    
+                            <!-- <a href="#" class="social-icon si-rounded si-small si-facebook">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon si-rounded si-small si-twitter">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon si-rounded si-small si-gplus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i>
+                            </a> -->
+                        </div>
                     </div>
 
-                   
+                </div>
+                <% }} %>
+            
+            </div>
 
-                </section>
+           
+
+        </section>

@@ -21,6 +21,7 @@
 								<th class="hidden-xs">Status</th>
 								<th class="hidden-xs">In Calendar</th>
 								<th class="hidden-xs">Modified</th>
+								<th class="hidden-xs">SortIndex</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 							</tr>
@@ -47,6 +48,7 @@
 									<div ng-style="{'background-color': course.calendarColor }"   style="height: 20px; width: 20px; display: inline-block; vertical-align: bottom;"></div>
 								</td>
 								<td class="hidden-xs"><a href="#">{{course.lastModify | date: 'MMM dd, yyyy  hh:mm '}}</a></td>
+								<td class="hidden-xs">{{course.order}}</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
 										<a href="/admin/course/edit/{{course._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>

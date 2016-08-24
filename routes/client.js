@@ -252,9 +252,27 @@ router.get('/team', function(req, res){
 });
 
 router.get('/city', function(req, res){
-
 	template(req,res,'client_normal','client/city.html',{});
+});
 
+router.get('/city/high-park', function(req, res){
+	template(req,res,'client_normal','client/city/high-park.html',{});
+});
+router.get('/city/casa-loma', function(req, res){
+	template(req,res,'client_normal','client/city/casa-loma.html',{});
+});
+router.get('/city/wonderland', function(req, res){
+	template(req,res,'client_normal','client/city/wonderland.html',{});
+});
+
+router.get('/city/rom', function(req, res){
+	template(req,res,'client_normal','client/city/rom.html',{});
+});
+router.get('/city/toronto-island', function(req, res){
+	template(req,res,'client_normal','client/city/toronto-island.html',{});
+});
+router.get('/city/cn-tower', function(req, res){
+	template(req,res,'client_normal','client/city/cn-tower.html',{});
 });
 
 router.get('/why-esc', function(req, res){
@@ -286,6 +304,11 @@ router.get('/junior-programs', function(req, res){
 
 router.get('/campus-pictures', function(req, res){
 	template(req,res,'client_normal','client/campus-pictures.html',{});
+});
+
+
+router.get('/qa', function(req, res){
+	template(req,res,'client_normal','client/qa.html',{});
 });
 
 

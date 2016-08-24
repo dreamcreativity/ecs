@@ -122,7 +122,7 @@ angular.module('ClientApp')
 				selectDuration: { _id: '', title:'Select a duration', price: 0, week : 0},
 				startDate: data.data[0],
 				durations: course.durations,
-				level: 'Select a level',
+				level: 'Select a Program',
 				startDates: data.data,
 			});
 			closeAllSelectList();
