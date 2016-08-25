@@ -15,6 +15,10 @@ angular.module('ClientApp')
 			 		}
 			 		$scope.regionsList = list;
 			 	});
+
+		Courses.query(function(data){
+			$scope.courses = data.data;
+		});
 	}
 
 	$scope.register = function(isValid){
