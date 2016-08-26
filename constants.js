@@ -107,7 +107,9 @@ module.exports = {
 		isHomestay : null,
 		type : null,
 		studentID : null,
-		agent :null
+		agent :null,
+		programName : null,
+		programStartDate : null
 	},
 
 	AccommodationTemplateVars : {

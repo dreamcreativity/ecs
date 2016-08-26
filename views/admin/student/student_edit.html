@@ -242,6 +242,27 @@
 								</div>
 
 								<div class="form-group">
+									<label class="col-sm-2 control-label">Register Program : </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<select class="form-control" name="programName" ng-model="student.programName">
+													<option ng-repeat="option in courses" value="{{option.title}}">{{option.title}}</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">Start Date: </label>
+									<div class="col-sm-4">
+										<div class="clearfix">
+											<div class="input-group">
+												<input type='date' class="form-control" name="programStartDate" ng-model="student.programStartDate">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
 									<label class="col-sm-2 control-label">English Level : </label>
 									<div class="col-sm-4">
 										<div class="clearfix">

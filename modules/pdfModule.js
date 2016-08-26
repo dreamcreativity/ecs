@@ -119,7 +119,7 @@ exports.replaceTamplateValue = function(templates, studentinfo, accommodation, f
 
 	//replace value in student template 
 	for (var key in studentinfo){
-
+		debugger
 		if(studentinfo[key] == null) replaceValue ='N/A';
 		if(studentinfo[key] instanceof Date){
 			studentTemplate = studentTemplate.replace("@" + key + "@", dateFormat(studentinfo[key],"mmm dd, yyyy"));

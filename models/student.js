@@ -8,7 +8,7 @@ var StudentSchema = new mongoose.Schema({
 	agent: {type: mongoose.Schema.ObjectId, ref:'Agent', default: null},
 	programRegistration : [{type : mongoose.Schema.ObjectId, ref:'ProgramRegistration', default:null}],
 	programName : {type: String},
-	programStartDate : {type: String},
+	programStartDate : {type: Date},
 	accommodation: {type: mongoose.Schema.ObjectId, ref:'Accommodation', default: null},
 	flightInfo: {type: mongoose.Schema.ObjectId, ref:'FlightInfo', default: null},
 	firstname: {type: String, required: true },

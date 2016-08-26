@@ -26,7 +26,7 @@ angular.module('AdminApp')
 		$scope.isDisabled = false;
 		$scope.corseLevel = [];
 
-		Courses.getSimpleList(function(data){
+		Courses.query(function(data){
 			$scope.courses = data.data;
 		});
 
@@ -154,11 +154,16 @@ angular.module('AdminApp')
 	$scope.havingAccommdation = false;
 	$scope.createAccommdation = true;
 
+	Courses.query(function(data){
+			$scope.courses = data.data;
+		});
+
 	if(student_id !=null){
 		Students.get({id:student_id}, function(result){
 			$scope.student = result.data;
 			$scope.accommodation = $scope.student.accommodation;
 			if($scope.student.birthday) $scope.student.birthday = new Date($scope.student.birthday);
+			if($scope.student.programStartDate) $scope.student.programStartDate = new Date($scope.student.programStartDate);
 			if($scope.student.healthInsuranceEndDate) $scope.student.healthInsuranceEndDate = new Date($scope.student.healthInsuranceEndDate);
 			if($scope.student.healthInsuranceStartingDate) $scope.student.healthInsuranceStartingDate = new Date($scope.student.healthInsuranceStartingDate);
 			if($scope.accommodation !=null){

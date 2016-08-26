@@ -219,20 +219,6 @@
 							<label class="col-sm-2 control-label">Program </label>
 							<div class="col-sm-4">
 								<select class="form-control" name="programName" ng-model="student.programName">
-									<!-- <option value="Communication">Communication</option>
-									<option value="Communicative Grammar">Communicative Grammar</option>
-									<option value="Conversation">Conversation</option>
-									<option value="Integrated Skills">Integrated Skills</option> 
-									<option value="Intermediate Functional Writing">Intermediate Functional Writing</option> 
-									<option value="Introduction to Writing">Introduction to Writing</option> 
-									<option value="Pronunciation">Pronunciation</option> 
-									<option value="English for Health Care">English for Health Care</option> 
-									<option value="Focus on Writing">Focus on Writing</option> 
-									<option value="Focus on Speaking">Focus on Speaking</option> 
-									<option value="iBT-TOEFL Preparation Course">iBT-TOEFL Preparation Course</option> 
-									<option value="IELTS Preparation Course">IELTS Preparation Course</option> 
-									<option value="UCTP">UCTP</option> 
-									<option value="UCTP Prep">UCTP Prep.</option>  -->
 									<option ng-repeat="option in courses" value="{{option.title}}">{{option.title}}</option>
 								</select>
 							</div>
