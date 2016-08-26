@@ -157,7 +157,7 @@ module.exports = {
 	SchoolInfoEmails : [
 		'minxianzhou@gmail.com',
 		'spark@esc-toronto.com',
-		'gkitagawa@esc-toronto.com'
+		'astille@esc-toronto.com'
 	],
 	EmailStudentTempaleVars : {
 		firstname : null,
