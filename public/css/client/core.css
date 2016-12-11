@@ -773,28 +773,11 @@ body{
 
 
 
-#section-course .desc img{
+#section-course .desc div a img{
 	max-width: 200px;
+	max-height: 44px;
 	margin: 0 10px 10px 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
