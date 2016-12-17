@@ -773,15 +773,36 @@ body{
 
 
 
-#section-course .desc div a img{
+/*#section-course .desc div a img{
 	max-width: 200px;
 	max-height: 44px;
 	margin: 0 10px 10px 10px;
+
 }
+*/
 
+#section-course .desc div{
+		width: 750px;
+	}
 
+#section-course .desc 	div > div{
+		display: list-item;
+		list-style: none;
+		border: 1px solid #eee;
+		width: 150px;
+		height: 150px;
+		float: left;
+		margin: 0 0 5px 5px;
+		padding: 5px;
+		line-height: 150px;
+	}
 
-
+#section-course .desc div > div img{
+		
+		width: 100%;
+		vertical-align: middle;
+	
+}
 
 
 
