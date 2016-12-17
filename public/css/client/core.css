@@ -782,8 +782,7 @@ body{
 */
 
 #section-course .desc div{
-		width: 750px;
-	}
+}
 
 #section-course .desc 	div > div{
 		display: list-item;
