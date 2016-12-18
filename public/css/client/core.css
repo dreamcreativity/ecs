@@ -786,22 +786,24 @@ body{
 }
 
 #section-course .desc 	div > div{
-		display: list-item;
-		list-style: none;
-		border: 1px solid #eee;
-		width: 22%;
-		height: 165px;
-		float: left;
-		margin: 0 0 10px 10px;
-		padding: 5px;
-		line-height: 150px;
-		overflow: hidden;
-	}
+	display: list-item;
+	list-style: none;
+	border: 1px solid #eee;
+	width: 22%;
+	height: 165px;
+	float: left;
+	margin: 0 0 10px 10px;
+	padding: 5px;
+	line-height: 150px;
+	overflow: hidden;
+	text-align: center;
+}
 
 #section-course .desc div > div img{
 		
-		width: 100%;
-		vertical-align: middle;
+	max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
 	
 }
 
