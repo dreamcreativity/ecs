@@ -796,7 +796,7 @@ body{
 	padding: 5px;
 	line-height: 150px;
 	overflow: hidden;
-	text-align: center;
+ 	text-align: center;
 }
 
 #section-course .desc div > div img{
@@ -809,7 +809,14 @@ body{
 
 
 
+@media screen and (max-width: 768px) {
+	#section-course .desc 	div > div{
+		width: 30%;
+		height: 130px;
+		line-height: 106px;
 
+	}
+}
 
 
 
