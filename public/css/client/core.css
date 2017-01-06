@@ -818,6 +818,21 @@ body{
 	}
 }
 
+@media screen and (max-width: 480px) {
+	#section-course .desc 	div > div{
+		width: 45%;
+		height: 120px;
+		line-height: 103px;
+
+	}
+}
+
+
+
+
+
+
+
 
 
 
