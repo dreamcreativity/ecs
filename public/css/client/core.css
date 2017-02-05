@@ -727,6 +727,10 @@ body:not(.device-touch) #section-services,body:not(.device-touch) #section-junio
  	
  }
 
+#section-testimonials .testi-content p{
+	text-shadow: 1px 1px rgba(103, 79, 79, 0.81);
+}
+
 .banner-bottom-frame{
 	height: 10px;
 	background-color: #f5f5f5;
