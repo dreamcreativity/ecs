@@ -536,6 +536,43 @@ router.get('/courseRegisterEditTemplate', function(req,res){
 
 
 
+//-------------------------- partners  --------------------------------------
+router.get('/partner/', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/list.html', 
+		{
+			title : 'Partners',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'List',
+			url_params : req.params
+		});
+
+});
+
+
+router.get('/partner/record', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/record.html', 
+		{
+			title : 'Partners',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'Record',
+			url_params : req.params
+		});
+
+});
+
+router.get('/partner/detail', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/detail.html', 
+		{
+			title : 'Partners',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'Detail',
+			url_params : req.params
+		});
+
+});
 
 //-------------------------- online test  --------------------------------------
 

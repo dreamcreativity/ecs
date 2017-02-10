@@ -793,12 +793,12 @@ body{
 	display: list-item;
 	list-style: none;
 	border: 1px solid #eee;
-	width: 22%;
-	height: 165px;
+	width: 18%;
+	height: 125px;
 	float: left;
 	margin: 0 0 10px 10px;
 	padding: 5px;
-	line-height: 150px;
+	line-height: 105px;
 	overflow: hidden;
  	text-align: center;
 }
