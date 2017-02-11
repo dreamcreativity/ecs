@@ -26,6 +26,7 @@ module.exports = {
 		'Staff',
 		'Activity',
 		'Event',
+		'Partner',
 		'Other'
 	],
 

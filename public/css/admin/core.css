@@ -673,6 +673,50 @@ label.heading{
 	font-size: 12px;
 }
 
+/*------------ for partner management------------*/
+.partner-list{
+
+}
+
+.partner-list ul{
+	list-style: none;
+}
+
+.partner-list ul li{
+	float: left;
+	padding: 10px;
+	background-color: #fdecec;
+    border: 1px solid #e8dcdc;
+	width: 100px;
+	height: 100px;
+	margin: 0 10px 5px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
