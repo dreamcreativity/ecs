@@ -562,6 +562,18 @@ router.get('/partner/record', function(req,res){
 
 });
 
+router.get('/partner/new', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/new.html', 
+		{
+			title : 'Partners',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'New',
+			url_params : req.params
+		});
+
+});
+
 router.get('/partner/detail', function(req,res){
 	template(req,res,'admin_main', 'admin/partner/detail.html', 
 		{

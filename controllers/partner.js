@@ -16,41 +16,51 @@ exports.create = function(req,res){
 				data: null
 			});
 		}
-		if(user.length != 0){
-			if(user[0].username){
-				res.json({
-					status: 'exist',
-					messages:"Username or email has already existed",
-					data: null
-				});
-			}
-			else {
-				res.json({
-					status: 'exist',
-					messages: 'Email already exists',
-					data:null
-				});
-			}
-		}
 
-		else {
-				newStaff.password = SHA256(newStaff.password); //Encrypt
-				newStaff.save(function(err,result){
-					if(err){
-						res.json({
-							status: 'fail',
-							messages: err,
-							data:null
-						});
-					}
-					else {
-						res.json({
-							status: 'ok',
-							messages: 'successed',
-							data: result
-						});	
-					}
-				});
-			}
-		});
+
+		res.json({
+			status: 'ok',
+			messages: 'successed',
+			data: result
+		});	
+
+
+		
+		// if(user.length != 0){
+		// 	if(user[0].username){
+		// 		res.json({
+		// 			status: 'exist',
+		// 			messages:"Username or email has already existed",
+		// 			data: null
+		// 		});
+		// 	}
+		// 	else {
+		// 		res.json({
+		// 			status: 'exist',
+		// 			messages: 'Email already exists',
+		// 			data:null
+		// 		});
+		// 	}
+		// }
+
+		// else {
+		// 		newStaff.password = SHA256(newStaff.password); //Encrypt
+		// 		newStaff.save(function(err,result){
+		// 			if(err){
+		// 				res.json({
+		// 					status: 'fail',
+		// 					messages: err,
+		// 					data:null
+		// 				});
+		// 			}
+		// 			else {
+		// 				res.json({
+		// 					status: 'ok',
+		// 					messages: 'successed',
+		// 					data: result
+		// 				});	
+		// 			}
+		// 		});
+		// 	}
+		// });
 }

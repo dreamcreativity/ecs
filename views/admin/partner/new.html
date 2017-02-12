@@ -1,0 +1,43 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4>Create New Partner</h4>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+		<form name="createForm" class="form-horizontal" role="form" ng-controller='PromotionDetail' >
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Name</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="name" ng-model="newPartner.name" >
+				</div>
+			</div>
+			
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Description</label>
+				<div class="col-sm-4">
+					<textarea type="text" class="form-control" height="50" name="name" ng-model="newPartner.desc" ></textarea>
+
+
+				</div>
+			</div>
+
+
+			<div class="form-actions">
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-3">
+						<button type="button" class="btn btn-primary" ng-disabled="!createForm.$valid" ng-click="create()">create</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>

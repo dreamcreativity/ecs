@@ -677,6 +677,13 @@ label.heading{
 .partner-list{
 
 }
+.partner-list .add{
+	font-size: 70px;
+    text-align: center;
+}
+.partner-list .add:hover{
+    color: #632626;
+}
 
 .partner-list ul{
 	list-style: none;
@@ -684,16 +691,19 @@ label.heading{
 
 .partner-list ul li{
 	float: left;
+	cursor: pointer;
+	border-radius: 3px;
 	padding: 10px;
 	background-color: #fdecec;
     border: 1px solid #e8dcdc;
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 120px;
 	margin: 0 10px 5px 0px;
 }
 
 
 
+.partner-detail{}
 
 
 

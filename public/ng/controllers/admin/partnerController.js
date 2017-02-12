@@ -3,10 +3,17 @@ angular.module('AdminApp')
 
 .controller('partnerCtrl', function PartnerCtrl($scope,$http,StaticMedia,Partner,$modal,Medias,$window){
 
-	StaticMedia.getCurrentYearAcademyCalendar({},function(result){
-		$scope.staticCalendar = result.data;
-	});	
+	// StaticMedia.getCurrentYearAcademyCalendar({},function(result){
+	// 	$scope.staticCalendar = result.data;
+	// });	
+
+
 	$scope.test  = 'andy';
+
+	$scope.newPartner = {
+		name: '',
+		desc: ''
+	};
 
 	StaticMedia.getFutureAcademyCalendar({},function(result){
 		$scope.staticFutureCalendar = result.data;
