@@ -727,6 +727,10 @@ body:not(.device-touch) #section-services,body:not(.device-touch) #section-junio
  	
  }
 
+#section-testimonials .testi-content p{
+	text-shadow: 1px 1px rgba(103, 79, 79, 0.81);
+}
+
 .banner-bottom-frame{
 	height: 10px;
 	background-color: #f5f5f5;
@@ -789,12 +793,12 @@ body{
 	display: list-item;
 	list-style: none;
 	border: 1px solid #eee;
-	width: 22%;
-	height: 165px;
+	width: 18%;
+	height: 125px;
 	float: left;
 	margin: 0 0 10px 10px;
 	padding: 5px;
-	line-height: 150px;
+	line-height: 105px;
 	overflow: hidden;
  	text-align: center;
 }

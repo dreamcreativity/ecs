@@ -217,7 +217,7 @@ exports.createTestRecord = function(req,res){
 			});
 		}else{
 			res.json({
-				rstatus: 'ok',
+				status: 'ok',
 				messages: 'successed',
 				data: result
 			});

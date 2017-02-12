@@ -673,6 +673,66 @@ label.heading{
 	font-size: 12px;
 }
 
+/*------------ for partner management------------*/
+.partner-list{
+
+}
+.partner-list textarea{ min-height: 100px;}
+
+.partner-list .add{
+	    text-align: center;
+}
+.partner-list .add a{
+	width: 100%;
+	font-size: 70px;
+
+}
+.partner-list .add a:hover{
+    color: #632626;
+}
+
+.partner-list ul{
+	list-style: none;
+}
+
+.partner-list ul li{
+	float: left;
+	cursor: pointer;
+	border-radius: 3px;
+	padding: 10px;
+	background-color: #fdecec;
+    border: 1px solid #e8dcdc;
+	width: 120px;
+	height: 120px;
+	margin: 0 10px 5px 0px;
+}
+
+
+
+.partner-detail{}
+
+
+.partner-detail textarea{ min-height: 130px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

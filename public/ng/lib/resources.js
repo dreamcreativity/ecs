@@ -421,6 +421,25 @@ resources.factory('OnlineTest',['$resource',
     });
 }]);
 
+resources.factory('Partner',['$resource',
+    function($resource){
+        return $resource('/api/partner/:id', {}, {
+        query:{ method: 'GET'},
+        create:{ url:'/api/partner/create', method: 'POST'},
+        get:{ method: 'GET', params: {id:'@_id'} },
+        update:{method: 'PUT', params: {id:'@_id'}}
+    });
+}]);
+
+
+
+
+
+
+
+
+
+
 
 
 // resources.factory('SendEmail', ['$resource',function($resource){

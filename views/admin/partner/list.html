@@ -1,0 +1,13 @@
+<div class="partner-list" ng-controller="partnerListCtrl">
+	<ul>
+		<li class="add"><a href="/admin/partner/new"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+
+		<li ng-repeat="partner in partners"><a href="/admin/partner/detail/{{partner._id}}">{{partner.name}}</a></li>
+		
+		<li ng-click="changeSource()">test</li>
+	</ul>
+</div>
+
+
+<!-- include the media selector mockup -->
+<div ng-include="'/ng/html/MediaSelector.html'"></div>
