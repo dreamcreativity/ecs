@@ -516,7 +516,7 @@ router.post('/juniorprograms/sendEmail', juniorprogram.sendEmail);
 router.get('/partner/', partner.getAll);
 router.get('/partner/:id', partner.get);
 router.post('/partner/create', partner.create);
-
+router.put('/partner/:id', partner.update);
 
 
 

@@ -31,8 +31,8 @@ exports.getAll = function(req,res){
 exports.get = function(req,res){ 
 
 	var id = req.params.id;
-
-	Partner.findOne({_id:id}, function(err, result){
+	Partner.findOne({_id:id}).populate('cover').exec(function(err, result){
+	//Partner.findOne({_id:id}, function(err, result){
 
 		if(err){
 			res.json({
@@ -50,6 +50,29 @@ exports.get = function(req,res){
 
 	});
 }
+
+
+exports.update = function(req,res){ 
+
+	console.log(req.body);
+	var id = req.params.id;
+	Partner.update({_id:id}, req.body, function(err, result){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+}
+
 
 
 exports.create = function(req,res){

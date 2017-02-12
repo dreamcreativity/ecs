@@ -29,15 +29,20 @@ angular.module('AdminApp')
 		};
 	}else{
 		Partner.get(url_params, function(result){
+
+
 			$scope.partner = result.data;	
+			$scope.tagList = [];
+			for(var i=0; i<$scope.partner.tags.length; i++){
+				$scope.tagList.push({"name" : $scope.partner.tags[i]});
+			}
+
 		});
 	}
 
-	$scope.test  = 'andy';
-
-
 
 	$scope.create = function(){
+		
 
 		Partner.create($scope.partner, function(result){
 			if(result.status == 'ok'){			
@@ -53,17 +58,18 @@ angular.module('AdminApp')
 	}
 
 	$scope.update = function(){
-		Partner.create($scope.partner, function(result){
+		
+		console.log($scope.tagList);
+		$scope.partner.tags =[];
 
-			console.log(result);
-
+		for (var i = 0; i < $scope.tagList.length; i++) {
+			$scope.partner.tags.push($scope.tagList[i].name);
+		};
+		console.log($scope.partner);
+		Partner.update($scope.partner, function(result){
 			if(result.status == 'ok'){
 				ShowGritterCenter('System', "Partner created");
-				setInterval(function(){
-  					 $window.location='/admin/partner/detail/'+ result.data._id;
-				}, 2000); 
 			}else{
-				// display error message.
 				ShowGritterCenter('Error',result.messages);
 			}
 
@@ -87,19 +93,6 @@ angular.module('AdminApp')
 
 	})
 
-	// $scope.update = function() {
 
- // 		console.log('do save');
-
- // 		StaticMedia.updateCurrentYearAcademyCalendar($scope.staticCalendar,function(result){
-	// 		console.log(result);
-			
-	// 	});
-
-	// 	StaticMedia.updateFutureAcademyCalendar($scope.staticFutureCalendar,function(result){
-	// 		console.log(result);
-			
-	// 	});	
-	// }
 });
 
