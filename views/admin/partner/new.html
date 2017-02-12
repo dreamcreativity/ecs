@@ -2,7 +2,7 @@
 	var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
-<div class="portlet">
+<div class="portlet" ng-controller="partnerCtrl">
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
 			<h4>Create New Partner</h4>
@@ -14,7 +14,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">Name</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" name="name" ng-model="newPartner.name" >
+					<input type="text" class="form-control" name="name" ng-model="partner.name" required>
 				</div>
 			</div>
 			
@@ -22,7 +22,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">Description</label>
 				<div class="col-sm-4">
-					<textarea type="text" class="form-control" height="50" name="name" ng-model="newPartner.desc" ></textarea>
+					<textarea type="text" class="form-control" height="50" name="name" ng-model="partner.description" required></textarea>
 
 
 				</div>
@@ -32,8 +32,8 @@
 			<div class="form-actions">
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-3">
-						<button type="button" class="btn btn-primary" ng-disabled="!createForm.$valid" ng-click="create()">create</button>
-						<button type="button" class="btn btn-default" onclick='location="/admin/"'>Cancel</button>
+						<button type="button" class="btn btn-primary" ng-disabled="createForm.$invalid" ng-click="create()">create</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/partner"'>Cancel</button>
 					</div>
 				</div>
 			</div>

@@ -574,7 +574,7 @@ router.get('/partner/new', function(req,res){
 
 });
 
-router.get('/partner/detail', function(req,res){
+router.get('/partner/detail/:id', function(req,res){
 	template(req,res,'admin_main', 'admin/partner/detail.html', 
 		{
 			title : 'Partners',

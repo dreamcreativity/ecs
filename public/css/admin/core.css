@@ -677,11 +677,17 @@ label.heading{
 .partner-list{
 
 }
+.partner-list textarea{ min-height: 100px;}
+
 .partner-list .add{
-	font-size: 70px;
-    text-align: center;
+	    text-align: center;
 }
-.partner-list .add:hover{
+.partner-list .add a{
+	width: 100%;
+	font-size: 70px;
+
+}
+.partner-list .add a:hover{
     color: #632626;
 }
 
@@ -706,7 +712,7 @@ label.heading{
 .partner-detail{}
 
 
-
+.partner-detail textarea{ min-height: 130px; }
 
 
 

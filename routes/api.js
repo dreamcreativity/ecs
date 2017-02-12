@@ -15,6 +15,7 @@ var events = require('../controllers/event');
 var staticMedia = require('../controllers/staticMedia');
 var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
+var partner = require('../controllers/partner');
 var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
@@ -66,7 +67,9 @@ function IsAuthException(path, method){
 		{	path : '/api/onlineTest/sendEmail', method:'POST', type:'direct'},
 		{	path : '/api/static-media/CurrentAcademyCalendar', method:'GET', type:'direct'},
 		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'},
-		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'}
+		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'},
+		{	path : '/api/partner', method:'GET', type:'direct'},
+		{	path : '/api/partner/create', method:'POST', type:'direct'}
 
 	];
 	
@@ -507,6 +510,13 @@ router.put('/juniorprograms/:id', juniorprogram.edit);
 
 //Send Email 
 router.post('/juniorprograms/sendEmail', juniorprogram.sendEmail);
+
+
+//------------------------ Partner Add-on ---------------------------------------
+router.get('/partner/', partner.getAll);
+router.get('/partner/:id', partner.get);
+router.post('/partner/create', partner.create);
+
 
 
 

@@ -2,23 +2,87 @@
 	var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
-<div class="portlet">
+<div class="portlet" ng-controller="partnerCtrl">
 	<div class="portlet-heading dark">
 		<div class="portlet-title">
 			<h4>Create New Partner</h4>
 		</div>
 		<div class="clearfix"></div>
 	</div>
-	<div class="portlet-body">
-		<form name="createForm" class="form-horizontal" role="form" ng-controller='PromotionDetail' novalidate>
+	<div class="portlet-body partner-detail">
+		<form name="createForm" class="form-horizontal" role="form" ng-controller='PromotionDetail' >
 			<div class="form-group">
 				<label class="col-sm-3 control-label">Name</label>
 				<div class="col-sm-4">
-					<input type="date" class="form-control" name="startDate" ng-model="promotion.startDate" >
+					<input type="text" class="form-control" name="name" ng-model="partner.name" required>
 				</div>
 			</div>
 			
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Description</label>
+				<div class="col-sm-4">
+					<textarea  type="text" class="form-control" height="50" name="name" ng-model="partner.description" required></textarea>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Email</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" name="name" ng-model="partner.email">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Work Phone</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" name="name" ng-model="partner.workphone">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Cell Phone</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" name="name" ng-model="partner.cellphone">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Is Delete:</label>
+				<div class="col-sm-2">
+					<label>
+						<input name="is_delete" class="tc tc-switch tc-switch-6" type="checkbox" ng-model="partner.isDelete" />
+						<span class="labels"></span>
+					</label>												
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label ng-click="changeCurrentCalendar()" class="col-sm-3 control-label">Logo:</label>
+				<div class="col-sm-9">
+					<div ng-click="changeSource()" ng-if="partner.cover == null" class="cover-empty"><label>Clic to change</label></div>
+
+					<img ng-click="changeSource()" class="preview-media"  ng-click="changeSource()"  ng-if="partner.cover!= null && partner.cover.type=='Image'" src="{{partner.cover.thumbnail}}" >
+
+					<!-- <video ng-click="changeSource()" src="{{partner.coverpath}}" controls ng-if="partner.cover.type=='Video'">Your browser does not support the <code>video</code> element.</video> -->
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-3">
+						<button type="button" class="btn btn-primary" ng-disabled="createForm.$invalid" ng-click="update()">Save</button>
+						<button type="button" class="btn btn-default" onclick='location="/admin/partner"'>Cancel</button>
+					</div>
+				</div>
+			</div>
+
+
 		</form>
 
 	</div>
 </div>
+
+<!-- include the media selector mockup -->
+<div ng-include="'/ng/html/MediaSelector.html'"></div>
