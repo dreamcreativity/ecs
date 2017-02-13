@@ -354,6 +354,12 @@ router.get('/calendar', function(req, res){
 
 });
 
+
+router.get('/partner/', function(req,res){
+	template(req,res, 'client_normal', 'client/partner.html', {url_params : null});
+})
+
+
 router.get('/register/', function(req,res){
 	template(req,res, 'client_normal', 'client/register.html', {url_params : null});
 })
