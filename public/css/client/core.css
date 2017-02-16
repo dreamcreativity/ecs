@@ -833,6 +833,39 @@ body{
 
 
 
+ul.partner-list{
+	list-style: none;;
+}
+
+ul.partner-list li{
+	cursor: pointer;
+	float: left;
+	text-align: center;
+	height: 140px;
+	width: 140px;
+	border: 1px solid #333;
+    margin: 0 10px 10px 0;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

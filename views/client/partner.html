@@ -23,23 +23,26 @@
  -->
 
 
- <section ng-controller="OnlineTestCtrl" id="online-test" >
+ <section ng-controller="PartnerCtrl" id="Partners" >
 	<div class="content-wrap">
         <div class="heading-block center bottommargin-lg">
-            <h2>Online Test</h2>
+            <h2>Our Partners</h2>
         </div>
 
     </div>
 
      <div class="container clearfix" >
-      	
 
+     	<div>
+     		<input type="text" ng-model="keyword">
+     	</div>
       	<div>
-      		<ul>
-      			<li>fdasfd</li>
+      		<ul class="partner-list">
+      			<li ng-repeat="partner in partners | filter: { tags: keyword} ">
+      				<label>{{partner.name}}</label>
+      				<div><img src="{{partner.cover.thumbnail}}"></div>
+      			</li>
       		</ul>
       	</div>
-
-
     </div>
 </section>

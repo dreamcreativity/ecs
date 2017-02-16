@@ -7,7 +7,7 @@ var constant = require('../constants.js');
 exports.getAll = function(req,res){ 
 
 
-	Partner.find(function(err, result){
+	Partner.find().populate('cover').exec(function(err, result){
 
 		if(err){
 			res.json({
