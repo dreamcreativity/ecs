@@ -834,7 +834,9 @@ body{
 
 
 ul.partner-list{
-	list-style: none;;
+	list-style: none;
+	margin: 35px 0;
+    overflow: auto;
 }
 
 ul.partner-list li{
@@ -845,8 +847,7 @@ ul.partner-list li{
 	width: 140px;
 	border: 1px solid #333;
     margin: 0 10px 10px 0;
-    -webkit-transition: width 2s; /* Safari */
-    transition: width 2s;
+  
 }
 
 
@@ -854,8 +855,31 @@ ul.partner-list li{
 
 
 
+#partners .search-bar{
+	margin-top: 20px;
+	/*background-color: #b6e4c4;*/
+	padding: 10px 13px 10px 13px;
+	border-radius: 25px;
+	position: relative;
+	border: 1px solid #dec7c7;
+}
 
-
+#partners .search-bar input{
+	/*height: 45px;*/
+	display: inline-block;
+	width: 100%;
+	border: 0;
+	font-size: 17px;
+	font-style: italic;
+	color: #84ab90;
+	padding: 0 35px
+	/*padding: 0 10px;*/
+}
+#partners .search-bar .search-icon{
+	position: absolute;
+	margin-left: 5px;
+	top: 16px;
+}
 
 
 
