@@ -4,7 +4,7 @@ angular.module('ClientApp')
 
 	console.log('PartnerCtrl start..');
 
-	
+
 	$scope.keyword = '';
 	
 
@@ -13,4 +13,9 @@ angular.module('ClientApp')
 	Partner.query(function(result){
 		$scope.partners = result.data;
 	});
+
+	$scope.clearSearch = function(){
+		$scope.keyword = '';
+	}
+
 });

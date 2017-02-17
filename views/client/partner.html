@@ -29,20 +29,29 @@
 	        <div class="  ">
 	            <h2>Our Partners</h2>
 	        </div>
-	     	<div class="search-bar">
-	     		<i class="fa fa-search search-icon" aria-hidden="true"></i>
-	     		<input type="text" placeholder="What program you are looking for ?" ng-model="keyword">
-	     	</div>
+
+	        <div class="row">
+	        	<div class="search-bar col-md-8">
+		     		<i class="fa fa-search search-icon" aria-hidden="true"></i>
+		     		<input type="text" placeholder="What program you are looking for ?" ng-model="keyword">
+		     		<i class="fa fa-times close-icon" aria-hidden="true" ng-click="clearSearch()"></i>
+		     	</div>	
+		     	<div class="col-md-4 search-by">
+		     		<label>by</label>
+		     		<span style="font-size: 22px;font-style: italic; font-weight: bold; color: #333">Keywords</span>
+		     	</div>
+	        </div>
+	     	
 
 	      	<div>
 	      		<ul class="partner-list">
 	      			<li ng-repeat="partner in partners | filter: { tags: keyword} ">
-	      				<label>{{partner.name}}</label>
-	      				<div><img src="{{partner.cover.thumbnail}}"></div>
+	      				<label class="partner-name">{{partner.name}}</label>
+	      				<div class="logo"><img src="{{partner.cover.thumbnail}}"></div>
 	      			</li>
 	      		</ul>
 	      	</div>
-	      	
+
 	    </div>
     </div>
 </section>
