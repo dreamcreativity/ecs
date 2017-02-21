@@ -58,6 +58,8 @@ exports.update = function(req,res){
 	var id = req.params.id;
 	Partner.update({_id:id}, req.body, function(err, result){
 		if(err){
+			console.log(err);
+
 			res.json({
 				status: 'fail',
 				messages: err,
