@@ -46,11 +46,16 @@
 	      	<div>
 	      		<ul class="partner-list">
 	      			<li ng-repeat="partner in partners | filter: { tags: keyword} ">
+	      				
+	      				<div class="logo">
+	      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
+	      				</div>
 	      				<label class="partner-name">{{partner.name}}</label>
-	      				<div class="logo"><img src="{{partner.cover.thumbnail}}"></div>
 	      			</li>
 	      		</ul>
+	      		<div style="clear: both"></div>
 	      	</div>
+
 
 	    </div>
     </div>
