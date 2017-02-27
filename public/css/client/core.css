@@ -876,7 +876,10 @@ ul.partner-list li img{
 
 
 
-
+#partners .partner-content{
+	position: relative;
+	height: 500px;
+}
 #partners .search-by{
 	margin-top: 8px;
 }
@@ -897,19 +900,26 @@ ul.partner-list li img{
 	-ms-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
-	height: 0;
+	opacity: 1!important;
+	z-index: 0!important;
 }
 
-#partners .list-section{
-
+#partners .list-section, #partners .detail-section{
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;	
+	opacity: 0;
+	visibility: none;
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	-ms-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
-	height: inherit;
 
 
+}
 
 #partners .search-bar input{
 	/*height: 45px;*/

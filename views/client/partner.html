@@ -26,49 +26,55 @@
  <section ng-controller="PartnerCtrl" id="partners" >
      <div class="container clearfix" >
       	<div class="content-wrap">
-	        <div class="  ">
+	        <div>
 	            <h2>Our Partners</h2>
 	        </div>
 
-	        <div class="list-section"  ng-class="{ fadeOut: mode != 'list'}">
-		        <div class="row">
-		        	<div class="search-bar col-md-8">
-			     		<i class="fa fa-search search-icon" aria-hidden="true"></i>
-			     		<input type="text" placeholder="What program you are looking for ?" ng-model="keyword">
-			     		<i class="fa fa-times close-icon" aria-hidden="true" ng-click="clearSearch()"></i>
-			     	</div>	
-			     	<div class="col-md-4 search-by">
-			     		<label>by</label>
-			     		<span style="font-size: 22px;font-style: italic; font-weight: bold; color: #333">Keywords</span>
-			     	</div>
+	        <div class="partner-content">
+		        <div class="list-section"  ng-class="{ fadeOut: mode == 'list'}">
+			        <div class="row">
+			        	<div class="search-bar col-md-8">
+				     		<i class="fa fa-search search-icon" aria-hidden="true"></i>
+				     		<input type="text" placeholder="What program you are looking for ?" ng-model="keyword">
+				     		<i class="fa fa-times close-icon" aria-hidden="true" ng-click="clearSearch()"></i>
+				     	</div>	
+				     	<div class="col-md-4 search-by">
+				     		<label>by</label>
+				     		<span style="font-size: 22px;font-style: italic; font-weight: bold; color: #333">Keywords</span>
+				     	</div>
+			        </div>
+			     	
+
+			      	<div>
+			      		<ul class="partner-list">
+			      			<li ng-repeat="partner in partners | filter: { tags: keyword} "  ng-click="showDetail(partner)">
+			      				
+			      				<div class="logo">
+			      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
+			      				</div>
+			      				<label class="partner-name">{{partner.name}}</label>
+			      			</li>
+			      		</ul>
+
+			      		<div style="clear: both"></div>
+			      	</div>
 		        </div>
-		     	
 
-		      	<div>
-		      		<ul class="partner-list">
-		      			<li ng-repeat="partner in partners | filter: { tags: keyword} "  ng-click="showDetail(partner)">
-		      				
-		      				<div class="logo">
-		      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
-		      				</div>
-		      				<label class="partner-name">{{partner.name}}</label>
-		      			</li>
-		      		</ul>
 
-		      		<div style="clear: both"></div>
+		      	<div class="detail-section" ng-class="{fadeOut: mode == 'detail'}">
+					
+					<div>
+						<a href="#" ng-click="showList()">Back</a>
+					</div>
+					<h4>{{partnerDetail.name}}</h4> 		
+
+					<img style="max-width: 250px;" src="{{partnerDetail.cover.thumbnail}}">
 		      	</div>
+
 	        </div>
+	        <div style="clear: both"></div>
 
 
-	      	<div class="detail-saction" ng-class="{fadeOut: mode != 'detail'}">
-				
-				<div>
-					<a href="#" ng-click="showList()">Back</a>
-				</div>
-				<h4>{{partnerDetail.name}}</h4> 		
-
-				<img src="{{partnerDetail.cover.thumbnail}}">
-	      	</div>
 
 
 	    </div>
