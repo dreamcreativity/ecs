@@ -890,6 +890,27 @@ ul.partner-list li img{
 	border: 1px solid #dec7c7;
 }
 
+#partners .fadeOut{
+
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	height: 0;
+}
+
+#partners .list-section{
+
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	height: inherit;
+
+
+
 #partners .search-bar input{
 	/*height: 45px;*/
 	display: inline-block;

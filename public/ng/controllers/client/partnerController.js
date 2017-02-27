@@ -7,6 +7,8 @@ angular.module('ClientApp')
 
 	$scope.keyword = '';
 	
+	$scope.mode = "list";
+	$scope.partnerDetail = null; 
 
 	// load partner list
 
@@ -14,8 +16,19 @@ angular.module('ClientApp')
 		$scope.partners = result.data;
 	});
 
+	
 	$scope.clearSearch = function(){
 		$scope.keyword = '';
+	}
+
+
+	$scope.showDetail = function(partner){
+		$scope.mode = "detail";
+		$scope.partnerDetail = partner;
+	}
+
+	$scope.showList =  function(){
+		$scope.mode = "list";
 	}
 
 });
