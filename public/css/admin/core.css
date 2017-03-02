@@ -714,7 +714,10 @@ label.heading{
 
 .partner-detail textarea{ min-height: 130px; }
 
-
+.partner-detail .preview-media{
+	max-width: 300px;
+	max-height: 100px;
+}
 
 
 
