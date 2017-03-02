@@ -14,6 +14,7 @@ angular.module(
 		'ui.bootstrap',
 		'ngAnimate',
 		'angular-loading-bar',
+		'simditor',
 		// 'color.picker'		
 	]
 );

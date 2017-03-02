@@ -12,7 +12,7 @@
         element.append("<div style='height:300px;'></div>");
 
         console.log(0);
-        
+
         scope.simditor = new Simditor({
           textarea: element.children()[0],
           pasteImage: true,
