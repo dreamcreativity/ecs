@@ -10,6 +10,7 @@ angular.module(
 		'esc.directives',
 		'ngAnimate',
 		'angular-loading-bar'
+		
 		// //'esc.auth',
 		// 'ui.bootstrap'
 	]

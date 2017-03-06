@@ -68,7 +68,7 @@ angular.module('AdminApp')
 		console.log($scope.partner);
 		Partner.update($scope.partner, function(result){
 			if(result.status == 'ok'){
-				ShowGritterCenter('System', "Partner created");
+				ShowGritterCenter('System', "Partner information updated");
 			}else{
 				ShowGritterCenter('Error',result.messages);
 			}

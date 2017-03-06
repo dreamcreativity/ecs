@@ -877,8 +877,8 @@ ul.partner-list li img{
 
 
 #partners .partner-content{
-	position: relative;
-	height: 500px;
+
+	min-height: 700px;
 }
 #partners .search-by{
 	margin-top: 8px;
@@ -892,7 +892,7 @@ ul.partner-list li img{
 	position: relative;
 	border: 1px solid #dec7c7;
 }
-
+/*
 #partners .fadeOut{
 
 	-webkit-transition: all 0.5s ease-in-out;
@@ -902,22 +902,25 @@ ul.partner-list li img{
 	transition: all 0.5s ease-in-out;
 	opacity: 1!important;
 	z-index: 0!important;
-}
+	
+}*/
 
-#partners .list-section, #partners .detail-section{
+/*#partners .list-section, #partners .detail-section{
 	width: 100%;
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 0;	
+	display: block;
+	height: 0;
 	opacity: 0;
-	visibility: none;
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	-ms-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
+}*/
 
+#partners .list-section{
+	z-index: 10;
+} 
+#partners .detail-section{
 
 }
 
