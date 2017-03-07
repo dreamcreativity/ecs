@@ -14,8 +14,6 @@ angular.module('ClientApp')
 
 	Partner.query(function(result){
 		$scope.partners = result.data;
-
-		console.log($scope.partners);
 	});
 
 	
@@ -25,8 +23,11 @@ angular.module('ClientApp')
 
 
 	$scope.showDetail = function(partner){
-		$scope.mode = "detail";
+		//$scope.mode = "detail";
+		
 		$scope.partnerDetail = partner;
+
+
 	}
 
 	$scope.showList =  function(){
@@ -35,26 +36,5 @@ angular.module('ClientApp')
 
 })
 
-.filter('unsafe', function($sce) { return $sce.trustAsHtml; })
+.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 
-.animation('.fade', function() {
-  return {
-    enter: function(element, done) {
-      element.css('display', 'none');
-      $(element).fadeIn(1000, function() {
-        done();
-      });
-    },
-    leave: function(element, done) {
-      $(element).fadeOut(1000, function() {
-        done();
-      });
-    },
-    move: function(element, done) {
-      element.css('display', 'none');
-      $(element).slideDown(500, function() {
-        done();
-      });
-    }
-  }
-});

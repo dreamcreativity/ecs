@@ -47,7 +47,7 @@
 
 			      	<div>
 			      		<ul class="partner-list">
-			      			<li ng-repeat="partner in partners | filter: { tags: keyword} "  ng-click="showDetail(partner)">
+			      			<li ng-animate="'animate'" ng-repeat="partner in partners | filter: { tags: keyword} "  ng-click="showDetail(partner)">
 			      				
 			      				<div class="logo">
 			      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
@@ -61,7 +61,7 @@
 		        </div>
 
 
-		      	<div class="detail-section" >
+		      	<div class="ss detail-section" >
 					
 					<div>
 						<a href="#" ng-click="showList()">Back</a>
