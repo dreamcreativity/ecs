@@ -156,7 +156,6 @@ module.exports = {
 	//Email Template variable 
 
 	SchoolInfoEmails : [
-		'minxianzhou@gmail.com',
 		'spark@esc-toronto.com',
 		'astille@esc-toronto.com'
 	],

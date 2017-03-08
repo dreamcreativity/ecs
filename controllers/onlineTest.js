@@ -87,7 +87,7 @@ exports.get= function(req,res){
 
 exports.getTestQuestions= function(req,res){
 
-	TestQuestion.findRandom().limit(50).exec(function (err, result) {
+	TestQuestion.findRandom().limit(5).exec(function (err, result) {
 
 
 		if(err){
@@ -307,30 +307,56 @@ exports.sendEmail = function(req,res){
 		async.waterfall([
 		function(callback){
 			EmailSender.getEmailTemplate('onlineTestSuccess.html', function(data){
-			var context = EmailSender.replaceEmailTemplate(data, constants.OnlineTestResult);
-			var to = student_email;
-			var subject = 'Online Test Finish';
-			var attachment = [];
-			EmailSender.sendEmail(to,subject,context,attachment,function(message){
-				res.json({
-					returnmessage : message
+				
+				var templateValues = constants.OnlineTestResult;
+
+				if(templateValues.rate >= 0 && templateValues.rate <= 20){
+					templateValues.level = '1/2';
+				}else if(templateValues.rate <= 35){
+					templateValues.level = '3';
+				}else if(templateValues.rate <= 42){
+					templateValues.level = '4';
+				}else if(templateValues.rate <= 50){
+					templateValues.level = '5';
+				}else if(templateValues.rate <= 60){
+					templateValues.level = '6';
+				}else if(templateValues.rate <= 74){
+					templateValues.level = '7';
+				}else if(templateValues.rate <= 84){
+					templateValues.level = '8';
+				}else if(templateValues.rate <= 93){
+					templateValues.level = '9';
+				}else{
+					templateValues.level = '10';
+				}
+				var context = EmailSender.replaceEmailTemplate(data, templateValues);
+				var to = student_email;
+				var subject = 'Online Test Finish';
+				var attachment = [];
+				EmailSender.sendEmail(to,subject,context,attachment,function(message){
+					res.json({
+						returnmessage : message
+					});
 				});
 			});
-		});
 		},
 		function(callback){
 			EmailSender.getEmailTemplate('onlineTestNotifyStaff.html', function(data){
-			var context = EmailSender.replaceEmailTemplate(data, constants.OnlineTestResult);
-			var to = student_email;
-			var subject = 'Online Test Finish';
-			var attachment = [];
-			EmailSender.sendEmail(to,subject,context,attachment,function(message){
-				res.json({
-					returnmessage : message
+
+
+
+				var context = EmailSender.replaceEmailTemplate(data, constants.OnlineTestResult);
+				var to = student_email;
+				var subject = 'Online Test Finish';
+				var attachment = [];
+				EmailSender.sendEmail(to,subject,context,attachment,function(message){
+					res.json({
+						returnmessage : message
+					});
 				});
 			});
-		});
-		}],function(err, result){
+		}],
+		function(err, result){
 			if(!err){
 				res.json(
 	 			{
