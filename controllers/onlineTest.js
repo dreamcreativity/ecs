@@ -87,7 +87,7 @@ exports.get= function(req,res){
 
 exports.getTestQuestions= function(req,res){
 
-	TestQuestion.findRandom().limit(5).exec(function (err, result) {
+	TestQuestion.findRandom().limit(50).exec(function (err, result) {
 
 
 		if(err){
@@ -307,7 +307,7 @@ exports.sendEmail = function(req,res){
 		async.waterfall([
 		function(callback){
 			EmailSender.getEmailTemplate('onlineTestSuccess.html', function(data){
-				
+
 				var templateValues = constants.OnlineTestResult;
 
 				if(templateValues.rate >= 0 && templateValues.rate <= 20){
