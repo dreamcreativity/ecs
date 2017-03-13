@@ -68,7 +68,7 @@ function IsAuthException(path, method){
 		{	path : '/api/static-media/CurrentAcademyCalendar', method:'GET', type:'direct'},
 		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'},
 		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'},
-		{	path : '/api/partner', method:'GET', type:'direct'},
+		{	path : '/api/partner', method:'GET', type:'contain'},
 		{	path : '/api/partner/create', method:'POST', type:'direct'}
 
 	];

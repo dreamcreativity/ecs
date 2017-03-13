@@ -833,53 +833,99 @@ body{
 
 
 
-ul.partner-list{
+
+
+
+
+
+
+.partner-list{
 	list-style: none;
 	margin: 35px 0;
-
+	-webkit-transition: all 0.75s ease-in-out;
+	-moz-transition: all 0.75s ease-in-out;
+	-ms-transition: all 0.75s ease-in-out;
+	-o-transition: all 0.75s ease-in-out;
+	transition: all 0.75s ease-in-out;
 }
 
-ul.partner-list li{
+.partner-list .content{
+
+	-webkit-transition: all 0.75s ease-in-out;
+	-moz-transition: all 0.75s ease-in-out;
+	-ms-transition: all 0.75s ease-in-out;
+	-o-transition: all 0.75s ease-in-out;
+	transition: all 0.75s ease-in-out;
+}
+.partner-list .partner-detail{
 	cursor: pointer;
-	float: left;
+
 	text-align: center;
 	height: 140px;
-	width: 215px;
+ 	cursor: pointer;
 	border: 1px solid #e0cfcf;
 	border-radius: 4px;
     margin: 0 10px 10px 0;
-    position: relative;
+
     padding: 15px;
+
+	-webkit-transition: all 0.75s ease-in-out;
+	-moz-transition: all 0.75s ease-in-out;
+	-ms-transition: all 0.75s ease-in-out;
+	-o-transition: all 0.75s ease-in-out;
+	transition: all 0.75s ease-in-out;
   
 }
-ul.partner-list li:hover{
-	border: 1px solid #888;
-}
 
-ul.partner-list li .logo{
+.partner-list .partner-detail:hover{
+	height: 200px;
+}
+.partner-list .partner-detail .logo{
 	line-height: 90px;
-}
 
-ul.partner-list li .partner-name{
+}
+.partner-list .partner-detail .logo img{
+
+	max-height: 70px;
+} 
+.partner-list .partner-detail .partner-name{
 	/*background-color: gray;*/
 	width: 100%;
 	height: 45px;
 	color: #ad8e8e;
 }
 
-ul.partner-list li img{
-	/*max-width: 100%;*/
-	max-height: 70px;
-
-
-}
 
 
 
 #partners .partner-content{
-
-	min-height: 700px;
+	min-height: 600px;
 }
+
+
+
+.partner-list .hide-partner{
+
+	-webkit-transition: all 0.75s ease-in-out;
+	-moz-transition: all 0.75s ease-in-out;
+	-ms-transition: all 0.75s ease-in-out;
+	-o-transition: all 0.75s ease-in-out;
+	transition: all 0.75s ease-in-out;
+	width: 0;
+	height: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	opacity: 0;
+	overflow: hidden;
+} 
+
+
+
+
+
+
+
 #partners .search-by{
 	margin-top: 8px;
 }
@@ -891,37 +937,6 @@ ul.partner-list li img{
 	border-radius: 25px;
 	position: relative;
 	border: 1px solid #dec7c7;
-}
-/*
-#partners .fadeOut{
-
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-ms-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
-	opacity: 1!important;
-	z-index: 0!important;
-	
-}*/
-
-/*#partners .list-section, #partners .detail-section{
-	width: 100%;
-	display: block;
-	height: 0;
-	opacity: 0;
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-ms-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
-}*/
-
-#partners .list-section{
-	z-index: 10;
-} 
-#partners .detail-section{
-
 }
 
 #partners .search-bar input{
@@ -948,55 +963,6 @@ ul.partner-list li img{
     cursor: pointer;
     font-size: 16px;
 }
-
-
-.animate-enter, 
-.animate-leave { 
-    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    position: relative;
-    display: block;
-} 
-
-.animate-leave.animate-leave-active,
-.animate-enter {
-    -webkit-transform: rotateX(-180deg) translatez(30px);
-    -moz-transform: rotateX(-180deg) translatez(30px);
-    -ms-transform: rotateX(-180deg) translatez(30px);
-    -o-transform: rotateX(-180deg) translatez(30px);
-    transform: rotateX(-180deg) translatez(30px);
-    opacity: 0;
-    height: 0px;
-}        
-
-.animate-enter.animate-enter-active,
-.animate-leave {
-    -webkit-transform: rotateX(0deg) translatez(30px);
-    -moz-transform: rotateX(0deg) translatez(30px);
-    -ms-transform: rotateX(0deg) translatez(30px);
-    -o-transform: rotateX(0deg) translatez(30px);
-    transform: rotateX(0deg) translatez(30px);
-    opacity: 1;
-    height: 30px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -359,6 +359,11 @@ router.get('/partner/', function(req,res){
 	template(req,res, 'client_normal', 'client/partner.html', {url_params : null});
 })
 
+router.get('/partner/:id', function(req,res){
+	template(req,res, 'client_normal', 'client/partner-detail.html', {url_params : req.params});
+})
+
+
 
 router.get('/register/', function(req,res){
 	template(req,res, 'client_normal', 'client/register.html', {url_params : null});

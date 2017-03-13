@@ -1,0 +1,59 @@
+<script type="text/javascript">
+	var url_params = <%- JSON.stringify(url_params) %>
+</script>
+
+<section id="page-title"  class="page-title-mini page-title-right">
+
+    <div class="container clearfix">
+       <!--  <h1>Online Test</h1> -->
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Partners</a></li>
+           
+        </ol>
+    </div>
+
+</section>
+
+<!-- <section ng-controller="OnlineTestCtrl" id="online-test" >
+	<div class="content-wrap">
+        <div class="heading-block center bottommargin-lg">
+            <h2>Online Test</h2>
+        </div>
+
+    </div>
+</section>
+ -->
+
+
+ <section ng-controller="PartnerDetailCtrl" id="partner-detail" >
+     <div class="container clearfix" >
+      	<div class="content-wrap">
+	        <div>
+	            <h2>Our Partners - {{partnerDetail.name}}</h2>
+	        </div>
+
+	        <div class="partner-content">
+
+
+		      	<div class="detail-section" >
+					
+					<div>
+						<a href="/partner" ><h4>Search Again</h4></a>
+					</div>
+					<h4>{{partnerDetail.name}}</h4> 		
+
+					<img style="max-width: 250px;" src="{{partnerDetail.cover.thumbnail}}">
+
+					<p>
+						<div ng-bind-html="partnerDetail.content | unsafe"></div>
+					</p>
+					
+		      	</div>
+
+	        </div>
+	        <div style="clear: both"></div>
+
+	    </div>
+    </div>
+</section>

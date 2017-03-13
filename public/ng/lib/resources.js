@@ -426,7 +426,7 @@ resources.factory('Partner',['$resource',
         return $resource('/api/partner/:id', {}, {
         query:{ method: 'GET'},
         create:{ url:'/api/partner/create', method: 'POST'},
-        get:{ method: 'GET', params: {id:'@_id'} },
+        get:{ url: '/api/partner/:id', method: 'GET', params: {id:'@_id'} },
         update:{method: 'PUT', params: {id:'@_id'}}
     });
 }]);

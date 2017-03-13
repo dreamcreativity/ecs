@@ -30,6 +30,8 @@ exports.getAll = function(req,res){
 
 exports.get = function(req,res){ 
 
+
+	console.log('-----------------in get function');
 	var id = req.params.id;
 	Partner.findOne({_id:id}).populate('cover').exec(function(err, result){
 	//Partner.findOne({_id:id}, function(err, result){

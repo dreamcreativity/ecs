@@ -35,7 +35,7 @@
 			        <div class="row">
 			        	<div class="search-bar col-md-8">
 				     		<i class="fa fa-search search-icon" aria-hidden="true"></i>
-				     		<input type="text" placeholder="What program you are looking for ?" ng-model="keyword">
+				     		<input type="text" placeholder="What program you are looking for ?" ng-model="keywordEnter" ng-enter="enterKeyword()" >
 				     		<i class="fa fa-times close-icon" aria-hidden="true" ng-click="clearSearch()"></i>
 				     	</div>	
 				     	<div class="col-md-4 search-by">
@@ -45,40 +45,30 @@
 			        </div>
 			     	
 
-			      	<div>
-			      		<ul class="partner-list">
-			      			<li ng-animate="'animate'" ng-repeat="partner in partners | filter: { tags: keyword} "  ng-click="showDetail(partner)">
-			      				
-			      				<div class="logo">
-			      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
-			      				</div>
-			      				<label class="partner-name">{{partner.name}}</label>
-			      			</li>
-			      		</ul>
+			     	<div class="" ng-show="keyword!=''">
+			     		Search Result for Partner has program : {{keyword}}
+			     	</div>
 
-			      		<div style="clear: both"></div>
-			      	</div>
-		        </div>
-
-
-		      	<div class="ss detail-section" >
-					
-					<div>
-						<a href="#" ng-click="showList()">Back</a>
-					</div>
-					<h4>{{partnerDetail.name}}</h4> 		
-
-					<img style="max-width: 250px;" src="{{partnerDetail.cover.thumbnail}}">
-
-					<div ng-bind-html="partnerDetail.content | unsafe"></div>
-		      	</div>
 
 	        </div>
 	        <div style="clear: both"></div>
 
 
+	      	<div class="partner-list">
+		      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" >
+		      			<div class="partner-detail">
+
+			      			<div class="logo">
+		      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
+		      				</div>
+		      				<label class="partner-name">{{partner.name}}</label>		      				
+		      			</div>
 
 
+		      		</div>
+	
+		      	</div>
+	        </div>
 	    </div>
     </div>
 </section>
