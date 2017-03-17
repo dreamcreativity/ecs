@@ -19,7 +19,7 @@ angular.module('AdminApp')
 	})
 
 })
-.controller('partnerCtrl', function PartnerCtrl($scope,$http,StaticMedia,Partner,$modal,Medias,$window){
+.controller('partnerCtrl', function PartnerCtrl($scope,$http,StaticMedia,Partner,Sticker,$modal,Medias,$window){
 
 
 	if ( typeof url_params === "undefined" || typeof url_params.id === "undefined"){
@@ -73,6 +73,14 @@ angular.module('AdminApp')
 				ShowGritterCenter('Error',result.messages);
 			}
 
+		});
+	}
+
+	$scope.newSticker = function(){
+		
+		Sticker.create({title: 'new'},function(result){
+
+			console.log(result);
 		});
 	}
 

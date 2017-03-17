@@ -720,8 +720,10 @@ label.heading{
 }
 
 
-
-
+.sticker-container{
+	background-color: #eee;
+	height: 300px;
+}
 
 
 

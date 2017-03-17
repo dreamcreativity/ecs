@@ -16,6 +16,7 @@ var staticMedia = require('../controllers/staticMedia');
 var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
 var partner = require('../controllers/partner');
+var sticker = require('../controllers/sticker');
 var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
 var auth = require('../controllers/auth');
@@ -518,7 +519,11 @@ router.get('/partner/:id', partner.get);
 router.post('/partner/create', partner.create);
 router.put('/partner/:id', partner.update);
 
-
+//------------------------ stick Add-on ---------------------------------------
+router.get('/sticker/', sticker.getAll);
+router.get('/sticker/:id', sticker.get);
+router.post('/sticker/create', sticker.create);
+router.put('/sticker/:id', sticker.update);
 
 
 

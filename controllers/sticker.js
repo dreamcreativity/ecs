@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Partner = require('../models/partner');
+var Sticker = require('../models/sticker');
 var async = require("async");
 var constant = require('../constants.js');
 
@@ -81,11 +81,12 @@ exports.update = function(req,res){
 
 exports.create = function(req,res){
 
-	var newPartner = new Partner(req.body);	
+	var newSticker = new Sticker(req.body);	
 
-	console.log(newPartner);
+	newSticker.type = "partner";
+	console.log(newSticker);
 
-	Partner.find( {'name' : newPartner.name}, function(err, foundPartners){
+	Sticker.find( {'title' : newSticker.name}, function(err, found){
 		if(err){
 			res.json({
 				status: 'fail',
@@ -95,9 +96,9 @@ exports.create = function(req,res){
 		}
 
 
-		if(foundPartners.length == 0){
+		if(found.length == 0){
 
-			newPartner.save(function(err ,result){
+			newSticker.save(function(err ,result){
 				if(err){
 					
 					res.json({
@@ -128,5 +129,3 @@ exports.create = function(req,res){
 
 	});
 }
-
-
