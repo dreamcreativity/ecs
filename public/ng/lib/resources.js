@@ -438,7 +438,8 @@ resources.factory('Sticker',['$resource',
         query:{ method: 'GET'},
         create:{ url:'/api/sticker/create', method: 'POST'},
         get:{ url: '/api/sticker/:id', method: 'GET', params: {id:'@_id'} },
-        update:{method: 'PUT', params: {id:'@_id'}}
+        update:{method: 'PUT', params: {id:'@_id'}},
+        delete:{method: 'DELETE',params: {id:'@_id'}}
     });
 }]);
 

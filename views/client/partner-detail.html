@@ -15,15 +15,6 @@
 
 </section>
 
-<!-- <section ng-controller="OnlineTestCtrl" id="online-test" >
-	<div class="content-wrap">
-        <div class="heading-block center bottommargin-lg">
-            <h2>Online Test</h2>
-        </div>
-
-    </div>
-</section>
- -->
 
 
  <section ng-controller="PartnerDetailCtrl" id="partner-detail" >
@@ -38,17 +29,34 @@
 
 		      	<div class="detail-section" >
 					
-					<div>
+				<!-- 	<div>
 						<a href="/partner" ><h4>Search Again</h4></a>
 					</div>
-					<h4>{{partnerDetail.name}}</h4> 		
+ -->
 
-					<img style="max-width: 250px;" src="{{partnerDetail.cover.thumbnail}}">
+				<div class="row">
+					<div class="col-md-8">
 
-					<p>
-						<div ng-bind-html="partnerDetail.content | unsafe"></div>
-					</p>
+						<p>
+							<div ng-bind-html="partnerDetail.content | unsafe"></div>
+						</p>
+								
+					</div>
+					<div class="col-md-4 partner-info">
+						<div class="center">
+							<img style="max-width: 250px;" src="{{partnerDetail.cover.thumbnail}}">
+						</div>
+						
+						<hr>
+						<p>{{partnerDetail.description}}</p>
+						<div>
+							<span class="tag" ng-repeat="tag in partnerDetail.tags ">{{tag}}</span> 
+						</div>
+					</div>
+				</div>
+
 					
+
 		      	</div>
 
 	        </div>

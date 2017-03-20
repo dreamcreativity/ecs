@@ -978,3 +978,33 @@ body{
 
 
 
+
+#partner-detail .partner-info{
+	border: 1px solid #eee;
+	padding: 15px;
+	-webkit-box-shadow: 8px 10px 21px -6px rgba(219,175,175,1);
+	-moz-box-shadow: 8px 10px 21px -6px rgba(219,175,175,1);
+	box-shadow: 8px 10px 21px -6px rgba(219,175,175,1);
+}
+
+
+#partner-detail .partner-info .tag{
+	border-radius: 3px;
+    background-color: #f9f3f3;
+    color: #1abc9c;
+    margin: 0 3px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+

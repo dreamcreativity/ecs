@@ -38,6 +38,13 @@ angular.module('AdminApp')
 			}
 
 		});
+
+
+		Sticker.get(function(result){
+			//console.log(result);
+
+			$scope.stickers = result.data;
+		});
 	}
 
 
@@ -76,12 +83,44 @@ angular.module('AdminApp')
 		});
 	}
 
+	//----------------------------
+	// sticker section
+	//----------------------------
+	$scope.stickerFilterString = '';
+	
+	$scope.celar = function(){
+		$scope.stickerFilterString = '';
+	}
+
 	$scope.newSticker = function(){
 		
 		Sticker.create({title: 'new'},function(result){
 
 			console.log(result);
+			$scope.stickers.push(result.data);
 		});
+	}
+
+	$scope.updateSticker = function(sticker){
+		
+		Sticker.update( sticker ,function(result){
+
+			ShowGritterCenter('System Message : ', 'Sticker "' + sticker.title +  '" Updated.');
+		
+
+		});
+	}
+
+	$scope.deleteSticker = function(sticker){
+		
+
+		if(confirm('Are you really want to delete sticker "' + sticker.title +  '" ?')){
+			Sticker.delete( {id:sticker._id} ,function(result){
+				$scope.stickers.splice($scope.stickers.indexOf(sticker), 1);
+				ShowGritterCenter('System Message : ', 'Sticker "' + sticker.title +  '" has been removed.');
+			});	
+		}
+		
 	}
 
 	// StaticMedia.getFutureAcademyCalendar({},function(result){

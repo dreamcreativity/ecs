@@ -7,7 +7,7 @@ var constant = require('../constants.js');
 exports.getAll = function(req,res){ 
 
 
-	Partner.find().populate('cover').exec(function(err, result){
+	Sticker.find().exec(function(err, result){
 
 		if(err){
 			res.json({
@@ -33,7 +33,7 @@ exports.get = function(req,res){
 
 	console.log('-----------------in get function');
 	var id = req.params.id;
-	Partner.findOne({_id:id}).populate('cover').exec(function(err, result){
+	Sticker.findOne({_id:id}).populate('cover').exec(function(err, result){
 	//Partner.findOne({_id:id}, function(err, result){
 
 		if(err){
@@ -58,7 +58,30 @@ exports.update = function(req,res){
 
 	console.log(req.body);
 	var id = req.params.id;
-	Partner.update({_id:id}, req.body, function(err, result){
+	Sticker.update({_id:id}, req.body, function(err, result){
+		if(err){
+			console.log(err);
+
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+}
+
+
+exports.delete = function(req,res){ 
+	console.log('in delete');
+	var id = req.params.id;
+	Sticker.find({_id:id}).remove(function(err, result){
 		if(err){
 			console.log(err);
 

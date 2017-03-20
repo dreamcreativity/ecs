@@ -524,7 +524,7 @@ router.get('/sticker/', sticker.getAll);
 router.get('/sticker/:id', sticker.get);
 router.post('/sticker/create', sticker.create);
 router.put('/sticker/:id', sticker.update);
-
+router.delete('/sticker/:id', sticker.delete);
 
 
 module.exports = router;

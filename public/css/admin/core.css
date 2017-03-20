@@ -721,15 +721,59 @@ label.heading{
 
 
 .sticker-container{
-	background-color: #eee;
-	height: 300px;
+	background-color: #f2f2f2;
+	height: 430px;
+	padding: 10px;
 }
 
+.sticker-container button{
+	cursor: pointer!important;
+}
+
+.sticker-container .container-header{
+	background-color: white;
+	margin-bottom: 15px;
+	position: relative;
+	padding: 0 67px 5px 110px;
+}
+.sticker-container .container-header .newBtn{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.sticker-container .container-header .clearBtn{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.sticker-container .container-content{
+	height: 86%;
+	overflow: auto;
+	clear: both;
 
 
+}
 
+.sticker-container .sticker{
+	height: 180px;
+	margin-bottom: 10px;
+}
+.sticker-container .sticker .wraper {
+	width: 100%;
+	background-color: transparent;
+/*	border: 1px solid #ccc;*/
+	display: inline-block;
+/*	padding: 2px; */
+	
+}
+.sticker-container .sticker  .wraper textarea{
+	width: 100%;
+	height: 100px;
+	margin-top: 10px; 
+	border-radius: 3px;
 
-
+}
 
 
 

@@ -39,15 +39,27 @@
 				<label class="col-sm-2 control-label">Sticker</label>
 				<div class="col-sm-8">
 					<div class="row sticker-container">
-						<div class="col-md-3">
-							<ul>
-								<li><button ng-click="newSticker()">New Sticker</button></li>
-							</ul>
-							
+						<div class="container-header">
+							<button class="btn btn-primary newBtn" ng-click="newSticker()">New Sticker</button>
+
+							<input type="text" class="form-control" ng-model="stickerFilterString" placeholder="Search by Sticker Title">
+
+							<button class="btn btn-default clearBtn" ng-click="celar()">Clear</button>
 						</div>	
-						<div class="col-md-9">
-							table
-					</div>	
+						<div class="container-content row">
+							<div class="col-md-6  sticker" ng-repeat="sticker in stickers | filter:stickerFilterString">
+								<div class="wraper">
+									<div>
+										<input type="text" ng-model="sticker.title" >
+										<button class="btn btn-primary btn-xs btn-circle " ng-click="updateSticker(sticker)"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+										<button type="button" ng-click="deleteSticker(sticker)" class="btn btn-danger btn-xs btn-circle duration-list-operate-icon"><i class="fa fa-trash-o icon-only"></i></button>
+									</div>
+									
+									<textarea ng-model="sticker.content" ></textarea>						
+								</div>
+
+							</div>
+						</div>	
 					</div>
 
 				</div>
