@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Partner = require('../models/partner');
+var Keyword = require('../models/keyword');
 var async = require("async");
 var constant = require('../constants.js');
 
@@ -56,7 +57,7 @@ exports.get = function(req,res){
 
 exports.update = function(req,res){ 
 
-	console.log(req.body);
+	//console.log(req.body);
 	var id = req.params.id;
 	Partner.update({_id:id}, req.body, function(err, result){
 		if(err){
@@ -68,6 +69,33 @@ exports.update = function(req,res){
 				data: null
 			});
 		}else{
+
+			Keyword.find({ ref: id }).remove( function(){
+
+				async.eachSeries(req.body.tags, function iteratee(item, callback) {
+					console.log( 'item: ' + item);
+
+
+
+					var newKeyword = new Keyword({
+						value: item.toLowerCase(),
+						type: 'partner',
+						ref: id
+					});
+
+					newKeyword.save(function(err,result){
+
+						callback();
+					});
+
+				}, function done() {
+				    //...
+				});
+	
+
+			});
+
+
 			res.json({
 				status: 'ok',
 				messages: 'successed',
@@ -128,5 +156,41 @@ exports.create = function(req,res){
 
 	});
 }
+
+
+exports.getKeyList = function(req,res){
+
+	
+
+	// var key = req.params.keyword;
+	// key = key.toLowerCase();
+
+	// console.log(key);
+	// value :  {'$regex': key}} 
+
+	
+	Keyword.find({ type: 'partner' }).distinct( 'value', function(err, result){
+		res.json({
+			status: 'ok',
+			messages: 'successed',
+			data: result
+		});
+	});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
