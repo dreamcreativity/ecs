@@ -35,18 +35,18 @@
 			        <div class="row">
 			        	<div class="search-bar col-md-8">
 				     		<i class="fa fa-search search-icon" aria-hidden="true"></i>
-				     		<input type="text" placeholder="What program you are looking for ?" ng-model="keywordEnter" ng-enter="enterKeyword()" >
-				     		<i class="fa fa-times close-icon" aria-hidden="true" ng-click="clearSearch()"></i>
+				     		<autocomplete   ng-model="keywordEnter" data="data" ng-enter="enterKeyword()" ></autocomplete>
+				     		<i ng-show="keywordEnter!=''" class="fa fa-times close-icon" aria-hidden="true" ng-click="clearSearch()"></i>
 				     	</div>	
 				     	<div class="col-md-4 search-by">
 				     		<label>by</label>
-				     		<span style="font-size: 22px;font-style: italic; font-weight: bold; color: #333">Keywords</span>
+				     		<span style="font-size: 22px;font-style: italic; font-weight: bold; color: #333">Keyword</span>
 				     	</div>
 			        </div>
 			     	
 
-			     	<div class="" ng-show="keyword!=''">
-			     		Search Result for Partner has program : {{keyword}}
+			     	<div class="search-msg" ng-show="keyword!=''">
+			     		Search Result for Partner has program : <strong>{{keyword}}</strong>
 			     	</div>
 
 

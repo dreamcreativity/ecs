@@ -70,7 +70,7 @@ function IsAuthException(path, method){
 		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'},
 		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'},
 		{	path : '/api/partner', method:'GET', type:'contain'},
-		{	path : '/api/partner/create', method:'POST', type:'direct'}
+		{	path : '/api/partner-getKeyList/', method:'GET', type:'direct'}
 
 	];
 	
@@ -518,6 +518,7 @@ router.get('/partner/', partner.getAll);
 router.get('/partner/:id', partner.get);
 router.post('/partner/create', partner.create);
 router.put('/partner/:id', partner.update);
+router.get('/partner-getKeyList', partner.getKeyList);
 
 //------------------------ stick Add-on ---------------------------------------
 router.get('/sticker/', sticker.getAll);

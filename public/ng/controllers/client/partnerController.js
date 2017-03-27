@@ -1,6 +1,6 @@
 'use strict';
 angular.module('ClientApp')
-.controller('PartnerCtrl',function PartnerCtrl($rootScope,$scope,$http,Partner,Constants,$window,$location,$sce){
+.controller('PartnerCtrl',function PartnerCtrl($rootScope,$scope,$http,Partner,Constants,$window,$location,$sce, $timeout){
 
 	console.log('PartnerCtrl start..');
 
@@ -9,6 +9,12 @@ angular.module('ClientApp')
 
 
 	// load partner list
+
+	Partner.keywords(function(result){
+		$scope.data = result.data;
+	});
+
+	
 
 	Partner.query(function(result){
 		$scope.partners = result.data;
@@ -22,8 +28,13 @@ angular.module('ClientApp')
 
 
 	$scope.enterKeyword = function(){
+		// console.log($scope.keywordEnter);
+		// $scope.keyword = $scope.keywordEnter;
 
-		$scope.keyword = $scope.keywordEnter;
+		$timeout(function(){
+			console.log($scope.keywordEnter);
+			$scope.keyword = $scope.keywordEnter;
+		});
 
 		// send keyword to api as a record
 

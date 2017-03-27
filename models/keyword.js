@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 
 var KeywordSchema = new mongoose.Schema({
 	value: {type: String, required: true },
-	type: {type: String, required: true , default: ''}
+	type: {type: String, required: true , default: ''},
+	ref: {type: String, default: ''}
 });
 
 

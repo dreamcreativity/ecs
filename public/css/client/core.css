@@ -914,6 +914,12 @@ body{
 	top: 0;
 }
 
+#partners .partner-content .search-msg{
+    font-size: 18px;
+    font-style: italic;
+    margin: 20px 15px;
+    color: #73a081;
+}
 
 
 .partner-list .hide-partner{
@@ -961,7 +967,7 @@ body{
 	color: #84ab90;
 	padding: 0 35px
 	/*padding: 0 10px;*/
-}
+}      
 #partners .search-bar .search-icon{
 	position: absolute;
 	margin-left: 5px;
@@ -977,16 +983,21 @@ body{
 }
 
 
+#partner-detail .detail-section{
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03), 0 3px 1px -2px rgba(0, 0, 0, 0.03), 0 1px 5px 0 rgba(0, 0, 0, 0.03);
+}
 
 
 #partner-detail .partner-info{
 	border: 1px solid #eee;
 	padding: 15px;
-	-webkit-box-shadow: 8px 10px 21px -6px rgba(219,175,175,1);
-	-moz-box-shadow: 8px 10px 21px -6px rgba(219,175,175,1);
-	box-shadow: 8px 10px 21px -6px rgba(219,175,175,1);
-}
+	margin-bottom: 20px;
 
+}
+#partner-detail .partner-name{
+	color: #555;
+	margin-bottom: 7px;
+}
 
 #partner-detail .partner-info .tag{
 	border-radius: 3px;
@@ -998,10 +1009,12 @@ body{
     margin-bottom: 10px;
 }
 
+#partner-detail .partner-sidebar{
 
-
-
-
+}
+#partner-detail .partner-sidebar .button-desc{
+	width: 100%;
+}
 
 
 

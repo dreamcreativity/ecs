@@ -30,8 +30,6 @@ exports.getAll = function(req,res){
 
 exports.get = function(req,res){ 
 
-
-	console.log('-----------------in get function');
 	var id = req.params.id;
 	Sticker.findOne({_id:id}).populate('cover').exec(function(err, result){
 	//Partner.findOne({_id:id}, function(err, result){
@@ -79,7 +77,7 @@ exports.update = function(req,res){
 
 
 exports.delete = function(req,res){ 
-	console.log('in delete');
+
 	var id = req.params.id;
 	Sticker.find({_id:id}).remove(function(err, result){
 		if(err){

@@ -20,39 +20,62 @@
  <section ng-controller="PartnerDetailCtrl" id="partner-detail" >
      <div class="container clearfix" >
       	<div class="content-wrap">
-	        <div>
+	<!--         <div>
 	            <h2>Our Partners - {{partnerDetail.name}}</h2>
-	        </div>
+	        </div> -->
 
 	        <div class="partner-content">
 
 
 		      	<div class="detail-section" >
 					
-				<!-- 	<div>
-						<a href="/partner" ><h4>Search Again</h4></a>
-					</div>
- -->
 
 				<div class="row">
+					<div class="col-md-4 partner-sidebar">
+
+						<div class="">
+							<a href="/partner" class="button button-desc">
+								<div>
+									Search Again
+									<span>Find more our partners</span>
+								</div>
+							</a>
+						</div>	
+						
+						<div class="partner-info">
+								
+							<div class="center">
+								<img style="max-width: 250px; max-height: 100px" src="{{partnerDetail.cover.thumbnail}}">
+							</div>
+							
+							<hr>
+							<p>{{partnerDetail.description}}</p>
+							<div>
+								<span class="tag" ng-repeat="tag in partnerDetail.tags ">{{tag}}</span> 
+							</div>
+
+						</div>
+
+		
+
+					</div>
+
 					<div class="col-md-8">
 
+						<div class="fancy-title title-border">
+							<h2>Partner <span>{{partnerDetail.name}}</span></h2>
+	               <!--          <h2>This is a <span>single-border</span> title</h2> -->
+	                    </div>
+
+						<div class="partner-name">
+							<h3></h3>
+						</div>
 						<p>
 							<div ng-bind-html="partnerDetail.content | unsafe"></div>
 						</p>
 								
 					</div>
-					<div class="col-md-4 partner-info">
-						<div class="center">
-							<img style="max-width: 250px;" src="{{partnerDetail.cover.thumbnail}}">
-						</div>
-						
-						<hr>
-						<p>{{partnerDetail.description}}</p>
-						<div>
-							<span class="tag" ng-repeat="tag in partnerDetail.tags ">{{tag}}</span> 
-						</div>
-					</div>
+					
 				</div>
 
 					
