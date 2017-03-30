@@ -428,7 +428,9 @@ resources.factory('Partner',['$resource',
         create:{ url:'/api/partner/create', method: 'POST'},
         get:{ url: '/api/partner/:id', method: 'GET', params: {id:'@_id'} },
         update:{method: 'PUT', params: {id:'@_id'}},
-        keywords: { url:'/api/partner-getKeyList', method: 'GET'}
+        keywords: { url:'/api/partner-getKeyList', method: 'GET'},
+        addKeyRecord: {url: '/api/partner/addSearchRecord/:key', method: 'POST',params: {key: '@key'}},
+        getKeyRecord: {url: '/api/partner-getSearchRecord', method:'GET'}
     });
 }]);
 

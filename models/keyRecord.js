@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 
 
 var KeyRecordSchema = new mongoose.Schema({
-	value: {type: String, required: true },
-	type: {type: String, required: true , default: ''}
+	key: {type: String, required: true },
+	type: {type: String, required: true , default: ''},
+	count: {type: Number, default: 1, required: true}
 });
 
 

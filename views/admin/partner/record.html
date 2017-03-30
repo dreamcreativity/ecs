@@ -1,13 +1,10 @@
+ <section ng-controller="partnerSearchRecorndCtrl"  >
+
 <h2>Key Search records</h2>
 
-<div>
-	<ul>
-		<li>key world</li>
-		<li>key world</li>
-		<li>key world</li>
-		<li>key world</li>
-		<li>key world</li>
-		<li>key world</li>
-		<li>key world</li>
-	</ul>
-</div>
+	<div>
+		<ul>
+			<li ng-repeat="record in list">{{record.key}} - {{record.count}}</li>
+		</ul>
+	</div>
+ </section>

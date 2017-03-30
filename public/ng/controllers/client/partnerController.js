@@ -31,9 +31,16 @@ angular.module('ClientApp')
 		// console.log($scope.keywordEnter);
 		// $scope.keyword = $scope.keywordEnter;
 
+		Partner.addKeyRecord({key: $scope.keywordEnter, type: 'partner'}, function(err, result){
+
+			console.log(result);
+
+		});
+
 		$timeout(function(){
-			console.log($scope.keywordEnter);
+			//console.log($scope.keywordEnter);
 			$scope.keyword = $scope.keywordEnter;
+			$scope.keywordEnter = '';
 		});
 
 		// send keyword to api as a record

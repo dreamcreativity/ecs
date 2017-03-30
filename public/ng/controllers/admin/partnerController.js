@@ -141,5 +141,13 @@ angular.module('AdminApp')
 	})
 
 
+})
+
+.controller('partnerSearchRecorndCtrl', function PartnerCtrl($scope,$http,Partner){
+
+	Partner.getKeyRecord(function( result){
+		//console.log(result.data);
+		$scope.list = result.data;
+	});
 });
 

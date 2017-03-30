@@ -16,6 +16,7 @@ var staticMedia = require('../controllers/staticMedia');
 var onlineTest = require('../controllers/onlineTest');
 var payment = require('../controllers/payment');
 var partner = require('../controllers/partner');
+var searchRecord = require('../controllers/searchRecord');
 var sticker = require('../controllers/sticker');
 var commission = require('../controllers/commission');
 var constants = require('../controllers/constants');
@@ -70,6 +71,7 @@ function IsAuthException(path, method){
 		{	path : '/api/static-media/FutureAcademyCalendar', method:'GET', type:'direct'},
 		{	path : '/api/static-media/ActivityCalendar', method:'GET', type:'direct'},
 		{	path : '/api/partner', method:'GET', type:'contain'},
+		{	path : '/partner/addSearchRecord/', method:'POST', type:'contain'},
 		{	path : '/api/partner-getKeyList/', method:'GET', type:'direct'}
 
 	];
@@ -519,6 +521,9 @@ router.get('/partner/:id', partner.get);
 router.post('/partner/create', partner.create);
 router.put('/partner/:id', partner.update);
 router.get('/partner-getKeyList', partner.getKeyList);
+router.post('/partner/addSearchRecord/:key', searchRecord.addRecord);
+router.get('/partner-getSearchRecord', searchRecord.getRecords);
+
 
 //------------------------ stick Add-on ---------------------------------------
 router.get('/sticker/', sticker.getAll);
