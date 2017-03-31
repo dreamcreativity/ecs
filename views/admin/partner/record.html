@@ -2,9 +2,35 @@
 
 <h2>Key Search records</h2>
 
-	<div>
-		<ul>
-			<li ng-repeat="record in list">{{record.key}} - {{record.count}}</li>
-		</ul>
-	</div>
+
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Keyword</th>
+				<th>Count</th>	
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="record in list">
+				<td>{{record.key}}</td>
+				<td>{{record.count}}</td>
+			</tr>
+		</tbody>
+	</table>
  </section>
+
+<style type="text/css">
+	
+	.data-table{
+		width: 500px
+	}
+
+	.data-table td, .data-table th{
+		padding: 5px 10px;
+	}
+
+	.data-table th{
+		background-color: #333
+		color: white;
+	}
+</style>
