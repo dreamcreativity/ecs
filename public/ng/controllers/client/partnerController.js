@@ -11,6 +11,7 @@ angular.module('ClientApp')
 	// load partner list
 
 	Partner.keywords(function(result){
+		console.log(result.data);
 		$scope.data = result.data;
 	});
 

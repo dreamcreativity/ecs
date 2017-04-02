@@ -989,9 +989,10 @@ body{
 
 
 #partner-detail .partner-info{
-	border: 1px solid #eee;
-	padding: 15px;
-	margin-bottom: 20px;
+	border: 1px solid rgba(26, 188, 156, 0.51);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 3px;
 
 }
 #partner-detail .partner-name{
@@ -1001,13 +1002,20 @@ body{
 
 #partner-detail .partner-info .tag{
 	border-radius: 3px;
-    background-color: #f9f3f3;
-    color: #1abc9c;
+    background-color: #4ba996;
+    color: #fff;
     margin: 0 3px;
     padding: 5px 10px;
     display: inline-block;
     margin-bottom: 10px;
 }
+
+#partner-detail .partner-info .tag:hover{
+	cursor: pointer;
+    background-color: #825c5a;
+
+}
+
 
 #partner-detail .partner-sidebar{
 

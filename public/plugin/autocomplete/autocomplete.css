@@ -35,13 +35,14 @@
   padding:0.4em;
 /*  border-radius: 20px;*/
   background-color: #fff;
+  border-radius: 3px;
 }
 
 .autocomplete li.active{
   width: 100%;
   /*background-color: #4bf;*/
   background-color: #1abc9c;
-  
+  cursor: pointer;
 }
 
 .autocomplete .highlight {

@@ -7,13 +7,13 @@
 		<thead>
 			<tr>
 				<th>Keyword</th>
-				<th>Count</th>	
+				<th style="text-align: center;">Count</th>	
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="record in list">
 				<td>{{record.key}}</td>
-				<td>{{record.count}}</td>
+				<td style="text-align: center;">{{record.count}}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -30,7 +30,7 @@
 	}
 
 	.data-table th{
-		background-color: #333
+		background-color: #333;
 		color: white;
 	}
 </style>

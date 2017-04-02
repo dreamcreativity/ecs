@@ -75,10 +75,10 @@ exports.update = function(req,res){
 				async.eachSeries(req.body.tags, function iteratee(item, callback) {
 					console.log( 'item: ' + item);
 
-
+					item = item.toLowerCase().split('-').join(' ');
 
 					var newKeyword = new Keyword({
-						value: item.toLowerCase(),
+						value: item,
 						type: 'partner',
 						ref: id
 					});
