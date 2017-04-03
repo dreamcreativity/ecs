@@ -27,23 +27,42 @@ exports.addRecord = function(req,res){
 				// create new record is not exist
 				var newRecord = new keyRecord({
 					'key': key,
-					'type': type
+					'type': type,
+					'exist': false
 				});
 
-				newRecord.save(function(err, result){
-					if(err){
-						res.json({
-							status: 'error',
-							data: err
-						});	
-					}else{
-						res.json({
-							status: 'ok',
-							data: result
-						});	
-					}
-						
-				});
+
+
+				async.series([
+				    function(callback){
+
+				    	Keyword.find({'value': key, 'type': type}, function(err, result){
+
+				    		if(result.length > 0)
+				    			newRecord.exist = true;
+				    		
+				    		callback();
+				    	});
+				    	
+				    },
+				    function(callback){
+						newRecord.save(function(err, result){
+							if(err){
+								res.json({
+									status: 'error',
+									data: err
+								});	
+							}else{
+								res.json({
+									status: 'ok',
+									data: result
+								});	
+							}
+								
+						});
+				    }
+				]);
+
 			}else{
 				record.count++;
 				record.save(function(err, result){
@@ -59,10 +78,10 @@ exports.addRecord = function(req,res){
 
 exports.getRecords = function(req,res){
 
-	keyRecord.find({}).sort('-count').exec(function(err, docs) { 
+	keyRecord.find({exist:true}).sort('-count').exec(function(err, docs) { 
 
 		console.log(docs);
-		
+
 		res.json({
 			status: 'ok',
 			data: docs

@@ -1000,9 +1000,9 @@ body{
 	margin-bottom: 7px;
 }
 
-#partner-detail .partner-info .tag{
+#partner-detail .tag{
 	border-radius: 3px;
-    background-color: #4ba996;
+    background-color: #1abc9c;
     color: #fff;
     margin: 0 3px;
     padding: 5px 10px;
@@ -1010,7 +1010,7 @@ body{
     margin-bottom: 10px;
 }
 
-#partner-detail .partner-info .tag:hover{
+#partner-detail .tag:hover{
 	cursor: pointer;
     background-color: #825c5a;
 

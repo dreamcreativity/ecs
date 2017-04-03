@@ -32,16 +32,21 @@ angular.module('ClientApp')
 		// console.log($scope.keywordEnter);
 		// $scope.keyword = $scope.keywordEnter;
 
-		Partner.addKeyRecord({key: $scope.keywordEnter, type: 'partner'}, function(err, result){
 
-			console.log(result);
-
-		});
 
 		$timeout(function(){
 			//console.log($scope.keywordEnter);
 			$scope.keyword = $scope.keywordEnter;
-			$scope.keywordEnter = '';
+
+			Partner.addKeyRecord({key: $scope.keywordEnter, type: 'partner'}, function(err, result){
+
+				console.log(result);
+				//$scope.keywordEnter = '';
+			});
+
+			
+
+
 		});
 
 		// send keyword to api as a record
@@ -60,8 +65,8 @@ angular.module('ClientApp')
 		var isTagFound = false;
 
 		angular.forEach(partner.tags, function(value, key) {
-		  	var tagVal = value.replace('-',' ');
-		  	if( tagVal == $scope.keyword){
+		  	var tagVal = value.toLowerCase().split('-').join(' ');
+		  	if( tagVal == $scope.keyword.toLowerCase()){
 		  		isTagFound = true;
 		  	}
 		});

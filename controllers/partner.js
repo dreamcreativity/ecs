@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Partner = require('../models/partner');
 var Keyword = require('../models/keyword');
+var KeyRecord = require('../models/keyRecord');
 var async = require("async");
 var constant = require('../constants.js');
 
@@ -85,7 +86,10 @@ exports.update = function(req,res){
 
 					newKeyword.save(function(err,result){
 
-						callback();
+						KeyRecord.update({'key': item, 'type':'partner'},{$set : {exist: true } }, function(){
+							callback();	
+						});
+						
 					});
 
 				}, function done() {
