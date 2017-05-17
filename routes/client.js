@@ -392,6 +392,9 @@ router.get('/junior-programs/create', function(req, res){
 	template(req,res,'client_normal','client/junior-programs-create.html',{});
 });
 
+router.get('/payment', function(req, res){
+	template(req,res,'client_normal','client/payment.html',{});
+});
 
 
 

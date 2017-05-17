@@ -1,0 +1,58 @@
+
+
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+
+
+
+
+<section id="page-title"  class="page-title-mini page-title-right">
+
+    <div class="container clearfix">
+       <!--  <h1>Online Test</h1> -->
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Make Payment</a></li>
+           
+        </ol>
+    </div>
+
+</section>
+
+
+
+<!-- <script type="text/javascript" src="assets/js/functions.js"></script> -->
+<section ng-controller="OnlineTestCtrl" id="online-test" >
+	<div class="content-wrap">
+        <div class="heading-block center bottommargin-lg">
+            <h2>Make A Payment</h2>
+        </div>
+		 <section id="make-payment" class="page-section">
+		 	<div class="container clearfix">
+                <div class="row"> 
+                    <div class="container clearfix" ng-show="started == false ">
+                        <div class="fancy-title title-dotted-border title-center">
+                            <h4> You can make a payment for us by <span>Western Union</span></h4>
+                        </div>
+
+						<iframe 
+						width="100%" 
+						height="1800"  
+						src="https://student.globalpay.wu.com/geo-buyer/esc"></iframe>
+
+                    </div>
+                </div>
+		 	</div>
+		 </section>
+	</div>
+</div>
+<div style="margin-bottom:100px"></div>
+
+
+
+
+
