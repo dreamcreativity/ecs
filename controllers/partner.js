@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Partner = require('../models/partner');
+var PartnerCategory = require('../models/partnerCategory');
 var Keyword = require('../models/keyword');
 var KeyRecord = require('../models/keyRecord');
 var async = require("async");
@@ -184,6 +185,136 @@ exports.getKeyList = function(req,res){
 
 
 }
+
+
+
+exports.getArea = function(req,res){ 
+
+
+	console.log('-----------------in get function');
+	var id = req.params.id;
+	PartnerCategory.findOne({_id:id}).populate('cover').exec(function(err, result){
+
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+
+	});
+}
+
+
+
+
+exports.areaList = function(req,res){ 
+
+
+	PartnerCategory.find().populate('cover').exec(function(err, result){
+
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+
+	});
+}
+
+
+exports.createArea = function(req,res){
+
+	var newPartnerCategory = new PartnerCategory(req.body);	
+
+	console.log(newPartnerCategory);
+
+	PartnerCategory.find( {'name' : newPartnerCategory.name}, function(err, foundPartnerCategory){
+		if(err){
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}
+
+
+		if(foundPartnerCategory.length == 0){
+
+			newPartnerCategory.save(function(err ,result){
+				if(err){
+					
+					res.json({
+						status: 'fail',
+						messages: err,
+						data: null
+					});
+				}else{
+					res.json({
+						status: 'ok',
+						messages: 'successed',
+						data: result
+					});
+				}
+				
+			});
+
+
+		}else{
+			res.json({
+				status: 'fail',
+				messages: 'area of partner already exist',
+				data: null
+			});	
+		}
+
+
+
+	});
+}
+
+
+
+exports.updateArea = function(req,res){ 
+
+	//console.log(req.body);
+	var id = req.params.id;
+	PartnerCategory.update({_id:id}, req.body, function(err, result){
+		if(err){
+			console.log(err);
+
+			res.json({
+				status: 'fail',
+				messages: err,
+				data: null
+			});
+		}else{
+
+			res.json({
+				status: 'ok',
+				messages: 'successed',
+				data: result
+			});
+		}
+	});
+}
+
 
 
 

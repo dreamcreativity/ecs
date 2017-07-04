@@ -586,6 +586,44 @@ router.get('/partner/detail/:id', function(req,res){
 
 });
 
+
+router.get('/partner/area', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/area.html', 
+		{
+			title : 'Partner Areas',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'Area',
+			url_params : req.params
+		});
+
+});
+
+
+router.get('/partner/area/new', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/area-new.html', 
+		{
+			title : 'Partner Areas',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'Area',
+			url_params : req.params
+		});
+
+});
+
+router.get('/partner/area/detail/:id', function(req,res){
+	template(req,res,'admin_main', 'admin/partner/area-detail.html', 
+		{
+			title : 'Partner Areas',
+			category : 'Management',
+			cur_tap : 'Partners',
+			cur_selected : 'Area',
+			url_params : req.params
+		});
+
+});
+
 //-------------------------- online test  --------------------------------------
 
 

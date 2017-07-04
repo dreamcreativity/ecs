@@ -524,6 +524,11 @@ router.get('/partner-getKeyList', partner.getKeyList);
 router.post('/partner/addSearchRecord/:key', searchRecord.addRecord);
 router.get('/partner-getSearchRecord', searchRecord.getRecords);
 
+router.get('/partner/area/:id', partner.getArea);
+router.get('/partner-arealist', partner.areaList);
+router.post('/partner/area/create', partner.createArea);
+router.put('/partner/area/:id', partner.updateArea);
+
 
 //------------------------ stick Add-on ---------------------------------------
 router.get('/sticker/', sticker.getAll);

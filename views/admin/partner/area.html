@@ -1,0 +1,26 @@
+ <section  >
+
+	<h2>Area of Study</h2>
+
+	<div class="partner-list" ng-controller="partnerCategoryCtrl">
+		<ul>
+			<li class="add"><a href="/admin/partner/area/new"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+
+			<li ng-repeat="area in areas">
+				<a href="/admin/partner/area/detail/{{area._id}}">
+					{{area.name}}
+					<img style="width:100%" src="{{area.cover.thumbnail}}">
+				</a>
+				
+			</li>
+			
+			<!-- <li ng-click="changeSource()">test</li> -->
+		</ul>
+	</div>
+
+
+
+ </section>
+
+<!-- include the media selector mockup -->
+<div ng-include="'/ng/html/MediaSelector.html'"></div>

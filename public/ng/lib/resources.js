@@ -430,7 +430,11 @@ resources.factory('Partner',['$resource',
         update:{method: 'PUT', params: {id:'@_id'}},
         keywords: { url:'/api/partner-getKeyList', method: 'GET'},
         addKeyRecord: {url: '/api/partner/addSearchRecord/:key', method: 'POST',params: {key: '@key'}},
-        getKeyRecord: {url: '/api/partner-getSearchRecord', method:'GET'}
+        getKeyRecord: {url: '/api/partner-getSearchRecord', method:'GET'},
+        createArea:{ url:'/api/partner/area/create', method: 'POST'},
+        getAreaCategoryList:{ url:'/api/partner-arealist', method: 'GET'},
+        getAreaCategory:{ url: '/api/partner/area/:id', method: 'GET', params: {id:'@_id'} },
+        updateArea:{ url: '/api/partner/area/:id', method: 'PUT', params: {id:'@_id'}}
     });
 }]);
 

@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var PartnerSchema = new mongoose.Schema({
 	name: {type: String, required: true },
 	cover: {type:  mongoose.Schema.ObjectId, ref:'Media', default:null},
+	report: {type: mongoose.Schema.ObjectId, ref:'Media', default:null},
 	description: {type: String, default: ''},
 	content: {type: String, default: ''},
 	tags : [{type : String}],

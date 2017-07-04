@@ -142,7 +142,69 @@ angular.module('AdminApp')
 
 
 })
+.controller('partnerCategoryCtrl', function partnerCategoryCtrl($scope,$http,Partner,$modal,Medias){
 
+
+	if ( typeof url_params === "undefined" || typeof url_params.id === "undefined"){
+		$scope.partner = {
+			name: '',
+			description: ''
+		};
+
+		Partner.getAreaCategoryList( {},function(result){
+			$scope.areas = result.data;	
+			console.log($scope.areas );
+		});
+
+	}else{
+
+		Partner.getAreaCategory(url_params, function(result){
+			$scope.area = result.data;	
+			console.log($scope.area);
+		});
+	}
+
+
+	$scope.create = function(){
+		Partner.createArea($scope.partner, function(result){
+			if(result.status == 'ok'){			
+				ShowGritterCenter('System', "Area of Partner created");
+				setTimeout(function(){
+  					 location='/admin/partner/area/detail/'+ result.data._id;
+				}, 2000); 
+			}else{
+				// display error message.
+				ShowGritterCenter('Error',result.messages);
+			}
+		});
+	}
+
+	$scope.update = function() {
+
+		Partner.updateArea($scope.area, function(result){
+			if(result.status == 'ok'){
+				ShowGritterCenter('System', "Partner information updated");
+			}else{
+				ShowGritterCenter('Error',result.messages);
+			}
+
+		});
+
+	}
+
+	Medias.getCategoryTargetMedia({target : 'Partner', type:'Image'},function(result){
+
+		$scope.medias=result.data;
+
+		$scope.changeSource = createMediaSelectorFunction($modal, $scope.medias,function(selectedMedia){ 
+			$scope.area.cover = selectedMedia;
+		});
+
+
+	})
+
+
+})
 .controller('partnerSearchRecorndCtrl', function PartnerCtrl($scope,$http,Partner){
 
 	Partner.getKeyRecord(function( result){
