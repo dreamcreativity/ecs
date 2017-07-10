@@ -86,21 +86,15 @@
 					<input type="phone" class="form-control" name="name" ng-model="partner.cellphone">
 				</div>
 			</div>
-
+<!-- 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Tags</label>
 				<div class="col-sm-4">
 					<tags-input ng-model="tagList" 
 						placeholder="Add a Tag" add-from-autocomplete-only="false" display-property="name" addFromAutocompleteOnly="false">
-						<!-- <auto-complete source="loadCountries($query)"
-							min-length="0"
-							max-results-to-show="32">
-						</auto-complete> -->
 					</tags-input>
 				</div>
-
-
-			</div>
+			</div> -->
 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Is Delete:</label>
@@ -116,9 +110,24 @@
 				<label ng-click="changeCurrentCalendar()" class="col-sm-3 control-label">Logo:</label>
 				<div class="col-sm-9">
 					<div ng-click="changeSource()" ng-if="partner.cover == null" class="cover-empty"><label>Clic to change</label></div>
-					<img ng-click="changeSource()" class="preview-media"  ng-click="changeSource()"  ng-if="partner.cover!= null && partner.cover.type=='Image'" src="{{partner.cover.thumbnail}}" >
+					<img class="preview-media"  ng-click="changeSource()"  ng-if="partner.cover!= null && partner.cover.type=='Image'" src="{{partner.cover.thumbnail}}" >
 				</div>
 			</div>
+
+			<div class="form-group">
+				<label ng-click="changeCurrentCalendar()" class="col-sm-3 control-label">Report: </label>
+				<div class="col-sm-9">
+					<div ng-click="changeReport()" ng-if="partner.report == null" class="cover-empty"><label>Clic to change</label></div>
+					<!-- <img ng-click="changeReport()" class="preview-media"  ng-if="partner.report!= null && partner.report.type=='Document'" src="{{partner.report.thumbnail}}" > -->
+
+					<i ng-click="changeReport()" ng-if="partner.report != null && partner.report.type=='Document'" class="fa fa-file-pdf-o preview-file-type-list ng-scope"></i>
+					<div>{{partner.report.title}}</div>
+					
+
+
+				</div>
+			</div>
+
 
 			<div class="form-actions">
 				<div class="form-group">

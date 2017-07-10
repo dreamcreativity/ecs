@@ -28,6 +28,10 @@ angular.module('ClientApp')
 	}
 
 
+	Partner.getAreaCategoryList(function(result){
+		$scope.areas = result.data;	
+	});
+
 	$scope.enterKeyword = function(){
 		// console.log($scope.keywordEnter);
 		// $scope.keyword = $scope.keywordEnter;

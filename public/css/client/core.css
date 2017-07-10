@@ -982,6 +982,33 @@ body{
     font-size: 16px;
 }
 
+#partners .partner-area-content{
+
+}
+
+
+#partners  .partner-area-content .partner-area{
+	/*border: 1px solid #eee;*/
+
+	padding: 5px 15px 15px 0px; 
+}
+
+
+
+#partners  .partner-area-content .partner-area .content{
+	border: 1px solid #eee;
+	/*background-color: gray;*/
+}
+
+
+  .partner-area-content .partner-area .content img{
+/*	height: 300px;
+	max-width: 100%;*/
+	height: 50px;
+	width: 100%;
+}
+
+
 
 #partner-detail .detail-section{
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03), 0 3px 1px -2px rgba(0, 0, 0, 0.03), 0 1px 5px 0 rgba(0, 0, 0, 0.03);

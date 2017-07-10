@@ -55,9 +55,14 @@
 							<hr>
 							<h5>Overview</h5>
 							<p>{{partnerDetail.description}}</p>
-							<div>
+							<!-- <div>
 								<h5>Available Programs</h5>
 								<span class="tag" ng-repeat="tag in partnerDetail.tags ">{{tag}}</span> 
+							</div> -->
+
+
+							<div ng-if="partnerDetail.report!=null">
+								<a href="{{partnerDetail.report.path}}" target="_blank">Download the Report</a>
 							</div>
 
 						</div>

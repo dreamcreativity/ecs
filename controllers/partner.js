@@ -10,7 +10,7 @@ var constant = require('../constants.js');
 exports.getAll = function(req,res){ 
 
 
-	Partner.find().populate('cover').exec(function(err, result){
+	Partner.find().populate('cover').populate('report').exec(function(err, result){
 
 		if(err){
 			res.json({
@@ -36,7 +36,7 @@ exports.get = function(req,res){
 
 	console.log('-----------------in get function');
 	var id = req.params.id;
-	Partner.findOne({_id:id}).populate('cover').exec(function(err, result){
+	Partner.findOne({_id:id}).populate('cover').populate('report').exec(function(err, result){
 	//Partner.findOne({_id:id}, function(err, result){
 
 		if(err){

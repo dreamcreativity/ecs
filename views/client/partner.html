@@ -12,23 +12,14 @@
 
 </section>
 
-<!-- <section ng-controller="OnlineTestCtrl" id="online-test" >
-	<div class="content-wrap">
-        <div class="heading-block center bottommargin-lg">
-            <h2>Online Test</h2>
-        </div>
-
-    </div>
-</section>
- -->
-
-
+<!-- 
  <section ng-controller="PartnerCtrl" id="partners" >
      <div class="container clearfix" >
       	<div class="content-wrap">
 	        <div>
 	            <h2>Our Partners</h2>
 	        </div>
+
 
 	        <div class="partner-content">
 		        <div class="list-section" >
@@ -57,22 +48,89 @@
 	      	<div class="partner-list">
 		      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" >
 		      			<div class="partner-detail">
-
 			      			<div class="logo">
 		      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
 		      				</div>
-		      				<label class="partner-name">{{partner.name}}</label>	
-
-		      				<div class="cover">
-		      					
-		      				</div>	      				
+		      				<label class="partner-name">{{partner.name}}</label>	 				
 		      			</div>
-
-
 		      		</div>
 	
 		      	</div>
 	        </div>
 	    </div>
     </div>
-</section>
+</section> -->
+
+
+        <!-- Content
+        ============================================= -->
+        <section id="content" ng-controller="PartnerCtrl" >
+
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+                    <!-- Post Content
+                    ============================================= -->
+                    <div class="postcontent nobottommargin col_last clearfix">
+
+                        <div class="single-post nobottommargin">
+
+
+<!--                             <div class="entry clearfix">
+                                <div class="entry-title">
+                                    <h2>This is a Standard post with a Preview Image</h2>
+                                </div>
+                            </div>
+ -->
+                            <div class="partner-list">
+				      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" >
+				      			<div class="partner-detail">
+					      			<div class="logo">
+				      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
+				      				</div>
+				      				<label class="partner-name">{{partner.name}}</label>	 				
+				      			</div>
+				      		</div>
+				      		</div>
+                        </div>
+
+                    </div><!-- .postcontent end -->
+
+                    <!-- Sidebar
+                    ============================================= -->
+                    <div class="sidebar nobottommargin clearfix">
+                        <div class="sidebar-widgets-wrap">
+
+                        	<h4>Choose your area</h4>
+					        <div class="partner-area-content">
+					        
+					        		<div class="partner-area" ng-repeat="area in areas">
+					        			<div class="content">
+						        			<h4>{{area.name}}</h4>
+						        			<img src="{{area.cover.thumbnail}}">
+					        			</div>
+
+					        		</div>
+					        
+					        </div>
+
+                            <div class="widget clearfix">
+                                <h4>Flickr Photostream</h4>
+                                <div id="flickr-widget" class="flickr-feed masonry-thumbs" data-id="613394@N22" data-count="16" data-type="group" data-lightbox="gallery"></div>
+                            </div>
+
+                            
+ 
+
+                        </div>
+
+                    </div><!-- .sidebar end -->
+
+                </div>
+
+            </div>
+
+        </section><!-- #content end -->
+
+
