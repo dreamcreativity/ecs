@@ -4,96 +4,102 @@ angular.module('ClientApp')
 
 	console.log('PartnerCtrl start..');
 
-	$scope.keywordEnter = '';	
-	$scope.keyword = '';
 
 
 	// load partner list
 
-	Partner.keywords(function(result){
-		console.log(result.data);
-		$scope.data = result.data;
-	});
+	// Partner.keywords(function(result){
+	// 	console.log(result.data);
+	// 	$scope.data = result.data;
+	// });
 
-	
 
 	Partner.query(function(result){
 		$scope.partners = result.data;
 	});
-
-	
-	$scope.clearSearch = function(){
-		$scope.keywordEnter = '';
-		$scope.keyword = '';
-	}
 
 
 	Partner.getAreaCategoryList(function(result){
 		$scope.areas = result.data;	
 	});
 
-	$scope.enterKeyword = function(){
-		// console.log($scope.keywordEnter);
-		// $scope.keyword = $scope.keywordEnter;
-
-
-
-		$timeout(function(){
-			//console.log($scope.keywordEnter);
-			$scope.keyword = $scope.keywordEnter;
-
-			Partner.addKeyRecord({key: $scope.keywordEnter, type: 'partner'}, function(err, result){
-
-				console.log(result);
-				//$scope.keywordEnter = '';
-			});
-
-			
-
-
-		});
-
-		// send keyword to api as a record
-
-	}
 
 	$scope.showDetail = function(partner_id){
 		location = '/partner/'+partner_id;
 	}
 
-	$scope.partnerHasTag = function(partner){
+	$scope.selectedCategoryId = '';
 
-		if($scope.keyword.trim()=='')
-			return true;
+	$scope.changeSelectedCategory = function(areas){
 
-		var isTagFound = false;
-
-		angular.forEach(partner.tags, function(value, key) {
-		  	var tagVal = value.toLowerCase().split('-').join(' ');
-		  	if( tagVal == $scope.keyword.toLowerCase()){
-		  		isTagFound = true;
-		  	}
-		});
-
-		return isTagFound;
 	}
 
 
+	$scope.isSelectedCategory = function(areas){
+		
+		var isFound = false;
+		areas.forEach(function(element) {
+		    console.log(element);
+		    if(element == $scope.selectedCategoryId)
+		    	isFound = true;
+		});
+
+		return isFound;
+
+	}
+
+	// $scope.keywordEnter = '';	
+	// $scope.keyword = '';
+
+	// $scope.enterKeyword = function(){
+	// 	$timeout(function(){
+
+	// 		$scope.keyword = $scope.keywordEnter;
+	// 		Partner.addKeyRecord({key: $scope.keywordEnter, type: 'partner'}, function(err, result){
+
+	// 		});
+	// 	});
+	// }
+
+
+	// $scope.clearSearch = function(){
+	// 	$scope.keywordEnter = '';
+	// 	$scope.keyword = '';
+	// }
+
+	// $scope.partnerHasTag = function(partner){
+
+	// 	if($scope.keyword.trim()=='')
+	// 		return true;
+
+	// 	var isTagFound = false;
+
+	// 	angular.forEach(partner.tags, function(value, key) {
+	// 	  	var tagVal = value.toLowerCase().split('-').join(' ');
+	// 	  	if( tagVal == $scope.keyword.toLowerCase()){
+	// 	  		isTagFound = true;
+	// 	  	}
+	// 	});
+
+	// 	return isTagFound;
+	// }
+
+
 })
 
-.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
+// .directive('ngEnter', function () {
+//     return function (scope, element, attrs) {
+//         element.bind("keydown keypress", function (event) {
+//             if(event.which === 13) {
+//                 scope.$apply(function (){
+//                     scope.$eval(attrs.ngEnter);
+//                 });
  
-                event.preventDefault();
-            }
-        });
-    };
-})
+//                 event.preventDefault();
+//             }
+//         });
+//     };
+// })
 
 .controller('PartnerDetailCtrl',function PartnerDetailCtrl($rootScope,$scope,$http,Partner,Constants,$window,$sce){
 

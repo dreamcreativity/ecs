@@ -15,6 +15,7 @@ angular.module(
 		'ngAnimate',
 		'angular-loading-bar',
 		'angular-simditor',
+		'checklist-model'
 		// 'color.picker'		
 	]
 );

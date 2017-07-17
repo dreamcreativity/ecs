@@ -22,8 +22,8 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Description</label>
 				<div class="col-sm-8">
-					<textarea  type="text" class="form-control" height="50" name="name" ng-model="partner.description" required></textarea>
-
+					<!-- <textarea  type="text" class="form-control" height="50" name="name" ng-model="partner.description" required></textarea> -->
+					<ng-simditor content="partner.description"></ng-simditor>	
 				</div>
 			</div>
 
@@ -97,6 +97,18 @@
 			</div> -->
 
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Areas</label>
+				<div class="col-sm-4">
+					<label ng-repeat="area in areas" style="width: 150px">
+						{{area.name}}
+						<input type="checkbox" checklist-model="partner.categories"  checklist-value="area._id" class="form-control" >
+					</label>
+			
+					
+				</div>
+			</div>
+
+			<div class="form-group">
 				<label class="col-sm-2 control-label">Is Delete:</label>
 				<div class="col-sm-2">
 					<label>
@@ -107,7 +119,7 @@
 			</div>
 
 			<div class="form-group">
-				<label ng-click="changeCurrentCalendar()" class="col-sm-3 control-label">Logo:</label>
+				<label ng-click="changeCurrentCalendar()" class="col-sm-2 control-label">Logo:</label>
 				<div class="col-sm-9">
 					<div ng-click="changeSource()" ng-if="partner.cover == null" class="cover-empty"><label>Clic to change</label></div>
 					<img class="preview-media"  ng-click="changeSource()"  ng-if="partner.cover!= null && partner.cover.type=='Image'" src="{{partner.cover.thumbnail}}" >
@@ -115,7 +127,7 @@
 			</div>
 
 			<div class="form-group">
-				<label ng-click="changeCurrentCalendar()" class="col-sm-3 control-label">Report: </label>
+				<label ng-click="changeCurrentCalendar()" class="col-sm-2 control-label">Report: </label>
 				<div class="col-sm-9">
 					<div ng-click="changeReport()" ng-if="partner.report == null" class="cover-empty"><label>Clic to change</label></div>
 					<!-- <img ng-click="changeReport()" class="preview-media"  ng-if="partner.report!= null && partner.report.type=='Document'" src="{{partner.report.thumbnail}}" > -->

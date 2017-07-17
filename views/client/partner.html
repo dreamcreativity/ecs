@@ -84,14 +84,15 @@
                             </div>
  -->
                             <div class="partner-list">
-				      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" >
-				      			<div class="partner-detail">
-					      			<div class="logo">
-				      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
-				      				</div>
-				      				<label class="partner-name">{{partner.name}}</label>	 				
-				      			</div>
-				      		</div>
+					      		<!-- <div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" > -->
+					      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class="hide-partner : isSelectedCategory(partner.categories)" ng-repeat="partner in partners" >
+					      			<div class="partner-detail">
+						      			<div class="logo">
+					      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
+					      				</div>
+					      				<label class="partner-name">{{partner.name}}</label>	 				
+					      			</div>
+					      		</div>
 				      		</div>
                         </div>
 
@@ -115,11 +116,11 @@
 					        
 					        </div>
 
-                            <div class="widget clearfix">
+                       <!--      <div class="widget clearfix">
                                 <h4>Flickr Photostream</h4>
                                 <div id="flickr-widget" class="flickr-feed masonry-thumbs" data-id="613394@N22" data-count="16" data-type="group" data-lightbox="gallery"></div>
                             </div>
-
+ -->
                             
  
 

@@ -54,7 +54,8 @@
 							
 							<hr>
 							<h5>Overview</h5>
-							<p>{{partnerDetail.description}}</p>
+							<!-- <p>{{partnerDetail.description}}</p> -->
+							<div ng-bind-html="partnerDetail.description | unsafe"></div>
 							<!-- <div>
 								<h5>Available Programs</h5>
 								<span class="tag" ng-repeat="tag in partnerDetail.tags ">{{tag}}</span> 

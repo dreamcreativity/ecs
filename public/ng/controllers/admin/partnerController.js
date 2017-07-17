@@ -28,13 +28,16 @@ angular.module('AdminApp')
 			description: ''
 		};
 	}else{
+		
 		Partner.get(url_params, function(result){
-
-
 			$scope.partner = result.data;
-			console.log('---------- get partner Document -----------');
-			console.log($scope.partner);
 
+			console.log($scope.partner );
+
+			Partner.getAreaCategoryList( {},function(result){
+				$scope.areas = result.data;	
+				console.log($scope.areas );
+			});
 
 		});
 
@@ -63,7 +66,7 @@ angular.module('AdminApp')
 
 	$scope.update = function(){
 
-
+		console.log($scope.partner);
 		Partner.update($scope.partner, function(result){
 			if(result.status == 'ok'){
 				ShowGritterCenter('System', "Partner information updated");
@@ -72,6 +75,22 @@ angular.module('AdminApp')
 			}
 
 		});
+	}
+
+
+	$scope.inCategory = function(catId){
+		var isfound = false;
+		console.log(catId);
+		// $scope.partner.categoris.forEach(function(element) {
+
+		//     if(catid == element){
+		//     	isfound = true;
+		//     	//break;
+		//     }
+		// });
+
+		return isfound;
+
 	}
 
 	//----------------------------
@@ -135,7 +154,6 @@ angular.module('AdminApp')
 
 		Partner.getAreaCategoryList( {},function(result){
 			$scope.areas = result.data;	
-			console.log($scope.areas );
 		});
 
 	}else{

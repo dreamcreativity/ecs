@@ -8,6 +8,7 @@ var PartnerSchema = new mongoose.Schema({
 	description: {type: String, default: ''},
 	content: {type: String, default: ''},
 	tags : [{type : String}],
+	categories : [{type : String}],
 	email: {type: String},
 	workphone: {type: String},
 	cellphone: {type: String},

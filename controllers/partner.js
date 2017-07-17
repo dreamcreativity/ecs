@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Partner = require('../models/partner');
 var PartnerCategory = require('../models/partnerCategory');
+var PartnerToCategory = require('../models/partnerToCategory');
 var Keyword = require('../models/keyword');
 var KeyRecord = require('../models/keyRecord');
 var async = require("async");
@@ -94,7 +95,7 @@ exports.update = function(req,res){
 					});
 
 				}, function done() {
-				    //...
+				    
 				});
 	
 
