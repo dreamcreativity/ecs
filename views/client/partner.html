@@ -85,7 +85,7 @@
  -->
                             <div class="partner-list">
 					      		<!-- <div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" > -->
-					      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class="hide-partner : isSelectedCategory(partner.categories)" ng-repeat="partner in partners" >
+					      		<div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class="{'hide-partner': isSelectedCategory(partner.categories) == false}" ng-repeat="partner in partners" >
 					      			<div class="partner-detail">
 						      			<div class="logo">
 					      					<img src="{{partner.cover.thumbnail}}" alt="{{partner.name}}">
@@ -104,9 +104,10 @@
                         <div class="sidebar-widgets-wrap">
 
                         	<h4>Choose your area</h4>
+                        	<h5 ng-click="showAllCategory()">Show All Arews</h5>
 					        <div class="partner-area-content">
 					        
-					        		<div class="partner-area" ng-repeat="area in areas">
+					        		<div class="partner-area"  ng-click="changeSelectedCategory(area._id)" ng-repeat="area in areas">
 					        			<div class="content">
 						        			<h4>{{area.name}}</h4>
 						        			<img src="{{area.cover.thumbnail}}">

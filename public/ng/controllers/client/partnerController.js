@@ -25,21 +25,30 @@ angular.module('ClientApp')
 
 
 	$scope.showDetail = function(partner_id){
+
 		location = '/partner/'+partner_id;
 	}
 
 	$scope.selectedCategoryId = '';
 
-	$scope.changeSelectedCategory = function(areas){
 
+	$scope.changeSelectedCategory = function(area_id){
+		$scope.selectedCategoryId = area_id;
+	}
+
+	$scope.showAllCategory = function(area_id){
+		$scope.selectedCategoryId = '';
 	}
 
 
 	$scope.isSelectedCategory = function(areas){
 		
+		if($scope.selectedCategoryId == '')
+			return true;
+		
 		var isFound = false;
 		areas.forEach(function(element) {
-		    console.log(element);
+		    //console.log(element);
 		    if(element == $scope.selectedCategoryId)
 		    	isFound = true;
 		});
