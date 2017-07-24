@@ -988,23 +988,64 @@ body{
 
 
 #partners  .partner-area-content .partner-area{
-	/*border: 1px solid #eee;*/
-
-/*	padding: 5px 15px 15px 0px; */
+	border: 2px solid #eee;
+	cursor: pointer;
+	position: relative;
+	clear: both;
+	margin-bottom: 5px;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 
-
-#partners  .partner-area-content .partner-area .content{
-	border: 1px solid #eee;
-	/*background-color: gray;*/
+#partners   .partner-area-content .partner-area  .title{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    color: rgb(245, 245, 245);
+    background-color: rgba(0, 0, 0, 0.31);
+    padding: 2px 10px;
+    font-size: 15px;
+    -webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 
+#partners   .partner-area-content .partner-area:hover  .title{
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+    left: 100px;
 
- .partner-area-content .partner-area .content img{
+}
+
+#partners   .partner-area-content .partner-area  img{
+ 	left: 0;
+ 	top: 0;
 	width: 100%;
+
 }
 
+
+
+#partners .partner-col{
+/*	display: inline-block;
+	padding: 5px; 
+	background-color: gray;*/
+}
+
+#partners .partner-col.areas{
+	width: 29%
+}
+#partners .partner-col.display-list{
+	width: 70%
+}
 
 
 #partner-detail .detail-section{
@@ -1047,6 +1088,8 @@ body{
 #partner-detail .partner-sidebar .button-desc{
 	width: 100%;
 }
+
+
 
 
 
