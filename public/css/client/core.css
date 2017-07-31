@@ -988,13 +988,14 @@ body{
 
 
 #partners  .partner-area-content .partner-area{
-	border: 2px solid #eee;
+	border: 2px solid #1abc9c;
 	cursor: pointer;
 	position: relative;
 	clear: both;
 	margin-bottom: 5px;
 	overflow: hidden;
 	border-radius: 5px;
+	height: 120px;
 }
 
 
@@ -1025,29 +1026,30 @@ body{
 
 }
 
-#partners   .partner-area-content .partner-area  img{
+/*#partners   .partner-area-content .partner-area  img{
  	left: 0;
  	top: 0;
 	width: 100%;
 
+}*/
+
+
+#partners .partner-area-col{
+
 }
-
-
 
 #partners .partner-col{
-/*	display: inline-block;
-	padding: 5px; 
-	background-color: gray;*/
+
 }
 
-#partners .partner-col.areas{
+/*#partners .partner-col.areas{
 	width: 29%
 }
 #partners .partner-col.display-list{
 	width: 70%
 }
 
-
+*/
 #partner-detail .detail-section{
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03), 0 3px 1px -2px rgba(0, 0, 0, 0.03), 0 1px 5px 0 rgba(0, 0, 0, 0.03);
 }

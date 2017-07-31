@@ -70,19 +70,26 @@
 
                 <div class="container clearfix">
 
-                	<div class="partner-col col-md-4">
+                	<div class="partner-area-col col-md-4">
 
-                        	<h4>Choose your area</h4>
-                        
+          
+                
+
+	                        <blockquote class="topmargin bottommargin">
+		                        <p>Choose your area</p>
+		                    </blockquote>
                         	<ul class="sidenav">
 		                        <li class="ui-tabs-active"><a href="javascript:void(0)"  ng-click="showAllCategory()"><i class="fa fa-chevron-left"></i>Show All Arews</a></li>
 		                    </ul>
 
 					        <div class="partner-area-content">		        
-				        		<div class="partner-area"  ng-click="changeSelectedCategory(area._id)" ng-repeat="area in areas">
+				        		<div class="partner-area" 
+				        		 style="background-image: url('{{area.cover.thumbnail}}'); background-size: cover;" 
+				        		 ng-click="changeSelectedCategory(area._id)" 
+				        		 ng-repeat="area in areas">
 			        
 				        			<h4 class="title">{{area.name}}</h4>
-				        			<img src="{{area.cover.thumbnail}}">
+				        			<!-- <img src="{{area.cover.thumbnail}}"> -->
 			        		
 				        		</div>					        
 					        </div>	
@@ -90,7 +97,7 @@
                 	</div>
 
                 	<div class="partner-col col-md-8">
-                		
+                			<div class="divider divider-center "><i class="icon-star3"></i></div>
                             <div class="partner-list">
 					      		<!-- <div ng-click="showDetail(partner._id)" class="col-md-3 col-sm-6 content" ng-class=" { 'hide-partner' : !partnerHasTag(partner)}"  ng-repeat="partner in partners" > -->
 					      		<div ng-click="showDetail(partner._id)" class="col-lg-3  col-md-4 col-sm-6 content" ng-class="{'hide-partner': isSelectedCategory(partner.categories) == false}" ng-repeat="partner in partners" >
