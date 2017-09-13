@@ -233,7 +233,9 @@ exports.getAllRecords = function(req,res){
 
 
 
-	TestRecord.find(function(err ,result){
+	//TestRecord.find(function(err ,result){
+
+	TestRecord.find().sort({'created': -1}).limit(20).exec(function(err ,result){
 		if(err){
 			
 			res.json({
