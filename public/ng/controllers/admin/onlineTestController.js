@@ -2,19 +2,66 @@
 
 angular.module('AdminApp')
 
-.controller('ListOnlineTestController',  function($scope,$rootScope, OnlineTest){
+.controller('ListOnlineTestController',  function($scope,$rootScope, OnlineTest, ){
 
 	OnlineTest.getAll({}, function(result){
 		$scope.questions = result.data;
 	});
 })
 
-.controller('ListOnlineTestRecordController',  function($scope,$rootScope, OnlineTest){
+.controller('ListOnlineTestRecordController',  function($scope,$rootScope, OnlineTest,Constants){
 
-	OnlineTest.getTestRecords({}, function(result){
+
+	$scope.filterCountry = "";
+	$scope.fromDate = new Date();
+	$scope.toDate = new Date();
+	$scope.fromDate.setDate($scope.toDate .getDate() - 7);
+
+ 	var list = [];
+ 	Constants.get({name:"Country"}, function(result){
+ 		var regions = result.data;
+ 		for(var i=0; i<regions.length; i++){
+ 			list.push({"name" : regions[i]});
+ 		}
+ 		$scope.CountryList = list;
+
+ 		console.log(list);
+ 	});
+
+
+	OnlineTest.getTestRecordsByFilters({
+		country: $scope.filterCountry,
+        fromDate: $scope.fromDate,
+        toDate: $scope.toDate
+	}, function(result){
+		console.log(result);
 		$scope.records = result.data;
-		//console.log($scope.records);
 	});
+
+	// OnlineTest.getTestRecords({}, function(result){
+	// 	$scope.records = result.data;
+	// });
+
+	$scope.upateList = function(){
+
+		// console.log($scope.filterCountry);
+		// console.log($scope.filterDateRange);
+		// console.log($scope.fromDate);
+		// console.log($scope.toDate);
+
+		// call service
+
+		OnlineTest.getTestRecordsByFilters({
+			country: $scope.filterCountry,
+            fromDate: $scope.fromDate,
+            toDate: $scope.toDate
+		}, function(result){
+
+			$scope.records = result.data;
+			console.log('getTestRecordsByFilters returned result: ');
+			console.log($scope.records);
+		});
+	}
 })
 
 

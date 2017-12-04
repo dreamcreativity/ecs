@@ -470,6 +470,7 @@ router.post('/onlineTest/submitTestRecord', onlineTest.createTestRecord);
 
 
 router.get('/onlineTest/records', onlineTest.getAllRecords);
+router.post('/onlineTest/getAllRecordsByFilter', onlineTest.getAllRecordsByFilters);
 router.get('/onlineTest/record/:id', onlineTest.getRecord);
 
 router.post('/onlineTest/sendEmail',onlineTest.sendEmail);

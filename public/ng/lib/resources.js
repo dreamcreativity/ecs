@@ -412,6 +412,17 @@ resources.factory('OnlineTest',['$resource',
             method : 'GET',        
         },
 
+
+        getTestRecordsByFilters: {
+            url: '/api/onlineTest/getAllRecordsByFilter',
+            method : 'POST',     
+            params: {
+                country: '@country',
+                fromDate: '@fromDate',
+                toDate: '@toDate'
+            }   
+        },
+
         getTestRecord: {
             url: '/api/onlineTest/record/:id',
             method : 'GET', 

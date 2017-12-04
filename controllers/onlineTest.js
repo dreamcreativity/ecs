@@ -256,6 +256,67 @@ exports.getAllRecords = function(req,res){
 	
 }
 
+exports.getAllRecordsByFilters = function(req,res){
+
+	
+	console.log(req.body);
+
+	var country = req.body.country;
+	var fromDate  = req.body.fromDate;
+	var toDate  = req.body.toDate;
+	console.log('*****************');
+
+	console.log(country.trim());
+	console.log(fromDate);
+	console.log(toDate);
+
+
+
+	if(country.trim() == ''){
+		TestRecord.find({
+			"created": {"$gte": fromDate, "$lt": toDate }
+		}).sort({'created': -1}).limit(300).exec(function(err ,result){
+			if(err){
+				
+				res.json({
+					status: 'false',
+					messages: err,
+					data: null
+				});
+			}else{
+				res.json({
+					rstatus: 'ok',
+					messages: 'successed',
+					data: result
+				});
+			}
+			
+		});
+	}else{
+		TestRecord.find({ 
+			country:country,
+			"created": {"$gte": fromDate, "$lt": toDate }
+		}).sort({'created': -1}).limit(300).exec(function(err ,result){
+			if(err){
+				res.json({
+					status: 'false',
+					messages: err,
+					data: null
+				});
+			}else{
+				res.json({
+					rstatus: 'ok',
+					messages: 'successed',
+					data: result
+				});
+			}
+			
+		});
+	}
+
+	
+	
+}
 
 
 exports.getRecord= function(req,res){

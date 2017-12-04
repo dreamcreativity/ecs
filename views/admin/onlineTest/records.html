@@ -5,9 +5,77 @@
 		<div class="portlet">
 			<div class="portlet-heading dark">
 				<div class="portlet-title">
+					<h4>Record Filters<small class="text-white"></small></h4>
+				</div>
+			</div>
+
+
+			<div id="filtes" class="panel-collapse collapse in">
+				<div class="portlet-body">
+
+					<div class="row">
+						<div class="col-md-3">
+							<label class="control-label">Country</label>
+							<select class="form-control" ng-model="filterCountry">
+								<option value="">All</option>
+								<option ng-repeat="country in CountryList" value="{{country.name}}">{{country.name}}</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Date From</label>
+							<input type="date" class="form-control" name="from_date" ng-model="fromDate">
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Date To</label>
+							<input type="date" class="form-control" name="to_date" ng-model="toDate">
+						</div>	
+
+						
+<!-- 						<div class="col-md-9">
+							<label>Filters</label>
+							<div>
+								<label style="display: inline-block; margin-right: 20px">
+									<input type="radio" ng-value="false" ng-model="filterDateRange">	
+									Recent Week
+								</label>
+								<label style="display: inline-block;">
+									<input type="radio" ng-value="true" ng-model="filterDateRange" >	
+									Time Range 
+								</label>
+							</div>							
+						</div>	 -->										
+					</div>
+			<!-- 		<div class="row">
+						<div class="col-md-3">
+							<label class="control-label">Date From</label>
+							<input type="date" class="form-control" name="from_date" ng-model="fromDate">
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Date To</label>
+							<input type="date" class="form-control" name="to_date" ng-model="toDate">
+						</div>	
+					</div> -->
+					<div class="row" style="margin-top: 20px; margin-right: 10px; text-align: right; ">				
+						<button type="button" class="btn btn-primary" ng-click="upateList()">Update</button>	
+					</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+		<div class="portlet">
+			
+
+
+			<div class="portlet-heading dark">
+				<div class="portlet-title">
 					<h4>Online Test Record<small class="text-white"></small></h4>
 				</div>
 			</div>
+
+
 			<div id="basic" class="panel-collapse collapse in">
 				<div class="portlet-body no-padding">
 					<table id="SampleDT" class="datatable table table-hover table-striped table-bordered tc-table">
@@ -47,7 +115,10 @@
 
 					</table>
 				</div>
-			</div>					 
+			</div>
+
+
+
 		</div>
 	</div>
 
