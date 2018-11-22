@@ -302,6 +302,11 @@ router.get('/junior-programs', function(req, res){
 	template(req,res,'client_normal','client/junior-programs.html',{});
 });
 
+
+router.get('/he-programs', function(req, res){
+	template(req,res,'client_normal','client/he-programs.html',{});
+});
+
 router.get('/campus-pictures', function(req, res){
 	template(req,res,'client_normal','client/campus-pictures.html',{});
 });
