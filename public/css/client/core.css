@@ -46,9 +46,69 @@ p.small-content{
 
 
 
+/* new banner system */
 
+#banner-health-care{
+    background-color: #c1c1c1;
+	/* opacity: 0.9; */
+}
+#banner-health-care .container{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+#banner-health-care .container .left-title{
+	border-bottom: 4px solid white;
+	align-self: flex-start;
+}
+#banner-health-care .container .left-title div{
+	width: 100%;
+	text-align: left;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 64px;
+	letter-spacing: 4px;
 
-
+}
+#banner-health-care .container .left-title div::first-letter{
+	color: #323334;
+}
+#banner-health-care .container .heading{
+	align-self: center;
+	width: 100%;
+    text-align: left;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 88px;
+	font-weight: bold;
+	color: #323334;
+}
+#banner-health-care .container .heading .small-label{
+	font-size: 37px;
+}
+#banner-health-care .container .buttons{
+	align-self: flex-start;
+	text-align: left;
+}
+#banner-health-care .container .buttons .btn{
+	display: inline-block;
+	border: 2px solid #5B6060;
+	padding: 25px 30px;
+	border-radius: 0;
+	font-size: 19px;
+}
+#banner-health-care .container .buttons .btn-clear{
+	color: #5B6060;
+	margin-right: 14px;
+}
+#banner-health-care .container .buttons .btn-dark{
+	color: white;
+	background-color: #5B6060;
+	font-weight: 600;
+}
 /*calendar client site styling*/
 
 .calendar{
