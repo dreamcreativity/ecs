@@ -61,6 +61,7 @@ p.small-content {
   line-height: 64px;
   letter-spacing: 4px;
   color: white;
+  padding-bottom: 4px;
 }
 
 #banner-health-care .container .left-title div::first-letter {
@@ -82,7 +83,6 @@ p.small-content {
 #banner-health-care .container .buttons {
   align-self: flex-start;
   text-align: left;
-
 }
 #banner-health-care .container .buttons .btn {
   display: inline-block;
@@ -107,7 +107,7 @@ p.small-content {
 
 @media screen and (max-width: 1024px) {
   #banner-health-care .container .left-title div {
-	font-size: 45px;
+    font-size: 45px;
     line-height: 50px;
   }
   #banner-health-care .container .heading {
@@ -117,15 +117,15 @@ p.small-content {
     font-size: 30px;
   }
   #banner-health-care .container .buttons .btn {
-	padding: 15px 25px;
+    padding: 15px 25px;
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 767px) {
   #banner-health-care .container .left-title div {
-    font-size: 20px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 14px;
   }
   #banner-health-care .container .heading {
     font-size: 30px;
@@ -136,6 +136,21 @@ p.small-content {
   #banner-health-care .container .buttons .btn {
     padding: 10px 20px;
     font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #banner-health-care .container .heading {
+    font-size: 20px;
+  }
+  #banner-health-care .container .heading .small-label {
+    font-size: 15px;
+  }
+  #banner-health-care .container .buttons .btn {
+    padding: 5px 5px;
+    font-size: 9px;
+    margin-right: 2px;
+    margin-bottom: 4px;
   }
 }
 
