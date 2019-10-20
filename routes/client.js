@@ -396,6 +396,9 @@ router.get('/payment', function(req, res){
 	template(req,res,'client_normal','client/payment.html',{});
 });
 
+router.get('/hc', function(req, res){
+	template(req,res,'client_normal','client/health-care.html',{});
+});
 
 
 module.exports = router;
