@@ -13,9 +13,9 @@ angular.module(
 		'esc.mediaSelector',
 		'ui.bootstrap',
 		'ngAnimate',
-		'angular-loading-bar'
-		// 'angular-simditor',
-		// 'checklist-model'
+		'angular-loading-bar',
+		'angular-simditor',
+		'checklist-model'
 		// 'color.picker'		
 	]
 );
