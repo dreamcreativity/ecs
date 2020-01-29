@@ -9288,6 +9288,9 @@ body:not(.device-touch) .team-overlay {
 
 /* Team List
 -----------------------------------------------------------------*/
+.team.team-list{
+	height: 170px;
+}
 
 .team.team-list .team-image {
 	float: left;
