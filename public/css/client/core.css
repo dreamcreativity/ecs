@@ -37,6 +37,33 @@ p.small-content {
   text-transform: capitalize;
 }
 
+
+/* ---------------------------------- */
+/* new banner for esc update */
+/* ---------------------------------- */
+
+#banner-esc-update .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#banner-esc-update .container .heading {
+  font-size: 36px;
+  color: #c5c5c5;
+  text-align: center;
+}
+
+@media screen and (max-width: 479px) {
+  #banner-esc-update .container .heading {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #banner-esc-update .container .heading {
+    font-size: 14px;
+  }
+}
+
 /* ---------------------------------- */
 /* new banner system */
 /* ---------------------------------- */
