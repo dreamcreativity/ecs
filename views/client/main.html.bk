@@ -15,27 +15,258 @@
   <div
     id="home"
     class="page-section"
-    style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 200px;
-      z-index: -2;
-    "
+    style="position:absolute;top:0;left:0;width:100%;height:200px;z-index:-2;"
   ></div>
-
-  <section style=" background-color: #74b3be;">
+  <section
+    id="slider"
+    class="slider-parallax full-screen with-header swiper_wrapper clearfix"
+  >
     <div class="swiper-container swiper-parent">
-      <div class="container clearfix" >
-        <img
-          style="width: 100%;"
-          src="images/banner/why-online.jpg"
-          alt="Our team"
-        />
+      <div class="swiper-wrapper">
+        <!-- banner for update page -->
+        <div
+          class="swiper-slide dark"
+          style="background-image: url('/images/banner/esc-update.png')"
+        >
+          <div class="curtain" id="banner-esc-update">
+            <a href="https://sway.office.com/xEPHbZEE1RsNOUP1?ref=email">
+              <div class="container clearfix">
+                <div class="heading">
+                  Important ESC Updates
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- banner for health care -->
+        <div
+          class="swiper-slide dark"
+          style="background-image: url('/images/banner/health-care-bg.jpg')"
+        >
+          <div class="curtain" id="banner-health-care">
+            <a href="/hc">
+              <div class="container clearfix">
+                <div class="left-title">
+                  <div>essential</div>
+                  <div>english for</div>
+                </div>
+                <div class="heading">
+                  health care <span class="small-label">(EEHC)</span>
+                </div>
+                <div class="buttons">       
+                  <div class="btn btn-clear">
+                    Date: January 13 - February 7, 2020
+                  </div>
+                  <div class="btn btn-dark">
+                    Observership opportunity
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- banner for other slider -->
+        <% for(var i=0; i<sliders.length; i++) {%>
+                <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].resource.path %>')">
+                    <div class="curtain">
+                        <div class="container clearfix">
+                            <div class="slider-caption slider-caption-center" postion="<%- sliders[i].position %>">
+                                <h2 style="color: <%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>">
+                                    <%- sliders[i].heading  %>
+                                </h2>
+                                <p style="color: <%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>"
+                                    data-caption-delay="200">
+                                    <%- sliders[i].sub_heading %>
+                                </p>
+
+                            </div>
+                        </div>
+                        <% if(sliders[i].resource.type == 'Video') {%>
+                        <div class="video-wrap">
+                            <video id="video" type="video" poster="images/videos/explore-poster.jpg" preload="auto"
+                                loop autoplay muted>
+                                <source src='<%- sliders[i].resource.path %>' />
+
+                            </video>
+                            <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                </div>
+                <% } %>
+      </div>
+      <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+      <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+      <!-- <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div> -->
+      <div class="swiper-pagination">
+        <span class="swiper-pagination-switch"></span
+        ><span
+          class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"
+        ></span
+        ><span class="swiper-pagination-switch"></span>
       </div>
     </div>
+    <style type="text/css">
+      .swiper-pagination {
+        position: absolute;
+        width: 100%;
+        z-index: 20;
+        margin: 0;
+        top: auto;
+        bottom: 20px;
+        text-align: center;
+        line-height: 1;
+      }
+
+      .swiper-pagination span {
+        display: inline-block;
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        opacity: 1;
+        background-color: transparent;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-pagination span:hover,
+      .swiper-pagination span.swiper-active-switch {
+        background-color: #fff !important;
+      }
+    </style>
+    <script>
+      jQuery(document).ready(function($) {
+        var swiperSlider = new Swiper(".swiper-parent", {
+          // paginationClickable: false,
+          // slidesPerView: 1,
+          // grabCursor: true,
+          // autoplay: true,
+          // pagination: '.swiper-pagination',
+
+          paginationClickable: false,
+          slidesPerView: 1,
+          grabCursor: true,
+          pagination: ".swiper-pagination",
+          paginationClickable: true,
+          createPagination: true,
+          autoplay: 7000,
+
+          onSwiperCreated: function(swiper) {
+            $("[data-caption-animate]").each(function() {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr("data-caption-delay");
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) {
+                toAnimateDelayTime = Number(toAnimateDelay) + 750;
+              } else {
+                toAnimateDelayTime = 750;
+              }
+              if (!$toAnimateElement.hasClass("animated")) {
+                $toAnimateElement.addClass("not-animated");
+                var elementAnimation = $toAnimateElement.attr(
+                  "data-caption-animate"
+                );
+                setTimeout(function() {
+                  $toAnimateElement
+                    .removeClass("not-animated")
+                    .addClass(elementAnimation + " animated");
+                }, toAnimateDelayTime);
+              }
+            });
+          },
+          onSlideChangeStart: function(swiper) {
+            $("#slide-number-current").html(swiper.activeIndex + 1);
+            $("[data-caption-animate]").each(function() {
+              var $toAnimateElement = $(this);
+              var elementAnimation = $toAnimateElement.attr(
+                "data-caption-animate"
+              );
+              $toAnimateElement
+                .removeClass("animated")
+                .removeClass(elementAnimation)
+                .addClass("not-animated");
+            });
+          },
+          onSlideChangeEnd: function(swiper) {
+            $("#slider .swiper-slide").each(function() {
+              if ($(this).find("video").length > 0) {
+                $(this)
+                  .find("video")
+                  .get(0)
+                  .pause();
+              }
+            });
+            $('#slider .swiper-slide:not(".swiper-slide-active")').each(
+              function() {
+                if ($(this).find("video").length > 0) {
+                  if (
+                    $(this)
+                      .find("video")
+                      .get(0).currentTime != 0
+                  )
+                    $(this)
+                      .find("video")
+                      .get(0).currentTime = 0;
+                }
+              }
+            );
+            if (
+              $("#slider .swiper-slide.swiper-slide-active").find("video")
+                .length > 0
+            ) {
+              $("#slider .swiper-slide.swiper-slide-active")
+                .find("video")
+                .get(0)
+                .play();
+            }
+
+            $(
+              "#slider .swiper-slide.swiper-slide-active [data-caption-animate]"
+            ).each(function() {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr("data-caption-delay");
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) {
+                toAnimateDelayTime = Number(toAnimateDelay) + 300;
+              } else {
+                toAnimateDelayTime = 300;
+              }
+              if (!$toAnimateElement.hasClass("animated")) {
+                $toAnimateElement.addClass("not-animated");
+                var elementAnimation = $toAnimateElement.attr(
+                  "data-caption-animate"
+                );
+                setTimeout(function() {
+                  $toAnimateElement
+                    .removeClass("not-animated")
+                    .addClass(elementAnimation + " animated");
+                }, toAnimateDelayTime);
+              }
+            });
+          }
+        });
+
+        $("#slider-arrow-left").on("click", function(e) {
+          e.preventDefault();
+          swiperSlider.swipePrev();
+        });
+
+        $("#slider-arrow-right").on("click", function(e) {
+          e.preventDefault();
+          swiperSlider.swipeNext();
+        });
+
+        $("#slide-number-current").html(swiperSlider.activeIndex + 1);
+        $("#slide-number-total").html(swiperSlider.slides.length);
+      });
+    </script>
   </section>
+
   <!-- Header
         ============================================= -->
   <header id="header" class="full-header">
@@ -106,7 +337,7 @@
               <a href="#" data-href="#section-programs">
                 <div>Adult Programs</div>
               </a>
-              <div class="mega-menu-content style-2 col-4">
+              <div class="mega-menu-content style-2 col-4 ">
                 <ul>
                   <li class="mega-menu-title">
                     <a href="#">
@@ -361,7 +592,7 @@
             <span>Award-winning provider of English-language education</span>
           </div>
 
-          <div class="col_half nobottommargin">
+          <div class="col_half nobottommargin ">
             <div class="feature-box media-box">
               <div class="fbox-media">
                 <a href="/philosophy"
@@ -418,7 +649,7 @@
             </div>
           </div>
 
-          <div class="col_half nobottommargin">
+          <div class="col_half nobottommargin ">
             <div class="feature-box media-box">
               <div class="fbox-media">
                 <a href="/city"
@@ -480,14 +711,11 @@
 
         <div
           class="section dark parallax nobottommargin"
-          style="
-            padding: 100px 0;
-            background-image: url('images/clients/backgrounds/14.jpg');
-          "
+          style="padding: 100px 0;background-image: url('images/clients/backgrounds/14.jpg');"
           data-stellar-background-ratio="0.3"
         >
           <div class="container clearfix">
-            <div style="height: 300px;">&nbsp;</div>
+            <div style="height:300px;">&nbsp;</div>
           </div>
         </div>
       </section>
@@ -677,11 +905,8 @@
 
       <section
         id="section-testimonials"
-        class="page-section section parallax"
-        style="
-          background-image: url('images/testimonials/students-say.jpg');
-          padding: 50px 0;
-        "
+        class="page-section section parallax "
+        style="background-image: url('images/testimonials/students-say.jpg'); padding: 50px 0;"
         data-stellar-background-ratio="0.3"
       >
         <div class="container clearfix">
@@ -709,9 +934,7 @@
                         <div class="profile">
                           <div
                             class="img"
-                            style="
-                              background-image: url('/images/testimonials/profile_1.jpg');
-                            "
+                            style="background-image:url('/images/testimonials/profile_1.jpg')"
                           ></div>
                           <div class="message">
                             Camila Jocken Stange
@@ -735,9 +958,7 @@
                         <div class="profile">
                           <div
                             class="img"
-                            style="
-                              background-image: url('/images/testimonials/profile_2.jpg');
-                            "
+                            style="background-image:url('/images/testimonials/profile_2.jpg')"
                           ></div>
                           <div class="message">
                             Carlos Canez Flores
@@ -760,9 +981,7 @@
                         <div class="profile">
                           <div
                             class="img"
-                            style="
-                              background-image: url('/images/testimonials/profile_3.png');
-                            "
+                            style="background-image:url('/images/testimonials/profile_3.png')"
                           ></div>
                           <div class="message">
                             Moe Akag
@@ -784,7 +1003,7 @@
       <div class="container clearfix center">
         <div
           id="section-junior"
-          class="portfolio-nomargin page-section clearfix"
+          class="portfolio-nomargin  page-section clearfix"
         >
           <div class="heading-block center">
             <h2>Junior Programs</h2>
@@ -876,7 +1095,7 @@
         </div>
       </div>
 
-      <div id="section-registration" class="page-section register-index">
+      <div id="section-registration" class=" page-section  register-index">
         <div class="container">
           <div class="row dark">
             <div
@@ -926,7 +1145,7 @@
               </a>
             </div>
           </div>
-          <div style="text-align: center; font-size: 16px;">
+          <div style="text-align: center; font-size: 16px">
             <button
               class="button button-3d nomargin"
               type="button"
@@ -1207,7 +1426,7 @@
 
             <script type="text/javascript">
               $("#template-contactform").validate({
-                submitHandler: function (form) {
+                submitHandler: function(form) {
                   // $('.form-process').fadeIn();
                   $("#sendingEmail").click();
                   // $('.form-process').fadeOut();
@@ -1220,7 +1439,7 @@
                   //         SEMICOLON.widget.notifications($('#contact-form-result'));
                   //     }
                   // });
-                },
+                }
               });
             </script>
           </div>
@@ -1258,9 +1477,9 @@
                     icon: {
                       image: "images/icons/map-icon-red.png",
                       iconsize: [32, 39],
-                      iconanchor: [32, 39],
-                    },
-                  },
+                      iconanchor: [32, 39]
+                    }
+                  }
                 ],
                 doubleclickzoom: false,
                 controls: {
@@ -1269,8 +1488,8 @@
                   mapTypeControl: true,
                   scaleControl: false,
                   streetViewControl: false,
-                  overviewMapControl: false,
-                },
+                  overviewMapControl: false
+                }
               });
             </script>
           </div>
@@ -1300,7 +1519,7 @@
             <div class="col_one_fourth">
               <div
                 class="feature-box fbox-center fbox-bg fbox-plain"
-                style="height: 221px;"
+                style="height:221px"
               >
                 <div class="fbox-icon">
                   <a href="tel:416-686-1596"><i class="icon-phone3"></i></a>
@@ -1312,7 +1531,7 @@
             <div class="col_one_fourth">
               <div
                 class="feature-box fbox-center fbox-bg fbox-plain"
-                style="height: 221px;"
+                style="height:221px"
               >
                 <div class="fbox-icon">
                   <a
@@ -1328,7 +1547,7 @@
             <div class="col_one_fourth col_last">
               <div
                 class="feature-box fbox-center fbox-bg fbox-plain"
-                style="height: 221px;"
+                style="height:221px"
               >
                 <div class="fbox-icon">
                   <a href="https://twitter.com/ESCToronto" target="_blank"
@@ -1361,11 +1580,7 @@
                                 <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p> -->
 
               <div
-                style="
-                  background: url('images/world-map.png') no-repeat center
-                    center;
-                  background-size: 100%;
-                "
+                style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;"
               >
                 <!-- <address>
                                         <strong>Loaction:</strong><br>
@@ -1375,7 +1590,7 @@
                                     <abbr title="Phone Number"><strong>Phone:</strong></abbr> +1 (416) 686- 1596<br>
                                     <abbr title="Fax"><strong>Fax:</strong></abbr> +1 (416) 686-7960<br>
                                     <abbr title="Email Address"><strong>Email:</strong></abbr> nfo@esc-toronto.com  -->
-                <div style="height: 200px;">&nbsp;</div>
+                <div style="height:200px">&nbsp;</div>
               </div>
             </div>
           </div>
