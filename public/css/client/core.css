@@ -37,6 +37,51 @@ p.small-content {
   text-transform: capitalize;
 }
 
+/* ---------------------------------- */
+/* online banner for esc update */
+/* ---------------------------------- */
+#online-esc-banner .desktop-banner {
+  display: block;
+}
+
+#online-esc-banner .tablet-banner {
+  display: none;
+}
+
+#online-esc-banner .mobile-banner {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  #online-esc-banner .desktop-banner {
+    display: none;
+  }
+  
+  #online-esc-banner .tablet-banner {
+    display: block;
+  }
+  
+  #online-esc-banner .mobile-banner {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #online-esc-banner .desktop-banner {
+    display: none;
+  }
+  
+  #online-esc-banner .tablet-banner {
+    display: none;
+  }
+  
+  #online-esc-banner .mobile-banner {
+    display: block;
+  }
+}
+
+
+
 
 /* ---------------------------------- */
 /* new banner for esc update */
