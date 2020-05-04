@@ -1,240 +1,499 @@
 <script type="text/javascript">
-	var url_params = <%- JSON.stringify(url_params) %>
+  var url_params = <%- JSON.stringify(url_params) %>
 </script>
 
-
-<style type="text/css">
-
-</style>
+<style type="text/css"></style>
 
 <section id="page-title" class="page-title-mini page-title-right">
-
-	<div class="container clearfix">
-		<!-- <h1>Event Calendar</h1> -->
-		<ol class="breadcrumb">
-			<li><a href="/">Home</a></li>
-			<li><a href="#">Registration</a></li>
-		</ol>
-	</div>
-
+  <div class="container clearfix">
+    <!-- <h1>Event Calendar</h1> -->
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="#">Registration</a></li>
+    </ol>
+  </div>
 </section>
 
-
 <section>
+  <div class="container clearfix">
+    <div class="fancy-title title-dotted-border" style="margin-top: 50px;">
+      <h3>Registration</h3>
+    </div>
 
-	<div class="container clearfix">
-		<div class="fancy-title title-dotted-border" style="margin-top: 50px;">
-			<h3>Registration</h3>
-		</div>
+    <div class="col_one_third">
+      <div
+        id="audltTap"
+        class="feature-box fbox-center fbox-bg fbox-dark fbox-effect"
+      >
+        <div class="fbox-icon" onclick="showAudlt()">
+          <a href="#"><i>A</i></a>
+        </div>
+        <h3>
+          Adult Programs
+          <span class="subtitle"
+            >16+ <br />
+            All-year
+          </span>
+        </h3>
+      </div>
+    </div>
 
+    <div class="col_one_third">
+      <div
+        id="audltTap"
+        class="feature-box fbox-center fbox-bg fbox-gray fbox-effect"
+      >
+        <div class="fbox-icon" onclick="showAudlt()">
+          <a href="#"><i>O</i></a>
+        </div>
+        <h3>
+          Online Programs
+          <span class="subtitle">16+ </span>
+        </h3>
+      </div>
+    </div>
 
-		<div class="col_half">
-			<div id="audltTap" class="feature-box fbox-center fbox-bg fbox-dark fbox-effect">
-				<div class="fbox-icon" onclick="showAudlt()">
-					<a href="#"><i>A</i></a>
-				</div>
-				<h3>
-					Adult Programs
-					<span class="subtitle">16+ <br> All-year </span>
-				</h3>
-			</div>
-		</div>
+    <div class="col_one_third col_last">
+      <div
+        id="juniorTap"
+        class="feature-box fbox-center fbox-bg fbox-light fbox-effect"
+      >
+        <div class="fbox-icon" onclick="showJunior()">
+          <a href="#"><i class="i-alt">J</i></a>
+        </div>
+        <h3>
+          JUNIOR PROGRAMS
+          <span class="subtitle"
+            >13 years old to 17 years old<br />Summer and Winter programs</span
+          >
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
 
-		<div class="col_half col_last">
-			<div  id="juniorTap" class="feature-box fbox-center fbox-bg fbox-light fbox-effect">
-				<div class="fbox-icon"  onclick="showJunior()">
-					<a href="#"><i class="i-alt">J</i></a>
-				</div>
-				<h3>JUNIOR PROGRAMS
-					<span class="subtitle">13 years old to 17 years old<br>Summer and Winter programs</span></h3>
-				</div>
-			</div>
+<div id="audltBox">
+  <div class="container clearfix">
+    <div class="row clearfix">
+      <div class="col-md-offset-1 col-md-7">
+        <div class="heading-block topmargin center">
+          <h1>Online Student Registration Form</h1>
+        </div>
+        <!--  <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
+      </div>
 
-		</div>
+      <div class="col-md-4">
+        <div
+          style="position: relative; margin-bottom: 0px; height: 270px;"
+          class="ohidden"
+          data-height-lg="270"
+          data-height-md="567"
+          data-height-sm="470"
+          data-height-xs="287"
+          data-height-xxs="183"
+        >
+          <div
+            style="
+              width: 220px;
+              position: absolute;
+              top: 25px;
+              left: 50%;
+              margin-left: -100px;
+              padding-top: 35px;
+            "
+            data-animate="fadeInUp"
+            data-delay="1000"
+            alt="Chrome"
+            class="fadeInRight animated"
+          >
+            <!-- <img src="/images/clients/reginstration.jpg" > -->
 
+            <a
+              style="margin-top: 20px;"
+              href="/forms/R-Package.pdf"
+              target="_blank"
+              >COMPLETE REGISTRATION FORM<br />
+              CLICK HERE</a
+            >
 
+            <div style="margin-top: 20px; text-transform: uppercase;">
+              <a target="_blank" href="http://esconlineregistration.com"
+                >Proceed to Online Registration</a
+              >
+            </div>
+          </div>
 
-	</section>
+          <!-- <img src="/images/clients/reginstration.jpg" style="width:220px; position: absolute; top: 25px; left: 50%; margin-left: -100px;" data-animate="fadeInUp" data-delay="1000" alt="Chrome" class="fadeInRight animated"> -->
 
+          <!--  <img src="images/services/main-fmobile.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="iPad" class="fadeInUp animated"> -->
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="container clearfix">
+    <div class="row clearfix">
+      <form
+        name="registerForm"
+        class="form-horizontal"
+        ng-controller="RegisterCtrl"
+        role="form"
+        ng-submit="register(registerForm.$valid)"
+        novalidate
+      >
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">First Name </label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="firstname"
+              ng-model="student.firstname"
+              required
+            />
+            <p
+              ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine"
+              class="help-block text-danger"
+            >
+              First name is required.
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Last Name </label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="lastname"
+              ng-model="student.lastname"
+              required
+            />
+            <p
+              ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine"
+              class="help-block text-danger"
+            >
+              Last name is required.
+            </p>
+          </div>
+        </div>
 
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Gender </label>
+          <div class="col-sm-4">
+            <select
+              class="form-control"
+              name="gender"
+              ng-model="student.gender"
+              ng-init="student.gender = 'Male'"
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <label class="col-sm-2 control-label">Age</label>
+          <div
+            class="col-sm-2"
+            ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"
+            }
+          >
+            <input
+              type="number"
+              class="form-control"
+              name="age"
+              ng-model="student.age"
+              min="1"
+              max="99"
+              required
+            />
+            <p
+              ng-show="registerForm.age.$error.required && !registerForm.age.$pristine"
+              class="help-block text-danger"
+            >
+              Age is required.
+            </p>
+            <p
+              ng-show="registerForm.age.$invalid && !registerForm.age.$error.required"
+              class="help-block text-danger"
+            >
+              Age is invalid.
+            </p>
+          </div>
+        </div>
 
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Date of Birth</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"
+            }
+          >
+            <input
+              type="date"
+              class="form-control"
+              name="birthday"
+              ng-model="student.birthday"
+              placeholder="eg. 1987-01-01"
+              required
+            />
+            <p
+              ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine"
+              class="help-block text-danger"
+            >
+              Birthday is required.
+            </p>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Citizenship</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="citizenship"
+              ng-model="student.citizenship"
+              required
+            />
+            <p
+              ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine"
+              class="help-block text-danger"
+            >
+              Citizenship is required.
+            </p>
+          </div>
+        </div>
 
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Address</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="address"
+              ng-model="student.address"
+              required
+            />
+            <p
+              ng-show="registerForm.address.$invalid && !registerForm.address.$pristine"
+              class="help-block text-danger"
+            >
+              Address is required.
+            </p>
+          </div>
+        </div>
 
-	<div id="audltBox" >
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">City</label>
+          <div
+            class="col-sm-4"
+            g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="city"
+              ng-model="student.city"
+              required
+            />
+            <p
+              ng-show="registerForm.city.$invalid && !registerForm.city.$pristine"
+              class="help-block text-danger"
+            >
+              city is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Postal Code</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="postcode"
+              ng-model="student.postcode"
+              required
+            />
+            <p
+              ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine"
+              class="help-block text-danger"
+            >
+              Post code is required.
+            </p>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Province</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="province"
+              ng-model="student.province"
+              required
+            />
+            <p
+              ng-show="registerForm.province.$invalid && !registerForm.province.$pristine"
+              class="help-block text-danger"
+            >
+              Province is required.
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Country </label>
+          <div class="col-sm-4">
+            <select
+              name="region"
+              class="form-control"
+              ng-model="student.region"
+              required
+            >
+              <option ng-repeat="option in regionsList" value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+            <p
+              ng-show="registerForm.region.$invalid && !registerForm.region.$pristine"
+              class="help-block text-danger"
+            >
+              Region is required.
+            </p>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Telephone</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"
+            }
+          >
+            <input
+              type="number"
+              class="form-control"
+              name="telephone"
+              ng-model="student.telephone"
+              required
+            />
+            <p
+              ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine"
+              class="help-block text-danger"
+            >
+              Phone is required.
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Emergency Contact</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.emergency.$invalid && !registerForm.emergency.$pristine}"
+            }
+          >
+            <input
+              type="number"
+              class="form-control"
+              name="emergency"
+              ng-model="student.emergency"
+              required
+            />
+            <p
+              ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine"
+              class="help-block text-danger"
+            >
+              Emergency contact is required.
+            </p>
+          </div>
+        </div>
 
-		<div class="container clearfix" >
-			<div class="row clearfix">
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Email</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"
+            }
+          >
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              ng-model="student.email"
+              required
+            />
+            <p
+              ng-show="registerForm.email.$error.required && !registerForm.email.$pristine"
+              class="help-block text-danger"
+            >
+              Email is required.
+            </p>
+            <p
+              ng-show="registerForm.email.$invalid && !registerForm.email.$error.required"
+              class="help-block text-danger"
+            >
+              Email is invalid.
+            </p>
+          </div>
+        </div>
 
-				<div class="col-md-offset-1 col-md-7">
-					<div class="heading-block topmargin center">
-						<h1>Online Student Registration Form</h1>
-					</div>
-					<!--  <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
-				</div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">English Level : </label>
+          <div class="col-sm-4">
+            <select
+              name="englishlevel"
+              class="form-control"
+              ng-model="student.englishLevel"
+              ng-init="student.englishLevel = 'beginner'"
+            >
+              <option value="beginner">Beginner</option>
+              <option value="low_Intermediate">Low Intermediate</option>
+              <option value="high_Intermediate">High Intermediate</option>
+              <option value="advance">Advanced</option>
+            </select>
+          </div>
+        </div>
 
-				<div class="col-md-4">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Program </label>
+          <div class="col-sm-4">
+            <select
+              class="form-control"
+              name="programName"
+              ng-model="student.programName"
+            >
+              <option ng-repeat="option in courses" value="{{option.title}}"
+                >{{option.title}}</option
+              >
+            </select>
+          </div>
 
-					<div style="position: relative; margin-bottom: 0px; height: 270px;" class="ohidden" data-height-lg="270" data-height-md="567" data-height-sm="470" data-height-xs="287" data-height-xxs="183">
-						<div style="width:220px; position: absolute; top: 25px; left: 50%; margin-left: -100px; padding-top:35px" data-animate="fadeInUp" data-delay="1000" alt="Chrome" class="fadeInRight animated">
-							<!-- <img src="/images/clients/reginstration.jpg" > -->
+          <label class="col-sm-2 control-label">Start Date</label>
+          <div class="col-sm-4">
+            <input
+              type="date"
+              class="form-control"
+              name="programStartDate"
+              ng-model="student.programStartDate"
+            />
+          </div>
+        </div>
 
-							<a style="margin-top: 20px;" href="/forms/R-Package.pdf" target="_blank">COMPLETE REGISTRATION FORM<br>
-								CLICK HERE</a>
-
-							<div style="margin-top: 20px; text-transform: uppercase;">
-								<a target="_blank" href="http://esconlineregistration.com">Proceed to Online Registration</a>
-							</div>
-						</div>
-
-
-							
-							<!-- <img src="/images/clients/reginstration.jpg" style="width:220px; position: absolute; top: 25px; left: 50%; margin-left: -100px;" data-animate="fadeInUp" data-delay="1000" alt="Chrome" class="fadeInRight animated"> -->
-
-
-							<!--  <img src="images/services/main-fmobile.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="iPad" class="fadeInUp animated"> -->
-					</div>
-
-					</div>
-
-				</div>
-			</div>
-
-			<div class="container clearfix">
-				<div class="row clearfix" >
-					<form name="registerForm" class="form-horizontal" ng-controller='RegisterCtrl' role="form" ng-submit="register(registerForm.$valid)" novalidate>
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">First Name </label>
-							<div class="col-sm-4  " ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
-								<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" 
-								required>
-								<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">First name is required.</p>
-							</div>
-							<label class="col-sm-2 control-label">Last Name </label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
-								<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-								<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">Last name is required.</p>
-							</div>
-						</div>
-
-
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">Gender </label>
-							<div class="col-sm-4">
-								<select class="form-control" name="gender" ng-model="student.gender" ng-init="student.gender = 'Male'">
-									<option value="Male">Male</option>
-									<option value="Female">Female</option> 
-								</select>
-							</div>
-							<label class="col-sm-2 control-label">Age</label>
-							<div class="col-sm-2" ng-class="{'has-error' : registerForm.age.$invalid && !registerForm.age.$pristine}"}>
-								<input type="number" class="form-control" name="age" ng-model="student.age" min="1" max="99" required>
-								<p ng-show="registerForm.age.$error.required && !registerForm.age.$pristine" class="help-block text-danger">Age is required.</p>
-								<p ng-show="registerForm.age.$invalid && !registerForm.age.$error.required" class="help-block text-danger">Age is invalid.</p>
-							</div>				
-
-						</div>
-
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">Date of Birth</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
-								<input type='date' class="form-control" name="birthday" ng-model="student.birthday" placeholder='eg. 1987-01-01' required>
-								<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">Birthday is required.</p>
-							</div>
-
-						</div>
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">Citizenship</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine}"}>
-								<input type="text" class="form-control" name="citizenship" ng-model="student.citizenship" required>
-								<p ng-show="registerForm.citizenship.$invalid && !registerForm.citizenship.$pristine" class="help-block text-danger">Citizenship is required.</p>
-							</div>
-						</div>
-
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">Address</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
-								<input type="text" class="form-control" name="address" ng-model="student.address" required>
-								<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">Address is required.</p>
-							</div>
-						</div>
-
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">City</label>
-							<div class="col-sm-4" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
-								<input type="text" class="form-control" name="city" ng-model="student.city" required>
-								<p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
-							</div>
-							<label class="col-sm-2 control-label">Postal Code</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
-								<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
-								<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">Post code is required.</p>
-							</div>
-						</div>
-						<div class="form-group required">
-							<label class="col-sm-2  control-label">Province</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
-								<input type="text" class="form-control" name="province" ng-model="student.province" required>
-								<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">Province is required.</p>
-							</div>
-							<label class="col-sm-2 control-label">Country </label>
-							<div class="col-sm-4">
-								<select name="region" class="form-control" ng-model="student.region" required>
-									<option ng-repeat="option in regionsList" value="{{option.name}}">{{option.name}}</option>
-								</select>
-								<p ng-show="registerForm.region.$invalid && !registerForm.region.$pristine" class="help-block text-danger">Region is required.</p>
-							</div>
-						</div>
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">Telephone</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
-								<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
-								<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">Phone is required.</p>
-							</div>
-							<label class="col-sm-2 control-label">Emergency Contact</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergency.$invalid && !registerForm.emergency.$pristine}"}>
-								<input type="number" class="form-control" name="emergency" ng-model="student.emergency" required>
-								<p ng-show="registerForm.emergency.$invalid && !registerForm.emergency.$pristine" class="help-block text-danger">Emergency contact is required.</p>
-							</div>
-						</div>
-
-						<div class="form-group required">
-							<label class="col-sm-2 control-label">Email</label>
-							<div class="col-sm-4" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
-								<input type="email" class="form-control" name="email" ng-model="student.email" required>
-								<p ng-show="registerForm.email.$error.required && !registerForm.email.$pristine" class="help-block text-danger">Email is required.</p>
-								<p ng-show="registerForm.email.$invalid && !registerForm.email.$error.required" class="help-block text-danger">Email is invalid.</p>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">English Level : </label>
-							<div class="col-sm-4">
-								<select name="englishlevel" class="form-control" ng-model="student.englishLevel" ng-init="student.englishLevel = 'beginner'">
-									<option value="beginner">Beginner</option> 
-									<option value="low_Intermediate">Low Intermediate</option>
-									<option value="high_Intermediate">High Intermediate</option>
-									<option value="advance">Advanced</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Program </label>
-							<div class="col-sm-4">
-								<select class="form-control" name="programName" ng-model="student.programName">
-									<option ng-repeat="option in courses" value="{{option.title}}">{{option.title}}</option>
-								</select>
-							</div>
-
-							<label class="col-sm-2 control-label">Start Date</label>
-							<div class="col-sm-4">
-								<input type='date' class="form-control" name="programStartDate" ng-model="student.programStartDate">
-							</div>
-
-						</div>
-
-		 	<!-- <div class="form-group">
+        <!-- <div class="form-group">
 		 	<label class="col-sm-2 control-label">TOEFL </label>
 				<div class="col-sm-4">
 					<input type="number" class="form-control" name="TOEFL" ng-model="student.TOEFL" min=0 max=120>
@@ -246,376 +505,764 @@
 					<p ng-show="registerForm.IELTS.$invalid && !registerForm.IELTS.$error.required" class="help-block text-danger">IELTS is invalid.</p>
 				</div>
 			</div> -->
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-2">
-					<input type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" value="Submit"> 
-
-				</div>
-			</div>
-		</form>
-
-	</div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-2">
+            <input
+              type="submit"
+              class="btn btn-primary btn-block"
+              ng-disabled="registerForm.$invalid"
+              value="Submit"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
+<div id="juniorBox" style="display: none;">
+  <div class="container clearfix">
+    <div class="row clearfix">
+      <div class="col-md-offset-1 col-md-7">
+        <div class="heading-block topmargin center">
+          <h1>Junior Program Register</h1>
+        </div>
+        <!-- <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
+      </div>
+
+      <div class="col-md-4">
+        <div
+          style="position: relative; margin-bottom: -60px; height: 270px;"
+          class="ohidden"
+          data-height-lg="270"
+          data-height-md="567"
+          data-height-sm="470"
+          data-height-xs="287"
+          data-height-xxs="183"
+        >
+          <!-- <img src="/images/clients/reginstration.jpg" style="width:220px; position: absolute; top: 25px; left: 50%; margin-left: -100px;" data-animate="fadeInUp" data-delay="1000" alt="Chrome" class="fadeInRight animated"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container clearfix">
+    <div class="row clearfix">
+      <form
+        name="registerForm"
+        class="form-horizontal"
+        ng-controller="JuniorProgramCtrl"
+        role="form"
+        ng-submit="register(registerForm.$valid)"
+        novalidate
+      >
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">First Name </label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="firstname"
+              ng-model="student.firstname"
+              required
+            />
+            <p
+              ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine"
+              class="help-block text-danger"
+            >
+              first name is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Last Name </label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="lastname"
+              ng-model="student.lastname"
+              required
+            />
+            <p
+              ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine"
+              class="help-block text-danger"
+            >
+              last name is required
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Gender </label>
+          <div class="col-sm-4">
+            <select
+              class="form-control"
+              name="gender"
+              ng-model="student.gender"
+              ng-init="student.gender = 'Male'"
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Birth Date</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"
+            }
+          >
+            <input
+              type="date"
+              class="form-control"
+              name="birthday"
+              ng-model="student.birthday"
+              placeholder="eg. 1987-01-01"
+              required
+            />
+            <p
+              ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine"
+              class="help-block text-danger"
+            >
+              birthday is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Nationality</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.nationality.$invalid && !registerForm.nationality.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="nationality"
+              ng-model="student.nationality"
+              required
+            />
+            <p
+              ng-show="registerForm.nationality.$invalid && !registerForm.nationality.$pristine"
+              class="help-block text-danger"
+            >
+              Nationality is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Native language</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.nativeLanguage.$invalid && !registerForm.nativeLanguage.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="nativeLanguage"
+              ng-model="student.nativeLanguage"
+              required
+            />
+            <p
+              ng-show="registerForm.nativeLanguage.$invalid && !registerForm.nativeLanguage.$pristine"
+              class="help-block text-danger"
+            >
+              Native language is required
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-12 control-label center"
+            >Contact Information</label
+          >
+        </div>
+
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Address</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="address"
+              ng-model="student.address"
+              required
+            />
+            <p
+              ng-show="registerForm.address.$invalid && !registerForm.address.$pristine"
+              class="help-block text-danger"
+            >
+              address is required
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">City</label>
+          <div
+            class="col-sm-4"
+            g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="city"
+              ng-model="student.city"
+              required
+            />
+            <p
+              ng-show="registerForm.city.$invalid && !registerForm.city.$pristine"
+              class="help-block text-danger"
+            >
+              city is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Postal Code</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="postcode"
+              ng-model="student.postcode"
+              required
+            />
+            <p
+              ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine"
+              class="help-block text-danger"
+            >
+              post code is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Province</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="province"
+              ng-model="student.province"
+              required
+            />
+            <p
+              ng-show="registerForm.province.$invalid && !registerForm.province.$pristine"
+              class="help-block text-danger"
+            >
+              province is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Country</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="country"
+              ng-model="student.country"
+              required
+            />
+            <p
+              ng-show="registerForm.country.$invalid && !registerForm.country.$pristine"
+              class="help-block text-danger"
+            >
+              country is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Telephone</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"
+            }
+          >
+            <input
+              type="number"
+              class="form-control"
+              name="telephone"
+              ng-model="student.telephone"
+              required
+            />
+            <p
+              ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine"
+              class="help-block text-danger"
+            >
+              phone is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Email</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"
+            }
+          >
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              ng-model="student.email"
+              required
+            />
+            <p
+              ng-show="registerForm.email.$error.required && !registerForm.email.$pristine"
+              class="help-block text-danger"
+            >
+              email is required
+            </p>
+            <p
+              ng-show="registerForm.email.$invalid && !registerForm.email.$error.required"
+              class="help-block text-danger"
+            >
+              email is invalid
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-12 control-label center"
+            >Emergency Information</label
+          >
+        </div>
+
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Contact name</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.emergencyContactname.$invalid && !registerForm.emergencyContactname.$pristine}"
+            }
+          >
+            <input
+              type="string"
+              class="form-control"
+              name="emergencyContactname"
+              ng-model="student.emergencyContactname"
+              required
+            />
+            <p
+              ng-show="registerForm.emergencyContactname.$invalid && !registerForm.emergencyContactname.$pristine"
+              class="help-block text-danger"
+            >
+              name is required
+            </p>
+          </div>
+          <label class="col-sm-2 control-label">Email</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.emergencyContactemail.$invalid && !registerForm.emergencyContactemail.$pristine}"
+            }
+          >
+            <input
+              type="email"
+              class="form-control"
+              name="emergencyContactemail"
+              ng-model="student.emergencyContactemail"
+              required
+            />
+            <p
+              ng-show="registerForm.emergencyContactemail.$error.required && !registerForm.emergencyContactemail.$pristine"
+              class="help-block text-danger"
+            >
+              email is required
+            </p>
+            <p
+              ng-show="registerForm.emergencyContactemail.$invalid && !registerForm.emergencyContactemail.$error.required"
+              class="help-block text-danger"
+            >
+              email is invalid
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group required">
+          <label class="col-sm-2 control-label">Phone</label>
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.emergencyPhone.$invalid && !registerForm.emergencyPhone.$pristine}"
+            }
+          >
+            <input
+              type="number"
+              class="form-control"
+              name="emergencyPhone"
+              ng-model="student.emergencyPhone"
+              required
+            />
+            <p
+              ng-show="registerForm.emergencyPhone.$invalid && !registerForm.emergencyPhone.$pristine"
+              class="help-block text-danger"
+            >
+              emergency Phone contact is required
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-12 control-label center"
+            >Medical Information</label
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+            >Are you on any medication?</label
+          >
+          <div class="col-sm-1">
+            <select
+              class="form-control"
+              name="ismedical"
+              ng-model="student.ismedical"
+              ng-init="student.ismedical = 'false'"
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-sm-offset-1 control-label"
+            >If yes, please explain</label
+          >
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.medicalComment.$invalid && !registerForm.medicalComment.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="medicalComment"
+              ng-model="student.medicalComment"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+            >Do you have any allergies?</label
+          >
+          <div class="col-sm-1">
+            <select
+              class="form-control"
+              name="isallergies"
+              ng-model="student.isallergies"
+              ng-init="student.isallergies = 'false'"
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-sm-offset-1 control-label"
+            >If yes, please explain</label
+          >
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.allergiesComment.$invalid && !registerForm.allergiesComment.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="allergiesComment"
+              ng-model="student.allergiesComment"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+            >Any special dietary needs?</label
+          >
+          <div class="col-sm-1">
+            <select
+              class="form-control"
+              name="isdietary"
+              ng-model="student.isdietary"
+              ng-init="student.isdietary = 'false'"
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-sm-offset-1 control-label"
+            >If yes, please explain</label
+          >
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.dietaryComment.$invalid && !registerForm.dietaryComment.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="dietaryComment"
+              ng-model="student.dietaryComment"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+            >Anything else we should know?</label
+          >
+          <div class="col-sm-1">
+            <select
+              class="form-control"
+              name="iselse"
+              ng-model="student.iselse"
+              ng-init="student.iselse = 'false'"
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-sm-offset-1 control-label"
+            >If yes, please explain</label
+          >
+          <div
+            class="col-sm-4"
+            ng-class="{'has-error' : registerForm.elseComment.$invalid && !registerForm.elseComment.$pristine}"
+            }
+          >
+            <input
+              type="text"
+              class="form-control"
+              name="elseComment"
+              ng-model="student.elseComment"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-12 control-label center"
+            >Programs Information</label
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label"
+            >Summer Kids Program(Toronto)</label
+          >
+          <label class="col-sm-1 col-sm-offset-1 control-label">Start</label>
+          <div class="col-sm-2">
+            <select
+              name="startdateSummerKidsProgram"
+              class="form-control"
+              ng-model="student.startdateSummerKidsProgram"
+            >
+              <option
+                ng-repeat="option in SummerProgramTorontoStartDateList"
+                value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+          </div>
+          <label class="col-sm-1 col-sm-offset-1 control-label">Duration</label>
+          <div class="col-sm-2">
+            <select
+              class="form-control"
+              name="durationSummerKidsProgram"
+              ng-model="student.durationSummerKidsProgram"
+            >
+              <option
+                ng-repeat="option in SummerProgramTorontoDurationList"
+                value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label"
+            >Summer Teen Program(Toronto)</label
+          >
+          <label class="col-sm-1 col-sm-offset-1 control-label">Start</label>
+          <div class="col-sm-2">
+            <select
+              name="startdateSummerTeensProgramTonronto"
+              class="form-control"
+              ng-model="student.startdateSummerTeensProgramTonronto"
+            >
+              <option
+                ng-repeat="option in SummerProgramTorontoStartDateList"
+                value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+          </div>
+          <label class="col-sm-1 col-sm-offset-1 control-label">Duration</label>
+          <div class="col-sm-2">
+            <select
+              class="form-control"
+              name="durationSummerTeensProgram"
+              ng-model="student.durationSummerTeensProgram"
+            >
+              <option
+                ng-repeat="option in SummerProgramTorontoDurationList"
+                value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label"
+            >Summer Teen Program(Kingston)</label
+          >
+          <label class="col-sm-1 col-sm-offset-1 control-label">Start</label>
+          <div class="col-sm-2">
+            <select
+              name="startdateSummerTeensProgramKingston"
+              class="form-control"
+              ng-model="student.startdateSummerTeensProgramKingston"
+            >
+              <option
+                ng-repeat="option in SummerProgramKingstonStartDateList"
+                value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+          </div>
+          <label class="col-sm-1 col-sm-offset-1 control-label">Duration</label>
+          <div class="col-sm-2">
+            <select
+              class="form-control"
+              name="durationSummerTeensProgramKingston"
+              ng-model="student.durationSummerTeensProgramKingston"
+            >
+              <option
+                ng-repeat="option in SummerProgramKingstonDurationList"
+                value="{{option.name}}"
+                >{{option.name}}</option
+              >
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Year-round programs</label>
+          <div class="col-sm-7 col-sm-offset-1">
+            <input
+              type="text"
+              class="form-control"
+              name="year_roundPrograms"
+              ng-model="student.year_roundPrograms"
+              placeholder="Dates planning to come / Number of students / Comments"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-12 control-label center"
+            >Agent Information(optional)</label
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Agency</label>
+          <div class="col-sm-4">
+            <input
+              type="text"
+              class="form-control"
+              name="agency"
+              ng-model="student.agency"
+            />
+          </div>
+          <label class="col-sm-2 control-label">Agent</label>
+          <div class="col-sm-4">
+            <input
+              type="text"
+              class="form-control"
+              name="agent"
+              ng-model="student.agent"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Phone</label>
+          <div class="col-sm-4">
+            <input
+              type="text"
+              class="form-control"
+              name="agent_phone"
+              ng-model="student.agent_phone"
+            />
+          </div>
+          <label class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-4">
+            <input
+              type="text"
+              class="form-control"
+              name="agent_email"
+              ng-model="student.agent_email"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-2">
+            <input
+              type="submit"
+              class="btn btn-primary btn-block"
+              ng-disabled="registerForm.$invalid"
+              value="Submit"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
-<div id="juniorBox" style="display: none">	
-	<div class="container clearfix">
-		<div class="row clearfix">
-
-			<div class="col-md-offset-1 col-md-7">
-				<div class="heading-block topmargin center">
-					<h1>Junior Program Register</h1>
-				</div>
-				<!-- <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
-			</div>
-
-			<div class="col-md-4">
-
-				<div style="position: relative; margin-bottom: -60px; height: 270px;" class="ohidden" data-height-lg="270" data-height-md="567" data-height-sm="470" data-height-xs="287" data-height-xxs="183">
-					<!-- <img src="/images/clients/reginstration.jpg" style="width:220px; position: absolute; top: 25px; left: 50%; margin-left: -100px;" data-animate="fadeInUp" data-delay="1000" alt="Chrome" class="fadeInRight animated"> -->
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-	<div class="container clearfix">
-		<div class="row clearfix" >
-			<form name="registerForm" class="form-horizontal" ng-controller='JuniorProgramCtrl' role="form" ng-submit="register(registerForm.$valid)" novalidate>
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">First Name </label>
-					<div class="col-sm-4  " ng-class="{'has-error' : registerForm.firstname.$invalid && !registerForm.firstname.$pristine}"}>
-						<input  type="text" class="form-control" name="firstname" ng-model="student.firstname" required>
-						<p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine" class="help-block text-danger">first name is required</p>
-					</div>
-					<label class="col-sm-2 control-label">Last Name </label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.lastname.$invalid && !registerForm.lastname.$pristine}"}>
-						<input  type="text" class="form-control" name="lastname" ng-model="student.lastname" required>
-						<p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine" class="help-block text-danger">last name is required</p>
-					</div>
-				</div>
-
-
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Gender </label>
-					<div class="col-sm-4">
-						<select class="form-control" name="gender" ng-model="student.gender" ng-init="student.gender = 'Male'">
-							<option value="Male">Male</option>
-							<option value="Female">Female</option> 
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Birth Date</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.birthday.$invalid && !registerForm.birthday.$pristine}"}>
-						<input type='date' class="form-control" name="birthday" ng-model="student.birthday" placeholder='eg. 1987-01-01' required>
-						<p ng-show="registerForm.birthday.$invalid && !registerForm.birthday.$pristine" class="help-block text-danger">birthday is required</p>
-					</div>
-
-				</div>
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Nationality</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.nationality.$invalid && !registerForm.nationality.$pristine}"}>
-						<input type="text" class="form-control" name="nationality" ng-model="student.nationality" required>
-						<p ng-show="registerForm.nationality.$invalid && !registerForm.nationality.$pristine" class="help-block text-danger">Nationality is required</p>
-					</div>
-					<label class="col-sm-2 control-label">Native language</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.nativeLanguage.$invalid && !registerForm.nativeLanguage.$pristine}"}>
-						<input type="text" class="form-control" name="nativeLanguage" ng-model="student.nativeLanguage" required>
-						<p ng-show="registerForm.nativeLanguage.$invalid && !registerForm.nativeLanguage.$pristine" class="help-block text-danger">Native language is required</p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-12 control-label center">Contact Information</label>
-				</div>
-
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Address</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.address.$invalid && !registerForm.address.$pristine}"}>
-						<input type="text" class="form-control" name="address" ng-model="student.address" required>
-						<p ng-show="registerForm.address.$invalid && !registerForm.address.$pristine" class="help-block text-danger">address is required</p>
-					</div>
-				</div>
-
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">City</label>
-					<div class="col-sm-4" g-class="{'has-error' : registerForm.city.$invalid && !registerForm.city.$pristine}"}>
-						<input type="text" class="form-control" name="city" ng-model="student.city" required>
-						<p ng-show="registerForm.city.$invalid && !registerForm.city.$pristine" class="help-block text-danger">city is required</p>
-					</div>
-					<label class="col-sm-2 control-label">Postal Code</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.postcode.$invalid && !registerForm.postcode.$pristine}"}>
-						<input type="text" class="form-control" name="postcode" ng-model="student.postcode" required>
-						<p ng-show="registerForm.postcode.$invalid && !registerForm.postcode.$pristine" class="help-block text-danger">post code is required</p>
-					</div>
-				</div>
-				<div class="form-group required">
-					<label class="col-sm-2  control-label">Province</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.province.$invalid && !registerForm.province.$pristine}"}>
-						<input type="text" class="form-control" name="province" ng-model="student.province" required>
-						<p ng-show="registerForm.province.$invalid && !registerForm.province.$pristine" class="help-block text-danger">province is required</p>
-					</div>
-					<label class="col-sm-2 control-label">Country</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.country.$invalid && !registerForm.country.$pristine}"}>
-						<input type="text" class="form-control" name="country" ng-model="student.country" required>
-						<p ng-show="registerForm.country.$invalid && !registerForm.country.$pristine" class="help-block text-danger">country is required</p>
-					</div>
-				</div>
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Telephone</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.telephone.$invalid && !registerForm.telephone.$pristine}"}>
-						<input type="number" class="form-control" name="telephone" ng-model="student.telephone" required>
-						<p ng-show="registerForm.telephone.$invalid && !registerForm.telephone.$pristine" class="help-block text-danger">phone is required</p>
-					</div>
-					<label class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine}"}>
-						<input type="email" class="form-control" name="email" ng-model="student.email" required>
-						<p ng-show="registerForm.email.$error.required && !registerForm.email.$pristine" class="help-block text-danger">email is required</p>
-						<p ng-show="registerForm.email.$invalid && !registerForm.email.$error.required" class="help-block text-danger">email is invalid</p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-12 control-label center">Emergency Information</label>
-				</div>
-
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Contact name</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergencyContactname.$invalid && !registerForm.emergencyContactname.$pristine}"}>
-						<input type="string" class="form-control" name="emergencyContactname" ng-model="student.emergencyContactname" required>
-						<p ng-show="registerForm.emergencyContactname.$invalid && !registerForm.emergencyContactname.$pristine" class="help-block text-danger">name is required</p>
-					</div>
-					<label class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergencyContactemail.$invalid && !registerForm.emergencyContactemail.$pristine}"}>
-						<input type="email" class="form-control" name="emergencyContactemail" ng-model="student.emergencyContactemail" required>
-						<p ng-show="registerForm.emergencyContactemail.$error.required && !registerForm.emergencyContactemail.$pristine" class="help-block text-danger">email is required</p>
-						<p ng-show="registerForm.emergencyContactemail.$invalid && !registerForm.emergencyContactemail.$error.required" class="help-block text-danger">email is invalid</p>
-					</div>
-				</div>
-
-				<div class="form-group required">
-					<label class="col-sm-2 control-label">Phone</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.emergencyPhone.$invalid && !registerForm.emergencyPhone.$pristine}"}>
-						<input type="number" class="form-control" name="emergencyPhone" ng-model="student.emergencyPhone" required>
-						<p ng-show="registerForm.emergencyPhone.$invalid && !registerForm.emergencyPhone.$pristine" class="help-block text-danger">emergency Phone contact is required</p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-12 control-label center">Medical Information</label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Are you on any medication?</label>
-					<div class="col-sm-1 ">
-						<select class="form-control" name="ismedical" ng-model="student.ismedical" ng-init="student.ismedical = 'false'">
-							<option value="true">Yes</option>
-							<option value="false">No</option> 
-						</select>
-					</div>
-					<label class="col-sm-3 col-sm-offset-1 control-label">If yes, please explain</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.medicalComment.$invalid && !registerForm.medicalComment.$pristine}"}>
-						<input type="text" class="form-control" name="medicalComment" ng-model="student.medicalComment">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Do you have any allergies?</label>
-					<div class="col-sm-1">
-						<select class="form-control" name="isallergies" ng-model="student.isallergies" ng-init="student.isallergies = 'false'">
-							<option value="true">Yes</option>
-							<option value="false">No</option> 
-						</select>
-					</div>
-					<label class="col-sm-3 col-sm-offset-1 control-label">If yes, please explain</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.allergiesComment.$invalid && !registerForm.allergiesComment.$pristine}"}>
-						<input type="text" class="form-control" name="allergiesComment" ng-model="student.allergiesComment">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Any special dietary needs?</label>
-					<div class="col-sm-1">
-						<select class="form-control" name="isdietary" ng-model="student.isdietary" ng-init="student.isdietary = 'false'">
-							<option value="true">Yes</option>
-							<option value="false">No</option> 
-						</select>
-					</div>
-					<label class="col-sm-3 col-sm-offset-1 control-label">If yes, please explain</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.dietaryComment.$invalid && !registerForm.dietaryComment.$pristine}"}>
-						<input type="text" class="form-control" name="dietaryComment" ng-model="student.dietaryComment">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Anything else we should know?</label>
-					<div class="col-sm-1">
-						<select class="form-control" name="iselse" ng-model="student.iselse" ng-init="student.iselse = 'false'">
-							<option value="true">Yes</option>
-							<option value="false">No</option> 
-						</select>
-					</div>
-					<label class="col-sm-3 col-sm-offset-1 control-label">If yes, please explain</label>
-					<div class="col-sm-4" ng-class="{'has-error' : registerForm.elseComment.$invalid && !registerForm.elseComment.$pristine}"}>
-						<input type="text" class="form-control" name="elseComment" ng-model="student.elseComment">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-12 control-label center">Programs Information</label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Summer Kids Program(Toronto)</label>
-					<label class="col-sm-1 col-sm-offset-1 control-label">Start</label>
-					<div class="col-sm-2">
-						<select name="startdateSummerKidsProgram" class="form-control" ng-model="student.startdateSummerKidsProgram">
-							<option ng-repeat="option in SummerProgramTorontoStartDateList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-					</div>
-					<label class="col-sm-1 col-sm-offset-1 control-label">Duration</label>
-					<div class="col-sm-2">
-						<select class="form-control" name="durationSummerKidsProgram" ng-model="student.durationSummerKidsProgram">
-							<option ng-repeat="option in SummerProgramTorontoDurationList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Summer Teen Program(Toronto)</label>
-					<label class="col-sm-1 col-sm-offset-1 control-label">Start</label>
-					<div class="col-sm-2">
-						<select name="startdateSummerTeensProgramTonronto" class="form-control" ng-model="student.startdateSummerTeensProgramTonronto">
-							<option ng-repeat="option in SummerProgramTorontoStartDateList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-					</div>
-					<label class="col-sm-1 col-sm-offset-1 control-label">Duration</label>
-					<div class="col-sm-2">
-						<select class="form-control" name="durationSummerTeensProgram" ng-model="student.durationSummerTeensProgram">
-							<option ng-repeat="option in SummerProgramTorontoDurationList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Summer Teen Program(Kingston)</label>
-					<label class="col-sm-1 col-sm-offset-1 control-label">Start</label>
-					<div class="col-sm-2">
-						<select name="startdateSummerTeensProgramKingston" class="form-control" ng-model="student.startdateSummerTeensProgramKingston">
-							<option ng-repeat="option in SummerProgramKingstonStartDateList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-					</div>
-					<label class="col-sm-1 col-sm-offset-1 control-label">Duration</label>
-					<div class="col-sm-2">
-						<select class="form-control" name="durationSummerTeensProgramKingston" ng-model="student.durationSummerTeensProgramKingston">
-							<option ng-repeat="option in SummerProgramKingstonDurationList" value="{{option.name}}">{{option.name}}</option>
-						</select>
-					</div>
-
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Year-round programs</label>
-					<div class="col-sm-7 col-sm-offset-1">
-						<input type="text" class="form-control" name="year_roundPrograms" ng-model="student.year_roundPrograms" placeholder='Dates planning to come / Number of students / Comments'>
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-12 control-label center">Agent Information(optional)</label>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Agency</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="agency" ng-model="student.agency">
-					</div>
-					<label class="col-sm-2 control-label">Agent</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="agent" ng-model="student.agent">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Phone</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="agent_phone" ng-model="student.agent_phone">
-					</div>
-					<label class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="agent_email" ng-model="student.agent_email">
-					</div>
-				</div>
-
-
-
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-2">
-						<input type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" value="Submit"> 
-
-					</div>
-				</div>
-			</form>
-		</div>
-
-	</div>
-
-
-</div>
-
-
-
 
 <script type="text/javascript">
+  var target = 0;
 
-	var target = 0;
+  var showAudlt = function () {
+    $("#audltTap").removeClass("fbox-dark ");
+    $("#audltTap").removeClass("fbox-light ");
+    $("#juniorTap").removeClass("fbox-dark ");
+    $("#juniorTap").removeClass("fbox-light ");
 
+    $("#audltTap").addClass("fbox-dark ");
+    $("#juniorTap").addClass("fbox-light ");
 
-	var showAudlt = function(){
+    $("#audltBox").show();
+    $("#juniorBox").hide();
+  };
 
+  var showJunior = function () {
+    $("#audltTap").removeClass("fbox-dark ");
+    $("#audltTap").removeClass("fbox-light ");
+    $("#juniorTap").removeClass("fbox-dark ");
+    $("#juniorTap").removeClass("fbox-light ");
 
-		$('#audltTap').removeClass('fbox-dark ');
-		$('#audltTap').removeClass('fbox-light ');
-		$('#juniorTap').removeClass('fbox-dark ');
-		$('#juniorTap').removeClass('fbox-light ');
+    $("#audltTap").addClass("fbox-light ");
+    $("#juniorTap").addClass("fbox-dark ");
 
-		$('#audltTap').addClass('fbox-dark ');
-		$('#juniorTap').addClass('fbox-light ');
-
-
-		$('#audltBox').show();
-		$('#juniorBox').hide();
-
-	}
-
-	var showJunior= function(){
-
-
-		$('#audltTap').removeClass('fbox-dark ');
-		$('#audltTap').removeClass('fbox-light ');
-		$('#juniorTap').removeClass('fbox-dark ');
-		$('#juniorTap').removeClass('fbox-light ');
-
-		$('#audltTap').addClass('fbox-light ');
-		$('#juniorTap').addClass('fbox-dark ');
-
-		$('#audltBox').hide();
-		$('#juniorBox').show();
-
-	}
-
-
+    $("#audltBox").hide();
+    $("#juniorBox").show();
+  };
 </script>
-
-

@@ -7290,6 +7290,15 @@ body:not(.device-touch) .button.button-full strong {
 .feature-box.fbox-dark .fbox-icon img { background-color: #333; }
 
 
+/* Feature Box - Gray Background
+-----------------------------------------------------------------*/
+
+.feature-box.fbox-gray.fbox-outline .fbox-icon { border-color: #444; }
+
+.feature-box.fbox-gray .fbox-icon i,
+.feature-box.fbox-gray .fbox-icon img { background-color: #b98484; }
+
+
 /* Feature Box - Border
 -----------------------------------------------------------------*/
 
@@ -7550,7 +7559,7 @@ body:not(.device-touch) .button.button-full strong {
 	border-radius: 5px;
 }
 
-.feature-box.fbox-bg.fbox-center:first-child { margin-top: 48px; }
+.feature-box.fbox-bg.fbox-center:first-child { margin-top: 48px; min-height: 200px;}
 
 .feature-box.fbox-bg.fbox-center.fbox-large {
 	margin-top: 84px;
