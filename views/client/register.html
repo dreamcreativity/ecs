@@ -25,7 +25,7 @@
         id="audltTap"
         class="feature-box fbox-center fbox-bg fbox-dark fbox-effect"
       >
-        <div class="fbox-icon" onclick="showAudlt()">
+        <div class="fbox-icon" onclick="showAudlt('Audlt')">
           <a href="#"><i>A</i></a>
         </div>
         <h3>
@@ -40,10 +40,10 @@
 
     <div class="col_one_third">
       <div
-        id="audltTap"
-        class="feature-box fbox-center fbox-bg fbox-gray fbox-effect"
+        id="onlineTap"
+        class="feature-box fbox-center fbox-bg fbox-light fbox-effect"
       >
-        <div class="fbox-icon" onclick="showAudlt()">
+        <div class="fbox-icon" onclick="showAudlt('Online')">
           <a href="#"><i>O</i></a>
         </div>
         <h3>
@@ -77,7 +77,7 @@
     <div class="row clearfix">
       <div class="col-md-offset-1 col-md-7">
         <div class="heading-block topmargin center">
-          <h1>Online Student Registration Form</h1>
+          <h1><name id="audltTargetName">Online</name> Student Registration Form</h1>
         </div>
         <!--  <p class="lead">Praesent quis malesuada mauris. Donec eget purus non felis tristique cursus. Donec at tortor a lorem posuere laoreet eu sit amet est.</p> -->
       </div>
@@ -1240,26 +1240,42 @@
 <script type="text/javascript">
   var target = 0;
 
-  var showAudlt = function () {
-    $("#audltTap").removeClass("fbox-dark ");
+  var showAudlt = function (targetName) {
+
+
+	$("#audltTap").removeClass("fbox-dark ");
     $("#audltTap").removeClass("fbox-light ");
+	$("#onlineTap").removeClass("fbox-dark ");
+    $("#onlineTap").removeClass("fbox-light ");
     $("#juniorTap").removeClass("fbox-dark ");
     $("#juniorTap").removeClass("fbox-light ");
 
-    $("#audltTap").addClass("fbox-dark ");
-    $("#juniorTap").addClass("fbox-light ");
 
-    $("#audltBox").show();
-    $("#juniorBox").hide();
+	$('#audltTargetName').text(targetName);
+	if (targetName === 'Online') {
+		$("#onlineTap").addClass("fbox-dark ");
+		$("#audltTap").addClass("fbox-light ");
+    	$("#juniorTap").addClass("fbox-light ");
+	} else {
+		$("#onlineTap").addClass("fbox-light");
+		$("#audltTap").addClass("fbox-dark ");
+    	$("#juniorTap").addClass("fbox-light ")
+	}
+
+	$("#audltBox").show();
+	$("#juniorBox").hide();
   };
 
   var showJunior = function () {
     $("#audltTap").removeClass("fbox-dark ");
     $("#audltTap").removeClass("fbox-light ");
+	$("#onlineTap").removeClass("fbox-dark ");
+    $("#onlineTap").removeClass("fbox-light ");
     $("#juniorTap").removeClass("fbox-dark ");
     $("#juniorTap").removeClass("fbox-light ");
 
     $("#audltTap").addClass("fbox-light ");
+	$("#onlineTap").addClass("fbox-light ");
     $("#juniorTap").addClass("fbox-dark ");
 
     $("#audltBox").hide();
