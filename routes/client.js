@@ -93,6 +93,12 @@ router.get('/', function(req, res) {
 });
 
 
+
+router.get('/online', function(req, res) {
+    // Process the data received in req.body
+    res.redirect('/');
+});
+
 router.get('/gallery/detail/:id', function(req, res){
 	var id = req.params.id;
 	var activityList = [];
