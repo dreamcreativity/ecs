@@ -754,7 +754,7 @@ exports.sendEmail = function(req,res){
 	var agent = req.body.agent;
 	var region = req.body.region;
 	var attachments = req.body.attachments;
-	var send_staff_list =[];
+	var send_staff_list =['spark@esc-toronto.com'];
 	var send_agent_list =[];
 	if(agent) {
 		send_agent_list.push(agent);
