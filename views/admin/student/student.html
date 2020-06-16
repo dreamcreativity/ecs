@@ -20,6 +20,7 @@
 								<th class="hidden-xs">Pomotion Rate</th>
 								<th class="hidden-xs">Register Date</th>
 								<th class="hidden-xs">Status</th>
+								<th class="hidden-xs">Download</th>
 								<th class="col-medium center">Action</th>
 							</tr>
 						</thead>
@@ -35,6 +36,9 @@
 								<td class="hidden-xs">{{student.registerDate | date:'MMM dd yyyy'}}</td>
 								<td><span ng-if="student.isQuit == 1" class="label label-danger">Deleted</span>
 									<span ng-if="student.isQuit == 0" class="label label-active">Active</span>
+								</td>
+								<td>
+									<button type="button" download-form03 class="btn btn-primary btn-block" ng-click="download_studentInfo()">Download</button>
 								</td>
 								<td class="col-medium center">
 									<div class="btn-group btn-group-xs ">
