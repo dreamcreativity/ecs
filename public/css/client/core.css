@@ -56,11 +56,11 @@ p.small-content {
   #online-esc-banner .desktop-banner {
     display: none;
   }
-  
+
   #online-esc-banner .tablet-banner {
     display: block;
   }
-  
+
   #online-esc-banner .mobile-banner {
     display: none;
   }
@@ -70,18 +70,15 @@ p.small-content {
   #online-esc-banner .desktop-banner {
     display: none;
   }
-  
+
   #online-esc-banner .tablet-banner {
     display: none;
   }
-  
+
   #online-esc-banner .mobile-banner {
     display: block;
   }
 }
-
-
-
 
 /* ---------------------------------- */
 /* new banner for esc update */
@@ -1391,4 +1388,195 @@ body {
 }
 #partner-detail .partner-sidebar .button-desc {
   width: 100%;
+}
+
+/* --------------------- */
+/* PROCEDURES */
+/* --------------------- */
+.safety-block {
+  margin-bottom: 50px;
+}
+.safety-block .header {
+  font-size: 30px;
+  color: black;
+  vertical-align: middle;
+  font-weight: 600;
+  padding-left: 370px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.safety-block .header .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.safety-block .chart {
+  position: relative;
+  /* border: 1px solid black; */
+  width: 100%;
+  height: 350px;
+}
+
+.safety-block .chart {
+  color: #343434;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+.safety-block .chart .block-content-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(98% - 374px);
+  height: 48%;
+  background-color: #d57077;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.safety-block .chart .block-content-2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 47%;
+  height: 55px;
+  background-color: #efeded;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.safety-block .chart .block-1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 15%;
+  height: 48%;
+  background-color: #efeded;
+}
+
+.safety-block .chart .block-2 {
+  position: absolute;
+  bottom: 0;
+  left: 17%;
+  width: 19%;
+  height: 48%;
+  background-color: #d57077;
+}
+
+.safety-block .chart .block-3 {
+  position: absolute;
+  bottom: 0;
+  left: 38%;
+  width: 13%;
+  height: 48%;
+  background-color: #efeded;
+}
+.safety-block .chart .block-4 {
+  position: absolute;
+  bottom: 70px;
+  left: 53%;
+  width: 12%;
+  height: calc(48% - 70px);
+  background-color: #d57077;
+}
+
+.safety-block .chart .img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 280px;
+}
+
+@media screen and (max-width: 1199px) {
+  .safety-block .chart .block-content-2 {
+    width: 52%;
+  }
+  .safety-block .chart .block-1 {
+    left: 0;
+    width: 15%;
+  }
+  .safety-block .chart .block-2 {
+    left: 16%;
+    width: 17%;
+  }
+  .safety-block .chart .block-3 {
+    left: 34%;
+    width: 13%;
+  }
+  .safety-block .chart .block-4 {
+    left: 48%;
+    width: 10%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .safety-block .header {
+    font-size: 23px;
+  }
+  .safety-block .chart {
+    font-size: 23px;
+  }
+  .safety-block .chart .block-content-2 {
+    width: 52%;
+  }
+  .safety-block .chart .block-1 {
+    width: 14%;
+  }
+  .safety-block .chart .block-2 {
+    left: 15%;
+  }
+  .safety-block .chart .block-3 {
+    left: 33%;
+  }
+  .safety-block .chart .block-4 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .safety-block {
+    margin-bottom: 240px;
+  }
+  .safety-block .header .logo {
+    display: none;
+  }
+  .safety-block .header {
+    font-size: 23px;
+    padding: 15px;
+  }
+  .safety-block .chart {
+    font-size: 23px;
+  }
+  .safety-block .chart .block-content-1 {
+    position: initial;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .safety-block .chart .block-content-2 {
+    position: initial;
+    width: 100%;
+    margin-top: -15px;
+  }
+  .safety-block .chart .img {
+    position: initial;
+    width: 100%;
+    height: auto;
+  }
+  .safety-block .chart .block-1 {
+    display: none;
+  }
+  .safety-block .chart .block-2 {
+    display: none;
+  }
+  .safety-block .chart .block-3 {
+    display: none;
+  }
 }
