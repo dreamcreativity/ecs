@@ -1405,6 +1405,7 @@ body {
   padding-top: 10px;
   margin-bottom: 20px;
   position: relative;
+  min-height: 130px;
 }
 
 .safety-block .header .logo {
@@ -1426,6 +1427,14 @@ body {
   font-weight: bold;
   text-align: center;
 }
+.safety-block .chart a {
+  color: #343434;
+}
+
+.safety-block .chart a:hover {
+  color: #5a4b4b;
+}
+
 .safety-block .chart .block-content-1 {
   position: absolute;
   top: 0;
@@ -1516,6 +1525,12 @@ body {
     width: 10%;
   }
 }
+.safety-block .announce {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 40px 0 100px 0;
+  color: #555;
+}
 
 @media screen and (max-width: 991px) {
   .safety-block .header {
@@ -1544,6 +1559,10 @@ body {
 @media screen and (max-width: 767px) {
   .safety-block {
     margin-bottom: 240px;
+  }
+
+  .safety-block .announce {
+    margin: 280px 0 -200px 0;
   }
   .safety-block .header .logo {
     display: none;
