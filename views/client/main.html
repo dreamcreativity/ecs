@@ -25,7 +25,7 @@
     "
   ></div>
 
-  <section style="background-color: #74b3be;">
+  <!-- <section style="background-color: #74b3be;">
     <div class="swiper-container swiper-parent">
       <div class="clearfix" id="online-esc-banner">
         <a href="https://go.esc-toronto.com/uctp-en">
@@ -54,7 +54,258 @@
         </a>
       </div>
     </div>
+  </section> -->
+
+  <section
+    id="slider"
+    class="slider-parallax full-screen with-header swiper_wrapper clearfix"
+  >
+    <div class="swiper-container swiper-parent">
+      <div class="swiper-wrapper">
+        <!-- banner for update page -->
+        <div
+          class="swiper-slide dark"
+          style="background-image: url('/images/banner/esc-update.png')"
+        >
+          <div class="curtain" id="banner-esc-update">
+            <a href="https://sway.office.com/xEPHbZEE1RsNOUP1?ref=email">
+              <div class="container clearfix">
+                <div class="heading">
+                  Important ESC Updates
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- banner for health care -->
+        <div
+          class="swiper-slide dark"
+          style="background-image: url('/images/banner/health-care-bg.jpg')"
+        >
+          <div class="curtain" id="banner-health-care">
+            <a href="/hc">
+              <div class="container clearfix">
+                <div class="left-title">
+                  <div>essential</div>
+                  <div>english for</div>
+                </div>
+                <div class="heading">
+                  health care <span class="small-label">(EEHC)</span>
+                </div>
+                <div class="buttons">       
+                  <div class="btn btn-clear">
+                    Date: January 13 - February 7, 2020
+                  </div>
+                  <div class="btn btn-dark">
+                    Observership opportunity
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- banner for other slider -->
+        <% for(var i=0; i<sliders.length; i++) {%>
+                <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].resource.path %>')">
+                    <div class="curtain">
+                        <div class="container clearfix">
+                            <div class="slider-caption slider-caption-center" postion="<%- sliders[i].position %>">
+                                <h2 style="color: <%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>">
+                                    <%- sliders[i].heading  %>
+                                </h2>
+                                <p style="color: <%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>"
+                                    data-caption-delay="200">
+                                    <%- sliders[i].sub_heading %>
+                                </p>
+
+                            </div>
+                        </div>
+                        <% if(sliders[i].resource.type == 'Video') {%>
+                        <div class="video-wrap">
+                            <video id="video" type="video" poster="images/videos/explore-poster.jpg" preload="auto"
+                                loop autoplay muted>
+                                <source src='<%- sliders[i].resource.path %>' />
+
+                            </video>
+                            <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                </div>
+                <% } %>
+      </div>
+      <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+      <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+      <!-- <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div> -->
+      <div class="swiper-pagination">
+        <span class="swiper-pagination-switch"></span
+        ><span
+          class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"
+        ></span
+        ><span class="swiper-pagination-switch"></span>
+      </div>
+    </div>
+    <style type="text/css">
+      .swiper-pagination {
+        position: absolute;
+        width: 100%;
+        z-index: 20;
+        margin: 0;
+        top: auto;
+        bottom: 20px;
+        text-align: center;
+        line-height: 1;
+      }
+
+      .swiper-pagination span {
+        display: inline-block;
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        opacity: 1;
+        background-color: transparent;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-pagination span:hover,
+      .swiper-pagination span.swiper-active-switch {
+        background-color: #fff !important;
+      }
+    </style>
+    <script>
+      jQuery(document).ready(function($) {
+        var swiperSlider = new Swiper(".swiper-parent", {
+          // paginationClickable: false,
+          // slidesPerView: 1,
+          // grabCursor: true,
+          // autoplay: true,
+          // pagination: '.swiper-pagination',
+
+          paginationClickable: false,
+          slidesPerView: 1,
+          grabCursor: true,
+          pagination: ".swiper-pagination",
+          paginationClickable: true,
+          createPagination: true,
+          autoplay: 7000,
+
+          onSwiperCreated: function(swiper) {
+            $("[data-caption-animate]").each(function() {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr("data-caption-delay");
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) {
+                toAnimateDelayTime = Number(toAnimateDelay) + 750;
+              } else {
+                toAnimateDelayTime = 750;
+              }
+              if (!$toAnimateElement.hasClass("animated")) {
+                $toAnimateElement.addClass("not-animated");
+                var elementAnimation = $toAnimateElement.attr(
+                  "data-caption-animate"
+                );
+                setTimeout(function() {
+                  $toAnimateElement
+                    .removeClass("not-animated")
+                    .addClass(elementAnimation + " animated");
+                }, toAnimateDelayTime);
+              }
+            });
+          },
+          onSlideChangeStart: function(swiper) {
+            $("#slide-number-current").html(swiper.activeIndex + 1);
+            $("[data-caption-animate]").each(function() {
+              var $toAnimateElement = $(this);
+              var elementAnimation = $toAnimateElement.attr(
+                "data-caption-animate"
+              );
+              $toAnimateElement
+                .removeClass("animated")
+                .removeClass(elementAnimation)
+                .addClass("not-animated");
+            });
+          },
+          onSlideChangeEnd: function(swiper) {
+            $("#slider .swiper-slide").each(function() {
+              if ($(this).find("video").length > 0) {
+                $(this)
+                  .find("video")
+                  .get(0)
+                  .pause();
+              }
+            });
+            $('#slider .swiper-slide:not(".swiper-slide-active")').each(
+              function() {
+                if ($(this).find("video").length > 0) {
+                  if (
+                    $(this)
+                      .find("video")
+                      .get(0).currentTime != 0
+                  )
+                    $(this)
+                      .find("video")
+                      .get(0).currentTime = 0;
+                }
+              }
+            );
+            if (
+              $("#slider .swiper-slide.swiper-slide-active").find("video")
+                .length > 0
+            ) {
+              $("#slider .swiper-slide.swiper-slide-active")
+                .find("video")
+                .get(0)
+                .play();
+            }
+
+            $(
+              "#slider .swiper-slide.swiper-slide-active [data-caption-animate]"
+            ).each(function() {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr("data-caption-delay");
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) {
+                toAnimateDelayTime = Number(toAnimateDelay) + 300;
+              } else {
+                toAnimateDelayTime = 300;
+              }
+              if (!$toAnimateElement.hasClass("animated")) {
+                $toAnimateElement.addClass("not-animated");
+                var elementAnimation = $toAnimateElement.attr(
+                  "data-caption-animate"
+                );
+                setTimeout(function() {
+                  $toAnimateElement
+                    .removeClass("not-animated")
+                    .addClass(elementAnimation + " animated");
+                }, toAnimateDelayTime);
+              }
+            });
+          }
+        });
+
+        $("#slider-arrow-left").on("click", function(e) {
+          e.preventDefault();
+          swiperSlider.swipePrev();
+        });
+
+        $("#slider-arrow-right").on("click", function(e) {
+          e.preventDefault();
+          swiperSlider.swipeNext();
+        });
+
+        $("#slide-number-current").html(swiperSlider.activeIndex + 1);
+        $("#slide-number-total").html(swiperSlider.slides.length);
+      });
+    </script>
   </section>
+
   <!-- Header
         ============================================= -->
   <header id="header" class="full-header">
