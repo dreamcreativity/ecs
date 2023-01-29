@@ -2525,7 +2525,7 @@
   .container,
   #header.full-header .container,
   .container-fullwidth {
-    width: 310px !important;
+    width: 370px !important;
   }
 
   .container.vertical-middle {
@@ -2533,8 +2533,18 @@
   }
 
   .full-screen:not(.force-full-screen) .container.vertical-middle {
-    width: 310px !important;
+    width: 370px !important;
   }
+
+  .feature-box.fbox-center .fbox-photo img {
+    width: 100%;
+    padding: 0;
+    margin-top: -5%;
+  }
+
+  .feature-box.fbox-center .fbox-photo {
+    height: 170px;  
+}
 
   #top-cart {
     display: none;
@@ -2564,7 +2574,7 @@
   }
 
   #header.transparent-header.floating-header .container {
-    width: 310px;
+    width: 370px;
     padding: 0 15px;
   }
 
