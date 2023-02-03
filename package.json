@@ -26,7 +26,7 @@
     "liquid-ffmpeg": "~1.0.2",
     "lodash": "^2.4.1",
     "moment": "^2.9.0",
-    "mongoose": "^4.1.10",
+    "mongoose": "^5.7.6",
     "mongoose-random": "^0.1.1",
     "morgan": "~1.5.1",
     "multer": "~0.1.6",
