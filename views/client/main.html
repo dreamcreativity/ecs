@@ -1,3 +1,1561 @@
-<div>
-  <img src="images/notice.jpg" alt="notice">
+<!-- <link
+  href="https://www.fontify.me/wf/7116669ff62ea6ce905b50766eaca6b8"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="https://www.fontify.me/wf/0e228860da2a1a70b83e2f364492f5e7"
+  rel="stylesheet"
+  type="text/css"
+/> -->
+<!-- font-family: 'font92731' San Francisco UI Display for Regular  -->
+<!-- font-family: 'font92715' San Francisco UI Display for mediam bold  -->
+
+<div id="wrapper" class="clearfix">
+  <div
+    id="home"
+    class="page-section"
+    style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      z-index: -2;
+    "
+  ></div>
+
+  <!-- <section style="background-color: #74b3be;">
+    <div class="swiper-container swiper-parent">
+      <div class="clearfix" id="online-esc-banner">
+        <a href="https://go.esc-toronto.com/uctp-en">
+          <img
+            class="desktop-banner"
+            style="width: 100%;"
+            src="images/banner/why-online.jpg"
+            alt="Our team"
+          />
+        </a>
+        <a href="https://go.esc-toronto.com/uctp-en">
+          <img
+            class="tablet-banner"
+            style="width: 100%;"
+            src="images/banner/why-online-tablet.jpg"
+            alt="Our team"
+          />
+        </a>
+        <a href="https://go.esc-toronto.com/uctp-en">
+          <img
+            class="mobile-banner"
+            style="width: 100%;"
+            src="images/banner/why-online-mobile.jpg"
+            alt="Our team"
+          />
+        </a>
+      </div>
+    </div>
+  </section> -->
+
+  <section
+    id="slider"
+    class="slider-parallax full-screen with-header swiper_wrapper clearfix"
+  >
+    <div class="swiper-container swiper-parent">
+      <div class="swiper-wrapper">
+        <!-- banner for update page -->
+        <!-- <div
+          class="swiper-slide dark"
+          style="background-image: url('/images/banner/esc-update.png')"
+        >
+          <div class="curtain" id="banner-esc-update">
+            <a href="https://sway.office.com/xEPHbZEE1RsNOUP1?ref=email">
+              <div class="container clearfix">
+                <div class="heading">
+                  Important ESC Updates
+                </div>
+              </div>
+            </a>
+          </div>
+        </div> -->
+        <!-- banner for health care -->
+        <!-- <div
+          class="swiper-slide dark"
+          style="background-image: url('/images/banner/health-care-bg.jpg')"
+        >
+          <div class="curtain" id="banner-health-care">
+            <a href="/hc">
+              <div class="container clearfix">
+                <div class="left-title">
+                  <div>essential</div>
+                  <div>english for</div>
+                </div>
+                <div class="heading">
+                  health care <span class="small-label">(EEHC)</span>
+                </div>
+                <div class="buttons">       
+                  <div class="btn btn-clear">
+                    Date: January 13 - February 7, 2020
+                  </div>
+                  <div class="btn btn-dark">
+                    Observership opportunity
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div> -->
+        <!-- banner for other slider -->
+        <% for(var i=0; i<sliders.length; i++) {%>
+                <div class="swiper-slide dark" style="background-image: url('<%= sliders[i].resource.path %>')">
+                    <div class="curtain">
+                        <div class="container clearfix">
+                            <div class="slider-caption slider-caption-center" postion="<%- sliders[i].position %>">
+                                <h2 style="color: <%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>">
+                                    <%- sliders[i].heading  %>
+                                </h2>
+                                <p style="color: <%= sliders[i].color %>" data-caption-animate="<%= sliders[i].direction %>"
+                                    data-caption-delay="200">
+                                    <%- sliders[i].sub_heading %>
+                                </p>
+
+                            </div>
+                        </div>
+                        <% if(sliders[i].resource.type == 'Video') {%>
+                        <div class="video-wrap">
+                            <video id="video" type="video" poster="images/videos/explore-poster.jpg" preload="auto"
+                                loop autoplay muted>
+                                <source src='<%- sliders[i].resource.path %>' />
+
+                            </video>
+                            <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                </div>
+                <% } %>
+      </div>
+      <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+      <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+      <!-- <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div> -->
+      <div class="swiper-pagination">
+        <span class="swiper-pagination-switch"></span
+        ><span
+          class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"
+        ></span
+        ><span class="swiper-pagination-switch"></span>
+      </div>
+    </div>
+    <style type="text/css">
+      .swiper-pagination {
+        position: absolute;
+        width: 100%;
+        z-index: 20;
+        margin: 0;
+        top: auto;
+        bottom: 20px;
+        text-align: center;
+        line-height: 1;
+      }
+
+      .swiper-pagination span {
+        display: inline-block;
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        opacity: 1;
+        background-color: transparent;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-pagination span:hover,
+      .swiper-pagination span.swiper-active-switch {
+        background-color: #fff !important;
+      }
+    </style>
+    <script>
+      jQuery(document).ready(function($) {
+        var swiperSlider = new Swiper(".swiper-parent", {
+          // paginationClickable: false,
+          // slidesPerView: 1,
+          // grabCursor: true,
+          // autoplay: true,
+          // pagination: '.swiper-pagination',
+
+          paginationClickable: false,
+          slidesPerView: 1,
+          grabCursor: true,
+          pagination: ".swiper-pagination",
+          paginationClickable: true,
+          createPagination: true,
+          autoplay: 7000,
+
+          onSwiperCreated: function(swiper) {
+            $("[data-caption-animate]").each(function() {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr("data-caption-delay");
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) {
+                toAnimateDelayTime = Number(toAnimateDelay) + 750;
+              } else {
+                toAnimateDelayTime = 750;
+              }
+              if (!$toAnimateElement.hasClass("animated")) {
+                $toAnimateElement.addClass("not-animated");
+                var elementAnimation = $toAnimateElement.attr(
+                  "data-caption-animate"
+                );
+                setTimeout(function() {
+                  $toAnimateElement
+                    .removeClass("not-animated")
+                    .addClass(elementAnimation + " animated");
+                }, toAnimateDelayTime);
+              }
+            });
+          },
+          onSlideChangeStart: function(swiper) {
+            $("#slide-number-current").html(swiper.activeIndex + 1);
+            $("[data-caption-animate]").each(function() {
+              var $toAnimateElement = $(this);
+              var elementAnimation = $toAnimateElement.attr(
+                "data-caption-animate"
+              );
+              $toAnimateElement
+                .removeClass("animated")
+                .removeClass(elementAnimation)
+                .addClass("not-animated");
+            });
+          },
+          onSlideChangeEnd: function(swiper) {
+            $("#slider .swiper-slide").each(function() {
+              if ($(this).find("video").length > 0) {
+                $(this)
+                  .find("video")
+                  .get(0)
+                  .pause();
+              }
+            });
+            $('#slider .swiper-slide:not(".swiper-slide-active")').each(
+              function() {
+                if ($(this).find("video").length > 0) {
+                  if (
+                    $(this)
+                      .find("video")
+                      .get(0).currentTime != 0
+                  )
+                    $(this)
+                      .find("video")
+                      .get(0).currentTime = 0;
+                }
+              }
+            );
+            if (
+              $("#slider .swiper-slide.swiper-slide-active").find("video")
+                .length > 0
+            ) {
+              $("#slider .swiper-slide.swiper-slide-active")
+                .find("video")
+                .get(0)
+                .play();
+            }
+
+            $(
+              "#slider .swiper-slide.swiper-slide-active [data-caption-animate]"
+            ).each(function() {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr("data-caption-delay");
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) {
+                toAnimateDelayTime = Number(toAnimateDelay) + 300;
+              } else {
+                toAnimateDelayTime = 300;
+              }
+              if (!$toAnimateElement.hasClass("animated")) {
+                $toAnimateElement.addClass("not-animated");
+                var elementAnimation = $toAnimateElement.attr(
+                  "data-caption-animate"
+                );
+                setTimeout(function() {
+                  $toAnimateElement
+                    .removeClass("not-animated")
+                    .addClass(elementAnimation + " animated");
+                }, toAnimateDelayTime);
+              }
+            });
+          }
+        });
+
+        $("#slider-arrow-left").on("click", function(e) {
+          e.preventDefault();
+          swiperSlider.swipePrev();
+        });
+
+        $("#slider-arrow-right").on("click", function(e) {
+          e.preventDefault();
+          swiperSlider.swipeNext();
+        });
+
+        $("#slide-number-current").html(swiperSlider.activeIndex + 1);
+        $("#slide-number-total").html(swiperSlider.slides.length);
+      });
+    </script>
+  </section>
+
+  <!-- Header
+        ============================================= -->
+  <header id="header" class="full-header">
+    <div id="header-wrap">
+      <div class="container clearfix">
+        <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+        <!-- Logo
+                    ============================================= -->
+        <!-- <div id="logo">
+                        <a href="/" class="standard-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/school-logo.svg" alt="ESC Logo"></a>
+                        <a href="/" class="retina-logo" data-dark-logo="/images/esc-logo.svg"><img src="/images/school-logo.svg" alt="ESC Logo"></a>
+                    </div> -->
+        <div id="logo">
+          <a
+            href="/"
+            class="standard-logo"
+            data-dark-logo="/images/old-esc-logo.svg"
+            ><img src="/images/old-esc-logo.svg" alt="ESC Logo"
+          /></a>
+
+          <a
+            href="/"
+            class="retina-logo"
+            data-dark-logo="/images/old-esc-logo.svg"
+            ><img src="/images/old-esc-logo.svg" alt="ESC Logo"
+          /></a>
+        </div>
+        <!-- #logo end -->
+
+        <!-- Primary Navigation
+                    ============================================= -->
+        <nav id="primary-menu">
+          <ul class="one-page-menu">
+            <li>
+              <a href="#" data-href="#home">
+                <div>Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-href="#section-about">
+                <div>About</div>
+              </a>
+              <ul class="width200">
+                <li>
+                  <a href="/why-esc">
+                    <div>Why ESC?</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/philosophy">
+                    <div>Our Philosophy</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/team">
+                    <div>Our Team</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/city">
+                    <div>Our City</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="mega-menu">
+              <a href="#" data-href="#section-programs">
+                <div>Adult Programs</div>
+              </a>
+              <div class="mega-menu-content style-2 col-4">
+                <ul>
+                  <li class="mega-menu-title">
+                    <a href="#">
+                      <div>General ESL</div>
+                    </a>
+                    <ul>
+                      <% for(var i=0; i < courses.length; i++){ %> <%
+                      if(courses[i].category == 'General ESL' ){ %>
+                      <li>
+                        <a href="/course/<%- courses[i]._id %>">
+                          <div>
+                            <%- courses[i].title %>
+                          </div>
+                        </a>
+                      </li>
+                      <% }} %>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL (Core Courses)</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'General ESL' && courses[i].subCategory == 'Core Courses' ){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>General ESL (Elective Courses)</div></a>
+                                            <ul>
+                                                <% for(var i=0; i < courses.length; i++){ %>
+                                                <% if(courses[i].category == 'General ESL' && courses[i].subCategory == 'Elective Courses' ){ %>
+                                                <li><a href="/course/<%- courses[i]._id %>"><div><%- courses[i].title %></div></a></li>
+                                                <% }} %>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul> -->
+                <ul>
+                  <li class="mega-menu-title">
+                    <a href="#">
+                      <div>Focus Programs</div>
+                    </a>
+                    <ul>
+                      <% for(var i=0; i < courses.length; i++){ %> <%
+                      if(courses[i].category == 'Focus Programs'){ %>
+                      <li>
+                        <a href="/course/<%- courses[i]._id %>">
+                          <div>
+                            <%- courses[i].title %>
+                          </div>
+                        </a>
+                      </li>
+                      <% }} %>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li class="mega-menu-title">
+                    <a href="#">
+                      <div>Test Prep Programs</div>
+                    </a>
+                    <ul>
+                      <% for(var i=0; i < courses.length; i++){ %> <%
+                      if(courses[i].category == 'Test Prep Programs'){ %>
+                      <li>
+                        <a href="/course/<%- courses[i]._id %>">
+                          <div>
+                            <%- courses[i].title %>
+                          </div>
+                        </a>
+                      </li>
+                      <% }} %>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li class="mega-menu-title">
+                    <a href="#">
+                      <div>Pathway Programs</div>
+                    </a>
+                    <ul>
+                      <% for(var i=0; i < courses.length; i++){ %> <%
+                      if(courses[i].category == 'Pathway Programs'){ %>
+                      <li>
+                        <a href="/course/<%- courses[i]._id %>">
+                          <div>
+                            <%- courses[i].title %>
+                          </div>
+                        </a>
+                      </li>
+                      <% }} %>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- <ul>
+                                        <li class="mega-menu-title"><a href="#"><div>Class Chart</div></a>
+                                           
+                                        </li>
+                                    </ul> -->
+              </div>
+            </li>
+            <li>
+              <a href="#" data-href="#section-junior">
+                <div>Junior Programs</div>
+              </a>
+              <ul class="width300">
+                <!-- <li><a href="/junior-programs/#snav-content1" ><div>Toronto Summer Kids Programs</div></a></li> -->
+                <li>
+                  <a href="/junior-programs/#snav-content2">
+                    <div>Toronto Summer Teen Program</div>
+                  </a>
+                </li>
+                <!-- <li><a href="/junior-programs/#snav-content3" ><div>Kingston Summer Teen Programs</div></a></li> -->
+                <!-- <li><a href="/junior-programs/#snav-content4"><div>Family Programs</div></a></li> -->
+                <!-- <li><a href="/junior-programs/#snav-content5"><div>Year-Round Programs</div></a></li> -->
+                <li>
+                  <a href="/junior-programs/#snav-content6">
+                    <div>Young Leaders Program</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" data-href="#section-registration">
+                <div>Registration</div>
+              </a>
+              <ul class="width200">
+                <li>
+                  <a href="/register">
+                    <div>Register Now</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/forms/tuition-fees.pdf">
+                    <div>Fees</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/Calculator">
+                    <div>Fee Calculator</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/payment">
+                    <div>Make a payment</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/calendar">
+                    <div>Academic Calendar</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/onlineTest">
+                    <div>Online Test</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/guidelines">
+                    <div>Student Guidelines</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/procedures">
+                    <div>Procedures</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/forms/StudentHealth-Safety.pdf" target="_blank">
+                    <div>Student Health & Safety</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/forms/2021/Pre-Arrival-Package.pdf" target="_blank">
+                    <div>Pre-Arrival Package</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" data-href="#section-services">
+                <div>Services</div>
+              </a>
+              <ul class="width200">
+                <li>
+                  <a href="/preArrival">
+                    <div>Pre-arrival</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/accommodation">
+                    <div>Accommodations</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/gallery">
+                    <div>Photo Gallery</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/events">
+                    <div>Activities Calendar</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/classChart">
+                    <div>Class Chart</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/qa">
+                    <div>Frequently Asked Questions</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#" data-href="#section-contact">
+                <div>Contact</div>
+              </a>
+            </li>
+          </ul>
+
+          <!-- Top Search
+                        ============================================= -->
+          <!-- <div id="top-search">
+                            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                            <form action="search.html" method="get">
+                                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                            </form>
+                        </div>
+                        -->
+        </nav>
+        <!-- #primary-menu end -->
+      </div>
+    </div>
+  </header>
+  <!-- #header end -->
+
+  <!-- Content
+        ============================================= -->
+  <section id="content">
+    <div class="content-wrap">
+      <section>
+        <div class="container clearfix center">
+          <img
+            style="width: 150px; margin-bottom: 20px;"
+            src="/images/Leaf.svg"
+          />
+        </div>
+      </section>
+
+      <section id="section-about" class="page-section">
+        <div class="container clearfix">
+          <div class="heading-block center">
+            <h2>English School of Canada</h2>
+            <span>Award-winning provider of English-language education</span>
+          </div>
+
+          <div class="col_half nobottommargin">
+            <div class="feature-box media-box">
+              <div class="fbox-media">
+                <a href="/philosophy"
+                  ><img
+                    src="images/clients/school/zoom-27352044-3.jpg"
+                    alt="Our Philosophy<"
+                /></a>
+              </div>
+              <div class="fbox-desc">
+                <a href="/philosophy">
+                  <h3>
+                    Our Philosophy<span class="subtitle"
+                      >Ensuring student success</span
+                    >
+                  </h3>
+                </a>
+                <p class="program-home-des">
+                  English School of Canada aims to help international students
+                  develop both fluency and confidence in order to achieve
+                  success in personal, academic and professional goals. This is
+                  accomplished through genuine and dedicated care from teachers
+                  and support staff who understand the needs of foreign
+                  students, going above and beyond to create both valuable and
+                  memorable experiences for them in Toronto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col_half nobottommargin col_last">
+            <div class="feature-box media-box">
+              <div class="fbox-media">
+                <a href="/team"
+                  ><img src="images/main/Our-Team.jpg" alt="Our team"
+                /></a>
+              </div>
+              <div class="fbox-desc">
+                <a href="/team">
+                  <h3>
+                    Our Team<span class="subtitle"
+                      >Trained and qualified teachers and support staff</span
+                    >
+                  </h3>
+                </a>
+                <p class="program-home-des">
+                  Established by teachers, ESC brings together current teaching
+                  methods and techniques with a fully accredited and
+                  award-winning teaching team. Our support staff are qualified
+                  to help in a variety of ways from academic counselors to
+                  activity coordinators to administrative support. We are here
+                  to help and are dedicated to your needs.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col_half nobottommargin">
+            <div class="feature-box media-box">
+              <div class="fbox-media">
+                <a href="/city"
+                  ><img src="images/main/OurCity.jpg" alt="Our City"
+                /></a>
+              </div>
+              <div class="fbox-desc">
+                <a href="/city">
+                  <h3>
+                    Our City<span class="subtitle"
+                      >Consistently voted one of the best cities in the world to
+                      live in and visit</span
+                    >
+                  </h3>
+                </a>
+                <p class="program-home-des">
+                  A culturally diverse, progressive and welcoming city. As
+                  Canada’s largest city, Toronto is near many experiences you
+                  will enjoy from shopping, sports and entertainment to a
+                  thriving arts scene, beautiful natural wonders and
+                  world-renowned cultural events. It is also conveniently close
+                  to Niagara Falls, French Canada, New York, Chicago and Boston.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col_half nobottommargin col_last">
+            <div class="feature-box media-box">
+              <div class="fbox-media">
+                <a href="/why-esc"
+                  ><img src="images/main/Why-ESC.jpg" alt="Why choose Us?"
+                /></a>
+              </div>
+              <div class="fbox-desc">
+                <a href="/why-esc">
+                  <h3>
+                    Why ESC?<span class="subtitle"
+                      >Providing quality education and a memorable Canadian
+                      experience</span
+                    >
+                  </h3>
+                </a>
+                <p class="program-home-des">
+                  Running for nearly 20 years, English School of Canada has
+                  educated over 30,000 students from more than 50 countries.
+                  Students appreciate and are engaged with the multicultural
+                  student body they study with at our fully accredited school.
+                  At English School of Canada, we focus on teaching with our
+                  award-winning teachers and programs and activities to give our
+                  vibrant and dynamic students a true Canadian experience.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="clear"></div>
+        </div>
+
+        <div
+          class="section dark parallax nobottommargin"
+          style="
+            padding: 100px 0;
+            background-image: url('images/clients/backgrounds/14.jpg');
+          "
+          data-stellar-background-ratio="0.3"
+        >
+          <div class="container clearfix">
+            <div style="height: 300px;">&nbsp;</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-programs" class="page-section topmargin-lg">
+        <div class="heading-block center bottommargin-lg">
+          <h2>ADULT Programs</h2>
+          <span>A list of our main programs</span>
+        </div>
+
+        <div class="container clearfix">
+          <% for(var i=0; i < courses.length; i++){ %>
+          <div class="col_one_third <% if( (i+1)%3==0){ %> col_last <% } %>">
+            <!-- <div class="feature-box fbox-center fbox-effect nobottomborder" data-animate="fadeIn" data-delay="<%- i*100 %>"> -->
+            <div class="feature-box fbox-center fbox-effect nobottomborder">
+              <div class="fbox-photo">
+                <a href="/course/<%- courses[i]._id %>"
+                  ><img
+                    src="<%- courses[i].cover.thumbnail %>"
+                    alt="<%- courses[i].title %>"
+                /></a>
+              </div>
+              <a href="/course/<%- courses[i]._id %>">
+                <h3>
+                  <%- courses[i].title %>
+                </h3>
+              </a>
+              <p class="program-home-des">
+                <%- courses[i].description %>
+              </p>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+        <div class="divider divider-short divider-center topmargin-lg">
+          <i class="icon-star3"></i>
+        </div>
+      </section>
+
+      <!-- <section id="section-activity" class="page-section topmargin-lg">
+
+                    <div class="heading-block center">
+                        <h2>Our Student Activity</h2>
+                        <span>Some of the Awesome Monment we've worked on.</span>
+                    </div>
+
+                    <div class="container clearfix center">
+                        <div id="portfolio" class="portfolio-nomargin clearfix">
+                            <% for(i in activities){ %>
+                            <article class="portfolio-item pf-media pf-icons">
+                                <div class="portfolio-image">
+                                    <a href="/activity/detail/<%- activities[i]._id %>">
+                                        <img src="<%- activities[i].cover.thumbnail %>" alt="Open Imagination">
+                                    </a>
+                                    <div class="portfolio-overlay">
+                                        <a href="images/clients/activity/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+                                        <a href="javascript:void(0)" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+                                    </div>
+                                    
+                                    <a href="/activity/detail/<%- activities[i]._id %>" class="portfolio-desc">
+                                        <h3><%- activities[i].title %></h3>
+                                        <span><%- activities[i].subtitle %></span>
+                                    </a>
+                                </div>
+                            </article>
+                            <% } %>
+                        </div>
+                    </div>
+
+                </section> -->
+
+      <!--                 <div class="section parallax" style="background-image: url('images/clients/backgrounds/9.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+                    <div class="heading-block dark center nobottomborder nobottommargin">
+                        <h2>The key to learning how to speak English.</h2>
+                    </div>
+                </div>
+
+      
+                
+                <div id="section-tools" class="container clearfix">
+
+                    <div class="row topmargin-lg bottommargin-sm">
+
+                        <div class="heading-block center">
+                            <h2>Feature Tools</h2>
+                            <span class="divcenter">Philanthropy convener livelihoods, initiative end hunger gender rights local. John Lennon storytelling; advocate, altruism impact catalyst.</span>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 bottommargin">
+
+                            <div class="feature-box fbox-effect fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
+                                <div class="fbox-icon">
+                                    <a href="/register"><i class="icon-plus"></i></a>
+                                </div>
+                                <h3>Self-Registration</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                            <div class="feature-box fbox-effect  fbox-right topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
+                                <div class="fbox-icon">
+                                    <a href="/events"><i class="icon-dribbble"></i></a>
+                                </div>
+                                <h3>Event Calendar</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 hidden-sm bottommargin center">
+                            <img src="images/services/iphone7.png" alt="iphone 2">
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 bottommargin">
+
+                            <div class="feature-box fbox-effect  topmargin fadeIn animated" data-animate="fadeIn" data-delay="200">
+                                <div class="fbox-icon">
+                                    <a href="/calendar"><i class="icon-calendar3 i-alt"></i></a>
+                                </div>
+                              
+                                <h3>Course Calendar</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                            <div class="feature-box fbox-effect  topmargin fadeIn animated" data-animate="fadeIn" data-delay="400">
+                                <div class="fbox-icon">
+                                    <a href="/Calculator"><i class="icon-dollar"></i></a>
+                                </div>
+                                <h3>Course Calculator</h3>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit eros id magna luctus, vel interdum sem euismod. </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+ -->
+
+      <!-- <section id="section-tools" class="page-section topmargin-lg">
+
+                    <div class="heading-block center">
+                        <h2>Tools</h2>
+                        <span>Some of the Awesome Monment we've worked on.</span>
+                    </div>
+
+                    <div class="container clearfix">
+
+                        <div class="col_one_third nobottommargin">
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <img src="images/services/1.jpg" alt="Why choose Us?">
+                                </div>
+                                <div class="fbox-desc">
+                                    <h3>Why choose Us.<span class="subtitle">Because we are Reliable.</span></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col_one_third nobottommargin">
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <img src="images/services/2.jpg" alt="Why choose Us?">
+                                </div>
+                                <div class="fbox-desc">
+                                    <h3>Our Mission.<span class="subtitle">To Redefine your Brand.</span></h3>
+                                    <p>Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col_one_third nobottommargin col_last">
+                            <div class="feature-box media-box">
+                                <div class="fbox-media">
+                                    <img src="images/services/3.jpg" alt="Why choose Us?">
+                                </div>
+                                <div class="fbox-desc">
+                                    <h3>What we Do.<span class="subtitle">Make our Customers Happy.</span></h3>
+                                    <p>Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section> -->
+
+      <section
+        id="section-testimonials"
+        class="page-section section parallax"
+        style="
+          background-image: url('images/testimonials/students-say.jpg');
+          padding: 50px 0;
+        "
+        data-stellar-background-ratio="0.3"
+      >
+        <div class="container clearfix">
+          <div class="">
+            <div class="heading-block center">
+              <h4>What our Students say</h4>
+              <span>Hear about their experiences</span>
+            </div>
+
+            <div
+              class="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding"
+              data-arrows="false"
+            >
+              <div class="flexslider">
+                <div class="slider-wrap">
+                  <div class="slide">
+                    <div class="testi-content">
+                      <p>
+                        I love studying at ESC! All the teachers and staff
+                        members are very friendly and kind! My experience in
+                        Canada has been absolutely perfect, thanks to everybody
+                        at ESC. I will go back in the future for sure!
+                      </p>
+                      <div class="testi-meta">
+                        <div class="profile">
+                          <div
+                            class="img"
+                            style="
+                              background-image: url('/images/testimonials/profile_1.jpg');
+                            "
+                          ></div>
+                          <div class="message">
+                            Camila Jocken Stange
+                            <span>BRAZIL</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <div class="testi-content">
+                      <p>
+                        Studying at ESC has been the best experience of my life.
+                        I have met people from around the world. The classes are
+                        dynamic, the teachers are very well-trained and the
+                        counsellors give us great support about our classes and
+                        life in Toronto. I recommend ESC as the best school to
+                        learn English Canada.
+                      </p>
+                      <div class="testi-meta">
+                        <div class="profile">
+                          <div
+                            class="img"
+                            style="
+                              background-image: url('/images/testimonials/profile_2.jpg');
+                            "
+                          ></div>
+                          <div class="message">
+                            Carlos Canez Flores
+                            <span>MEXICO</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <div class="testi-content">
+                      <p>
+                        I will never forget the great time I had at ESC! I
+                        studied at ESC for only 3 months but made life-long
+                        friends from different parts of the world. Thank you so
+                        much to all my teachers and ESC staff for an amazing
+                        experience.
+                      </p>
+                      <div class="testi-meta">
+                        <div class="profile">
+                          <div
+                            class="img"
+                            style="
+                              background-image: url('/images/testimonials/profile_3.png');
+                            "
+                          ></div>
+                          <div class="message">
+                            Moe Akag
+                            <span>Japan</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col_half nobottommargin">&nbsp;</div>
+        </div>
+      </section>
+
+      <div class="container clearfix center">
+        <div
+          id="section-junior"
+          class="portfolio-nomargin page-section clearfix"
+        >
+          <div class="heading-block center">
+            <h2>Junior Programs</h2>
+            <span class="divcenter"
+              >For students from 12 to 17 years of age</span
+            >
+          </div>
+
+          <!-- <div class="col_one_third">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs/#snav-content1"><img alt="Toronto Summer Kids Program" src="/images/junior/thumb-summer-kids.jpg"></a>
+                                </div>
+                                <a href="/junior-programs/#snav-content1"><h3>Toronto Summer Kids Program</h3></a>
+                                <p class="program-home-des">This program is dedicated to children from around the world who are from 9 to 13 years old and who are looking for a high-quality English summer camp in the city of Toronto.</p>
+                            </div>
+                        </div> -->
+
+          <div class="col_half">
+            <div class="feature-box fbox-center fbox-effect nobottomborder">
+              <div class="fbox-photo">
+                <a href="/junior-programs/#snav-content2"
+                  ><img
+                    alt="Toronto Summer Teen Program"
+                    src="/images/junior/thumb-summer-teen.jpg"
+                /></a>
+              </div>
+              <a href="/junior-programs/#snav-content2">
+                <h3>Toronto Summer Teen Program</h3>
+              </a>
+              <p class="program-home-des">
+                This program is dedicated to teenagers from around the world who
+                are from 12 to 17 years old and are looking for a high-quality
+                English summer camp in the city of Toronto.
+              </p>
+            </div>
+          </div>
+
+          <!-- <div class="col_one_third col_last">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs/#snav-content3"><img alt="Kingston Summer Teen Program" src="/images/junior/thumb-summer-teen-k.jpg"></a>
+                                </div>
+                                <a href="/junior-programs/#snav-content3"><h3>Kingston Summer Teen Program</h3></a>
+                                <p class="program-home-des">The summer camp is an amazing opportunity for students from 14 to 17 years old to learn about and experience Canada as well as its education system. </p>
+                            </div>
+                        </div> -->
+
+          <!-- <div class="col_one_third col_last">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs/#snav-content4"><img alt="Family Programs" src="/images/junior/thumb-family-program.png"></a>
+                                </div>
+                                <a href="/junior-programs/#snav-content4"><h3>Family Programs</h3></a>
+                                <p class="program-home-des">Our family programs are an amazing opportunity for families from around the world to have a great time in the city of Toronto during the summer and enjoy an amazing vacation.</p>
+                            </div>
+                        </div> -->
+
+          <!-- <div class="col_one_third">
+                            <div class="feature-box fbox-center fbox-effect nobottomborder" >
+                                <div class="fbox-photo">
+                                    <a href="/junior-programs/#snav-content5"><img alt="Toronto Year Round Programs" src="/images/junior/thumb-year-round-program.jpg"></a>
+                                </div>
+                                <a href="/junior-programs/#snav-content5"><h3>Toronto Year-Round Programs</h3></a>
+                                <p class="program-home-des">The programs throughout the year are intended for students or groups that wish to come to Toronto and experience a great vacation study program. The programs can usually be customized to suit your needs.</p>
+                            </div>
+                        </div> -->
+
+          <div class="col_half col_last">
+            <div class="feature-box fbox-center fbox-effect nobottomborder">
+              <div class="fbox-photo">
+                <a href="/junior-programs/#snav-content6"
+                  ><img
+                    alt="Kingston Summer Teen Program"
+                    src="/images/junior/thumb-summer-teen-k.jpg"
+                /></a>
+              </div>
+              <a href="/junior-programs/#snav-content6">
+                <h3>Young Leaders Program</h3>
+              </a>
+              <p class="program-home-des">
+                The Young Leaders Program (YLP) offers students an integrated
+                learning experience that allows students to develop their
+                English language skills and explore what Canada has to offer,
+                both academically and culturally
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-registration" class="page-section register-index">
+        <div class="container">
+          <div class="row dark">
+            <div
+              class="heading-block dark center nobottomborder nobottommargin"
+            >
+              <h2>Registration</h2>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+              <a href="/forms/tuition-fees.pdf" target="_blank">
+                <i class="icon-ok-sign"></i>
+                <h5>Tuition Fees</h5>
+              </a>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+              <a href="/Calculator">
+                <i class="icon-credit"></i>
+                <h5>Fee Calculator</h5>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+              <a href="/calendar">
+                <i class="icon-calendar3"></i>
+                <h5>Academic Calendar</h5>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+              <a href="/onlineTest">
+                <i class="icon-trophy"></i>
+                <h5>Online Test</h5>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+              <a href="/guidelines">
+                <i class="icon-lightbulb"></i>
+                <h5>Student Guidelines</h5>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-xs-6 icon-cell">
+              <a href="/procedures">
+                <i class="icon-legal"></i>
+                <h5>Procedures</h5>
+              </a>
+            </div>
+          </div>
+          <div style="text-align: center; font-size: 16px;">
+            <button
+              class="button button-3d nomargin"
+              type="button"
+              onclick="location='/register'"
+            >
+              Register Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container page-section clearfix center" id="section-services">
+        <div id="portfolio" class="portfolio-nomargin clearfix">
+          <div class="heading-block center">
+            <h2>Services</h2>
+          </div>
+
+          <article class="portfolio-item pf-media pf-icons">
+            <div class="portfolio-image">
+              <a href="/preArrival">
+                <img
+                  alt="Pre Arrival"
+                  src="/images/services/thumb-pre-arrival.jpg"
+                />
+              </a>
+
+              <a href="/preArrival" class="portfolio-desc">
+                <h3>Pre-Arrival</h3>
+              </a>
+            </div>
+          </article>
+
+          <article class="portfolio-item pf-media pf-icons">
+            <div class="portfolio-image">
+              <a href="/events">
+                <img
+                  alt="Activities Calendar"
+                  src="/images/services/thumb-activity.jpg"
+                />
+              </a>
+
+              <a href="/events" class="portfolio-desc">
+                <h3>Activities Calendar</h3>
+              </a>
+            </div>
+          </article>
+
+          <article class="portfolio-item pf-media pf-icons">
+            <div class="portfolio-image">
+              <a href="/accommodation">
+                <img
+                  alt="Accommodation"
+                  src="/images/services/thumb-accommodation.jpg"
+                />
+              </a>
+
+              <a href="/accommodation" class="portfolio-desc">
+                <h3>Accommodations</h3>
+              </a>
+            </div>
+          </article>
+
+          <article class="portfolio-item pf-media pf-icons">
+            <div class="portfolio-image">
+              <a href="/classChart">
+                <img alt="Class Chart" src="/images/services/thumb-chart.jpg" />
+              </a>
+
+              <a href="/classChart" class="portfolio-desc">
+                <h3>Class Chart</h3>
+              </a>
+            </div>
+          </article>
+
+          <article class="portfolio-item pf-media pf-icons">
+            <div class="portfolio-image">
+              <a href="/gallery">
+                <img
+                  alt="Student Activity"
+                  src="/images/services/thumb-gallery.jpg"
+                />
+              </a>
+
+              <a href="/gallery" class="portfolio-desc">
+                <h3>Photo Gallery</h3>
+              </a>
+            </div>
+          </article>
+
+          <article class="portfolio-item pf-media pf-icons">
+            <div class="portfolio-image">
+              <a href="/qa">
+                <img
+                  alt="Student Activity"
+                  src="/images/services/thumb-qa.jpg"
+                />
+              </a>
+
+              <a href="/qa" class="portfolio-desc">
+                <h3>Frequently Asked Questions</h3>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <section id="section-contact" class="page-section">
+        <div class="heading-block title-center">
+          <h2>Get in Touch with us</h2>
+          <span>Have Questions? Contact Us</span>
+          <span style="font-size: 18px; font-weight: bold;"
+            ><a target="_blank" href="/downloads/pdf/ESCBrochure2022.pdf"
+              >Download ESC brochure</a
+            ></span
+          >
+        </div>
+
+        <div class="container clearfix">
+
+          <!-- Contact Info
+                        ============================================= -->
+          <div class="col_full nobottommargin clearfix">
+            <div class="col_one_fourth">
+              <div class="feature-box fbox-center fbox-bg fbox-plain">
+                <div class="fbox-icon">
+                  <a
+                    href="https://www.google.ca/maps/place/79+St+Clair+Ave+E+%23202,+Toronto,+ON+M4T+1M5/@43.6884344,-79.3931246,17z/data=!3m1!4b1!4m2!3m1!1s0x882b334ffac8dbc1:0x9ef9f133fc0452e1"
+                    target="_blank"
+                    ><i class="icon-map-marker2"></i
+                  ></a>
+                </div>
+                <h3>
+                  Our Location<span class="subtitle"
+                    >79 St. Clair Ave. East, Suite 202<br />Toronto, ON, M4T
+                    1L8</span
+                  >
+                </h3>
+              </div>
+            </div>
+
+            <div class="col_one_fourth">
+              <div
+                class="feature-box fbox-center fbox-bg fbox-plain"
+                style="height: 221px;"
+              >
+                <div class="fbox-icon">
+                  <a href="tel:416-686-1596"><i class="icon-phone3"></i></a>
+                </div>
+                <h3>Speak to Us<span class="subtitle">(416) 686 1596</span></h3>
+              </div>
+            </div>
+
+            <div class="col_one_fourth">
+              <div
+                class="feature-box fbox-center fbox-bg fbox-plain"
+                style="height: 221px;"
+              >
+                <div class="fbox-icon">
+                  <a
+                    href="https://www.facebook.com/EnglishSchoolofCanada"
+                    target="_blank"
+                    ><i class="icon-facebook2"></i
+                  ></a>
+                </div>
+                <h3>Chat with us<span class="subtitle">Connect</span></h3>
+              </div>
+            </div>
+
+            <div class="col_one_fourth col_last">
+              <div
+                class="feature-box fbox-center fbox-bg fbox-plain"
+                style="height: 221px;"
+              >
+                <div class="fbox-icon">
+                  <a href="https://twitter.com/ESCToronto" target="_blank"
+                    ><i class="icon-twitter2"></i
+                  ></a>
+                </div>
+                <h3>Follow on Twitter<span class="subtitle">Connect</span></h3>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Info End -->
+        </div>
+      </section>
+    </div>
+  </section>
+  <!-- #content end -->
+
+  <!-- Footer
+        ============================================= -->
+  <footer id="footer" class="dark">
+    <div class="container">
+      <!-- Footer Widgets
+                ============================================= -->
+      <div class="footer-widgets-wrap clearfix">
+        <div>
+          <div class="col_one_third">
+            <div class="widget clearfix">
+              <!--  <img src="images/footer-widget-logo.png" alt="" class="footer-logo">
+
+                                <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p> -->
+
+              <div
+                style="
+                  background: url('images/world-map.png') no-repeat center
+                    center;
+                  background-size: 100%;
+                "
+              >
+                <!-- <address>
+                                        <strong>Loaction:</strong><br>
+                                        79 St. Clair Ave. East<br>
+                                        Toronto, Ontario,M4T 1M8<br>
+                                    </address>
+                                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> +1 (416) 686- 1596<br>
+                                    <abbr title="Fax"><strong>Fax:</strong></abbr> +1 (416) 686-7960<br>
+                                    <abbr title="Email Address"><strong>Email:</strong></abbr> nfo@esc-toronto.com  -->
+                <div style="height: 200px;">&nbsp;</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col_one_third">
+            <div class="widget widget_links clearfix">
+              <h4>Location</h4>
+              <!-- <h4>Blogroll</h4>
+
+                                <ul>
+                                    <li><a href="http://codex.wordpress.org/">Documentation</a></li>
+                                    <li><a href="http://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
+                                    <li><a href="http://wordpress.org/extend/plugins/">Plugins</a></li>
+                                    <li><a href="http://wordpress.org/support/">Support Forums</a></li>
+                                    <li><a href="http://wordpress.org/extend/themes/">Themes</a></li>
+                                    <li><a href="http://wordpress.org/news/">WordPress Blog</a></li>
+                                    <li><a href="http://planet.wordpress.org/">WordPress Planet</a></li>
+                                </ul> -->
+
+              <address>
+                79 St. Clair Ave. East, Suite 202<br />
+                Toronto, Ontario,M4T 1L8<br />
+              </address>
+              <abbr title="Phone Number"><strong>Phone:</strong></abbr> +1 (416)
+              686- 1596<br />
+              <abbr title="Fax"><strong>Fax:</strong></abbr> +1 (416)
+              686-7960<br />
+              <abbr title="Email Address"><strong>Email:</strong></abbr>
+              info@esc-toronto.com
+
+              <p class="dli"><strong>DLI: </strong> O19350421222</p>
+            </div>
+          </div>
+
+          <div class="col_one_third col_last">
+            <div class="widget widget_links clearfix">
+              <img src="/images/LC-Logo_CMYK.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- .footer-widgets-wrap end -->
+    </div>
+
+    <!-- Copyrights
+            ============================================= -->
+    <div id="copyrights">
+      <div class="container clearfix">
+        <div class="col_half">
+          Copyrights &copy; 2015 All Rights Reserved by English School of
+          Canada<br />
+          <div class="copyright-links">
+            <a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="col_half col_last tright">
+          <div class="fright clearfix">
+            <a
+              href="https://www.facebook.com/EnglishSchoolofCanada/"
+              class="social-icon si-small si-borderless si-facebook"
+            >
+              <i class="icon-facebook"></i>
+              <i class="icon-facebook"></i>
+            </a>
+
+            <a
+              href="https://twitter.com/ESCToronto"
+              class="social-icon si-small si-borderless si-twitter"
+            >
+              <i class="icon-twitter"></i>
+              <i class="icon-twitter"></i>
+            </a>
+
+            <!-- <a href="#" class="social-icon si-small si-borderless si-gplus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i>
+                            </a>
+
+                            <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                                <i class="icon-pinterest"></i>
+                                <i class="icon-pinterest"></i>
+                            </a>
+
+                            <a href="#" class="social-icon si-small si-borderless si-vimeo">
+                                <i class="icon-vimeo"></i>
+                                <i class="icon-vimeo"></i>
+                            </a>
+
+                            <a href="#" class="social-icon si-small si-borderless si-github">
+                                <i class="icon-github"></i>
+                                <i class="icon-github"></i>
+                            </a>
+
+                            <a href="#" class="social-icon si-small si-borderless si-yahoo">
+                                <i class="icon-yahoo"></i>
+                                <i class="icon-yahoo"></i>
+                            </a>
+
+                            <a href="#" class="social-icon si-small si-borderless si-linkedin">
+                                <i class="icon-linkedin"></i>
+                                <i class="icon-linkedin"></i>
+                            </a>
+ -->
+          </div>
+
+          <div class="clear"></div>
+
+          <i class="icon-envelope2"></i> info@esc-toronto.com
+          <span class="middot">&middot;</span>
+          <i class="icon-headphones"></i> +1 (416) 686-1596
+          <span class="middot">&middot;</span> <i class="icon-skype2"></i> Skype
+        </div>
+      </div>
+    </div>
+    <!-- #copyrights end -->
+  </footer>
+  <!-- #footer end -->
 </div>
+<!-- #wrapper end -->
+
+<!-- Go To Top
+    ============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<div id="webmail">
+  <a href="https://email.esc-toronto.com/owa" target="_blank">
+    <div></div>
+  </a>
+</div>
+<!-- Footer Scripts
+    ============================================= -->
+<script type="text/javascript" src="js/client/functions.js"></script>
